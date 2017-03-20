@@ -1,6 +1,8 @@
-# connect
+# Square Connect V2 Java SDK
 
 ## Requirements
+
+Java 8
 
 Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
 
