@@ -14,14 +14,6 @@ To install the API client library to your local Maven repository, simply execute
 mvn install
 ```
 
-To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
-
-```shell
-mvn deploy
-```
-
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
-
 ### Maven users
 
 Add this dependency to your project's POM:
