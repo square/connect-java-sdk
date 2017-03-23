@@ -1,4 +1,4 @@
-# Square Connect V2 Java SDK
+# Square Connect V2 Java SDK [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect)
 
 ## Requirements
 
@@ -7,12 +7,6 @@ Java 8
 Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
 
 ## Installation
-
-To install the API client library to your local Maven repository, simply execute:
-
-```shell
-mvn install
-```
 
 ### Maven users
 
@@ -33,6 +27,14 @@ Add this dependency to your project's build file:
 
 ```groovy
 compile "com.squareup:connect:2.0.2"
+```
+
+### Build and Install locally
+
+To install the API client library to your local Maven repository, simply execute:
+
+```shell
+mvn install
 ```
 
 ### Others
