@@ -138,10 +138,10 @@ public class ChargeRequest {
   }
 
    /**
-   * If `true`, the request will only perform an Auth on the provided card. You can then later perform either a Capture (with the [CaptureTransaction](#endpoint-capturetransaction) endpoint) or a Void (with the [VoidTransation](#endpoint-voidtransaction) endpoint).  Default value: `false`
+   * If `true`, the request will only perform an Auth on the provided card. You can then later perform either a Capture (with the [CaptureTransaction](#endpoint-capturetransaction) endpoint) or a Void (with the [VoidTransaction](#endpoint-voidtransaction) endpoint).  Default value: `false`
    * @return delayCapture
   **/
-  @ApiModelProperty(value = "If `true`, the request will only perform an Auth on the provided card. You can then later perform either a Capture (with the [CaptureTransaction](#endpoint-capturetransaction) endpoint) or a Void (with the [VoidTransation](#endpoint-voidtransaction) endpoint).  Default value: `false`")
+  @ApiModelProperty(value = "If `true`, the request will only perform an Auth on the provided card. You can then later perform either a Capture (with the [CaptureTransaction](#endpoint-capturetransaction) endpoint) or a Void (with the [VoidTransaction](#endpoint-voidtransaction) endpoint).  Default value: `false`")
   public Boolean getDelayCapture() {
     return delayCapture;
   }
