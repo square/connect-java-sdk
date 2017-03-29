@@ -5,7 +5,7 @@
   <artifactId>connect</artifactId>
   <packaging>jar</packaging>
   <name>connect</name>
-  <version>2.0.2</version>
+  <version>2.1.0</version>
   <url>https://github.com/square/connect-java-sdk/</url>
   <description>Java client library for the Square Connect API</description>
   <scm>
@@ -175,7 +175,6 @@
         </plugins>
       </build>
     </profile>
-
     <profile>
       <id>doclint-java8-disable</id>
       <activation>
