@@ -175,7 +175,6 @@
         </plugins>
       </build>
     </profile>
-
     <profile>
       <id>doclint-java8-disable</id>
       <activation>
