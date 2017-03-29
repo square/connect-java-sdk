@@ -1,0 +1,9 @@
+language: java
+jdk:
+- oraclejdk8
+- oraclejdk7
+before_install:
+- openssl aes-256-cbc -K $encrypted_6342d3141ac0_key -iv $encrypted_6342d3141ac0_iv -in ./travis-ci/accounts.enc -out ./travis-ci/accounts.json -d
+- chmod a+x ./gradlew
+script:
+- ./gradlew test

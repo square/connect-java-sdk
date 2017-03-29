@@ -17,6 +17,9 @@ import com.squareup.connect.ApiException;
 import com.squareup.connect.models.CaptureTransactionResponse;
 import com.squareup.connect.models.ChargeRequest;
 import com.squareup.connect.models.ChargeResponse;
+import com.squareup.connect.models.CreateRefundResponse;
+import com.squareup.connect.models.CreateRefundRequest;
+import com.squareup.connect.models.ListRefundsResponse;
 import com.squareup.connect.models.ListTransactionsResponse;
 import com.squareup.connect.models.RetrieveTransactionResponse;
 import com.squareup.connect.models.VoidTransactionResponse;
@@ -29,12 +32,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API tests for TransactionApi
+ * API tests for TransactionsApi
  */
 @Ignore
-public class TransactionApiTest {
+public class TransactionsApiTest {
 
-    private final TransactionApi api = new TransactionApi();
+    private final TransactionsApi api = new TransactionsApi();
 
     
     /**
@@ -47,10 +50,9 @@ public class TransactionApiTest {
      */
     @Test
     public void captureTransactionTest() throws ApiException {
-        String authorization = null;
         String locationId = null;
         String transactionId = null;
-        CaptureTransactionResponse response = api.captureTransaction(authorization, locationId, transactionId);
+        CaptureTransactionResponse response = api.captureTransaction(locationId, transactionId);
 
         // TODO: test validations
     }
@@ -65,10 +67,47 @@ public class TransactionApiTest {
      */
     @Test
     public void chargeTest() throws ApiException {
-        String authorization = null;
         String locationId = null;
         ChargeRequest body = null;
-        ChargeResponse response = api.charge(authorization, locationId, body);
+        ChargeResponse response = api.charge(locationId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * CreateRefund
+     *
+     * Initiates a refund for a previously charged tender.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createRefundTest() throws ApiException {
+        String locationId = null;
+        String transactionId = null;
+        CreateRefundRequest body = null;
+        CreateRefundResponse response = api.createRefund(locationId, transactionId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * ListRefunds
+     *
+     * Lists refunds for one of a business&#39;s locations.  Refunds with a &#x60;status&#x60; of &#x60;PENDING&#x60; are not currently included in this endpoint&#39;s response.  Max results per [page](#paginatingresults): 50
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listRefundsTest() throws ApiException {
+        String locationId = null;
+        String beginTime = null;
+        String endTime = null;
+        String sortOrder = null;
+        String cursor = null;
+        ListRefundsResponse response = api.listRefunds(locationId, beginTime, endTime, sortOrder, cursor);
 
         // TODO: test validations
     }
@@ -83,13 +122,12 @@ public class TransactionApiTest {
      */
     @Test
     public void listTransactionsTest() throws ApiException {
-        String authorization = null;
         String locationId = null;
         String beginTime = null;
         String endTime = null;
         String sortOrder = null;
         String cursor = null;
-        ListTransactionsResponse response = api.listTransactions(authorization, locationId, beginTime, endTime, sortOrder, cursor);
+        ListTransactionsResponse response = api.listTransactions(locationId, beginTime, endTime, sortOrder, cursor);
 
         // TODO: test validations
     }
@@ -104,10 +142,9 @@ public class TransactionApiTest {
      */
     @Test
     public void retrieveTransactionTest() throws ApiException {
-        String authorization = null;
         String locationId = null;
         String transactionId = null;
-        RetrieveTransactionResponse response = api.retrieveTransaction(authorization, locationId, transactionId);
+        RetrieveTransactionResponse response = api.retrieveTransaction(locationId, transactionId);
 
         // TODO: test validations
     }
@@ -122,10 +159,9 @@ public class TransactionApiTest {
      */
     @Test
     public void voidTransactionTest() throws ApiException {
-        String authorization = null;
         String locationId = null;
         String transactionId = null;
-        VoidTransactionResponse response = api.voidTransaction(authorization, locationId, transactionId);
+        VoidTransactionResponse response = api.voidTransaction(locationId, transactionId);
 
         // TODO: test validations
     }

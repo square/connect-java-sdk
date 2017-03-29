@@ -13,25 +13,33 @@
 
 package com.squareup.connect.api;
 
+import com.squareup.connect.ApiClient;
 import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.auth.OAuth;
 import com.squareup.connect.models.ListLocationsResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import com.squareup.connect.utils.APITest;
+import com.squareup.connect.utils.Account;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.junit.Test;
+import org.junit.Assert;
+import org.junit.Before;
 
 /**
- * API tests for LocationApi
+ * API tests for LocationsApi
  */
-@Ignore
-public class LocationApiTest {
-
-    private final LocationApi api = new LocationApi();
-
+public class LocationsApiTest extends APITest {
     
+    private final ApiClient defaultClient = Configuration.getDefaultApiClient();
+    private final LocationsApi api = new LocationsApi();
+
+    @Before
+    public void setup() {
+        Account sandboxAccount = accounts.get("US-Prod-Sandbox");
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken(sandboxAccount.accessToken);
+    }
+
     /**
      * ListLocations
      *
@@ -42,10 +50,7 @@ public class LocationApiTest {
      */
     @Test
     public void listLocationsTest() throws ApiException {
-        String authorization = null;
-        ListLocationsResponse response = api.listLocations(authorization);
-
-        // TODO: test validations
+        ListLocationsResponse response = api.listLocations();
+        Assert.assertEquals("CBASEEffqN8pnVNXwoCL0dSGMVAgAQ", response.getLocations().get(0).getId());
     }
-    
 }

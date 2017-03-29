@@ -16,11 +16,14 @@ package com.squareup.connect.api;
 import com.squareup.connect.ApiException;
 import com.squareup.connect.models.CreateCustomerRequest;
 import com.squareup.connect.models.CreateCustomerResponse;
+import com.squareup.connect.models.CreateCustomerCardResponse;
+import com.squareup.connect.models.CreateCustomerCardRequest;
 import com.squareup.connect.models.DeleteCustomerResponse;
+import com.squareup.connect.models.DeleteCustomerCardResponse;
 import com.squareup.connect.models.ListCustomersResponse;
 import com.squareup.connect.models.RetrieveCustomerResponse;
-import com.squareup.connect.models.UpdateCustomerRequest;
 import com.squareup.connect.models.UpdateCustomerResponse;
+import com.squareup.connect.models.UpdateCustomerRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -30,12 +33,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API tests for CustomerApi
+ * API tests for CustomersApi
  */
 @Ignore
-public class CustomerApiTest {
+public class CustomersApiTest {
 
-    private final CustomerApi api = new CustomerApi();
+    private final CustomersApi api = new CustomersApi();
 
     
     /**
@@ -48,9 +51,25 @@ public class CustomerApiTest {
      */
     @Test
     public void createCustomerTest() throws ApiException {
-        String authorization = null;
         CreateCustomerRequest body = null;
-        CreateCustomerResponse response = api.createCustomer(authorization, body);
+        CreateCustomerResponse response = api.createCustomer(body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * CreateCustomerCard
+     *
+     * Adds a card on file to an existing customer.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createCustomerCardTest() throws ApiException {
+        String customerId = null;
+        CreateCustomerCardRequest body = null;
+        CreateCustomerCardResponse response = api.createCustomerCard(customerId, body);
 
         // TODO: test validations
     }
@@ -65,9 +84,25 @@ public class CustomerApiTest {
      */
     @Test
     public void deleteCustomerTest() throws ApiException {
-        String authorization = null;
         String customerId = null;
-        DeleteCustomerResponse response = api.deleteCustomer(authorization, customerId);
+        DeleteCustomerResponse response = api.deleteCustomer(customerId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * DeleteCustomerCard
+     *
+     * Removes a card on file from a customer.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteCustomerCardTest() throws ApiException {
+        String customerId = null;
+        String cardId = null;
+        DeleteCustomerCardResponse response = api.deleteCustomerCard(customerId, cardId);
 
         // TODO: test validations
     }
@@ -82,9 +117,8 @@ public class CustomerApiTest {
      */
     @Test
     public void listCustomersTest() throws ApiException {
-        String authorization = null;
         String cursor = null;
-        ListCustomersResponse response = api.listCustomers(authorization, cursor);
+        ListCustomersResponse response = api.listCustomers(cursor);
 
         // TODO: test validations
     }
@@ -99,9 +133,8 @@ public class CustomerApiTest {
      */
     @Test
     public void retrieveCustomerTest() throws ApiException {
-        String authorization = null;
         String customerId = null;
-        RetrieveCustomerResponse response = api.retrieveCustomer(authorization, customerId);
+        RetrieveCustomerResponse response = api.retrieveCustomer(customerId);
 
         // TODO: test validations
     }
@@ -116,10 +149,9 @@ public class CustomerApiTest {
      */
     @Test
     public void updateCustomerTest() throws ApiException {
-        String authorization = null;
         String customerId = null;
         UpdateCustomerRequest body = null;
-        UpdateCustomerResponse response = api.updateCustomer(authorization, customerId, body);
+        UpdateCustomerResponse response = api.updateCustomer(customerId, body);
 
         // TODO: test validations
     }
