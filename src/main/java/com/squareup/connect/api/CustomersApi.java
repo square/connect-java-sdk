@@ -60,18 +60,12 @@ public class CustomersApi {
   /**
    * CreateCustomer
    * Creates a new customer for a business, which can have associated cards on file.  You must provide __at least one__ of the following values in your request to this endpoint:  - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;company_name&#x60; - &#x60;email_address&#x60; - &#x60;phone_number&#x60;  This endpoint does not accept an idempotency key. If you accidentally create a duplicate customer, you can delete it with the [DeleteCustomer](#endpoint-deletecustomer) endpoint.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateCustomerResponse
    * @throws ApiException if fails to make API call
    */
-  public CreateCustomerResponse createCustomer(String authorization, CreateCustomerRequest body) throws ApiException {
+  public CreateCustomerResponse createCustomer(CreateCustomerRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling createCustomer");
-    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -87,9 +81,7 @@ public class CustomersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -101,7 +93,7 @@ public class CustomersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CreateCustomerResponse> localVarReturnType = new GenericType<CreateCustomerResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -109,19 +101,13 @@ public class CustomersApi {
   /**
    * CreateCustomerCard
    * Adds a card on file to an existing customer.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param customerId The ID of the customer to link the card on file to. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateCustomerCardResponse
    * @throws ApiException if fails to make API call
    */
-  public CreateCustomerCardResponse createCustomerCard(String authorization, String customerId, CreateCustomerCardRequest body) throws ApiException {
+  public CreateCustomerCardResponse createCustomerCard(String customerId, CreateCustomerCardRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling createCustomerCard");
-    }
     
     // verify the required parameter 'customerId' is set
     if (customerId == null) {
@@ -143,9 +129,7 @@ public class CustomersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -157,7 +141,7 @@ public class CustomersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CreateCustomerCardResponse> localVarReturnType = new GenericType<CreateCustomerCardResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -165,18 +149,12 @@ public class CustomersApi {
   /**
    * DeleteCustomer
    * Deletes a customer from a business, along with any linked cards on file.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param customerId The ID of the customer to delete. (required)
    * @return DeleteCustomerResponse
    * @throws ApiException if fails to make API call
    */
-  public DeleteCustomerResponse deleteCustomer(String authorization, String customerId) throws ApiException {
+  public DeleteCustomerResponse deleteCustomer(String customerId) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling deleteCustomer");
-    }
     
     // verify the required parameter 'customerId' is set
     if (customerId == null) {
@@ -193,9 +171,7 @@ public class CustomersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -207,7 +183,7 @@ public class CustomersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<DeleteCustomerResponse> localVarReturnType = new GenericType<DeleteCustomerResponse>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -215,19 +191,13 @@ public class CustomersApi {
   /**
    * DeleteCustomerCard
    * Removes a card on file from a customer.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param customerId The ID of the customer that the card on file belongs to. (required)
    * @param cardId The ID of the card on file to delete. (required)
    * @return DeleteCustomerCardResponse
    * @throws ApiException if fails to make API call
    */
-  public DeleteCustomerCardResponse deleteCustomerCard(String authorization, String customerId, String cardId) throws ApiException {
+  public DeleteCustomerCardResponse deleteCustomerCard(String customerId, String cardId) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling deleteCustomerCard");
-    }
     
     // verify the required parameter 'customerId' is set
     if (customerId == null) {
@@ -250,9 +220,7 @@ public class CustomersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -264,7 +232,7 @@ public class CustomersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<DeleteCustomerCardResponse> localVarReturnType = new GenericType<DeleteCustomerCardResponse>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -272,18 +240,12 @@ public class CustomersApi {
   /**
    * ListCustomers
    * Lists a business&#39;s customers.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
    * @return ListCustomersResponse
    * @throws ApiException if fails to make API call
    */
-  public ListCustomersResponse listCustomers(String authorization, String cursor) throws ApiException {
+  public ListCustomersResponse listCustomers(String cursor) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling listCustomers");
-    }
     
     // create path and map variables
     String localVarPath = "/v2/customers";
@@ -295,9 +257,7 @@ public class CustomersApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -309,7 +269,7 @@ public class CustomersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<ListCustomersResponse> localVarReturnType = new GenericType<ListCustomersResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -317,18 +277,12 @@ public class CustomersApi {
   /**
    * RetrieveCustomer
    * Returns details for a single customer.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param customerId The ID of the customer to retrieve. (required)
    * @return RetrieveCustomerResponse
    * @throws ApiException if fails to make API call
    */
-  public RetrieveCustomerResponse retrieveCustomer(String authorization, String customerId) throws ApiException {
+  public RetrieveCustomerResponse retrieveCustomer(String customerId) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling retrieveCustomer");
-    }
     
     // verify the required parameter 'customerId' is set
     if (customerId == null) {
@@ -345,9 +299,7 @@ public class CustomersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -359,7 +311,7 @@ public class CustomersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<RetrieveCustomerResponse> localVarReturnType = new GenericType<RetrieveCustomerResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -367,19 +319,13 @@ public class CustomersApi {
   /**
    * UpdateCustomer
    * Updates the details of an existing customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param customerId The ID of the customer to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateCustomerResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateCustomerResponse updateCustomer(String authorization, String customerId, UpdateCustomerRequest body) throws ApiException {
+  public UpdateCustomerResponse updateCustomer(String customerId, UpdateCustomerRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling updateCustomer");
-    }
     
     // verify the required parameter 'customerId' is set
     if (customerId == null) {
@@ -401,9 +347,7 @@ public class CustomersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -415,7 +359,7 @@ public class CustomersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<UpdateCustomerResponse> localVarReturnType = new GenericType<UpdateCustomerResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
