@@ -59,19 +59,13 @@ public class TransactionsApi {
   /**
    * CaptureTransaction
    * Captures a transaction that was created with the [Charge](#endpoint-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param locationId  (required)
    * @param transactionId  (required)
    * @return CaptureTransactionResponse
    * @throws ApiException if fails to make API call
    */
-  public CaptureTransactionResponse captureTransaction(String authorization, String locationId, String transactionId) throws ApiException {
+  public CaptureTransactionResponse captureTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling captureTransaction");
-    }
     
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
@@ -94,9 +88,7 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -108,7 +100,7 @@ public class TransactionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CaptureTransactionResponse> localVarReturnType = new GenericType<CaptureTransactionResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -116,19 +108,13 @@ public class TransactionsApi {
   /**
    * Charge
    * Charges a card represented by a card nonce or a customer&#39;s card on file.  Your request to this endpoint must include _either_:  - A value for the &#x60;card_nonce&#x60; parameter (to charge a card nonce generated with the &#x60;SqPaymentForm&#x60;) - Values for the &#x60;customer_card_id&#x60; and &#x60;customer_id&#x60; parameters (to charge a customer&#39;s card on file)  In order for an e-commerce payment to potentially qualify for [Square chargeback protection](https://squareup.com/help/article/5394), you _must_ provide values for the following parameters in your request:  - &#x60;buyer_email_address&#x60; - At least one of &#x60;billing_address&#x60; or &#x60;shipping_address&#x60;  When this response is returned, the amount of Square&#39;s processing fee might not yet be calculated. To obtain the processing fee, wait about ten seconds and call [RetrieveTransaction](#endpoint-retrievetransaction). See the &#x60;processing_fee_money&#x60; field of each [Tender included](#type-tender) in the transaction.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param locationId The ID of the location to associate the created transaction with. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return ChargeResponse
    * @throws ApiException if fails to make API call
    */
-  public ChargeResponse charge(String authorization, String locationId, ChargeRequest body) throws ApiException {
+  public ChargeResponse charge(String locationId, ChargeRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling charge");
-    }
     
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
@@ -150,9 +136,7 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -164,7 +148,7 @@ public class TransactionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<ChargeResponse> localVarReturnType = new GenericType<ChargeResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -172,20 +156,14 @@ public class TransactionsApi {
   /**
    * CreateRefund
    * Initiates a refund for a previously charged tender.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param locationId The ID of the original transaction&#39;s associated location. (required)
    * @param transactionId The ID of the original transaction that includes the tender to refund. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateRefundResponse
    * @throws ApiException if fails to make API call
    */
-  public CreateRefundResponse createRefund(String authorization, String locationId, String transactionId, CreateRefundRequest body) throws ApiException {
+  public CreateRefundResponse createRefund(String locationId, String transactionId, CreateRefundRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling createRefund");
-    }
     
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
@@ -213,9 +191,7 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -227,7 +203,7 @@ public class TransactionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CreateRefundResponse> localVarReturnType = new GenericType<CreateRefundResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -235,7 +211,6 @@ public class TransactionsApi {
   /**
    * ListRefunds
    * Lists refunds for one of a business&#39;s locations.  Refunds with a &#x60;status&#x60; of &#x60;PENDING&#x60; are not currently included in this endpoint&#39;s response.  Max results per [page](#paginatingresults): 50
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param locationId The ID of the location to list refunds for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -244,13 +219,8 @@ public class TransactionsApi {
    * @return ListRefundsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListRefundsResponse listRefunds(String authorization, String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
+  public ListRefundsResponse listRefunds(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling listRefunds");
-    }
     
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
@@ -271,9 +241,7 @@ public class TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -285,7 +253,7 @@ public class TransactionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<ListRefundsResponse> localVarReturnType = new GenericType<ListRefundsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -293,7 +261,6 @@ public class TransactionsApi {
   /**
    * ListTransactions
    * Lists transactions for a particular location.  Max results per [page](#paginatingresults): 50
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param locationId The ID of the location to list transactions for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -302,13 +269,8 @@ public class TransactionsApi {
    * @return ListTransactionsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListTransactionsResponse listTransactions(String authorization, String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
+  public ListTransactionsResponse listTransactions(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling listTransactions");
-    }
     
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
@@ -329,9 +291,7 @@ public class TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -343,7 +303,7 @@ public class TransactionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<ListTransactionsResponse> localVarReturnType = new GenericType<ListTransactionsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -351,19 +311,13 @@ public class TransactionsApi {
   /**
    * RetrieveTransaction
    * Retrieves details for a single transaction.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param locationId The ID of the transaction&#39;s associated location. (required)
    * @param transactionId The ID of the transaction to retrieve. (required)
    * @return RetrieveTransactionResponse
    * @throws ApiException if fails to make API call
    */
-  public RetrieveTransactionResponse retrieveTransaction(String authorization, String locationId, String transactionId) throws ApiException {
+  public RetrieveTransactionResponse retrieveTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling retrieveTransaction");
-    }
     
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
@@ -386,9 +340,7 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -400,7 +352,7 @@ public class TransactionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<RetrieveTransactionResponse> localVarReturnType = new GenericType<RetrieveTransactionResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -408,19 +360,13 @@ public class TransactionsApi {
   /**
    * VoidTransaction
    * Cancels a transaction that was created with the [Charge](#endpoint-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param locationId  (required)
    * @param transactionId  (required)
    * @return VoidTransactionResponse
    * @throws ApiException if fails to make API call
    */
-  public VoidTransactionResponse voidTransaction(String authorization, String locationId, String transactionId) throws ApiException {
+  public VoidTransactionResponse voidTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling voidTransaction");
-    }
     
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
@@ -443,9 +389,7 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -457,7 +401,7 @@ public class TransactionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<VoidTransactionResponse> localVarReturnType = new GenericType<VoidTransactionResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

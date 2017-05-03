@@ -68,18 +68,12 @@ public class CatalogApi {
   /**
    * BatchDeleteCatalogObjects
    * Deletes a set of [CatalogItem](#type-catalogitem)s based on the provided list of target IDs and returns a set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a CatalogItem will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.  &#x60;BatchDeleteCatalogObjects&#x60; succeeds even if only a portion of the targeted IDs can be deleted. The response will only include IDs that were actually deleted.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchDeleteCatalogObjectsResponse
    * @throws ApiException if fails to make API call
    */
-  public BatchDeleteCatalogObjectsResponse batchDeleteCatalogObjects(String authorization, BatchDeleteCatalogObjectsRequest body) throws ApiException {
+  public BatchDeleteCatalogObjectsResponse batchDeleteCatalogObjects(BatchDeleteCatalogObjectsRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling batchDeleteCatalogObjects");
-    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -95,9 +89,7 @@ public class CatalogApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -109,7 +101,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<BatchDeleteCatalogObjectsResponse> localVarReturnType = new GenericType<BatchDeleteCatalogObjectsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -117,18 +109,12 @@ public class CatalogApi {
   /**
    * BatchRetrieveCatalogObjects
    * Returns a set of objects based on the provided ID. [CatalogItem](#type-catalogitem)s returned in the set include all of the child information including: all [CatalogItemVariation](#type-catalogitemvariation) objects, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchRetrieveCatalogObjectsResponse
    * @throws ApiException if fails to make API call
    */
-  public BatchRetrieveCatalogObjectsResponse batchRetrieveCatalogObjects(String authorization, BatchRetrieveCatalogObjectsRequest body) throws ApiException {
+  public BatchRetrieveCatalogObjectsResponse batchRetrieveCatalogObjects(BatchRetrieveCatalogObjectsRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling batchRetrieveCatalogObjects");
-    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -144,9 +130,7 @@ public class CatalogApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -158,7 +142,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<BatchRetrieveCatalogObjectsResponse> localVarReturnType = new GenericType<BatchRetrieveCatalogObjectsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -166,18 +150,12 @@ public class CatalogApi {
   /**
    * BatchUpsertCatalogObjects
    * Creates or updates up to 10,000 target objects based on the provided list of objects. The target objects are grouped into batches and each batch is inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in some way, or violates a database constraint, the entire batch containing that item will be disregarded. However, other batches in the same request may still succeed. Each batch may contain up to 1,000 objects, and batches will be processed in order as long as the total object count for the request (items, variations, modifier lists, discounts, and taxes) is no more than 10,000.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchUpsertCatalogObjectsResponse
    * @throws ApiException if fails to make API call
    */
-  public BatchUpsertCatalogObjectsResponse batchUpsertCatalogObjects(String authorization, BatchUpsertCatalogObjectsRequest body) throws ApiException {
+  public BatchUpsertCatalogObjectsResponse batchUpsertCatalogObjects(BatchUpsertCatalogObjectsRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling batchUpsertCatalogObjects");
-    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -193,9 +171,7 @@ public class CatalogApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -207,7 +183,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<BatchUpsertCatalogObjectsResponse> localVarReturnType = new GenericType<BatchUpsertCatalogObjectsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -215,17 +191,11 @@ public class CatalogApi {
   /**
    * CatalogInfo
    * Returns information about the Square Catalog API, such as batch size limits for &#x60;BatchUpsertCatalogObjects&#x60;.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @return CatalogInfoResponse
    * @throws ApiException if fails to make API call
    */
-  public CatalogInfoResponse catalogInfo(String authorization) throws ApiException {
+  public CatalogInfoResponse catalogInfo() throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling catalogInfo");
-    }
     
     // create path and map variables
     String localVarPath = "/v2/catalog/info";
@@ -236,9 +206,7 @@ public class CatalogApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -250,7 +218,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CatalogInfoResponse> localVarReturnType = new GenericType<CatalogInfoResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -258,18 +226,12 @@ public class CatalogApi {
   /**
    * DeleteCatalogObject
    * Deletes a single [CatalogObject](#type-catalogobject) based on the provided ID and returns the set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a [CatalogItem](#type-catalogitem) will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param objectId The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s). (required)
    * @return DeleteCatalogObjectResponse
    * @throws ApiException if fails to make API call
    */
-  public DeleteCatalogObjectResponse deleteCatalogObject(String authorization, String objectId) throws ApiException {
+  public DeleteCatalogObjectResponse deleteCatalogObject(String objectId) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling deleteCatalogObject");
-    }
     
     // verify the required parameter 'objectId' is set
     if (objectId == null) {
@@ -286,9 +248,7 @@ public class CatalogApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "object_id", objectId));
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -300,7 +260,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<DeleteCatalogObjectResponse> localVarReturnType = new GenericType<DeleteCatalogObjectResponse>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -308,19 +268,13 @@ public class CatalogApi {
   /**
    * ListCatalog
    * Returns a list of [CatalogObject](#type-catalogobject)s that includes all objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem) and [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter is specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types: &#x60;ITEM&#x60;, &#x60;ITEM_VARIATION&#x60;, &#x60;MODIFIER&#x60;, &#x60;MODIFIER_LIST&#x60;, &#x60;CATEGORY&#x60;, &#x60;DISCOUNT&#x60;, &#x60;TAX&#x60;.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param cursor The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information. (optional)
    * @param types An optional case-insensitive, comma-separated list of object types to retrieve, for example &#x60;ITEM,ITEM_VARIATION,CATEGORY&#x60;.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely &#x60;\&quot;ITEM\&quot;&#x60;, &#x60;\&quot;ITEM_VARIATION\&quot;&#x60;, &#x60;\&quot;CATEGORY\&quot;&#x60;, &#x60;\&quot;DISCOUNT\&quot;&#x60;, &#x60;\&quot;TAX\&quot;&#x60;, &#x60;\&quot;MODIFIER\&quot;&#x60;, or &#x60;\&quot;MODIFIER_LIST\&quot;&#x60;. (optional)
    * @return ListCatalogResponse
    * @throws ApiException if fails to make API call
    */
-  public ListCatalogResponse listCatalog(String authorization, String cursor, String types) throws ApiException {
+  public ListCatalogResponse listCatalog(String cursor, String types) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling listCatalog");
-    }
     
     // create path and map variables
     String localVarPath = "/v2/catalog/list";
@@ -333,9 +287,7 @@ public class CatalogApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "types", types));
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -347,7 +299,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<ListCatalogResponse> localVarReturnType = new GenericType<ListCatalogResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -355,19 +307,13 @@ public class CatalogApi {
   /**
    * RetrieveCatalogObject
    * Returns a single [CatalogItem](#type-catalogitem) as a [CatalogObject](#type-catalogobject) based on the provided ID. The returned object includes all of the relevant [CatalogItem](#type-catalogitem) information including: [CatalogItemVariation](#type-catalogitemvariation) children, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param objectId The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved. (required)
    * @param includeRelatedObjects If &#x60;true&#x60;, the response will include additional objects that are related to the requested object, as follows:  If the &#x60;object&#x60; field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the &#x60;related_objects&#x60; field of the response. If the &#x60;object&#x60; field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the &#x60;related_objects&#x60; field of the response. (optional)
    * @return RetrieveCatalogObjectResponse
    * @throws ApiException if fails to make API call
    */
-  public RetrieveCatalogObjectResponse retrieveCatalogObject(String authorization, String objectId, Boolean includeRelatedObjects) throws ApiException {
+  public RetrieveCatalogObjectResponse retrieveCatalogObject(String objectId, Boolean includeRelatedObjects) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling retrieveCatalogObject");
-    }
     
     // verify the required parameter 'objectId' is set
     if (objectId == null) {
@@ -385,9 +331,7 @@ public class CatalogApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "object_id", objectId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_related_objects", includeRelatedObjects));
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -399,7 +343,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<RetrieveCatalogObjectResponse> localVarReturnType = new GenericType<RetrieveCatalogObjectResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -407,18 +351,12 @@ public class CatalogApi {
   /**
    * SearchCatalogObjects
    * Queries the targeted catalog using a variety of query types ([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute), ([CatalogQueryExact](#type-catalogqueryexact, ([CatalogQueryRange](#type-catalogqueryrange), ([CatalogQueryText](#type-catalogquerytext), ([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), ([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return SearchCatalogObjectsResponse
    * @throws ApiException if fails to make API call
    */
-  public SearchCatalogObjectsResponse searchCatalogObjects(String authorization, SearchCatalogObjectsRequest body) throws ApiException {
+  public SearchCatalogObjectsResponse searchCatalogObjects(SearchCatalogObjectsRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling searchCatalogObjects");
-    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -434,9 +372,7 @@ public class CatalogApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -448,7 +384,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<SearchCatalogObjectsResponse> localVarReturnType = new GenericType<SearchCatalogObjectsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -456,18 +392,12 @@ public class CatalogApi {
   /**
    * UpdateItemModifierLists
    * Updates the [CatalogModifierList](#type-catalogmodifierlist) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateItemModifierListsResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateItemModifierListsResponse updateItemModifierLists(String authorization, UpdateItemModifierListsRequest body) throws ApiException {
+  public UpdateItemModifierListsResponse updateItemModifierLists(UpdateItemModifierListsRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling updateItemModifierLists");
-    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -483,9 +413,7 @@ public class CatalogApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -497,7 +425,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<UpdateItemModifierListsResponse> localVarReturnType = new GenericType<UpdateItemModifierListsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -505,18 +433,12 @@ public class CatalogApi {
   /**
    * UpdateItemTaxes
    * Updates the [CatalogTax](#type-catalogtax) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateItemTaxesResponse
    * @throws ApiException if fails to make API call
    */
-  public UpdateItemTaxesResponse updateItemTaxes(String authorization, UpdateItemTaxesRequest body) throws ApiException {
+  public UpdateItemTaxesResponse updateItemTaxes(UpdateItemTaxesRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling updateItemTaxes");
-    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -532,9 +454,7 @@ public class CatalogApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -546,7 +466,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<UpdateItemTaxesResponse> localVarReturnType = new GenericType<UpdateItemTaxesResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -554,18 +474,12 @@ public class CatalogApi {
   /**
    * UpsertCatalogObject
    * Creates or updates the target [CatalogObject](#type-catalogobject).
-   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpsertCatalogObjectResponse
    * @throws ApiException if fails to make API call
    */
-  public UpsertCatalogObjectResponse upsertCatalogObject(String authorization, UpsertCatalogObjectRequest body) throws ApiException {
+  public UpsertCatalogObjectResponse upsertCatalogObject(UpsertCatalogObjectRequest body) throws ApiException {
     Object localVarPostBody = body;
-    
-    // verify the required parameter 'authorization' is set
-    if (authorization == null) {
-      throw new ApiException(400, "Missing the required parameter 'authorization' when calling upsertCatalogObject");
-    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -581,9 +495,7 @@ public class CatalogApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (authorization != null)
-      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
-
+    
     
     final String[] localVarAccepts = {
       "application/json"
@@ -595,7 +507,7 @@ public class CatalogApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<UpsertCatalogObjectResponse> localVarReturnType = new GenericType<UpsertCatalogObjectResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

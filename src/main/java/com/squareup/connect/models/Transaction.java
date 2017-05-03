@@ -17,8 +17,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.squareup.connect.models.Address;
-import com.squareup.connect.models.Order;
 import com.squareup.connect.models.Refund;
+import com.squareup.connect.models.Squareupconnectv2ordersOrder;
 import com.squareup.connect.models.Tender;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -98,7 +98,7 @@ public class Transaction {
   private String clientId = null;
 
   @JsonProperty("order")
-  private Order order = null;
+  private Squareupconnectv2ordersOrder order = null;
 
   @JsonProperty("shipping_address")
   private Address shippingAddress = null;
@@ -257,7 +257,7 @@ public class Transaction {
     this.clientId = clientId;
   }
 
-  public Transaction order(Order order) {
+  public Transaction order(Squareupconnectv2ordersOrder order) {
     this.order = order;
     return this;
   }
@@ -267,11 +267,11 @@ public class Transaction {
    * @return order
   **/
   @ApiModelProperty(value = "The order associated with this transaction, if any.")
-  public Order getOrder() {
+  public Squareupconnectv2ordersOrder getOrder() {
     return order;
   }
 
-  public void setOrder(Order order) {
+  public void setOrder(Squareupconnectv2ordersOrder order) {
     this.order = order;
   }
 
