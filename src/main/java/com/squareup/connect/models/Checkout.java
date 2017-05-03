@@ -96,10 +96,10 @@ public class Checkout {
   }
 
    /**
-   * If `true`, Square Checkout will collect shipping information on your behalf and store that information with the transaction information in your Square Dashboard.  Default is `false`.
+   * If `true`, Square Checkout will collect shipping information on your behalf and store that information with the transaction information in your Square Dashboard.  Default: `false`.
    * @return askForShippingAddress
   **/
-  @ApiModelProperty(value = "If `true`, Square Checkout will collect shipping information on your behalf and store that information with the transaction information in your Square Dashboard.  Default is `false`.")
+  @ApiModelProperty(value = "If `true`, Square Checkout will collect shipping information on your behalf and store that information with the transaction information in your Square Dashboard.  Default: `false`.")
   public Boolean getAskForShippingAddress() {
     return askForShippingAddress;
   }
@@ -114,10 +114,10 @@ public class Checkout {
   }
 
    /**
-   * The email address to display on the Square Checkout confirmation page and confirmation email that the buyer can use to contact the merchant.  If this value is not set, the confirmation page and email will display the primary email address associated with the merchant's Square account.  Default is unset.
+   * The email address to display on the Square Checkout confirmation page and confirmation email that the buyer can use to contact the merchant.  If this value is not set, the confirmation page and email will display the primary email address associated with the merchant's Square account.  Default: none; only exists if explicitly set.
    * @return merchantSupportEmail
   **/
-  @ApiModelProperty(value = "The email address to display on the Square Checkout confirmation page and confirmation email that the buyer can use to contact the merchant.  If this value is not set, the confirmation page and email will display the primary email address associated with the merchant's Square account.  Default is unset.")
+  @ApiModelProperty(value = "The email address to display on the Square Checkout confirmation page and confirmation email that the buyer can use to contact the merchant.  If this value is not set, the confirmation page and email will display the primary email address associated with the merchant's Square account.  Default: none; only exists if explicitly set.")
   public String getMerchantSupportEmail() {
     return merchantSupportEmail;
   }
@@ -132,10 +132,10 @@ public class Checkout {
   }
 
    /**
-   * If provided, the buyer's email is pre-populated on the checkout page as an editable text field.  Default is unset.
+   * If provided, the buyer's email is pre-populated on the checkout page as an editable text field.  Default: none; only exists if explicitly set.
    * @return prePopulateBuyerEmail
   **/
-  @ApiModelProperty(value = "If provided, the buyer's email is pre-populated on the checkout page as an editable text field.  Default is unset.")
+  @ApiModelProperty(value = "If provided, the buyer's email is pre-populated on the checkout page as an editable text field.  Default: none; only exists if explicitly set.")
   public String getPrePopulateBuyerEmail() {
     return prePopulateBuyerEmail;
   }
@@ -150,10 +150,10 @@ public class Checkout {
   }
 
    /**
-   * If provided, the buyer's shipping info is pre-populated on the checkout page as editable text fields.  Default is unset.
+   * If provided, the buyer's shipping info is pre-populated on the checkout page as editable text fields.  Default: none; only exists if explicitly set.
    * @return prePopulateShippingAddress
   **/
-  @ApiModelProperty(value = "If provided, the buyer's shipping info is pre-populated on the checkout page as editable text fields.  Default is unset.")
+  @ApiModelProperty(value = "If provided, the buyer's shipping info is pre-populated on the checkout page as editable text fields.  Default: none; only exists if explicitly set.")
   public Address getPrePopulateShippingAddress() {
     return prePopulateShippingAddress;
   }

@@ -51,11 +51,17 @@ public class LocationsApi {
   /**
    * ListLocations
    * Provides the details for all of a business&#39;s locations.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
+   * @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. (required)
    * @return ListLocationsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListLocationsResponse listLocations() throws ApiException {
+  public ListLocationsResponse listLocations(String authorization) throws ApiException {
     Object localVarPostBody = null;
+    
+    // verify the required parameter 'authorization' is set
+    if (authorization == null) {
+      throw new ApiException(400, "Missing the required parameter 'authorization' when calling listLocations");
+    }
     
     // create path and map variables
     String localVarPath = "/v2/locations";
@@ -66,7 +72,9 @@ public class LocationsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (authorization != null)
+      localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
+
     
     final String[] localVarAccepts = {
       "application/json"
@@ -78,7 +86,7 @@ public class LocationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+    String[] localVarAuthNames = new String[] {  };
 
     GenericType<ListLocationsResponse> localVarReturnType = new GenericType<ListLocationsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
