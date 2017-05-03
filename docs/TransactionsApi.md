@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="captureTransaction"></a>
 # **captureTransaction**
-> CaptureTransactionResponse captureTransaction(locationId, transactionId)
+> CaptureTransactionResponse captureTransaction(authorization, locationId, transactionId)
 
 CaptureTransaction
 
@@ -24,23 +24,16 @@ Captures a transaction that was created with the [Charge](#endpoint-charge) endp
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.TransactionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 TransactionsApi apiInstance = new TransactionsApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String locationId = "locationId_example"; // String | 
 String transactionId = "transactionId_example"; // String | 
 try {
-    CaptureTransactionResponse result = apiInstance.captureTransaction(locationId, transactionId);
+    CaptureTransactionResponse result = apiInstance.captureTransaction(authorization, locationId, transactionId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#captureTransaction");
@@ -52,6 +45,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **locationId** | **String**|  |
  **transactionId** | **String**|  |
 
@@ -61,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -70,7 +64,7 @@ Name | Type | Description  | Notes
 
 <a name="charge"></a>
 # **charge**
-> ChargeResponse charge(locationId, body)
+> ChargeResponse charge(authorization, locationId, body)
 
 Charge
 
@@ -79,23 +73,16 @@ Charges a card represented by a card nonce or a customer&#39;s card on file.  Yo
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.TransactionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 TransactionsApi apiInstance = new TransactionsApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String locationId = "locationId_example"; // String | The ID of the location to associate the created transaction with.
 ChargeRequest body = new ChargeRequest(); // ChargeRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
-    ChargeResponse result = apiInstance.charge(locationId, body);
+    ChargeResponse result = apiInstance.charge(authorization, locationId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#charge");
@@ -107,6 +94,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **locationId** | **String**| The ID of the location to associate the created transaction with. |
  **body** | [**ChargeRequest**](ChargeRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
@@ -116,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -125,7 +113,7 @@ Name | Type | Description  | Notes
 
 <a name="createRefund"></a>
 # **createRefund**
-> CreateRefundResponse createRefund(locationId, transactionId, body)
+> CreateRefundResponse createRefund(authorization, locationId, transactionId, body)
 
 CreateRefund
 
@@ -134,24 +122,17 @@ Initiates a refund for a previously charged tender.
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.TransactionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 TransactionsApi apiInstance = new TransactionsApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String locationId = "locationId_example"; // String | The ID of the original transaction's associated location.
 String transactionId = "transactionId_example"; // String | The ID of the original transaction that includes the tender to refund.
 CreateRefundRequest body = new CreateRefundRequest(); // CreateRefundRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
-    CreateRefundResponse result = apiInstance.createRefund(locationId, transactionId, body);
+    CreateRefundResponse result = apiInstance.createRefund(authorization, locationId, transactionId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#createRefund");
@@ -163,6 +144,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **locationId** | **String**| The ID of the original transaction&#39;s associated location. |
  **transactionId** | **String**| The ID of the original transaction that includes the tender to refund. |
  **body** | [**CreateRefundRequest**](CreateRefundRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
@@ -173,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -182,7 +164,7 @@ Name | Type | Description  | Notes
 
 <a name="listRefunds"></a>
 # **listRefunds**
-> ListRefundsResponse listRefunds(locationId, beginTime, endTime, sortOrder, cursor)
+> ListRefundsResponse listRefunds(authorization, locationId, beginTime, endTime, sortOrder, cursor)
 
 ListRefunds
 
@@ -191,26 +173,19 @@ Lists refunds for one of a business&#39;s locations.  Refunds with a &#x60;statu
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.TransactionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 TransactionsApi apiInstance = new TransactionsApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String locationId = "locationId_example"; // String | The ID of the location to list refunds for.
 String beginTime = "beginTime_example"; // String | The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
 String endTime = "endTime_example"; // String | The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time.
 String sortOrder = "sortOrder_example"; // String | The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC`
 String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
 try {
-    ListRefundsResponse result = apiInstance.listRefunds(locationId, beginTime, endTime, sortOrder, cursor);
+    ListRefundsResponse result = apiInstance.listRefunds(authorization, locationId, beginTime, endTime, sortOrder, cursor);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#listRefunds");
@@ -222,6 +197,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **locationId** | **String**| The ID of the location to list refunds for. |
  **beginTime** | **String**| The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. | [optional]
  **endTime** | **String**| The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. | [optional]
@@ -234,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -243,7 +219,7 @@ Name | Type | Description  | Notes
 
 <a name="listTransactions"></a>
 # **listTransactions**
-> ListTransactionsResponse listTransactions(locationId, beginTime, endTime, sortOrder, cursor)
+> ListTransactionsResponse listTransactions(authorization, locationId, beginTime, endTime, sortOrder, cursor)
 
 ListTransactions
 
@@ -252,26 +228,19 @@ Lists transactions for a particular location.  Max results per [page](#paginatin
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.TransactionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 TransactionsApi apiInstance = new TransactionsApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String locationId = "locationId_example"; // String | The ID of the location to list transactions for.
 String beginTime = "beginTime_example"; // String | The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
 String endTime = "endTime_example"; // String | The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time.
 String sortOrder = "sortOrder_example"; // String | The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC`
 String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
 try {
-    ListTransactionsResponse result = apiInstance.listTransactions(locationId, beginTime, endTime, sortOrder, cursor);
+    ListTransactionsResponse result = apiInstance.listTransactions(authorization, locationId, beginTime, endTime, sortOrder, cursor);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#listTransactions");
@@ -283,6 +252,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **locationId** | **String**| The ID of the location to list transactions for. |
  **beginTime** | **String**| The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. | [optional]
  **endTime** | **String**| The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. | [optional]
@@ -295,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -304,7 +274,7 @@ Name | Type | Description  | Notes
 
 <a name="retrieveTransaction"></a>
 # **retrieveTransaction**
-> RetrieveTransactionResponse retrieveTransaction(locationId, transactionId)
+> RetrieveTransactionResponse retrieveTransaction(authorization, locationId, transactionId)
 
 RetrieveTransaction
 
@@ -313,23 +283,16 @@ Retrieves details for a single transaction.
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.TransactionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 TransactionsApi apiInstance = new TransactionsApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String locationId = "locationId_example"; // String | The ID of the transaction's associated location.
 String transactionId = "transactionId_example"; // String | The ID of the transaction to retrieve.
 try {
-    RetrieveTransactionResponse result = apiInstance.retrieveTransaction(locationId, transactionId);
+    RetrieveTransactionResponse result = apiInstance.retrieveTransaction(authorization, locationId, transactionId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#retrieveTransaction");
@@ -341,6 +304,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **locationId** | **String**| The ID of the transaction&#39;s associated location. |
  **transactionId** | **String**| The ID of the transaction to retrieve. |
 
@@ -350,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -359,7 +323,7 @@ Name | Type | Description  | Notes
 
 <a name="voidTransaction"></a>
 # **voidTransaction**
-> VoidTransactionResponse voidTransaction(locationId, transactionId)
+> VoidTransactionResponse voidTransaction(authorization, locationId, transactionId)
 
 VoidTransaction
 
@@ -368,23 +332,16 @@ Cancels a transaction that was created with the [Charge](#endpoint-charge) endpo
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.TransactionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 TransactionsApi apiInstance = new TransactionsApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String locationId = "locationId_example"; // String | 
 String transactionId = "transactionId_example"; // String | 
 try {
-    VoidTransactionResponse result = apiInstance.voidTransaction(locationId, transactionId);
+    VoidTransactionResponse result = apiInstance.voidTransaction(authorization, locationId, transactionId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#voidTransaction");
@@ -396,6 +353,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **locationId** | **String**|  |
  **transactionId** | **String**|  |
 
@@ -405,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 

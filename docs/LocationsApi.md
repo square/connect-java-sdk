@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listLocations"></a>
 # **listLocations**
-> ListLocationsResponse listLocations()
+> ListLocationsResponse listLocations(authorization)
 
 ListLocations
 
@@ -18,21 +18,14 @@ Provides the details for all of a business&#39;s locations.  Most other Connect 
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.LocationsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 LocationsApi apiInstance = new LocationsApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 try {
-    ListLocationsResponse result = apiInstance.listLocations();
+    ListLocationsResponse result = apiInstance.listLocations(authorization);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LocationsApi#listLocations");
@@ -41,7 +34,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
 
 ### Return type
 
@@ -49,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 

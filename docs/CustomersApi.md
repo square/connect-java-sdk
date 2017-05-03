@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="createCustomer"></a>
 # **createCustomer**
-> CreateCustomerResponse createCustomer(body)
+> CreateCustomerResponse createCustomer(authorization, body)
 
 CreateCustomer
 
@@ -24,22 +24,15 @@ Creates a new customer for a business, which can have associated cards on file. 
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.CustomersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 CreateCustomerRequest body = new CreateCustomerRequest(); // CreateCustomerRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
-    CreateCustomerResponse result = apiInstance.createCustomer(body);
+    CreateCustomerResponse result = apiInstance.createCustomer(authorization, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomersApi#createCustomer");
@@ -51,6 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **body** | [**CreateCustomerRequest**](CreateCustomerRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
@@ -59,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -68,7 +62,7 @@ Name | Type | Description  | Notes
 
 <a name="createCustomerCard"></a>
 # **createCustomerCard**
-> CreateCustomerCardResponse createCustomerCard(customerId, body)
+> CreateCustomerCardResponse createCustomerCard(authorization, customerId, body)
 
 CreateCustomerCard
 
@@ -77,23 +71,16 @@ Adds a card on file to an existing customer.
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.CustomersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String customerId = "customerId_example"; // String | The ID of the customer to link the card on file to.
 CreateCustomerCardRequest body = new CreateCustomerCardRequest(); // CreateCustomerCardRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
-    CreateCustomerCardResponse result = apiInstance.createCustomerCard(customerId, body);
+    CreateCustomerCardResponse result = apiInstance.createCustomerCard(authorization, customerId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomersApi#createCustomerCard");
@@ -105,6 +92,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **customerId** | **String**| The ID of the customer to link the card on file to. |
  **body** | [**CreateCustomerCardRequest**](CreateCustomerCardRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
@@ -114,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -123,7 +111,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteCustomer"></a>
 # **deleteCustomer**
-> DeleteCustomerResponse deleteCustomer(customerId)
+> DeleteCustomerResponse deleteCustomer(authorization, customerId)
 
 DeleteCustomer
 
@@ -132,22 +120,15 @@ Deletes a customer from a business, along with any linked cards on file.
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.CustomersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String customerId = "customerId_example"; // String | The ID of the customer to delete.
 try {
-    DeleteCustomerResponse result = apiInstance.deleteCustomer(customerId);
+    DeleteCustomerResponse result = apiInstance.deleteCustomer(authorization, customerId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomersApi#deleteCustomer");
@@ -159,6 +140,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **customerId** | **String**| The ID of the customer to delete. |
 
 ### Return type
@@ -167,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -176,7 +158,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteCustomerCard"></a>
 # **deleteCustomerCard**
-> DeleteCustomerCardResponse deleteCustomerCard(customerId, cardId)
+> DeleteCustomerCardResponse deleteCustomerCard(authorization, customerId, cardId)
 
 DeleteCustomerCard
 
@@ -185,23 +167,16 @@ Removes a card on file from a customer.
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.CustomersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String customerId = "customerId_example"; // String | The ID of the customer that the card on file belongs to.
 String cardId = "cardId_example"; // String | The ID of the card on file to delete.
 try {
-    DeleteCustomerCardResponse result = apiInstance.deleteCustomerCard(customerId, cardId);
+    DeleteCustomerCardResponse result = apiInstance.deleteCustomerCard(authorization, customerId, cardId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomersApi#deleteCustomerCard");
@@ -213,6 +188,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **customerId** | **String**| The ID of the customer that the card on file belongs to. |
  **cardId** | **String**| The ID of the card on file to delete. |
 
@@ -222,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -231,7 +207,7 @@ Name | Type | Description  | Notes
 
 <a name="listCustomers"></a>
 # **listCustomers**
-> ListCustomersResponse listCustomers(cursor)
+> ListCustomersResponse listCustomers(authorization, cursor)
 
 ListCustomers
 
@@ -240,22 +216,15 @@ Lists a business&#39;s customers.
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.CustomersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
 try {
-    ListCustomersResponse result = apiInstance.listCustomers(cursor);
+    ListCustomersResponse result = apiInstance.listCustomers(authorization, cursor);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomersApi#listCustomers");
@@ -267,6 +236,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. | [optional]
 
 ### Return type
@@ -275,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -284,7 +254,7 @@ Name | Type | Description  | Notes
 
 <a name="retrieveCustomer"></a>
 # **retrieveCustomer**
-> RetrieveCustomerResponse retrieveCustomer(customerId)
+> RetrieveCustomerResponse retrieveCustomer(authorization, customerId)
 
 RetrieveCustomer
 
@@ -293,22 +263,15 @@ Returns details for a single customer.
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.CustomersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String customerId = "customerId_example"; // String | The ID of the customer to retrieve.
 try {
-    RetrieveCustomerResponse result = apiInstance.retrieveCustomer(customerId);
+    RetrieveCustomerResponse result = apiInstance.retrieveCustomer(authorization, customerId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomersApi#retrieveCustomer");
@@ -320,6 +283,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **customerId** | **String**| The ID of the customer to retrieve. |
 
 ### Return type
@@ -328,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -337,7 +301,7 @@ Name | Type | Description  | Notes
 
 <a name="updateCustomer"></a>
 # **updateCustomer**
-> UpdateCustomerResponse updateCustomer(customerId, body)
+> UpdateCustomerResponse updateCustomer(authorization, customerId, body)
 
 UpdateCustomer
 
@@ -346,23 +310,16 @@ Updates the details of an existing customer.  You cannot edit a customer&#39;s c
 ### Example
 ```java
 // Import classes:
-//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
-//import com.squareup.connect.Configuration;
-//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.CustomersApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
+String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String customerId = "customerId_example"; // String | The ID of the customer to update.
 UpdateCustomerRequest body = new UpdateCustomerRequest(); // UpdateCustomerRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
-    UpdateCustomerResponse result = apiInstance.updateCustomer(customerId, body);
+    UpdateCustomerResponse result = apiInstance.updateCustomer(authorization, customerId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomersApi#updateCustomer");
@@ -374,6 +331,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **customerId** | **String**| The ID of the customer to update. |
  **body** | [**UpdateCustomerRequest**](UpdateCustomerRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
@@ -383,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
