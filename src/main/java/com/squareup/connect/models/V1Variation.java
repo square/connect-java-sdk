@@ -35,7 +35,7 @@ public class V1Variation {
   private String itemId = null;
 
   @JsonProperty("ordinal")
-  private String ordinal = null;
+  private Integer ordinal = null;
 
   /**
    * Indicates whether the item variation's price is fixed or determined at the time of sale.
@@ -180,7 +180,7 @@ public class V1Variation {
     this.itemId = itemId;
   }
 
-  public V1Variation ordinal(String ordinal) {
+  public V1Variation ordinal(Integer ordinal) {
     this.ordinal = ordinal;
     return this;
   }
@@ -190,11 +190,11 @@ public class V1Variation {
    * @return ordinal
   **/
   @ApiModelProperty(value = "ndicates the variation's list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order")
-  public String getOrdinal() {
+  public Integer getOrdinal() {
     return ordinal;
   }
 
-  public void setOrdinal(String ordinal) {
+  public void setOrdinal(Integer ordinal) {
     this.ordinal = ordinal;
   }
 
