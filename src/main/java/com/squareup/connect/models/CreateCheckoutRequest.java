@@ -90,10 +90,10 @@ public class CreateCheckoutRequest {
   }
 
    /**
-   * If `true`, Square Checkout will collect shipping information on your behalf and store that information with the transaction information in your Square Dashboard.  Default is `false`.
+   * If `true`, Square Checkout will collect shipping information on your behalf and store that information with the transaction information in your Square Dashboard.  Default: `false`.
    * @return askForShippingAddress
   **/
-  @ApiModelProperty(value = "If `true`, Square Checkout will collect shipping information on your behalf and store that information with the transaction information in your Square Dashboard.  Default is `false`.")
+  @ApiModelProperty(value = "If `true`, Square Checkout will collect shipping information on your behalf and store that information with the transaction information in your Square Dashboard.  Default: `false`.")
   public Boolean getAskForShippingAddress() {
     return askForShippingAddress;
   }
@@ -108,10 +108,10 @@ public class CreateCheckoutRequest {
   }
 
    /**
-   * The email address to display on the Square Checkout confirmation page and confirmation email that the buyer can use to contact the merchant.  If this value is not set, the confirmation page and email will display the primary email address associated with the merchant's Square account.  Default is unset.
+   * The email address to display on the Square Checkout confirmation page and confirmation email that the buyer can use to contact the merchant.  If this value is not set, the confirmation page and email will display the primary email address associated with the merchant's Square account.  Default: none; only exists if explicitly set.
    * @return merchantSupportEmail
   **/
-  @ApiModelProperty(value = "The email address to display on the Square Checkout confirmation page and confirmation email that the buyer can use to contact the merchant.  If this value is not set, the confirmation page and email will display the primary email address associated with the merchant's Square account.  Default is unset.")
+  @ApiModelProperty(value = "The email address to display on the Square Checkout confirmation page and confirmation email that the buyer can use to contact the merchant.  If this value is not set, the confirmation page and email will display the primary email address associated with the merchant's Square account.  Default: none; only exists if explicitly set.")
   public String getMerchantSupportEmail() {
     return merchantSupportEmail;
   }
@@ -126,10 +126,10 @@ public class CreateCheckoutRequest {
   }
 
    /**
-   * If provided, the buyer's email is pre-populated on the checkout page as an editable text field.  Default is unset.
+   * If provided, the buyer's email is pre-populated on the checkout page as an editable text field.  Default: none; only exists if explicitly set.
    * @return prePopulateBuyerEmail
   **/
-  @ApiModelProperty(value = "If provided, the buyer's email is pre-populated on the checkout page as an editable text field.  Default is unset.")
+  @ApiModelProperty(value = "If provided, the buyer's email is pre-populated on the checkout page as an editable text field.  Default: none; only exists if explicitly set.")
   public String getPrePopulateBuyerEmail() {
     return prePopulateBuyerEmail;
   }
@@ -144,10 +144,10 @@ public class CreateCheckoutRequest {
   }
 
    /**
-   * If provided, the buyer's shipping info is pre-populated on the checkout page as editable text fields.  Default is unset.
+   * If provided, the buyer's shipping info is pre-populated on the checkout page as editable text fields.  Default: none; only exists if explicitly set.
    * @return prePopulateShippingAddress
   **/
-  @ApiModelProperty(value = "If provided, the buyer's shipping info is pre-populated on the checkout page as editable text fields.  Default is unset.")
+  @ApiModelProperty(value = "If provided, the buyer's shipping info is pre-populated on the checkout page as editable text fields.  Default: none; only exists if explicitly set.")
   public Address getPrePopulateShippingAddress() {
     return prePopulateShippingAddress;
   }
@@ -162,10 +162,10 @@ public class CreateCheckoutRequest {
   }
 
    /**
-   * The URL to redirect to after checkout is completed with `checkoutId`, Square's `orderId`, `transactionId`, and `referenceId` appended as URL parameters. For example, if the provided redirect_url is `http://www.example.com/order-complete`, a successful transaction redirects the customer to:  `http://www.example.com/order-complete?checkoutId=xxxxxx&orderId=xxxxxx&referenceId=xxxxxx&transactionId=xxxxxx`  If you do not provide a redirect URL, Square Checkout will display an order confirmation page on your behalf; however Square strongly recommends that you provide a redirect URL so you can verify the transaction results and finalize the order through your existing/normal confirmation workflow.  Default is unset.
+   * The URL to redirect to after checkout is completed with `checkoutId`, Square's `orderId`, `transactionId`, and `referenceId` appended as URL parameters. For example, if the provided redirect_url is `http://www.example.com/order-complete`, a successful transaction redirects the customer to:  `http://www.example.com/order-complete?checkoutId=xxxxxx&orderId=xxxxxx&referenceId=xxxxxx&transactionId=xxxxxx`  If you do not provide a redirect URL, Square Checkout will display an order confirmation page on your behalf; however Square strongly recommends that you provide a redirect URL so you can verify the transaction results and finalize the order through your existing/normal confirmation workflow.  Default: none; only exists if explicitly set.
    * @return redirectUrl
   **/
-  @ApiModelProperty(value = "The URL to redirect to after checkout is completed with `checkoutId`, Square's `orderId`, `transactionId`, and `referenceId` appended as URL parameters. For example, if the provided redirect_url is `http://www.example.com/order-complete`, a successful transaction redirects the customer to:  `http://www.example.com/order-complete?checkoutId=xxxxxx&orderId=xxxxxx&referenceId=xxxxxx&transactionId=xxxxxx`  If you do not provide a redirect URL, Square Checkout will display an order confirmation page on your behalf; however Square strongly recommends that you provide a redirect URL so you can verify the transaction results and finalize the order through your existing/normal confirmation workflow.  Default is unset.")
+  @ApiModelProperty(value = "The URL to redirect to after checkout is completed with `checkoutId`, Square's `orderId`, `transactionId`, and `referenceId` appended as URL parameters. For example, if the provided redirect_url is `http://www.example.com/order-complete`, a successful transaction redirects the customer to:  `http://www.example.com/order-complete?checkoutId=xxxxxx&orderId=xxxxxx&referenceId=xxxxxx&transactionId=xxxxxx`  If you do not provide a redirect URL, Square Checkout will display an order confirmation page on your behalf; however Square strongly recommends that you provide a redirect URL so you can verify the transaction results and finalize the order through your existing/normal confirmation workflow.  Default: none; only exists if explicitly set.")
   public String getRedirectUrl() {
     return redirectUrl;
   }

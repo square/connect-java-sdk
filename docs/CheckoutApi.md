@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="createCheckout"></a>
 # **createCheckout**
-> CreateCheckoutResponse createCheckout(authorization, locationId, body)
+> CreateCheckoutResponse createCheckout(locationId, body)
 
 CreateCheckout
 
@@ -18,16 +18,23 @@ Creates a [Checkout](#type-checkout) response that links a &#x60;checkoutId&#x60
 ### Example
 ```java
 // Import classes:
+//import com.squareup.connect.ApiClient;
 //import com.squareup.connect.ApiException;
+//import com.squareup.connect.Configuration;
+//import com.squareup.connect.auth.*;
 //import com.squareup.connect.api.CheckoutApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CheckoutApi apiInstance = new CheckoutApi();
-String authorization = "authorization_example"; // String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 String locationId = "locationId_example"; // String | The ID of the business location to associate the checkout with.
 CreateCheckoutRequest body = new CreateCheckoutRequest(); // CreateCheckoutRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
-    CreateCheckoutResponse result = apiInstance.createCheckout(authorization, locationId, body);
+    CreateCheckoutResponse result = apiInstance.createCheckout(locationId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CheckoutApi#createCheckout");
@@ -39,7 +46,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. |
  **locationId** | **String**| The ID of the business location to associate the checkout with. |
  **body** | [**CreateCheckoutRequest**](CreateCheckoutRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
@@ -49,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
