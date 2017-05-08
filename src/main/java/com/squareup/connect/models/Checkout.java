@@ -17,7 +17,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.squareup.connect.models.Address;
-import com.squareup.connect.models.Squareupconnectv2ordersOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -49,7 +48,7 @@ public class Checkout {
   private String redirectUrl = null;
 
   @JsonProperty("order")
-  private Squareupconnectv2ordersOrder order = null;
+  private Order order = null;
 
   @JsonProperty("created_at")
   private String createdAt = null;
@@ -180,7 +179,7 @@ public class Checkout {
     this.redirectUrl = redirectUrl;
   }
 
-  public Checkout order(Squareupconnectv2ordersOrder order) {
+  public Checkout order(Order order) {
     this.order = order;
     return this;
   }
@@ -190,11 +189,11 @@ public class Checkout {
    * @return order
   **/
   @ApiModelProperty(value = "Order to be checked out.")
-  public Squareupconnectv2ordersOrder getOrder() {
+  public Order getOrder() {
     return order;
   }
 
-  public void setOrder(Squareupconnectv2ordersOrder order) {
+  public void setOrder(Order order) {
     this.order = order;
   }
 

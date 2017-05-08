@@ -17,7 +17,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.squareup.connect.models.Address;
-import com.squareup.connect.models.Squareupconnectv2ordersserviceCreateOrderRequestOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -31,7 +30,7 @@ public class CreateCheckoutRequest {
   private String idempotencyKey = null;
 
   @JsonProperty("order")
-  private Squareupconnectv2ordersserviceCreateOrderRequestOrder order = null;
+  private CreateOrderRequestOrder order = null;
 
   @JsonProperty("ask_for_shipping_address")
   private Boolean askForShippingAddress = null;
@@ -66,7 +65,7 @@ public class CreateCheckoutRequest {
     this.idempotencyKey = idempotencyKey;
   }
 
-  public CreateCheckoutRequest order(Squareupconnectv2ordersserviceCreateOrderRequestOrder order) {
+  public CreateCheckoutRequest order(CreateOrderRequestOrder order) {
     this.order = order;
     return this;
   }
@@ -76,11 +75,11 @@ public class CreateCheckoutRequest {
    * @return order
   **/
   @ApiModelProperty(required = true, value = "The order including line items to be checked out.")
-  public Squareupconnectv2ordersserviceCreateOrderRequestOrder getOrder() {
+  public CreateOrderRequestOrder getOrder() {
     return order;
   }
 
-  public void setOrder(Squareupconnectv2ordersserviceCreateOrderRequestOrder order) {
+  public void setOrder(CreateOrderRequestOrder order) {
     this.order = order;
   }
 
