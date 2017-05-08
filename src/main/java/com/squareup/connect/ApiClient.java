@@ -110,7 +110,7 @@ public class ApiClient {
     DefaultClientConfig conf = new DefaultClientConfig();
     conf.getSingletons().add(jsonProvider);
     Client client = Client.create(conf);
-    client.addFilter(new GZIPContentEncodingFilter(true));
+    client.addFilter(new GZIPContentEncodingFilter(false));
     if (debugging) {
       client.addFilter(new LoggingFilter());
     }
