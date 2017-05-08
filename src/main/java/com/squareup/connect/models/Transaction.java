@@ -17,6 +17,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.squareup.connect.models.Address;
+import com.squareup.connect.models.Order;
 import com.squareup.connect.models.Refund;
 import com.squareup.connect.models.Tender;
 import io.swagger.annotations.ApiModel;
