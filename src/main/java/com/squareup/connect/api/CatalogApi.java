@@ -239,14 +239,14 @@ public class CatalogApi {
     }
     
     // create path and map variables
-    String localVarPath = "/v2/catalog/object/{object_id}";
+    String localVarPath = "/v2/catalog/object/{object_id}"
+      .replaceAll("\\{" + "object_id" + "\\}", apiClient.escapeString(objectId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "object_id", objectId));
 
     
     
@@ -321,14 +321,14 @@ public class CatalogApi {
     }
     
     // create path and map variables
-    String localVarPath = "/v2/catalog/object/{object_id}";
+    String localVarPath = "/v2/catalog/object/{object_id}"
+      .replaceAll("\\{" + "object_id" + "\\}", apiClient.escapeString(objectId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "object_id", objectId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_related_objects", includeRelatedObjects));
 
     

@@ -25,29 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class RetrieveCatalogObjectRequest {
-  @JsonProperty("object_id")
-  private String objectId = null;
-
   @JsonProperty("include_related_objects")
   private Boolean includeRelatedObjects = null;
-
-  public RetrieveCatalogObjectRequest objectId(String objectId) {
-    this.objectId = objectId;
-    return this;
-  }
-
-   /**
-   * The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved.
-   * @return objectId
-  **/
-  @ApiModelProperty(required = true, value = "The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved.")
-  public String getObjectId() {
-    return objectId;
-  }
-
-  public void setObjectId(String objectId) {
-    this.objectId = objectId;
-  }
 
   public RetrieveCatalogObjectRequest includeRelatedObjects(Boolean includeRelatedObjects) {
     this.includeRelatedObjects = includeRelatedObjects;
@@ -77,13 +56,12 @@ public class RetrieveCatalogObjectRequest {
       return false;
     }
     RetrieveCatalogObjectRequest retrieveCatalogObjectRequest = (RetrieveCatalogObjectRequest) o;
-    return Objects.equals(this.objectId, retrieveCatalogObjectRequest.objectId) &&
-        Objects.equals(this.includeRelatedObjects, retrieveCatalogObjectRequest.includeRelatedObjects);
+    return Objects.equals(this.includeRelatedObjects, retrieveCatalogObjectRequest.includeRelatedObjects);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectId, includeRelatedObjects);
+    return Objects.hash(includeRelatedObjects);
   }
 
 
@@ -92,7 +70,6 @@ public class RetrieveCatalogObjectRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetrieveCatalogObjectRequest {\n");
     
-    sb.append("    objectId: ").append(toIndentedString(objectId)).append("\n");
     sb.append("    includeRelatedObjects: ").append(toIndentedString(includeRelatedObjects)).append("\n");
     sb.append("}");
     return sb.toString();

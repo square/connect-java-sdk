@@ -14,10 +14,7 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 
@@ -25,27 +22,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class DeleteCatalogObjectRequest {
-  @JsonProperty("object_id")
-  private String objectId = null;
-
-  public DeleteCatalogObjectRequest objectId(String objectId) {
-    this.objectId = objectId;
-    return this;
-  }
-
-   /**
-   * The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s).
-   * @return objectId
-  **/
-  @ApiModelProperty(required = true, value = "The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s).")
-  public String getObjectId() {
-    return objectId;
-  }
-
-  public void setObjectId(String objectId) {
-    this.objectId = objectId;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -55,13 +31,12 @@ public class DeleteCatalogObjectRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeleteCatalogObjectRequest deleteCatalogObjectRequest = (DeleteCatalogObjectRequest) o;
-    return Objects.equals(this.objectId, deleteCatalogObjectRequest.objectId);
+    return true;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectId);
+    return Objects.hash();
   }
 
 
@@ -70,7 +45,6 @@ public class DeleteCatalogObjectRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteCatalogObjectRequest {\n");
     
-    sb.append("    objectId: ").append(toIndentedString(objectId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

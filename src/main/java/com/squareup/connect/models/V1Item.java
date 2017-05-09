@@ -158,7 +158,7 @@ public class V1Item {
   private VisibilityEnum visibility = null;
 
   @JsonProperty("available_online")
-  private String availableOnline = null;
+  private Boolean availableOnline = null;
 
   @JsonProperty("master_image")
   private V1ItemImage masterImage = null;
@@ -304,7 +304,7 @@ public class V1Item {
     this.visibility = visibility;
   }
 
-  public V1Item availableOnline(String availableOnline) {
+  public V1Item availableOnline(Boolean availableOnline) {
     this.availableOnline = availableOnline;
     return this;
   }
@@ -314,11 +314,11 @@ public class V1Item {
    * @return availableOnline
   **/
   @ApiModelProperty(value = "If true, the item can be added to shipping orders from the merchant's online store.")
-  public String getAvailableOnline() {
+  public Boolean getAvailableOnline() {
     return availableOnline;
   }
 
-  public void setAvailableOnline(String availableOnline) {
+  public void setAvailableOnline(Boolean availableOnline) {
     this.availableOnline = availableOnline;
   }
 
