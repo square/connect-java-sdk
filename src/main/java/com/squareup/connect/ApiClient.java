@@ -110,7 +110,7 @@ public class ApiClient {
     DefaultClientConfig conf = new DefaultClientConfig();
     conf.getSingletons().add(jsonProvider);
     Client client = Client.create(conf);
-    client.addFilter(new GZIPContentEncodingFilter(true));
+    client.addFilter(new GZIPContentEncodingFilter(false));
     if (debugging) {
       client.addFilter(new LoggingFilter());
     }
@@ -602,11 +602,7 @@ public class ApiClient {
     }
 
     for (String key : headerParams.keySet()) {
-      if (key.equals("Authorization")) {
-        builder = builder.header(key, "Bearer " + headerParams.get(key));
-      } else {
-        builder = builder.header(key, headerParams.get(key));
-      }
+      builder = builder.header(key, headerParams.get(key));
     }
     for (String key : defaultHeaderMap.keySet()) {
       if (!headerParams.containsKey(key)) {
