@@ -43,10 +43,9 @@ public class CheckoutApiTest {
      */
     @Test
     public void createCheckoutTest() throws ApiException {
-        String authorization = null;
         String locationId = null;
         CreateCheckoutRequest body = null;
-        CreateCheckoutResponse response = api.createCheckout(authorization, locationId, body);
+        CreateCheckoutResponse response = api.createCheckout(locationId, body);
 
         // TODO: test validations
     }
