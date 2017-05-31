@@ -16,6 +16,7 @@ package com.squareup.connect.models;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.ItemVariationLocationOverrides;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;

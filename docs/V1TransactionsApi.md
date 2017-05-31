@@ -42,7 +42,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1TransactionsApi apiInstance = new V1TransactionsApi();
 String locationId = "locationId_example"; // String | The ID of the original payment's associated location.
-V1CreateRefundRequest body = new V1CreateRefundRequest(); // V1CreateRefundRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1CreateRefundRequest body = new v1CreateRefundRequest(); // V1CreateRefundRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Refund result = apiInstance.createRefund(locationId, body);
     System.out.println(result);
@@ -57,7 +57,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the original payment&#39;s associated location. |
- **body** | [**V1CreateRefundRequest**](V1CreateRefundRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1CreateRefundRequest**](v1CreateRefundRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -613,7 +613,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1TransactionsApi apiInstance = new V1TransactionsApi();
 String locationId = "locationId_example"; // String | The ID of the order's associated location.
 String orderId = "orderId_example"; // String | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
-V1UpdateOrderRequest body = new V1UpdateOrderRequest(); // V1UpdateOrderRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1UpdateOrderRequest body = new v1UpdateOrderRequest(); // V1UpdateOrderRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Order result = apiInstance.updateOrder(locationId, orderId, body);
     System.out.println(result);
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the order&#39;s associated location. |
  **orderId** | **String**| The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint |
- **body** | [**V1UpdateOrderRequest**](V1UpdateOrderRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1UpdateOrderRequest**](v1UpdateOrderRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
