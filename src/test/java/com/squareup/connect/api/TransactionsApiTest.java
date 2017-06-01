@@ -27,6 +27,7 @@ import com.squareup.connect.models.ListRefundsResponse;
 import com.squareup.connect.models.ListTransactionsResponse;
 import com.squareup.connect.models.Money;
 import com.squareup.connect.models.RetrieveTransactionResponse;
+import com.squareup.connect.models.Transaction;
 import com.squareup.connect.models.VoidTransactionResponse;
 import com.squareup.connect.utils.APITest;
 import com.squareup.connect.utils.Account;
@@ -53,7 +54,9 @@ public class TransactionsApiTest extends APITest {
 
     private final ApiClient defaultClient = Configuration.getDefaultApiClient();
     private final TransactionsApi api = new TransactionsApi();
+    private final String cardNonce = "fake-card-nonce-ok";
     private String locationId;
+
 
     @Before
     public void setup() {
@@ -91,7 +94,7 @@ public class TransactionsApiTest extends APITest {
     @Test
     public void chargeTest() throws ApiException {
         // Check different sandbox values here https://docs.connect.squareup.com/articles/using-sandbox
-        String cardNonce = "fake-card-nonce-ok";
+
         String idempotencyKey = UUID.randomUUID().toString();
         ChargeRequest body = new ChargeRequest()
             .idempotencyKey(idempotencyKey)
@@ -131,12 +134,26 @@ public class TransactionsApiTest extends APITest {
      */
     @Test
     public void createRefundTest() throws ApiException {
-        String locationId = null;
-        String transactionId = null;
-        CreateRefundRequest body = null;
-        CreateRefundResponse response = api.createRefund(locationId, transactionId, body);
+        Transaction transaction = api.charge(locationId, new ChargeRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)).getTransaction();
 
-        // TODO: test validations
+
+        String idempotencyKey = UUID.randomUUID().toString();
+        CreateRefundRequest body = new CreateRefundRequest()
+            .idempotencyKey(idempotencyKey)
+            .tenderId(transaction.getTenders().get(0).getId())
+            .amountMoney(new Money()
+                .amount(100L)
+                .currency(Money.CurrencyEnum.USD))
+            .reason("Cancelled order");
+        CreateRefundResponse response = api.createRefund(locationId, transaction.getId(), body);
+
+        assertTrue(response.getErrors().isEmpty());
+        assertNotNull(response.getRefund().getId());
     }
     
     /**
