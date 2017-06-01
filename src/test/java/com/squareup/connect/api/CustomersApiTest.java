@@ -13,32 +13,45 @@
 
 package com.squareup.connect.api;
 
+import com.squareup.connect.ApiClient;
 import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Address;
+import com.squareup.connect.models.CreateCustomerCardRequest;
+import com.squareup.connect.models.CreateCustomerCardResponse;
 import com.squareup.connect.models.CreateCustomerRequest;
 import com.squareup.connect.models.CreateCustomerResponse;
-import com.squareup.connect.models.CreateCustomerCardResponse;
-import com.squareup.connect.models.CreateCustomerCardRequest;
-import com.squareup.connect.models.DeleteCustomerResponse;
 import com.squareup.connect.models.DeleteCustomerCardResponse;
+import com.squareup.connect.models.DeleteCustomerResponse;
 import com.squareup.connect.models.ListCustomersResponse;
 import com.squareup.connect.models.RetrieveCustomerResponse;
-import com.squareup.connect.models.UpdateCustomerResponse;
 import com.squareup.connect.models.UpdateCustomerRequest;
-import org.junit.Test;
+import com.squareup.connect.models.UpdateCustomerResponse;
+import com.squareup.connect.utils.APITest;
+import com.squareup.connect.utils.Account;
+import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * API tests for CustomersApi
  */
 @Ignore
-public class CustomersApiTest {
+public class CustomersApiTest extends APITest {
 
+    private final ApiClient defaultClient = Configuration.getDefaultApiClient();
     private final CustomersApi api = new CustomersApi();
+
+    @Before
+    public void setup() {
+        Account testAccount = accounts.get("US-Prod-Sandbox");
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken(testAccount.accessToken);
+    }
 
     
     /**
@@ -51,10 +64,26 @@ public class CustomersApiTest {
      */
     @Test
     public void createCustomerTest() throws ApiException {
-        CreateCustomerRequest body = null;
+        CreateCustomerRequest body = new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")
+            .address(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .locality("New York")
+                .administrativeDistrictLevel1("NY")
+                .postalCode("20003")
+                .country(Address.CountryEnum.US)
+            )
+            .phoneNumber("1-555-555-0122")
+            .referenceId("YOUR_REFERENCE_ID")
+            .note("a customer");
+
         CreateCustomerResponse response = api.createCustomer(body);
 
-        // TODO: test validations
+        assertTrue(response.getErrors().isEmpty());
+        assertNotNull(response.getCustomer().getId());
     }
     
     /**
