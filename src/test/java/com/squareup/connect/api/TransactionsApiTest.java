@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -164,16 +165,16 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void listRefundsTest() throws ApiException {
-        String locationId = null;
         String beginTime = null;
         String endTime = null;
         String sortOrder = null;
         String cursor = null;
-        ListRefundsResponse response = api.listRefunds(locationId, beginTime, endTime, sortOrder, cursor);
 
-        // TODO: test validations
+        ListRefundsResponse response = api.listRefunds(locationId, beginTime, endTime, sortOrder, cursor);
+        assertTrue(response.getErrors().isEmpty());
+        assertFalse(response.getRefunds().isEmpty());
     }
     
     /**
