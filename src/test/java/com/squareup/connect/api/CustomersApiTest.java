@@ -117,11 +117,31 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void createCustomerCardTest() throws ApiException {
-        String customerId = null;
-        CreateCustomerCardRequest body = null;
-        CreateCustomerCardResponse response = api.createCustomerCard(customerId, body);
+
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
+
+        String cardNonce = "fake-card-nonce-ok";
+
+        CreateCustomerCardRequest body = new CreateCustomerCardRequest()
+            .cardNonce(cardNonce)
+            .billingAddress(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .locality("New York")
+                .administrativeDistrictLevel1("NY")
+                .postalCode("94103")
+                .country(Address.CountryEnum.US))
+            .cardholderName("Amelia Earhart");
+
+        CreateCustomerCardResponse response = api.createCustomerCard(customer.getId(), body);
+
+        assertTrue(response.getErrors().isEmpty());
+        assertNotNull(response.getCard().getId());
     }
     
     /**
