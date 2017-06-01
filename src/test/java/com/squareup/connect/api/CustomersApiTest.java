@@ -117,13 +117,11 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void createCustomerCardTest() throws ApiException {
         String customerId = null;
         CreateCustomerCardRequest body = null;
         CreateCustomerCardResponse response = api.createCustomerCard(customerId, body);
-
-        // TODO: test validations
     }
     
     /**
@@ -134,7 +132,7 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void deleteCustomerTest() throws ApiException {
         String customerId = null;
         DeleteCustomerResponse response = api.deleteCustomer(customerId);
@@ -150,7 +148,7 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void deleteCustomerCardTest() throws ApiException {
         String customerId = null;
         String cardId = null;
@@ -183,7 +181,7 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void retrieveCustomerTest() throws ApiException {
         String customerId = null;
         RetrieveCustomerResponse response = api.retrieveCustomer(customerId);
@@ -199,7 +197,7 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void updateCustomerTest() throws ApiException {
         String customerId = null;
         UpdateCustomerRequest body = null;
