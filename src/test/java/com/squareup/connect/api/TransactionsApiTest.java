@@ -185,16 +185,15 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void listTransactionsTest() throws ApiException {
-        String locationId = null;
         String beginTime = null;
         String endTime = null;
         String sortOrder = null;
         String cursor = null;
         ListTransactionsResponse response = api.listTransactions(locationId, beginTime, endTime, sortOrder, cursor);
-
-        // TODO: test validations
+        assertTrue(response.getErrors().isEmpty());
+        assertFalse(response.getTransactions().isEmpty());
     }
     
     /**
