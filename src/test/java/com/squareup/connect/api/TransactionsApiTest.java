@@ -57,7 +57,6 @@ public class TransactionsApiTest extends APITest {
 
     @Before
     public void setup() {
-        // The Catalog API does not run in the sandbox.
         Account testAccount = accounts.get("US-Prod-Sandbox");
         OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
         oauth2.setAccessToken(testAccount.accessToken);
