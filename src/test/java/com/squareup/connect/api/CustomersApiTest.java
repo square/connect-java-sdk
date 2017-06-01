@@ -36,6 +36,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -201,12 +202,17 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void retrieveCustomerTest() throws ApiException {
-        String customerId = null;
-        RetrieveCustomerResponse response = api.retrieveCustomer(customerId);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        RetrieveCustomerResponse response = api.retrieveCustomer(customer.getId());
+
+        assertTrue(response.getErrors().isEmpty());
+        assertEquals(customer.getId(), response.getCustomer().getId());
     }
     
     /**
@@ -217,13 +223,21 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void updateCustomerTest() throws ApiException {
-        String customerId = null;
-        UpdateCustomerRequest body = null;
-        UpdateCustomerResponse response = api.updateCustomer(customerId, body);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        UpdateCustomerRequest body = new UpdateCustomerRequest()
+            .phoneNumber("1-555-555-0123")
+            .emailAddress("New.Amelia.Earhart@example.com")
+            .note("updated customer note");
+        UpdateCustomerResponse response = api.updateCustomer(customer.getId(), body);
+
+        assertTrue(response.getErrors().isEmpty());
+        assertEquals("New.Amelia.Earhart@example.com", response.getCustomer().getEmailAddress());
     }
     
 }
