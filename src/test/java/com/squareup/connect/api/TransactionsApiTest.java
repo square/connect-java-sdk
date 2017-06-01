@@ -71,7 +71,7 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void captureTransactionTest() throws ApiException {
         String locationId = null;
         String transactionId = null;
@@ -147,7 +147,7 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void listRefundsTest() throws ApiException {
         String locationId = null;
         String beginTime = null;
@@ -167,7 +167,7 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void listTransactionsTest() throws ApiException {
         String locationId = null;
         String beginTime = null;
@@ -187,7 +187,7 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void retrieveTransactionTest() throws ApiException {
         String locationId = null;
         String transactionId = null;
@@ -204,7 +204,7 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Test
+    @Ignore
     public void voidTransactionTest() throws ApiException {
         String locationId = null;
         String transactionId = null;
