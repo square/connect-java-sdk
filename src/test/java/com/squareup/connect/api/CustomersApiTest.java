@@ -22,6 +22,7 @@ import com.squareup.connect.models.CreateCustomerCardRequest;
 import com.squareup.connect.models.CreateCustomerCardResponse;
 import com.squareup.connect.models.CreateCustomerRequest;
 import com.squareup.connect.models.CreateCustomerResponse;
+import com.squareup.connect.models.Customer;
 import com.squareup.connect.models.DeleteCustomerCardResponse;
 import com.squareup.connect.models.DeleteCustomerResponse;
 import com.squareup.connect.models.ListCustomersResponse;
@@ -30,6 +31,7 @@ import com.squareup.connect.models.UpdateCustomerRequest;
 import com.squareup.connect.models.UpdateCustomerResponse;
 import com.squareup.connect.utils.APITest;
 import com.squareup.connect.utils.Account;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -53,7 +55,28 @@ public class CustomersApiTest extends APITest {
         oauth2.setAccessToken(testAccount.accessToken);
     }
 
-    
+    @After
+    public void tearDown() throws ApiException {
+        deleteCustomers();
+    }
+
+    private void deleteCustomers() throws ApiException {
+        while(true) {
+            ListCustomersResponse response = api.listCustomers("");
+            if (response.getCustomers() == null || response.getCustomers().isEmpty()) {
+                return;
+            }
+            response.getCustomers().stream().map(Customer::getId).forEach(customerId -> {
+                try {
+                    api.deleteCustomer(customerId);
+                } catch (ApiException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+        }
+    }
+
     /**
      * CreateCustomer
      *
