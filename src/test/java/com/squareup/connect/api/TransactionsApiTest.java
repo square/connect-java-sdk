@@ -13,7 +13,11 @@
 
 package com.squareup.connect.api;
 
+import com.squareup.connect.ApiClient;
 import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Address;
 import com.squareup.connect.models.CaptureTransactionResponse;
 import com.squareup.connect.models.ChargeRequest;
 import com.squareup.connect.models.ChargeResponse;
@@ -21,8 +25,14 @@ import com.squareup.connect.models.CreateRefundResponse;
 import com.squareup.connect.models.CreateRefundRequest;
 import com.squareup.connect.models.ListRefundsResponse;
 import com.squareup.connect.models.ListTransactionsResponse;
+import com.squareup.connect.models.Money;
 import com.squareup.connect.models.RetrieveTransactionResponse;
 import com.squareup.connect.models.VoidTransactionResponse;
+import com.squareup.connect.utils.APITest;
+import com.squareup.connect.utils.Account;
+import java.util.UUID;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -31,14 +41,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 /**
  * API tests for TransactionsApi
  */
 @Ignore
-public class TransactionsApiTest {
+public class TransactionsApiTest extends APITest {
 
+    private final ApiClient defaultClient = Configuration.getDefaultApiClient();
     private final TransactionsApi api = new TransactionsApi();
+    private String locationId;
 
+    @Before
+    public void setup() {
+        // The Catalog API does not run in the sandbox.
+        Account testAccount = accounts.get("US-Prod-Sandbox");
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken(testAccount.accessToken);
+        this.locationId = testAccount.locationId;
+    }
     
     /**
      * CaptureTransaction
@@ -67,11 +91,35 @@ public class TransactionsApiTest {
      */
     @Test
     public void chargeTest() throws ApiException {
-        String locationId = null;
-        ChargeRequest body = null;
+        // Check different sandbox values here https://docs.connect.squareup.com/articles/using-sandbox
+        String cardNonce = "fake-card-nonce-ok";
+        String idempotencyKey = UUID.randomUUID().toString();
+        ChargeRequest body = new ChargeRequest()
+            .idempotencyKey(idempotencyKey)
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)
+            .shippingAddress(new Address()
+                .addressLine1("123 Main St")
+                .locality("San Francisco")
+                .administrativeDistrictLevel1("CA")
+                .postalCode("94114")
+                .country(Address.CountryEnum.US))
+            .billingAddress(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .administrativeDistrictLevel1("NY")
+                .locality("New York")
+                .postalCode("10003")
+                .country(Address.CountryEnum.US))
+            .referenceId("optional reference #112358")
+            .note("optional note");
+
         ChargeResponse response = api.charge(locationId, body);
 
-        // TODO: test validations
+        assertTrue(response.getErrors().isEmpty());
+        assertNotNull(response.getTransaction().getId());
     }
     
     /**
