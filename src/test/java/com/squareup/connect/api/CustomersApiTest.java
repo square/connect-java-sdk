@@ -13,34 +13,70 @@
 
 package com.squareup.connect.api;
 
+import com.squareup.connect.ApiClient;
 import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Address;
+import com.squareup.connect.models.Card;
+import com.squareup.connect.models.CreateCustomerCardRequest;
+import com.squareup.connect.models.CreateCustomerCardResponse;
 import com.squareup.connect.models.CreateCustomerRequest;
 import com.squareup.connect.models.CreateCustomerResponse;
-import com.squareup.connect.models.CreateCustomerCardResponse;
-import com.squareup.connect.models.CreateCustomerCardRequest;
-import com.squareup.connect.models.DeleteCustomerResponse;
+import com.squareup.connect.models.Customer;
 import com.squareup.connect.models.DeleteCustomerCardResponse;
+import com.squareup.connect.models.DeleteCustomerResponse;
 import com.squareup.connect.models.ListCustomersResponse;
 import com.squareup.connect.models.RetrieveCustomerResponse;
-import com.squareup.connect.models.UpdateCustomerResponse;
 import com.squareup.connect.models.UpdateCustomerRequest;
+import com.squareup.connect.models.UpdateCustomerResponse;
+import com.squareup.connect.utils.APITest;
+import com.squareup.connect.utils.Account;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * API tests for CustomersApi
  */
-@Ignore
-public class CustomersApiTest {
+public class CustomersApiTest extends APITest {
 
+    private final ApiClient defaultClient = Configuration.getDefaultApiClient();
     private final CustomersApi api = new CustomersApi();
 
-    
+    @Before
+    public void setup() {
+        Account testAccount = accounts.get("US-Prod-Sandbox");
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken(testAccount.accessToken);
+    }
+
+    @After
+    public void tearDown() throws ApiException {
+        deleteCustomers();
+    }
+
+    private void deleteCustomers() throws ApiException {
+        while(true) {
+            ListCustomersResponse response = api.listCustomers("");
+            if (response.getCustomers() == null || response.getCustomers().isEmpty()) {
+                return;
+            }
+            response.getCustomers().stream().map(Customer::getId).forEach(customerId -> {
+                try {
+                    api.deleteCustomer(customerId);
+                } catch (ApiException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+        }
+    }
+
     /**
      * CreateCustomer
      *
@@ -51,10 +87,26 @@ public class CustomersApiTest {
      */
     @Test
     public void createCustomerTest() throws ApiException {
-        CreateCustomerRequest body = null;
+        CreateCustomerRequest body = new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")
+            .address(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .locality("New York")
+                .administrativeDistrictLevel1("NY")
+                .postalCode("20003")
+                .country(Address.CountryEnum.US)
+            )
+            .phoneNumber("1-555-555-0122")
+            .referenceId("YOUR_REFERENCE_ID")
+            .note("a customer");
+
         CreateCustomerResponse response = api.createCustomer(body);
 
-        // TODO: test validations
+        assertTrue(response.getErrors().isEmpty());
+        assertNotNull(response.getCustomer().getId());
     }
     
     /**
@@ -67,11 +119,28 @@ public class CustomersApiTest {
      */
     @Test
     public void createCustomerCardTest() throws ApiException {
-        String customerId = null;
-        CreateCustomerCardRequest body = null;
-        CreateCustomerCardResponse response = api.createCustomerCard(customerId, body);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        String cardNonce = "fake-card-nonce-ok";
+
+        CreateCustomerCardRequest body = new CreateCustomerCardRequest()
+            .cardNonce(cardNonce)
+            .billingAddress(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .locality("New York")
+                .administrativeDistrictLevel1("NY")
+                .postalCode("94103")
+                .country(Address.CountryEnum.US))
+            .cardholderName("Amelia Earhart");
+
+        CreateCustomerCardResponse response = api.createCustomerCard(customer.getId(), body);
+
+        assertTrue(response.getErrors().isEmpty());
+        assertNotNull(response.getCard().getId());
     }
     
     /**
@@ -84,10 +153,14 @@ public class CustomersApiTest {
      */
     @Test
     public void deleteCustomerTest() throws ApiException {
-        String customerId = null;
-        DeleteCustomerResponse response = api.deleteCustomer(customerId);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        DeleteCustomerResponse response = api.deleteCustomer(customer.getId());
+
+        assertTrue(response.getErrors().isEmpty());
     }
     
     /**
@@ -100,11 +173,30 @@ public class CustomersApiTest {
      */
     @Test
     public void deleteCustomerCardTest() throws ApiException {
-        String customerId = null;
-        String cardId = null;
-        DeleteCustomerCardResponse response = api.deleteCustomerCard(customerId, cardId);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        String cardNonce = "fake-card-nonce-ok";
+
+        CreateCustomerCardRequest body = new CreateCustomerCardRequest()
+            .cardNonce(cardNonce)
+            .billingAddress(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .locality("New York")
+                .administrativeDistrictLevel1("NY")
+                .postalCode("94103")
+                .country(Address.CountryEnum.US))
+            .cardholderName("Amelia Earhart");
+
+        Card card =
+            api.createCustomerCard(customer.getId(), body).getCard();
+
+        DeleteCustomerCardResponse response = api.deleteCustomerCard(customer.getId(), card.getId());
+
+        assertTrue(response.getErrors().isEmpty());
     }
     
     /**
@@ -133,10 +225,15 @@ public class CustomersApiTest {
      */
     @Test
     public void retrieveCustomerTest() throws ApiException {
-        String customerId = null;
-        RetrieveCustomerResponse response = api.retrieveCustomer(customerId);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        RetrieveCustomerResponse response = api.retrieveCustomer(customer.getId());
+
+        assertTrue(response.getErrors().isEmpty());
+        assertEquals(customer.getId(), response.getCustomer().getId());
     }
     
     /**
@@ -149,11 +246,19 @@ public class CustomersApiTest {
      */
     @Test
     public void updateCustomerTest() throws ApiException {
-        String customerId = null;
-        UpdateCustomerRequest body = null;
-        UpdateCustomerResponse response = api.updateCustomer(customerId, body);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        UpdateCustomerRequest body = new UpdateCustomerRequest()
+            .phoneNumber("1-555-555-0123")
+            .emailAddress("New.Amelia.Earhart@example.com")
+            .note("updated customer note");
+        UpdateCustomerResponse response = api.updateCustomer(customer.getId(), body);
+
+        assertTrue(response.getErrors().isEmpty());
+        assertEquals("New.Amelia.Earhart@example.com", response.getCustomer().getEmailAddress());
     }
     
 }

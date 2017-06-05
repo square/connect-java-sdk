@@ -13,32 +13,51 @@
 
 package com.squareup.connect.api;
 
+import com.squareup.connect.ApiClient;
 import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Address;
 import com.squareup.connect.models.CaptureTransactionResponse;
 import com.squareup.connect.models.ChargeRequest;
 import com.squareup.connect.models.ChargeResponse;
-import com.squareup.connect.models.CreateRefundResponse;
 import com.squareup.connect.models.CreateRefundRequest;
+import com.squareup.connect.models.CreateRefundResponse;
 import com.squareup.connect.models.ListRefundsResponse;
 import com.squareup.connect.models.ListTransactionsResponse;
+import com.squareup.connect.models.Money;
 import com.squareup.connect.models.RetrieveTransactionResponse;
+import com.squareup.connect.models.Transaction;
 import com.squareup.connect.models.VoidTransactionResponse;
+import com.squareup.connect.utils.APITest;
+import com.squareup.connect.utils.Account;
+import java.util.UUID;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * API tests for TransactionsApi
  */
-@Ignore
-public class TransactionsApiTest {
+public class TransactionsApiTest extends APITest {
 
+    private final ApiClient defaultClient = Configuration.getDefaultApiClient();
     private final TransactionsApi api = new TransactionsApi();
+    private final String cardNonce = "fake-card-nonce-ok";
+    private String locationId;
 
+
+    @Before
+    public void setup() {
+        Account testAccount = accounts.get("US-Prod-Sandbox");
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken(testAccount.accessToken);
+        this.locationId = testAccount.locationId;
+    }
     
     /**
      * CaptureTransaction
@@ -50,11 +69,17 @@ public class TransactionsApiTest {
      */
     @Test
     public void captureTransactionTest() throws ApiException {
-        String locationId = null;
-        String transactionId = null;
-        CaptureTransactionResponse response = api.captureTransaction(locationId, transactionId);
+        Transaction transaction = api.charge(locationId, new ChargeRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .delayCapture(true)
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)).getTransaction();
 
-        // TODO: test validations
+        CaptureTransactionResponse response = api.captureTransaction(locationId, transaction.getId());
+
+        assertTrue(response.getErrors().isEmpty());
     }
     
     /**
@@ -67,11 +92,35 @@ public class TransactionsApiTest {
      */
     @Test
     public void chargeTest() throws ApiException {
-        String locationId = null;
-        ChargeRequest body = null;
+        // Check different sandbox values here https://docs.connect.squareup.com/articles/using-sandbox
+
+        String idempotencyKey = UUID.randomUUID().toString();
+        ChargeRequest body = new ChargeRequest()
+            .idempotencyKey(idempotencyKey)
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)
+            .shippingAddress(new Address()
+                .addressLine1("123 Main St")
+                .locality("San Francisco")
+                .administrativeDistrictLevel1("CA")
+                .postalCode("94114")
+                .country(Address.CountryEnum.US))
+            .billingAddress(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .administrativeDistrictLevel1("NY")
+                .locality("New York")
+                .postalCode("10003")
+                .country(Address.CountryEnum.US))
+            .referenceId("optional reference #112358")
+            .note("optional note");
+
         ChargeResponse response = api.charge(locationId, body);
 
-        // TODO: test validations
+        assertTrue(response.getErrors().isEmpty());
+        assertNotNull(response.getTransaction().getId());
     }
     
     /**
@@ -84,12 +133,26 @@ public class TransactionsApiTest {
      */
     @Test
     public void createRefundTest() throws ApiException {
-        String locationId = null;
-        String transactionId = null;
-        CreateRefundRequest body = null;
-        CreateRefundResponse response = api.createRefund(locationId, transactionId, body);
+        Transaction transaction = api.charge(locationId, new ChargeRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)).getTransaction();
 
-        // TODO: test validations
+
+        String idempotencyKey = UUID.randomUUID().toString();
+        CreateRefundRequest body = new CreateRefundRequest()
+            .idempotencyKey(idempotencyKey)
+            .tenderId(transaction.getTenders().get(0).getId())
+            .amountMoney(new Money()
+                .amount(100L)
+                .currency(Money.CurrencyEnum.USD))
+            .reason("Cancelled order");
+        CreateRefundResponse response = api.createRefund(locationId, transaction.getId(), body);
+
+        assertTrue(response.getErrors().isEmpty());
+        assertNotNull(response.getRefund().getId());
     }
     
     /**
@@ -102,14 +165,14 @@ public class TransactionsApiTest {
      */
     @Test
     public void listRefundsTest() throws ApiException {
-        String locationId = null;
         String beginTime = null;
         String endTime = null;
         String sortOrder = null;
         String cursor = null;
-        ListRefundsResponse response = api.listRefunds(locationId, beginTime, endTime, sortOrder, cursor);
 
-        // TODO: test validations
+        ListRefundsResponse response = api.listRefunds(locationId, beginTime, endTime, sortOrder, cursor);
+        assertTrue(response.getErrors().isEmpty());
+        assertFalse(response.getRefunds().isEmpty());
     }
     
     /**
@@ -122,14 +185,13 @@ public class TransactionsApiTest {
      */
     @Test
     public void listTransactionsTest() throws ApiException {
-        String locationId = null;
         String beginTime = null;
         String endTime = null;
         String sortOrder = null;
         String cursor = null;
         ListTransactionsResponse response = api.listTransactions(locationId, beginTime, endTime, sortOrder, cursor);
-
-        // TODO: test validations
+        assertTrue(response.getErrors().isEmpty());
+        assertFalse(response.getTransactions().isEmpty());
     }
     
     /**
@@ -142,13 +204,19 @@ public class TransactionsApiTest {
      */
     @Test
     public void retrieveTransactionTest() throws ApiException {
-        String locationId = null;
-        String transactionId = null;
-        RetrieveTransactionResponse response = api.retrieveTransaction(locationId, transactionId);
+        Transaction transaction = api.charge(locationId, new ChargeRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)).getTransaction();
 
-        // TODO: test validations
+        RetrieveTransactionResponse response = api.retrieveTransaction(locationId, transaction.getId());
+
+        assertTrue(response.getErrors().isEmpty());
+        assertEquals(transaction.getId(), response.getTransaction().getId());
     }
-    
+
     /**
      * VoidTransaction
      *
@@ -159,11 +227,17 @@ public class TransactionsApiTest {
      */
     @Test
     public void voidTransactionTest() throws ApiException {
-        String locationId = null;
-        String transactionId = null;
-        VoidTransactionResponse response = api.voidTransaction(locationId, transactionId);
+        Transaction transaction = api.charge(locationId, new ChargeRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .delayCapture(true)
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)).getTransaction();
 
-        // TODO: test validations
+        VoidTransactionResponse response = api.voidTransaction(locationId, transaction.getId());
+
+        assertTrue(response.getErrors().isEmpty());
     }
     
 }

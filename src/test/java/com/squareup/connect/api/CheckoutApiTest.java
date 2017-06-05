@@ -13,24 +13,41 @@
 
 package com.squareup.connect.api;
 
+import com.squareup.connect.ApiClient;
 import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Address;
 import com.squareup.connect.models.CreateCheckoutRequest;
 import com.squareup.connect.models.CreateCheckoutResponse;
+import com.squareup.connect.models.CreateOrderRequestLineItem;
+import com.squareup.connect.models.CreateOrderRequestOrder;
+import com.squareup.connect.models.Money;
+import com.squareup.connect.utils.APITest;
+import com.squareup.connect.utils.Account;
+import java.util.Arrays;
+import java.util.UUID;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import static org.junit.Assert.assertTrue;
 
 /**
  * API tests for CheckoutApi
  */
-@Ignore
-public class CheckoutApiTest {
+public class CheckoutApiTest extends APITest {
 
+    private final ApiClient defaultClient = Configuration.getDefaultApiClient();
     private final CheckoutApi api = new CheckoutApi();
+    private String locationId;
+
+    @Before
+    public void setup() {
+        Account testAccount = accounts.get("US-Prod-Sandbox");
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken(testAccount.accessToken);
+        this.locationId = testAccount.locationId;
+    }
 
     
     /**
@@ -43,11 +60,43 @@ public class CheckoutApiTest {
      */
     @Test
     public void createCheckoutTest() throws ApiException {
-        String locationId = null;
-        CreateCheckoutRequest body = null;
+
+        CreateCheckoutRequest body = new CreateCheckoutRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .order(new CreateOrderRequestOrder()
+                .referenceId("my-order-001")
+                .lineItems(Arrays.asList(
+                    new CreateOrderRequestLineItem()
+                        .name("line-item-1")
+                        .quantity("1")
+                        .basePriceMoney(new Money()
+                            .amount(1599L)
+                            .currency(Money.CurrencyEnum.USD)),
+                    new CreateOrderRequestLineItem()
+                        .name("line-item-2")
+                        .quantity("2")
+                        .basePriceMoney(new Money()
+                            .amount(799L)
+                            .currency(Money.CurrencyEnum.USD))
+                ))
+            )
+            .askForShippingAddress(true)
+            .merchantSupportEmail("merchant+support@website.com")
+            .prePopulateBuyerEmail("buyer@email.com")
+            .prePopulateShippingAddress(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .locality("New York")
+                .administrativeDistrictLevel1("NY")
+                .postalCode("20003")
+                .country(Address.CountryEnum.US)
+            )
+            .redirectUrl("https://merchant.website.com/order-confirm");
+
         CreateCheckoutResponse response = api.createCheckout(locationId, body);
 
-        // TODO: test validations
+        assertTrue(response.getErrors().isEmpty());
+        assertTrue(response.getCheckout().getCheckoutPageUrl().startsWith("https://connect."));
     }
     
 }
