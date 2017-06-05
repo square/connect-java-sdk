@@ -29,19 +29,12 @@ import java.util.Arrays;
 import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Ignore;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
 /**
  * API tests for CheckoutApi
  */
-@Ignore
 public class CheckoutApiTest extends APITest {
 
     private final ApiClient defaultClient = Configuration.getDefaultApiClient();
