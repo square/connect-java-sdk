@@ -18,6 +18,7 @@ import com.squareup.connect.ApiException;
 import com.squareup.connect.Configuration;
 import com.squareup.connect.auth.OAuth;
 import com.squareup.connect.models.Address;
+import com.squareup.connect.models.Card;
 import com.squareup.connect.models.CreateCustomerCardRequest;
 import com.squareup.connect.models.CreateCustomerCardResponse;
 import com.squareup.connect.models.CreateCustomerRequest;
@@ -33,7 +34,6 @@ import com.squareup.connect.utils.APITest;
 import com.squareup.connect.utils.Account;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -43,7 +43,6 @@ import static org.junit.Assert.assertTrue;
 /**
  * API tests for CustomersApi
  */
-@Ignore
 public class CustomersApiTest extends APITest {
 
     private final ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -120,7 +119,6 @@ public class CustomersApiTest extends APITest {
      */
     @Test
     public void createCustomerCardTest() throws ApiException {
-
         Customer customer = api.createCustomer(new CreateCustomerRequest()
             .givenName("Amelia")
             .familyName("Earhart")
@@ -153,12 +151,16 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void deleteCustomerTest() throws ApiException {
-        String customerId = null;
-        DeleteCustomerResponse response = api.deleteCustomer(customerId);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        DeleteCustomerResponse response = api.deleteCustomer(customer.getId());
+
+        assertTrue(response.getErrors().isEmpty());
     }
     
     /**
@@ -169,13 +171,32 @@ public class CustomersApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void deleteCustomerCardTest() throws ApiException {
-        String customerId = null;
-        String cardId = null;
-        DeleteCustomerCardResponse response = api.deleteCustomerCard(customerId, cardId);
+        Customer customer = api.createCustomer(new CreateCustomerRequest()
+            .givenName("Amelia")
+            .familyName("Earhart")
+            .emailAddress("Amelia.Earhart@example.com")).getCustomer();
 
-        // TODO: test validations
+        String cardNonce = "fake-card-nonce-ok";
+
+        CreateCustomerCardRequest body = new CreateCustomerCardRequest()
+            .cardNonce(cardNonce)
+            .billingAddress(new Address()
+                .addressLine1("500 Electric Ave")
+                .addressLine2("Suite 600")
+                .locality("New York")
+                .administrativeDistrictLevel1("NY")
+                .postalCode("94103")
+                .country(Address.CountryEnum.US))
+            .cardholderName("Amelia Earhart");
+
+        Card card =
+            api.createCustomerCard(customer.getId(), body).getCard();
+
+        DeleteCustomerCardResponse response = api.deleteCustomerCard(customer.getId(), card.getId());
+
+        assertTrue(response.getErrors().isEmpty());
     }
     
     /**
