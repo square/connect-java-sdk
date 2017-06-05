@@ -21,8 +21,8 @@ import com.squareup.connect.models.Address;
 import com.squareup.connect.models.CaptureTransactionResponse;
 import com.squareup.connect.models.ChargeRequest;
 import com.squareup.connect.models.ChargeResponse;
-import com.squareup.connect.models.CreateRefundResponse;
 import com.squareup.connect.models.CreateRefundRequest;
+import com.squareup.connect.models.CreateRefundResponse;
 import com.squareup.connect.models.ListRefundsResponse;
 import com.squareup.connect.models.ListTransactionsResponse;
 import com.squareup.connect.models.Money;
@@ -32,25 +32,17 @@ import com.squareup.connect.models.VoidTransactionResponse;
 import com.squareup.connect.utils.APITest;
 import com.squareup.connect.utils.Account;
 import java.util.UUID;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 /**
  * API tests for TransactionsApi
  */
-@Ignore
 public class TransactionsApiTest extends APITest {
 
     private final ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -75,13 +67,19 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void captureTransactionTest() throws ApiException {
-        String locationId = null;
-        String transactionId = null;
-        CaptureTransactionResponse response = api.captureTransaction(locationId, transactionId);
+        Transaction transaction = api.charge(locationId, new ChargeRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .delayCapture(true)
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)).getTransaction();
 
-        // TODO: test validations
+        CaptureTransactionResponse response = api.captureTransaction(locationId, transaction.getId());
+
+        assertTrue(response.getErrors().isEmpty());
     }
     
     /**
@@ -204,15 +202,21 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void retrieveTransactionTest() throws ApiException {
-        String locationId = null;
-        String transactionId = null;
-        RetrieveTransactionResponse response = api.retrieveTransaction(locationId, transactionId);
+        Transaction transaction = api.charge(locationId, new ChargeRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)).getTransaction();
 
-        // TODO: test validations
+        RetrieveTransactionResponse response = api.retrieveTransaction(locationId, transaction.getId());
+
+        assertTrue(response.getErrors().isEmpty());
+        assertEquals(transaction.getId(), response.getTransaction().getId());
     }
-    
+
     /**
      * VoidTransaction
      *
@@ -221,13 +225,19 @@ public class TransactionsApiTest extends APITest {
      * @throws ApiException
      *          if the Api call fails
      */
-    @Ignore
+    @Test
     public void voidTransactionTest() throws ApiException {
-        String locationId = null;
-        String transactionId = null;
-        VoidTransactionResponse response = api.voidTransaction(locationId, transactionId);
+        Transaction transaction = api.charge(locationId, new ChargeRequest()
+            .idempotencyKey(UUID.randomUUID().toString())
+            .delayCapture(true)
+            .amountMoney(new Money()
+                .amount(200L)
+                .currency(Money.CurrencyEnum.USD))
+            .cardNonce(cardNonce)).getTransaction();
 
-        // TODO: test validations
+        VoidTransactionResponse response = api.voidTransaction(locationId, transaction.getId());
+
+        assertTrue(response.getErrors().isEmpty());
     }
     
 }
