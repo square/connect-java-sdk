@@ -1,14 +1,14 @@
 package com.squareup.connect.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
-
 import org.junit.BeforeClass;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class APITest {
 
@@ -16,8 +16,9 @@ public class APITest {
 
     @BeforeClass
     public static void loadAccounts() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        byte[] jsonData = Files.readAllBytes(Paths.get("./travis-ci/accounts.json"));
-        accounts = mapper.readValue(jsonData, new TypeReference<Map<String, Account>>() { });
+        Gson gson = new Gson();
+        Reader jsonReader = Files.newBufferedReader(Paths.get("./travis-ci/accounts.json"));
+        Type collectionType = new TypeToken<Map<String, Account>>() {}.getType();
+        accounts = gson.fromJson(jsonReader, collectionType);
     }
 }

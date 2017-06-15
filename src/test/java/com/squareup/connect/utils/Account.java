@@ -1,15 +1,15 @@
 package com.squareup.connect.utils;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 // Represent the account info
 public class Account {
-    @JsonProperty("email")
+    @SerializedName("email")
     public String email;
-    @JsonProperty("access_token")
+    @SerializedName("access_token")
     public String accessToken;
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     public String locationId;
-    @JsonProperty("application_id")
+    @SerializedName("application_id")
     public String applicationId;
 }
