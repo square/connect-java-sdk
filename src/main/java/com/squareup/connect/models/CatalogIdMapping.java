@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * A mapping between a client-supplied temporary ID and a permanent server ID.
@@ -25,10 +29,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "A mapping between a client-supplied temporary ID and a permanent server ID.")
 
 public class CatalogIdMapping {
-  @JsonProperty("client_object_id")
+  @SerializedName("client_object_id")
   private String clientObjectId = null;
 
-  @JsonProperty("object_id")
+  @SerializedName("object_id")
   private String objectId = null;
 
   public CatalogIdMapping clientObjectId(String clientObjectId) {

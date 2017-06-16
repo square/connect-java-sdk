@@ -10,15 +10,22 @@
  * Do not edit the class manually.
  */
 
+
 package com.squareup.connect.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiCallback;
 import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiResponse;
 import com.squareup.connect.Configuration;
-import com.squareup.connect.models.*;
 import com.squareup.connect.Pair;
+import com.squareup.connect.ProgressRequestBody;
+import com.squareup.connect.ProgressResponseBody;
+
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
 
 import com.squareup.connect.models.CreateCustomerCardRequest;
 import com.squareup.connect.models.CreateCustomerCardResponse;
@@ -31,337 +38,934 @@ import com.squareup.connect.models.RetrieveCustomerResponse;
 import com.squareup.connect.models.UpdateCustomerRequest;
 import com.squareup.connect.models.UpdateCustomerResponse;
 
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class CustomersApi {
-  private ApiClient apiClient;
+    private ApiClient apiClient;
 
-  public CustomersApi() {
-    this(Configuration.getDefaultApiClient());
-  }
+    public CustomersApi() {
+        this(Configuration.getDefaultApiClient());
+    }
 
-  public CustomersApi(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
+    public CustomersApi(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
-  public ApiClient getApiClient() {
-    return apiClient;
-  }
+    public ApiClient getApiClient() {
+        return apiClient;
+    }
 
-  public void setApiClient(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
+    public void setApiClient(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
-  /**
-   * CreateCustomer
-   * Creates a new customer for a business, which can have associated cards on file.  You must provide __at least one__ of the following values in your request to this endpoint:  - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;company_name&#x60; - &#x60;email_address&#x60; - &#x60;phone_number&#x60;  This endpoint does not accept an idempotency key. If you accidentally create a duplicate customer, you can delete it with the [DeleteCustomer](#endpoint-deletecustomer) endpoint.
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return CreateCustomerResponse
-   * @throws ApiException if fails to make API call
-   */
-  public CreateCustomerResponse createCustomer(CreateCustomerRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createCustomer");
+    /**
+     * Build call for createCustomer
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createCustomerCall(CreateCustomerRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/customers";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/customers";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createCustomerValidateBeforeCall(CreateCustomerRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createCustomer(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createCustomerCall(body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * CreateCustomer
+     * Creates a new customer for a business, which can have associated cards on file.  You must provide __at least one__ of the following values in your request to this endpoint:  - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;company_name&#x60; - &#x60;email_address&#x60; - &#x60;phone_number&#x60;  This endpoint does not accept an idempotency key. If you accidentally create a duplicate customer, you can delete it with the [DeleteCustomer](#endpoint-deletecustomer) endpoint.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return CreateCustomerResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CreateCustomerResponse createCustomer(CreateCustomerRequest body) throws ApiException {
+        ApiResponse<CreateCustomerResponse> resp = createCustomerWithHttpInfo(body);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * CreateCustomer
+     * Creates a new customer for a business, which can have associated cards on file.  You must provide __at least one__ of the following values in your request to this endpoint:  - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;company_name&#x60; - &#x60;email_address&#x60; - &#x60;phone_number&#x60;  This endpoint does not accept an idempotency key. If you accidentally create a duplicate customer, you can delete it with the [DeleteCustomer](#endpoint-deletecustomer) endpoint.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;CreateCustomerResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CreateCustomerResponse> createCustomerWithHttpInfo(CreateCustomerRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = createCustomerValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<CreateCustomerResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * CreateCustomer (asynchronously)
+     * Creates a new customer for a business, which can have associated cards on file.  You must provide __at least one__ of the following values in your request to this endpoint:  - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;company_name&#x60; - &#x60;email_address&#x60; - &#x60;phone_number&#x60;  This endpoint does not accept an idempotency key. If you accidentally create a duplicate customer, you can delete it with the [DeleteCustomer](#endpoint-deletecustomer) endpoint.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createCustomerAsync(CreateCustomerRequest body, final ApiCallback<CreateCustomerResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<CreateCustomerResponse> localVarReturnType = new GenericType<CreateCustomerResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * CreateCustomerCard
-   * Adds a card on file to an existing customer.
-   * @param customerId The ID of the customer to link the card on file to. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return CreateCustomerCardResponse
-   * @throws ApiException if fails to make API call
-   */
-  public CreateCustomerCardResponse createCustomerCard(String customerId, CreateCustomerCardRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'customerId' is set
-    if (customerId == null) {
-      throw new ApiException(400, "Missing the required parameter 'customerId' when calling createCustomerCard");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createCustomerValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CreateCustomerResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createCustomerCard
+     * @param customerId The ID of the customer to link the card on file to. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createCustomerCardCall(String customerId, CreateCustomerCardRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/customers/{customer_id}/cards"
+            .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createCustomerCard");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createCustomerCardValidateBeforeCall(String customerId, CreateCustomerCardRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'customerId' is set
+        if (customerId == null) {
+            throw new ApiException("Missing the required parameter 'customerId' when calling createCustomerCard(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createCustomerCard(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createCustomerCardCall(customerId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * CreateCustomerCard
+     * Adds a card on file to an existing customer.
+     * @param customerId The ID of the customer to link the card on file to. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return CreateCustomerCardResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CreateCustomerCardResponse createCustomerCard(String customerId, CreateCustomerCardRequest body) throws ApiException {
+        ApiResponse<CreateCustomerCardResponse> resp = createCustomerCardWithHttpInfo(customerId, body);
+        return resp.getData();
+    }
+
+    /**
+     * CreateCustomerCard
+     * Adds a card on file to an existing customer.
+     * @param customerId The ID of the customer to link the card on file to. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;CreateCustomerCardResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CreateCustomerCardResponse> createCustomerCardWithHttpInfo(String customerId, CreateCustomerCardRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = createCustomerCardValidateBeforeCall(customerId, body, null, null);
+        Type localVarReturnType = new TypeToken<CreateCustomerCardResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * CreateCustomerCard (asynchronously)
+     * Adds a card on file to an existing customer.
+     * @param customerId The ID of the customer to link the card on file to. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createCustomerCardAsync(String customerId, CreateCustomerCardRequest body, final ApiCallback<CreateCustomerCardResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createCustomerCardValidateBeforeCall(customerId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CreateCustomerCardResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteCustomer
+     * @param customerId The ID of the customer to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteCustomerCall(String customerId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v2/customers/{customer_id}"
+            .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/customers/{customer_id}/cards"
-      .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteCustomerValidateBeforeCall(String customerId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'customerId' is set
+        if (customerId == null) {
+            throw new ApiException("Missing the required parameter 'customerId' when calling deleteCustomer(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteCustomerCall(customerId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * DeleteCustomer
+     * Deletes a customer from a business, along with any linked cards on file.
+     * @param customerId The ID of the customer to delete. (required)
+     * @return DeleteCustomerResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DeleteCustomerResponse deleteCustomer(String customerId) throws ApiException {
+        ApiResponse<DeleteCustomerResponse> resp = deleteCustomerWithHttpInfo(customerId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * DeleteCustomer
+     * Deletes a customer from a business, along with any linked cards on file.
+     * @param customerId The ID of the customer to delete. (required)
+     * @return ApiResponse&lt;DeleteCustomerResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DeleteCustomerResponse> deleteCustomerWithHttpInfo(String customerId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteCustomerValidateBeforeCall(customerId, null, null);
+        Type localVarReturnType = new TypeToken<DeleteCustomerResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * DeleteCustomer (asynchronously)
+     * Deletes a customer from a business, along with any linked cards on file.
+     * @param customerId The ID of the customer to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteCustomerAsync(String customerId, final ApiCallback<DeleteCustomerResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<CreateCustomerCardResponse> localVarReturnType = new GenericType<CreateCustomerCardResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * DeleteCustomer
-   * Deletes a customer from a business, along with any linked cards on file.
-   * @param customerId The ID of the customer to delete. (required)
-   * @return DeleteCustomerResponse
-   * @throws ApiException if fails to make API call
-   */
-  public DeleteCustomerResponse deleteCustomer(String customerId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'customerId' is set
-    if (customerId == null) {
-      throw new ApiException(400, "Missing the required parameter 'customerId' when calling deleteCustomer");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteCustomerValidateBeforeCall(customerId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DeleteCustomerResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteCustomerCard
+     * @param customerId The ID of the customer that the card on file belongs to. (required)
+     * @param cardId The ID of the card on file to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteCustomerCardCall(String customerId, String cardId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v2/customers/{customer_id}/cards/{card_id}"
+            .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()))
+            .replaceAll("\\{" + "card_id" + "\\}", apiClient.escapeString(cardId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/customers/{customer_id}"
-      .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteCustomerCardValidateBeforeCall(String customerId, String cardId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'customerId' is set
+        if (customerId == null) {
+            throw new ApiException("Missing the required parameter 'customerId' when calling deleteCustomerCard(Async)");
+        }
+        
+        // verify the required parameter 'cardId' is set
+        if (cardId == null) {
+            throw new ApiException("Missing the required parameter 'cardId' when calling deleteCustomerCard(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteCustomerCardCall(customerId, cardId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * DeleteCustomerCard
+     * Removes a card on file from a customer.
+     * @param customerId The ID of the customer that the card on file belongs to. (required)
+     * @param cardId The ID of the card on file to delete. (required)
+     * @return DeleteCustomerCardResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DeleteCustomerCardResponse deleteCustomerCard(String customerId, String cardId) throws ApiException {
+        ApiResponse<DeleteCustomerCardResponse> resp = deleteCustomerCardWithHttpInfo(customerId, cardId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * DeleteCustomerCard
+     * Removes a card on file from a customer.
+     * @param customerId The ID of the customer that the card on file belongs to. (required)
+     * @param cardId The ID of the card on file to delete. (required)
+     * @return ApiResponse&lt;DeleteCustomerCardResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DeleteCustomerCardResponse> deleteCustomerCardWithHttpInfo(String customerId, String cardId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteCustomerCardValidateBeforeCall(customerId, cardId, null, null);
+        Type localVarReturnType = new TypeToken<DeleteCustomerCardResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * DeleteCustomerCard (asynchronously)
+     * Removes a card on file from a customer.
+     * @param customerId The ID of the customer that the card on file belongs to. (required)
+     * @param cardId The ID of the card on file to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteCustomerCardAsync(String customerId, String cardId, final ApiCallback<DeleteCustomerCardResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<DeleteCustomerResponse> localVarReturnType = new GenericType<DeleteCustomerResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * DeleteCustomerCard
-   * Removes a card on file from a customer.
-   * @param customerId The ID of the customer that the card on file belongs to. (required)
-   * @param cardId The ID of the card on file to delete. (required)
-   * @return DeleteCustomerCardResponse
-   * @throws ApiException if fails to make API call
-   */
-  public DeleteCustomerCardResponse deleteCustomerCard(String customerId, String cardId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'customerId' is set
-    if (customerId == null) {
-      throw new ApiException(400, "Missing the required parameter 'customerId' when calling deleteCustomerCard");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteCustomerCardValidateBeforeCall(customerId, cardId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DeleteCustomerCardResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listCustomers
+     * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listCustomersCall(String cursor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v2/customers";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (cursor != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'cardId' is set
-    if (cardId == null) {
-      throw new ApiException(400, "Missing the required parameter 'cardId' when calling deleteCustomerCard");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listCustomersValidateBeforeCall(String cursor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        
+        com.squareup.okhttp.Call call = listCustomersCall(cursor, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * ListCustomers
+     * Lists a business&#39;s customers.
+     * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
+     * @return ListCustomersResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListCustomersResponse listCustomers(String cursor) throws ApiException {
+        ApiResponse<ListCustomersResponse> resp = listCustomersWithHttpInfo(cursor);
+        return resp.getData();
+    }
+
+    /**
+     * ListCustomers
+     * Lists a business&#39;s customers.
+     * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
+     * @return ApiResponse&lt;ListCustomersResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListCustomersResponse> listCustomersWithHttpInfo(String cursor) throws ApiException {
+        com.squareup.okhttp.Call call = listCustomersValidateBeforeCall(cursor, null, null);
+        Type localVarReturnType = new TypeToken<ListCustomersResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * ListCustomers (asynchronously)
+     * Lists a business&#39;s customers.
+     * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listCustomersAsync(String cursor, final ApiCallback<ListCustomersResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listCustomersValidateBeforeCall(cursor, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListCustomersResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveCustomer
+     * @param customerId The ID of the customer to retrieve. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveCustomerCall(String customerId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v2/customers/{customer_id}"
+            .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/customers/{customer_id}/cards/{card_id}"
-      .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()))
-      .replaceAll("\\{" + "card_id" + "\\}", apiClient.escapeString(cardId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveCustomerValidateBeforeCall(String customerId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'customerId' is set
+        if (customerId == null) {
+            throw new ApiException("Missing the required parameter 'customerId' when calling retrieveCustomer(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveCustomerCall(customerId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * RetrieveCustomer
+     * Returns details for a single customer.
+     * @param customerId The ID of the customer to retrieve. (required)
+     * @return RetrieveCustomerResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public RetrieveCustomerResponse retrieveCustomer(String customerId) throws ApiException {
+        ApiResponse<RetrieveCustomerResponse> resp = retrieveCustomerWithHttpInfo(customerId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * RetrieveCustomer
+     * Returns details for a single customer.
+     * @param customerId The ID of the customer to retrieve. (required)
+     * @return ApiResponse&lt;RetrieveCustomerResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<RetrieveCustomerResponse> retrieveCustomerWithHttpInfo(String customerId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveCustomerValidateBeforeCall(customerId, null, null);
+        Type localVarReturnType = new TypeToken<RetrieveCustomerResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * RetrieveCustomer (asynchronously)
+     * Returns details for a single customer.
+     * @param customerId The ID of the customer to retrieve. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveCustomerAsync(String customerId, final ApiCallback<RetrieveCustomerResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<DeleteCustomerCardResponse> localVarReturnType = new GenericType<DeleteCustomerCardResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * ListCustomers
-   * Lists a business&#39;s customers.
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
-   * @return ListCustomersResponse
-   * @throws ApiException if fails to make API call
-   */
-  public ListCustomersResponse listCustomers(String cursor) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v2/customers";
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+        com.squareup.okhttp.Call call = retrieveCustomerValidateBeforeCall(customerId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RetrieveCustomerResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateCustomer
+     * @param customerId The ID of the customer to update. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateCustomerCall(String customerId, UpdateCustomerRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/customers/{customer_id}"
+            .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()));
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    GenericType<ListCustomersResponse> localVarReturnType = new GenericType<ListCustomersResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * RetrieveCustomer
-   * Returns details for a single customer.
-   * @param customerId The ID of the customer to retrieve. (required)
-   * @return RetrieveCustomerResponse
-   * @throws ApiException if fails to make API call
-   */
-  public RetrieveCustomerResponse retrieveCustomer(String customerId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'customerId' is set
-    if (customerId == null) {
-      throw new ApiException(400, "Missing the required parameter 'customerId' when calling retrieveCustomer");
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/customers/{customer_id}"
-      .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateCustomerValidateBeforeCall(String customerId, UpdateCustomerRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'customerId' is set
+        if (customerId == null) {
+            throw new ApiException("Missing the required parameter 'customerId' when calling updateCustomer(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateCustomer(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateCustomerCall(customerId, body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<RetrieveCustomerResponse> localVarReturnType = new GenericType<RetrieveCustomerResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * UpdateCustomer
-   * Updates the details of an existing customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
-   * @param customerId The ID of the customer to update. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return UpdateCustomerResponse
-   * @throws ApiException if fails to make API call
-   */
-  public UpdateCustomerResponse updateCustomer(String customerId, UpdateCustomerRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'customerId' is set
-    if (customerId == null) {
-      throw new ApiException(400, "Missing the required parameter 'customerId' when calling updateCustomer");
+        
+        
+        
+        
     }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateCustomer");
+
+    /**
+     * UpdateCustomer
+     * Updates the details of an existing customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
+     * @param customerId The ID of the customer to update. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return UpdateCustomerResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public UpdateCustomerResponse updateCustomer(String customerId, UpdateCustomerRequest body) throws ApiException {
+        ApiResponse<UpdateCustomerResponse> resp = updateCustomerWithHttpInfo(customerId, body);
+        return resp.getData();
     }
-    
-    // create path and map variables
-    String localVarPath = "/v2/customers/{customer_id}"
-      .replaceAll("\\{" + "customer_id" + "\\}", apiClient.escapeString(customerId.toString()));
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     * UpdateCustomer
+     * Updates the details of an existing customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
+     * @param customerId The ID of the customer to update. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;UpdateCustomerResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<UpdateCustomerResponse> updateCustomerWithHttpInfo(String customerId, UpdateCustomerRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = updateCustomerValidateBeforeCall(customerId, body, null, null);
+        Type localVarReturnType = new TypeToken<UpdateCustomerResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
+    /**
+     * UpdateCustomer (asynchronously)
+     * Updates the details of an existing customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
+     * @param customerId The ID of the customer to update. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateCustomerAsync(String customerId, UpdateCustomerRequest body, final ApiCallback<UpdateCustomerResponse> callback) throws ApiException {
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
 
-    GenericType<UpdateCustomerResponse> localVarReturnType = new GenericType<UpdateCustomerResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
+        com.squareup.okhttp.Call call = updateCustomerValidateBeforeCall(customerId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<UpdateCustomerResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
 }

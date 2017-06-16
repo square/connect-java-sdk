@@ -15,22 +15,27 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * The type of a [CatalogItem](#type-catalogitem).
  */
 public enum CatalogItemProductType {
   
+  @SerializedName("REGULAR")
   REGULAR("REGULAR"),
   
+  @SerializedName("GIFT_CARD")
   GIFT_CARD("GIFT_CARD"),
   
+  @SerializedName("APPOINTMENTS_SERVICE")
   APPOINTMENTS_SERVICE("APPOINTMENTS_SERVICE"),
   
+  @SerializedName("RETAIL_ITEM")
   RETAIL_ITEM("RETAIL_ITEM"),
   
+  @SerializedName("RESTAURANT_ITEM")
   RESTAURANT_ITEM("RESTAURANT_ITEM");
 
   private String value;
@@ -42,16 +47,6 @@ public enum CatalogItemProductType {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static CatalogItemProductType fromValue(String text) {
-    for (CatalogItemProductType b : CatalogItemProductType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

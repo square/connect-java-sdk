@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1OrderHistoryEntry
@@ -28,18 +32,25 @@ public class V1OrderHistoryEntry {
    * The type of action performed on the order.
    */
   public enum ActionEnum {
+    @SerializedName("ORDER_PLACED")
     ORDER_PLACED("ORDER_PLACED"),
     
+    @SerializedName("DECLINED")
     DECLINED("DECLINED"),
     
+    @SerializedName("PAYMENT_RECEIVED")
     PAYMENT_RECEIVED("PAYMENT_RECEIVED"),
     
+    @SerializedName("CANCELED")
     CANCELED("CANCELED"),
     
+    @SerializedName("COMPLETED")
     COMPLETED("COMPLETED"),
     
+    @SerializedName("REFUNDED")
     REFUNDED("REFUNDED"),
     
+    @SerializedName("EXPIRED")
     EXPIRED("EXPIRED");
 
     private String value;
@@ -52,22 +63,12 @@ public class V1OrderHistoryEntry {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ActionEnum fromValue(String text) {
-      for (ActionEnum b : ActionEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("action")
+  @SerializedName("action")
   private ActionEnum action = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
   public V1OrderHistoryEntry action(ActionEnum action) {

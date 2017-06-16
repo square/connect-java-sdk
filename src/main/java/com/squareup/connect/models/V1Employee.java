@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,30 +31,32 @@ import java.util.List;
 @ApiModel(description = "Represents one of a business's employees.")
 
 public class V1Employee {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("first_name")
+  @SerializedName("first_name")
   private String firstName = null;
 
-  @JsonProperty("last_name")
+  @SerializedName("last_name")
   private String lastName = null;
 
-  @JsonProperty("role_ids")
+  @SerializedName("role_ids")
   private List<String> roleIds = new ArrayList<String>();
 
-  @JsonProperty("authorized_location_ids")
+  @SerializedName("authorized_location_ids")
   private List<String> authorizedLocationIds = new ArrayList<String>();
 
-  @JsonProperty("email")
+  @SerializedName("email")
   private String email = null;
 
   /**
    * CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard. 
    */
   public enum StatusEnum {
+    @SerializedName("ACTIVE")
     ACTIVE("ACTIVE"),
     
+    @SerializedName("INACTIVE")
     INACTIVE("INACTIVE");
 
     private String value;
@@ -63,28 +69,18 @@ public class V1Employee {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("status")
+  @SerializedName("status")
   private StatusEnum status = null;
 
-  @JsonProperty("external_id")
+  @SerializedName("external_id")
   private String externalId = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("updated_at")
+  @SerializedName("updated_at")
   private String updatedAt = null;
 
    /**

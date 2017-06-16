@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,28 +30,35 @@ import java.util.List;
  */
 
 public class V1EmployeeRole {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
   /**
    * Gets or Sets permissions
    */
   public enum PermissionsEnum {
+    @SerializedName("REGISTER_ACCESS_SALES_HISTORY")
     ACCESS_SALES_HISTORY("REGISTER_ACCESS_SALES_HISTORY"),
     
+    @SerializedName("REGISTER_APPLY_RESTRICTED_DISCOUNTS")
     APPLY_RESTRICTED_DISCOUNTS("REGISTER_APPLY_RESTRICTED_DISCOUNTS"),
     
+    @SerializedName("REGISTER_CHANGE_SETTINGS")
     CHANGE_SETTINGS("REGISTER_CHANGE_SETTINGS"),
     
+    @SerializedName("REGISTER_EDIT_ITEM")
     EDIT_ITEM("REGISTER_EDIT_ITEM"),
     
+    @SerializedName("REGISTER_ISSUE_REFUNDS")
     ISSUE_REFUNDS("REGISTER_ISSUE_REFUNDS"),
     
+    @SerializedName("REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE")
     OPEN_CASH_DRAWER_OUTSIDE_SALE("REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE"),
     
+    @SerializedName("REGISTER_VIEW_SUMMARY_REPORTS")
     VIEW_SUMMARY_REPORTS("REGISTER_VIEW_SUMMARY_REPORTS");
 
     private String value;
@@ -60,28 +71,18 @@ public class V1EmployeeRole {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static PermissionsEnum fromValue(String text) {
-      for (PermissionsEnum b : PermissionsEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("permissions")
+  @SerializedName("permissions")
   private List<PermissionsEnum> permissions = new ArrayList<PermissionsEnum>();
 
-  @JsonProperty("is_owner")
+  @SerializedName("is_owner")
   private Boolean isOwner = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("updated_at")
+  @SerializedName("updated_at")
   private String updatedAt = null;
 
    /**

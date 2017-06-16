@@ -15,24 +15,30 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates which high-level category of error has occurred during a request to the Connect API.
  */
 public enum ErrorCategory {
   
+  @SerializedName("API_ERROR")
   API_ERROR("API_ERROR"),
   
+  @SerializedName("AUTHENTICATION_ERROR")
   AUTHENTICATION_ERROR("AUTHENTICATION_ERROR"),
   
+  @SerializedName("INVALID_REQUEST_ERROR")
   INVALID_REQUEST_ERROR("INVALID_REQUEST_ERROR"),
   
+  @SerializedName("RATE_LIMIT_ERROR")
   RATE_LIMIT_ERROR("RATE_LIMIT_ERROR"),
   
+  @SerializedName("PAYMENT_METHOD_ERROR")
   PAYMENT_METHOD_ERROR("PAYMENT_METHOD_ERROR"),
   
+  @SerializedName("REFUND_ERROR")
   REFUND_ERROR("REFUND_ERROR");
 
   private String value;
@@ -44,16 +50,6 @@ public enum ErrorCategory {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static ErrorCategory fromValue(String text) {
-    for (ErrorCategory b : ErrorCategory.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

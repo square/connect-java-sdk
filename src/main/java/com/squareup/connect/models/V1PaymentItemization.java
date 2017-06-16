@@ -14,8 +14,11 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import com.squareup.connect.models.V1PaymentDiscount;
 import com.squareup.connect.models.V1PaymentItemDetail;
@@ -23,6 +26,7 @@ import com.squareup.connect.models.V1PaymentModifier;
 import com.squareup.connect.models.V1PaymentTax;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,26 +36,32 @@ import java.util.List;
  */
 
 public class V1PaymentItemization {
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("quantity")
+  @SerializedName("quantity")
   private BigDecimal quantity = null;
 
   /**
    * The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT
    */
   public enum ItemizationTypeEnum {
+    @SerializedName("ITEM")
     ITEM("ITEM"),
     
+    @SerializedName("CUSTOM_AMOUNT")
     CUSTOM_AMOUNT("CUSTOM_AMOUNT"),
     
+    @SerializedName("GIFT_CARD_ACTIVATION")
     GIFT_CARD_ACTIVATION("GIFT_CARD_ACTIVATION"),
     
+    @SerializedName("GIFT_CARD_RELOAD")
     GIFT_CARD_RELOAD("GIFT_CARD_RELOAD"),
     
+    @SerializedName("GIFT_CARD_UNKNOWN")
     GIFT_CARD_UNKNOWN("GIFT_CARD_UNKNOWN"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -64,52 +74,42 @@ public class V1PaymentItemization {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ItemizationTypeEnum fromValue(String text) {
-      for (ItemizationTypeEnum b : ItemizationTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("itemization_type")
+  @SerializedName("itemization_type")
   private ItemizationTypeEnum itemizationType = null;
 
-  @JsonProperty("item_detail")
+  @SerializedName("item_detail")
   private V1PaymentItemDetail itemDetail = null;
 
-  @JsonProperty("notes")
+  @SerializedName("notes")
   private String notes = null;
 
-  @JsonProperty("item_variation_name")
+  @SerializedName("item_variation_name")
   private String itemVariationName = null;
 
-  @JsonProperty("total_money")
+  @SerializedName("total_money")
   private V1Money totalMoney = null;
 
-  @JsonProperty("single_quantity_money")
+  @SerializedName("single_quantity_money")
   private V1Money singleQuantityMoney = null;
 
-  @JsonProperty("gross_sales_money")
+  @SerializedName("gross_sales_money")
   private V1Money grossSalesMoney = null;
 
-  @JsonProperty("discount_money")
+  @SerializedName("discount_money")
   private V1Money discountMoney = null;
 
-  @JsonProperty("net_sales_money")
+  @SerializedName("net_sales_money")
   private V1Money netSalesMoney = null;
 
-  @JsonProperty("taxes")
+  @SerializedName("taxes")
   private List<V1PaymentTax> taxes = new ArrayList<V1PaymentTax>();
 
-  @JsonProperty("discounts")
+  @SerializedName("discounts")
   private List<V1PaymentDiscount> discounts = new ArrayList<V1PaymentDiscount>();
 
-  @JsonProperty("modifiers")
+  @SerializedName("modifiers")
   private List<V1PaymentModifier> modifiers = new ArrayList<V1PaymentModifier>();
 
   public V1PaymentItemization name(String name) {

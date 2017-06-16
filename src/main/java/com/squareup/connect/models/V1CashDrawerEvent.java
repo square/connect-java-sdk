@@ -14,43 +14,56 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1CashDrawerEvent
  */
 
 public class V1CashDrawerEvent {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("employee_id")
+  @SerializedName("employee_id")
   private String employeeId = null;
 
   /**
    * The type of event that occurred.
    */
   public enum EventTypeEnum {
+    @SerializedName("NO_SALE")
     NO_SALE("NO_SALE"),
     
+    @SerializedName("CASH_TENDER_PAYMENT")
     CASH_TENDER_PAYMENT("CASH_TENDER_PAYMENT"),
     
+    @SerializedName("OTHER_TENDER_PAYMENT")
     OTHER_TENDER_PAYMENT("OTHER_TENDER_PAYMENT"),
     
+    @SerializedName("CASH_TENDER_CANCELED_PAYMENT")
     CASH_TENDER_CANCELED_PAYMENT("CASH_TENDER_CANCELED_PAYMENT"),
     
+    @SerializedName("OTHER_TENDER_CANCELED_PAYMENT")
     OTHER_TENDER_CANCELED_PAYMENT("OTHER_TENDER_CANCELED_PAYMENT"),
     
+    @SerializedName("CASH_TENDER_REFUND")
     CASH_TENDER_REFUND("CASH_TENDER_REFUND"),
     
+    @SerializedName("OTHER_TENDER_REFUND")
     OTHER_TENDER_REFUND("OTHER_TENDER_REFUND"),
     
+    @SerializedName("PAID_IN")
     PAID_IN("PAID_IN"),
     
+    @SerializedName("PAID_OUT")
     PAID_OUT("PAID_OUT");
 
     private String value;
@@ -63,28 +76,18 @@ public class V1CashDrawerEvent {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String text) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("event_type")
+  @SerializedName("event_type")
   private EventTypeEnum eventType = null;
 
-  @JsonProperty("event_money")
+  @SerializedName("event_money")
   private V1Money eventMoney = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("description")
+  @SerializedName("description")
   private String description = null;
 
   public V1CashDrawerEvent id(String id) {

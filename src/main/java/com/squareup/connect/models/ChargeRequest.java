@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Defines the parameters that can be included in the body of a request to the [Charge](#endpoint-charge) endpoint.
@@ -27,37 +31,37 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Defines the parameters that can be included in the body of a request to the [Charge](#endpoint-charge) endpoint.")
 
 public class ChargeRequest {
-  @JsonProperty("idempotency_key")
+  @SerializedName("idempotency_key")
   private String idempotencyKey = null;
 
-  @JsonProperty("amount_money")
+  @SerializedName("amount_money")
   private Money amountMoney = null;
 
-  @JsonProperty("card_nonce")
+  @SerializedName("card_nonce")
   private String cardNonce = null;
 
-  @JsonProperty("customer_card_id")
+  @SerializedName("customer_card_id")
   private String customerCardId = null;
 
-  @JsonProperty("delay_capture")
+  @SerializedName("delay_capture")
   private Boolean delayCapture = null;
 
-  @JsonProperty("reference_id")
+  @SerializedName("reference_id")
   private String referenceId = null;
 
-  @JsonProperty("note")
+  @SerializedName("note")
   private String note = null;
 
-  @JsonProperty("customer_id")
+  @SerializedName("customer_id")
   private String customerId = null;
 
-  @JsonProperty("billing_address")
+  @SerializedName("billing_address")
   private Address billingAddress = null;
 
-  @JsonProperty("shipping_address")
+  @SerializedName("shipping_address")
   private Address shippingAddress = null;
 
-  @JsonProperty("buyer_email_address")
+  @SerializedName("buyer_email_address")
   private String buyerEmailAddress = null;
 
   public ChargeRequest idempotencyKey(String idempotencyKey) {

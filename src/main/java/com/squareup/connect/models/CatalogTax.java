@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * A tax in the Catalog object model.
@@ -25,15 +29,17 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "A tax in the Catalog object model.")
 
 public class CatalogTax {
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
   /**
    * Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for all possible values.
    */
   public enum CalculationPhaseEnum {
+    @SerializedName("TAX_SUBTOTAL_PHASE")
     SUBTOTAL_PHASE("TAX_SUBTOTAL_PHASE"),
     
+    @SerializedName("TAX_TOTAL_PHASE")
     TOTAL_PHASE("TAX_TOTAL_PHASE");
 
     private String value;
@@ -46,27 +52,19 @@ public class CatalogTax {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static CalculationPhaseEnum fromValue(String text) {
-      for (CalculationPhaseEnum b : CalculationPhaseEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("calculation_phase")
+  @SerializedName("calculation_phase")
   private CalculationPhaseEnum calculationPhase = null;
 
   /**
    * Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for all possible values.
    */
   public enum InclusionTypeEnum {
+    @SerializedName("ADDITIVE")
     ADDITIVE("ADDITIVE"),
     
+    @SerializedName("INCLUSIVE")
     INCLUSIVE("INCLUSIVE");
 
     private String value;
@@ -79,28 +77,18 @@ public class CatalogTax {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static InclusionTypeEnum fromValue(String text) {
-      for (InclusionTypeEnum b : InclusionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("inclusion_type")
+  @SerializedName("inclusion_type")
   private InclusionTypeEnum inclusionType = null;
 
-  @JsonProperty("percentage")
+  @SerializedName("percentage")
   private String percentage = null;
 
-  @JsonProperty("applies_to_custom_amounts")
+  @SerializedName("applies_to_custom_amounts")
   private Boolean appliesToCustomAmounts = null;
 
-  @JsonProperty("enabled")
+  @SerializedName("enabled")
   private Boolean enabled = null;
 
   public CatalogTax name(String name) {

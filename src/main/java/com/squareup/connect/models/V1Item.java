@@ -14,14 +14,18 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Category;
 import com.squareup.connect.models.V1Fee;
 import com.squareup.connect.models.V1ItemImage;
 import com.squareup.connect.models.V1Variation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,23 +34,26 @@ import java.util.List;
  */
 
 public class V1Item {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("description")
+  @SerializedName("description")
   private String description = null;
 
   /**
    * The item's type. This value is NORMAL for almost all items.
    */
   public enum TypeEnum {
+    @SerializedName("NORMAL")
     NORMAL("NORMAL"),
     
+    @SerializedName("GIFT_CARD")
     GIFT_CARD("GIFT_CARD"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -59,41 +66,40 @@ public class V1Item {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
   /**
    * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6.
    */
   public enum ColorEnum {
+    @SerializedName("9da2a6")
     _9DA2A6("9da2a6"),
     
+    @SerializedName("4ab200")
     _4AB200("4ab200"),
     
+    @SerializedName("0b8000")
     _0B8000("0b8000"),
     
+    @SerializedName("2952cc")
     _2952CC("2952cc"),
     
+    @SerializedName("a82ee5")
     A82EE5("a82ee5"),
     
+    @SerializedName("e5457a")
     E5457A("e5457a"),
     
+    @SerializedName("b21212")
     B21212("b21212"),
     
+    @SerializedName("593c00")
     _593C00("593c00"),
     
+    @SerializedName("e5BF00")
     E5BF00("e5BF00");
 
     private String value;
@@ -106,30 +112,22 @@ public class V1Item {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ColorEnum fromValue(String text) {
-      for (ColorEnum b : ColorEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("color")
+  @SerializedName("color")
   private ColorEnum color = null;
 
-  @JsonProperty("abbreviation")
+  @SerializedName("abbreviation")
   private String abbreviation = null;
 
   /**
    * Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE.
    */
   public enum VisibilityEnum {
+    @SerializedName("PUBLIC")
     PUBLIC("PUBLIC"),
     
+    @SerializedName("PRIVATE")
     PRIVATE("PRIVATE");
 
     private String value;
@@ -142,40 +140,30 @@ public class V1Item {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static VisibilityEnum fromValue(String text) {
-      for (VisibilityEnum b : VisibilityEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("visibility")
+  @SerializedName("visibility")
   private VisibilityEnum visibility = null;
 
-  @JsonProperty("available_online")
+  @SerializedName("available_online")
   private Boolean availableOnline = null;
 
-  @JsonProperty("master_image")
+  @SerializedName("master_image")
   private V1ItemImage masterImage = null;
 
-  @JsonProperty("category")
+  @SerializedName("category")
   private V1Category category = null;
 
-  @JsonProperty("variations")
+  @SerializedName("variations")
   private List<V1Variation> variations = new ArrayList<V1Variation>();
 
-  @JsonProperty("modifier_lists")
+  @SerializedName("modifier_lists")
   private List<V1Variation> modifierLists = new ArrayList<V1Variation>();
 
-  @JsonProperty("fees")
+  @SerializedName("fees")
   private List<V1Fee> fees = new ArrayList<V1Fee>();
 
-  @JsonProperty("taxable")
+  @SerializedName("taxable")
   private Boolean taxable = null;
 
   public V1Item id(String id) {

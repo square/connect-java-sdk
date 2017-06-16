@@ -10,15 +10,22 @@
  * Do not edit the class manually.
  */
 
+
 package com.squareup.connect.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiCallback;
 import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiResponse;
 import com.squareup.connect.Configuration;
-import com.squareup.connect.models.*;
 import com.squareup.connect.Pair;
+import com.squareup.connect.ProgressRequestBody;
+import com.squareup.connect.ProgressResponseBody;
+
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
 
 import com.squareup.connect.models.BatchDeleteCatalogObjectsRequest;
 import com.squareup.connect.models.BatchDeleteCatalogObjectsResponse;
@@ -39,477 +46,1406 @@ import com.squareup.connect.models.UpdateItemTaxesResponse;
 import com.squareup.connect.models.UpsertCatalogObjectRequest;
 import com.squareup.connect.models.UpsertCatalogObjectResponse;
 
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class CatalogApi {
-  private ApiClient apiClient;
+    private ApiClient apiClient;
 
-  public CatalogApi() {
-    this(Configuration.getDefaultApiClient());
-  }
+    public CatalogApi() {
+        this(Configuration.getDefaultApiClient());
+    }
 
-  public CatalogApi(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
+    public CatalogApi(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
-  public ApiClient getApiClient() {
-    return apiClient;
-  }
+    public ApiClient getApiClient() {
+        return apiClient;
+    }
 
-  public void setApiClient(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
+    public void setApiClient(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
-  /**
-   * BatchDeleteCatalogObjects
-   * Deletes a set of [CatalogItem](#type-catalogitem)s based on the provided list of target IDs and returns a set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a CatalogItem will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.  &#x60;BatchDeleteCatalogObjects&#x60; succeeds even if only a portion of the targeted IDs can be deleted. The response will only include IDs that were actually deleted.
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return BatchDeleteCatalogObjectsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public BatchDeleteCatalogObjectsResponse batchDeleteCatalogObjects(BatchDeleteCatalogObjectsRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling batchDeleteCatalogObjects");
+    /**
+     * Build call for batchDeleteCatalogObjects
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call batchDeleteCatalogObjectsCall(BatchDeleteCatalogObjectsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/batch-delete";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/batch-delete";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call batchDeleteCatalogObjectsValidateBeforeCall(BatchDeleteCatalogObjectsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling batchDeleteCatalogObjects(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = batchDeleteCatalogObjectsCall(body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * BatchDeleteCatalogObjects
+     * Deletes a set of [CatalogItem](#type-catalogitem)s based on the provided list of target IDs and returns a set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a CatalogItem will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.  &#x60;BatchDeleteCatalogObjects&#x60; succeeds even if only a portion of the targeted IDs can be deleted. The response will only include IDs that were actually deleted.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return BatchDeleteCatalogObjectsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public BatchDeleteCatalogObjectsResponse batchDeleteCatalogObjects(BatchDeleteCatalogObjectsRequest body) throws ApiException {
+        ApiResponse<BatchDeleteCatalogObjectsResponse> resp = batchDeleteCatalogObjectsWithHttpInfo(body);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * BatchDeleteCatalogObjects
+     * Deletes a set of [CatalogItem](#type-catalogitem)s based on the provided list of target IDs and returns a set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a CatalogItem will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.  &#x60;BatchDeleteCatalogObjects&#x60; succeeds even if only a portion of the targeted IDs can be deleted. The response will only include IDs that were actually deleted.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;BatchDeleteCatalogObjectsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<BatchDeleteCatalogObjectsResponse> batchDeleteCatalogObjectsWithHttpInfo(BatchDeleteCatalogObjectsRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = batchDeleteCatalogObjectsValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<BatchDeleteCatalogObjectsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * BatchDeleteCatalogObjects (asynchronously)
+     * Deletes a set of [CatalogItem](#type-catalogitem)s based on the provided list of target IDs and returns a set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a CatalogItem will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.  &#x60;BatchDeleteCatalogObjects&#x60; succeeds even if only a portion of the targeted IDs can be deleted. The response will only include IDs that were actually deleted.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call batchDeleteCatalogObjectsAsync(BatchDeleteCatalogObjectsRequest body, final ApiCallback<BatchDeleteCatalogObjectsResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<BatchDeleteCatalogObjectsResponse> localVarReturnType = new GenericType<BatchDeleteCatalogObjectsResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * BatchRetrieveCatalogObjects
-   * Returns a set of objects based on the provided ID. [CatalogItem](#type-catalogitem)s returned in the set include all of the child information including: all [CatalogItemVariation](#type-catalogitemvariation) objects, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return BatchRetrieveCatalogObjectsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public BatchRetrieveCatalogObjectsResponse batchRetrieveCatalogObjects(BatchRetrieveCatalogObjectsRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling batchRetrieveCatalogObjects");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = batchDeleteCatalogObjectsValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<BatchDeleteCatalogObjectsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for batchRetrieveCatalogObjects
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call batchRetrieveCatalogObjectsCall(BatchRetrieveCatalogObjectsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/batch-retrieve";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/batch-retrieve";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call batchRetrieveCatalogObjectsValidateBeforeCall(BatchRetrieveCatalogObjectsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling batchRetrieveCatalogObjects(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = batchRetrieveCatalogObjectsCall(body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * BatchRetrieveCatalogObjects
+     * Returns a set of objects based on the provided ID. [CatalogItem](#type-catalogitem)s returned in the set include all of the child information including: all [CatalogItemVariation](#type-catalogitemvariation) objects, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return BatchRetrieveCatalogObjectsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public BatchRetrieveCatalogObjectsResponse batchRetrieveCatalogObjects(BatchRetrieveCatalogObjectsRequest body) throws ApiException {
+        ApiResponse<BatchRetrieveCatalogObjectsResponse> resp = batchRetrieveCatalogObjectsWithHttpInfo(body);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * BatchRetrieveCatalogObjects
+     * Returns a set of objects based on the provided ID. [CatalogItem](#type-catalogitem)s returned in the set include all of the child information including: all [CatalogItemVariation](#type-catalogitemvariation) objects, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;BatchRetrieveCatalogObjectsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<BatchRetrieveCatalogObjectsResponse> batchRetrieveCatalogObjectsWithHttpInfo(BatchRetrieveCatalogObjectsRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = batchRetrieveCatalogObjectsValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<BatchRetrieveCatalogObjectsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * BatchRetrieveCatalogObjects (asynchronously)
+     * Returns a set of objects based on the provided ID. [CatalogItem](#type-catalogitem)s returned in the set include all of the child information including: all [CatalogItemVariation](#type-catalogitemvariation) objects, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call batchRetrieveCatalogObjectsAsync(BatchRetrieveCatalogObjectsRequest body, final ApiCallback<BatchRetrieveCatalogObjectsResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<BatchRetrieveCatalogObjectsResponse> localVarReturnType = new GenericType<BatchRetrieveCatalogObjectsResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * BatchUpsertCatalogObjects
-   * Creates or updates up to 10,000 target objects based on the provided list of objects. The target objects are grouped into batches and each batch is inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in some way, or violates a database constraint, the entire batch containing that item will be disregarded. However, other batches in the same request may still succeed. Each batch may contain up to 1,000 objects, and batches will be processed in order as long as the total object count for the request (items, variations, modifier lists, discounts, and taxes) is no more than 10,000.
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return BatchUpsertCatalogObjectsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public BatchUpsertCatalogObjectsResponse batchUpsertCatalogObjects(BatchUpsertCatalogObjectsRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling batchUpsertCatalogObjects");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = batchRetrieveCatalogObjectsValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<BatchRetrieveCatalogObjectsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for batchUpsertCatalogObjects
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call batchUpsertCatalogObjectsCall(BatchUpsertCatalogObjectsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/batch-upsert";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/batch-upsert";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call batchUpsertCatalogObjectsValidateBeforeCall(BatchUpsertCatalogObjectsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling batchUpsertCatalogObjects(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = batchUpsertCatalogObjectsCall(body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * BatchUpsertCatalogObjects
+     * Creates or updates up to 10,000 target objects based on the provided list of objects. The target objects are grouped into batches and each batch is inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in some way, or violates a database constraint, the entire batch containing that item will be disregarded. However, other batches in the same request may still succeed. Each batch may contain up to 1,000 objects, and batches will be processed in order as long as the total object count for the request (items, variations, modifier lists, discounts, and taxes) is no more than 10,000.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return BatchUpsertCatalogObjectsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public BatchUpsertCatalogObjectsResponse batchUpsertCatalogObjects(BatchUpsertCatalogObjectsRequest body) throws ApiException {
+        ApiResponse<BatchUpsertCatalogObjectsResponse> resp = batchUpsertCatalogObjectsWithHttpInfo(body);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * BatchUpsertCatalogObjects
+     * Creates or updates up to 10,000 target objects based on the provided list of objects. The target objects are grouped into batches and each batch is inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in some way, or violates a database constraint, the entire batch containing that item will be disregarded. However, other batches in the same request may still succeed. Each batch may contain up to 1,000 objects, and batches will be processed in order as long as the total object count for the request (items, variations, modifier lists, discounts, and taxes) is no more than 10,000.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;BatchUpsertCatalogObjectsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<BatchUpsertCatalogObjectsResponse> batchUpsertCatalogObjectsWithHttpInfo(BatchUpsertCatalogObjectsRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = batchUpsertCatalogObjectsValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<BatchUpsertCatalogObjectsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * BatchUpsertCatalogObjects (asynchronously)
+     * Creates or updates up to 10,000 target objects based on the provided list of objects. The target objects are grouped into batches and each batch is inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in some way, or violates a database constraint, the entire batch containing that item will be disregarded. However, other batches in the same request may still succeed. Each batch may contain up to 1,000 objects, and batches will be processed in order as long as the total object count for the request (items, variations, modifier lists, discounts, and taxes) is no more than 10,000.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call batchUpsertCatalogObjectsAsync(BatchUpsertCatalogObjectsRequest body, final ApiCallback<BatchUpsertCatalogObjectsResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<BatchUpsertCatalogObjectsResponse> localVarReturnType = new GenericType<BatchUpsertCatalogObjectsResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * CatalogInfo
-   * Returns information about the Square Catalog API, such as batch size limits for &#x60;BatchUpsertCatalogObjects&#x60;.
-   * @return CatalogInfoResponse
-   * @throws ApiException if fails to make API call
-   */
-  public CatalogInfoResponse catalogInfo() throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v2/catalog/info";
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
 
+        com.squareup.okhttp.Call call = batchUpsertCatalogObjectsValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<BatchUpsertCatalogObjectsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for catalogInfo
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call catalogInfoCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/info";
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    GenericType<CatalogInfoResponse> localVarReturnType = new GenericType<CatalogInfoResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * DeleteCatalogObject
-   * Deletes a single [CatalogObject](#type-catalogobject) based on the provided ID and returns the set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a [CatalogItem](#type-catalogitem) will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.
-   * @param objectId The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s). (required)
-   * @return DeleteCatalogObjectResponse
-   * @throws ApiException if fails to make API call
-   */
-  public DeleteCatalogObjectResponse deleteCatalogObject(String objectId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'objectId' is set
-    if (objectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'objectId' when calling deleteCatalogObject");
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/object/{object_id}"
-      .replaceAll("\\{" + "object_id" + "\\}", apiClient.escapeString(objectId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call catalogInfoValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        
+        com.squareup.okhttp.Call call = catalogInfoCall(progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * CatalogInfo
+     * Returns information about the Square Catalog API, such as batch size limits for &#x60;BatchUpsertCatalogObjects&#x60;.
+     * @return CatalogInfoResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CatalogInfoResponse catalogInfo() throws ApiException {
+        ApiResponse<CatalogInfoResponse> resp = catalogInfoWithHttpInfo();
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * CatalogInfo
+     * Returns information about the Square Catalog API, such as batch size limits for &#x60;BatchUpsertCatalogObjects&#x60;.
+     * @return ApiResponse&lt;CatalogInfoResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CatalogInfoResponse> catalogInfoWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = catalogInfoValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<CatalogInfoResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * CatalogInfo (asynchronously)
+     * Returns information about the Square Catalog API, such as batch size limits for &#x60;BatchUpsertCatalogObjects&#x60;.
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call catalogInfoAsync(final ApiCallback<CatalogInfoResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<DeleteCatalogObjectResponse> localVarReturnType = new GenericType<DeleteCatalogObjectResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * ListCatalog
-   * Returns a list of [CatalogObject](#type-catalogobject)s that includes all objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem) and [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter is specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types: &#x60;ITEM&#x60;, &#x60;ITEM_VARIATION&#x60;, &#x60;MODIFIER&#x60;, &#x60;MODIFIER_LIST&#x60;, &#x60;CATEGORY&#x60;, &#x60;DISCOUNT&#x60;, &#x60;TAX&#x60;.
-   * @param cursor The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information. (optional)
-   * @param types An optional case-insensitive, comma-separated list of object types to retrieve, for example &#x60;ITEM,ITEM_VARIATION,CATEGORY&#x60;.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely &#x60;\&quot;ITEM\&quot;&#x60;, &#x60;\&quot;ITEM_VARIATION\&quot;&#x60;, &#x60;\&quot;CATEGORY\&quot;&#x60;, &#x60;\&quot;DISCOUNT\&quot;&#x60;, &#x60;\&quot;TAX\&quot;&#x60;, &#x60;\&quot;MODIFIER\&quot;&#x60;, or &#x60;\&quot;MODIFIER_LIST\&quot;&#x60;. (optional)
-   * @return ListCatalogResponse
-   * @throws ApiException if fails to make API call
-   */
-  public ListCatalogResponse listCatalog(String cursor, String types) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v2/catalog/list";
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "types", types));
+        com.squareup.okhttp.Call call = catalogInfoValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CatalogInfoResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteCatalogObject
+     * @param objectId The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s). (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteCatalogObjectCall(String objectId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/object/{object_id}"
+            .replaceAll("\\{" + "object_id" + "\\}", apiClient.escapeString(objectId.toString()));
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    GenericType<ListCatalogResponse> localVarReturnType = new GenericType<ListCatalogResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * RetrieveCatalogObject
-   * Returns a single [CatalogItem](#type-catalogitem) as a [CatalogObject](#type-catalogobject) based on the provided ID. The returned object includes all of the relevant [CatalogItem](#type-catalogitem) information including: [CatalogItemVariation](#type-catalogitemvariation) children, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
-   * @param objectId The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved. (required)
-   * @param includeRelatedObjects If &#x60;true&#x60;, the response will include additional objects that are related to the requested object, as follows:  If the &#x60;object&#x60; field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the &#x60;related_objects&#x60; field of the response. If the &#x60;object&#x60; field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the &#x60;related_objects&#x60; field of the response. (optional)
-   * @return RetrieveCatalogObjectResponse
-   * @throws ApiException if fails to make API call
-   */
-  public RetrieveCatalogObjectResponse retrieveCatalogObject(String objectId, Boolean includeRelatedObjects) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'objectId' is set
-    if (objectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'objectId' when calling retrieveCatalogObject");
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/object/{object_id}"
-      .replaceAll("\\{" + "object_id" + "\\}", apiClient.escapeString(objectId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteCatalogObjectValidateBeforeCall(String objectId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'objectId' is set
+        if (objectId == null) {
+            throw new ApiException("Missing the required parameter 'objectId' when calling deleteCatalogObject(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteCatalogObjectCall(objectId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_related_objects", includeRelatedObjects));
+    /**
+     * DeleteCatalogObject
+     * Deletes a single [CatalogObject](#type-catalogobject) based on the provided ID and returns the set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a [CatalogItem](#type-catalogitem) will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.
+     * @param objectId The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s). (required)
+     * @return DeleteCatalogObjectResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DeleteCatalogObjectResponse deleteCatalogObject(String objectId) throws ApiException {
+        ApiResponse<DeleteCatalogObjectResponse> resp = deleteCatalogObjectWithHttpInfo(objectId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * DeleteCatalogObject
+     * Deletes a single [CatalogObject](#type-catalogobject) based on the provided ID and returns the set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a [CatalogItem](#type-catalogitem) will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.
+     * @param objectId The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s). (required)
+     * @return ApiResponse&lt;DeleteCatalogObjectResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DeleteCatalogObjectResponse> deleteCatalogObjectWithHttpInfo(String objectId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteCatalogObjectValidateBeforeCall(objectId, null, null);
+        Type localVarReturnType = new TypeToken<DeleteCatalogObjectResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * DeleteCatalogObject (asynchronously)
+     * Deletes a single [CatalogObject](#type-catalogobject) based on the provided ID and returns the set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a [CatalogItem](#type-catalogitem) will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.
+     * @param objectId The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteCatalogObjectAsync(String objectId, final ApiCallback<DeleteCatalogObjectResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<RetrieveCatalogObjectResponse> localVarReturnType = new GenericType<RetrieveCatalogObjectResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * SearchCatalogObjects
-   * Queries the targeted catalog using a variety of query types ([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute), ([CatalogQueryExact](#type-catalogqueryexact, ([CatalogQueryRange](#type-catalogqueryrange), ([CatalogQueryText](#type-catalogquerytext), ([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), ([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return SearchCatalogObjectsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SearchCatalogObjectsResponse searchCatalogObjects(SearchCatalogObjectsRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling searchCatalogObjects");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteCatalogObjectValidateBeforeCall(objectId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DeleteCatalogObjectResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listCatalog
+     * @param cursor The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information. (optional)
+     * @param types An optional case-insensitive, comma-separated list of object types to retrieve, for example &#x60;ITEM,ITEM_VARIATION,CATEGORY&#x60;.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely &#x60;\&quot;ITEM\&quot;&#x60;, &#x60;\&quot;ITEM_VARIATION\&quot;&#x60;, &#x60;\&quot;CATEGORY\&quot;&#x60;, &#x60;\&quot;DISCOUNT\&quot;&#x60;, &#x60;\&quot;TAX\&quot;&#x60;, &#x60;\&quot;MODIFIER\&quot;&#x60;, or &#x60;\&quot;MODIFIER_LIST\&quot;&#x60;. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listCatalogCall(String cursor, String types, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/list";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (cursor != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+        if (types != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "types", types));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/search";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listCatalogValidateBeforeCall(String cursor, String types, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        
+        com.squareup.okhttp.Call call = listCatalogCall(cursor, types, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * ListCatalog
+     * Returns a list of [CatalogObject](#type-catalogobject)s that includes all objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem) and [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter is specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types: &#x60;ITEM&#x60;, &#x60;ITEM_VARIATION&#x60;, &#x60;MODIFIER&#x60;, &#x60;MODIFIER_LIST&#x60;, &#x60;CATEGORY&#x60;, &#x60;DISCOUNT&#x60;, &#x60;TAX&#x60;.
+     * @param cursor The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information. (optional)
+     * @param types An optional case-insensitive, comma-separated list of object types to retrieve, for example &#x60;ITEM,ITEM_VARIATION,CATEGORY&#x60;.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely &#x60;\&quot;ITEM\&quot;&#x60;, &#x60;\&quot;ITEM_VARIATION\&quot;&#x60;, &#x60;\&quot;CATEGORY\&quot;&#x60;, &#x60;\&quot;DISCOUNT\&quot;&#x60;, &#x60;\&quot;TAX\&quot;&#x60;, &#x60;\&quot;MODIFIER\&quot;&#x60;, or &#x60;\&quot;MODIFIER_LIST\&quot;&#x60;. (optional)
+     * @return ListCatalogResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListCatalogResponse listCatalog(String cursor, String types) throws ApiException {
+        ApiResponse<ListCatalogResponse> resp = listCatalogWithHttpInfo(cursor, types);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * ListCatalog
+     * Returns a list of [CatalogObject](#type-catalogobject)s that includes all objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem) and [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter is specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types: &#x60;ITEM&#x60;, &#x60;ITEM_VARIATION&#x60;, &#x60;MODIFIER&#x60;, &#x60;MODIFIER_LIST&#x60;, &#x60;CATEGORY&#x60;, &#x60;DISCOUNT&#x60;, &#x60;TAX&#x60;.
+     * @param cursor The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information. (optional)
+     * @param types An optional case-insensitive, comma-separated list of object types to retrieve, for example &#x60;ITEM,ITEM_VARIATION,CATEGORY&#x60;.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely &#x60;\&quot;ITEM\&quot;&#x60;, &#x60;\&quot;ITEM_VARIATION\&quot;&#x60;, &#x60;\&quot;CATEGORY\&quot;&#x60;, &#x60;\&quot;DISCOUNT\&quot;&#x60;, &#x60;\&quot;TAX\&quot;&#x60;, &#x60;\&quot;MODIFIER\&quot;&#x60;, or &#x60;\&quot;MODIFIER_LIST\&quot;&#x60;. (optional)
+     * @return ApiResponse&lt;ListCatalogResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListCatalogResponse> listCatalogWithHttpInfo(String cursor, String types) throws ApiException {
+        com.squareup.okhttp.Call call = listCatalogValidateBeforeCall(cursor, types, null, null);
+        Type localVarReturnType = new TypeToken<ListCatalogResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * ListCatalog (asynchronously)
+     * Returns a list of [CatalogObject](#type-catalogobject)s that includes all objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem) and [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter is specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types: &#x60;ITEM&#x60;, &#x60;ITEM_VARIATION&#x60;, &#x60;MODIFIER&#x60;, &#x60;MODIFIER_LIST&#x60;, &#x60;CATEGORY&#x60;, &#x60;DISCOUNT&#x60;, &#x60;TAX&#x60;.
+     * @param cursor The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information. (optional)
+     * @param types An optional case-insensitive, comma-separated list of object types to retrieve, for example &#x60;ITEM,ITEM_VARIATION,CATEGORY&#x60;.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely &#x60;\&quot;ITEM\&quot;&#x60;, &#x60;\&quot;ITEM_VARIATION\&quot;&#x60;, &#x60;\&quot;CATEGORY\&quot;&#x60;, &#x60;\&quot;DISCOUNT\&quot;&#x60;, &#x60;\&quot;TAX\&quot;&#x60;, &#x60;\&quot;MODIFIER\&quot;&#x60;, or &#x60;\&quot;MODIFIER_LIST\&quot;&#x60;. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listCatalogAsync(String cursor, String types, final ApiCallback<ListCatalogResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<SearchCatalogObjectsResponse> localVarReturnType = new GenericType<SearchCatalogObjectsResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * UpdateItemModifierLists
-   * Updates the [CatalogModifierList](#type-catalogmodifierlist) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return UpdateItemModifierListsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public UpdateItemModifierListsResponse updateItemModifierLists(UpdateItemModifierListsRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateItemModifierLists");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listCatalogValidateBeforeCall(cursor, types, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListCatalogResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveCatalogObject
+     * @param objectId The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved. (required)
+     * @param includeRelatedObjects If &#x60;true&#x60;, the response will include additional objects that are related to the requested object, as follows:  If the &#x60;object&#x60; field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the &#x60;related_objects&#x60; field of the response. If the &#x60;object&#x60; field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the &#x60;related_objects&#x60; field of the response. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveCatalogObjectCall(String objectId, Boolean includeRelatedObjects, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/object/{object_id}"
+            .replaceAll("\\{" + "object_id" + "\\}", apiClient.escapeString(objectId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (includeRelatedObjects != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_related_objects", includeRelatedObjects));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/update-item-modifier-lists";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveCatalogObjectValidateBeforeCall(String objectId, Boolean includeRelatedObjects, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'objectId' is set
+        if (objectId == null) {
+            throw new ApiException("Missing the required parameter 'objectId' when calling retrieveCatalogObject(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveCatalogObjectCall(objectId, includeRelatedObjects, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * RetrieveCatalogObject
+     * Returns a single [CatalogItem](#type-catalogitem) as a [CatalogObject](#type-catalogobject) based on the provided ID. The returned object includes all of the relevant [CatalogItem](#type-catalogitem) information including: [CatalogItemVariation](#type-catalogitemvariation) children, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
+     * @param objectId The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved. (required)
+     * @param includeRelatedObjects If &#x60;true&#x60;, the response will include additional objects that are related to the requested object, as follows:  If the &#x60;object&#x60; field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the &#x60;related_objects&#x60; field of the response. If the &#x60;object&#x60; field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the &#x60;related_objects&#x60; field of the response. (optional)
+     * @return RetrieveCatalogObjectResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public RetrieveCatalogObjectResponse retrieveCatalogObject(String objectId, Boolean includeRelatedObjects) throws ApiException {
+        ApiResponse<RetrieveCatalogObjectResponse> resp = retrieveCatalogObjectWithHttpInfo(objectId, includeRelatedObjects);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * RetrieveCatalogObject
+     * Returns a single [CatalogItem](#type-catalogitem) as a [CatalogObject](#type-catalogobject) based on the provided ID. The returned object includes all of the relevant [CatalogItem](#type-catalogitem) information including: [CatalogItemVariation](#type-catalogitemvariation) children, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
+     * @param objectId The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved. (required)
+     * @param includeRelatedObjects If &#x60;true&#x60;, the response will include additional objects that are related to the requested object, as follows:  If the &#x60;object&#x60; field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the &#x60;related_objects&#x60; field of the response. If the &#x60;object&#x60; field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the &#x60;related_objects&#x60; field of the response. (optional)
+     * @return ApiResponse&lt;RetrieveCatalogObjectResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<RetrieveCatalogObjectResponse> retrieveCatalogObjectWithHttpInfo(String objectId, Boolean includeRelatedObjects) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveCatalogObjectValidateBeforeCall(objectId, includeRelatedObjects, null, null);
+        Type localVarReturnType = new TypeToken<RetrieveCatalogObjectResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * RetrieveCatalogObject (asynchronously)
+     * Returns a single [CatalogItem](#type-catalogitem) as a [CatalogObject](#type-catalogobject) based on the provided ID. The returned object includes all of the relevant [CatalogItem](#type-catalogitem) information including: [CatalogItemVariation](#type-catalogitemvariation) children, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
+     * @param objectId The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved. (required)
+     * @param includeRelatedObjects If &#x60;true&#x60;, the response will include additional objects that are related to the requested object, as follows:  If the &#x60;object&#x60; field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the &#x60;related_objects&#x60; field of the response. If the &#x60;object&#x60; field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the &#x60;related_objects&#x60; field of the response. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveCatalogObjectAsync(String objectId, Boolean includeRelatedObjects, final ApiCallback<RetrieveCatalogObjectResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<UpdateItemModifierListsResponse> localVarReturnType = new GenericType<UpdateItemModifierListsResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * UpdateItemTaxes
-   * Updates the [CatalogTax](#type-catalogtax) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return UpdateItemTaxesResponse
-   * @throws ApiException if fails to make API call
-   */
-  public UpdateItemTaxesResponse updateItemTaxes(UpdateItemTaxesRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateItemTaxes");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveCatalogObjectValidateBeforeCall(objectId, includeRelatedObjects, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RetrieveCatalogObjectResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for searchCatalogObjects
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call searchCatalogObjectsCall(SearchCatalogObjectsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/search";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/update-item-taxes";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call searchCatalogObjectsValidateBeforeCall(SearchCatalogObjectsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling searchCatalogObjects(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = searchCatalogObjectsCall(body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * SearchCatalogObjects
+     * Queries the targeted catalog using a variety of query types ([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute), ([CatalogQueryExact](#type-catalogqueryexact, ([CatalogQueryRange](#type-catalogqueryrange), ([CatalogQueryText](#type-catalogquerytext), ([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), ([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return SearchCatalogObjectsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SearchCatalogObjectsResponse searchCatalogObjects(SearchCatalogObjectsRequest body) throws ApiException {
+        ApiResponse<SearchCatalogObjectsResponse> resp = searchCatalogObjectsWithHttpInfo(body);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * SearchCatalogObjects
+     * Queries the targeted catalog using a variety of query types ([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute), ([CatalogQueryExact](#type-catalogqueryexact, ([CatalogQueryRange](#type-catalogqueryrange), ([CatalogQueryText](#type-catalogquerytext), ([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), ([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;SearchCatalogObjectsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SearchCatalogObjectsResponse> searchCatalogObjectsWithHttpInfo(SearchCatalogObjectsRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = searchCatalogObjectsValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<SearchCatalogObjectsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * SearchCatalogObjects (asynchronously)
+     * Queries the targeted catalog using a variety of query types ([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute), ([CatalogQueryExact](#type-catalogqueryexact, ([CatalogQueryRange](#type-catalogqueryrange), ([CatalogQueryText](#type-catalogquerytext), ([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), ([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call searchCatalogObjectsAsync(SearchCatalogObjectsRequest body, final ApiCallback<SearchCatalogObjectsResponse> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<UpdateItemTaxesResponse> localVarReturnType = new GenericType<UpdateItemTaxesResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * UpsertCatalogObject
-   * Creates or updates the target [CatalogObject](#type-catalogobject).
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return UpsertCatalogObjectResponse
-   * @throws ApiException if fails to make API call
-   */
-  public UpsertCatalogObjectResponse upsertCatalogObject(UpsertCatalogObjectRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling upsertCatalogObject");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = searchCatalogObjectsValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SearchCatalogObjectsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateItemModifierLists
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateItemModifierListsCall(UpdateItemModifierListsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/update-item-modifier-lists";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v2/catalog/object";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateItemModifierListsValidateBeforeCall(UpdateItemModifierListsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateItemModifierLists(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateItemModifierListsCall(body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * UpdateItemModifierLists
+     * Updates the [CatalogModifierList](#type-catalogmodifierlist) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return UpdateItemModifierListsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public UpdateItemModifierListsResponse updateItemModifierLists(UpdateItemModifierListsRequest body) throws ApiException {
+        ApiResponse<UpdateItemModifierListsResponse> resp = updateItemModifierListsWithHttpInfo(body);
+        return resp.getData();
+    }
 
+    /**
+     * UpdateItemModifierLists
+     * Updates the [CatalogModifierList](#type-catalogmodifierlist) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;UpdateItemModifierListsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<UpdateItemModifierListsResponse> updateItemModifierListsWithHttpInfo(UpdateItemModifierListsRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = updateItemModifierListsValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<UpdateItemModifierListsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * UpdateItemModifierLists (asynchronously)
+     * Updates the [CatalogModifierList](#type-catalogmodifierlist) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateItemModifierListsAsync(UpdateItemModifierListsRequest body, final ApiCallback<UpdateItemModifierListsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateItemModifierListsValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<UpdateItemModifierListsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateItemTaxes
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateItemTaxesCall(UpdateItemTaxesRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/update-item-taxes";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
     
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateItemTaxesValidateBeforeCall(UpdateItemTaxesRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateItemTaxes(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateItemTaxesCall(body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * UpdateItemTaxes
+     * Updates the [CatalogTax](#type-catalogtax) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return UpdateItemTaxesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public UpdateItemTaxesResponse updateItemTaxes(UpdateItemTaxesRequest body) throws ApiException {
+        ApiResponse<UpdateItemTaxesResponse> resp = updateItemTaxesWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * UpdateItemTaxes
+     * Updates the [CatalogTax](#type-catalogtax) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;UpdateItemTaxesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<UpdateItemTaxesResponse> updateItemTaxesWithHttpInfo(UpdateItemTaxesRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = updateItemTaxesValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<UpdateItemTaxesResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * UpdateItemTaxes (asynchronously)
+     * Updates the [CatalogTax](#type-catalogtax) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateItemTaxesAsync(UpdateItemTaxesRequest body, final ApiCallback<UpdateItemTaxesResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateItemTaxesValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<UpdateItemTaxesResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for upsertCatalogObject
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call upsertCatalogObjectCall(UpsertCatalogObjectRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v2/catalog/object";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
     
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call upsertCatalogObjectValidateBeforeCall(UpsertCatalogObjectRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling upsertCatalogObject(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = upsertCatalogObjectCall(body, progressListener, progressRequestListener);
+        return call;
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        
+        
+        
+        
+    }
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+    /**
+     * UpsertCatalogObject
+     * Creates or updates the target [CatalogObject](#type-catalogobject).
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return UpsertCatalogObjectResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public UpsertCatalogObjectResponse upsertCatalogObject(UpsertCatalogObjectRequest body) throws ApiException {
+        ApiResponse<UpsertCatalogObjectResponse> resp = upsertCatalogObjectWithHttpInfo(body);
+        return resp.getData();
+    }
 
-    GenericType<UpsertCatalogObjectResponse> localVarReturnType = new GenericType<UpsertCatalogObjectResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
+    /**
+     * UpsertCatalogObject
+     * Creates or updates the target [CatalogObject](#type-catalogobject).
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;UpsertCatalogObjectResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<UpsertCatalogObjectResponse> upsertCatalogObjectWithHttpInfo(UpsertCatalogObjectRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = upsertCatalogObjectValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<UpsertCatalogObjectResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * UpsertCatalogObject (asynchronously)
+     * Creates or updates the target [CatalogObject](#type-catalogobject).
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call upsertCatalogObjectAsync(UpsertCatalogObjectRequest body, final ApiCallback<UpsertCatalogObjectResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = upsertCatalogObjectValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<UpsertCatalogObjectResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
 }

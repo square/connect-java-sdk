@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogModifierOverride;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,19 +32,19 @@ import java.util.List;
 @ApiModel(description = "Controls the properties of a [CatalogModifierList](#type-catalogmodifierlist) as it applies to this [CatalogItem](#type-catalogitem).")
 
 public class CatalogItemModifierListInfo {
-  @JsonProperty("modifier_list_id")
+  @SerializedName("modifier_list_id")
   private String modifierListId = null;
 
-  @JsonProperty("modifier_overrides")
+  @SerializedName("modifier_overrides")
   private List<CatalogModifierOverride> modifierOverrides = new ArrayList<CatalogModifierOverride>();
 
-  @JsonProperty("min_selected_modifiers")
+  @SerializedName("min_selected_modifiers")
   private Integer minSelectedModifiers = null;
 
-  @JsonProperty("max_selected_modifiers")
+  @SerializedName("max_selected_modifiers")
   private Integer maxSelectedModifiers = null;
 
-  @JsonProperty("enabled")
+  @SerializedName("enabled")
   private Boolean enabled = null;
 
   public CatalogItemModifierListInfo modifierListId(String modifierListId) {

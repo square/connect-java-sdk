@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogObject;
 import com.squareup.connect.models.Error;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,13 +33,13 @@ import java.util.List;
 @ApiModel(description = "")
 
 public class BatchRetrieveCatalogObjectsResponse {
-  @JsonProperty("errors")
+  @SerializedName("errors")
   private List<Error> errors = new ArrayList<Error>();
 
-  @JsonProperty("objects")
+  @SerializedName("objects")
   private List<CatalogObject> objects = new ArrayList<CatalogObject>();
 
-  @JsonProperty("related_objects")
+  @SerializedName("related_objects")
   private List<CatalogObject> relatedObjects = new ArrayList<CatalogObject>();
 
   public BatchRetrieveCatalogObjectsResponse errors(List<Error> errors) {

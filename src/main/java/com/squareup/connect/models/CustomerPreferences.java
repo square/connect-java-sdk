@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents a particular customer&#39;s preferences.
@@ -25,7 +29,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a particular customer's preferences.")
 
 public class CustomerPreferences {
-  @JsonProperty("email_unsubscribed")
+  @SerializedName("email_unsubscribed")
   private Boolean emailUnsubscribed = null;
 
   public CustomerPreferences emailUnsubscribed(Boolean emailUnsubscribed) {

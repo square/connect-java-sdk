@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Card;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents additional details of a tender with &#x60;type&#x60; &#x60;CARD&#x60; or &#x60;SQUARE_GIFT_CARD&#x60;
@@ -30,12 +34,16 @@ public class TenderCardDetails {
    * The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values.
    */
   public enum StatusEnum {
+    @SerializedName("AUTHORIZED")
     AUTHORIZED("AUTHORIZED"),
     
+    @SerializedName("CAPTURED")
     CAPTURED("CAPTURED"),
     
+    @SerializedName("VOIDED")
     VOIDED("VOIDED"),
     
+    @SerializedName("FAILED")
     FAILED("FAILED");
 
     private String value;
@@ -48,36 +56,31 @@ public class TenderCardDetails {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("status")
+  @SerializedName("status")
   private StatusEnum status = null;
 
-  @JsonProperty("card")
+  @SerializedName("card")
   private Card card = null;
 
   /**
    * The method used to enter the card's details for the transaction.
    */
   public enum EntryMethodEnum {
+    @SerializedName("SWIPED")
     SWIPED("SWIPED"),
     
+    @SerializedName("KEYED")
     KEYED("KEYED"),
     
+    @SerializedName("EMV")
     EMV("EMV"),
     
+    @SerializedName("ON_FILE")
     ON_FILE("ON_FILE"),
     
+    @SerializedName("CONTACTLESS")
     CONTACTLESS("CONTACTLESS");
 
     private String value;
@@ -90,19 +93,9 @@ public class TenderCardDetails {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static EntryMethodEnum fromValue(String text) {
-      for (EntryMethodEnum b : EntryMethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("entry_method")
+  @SerializedName("entry_method")
   private EntryMethodEnum entryMethod = null;
 
   public TenderCardDetails status(StatusEnum status) {

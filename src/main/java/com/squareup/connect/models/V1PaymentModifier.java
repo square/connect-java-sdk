@@ -14,24 +14,28 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1PaymentModifier
  */
 
 public class V1PaymentModifier {
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("applied_money")
+  @SerializedName("applied_money")
   private V1Money appliedMoney = null;
 
-  @JsonProperty("modifier_option_id")
+  @SerializedName("modifier_option_id")
   private String modifierOptionId = null;
 
   public V1PaymentModifier name(String name) {

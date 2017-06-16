@@ -14,38 +14,50 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1Tender
  */
 
 public class V1Tender {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
   /**
    * The type of tender.
    */
   public enum TypeEnum {
+    @SerializedName("CREDIT_CARD")
     CREDIT_CARD("CREDIT_CARD"),
     
+    @SerializedName("CASH")
     CASH("CASH"),
     
+    @SerializedName("THIRD_PARTY_CARD")
     THIRD_PARTY_CARD("THIRD_PARTY_CARD"),
     
+    @SerializedName("NO_SALE")
     NO_SALE("NO_SALE"),
     
+    @SerializedName("SQUARE_WALLET")
     SQUARE_WALLET("SQUARE_WALLET"),
     
+    @SerializedName("SQUARE_GIFT_CARD")
     SQUARE_GIFT_CARD("SQUARE_GIFT_CARD"),
     
+    @SerializedName("UNKNOWN")
     UNKNOWN("UNKNOWN"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -58,50 +70,49 @@ public class V1Tender {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("employee_id")
+  @SerializedName("employee_id")
   private String employeeId = null;
 
-  @JsonProperty("receipt_url")
+  @SerializedName("receipt_url")
   private String receiptUrl = null;
 
   /**
    * The brand of credit card provided.
    */
   public enum CardBrandEnum {
+    @SerializedName("OTHER_BRAND")
     OTHER_BRAND("OTHER_BRAND"),
     
+    @SerializedName("VISA")
     VISA("VISA"),
     
+    @SerializedName("MASTER_CARD")
     MASTER_CARD("MASTER_CARD"),
     
+    @SerializedName("AMERICAN_EXPRESS")
     AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
     
+    @SerializedName("DISCOVER")
     DISCOVER("DISCOVER"),
     
+    @SerializedName("DISCOVER_DINERS")
     DISCOVER_DINERS("DISCOVER_DINERS"),
     
+    @SerializedName("JCB")
     JCB("JCB"),
     
+    @SerializedName("CHINA_UNIONPAY")
     CHINA_UNIONPAY("CHINA_UNIONPAY"),
     
+    @SerializedName("SQUARE_GIFT_CARD")
     SQUARE_GIFT_CARD("SQUARE_GIFT_CARD");
 
     private String value;
@@ -114,40 +125,37 @@ public class V1Tender {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static CardBrandEnum fromValue(String text) {
-      for (CardBrandEnum b : CardBrandEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("card_brand")
+  @SerializedName("card_brand")
   private CardBrandEnum cardBrand = null;
 
-  @JsonProperty("pan_suffix")
+  @SerializedName("pan_suffix")
   private String panSuffix = null;
 
   /**
    * The tender's unique ID.
    */
   public enum EntryMethodEnum {
+    @SerializedName("MANUAL")
     MANUAL("MANUAL"),
     
+    @SerializedName("SCANNED")
     SCANNED("SCANNED"),
     
+    @SerializedName("SQUARE_CASH")
     SQUARE_CASH("SQUARE_CASH"),
     
+    @SerializedName("SQUARE_WALLET")
     SQUARE_WALLET("SQUARE_WALLET"),
     
+    @SerializedName("SWIPED")
     SWIPED("SWIPED"),
     
+    @SerializedName("WEB_FORM")
     WEB_FORM("WEB_FORM"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -160,34 +168,24 @@ public class V1Tender {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static EntryMethodEnum fromValue(String text) {
-      for (EntryMethodEnum b : EntryMethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("entry_method")
+  @SerializedName("entry_method")
   private EntryMethodEnum entryMethod = null;
 
-  @JsonProperty("payment_note")
+  @SerializedName("payment_note")
   private String paymentNote = null;
 
-  @JsonProperty("total_money")
+  @SerializedName("total_money")
   private V1Money totalMoney = null;
 
-  @JsonProperty("tendered_money")
+  @SerializedName("tendered_money")
   private V1Money tenderedMoney = null;
 
-  @JsonProperty("change_back_money")
+  @SerializedName("change_back_money")
   private V1Money changeBackMoney = null;
 
-  @JsonProperty("refunded_money")
+  @SerializedName("refunded_money")
   private V1Money refundedMoney = null;
 
   public V1Tender id(String id) {

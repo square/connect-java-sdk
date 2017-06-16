@@ -15,16 +15,18 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * When to calculate the taxes due on a cart.
  */
 public enum TaxCalculationPhase {
   
+  @SerializedName("TAX_SUBTOTAL_PHASE")
   SUBTOTAL_PHASE("TAX_SUBTOTAL_PHASE"),
   
+  @SerializedName("TAX_TOTAL_PHASE")
   TOTAL_PHASE("TAX_TOTAL_PHASE");
 
   private String value;
@@ -36,16 +38,6 @@ public enum TaxCalculationPhase {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static TaxCalculationPhase fromValue(String text) {
-    for (TaxCalculationPhase b : TaxCalculationPhase.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

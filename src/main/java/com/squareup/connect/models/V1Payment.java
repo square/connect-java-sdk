@@ -14,8 +14,11 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Device;
 import com.squareup.connect.models.V1Money;
 import com.squareup.connect.models.V1PaymentItemization;
@@ -24,6 +27,7 @@ import com.squareup.connect.models.V1Refund;
 import com.squareup.connect.models.V1Tender;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,76 +36,76 @@ import java.util.List;
  */
 
 public class V1Payment {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("merchant_id")
+  @SerializedName("merchant_id")
   private String merchantId = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("creator_id")
+  @SerializedName("creator_id")
   private Boolean creatorId = null;
 
-  @JsonProperty("device")
+  @SerializedName("device")
   private Device device = null;
 
-  @JsonProperty("payment_url")
+  @SerializedName("payment_url")
   private String paymentUrl = null;
 
-  @JsonProperty("receipt_url")
+  @SerializedName("receipt_url")
   private String receiptUrl = null;
 
-  @JsonProperty("inclusive_tax_money")
+  @SerializedName("inclusive_tax_money")
   private V1Money inclusiveTaxMoney = null;
 
-  @JsonProperty("additive_tax_money")
+  @SerializedName("additive_tax_money")
   private V1Money additiveTaxMoney = null;
 
-  @JsonProperty("tax_money")
+  @SerializedName("tax_money")
   private V1Money taxMoney = null;
 
-  @JsonProperty("tip_money")
+  @SerializedName("tip_money")
   private V1Money tipMoney = null;
 
-  @JsonProperty("discount_money")
+  @SerializedName("discount_money")
   private V1Money discountMoney = null;
 
-  @JsonProperty("total_collected_money")
+  @SerializedName("total_collected_money")
   private V1Money totalCollectedMoney = null;
 
-  @JsonProperty("processing_fee_money")
+  @SerializedName("processing_fee_money")
   private V1Money processingFeeMoney = null;
 
-  @JsonProperty("net_total_money")
+  @SerializedName("net_total_money")
   private V1Money netTotalMoney = null;
 
-  @JsonProperty("refunded_money")
+  @SerializedName("refunded_money")
   private V1Money refundedMoney = null;
 
-  @JsonProperty("swedish_rounding_money")
+  @SerializedName("swedish_rounding_money")
   private V1Money swedishRoundingMoney = null;
 
-  @JsonProperty("gross_sales_money")
+  @SerializedName("gross_sales_money")
   private V1Money grossSalesMoney = null;
 
-  @JsonProperty("net_sales_money")
+  @SerializedName("net_sales_money")
   private V1Money netSalesMoney = null;
 
-  @JsonProperty("inclusive_tax")
+  @SerializedName("inclusive_tax")
   private List<V1PaymentTax> inclusiveTax = new ArrayList<V1PaymentTax>();
 
-  @JsonProperty("additive_tax")
+  @SerializedName("additive_tax")
   private List<V1PaymentTax> additiveTax = new ArrayList<V1PaymentTax>();
 
-  @JsonProperty("tender")
+  @SerializedName("tender")
   private List<V1Tender> tender = new ArrayList<V1Tender>();
 
-  @JsonProperty("refunds")
+  @SerializedName("refunds")
   private List<V1Refund> refunds = new ArrayList<V1Refund>();
 
-  @JsonProperty("itemizations")
+  @SerializedName("itemizations")
   private List<V1PaymentItemization> itemizations = new ArrayList<V1PaymentItemization>();
 
   public V1Payment id(String id) {

@@ -14,32 +14,38 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1Variation
  */
 
 public class V1Variation {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("item_id")
+  @SerializedName("item_id")
   private String itemId = null;
 
   /**
    * Indicates whether the item variation's price is fixed or determined at the time of sale.
    */
   public enum PricingTypeEnum {
+    @SerializedName("FIXED_PRICING")
     FIXED_PRICING("FIXED_PRICING"),
     
+    @SerializedName("VARIABLE_PRICING")
     VARIABLE_PRICING("VARIABLE_PRICING");
 
     private String value;
@@ -52,44 +58,40 @@ public class V1Variation {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static PricingTypeEnum fromValue(String text) {
-      for (PricingTypeEnum b : PricingTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("pricing_type")
+  @SerializedName("pricing_type")
   private PricingTypeEnum pricingType = null;
 
-  @JsonProperty("price_money")
+  @SerializedName("price_money")
   private V1Money priceMoney = null;
 
-  @JsonProperty("sku")
+  @SerializedName("sku")
   private String sku = null;
 
-  @JsonProperty("track_inventory")
+  @SerializedName("track_inventory")
   private Boolean trackInventory = null;
 
   /**
    * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold.
    */
   public enum InventoryAlertTypeEnum {
+    @SerializedName("LOW_QUANTITY")
     LOW_QUANTITY("LOW_QUANTITY"),
     
+    @SerializedName("NONE")
     NONE("NONE"),
     
+    @SerializedName("INVESTMENT")
     INVESTMENT("INVESTMENT"),
     
+    @SerializedName("LOAN")
     LOAN("LOAN"),
     
+    @SerializedName("SAVINGS")
     SAVINGS("SAVINGS"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -102,25 +104,15 @@ public class V1Variation {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static InventoryAlertTypeEnum fromValue(String text) {
-      for (InventoryAlertTypeEnum b : InventoryAlertTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("inventory_alert_type")
+  @SerializedName("inventory_alert_type")
   private InventoryAlertTypeEnum inventoryAlertType = null;
 
-  @JsonProperty("inventory_alert_threshold")
+  @SerializedName("inventory_alert_threshold")
   private Integer inventoryAlertThreshold = null;
 
-  @JsonProperty("user_data")
+  @SerializedName("user_data")
   private String userData = null;
 
   public V1Variation id(String id) {

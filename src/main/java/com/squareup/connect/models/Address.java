@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents a physical address.
@@ -25,541 +29,791 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a physical address.")
 
 public class Address {
-  @JsonProperty("address_line_1")
+  @SerializedName("address_line_1")
   private String addressLine1 = null;
 
-  @JsonProperty("address_line_2")
+  @SerializedName("address_line_2")
   private String addressLine2 = null;
 
-  @JsonProperty("address_line_3")
+  @SerializedName("address_line_3")
   private String addressLine3 = null;
 
-  @JsonProperty("locality")
+  @SerializedName("locality")
   private String locality = null;
 
-  @JsonProperty("sublocality")
+  @SerializedName("sublocality")
   private String sublocality = null;
 
-  @JsonProperty("sublocality_2")
+  @SerializedName("sublocality_2")
   private String sublocality2 = null;
 
-  @JsonProperty("sublocality_3")
+  @SerializedName("sublocality_3")
   private String sublocality3 = null;
 
-  @JsonProperty("administrative_district_level_1")
+  @SerializedName("administrative_district_level_1")
   private String administrativeDistrictLevel1 = null;
 
-  @JsonProperty("administrative_district_level_2")
+  @SerializedName("administrative_district_level_2")
   private String administrativeDistrictLevel2 = null;
 
-  @JsonProperty("administrative_district_level_3")
+  @SerializedName("administrative_district_level_3")
   private String administrativeDistrictLevel3 = null;
 
-  @JsonProperty("postal_code")
+  @SerializedName("postal_code")
   private String postalCode = null;
 
   /**
    * The address's country, in ISO 3166-1-alpha-2 format.
    */
   public enum CountryEnum {
+    @SerializedName("ZZ")
     ZZ("ZZ"),
     
+    @SerializedName("AD")
     AD("AD"),
     
+    @SerializedName("AE")
     AE("AE"),
     
+    @SerializedName("AF")
     AF("AF"),
     
+    @SerializedName("AG")
     AG("AG"),
     
+    @SerializedName("AI")
     AI("AI"),
     
+    @SerializedName("AL")
     AL("AL"),
     
+    @SerializedName("AM")
     AM("AM"),
     
+    @SerializedName("AO")
     AO("AO"),
     
+    @SerializedName("AQ")
     AQ("AQ"),
     
+    @SerializedName("AR")
     AR("AR"),
     
+    @SerializedName("AS")
     AS("AS"),
     
+    @SerializedName("AT")
     AT("AT"),
     
+    @SerializedName("AU")
     AU("AU"),
     
+    @SerializedName("AW")
     AW("AW"),
     
+    @SerializedName("AX")
     AX("AX"),
     
+    @SerializedName("AZ")
     AZ("AZ"),
     
+    @SerializedName("BA")
     BA("BA"),
     
+    @SerializedName("BB")
     BB("BB"),
     
+    @SerializedName("BD")
     BD("BD"),
     
+    @SerializedName("BE")
     BE("BE"),
     
+    @SerializedName("BF")
     BF("BF"),
     
+    @SerializedName("BG")
     BG("BG"),
     
+    @SerializedName("BH")
     BH("BH"),
     
+    @SerializedName("BI")
     BI("BI"),
     
+    @SerializedName("BJ")
     BJ("BJ"),
     
+    @SerializedName("BL")
     BL("BL"),
     
+    @SerializedName("BM")
     BM("BM"),
     
+    @SerializedName("BN")
     BN("BN"),
     
+    @SerializedName("BO")
     BO("BO"),
     
+    @SerializedName("BQ")
     BQ("BQ"),
     
+    @SerializedName("BR")
     BR("BR"),
     
+    @SerializedName("BS")
     BS("BS"),
     
+    @SerializedName("BT")
     BT("BT"),
     
+    @SerializedName("BV")
     BV("BV"),
     
+    @SerializedName("BW")
     BW("BW"),
     
+    @SerializedName("BY")
     BY("BY"),
     
+    @SerializedName("BZ")
     BZ("BZ"),
     
+    @SerializedName("CA")
     CA("CA"),
     
+    @SerializedName("CC")
     CC("CC"),
     
+    @SerializedName("CD")
     CD("CD"),
     
+    @SerializedName("CF")
     CF("CF"),
     
+    @SerializedName("CG")
     CG("CG"),
     
+    @SerializedName("CH")
     CH("CH"),
     
+    @SerializedName("CI")
     CI("CI"),
     
+    @SerializedName("CK")
     CK("CK"),
     
+    @SerializedName("CL")
     CL("CL"),
     
+    @SerializedName("CM")
     CM("CM"),
     
+    @SerializedName("CN")
     CN("CN"),
     
+    @SerializedName("CO")
     CO("CO"),
     
+    @SerializedName("CR")
     CR("CR"),
     
+    @SerializedName("CU")
     CU("CU"),
     
+    @SerializedName("CV")
     CV("CV"),
     
+    @SerializedName("CW")
     CW("CW"),
     
+    @SerializedName("CX")
     CX("CX"),
     
+    @SerializedName("CY")
     CY("CY"),
     
+    @SerializedName("CZ")
     CZ("CZ"),
     
+    @SerializedName("DE")
     DE("DE"),
     
+    @SerializedName("DJ")
     DJ("DJ"),
     
+    @SerializedName("DK")
     DK("DK"),
     
+    @SerializedName("DM")
     DM("DM"),
     
+    @SerializedName("DO")
     DO("DO"),
     
+    @SerializedName("DZ")
     DZ("DZ"),
     
+    @SerializedName("EC")
     EC("EC"),
     
+    @SerializedName("EE")
     EE("EE"),
     
+    @SerializedName("EG")
     EG("EG"),
     
+    @SerializedName("EH")
     EH("EH"),
     
+    @SerializedName("ER")
     ER("ER"),
     
+    @SerializedName("ES")
     ES("ES"),
     
+    @SerializedName("ET")
     ET("ET"),
     
+    @SerializedName("FI")
     FI("FI"),
     
+    @SerializedName("FJ")
     FJ("FJ"),
     
+    @SerializedName("FK")
     FK("FK"),
     
+    @SerializedName("FM")
     FM("FM"),
     
+    @SerializedName("FO")
     FO("FO"),
     
+    @SerializedName("FR")
     FR("FR"),
     
+    @SerializedName("GA")
     GA("GA"),
     
+    @SerializedName("GB")
     GB("GB"),
     
+    @SerializedName("GD")
     GD("GD"),
     
+    @SerializedName("GE")
     GE("GE"),
     
+    @SerializedName("GF")
     GF("GF"),
     
+    @SerializedName("GG")
     GG("GG"),
     
+    @SerializedName("GH")
     GH("GH"),
     
+    @SerializedName("GI")
     GI("GI"),
     
+    @SerializedName("GL")
     GL("GL"),
     
+    @SerializedName("GM")
     GM("GM"),
     
+    @SerializedName("GN")
     GN("GN"),
     
+    @SerializedName("GP")
     GP("GP"),
     
+    @SerializedName("GQ")
     GQ("GQ"),
     
+    @SerializedName("GR")
     GR("GR"),
     
+    @SerializedName("GS")
     GS("GS"),
     
+    @SerializedName("GT")
     GT("GT"),
     
+    @SerializedName("GU")
     GU("GU"),
     
+    @SerializedName("GW")
     GW("GW"),
     
+    @SerializedName("GY")
     GY("GY"),
     
+    @SerializedName("HK")
     HK("HK"),
     
+    @SerializedName("HM")
     HM("HM"),
     
+    @SerializedName("HN")
     HN("HN"),
     
+    @SerializedName("HR")
     HR("HR"),
     
+    @SerializedName("HT")
     HT("HT"),
     
+    @SerializedName("HU")
     HU("HU"),
     
+    @SerializedName("ID")
     ID("ID"),
     
+    @SerializedName("IE")
     IE("IE"),
     
+    @SerializedName("IL")
     IL("IL"),
     
+    @SerializedName("IM")
     IM("IM"),
     
+    @SerializedName("IN")
     IN("IN"),
     
+    @SerializedName("IO")
     IO("IO"),
     
+    @SerializedName("IQ")
     IQ("IQ"),
     
+    @SerializedName("IR")
     IR("IR"),
     
+    @SerializedName("IS")
     IS("IS"),
     
+    @SerializedName("IT")
     IT("IT"),
     
+    @SerializedName("JE")
     JE("JE"),
     
+    @SerializedName("JM")
     JM("JM"),
     
+    @SerializedName("JO")
     JO("JO"),
     
+    @SerializedName("JP")
     JP("JP"),
     
+    @SerializedName("KE")
     KE("KE"),
     
+    @SerializedName("KG")
     KG("KG"),
     
+    @SerializedName("KH")
     KH("KH"),
     
+    @SerializedName("KI")
     KI("KI"),
     
+    @SerializedName("KM")
     KM("KM"),
     
+    @SerializedName("KN")
     KN("KN"),
     
+    @SerializedName("KP")
     KP("KP"),
     
+    @SerializedName("KR")
     KR("KR"),
     
+    @SerializedName("KW")
     KW("KW"),
     
+    @SerializedName("KY")
     KY("KY"),
     
+    @SerializedName("KZ")
     KZ("KZ"),
     
+    @SerializedName("LA")
     LA("LA"),
     
+    @SerializedName("LB")
     LB("LB"),
     
+    @SerializedName("LC")
     LC("LC"),
     
+    @SerializedName("LI")
     LI("LI"),
     
+    @SerializedName("LK")
     LK("LK"),
     
+    @SerializedName("LR")
     LR("LR"),
     
+    @SerializedName("LS")
     LS("LS"),
     
+    @SerializedName("LT")
     LT("LT"),
     
+    @SerializedName("LU")
     LU("LU"),
     
+    @SerializedName("LV")
     LV("LV"),
     
+    @SerializedName("LY")
     LY("LY"),
     
+    @SerializedName("MA")
     MA("MA"),
     
+    @SerializedName("MC")
     MC("MC"),
     
+    @SerializedName("MD")
     MD("MD"),
     
+    @SerializedName("ME")
     ME("ME"),
     
+    @SerializedName("MF")
     MF("MF"),
     
+    @SerializedName("MG")
     MG("MG"),
     
+    @SerializedName("MH")
     MH("MH"),
     
+    @SerializedName("MK")
     MK("MK"),
     
+    @SerializedName("ML")
     ML("ML"),
     
+    @SerializedName("MM")
     MM("MM"),
     
+    @SerializedName("MN")
     MN("MN"),
     
+    @SerializedName("MO")
     MO("MO"),
     
+    @SerializedName("MP")
     MP("MP"),
     
+    @SerializedName("MQ")
     MQ("MQ"),
     
+    @SerializedName("MR")
     MR("MR"),
     
+    @SerializedName("MS")
     MS("MS"),
     
+    @SerializedName("MT")
     MT("MT"),
     
+    @SerializedName("MU")
     MU("MU"),
     
+    @SerializedName("MV")
     MV("MV"),
     
+    @SerializedName("MW")
     MW("MW"),
     
+    @SerializedName("MX")
     MX("MX"),
     
+    @SerializedName("MY")
     MY("MY"),
     
+    @SerializedName("MZ")
     MZ("MZ"),
     
+    @SerializedName("NA")
     NA("NA"),
     
+    @SerializedName("NC")
     NC("NC"),
     
+    @SerializedName("NE")
     NE("NE"),
     
+    @SerializedName("NF")
     NF("NF"),
     
+    @SerializedName("NG")
     NG("NG"),
     
+    @SerializedName("NI")
     NI("NI"),
     
+    @SerializedName("NL")
     NL("NL"),
     
+    @SerializedName("NO")
     NO("NO"),
     
+    @SerializedName("NP")
     NP("NP"),
     
+    @SerializedName("NR")
     NR("NR"),
     
+    @SerializedName("NU")
     NU("NU"),
     
+    @SerializedName("NZ")
     NZ("NZ"),
     
+    @SerializedName("OM")
     OM("OM"),
     
+    @SerializedName("PA")
     PA("PA"),
     
+    @SerializedName("PE")
     PE("PE"),
     
+    @SerializedName("PF")
     PF("PF"),
     
+    @SerializedName("PG")
     PG("PG"),
     
+    @SerializedName("PH")
     PH("PH"),
     
+    @SerializedName("PK")
     PK("PK"),
     
+    @SerializedName("PL")
     PL("PL"),
     
+    @SerializedName("PM")
     PM("PM"),
     
+    @SerializedName("PN")
     PN("PN"),
     
+    @SerializedName("PR")
     PR("PR"),
     
+    @SerializedName("PS")
     PS("PS"),
     
+    @SerializedName("PT")
     PT("PT"),
     
+    @SerializedName("PW")
     PW("PW"),
     
+    @SerializedName("PY")
     PY("PY"),
     
+    @SerializedName("QA")
     QA("QA"),
     
+    @SerializedName("RE")
     RE("RE"),
     
+    @SerializedName("RO")
     RO("RO"),
     
+    @SerializedName("RS")
     RS("RS"),
     
+    @SerializedName("RU")
     RU("RU"),
     
+    @SerializedName("RW")
     RW("RW"),
     
+    @SerializedName("SA")
     SA("SA"),
     
+    @SerializedName("SB")
     SB("SB"),
     
+    @SerializedName("SC")
     SC("SC"),
     
+    @SerializedName("SD")
     SD("SD"),
     
+    @SerializedName("SE")
     SE("SE"),
     
+    @SerializedName("SG")
     SG("SG"),
     
+    @SerializedName("SH")
     SH("SH"),
     
+    @SerializedName("SI")
     SI("SI"),
     
+    @SerializedName("SJ")
     SJ("SJ"),
     
+    @SerializedName("SK")
     SK("SK"),
     
+    @SerializedName("SL")
     SL("SL"),
     
+    @SerializedName("SM")
     SM("SM"),
     
+    @SerializedName("SN")
     SN("SN"),
     
+    @SerializedName("SO")
     SO("SO"),
     
+    @SerializedName("SR")
     SR("SR"),
     
+    @SerializedName("SS")
     SS("SS"),
     
+    @SerializedName("ST")
     ST("ST"),
     
+    @SerializedName("SV")
     SV("SV"),
     
+    @SerializedName("SX")
     SX("SX"),
     
+    @SerializedName("SY")
     SY("SY"),
     
+    @SerializedName("SZ")
     SZ("SZ"),
     
+    @SerializedName("TC")
     TC("TC"),
     
+    @SerializedName("TD")
     TD("TD"),
     
+    @SerializedName("TF")
     TF("TF"),
     
+    @SerializedName("TG")
     TG("TG"),
     
+    @SerializedName("TH")
     TH("TH"),
     
+    @SerializedName("TJ")
     TJ("TJ"),
     
+    @SerializedName("TK")
     TK("TK"),
     
+    @SerializedName("TL")
     TL("TL"),
     
+    @SerializedName("TM")
     TM("TM"),
     
+    @SerializedName("TN")
     TN("TN"),
     
+    @SerializedName("TO")
     TO("TO"),
     
+    @SerializedName("TR")
     TR("TR"),
     
+    @SerializedName("TT")
     TT("TT"),
     
+    @SerializedName("TV")
     TV("TV"),
     
+    @SerializedName("TW")
     TW("TW"),
     
+    @SerializedName("TZ")
     TZ("TZ"),
     
+    @SerializedName("UA")
     UA("UA"),
     
+    @SerializedName("UG")
     UG("UG"),
     
+    @SerializedName("UM")
     UM("UM"),
     
+    @SerializedName("US")
     US("US"),
     
+    @SerializedName("UY")
     UY("UY"),
     
+    @SerializedName("UZ")
     UZ("UZ"),
     
+    @SerializedName("VA")
     VA("VA"),
     
+    @SerializedName("VC")
     VC("VC"),
     
+    @SerializedName("VE")
     VE("VE"),
     
+    @SerializedName("VG")
     VG("VG"),
     
+    @SerializedName("VI")
     VI("VI"),
     
+    @SerializedName("VN")
     VN("VN"),
     
+    @SerializedName("VU")
     VU("VU"),
     
+    @SerializedName("WF")
     WF("WF"),
     
+    @SerializedName("WS")
     WS("WS"),
     
+    @SerializedName("YE")
     YE("YE"),
     
+    @SerializedName("YT")
     YT("YT"),
     
+    @SerializedName("ZA")
     ZA("ZA"),
     
+    @SerializedName("ZM")
     ZM("ZM"),
     
+    @SerializedName("ZW")
     ZW("ZW");
 
     private String value;
@@ -572,28 +826,18 @@ public class Address {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static CountryEnum fromValue(String text) {
-      for (CountryEnum b : CountryEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("country")
+  @SerializedName("country")
   private CountryEnum country = null;
 
-  @JsonProperty("first_name")
+  @SerializedName("first_name")
   private String firstName = null;
 
-  @JsonProperty("last_name")
+  @SerializedName("last_name")
   private String lastName = null;
 
-  @JsonProperty("organization")
+  @SerializedName("organization")
   private String organization = null;
 
   public Address addressLine1(String addressLine1) {

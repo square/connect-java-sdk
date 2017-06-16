@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1ModifierOption;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,18 +31,20 @@ import java.util.List;
  */
 
 public class V1ModifierList {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
   /**
    * Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item.
    */
   public enum SelectionTypeEnum {
+    @SerializedName("SINGLE")
     SINGLE("SINGLE"),
     
+    @SerializedName("MULTIPLE")
     MULTIPLE("MULTIPLE");
 
     private String value;
@@ -51,22 +57,12 @@ public class V1ModifierList {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static SelectionTypeEnum fromValue(String text) {
-      for (SelectionTypeEnum b : SelectionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("selection_type")
+  @SerializedName("selection_type")
   private SelectionTypeEnum selectionType = null;
 
-  @JsonProperty("modifier_options")
+  @SerializedName("modifier_options")
   private List<V1ModifierOption> modifierOptions = new ArrayList<V1ModifierOption>();
 
   public V1ModifierList id(String id) {

@@ -14,60 +14,83 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1SettlementEntry
  */
 
 public class V1SettlementEntry {
-  @JsonProperty("payment_id")
+  @SerializedName("payment_id")
   private String paymentId = null;
 
   /**
    * The settlement's current status.
    */
   public enum TypeEnum {
+    @SerializedName("ADJUSTMENT")
     ADJUSTMENT("ADJUSTMENT"),
     
+    @SerializedName("BALANCE_CHARGE")
     BALANCE_CHARGE("BALANCE_CHARGE"),
     
+    @SerializedName("CHARGE")
     CHARGE("CHARGE"),
     
+    @SerializedName("FREE_PROCESSING")
     FREE_PROCESSING("FREE_PROCESSING"),
     
+    @SerializedName("HOLD_ADJUSTMENT")
     HOLD_ADJUSTMENT("HOLD_ADJUSTMENT"),
     
+    @SerializedName("PAID_SERVICE_FEE")
     PAID_SERVICE_FEE("PAID_SERVICE_FEE"),
     
+    @SerializedName("PAID_SERVICE_FEE_REFUND")
     PAID_SERVICE_FEE_REFUND("PAID_SERVICE_FEE_REFUND"),
     
+    @SerializedName("REDEMPTION_CODE")
     REDEMPTION_CODE("REDEMPTION_CODE"),
     
+    @SerializedName("REFUND")
     REFUND("REFUND"),
     
+    @SerializedName("RETURNED_PAYOUT")
     RETURNED_PAYOUT("RETURNED_PAYOUT"),
     
+    @SerializedName("SQUARE_CAPITAL_ADVANCE")
     SQUARE_CAPITAL_ADVANCE("SQUARE_CAPITAL_ADVANCE"),
     
+    @SerializedName("SQUARE_CAPITAL_PAYMENT")
     SQUARE_CAPITAL_PAYMENT("SQUARE_CAPITAL_PAYMENT"),
     
+    @SerializedName("SQUARE_CAPITAL_REVERSED_PAYMENT")
     SQUARE_CAPITAL_REVERSED_PAYMENT("SQUARE_CAPITAL_REVERSED_PAYMENT"),
     
+    @SerializedName("SUBSCRIPTION_FEE")
     SUBSCRIPTION_FEE("SUBSCRIPTION_FEE"),
     
+    @SerializedName("SUBSCRIPTION_FEE_REFUND")
     SUBSCRIPTION_FEE_REFUND("SUBSCRIPTION_FEE_REFUND"),
     
+    @SerializedName("INCENTED_PAYMENT")
     INCENTED_PAYMENT("INCENTED_PAYMENT"),
     
+    @SerializedName("RETURNED_ACH_ENTRY")
     RETURNED_ACH_ENTRY("RETURNED_ACH_ENTRY"),
     
+    @SerializedName("RETURNED_SQUARE_275")
     RETURNED_SQUARE_275("RETURNED_SQUARE_275"),
     
+    @SerializedName("SQUARE_275")
     SQUARE_275("SQUARE_275");
 
     private String value;
@@ -80,25 +103,15 @@ public class V1SettlementEntry {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
-  @JsonProperty("amount_money")
+  @SerializedName("amount_money")
   private V1Money amountMoney = null;
 
-  @JsonProperty("fee_money")
+  @SerializedName("fee_money")
   private V1Money feeMoney = null;
 
   public V1SettlementEntry paymentId(String paymentId) {

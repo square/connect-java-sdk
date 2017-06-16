@@ -10,15 +10,22 @@
  * Do not edit the class manually.
  */
 
+
 package com.squareup.connect.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiCallback;
 import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiResponse;
 import com.squareup.connect.Configuration;
-import com.squareup.connect.models.*;
 import com.squareup.connect.Pair;
+import com.squareup.connect.ProgressRequestBody;
+import com.squareup.connect.ProgressResponseBody;
+
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
 
 import com.squareup.connect.models.V1BankAccount;
 import com.squareup.connect.models.V1CreateRefundRequest;
@@ -28,569 +35,1573 @@ import com.squareup.connect.models.V1Refund;
 import com.squareup.connect.models.V1Settlement;
 import com.squareup.connect.models.V1UpdateOrderRequest;
 
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class V1TransactionsApi {
-  private ApiClient apiClient;
+    private ApiClient apiClient;
 
-  public V1TransactionsApi() {
-    this(Configuration.getDefaultApiClient());
-  }
+    public V1TransactionsApi() {
+        this(Configuration.getDefaultApiClient());
+    }
 
-  public V1TransactionsApi(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
+    public V1TransactionsApi(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
-  public ApiClient getApiClient() {
-    return apiClient;
-  }
+    public ApiClient getApiClient() {
+        return apiClient;
+    }
 
-  public void setApiClient(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
+    public void setApiClient(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
-  /**
-   * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-   * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-   * @param locationId The ID of the original payment&#39;s associated location. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Refund
-   * @throws ApiException if fails to make API call
-   */
-  public V1Refund createRefund(String locationId, V1CreateRefundRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createRefund");
+    /**
+     * Build call for createRefund
+     * @param locationId The ID of the original payment&#39;s associated location. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createRefundCall(String locationId, V1CreateRefundRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/refunds"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createRefund");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createRefundValidateBeforeCall(String locationId, V1CreateRefundRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createRefund(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createRefund(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createRefundCall(locationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+     * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+     * @param locationId The ID of the original payment&#39;s associated location. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Refund
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Refund createRefund(String locationId, V1CreateRefundRequest body) throws ApiException {
+        ApiResponse<V1Refund> resp = createRefundWithHttpInfo(locationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+     * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+     * @param locationId The ID of the original payment&#39;s associated location. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Refund&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Refund> createRefundWithHttpInfo(String locationId, V1CreateRefundRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = createRefundValidateBeforeCall(locationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Refund>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment. (asynchronously)
+     * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+     * @param locationId The ID of the original payment&#39;s associated location. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createRefundAsync(String locationId, V1CreateRefundRequest body, final ApiCallback<V1Refund> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createRefundValidateBeforeCall(locationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Refund>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listBankAccounts
+     * @param locationId The ID of the location to list bank accounts for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listBankAccountsCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/bank-accounts"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/refunds"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listBankAccountsValidateBeforeCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listBankAccounts(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listBankAccountsCall(locationId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * @param locationId The ID of the location to list bank accounts for. (required)
+     * @return List&lt;V1BankAccount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1BankAccount> listBankAccounts(String locationId) throws ApiException {
+        ApiResponse<List<V1BankAccount>> resp = listBankAccountsWithHttpInfo(locationId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * @param locationId The ID of the location to list bank accounts for. (required)
+     * @return ApiResponse&lt;List&lt;V1BankAccount&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1BankAccount>> listBankAccountsWithHttpInfo(String locationId) throws ApiException {
+        com.squareup.okhttp.Call call = listBankAccountsValidateBeforeCall(locationId, null, null);
+        Type localVarReturnType = new TypeToken<List<V1BankAccount>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API. (asynchronously)
+     * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * @param locationId The ID of the location to list bank accounts for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listBankAccountsAsync(String locationId, final ApiCallback<List<V1BankAccount>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1Refund> localVarReturnType = new GenericType<V1Refund>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-   * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-   * @param locationId The ID of the location to list bank accounts for. (required)
-   * @return List&lt;V1BankAccount&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1BankAccount> listBankAccounts(String locationId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listBankAccounts");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listBankAccountsValidateBeforeCall(locationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1BankAccount>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listOrders
+     * @param locationId The ID of the location to list online store orders for. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listOrdersCall(String locationId, String order, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/orders"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (order != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/bank-accounts"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listOrdersValidateBeforeCall(String locationId, String order, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listOrders(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listOrdersCall(locationId, order, limit, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides summary information for a merchant&#39;s online store orders.
+     * Provides summary information for a merchant&#39;s online store orders.
+     * @param locationId The ID of the location to list online store orders for. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @return List&lt;V1Order&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Order> listOrders(String locationId, String order, Integer limit) throws ApiException {
+        ApiResponse<List<V1Order>> resp = listOrdersWithHttpInfo(locationId, order, limit);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides summary information for a merchant&#39;s online store orders.
+     * Provides summary information for a merchant&#39;s online store orders.
+     * @param locationId The ID of the location to list online store orders for. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @return ApiResponse&lt;List&lt;V1Order&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Order>> listOrdersWithHttpInfo(String locationId, String order, Integer limit) throws ApiException {
+        com.squareup.okhttp.Call call = listOrdersValidateBeforeCall(locationId, order, limit, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Order>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides summary information for a merchant&#39;s online store orders. (asynchronously)
+     * Provides summary information for a merchant&#39;s online store orders.
+     * @param locationId The ID of the location to list online store orders for. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listOrdersAsync(String locationId, String order, Integer limit, final ApiCallback<List<V1Order>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<List<V1BankAccount>> localVarReturnType = new GenericType<List<V1BankAccount>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides summary information for a merchant&#39;s online store orders.
-   * Provides summary information for a merchant&#39;s online store orders.
-   * @param locationId The ID of the location to list online store orders for. (required)
-   * @param order TThe order in which payments are listed in the response. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
-   * @return List&lt;V1Order&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Order> listOrders(String locationId, String order, Integer limit) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listOrders");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listOrdersValidateBeforeCall(locationId, order, limit, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Order>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listPayments
+     * @param locationId The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
+     * @param order The order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listPaymentsCall(String locationId, String order, String beginTime, String endTime, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/payments"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (order != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        if (beginTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/orders"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listPaymentsValidateBeforeCall(String locationId, String order, String beginTime, String endTime, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listPayments(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listPaymentsCall(locationId, order, beginTime, endTime, limit, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    /**
+     * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+     * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+     * @param locationId The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
+     * @param order The order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @return List&lt;V1Payment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
+        ApiResponse<List<V1Payment>> resp = listPaymentsWithHttpInfo(locationId, order, beginTime, endTime, limit);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+     * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+     * @param locationId The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
+     * @param order The order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @return ApiResponse&lt;List&lt;V1Payment&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Payment>> listPaymentsWithHttpInfo(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
+        com.squareup.okhttp.Call call = listPaymentsValidateBeforeCall(locationId, order, beginTime, endTime, limit, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Payment>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates. (asynchronously)
+     * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+     * @param locationId The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
+     * @param order The order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listPaymentsAsync(String locationId, String order, String beginTime, String endTime, Integer limit, final ApiCallback<List<V1Payment>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<List<V1Order>> localVarReturnType = new GenericType<List<V1Order>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-   * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-   * @param locationId The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
-   * @param order The order in which payments are listed in the response. (optional)
-   * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
-   * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
-   * @return List&lt;V1Payment&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listPayments");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listPaymentsValidateBeforeCall(locationId, order, beginTime, endTime, limit, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Payment>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listRefunds
+     * @param locationId The ID of the location to list refunds for. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listRefundsCall(String locationId, String order, String beginTime, String endTime, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/refunds"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (order != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        if (beginTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/payments"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listRefundsValidateBeforeCall(String locationId, String order, String beginTime, String endTime, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listRefunds(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listRefundsCall(locationId, order, beginTime, endTime, limit, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    /**
+     * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
+     * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
+     * @param locationId The ID of the location to list refunds for. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @return List&lt;V1Refund&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Refund> listRefunds(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
+        ApiResponse<List<V1Refund>> resp = listRefundsWithHttpInfo(locationId, order, beginTime, endTime, limit);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
+     * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
+     * @param locationId The ID of the location to list refunds for. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @return ApiResponse&lt;List&lt;V1Refund&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Refund>> listRefundsWithHttpInfo(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
+        com.squareup.okhttp.Call call = listRefundsValidateBeforeCall(locationId, order, beginTime, endTime, limit, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Refund>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. (asynchronously)
+     * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
+     * @param locationId The ID of the location to list refunds for. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listRefundsAsync(String locationId, String order, String beginTime, String endTime, Integer limit, final ApiCallback<List<V1Refund>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<List<V1Payment>> localVarReturnType = new GenericType<List<V1Payment>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
-   * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
-   * @param locationId The ID of the location to list refunds for. (required)
-   * @param order TThe order in which payments are listed in the response. (optional)
-   * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
-   * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
-   * @return List&lt;V1Refund&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Refund> listRefunds(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listRefunds");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listRefundsValidateBeforeCall(locationId, order, beginTime, endTime, limit, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Refund>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listSettlements
+     * @param locationId The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listSettlementsCall(String locationId, String order, String beginTime, String endTime, Integer limit, String status, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/settlements"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (order != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        if (beginTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        if (status != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/refunds"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listSettlementsValidateBeforeCall(String locationId, String order, String beginTime, String endTime, Integer limit, String status, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listSettlements(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listSettlementsCall(locationId, order, beginTime, endTime, limit, status, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    /**
+     * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
+     * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
+     * @param locationId The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
+     * @return List&lt;V1Settlement&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Settlement> listSettlements(String locationId, String order, String beginTime, String endTime, Integer limit, String status) throws ApiException {
+        ApiResponse<List<V1Settlement>> resp = listSettlementsWithHttpInfo(locationId, order, beginTime, endTime, limit, status);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
+     * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
+     * @param locationId The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
+     * @return ApiResponse&lt;List&lt;V1Settlement&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Settlement>> listSettlementsWithHttpInfo(String locationId, String order, String beginTime, String endTime, Integer limit, String status) throws ApiException {
+        com.squareup.okhttp.Call call = listSettlementsValidateBeforeCall(locationId, order, beginTime, endTime, limit, status, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Settlement>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. (asynchronously)
+     * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
+     * @param locationId The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
+     * @param order TThe order in which payments are listed in the response. (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
+     * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
+     * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listSettlementsAsync(String locationId, String order, String beginTime, String endTime, Integer limit, String status, final ApiCallback<List<V1Settlement>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<List<V1Refund>> localVarReturnType = new GenericType<List<V1Refund>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
-   * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
-   * @param locationId The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
-   * @param order TThe order in which payments are listed in the response. (optional)
-   * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
-   * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
-   * @param status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
-   * @return List&lt;V1Settlement&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Settlement> listSettlements(String locationId, String order, String beginTime, String endTime, Integer limit, String status) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listSettlements");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listSettlementsValidateBeforeCall(locationId, order, beginTime, endTime, limit, status, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Settlement>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveBankAccount
+     * @param locationId The ID of the bank account&#39;s associated location. (required)
+     * @param bankAccountId The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveBankAccountCall(String locationId, String bankAccountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/bank-accounts/{bank_account_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "bank_account_id" + "\\}", apiClient.escapeString(bankAccountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/settlements"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveBankAccountValidateBeforeCall(String locationId, String bankAccountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling retrieveBankAccount(Async)");
+        }
+        
+        // verify the required parameter 'bankAccountId' is set
+        if (bankAccountId == null) {
+            throw new ApiException("Missing the required parameter 'bankAccountId' when calling retrieveBankAccount(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveBankAccountCall(locationId, bankAccountId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
+    /**
+     * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * @param locationId The ID of the bank account&#39;s associated location. (required)
+     * @param bankAccountId The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned. (required)
+     * @return V1BankAccount
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1BankAccount retrieveBankAccount(String locationId, String bankAccountId) throws ApiException {
+        ApiResponse<V1BankAccount> resp = retrieveBankAccountWithHttpInfo(locationId, bankAccountId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * @param locationId The ID of the bank account&#39;s associated location. (required)
+     * @param bankAccountId The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned. (required)
+     * @return ApiResponse&lt;V1BankAccount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1BankAccount> retrieveBankAccountWithHttpInfo(String locationId, String bankAccountId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveBankAccountValidateBeforeCall(locationId, bankAccountId, null, null);
+        Type localVarReturnType = new TypeToken<V1BankAccount>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API. (asynchronously)
+     * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+     * @param locationId The ID of the bank account&#39;s associated location. (required)
+     * @param bankAccountId The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveBankAccountAsync(String locationId, String bankAccountId, final ApiCallback<V1BankAccount> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<List<V1Settlement>> localVarReturnType = new GenericType<List<V1Settlement>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-   * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-   * @param locationId The ID of the bank account&#39;s associated location. (required)
-   * @param bankAccountId The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned. (required)
-   * @return V1BankAccount
-   * @throws ApiException if fails to make API call
-   */
-  public V1BankAccount retrieveBankAccount(String locationId, String bankAccountId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveBankAccount");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveBankAccountValidateBeforeCall(locationId, bankAccountId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1BankAccount>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveOrder
+     * @param locationId The ID of the order&#39;s associated location. (required)
+     * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveOrderCall(String locationId, String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/orders/{order_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "order_id" + "\\}", apiClient.escapeString(orderId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'bankAccountId' is set
-    if (bankAccountId == null) {
-      throw new ApiException(400, "Missing the required parameter 'bankAccountId' when calling retrieveBankAccount");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveOrderValidateBeforeCall(String locationId, String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling retrieveOrder(Async)");
+        }
+        
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException("Missing the required parameter 'orderId' when calling retrieveOrder(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveOrderCall(locationId, orderId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Provides comprehensive information for a single online store order, including the order&#39;s history.
+     * Provides comprehensive information for a single online store order, including the order&#39;s history.
+     * @param locationId The ID of the order&#39;s associated location. (required)
+     * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
+     * @return V1Order
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Order retrieveOrder(String locationId, String orderId) throws ApiException {
+        ApiResponse<V1Order> resp = retrieveOrderWithHttpInfo(locationId, orderId);
+        return resp.getData();
+    }
+
+    /**
+     * Provides comprehensive information for a single online store order, including the order&#39;s history.
+     * Provides comprehensive information for a single online store order, including the order&#39;s history.
+     * @param locationId The ID of the order&#39;s associated location. (required)
+     * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
+     * @return ApiResponse&lt;V1Order&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Order> retrieveOrderWithHttpInfo(String locationId, String orderId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveOrderValidateBeforeCall(locationId, orderId, null, null);
+        Type localVarReturnType = new TypeToken<V1Order>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Provides comprehensive information for a single online store order, including the order&#39;s history. (asynchronously)
+     * Provides comprehensive information for a single online store order, including the order&#39;s history.
+     * @param locationId The ID of the order&#39;s associated location. (required)
+     * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveOrderAsync(String locationId, String orderId, final ApiCallback<V1Order> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveOrderValidateBeforeCall(locationId, orderId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Order>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrievePayment
+     * @param locationId The ID of the payment&#39;s associated location. (required)
+     * @param paymentId The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrievePaymentCall(String locationId, String paymentId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/payments/{payment_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "payment_id" + "\\}", apiClient.escapeString(paymentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/bank-accounts/{bank_account_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "bank_account_id" + "\\}", apiClient.escapeString(bankAccountId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrievePaymentValidateBeforeCall(String locationId, String paymentId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling retrievePayment(Async)");
+        }
+        
+        // verify the required parameter 'paymentId' is set
+        if (paymentId == null) {
+            throw new ApiException("Missing the required parameter 'paymentId' when calling retrievePayment(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrievePaymentCall(locationId, paymentId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides comprehensive information for a single payment.
+     * Provides comprehensive information for a single payment.
+     * @param locationId The ID of the payment&#39;s associated location. (required)
+     * @param paymentId The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. (required)
+     * @return V1Payment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Payment retrievePayment(String locationId, String paymentId) throws ApiException {
+        ApiResponse<V1Payment> resp = retrievePaymentWithHttpInfo(locationId, paymentId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides comprehensive information for a single payment.
+     * Provides comprehensive information for a single payment.
+     * @param locationId The ID of the payment&#39;s associated location. (required)
+     * @param paymentId The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. (required)
+     * @return ApiResponse&lt;V1Payment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Payment> retrievePaymentWithHttpInfo(String locationId, String paymentId) throws ApiException {
+        com.squareup.okhttp.Call call = retrievePaymentValidateBeforeCall(locationId, paymentId, null, null);
+        Type localVarReturnType = new TypeToken<V1Payment>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides comprehensive information for a single payment. (asynchronously)
+     * Provides comprehensive information for a single payment.
+     * @param locationId The ID of the payment&#39;s associated location. (required)
+     * @param paymentId The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrievePaymentAsync(String locationId, String paymentId, final ApiCallback<V1Payment> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1BankAccount> localVarReturnType = new GenericType<V1BankAccount>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides comprehensive information for a single online store order, including the order&#39;s history.
-   * Provides comprehensive information for a single online store order, including the order&#39;s history.
-   * @param locationId The ID of the order&#39;s associated location. (required)
-   * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
-   * @return V1Order
-   * @throws ApiException if fails to make API call
-   */
-  public V1Order retrieveOrder(String locationId, String orderId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveOrder");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrievePaymentValidateBeforeCall(locationId, paymentId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Payment>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveSettlement
+     * @param locationId The ID of the settlements&#39;s associated location. (required)
+     * @param settlementId The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveSettlementCall(String locationId, String settlementId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/settlements/{settlement_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "settlement_id" + "\\}", apiClient.escapeString(settlementId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'orderId' is set
-    if (orderId == null) {
-      throw new ApiException(400, "Missing the required parameter 'orderId' when calling retrieveOrder");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveSettlementValidateBeforeCall(String locationId, String settlementId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling retrieveSettlement(Async)");
+        }
+        
+        // verify the required parameter 'settlementId' is set
+        if (settlementId == null) {
+            throw new ApiException("Missing the required parameter 'settlementId' when calling retrieveSettlement(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveSettlementCall(locationId, settlementId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
+     * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
+     * @param locationId The ID of the settlements&#39;s associated location. (required)
+     * @param settlementId The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint. (required)
+     * @return V1Settlement
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Settlement retrieveSettlement(String locationId, String settlementId) throws ApiException {
+        ApiResponse<V1Settlement> resp = retrieveSettlementWithHttpInfo(locationId, settlementId);
+        return resp.getData();
+    }
+
+    /**
+     * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
+     * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
+     * @param locationId The ID of the settlements&#39;s associated location. (required)
+     * @param settlementId The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint. (required)
+     * @return ApiResponse&lt;V1Settlement&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Settlement> retrieveSettlementWithHttpInfo(String locationId, String settlementId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveSettlementValidateBeforeCall(locationId, settlementId, null, null);
+        Type localVarReturnType = new TypeToken<V1Settlement>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total. (asynchronously)
+     * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
+     * @param locationId The ID of the settlements&#39;s associated location. (required)
+     * @param settlementId The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveSettlementAsync(String locationId, String settlementId, final ApiCallback<V1Settlement> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveSettlementValidateBeforeCall(locationId, settlementId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Settlement>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateOrder
+     * @param locationId The ID of the order&#39;s associated location. (required)
+     * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateOrderCall(String locationId, String orderId, V1UpdateOrderRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/orders/{order_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "order_id" + "\\}", apiClient.escapeString(orderId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/orders/{order_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "order_id" + "\\}", apiClient.escapeString(orderId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateOrderValidateBeforeCall(String locationId, String orderId, V1UpdateOrderRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updateOrder(Async)");
+        }
+        
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException("Missing the required parameter 'orderId' when calling updateOrder(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateOrder(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateOrderCall(locationId, orderId, body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Order> localVarReturnType = new GenericType<V1Order>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides comprehensive information for a single payment.
-   * Provides comprehensive information for a single payment.
-   * @param locationId The ID of the payment&#39;s associated location. (required)
-   * @param paymentId The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. (required)
-   * @return V1Payment
-   * @throws ApiException if fails to make API call
-   */
-  public V1Payment retrievePayment(String locationId, String paymentId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrievePayment");
+        
+        
+        
+        
     }
-    
-    // verify the required parameter 'paymentId' is set
-    if (paymentId == null) {
-      throw new ApiException(400, "Missing the required parameter 'paymentId' when calling retrievePayment");
+
+    /**
+     * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+     * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+     * @param locationId The ID of the order&#39;s associated location. (required)
+     * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Order
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Order updateOrder(String locationId, String orderId, V1UpdateOrderRequest body) throws ApiException {
+        ApiResponse<V1Order> resp = updateOrderWithHttpInfo(locationId, orderId, body);
+        return resp.getData();
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/payments/{payment_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "payment_id" + "\\}", apiClient.escapeString(paymentId.toString()));
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Payment> localVarReturnType = new GenericType<V1Payment>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
-   * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
-   * @param locationId The ID of the settlements&#39;s associated location. (required)
-   * @param settlementId The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint. (required)
-   * @return V1Settlement
-   * @throws ApiException if fails to make API call
-   */
-  public V1Settlement retrieveSettlement(String locationId, String settlementId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveSettlement");
+    /**
+     * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+     * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+     * @param locationId The ID of the order&#39;s associated location. (required)
+     * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Order&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Order> updateOrderWithHttpInfo(String locationId, String orderId, V1UpdateOrderRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = updateOrderValidateBeforeCall(locationId, orderId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Order>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
-    
-    // verify the required parameter 'settlementId' is set
-    if (settlementId == null) {
-      throw new ApiException(400, "Missing the required parameter 'settlementId' when calling retrieveSettlement");
+
+    /**
+     * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions: (asynchronously)
+     * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+     * @param locationId The ID of the order&#39;s associated location. (required)
+     * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateOrderAsync(String locationId, String orderId, V1UpdateOrderRequest body, final ApiCallback<V1Order> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateOrderValidateBeforeCall(locationId, orderId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Order>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/settlements/{settlement_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "settlement_id" + "\\}", apiClient.escapeString(settlementId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Settlement> localVarReturnType = new GenericType<V1Settlement>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-   * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-   * @param locationId The ID of the order&#39;s associated location. (required)
-   * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Order
-   * @throws ApiException if fails to make API call
-   */
-  public V1Order updateOrder(String locationId, String orderId, V1UpdateOrderRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateOrder");
-    }
-    
-    // verify the required parameter 'orderId' is set
-    if (orderId == null) {
-      throw new ApiException(400, "Missing the required parameter 'orderId' when calling updateOrder");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateOrder");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/orders/{order_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "order_id" + "\\}", apiClient.escapeString(orderId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Order> localVarReturnType = new GenericType<V1Order>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
 }

@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogItemModifierListInfo;
 import com.squareup.connect.models.CatalogObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,54 +33,59 @@ import java.util.List;
 @ApiModel(description = "An item (i.e., product family) in the Catalog object model.")
 
 public class CatalogItem {
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("description")
+  @SerializedName("description")
   private String description = null;
 
-  @JsonProperty("abbreviation")
+  @SerializedName("abbreviation")
   private String abbreviation = null;
 
-  @JsonProperty("label_color")
+  @SerializedName("label_color")
   private String labelColor = null;
 
-  @JsonProperty("available_online")
+  @SerializedName("available_online")
   private Boolean availableOnline = null;
 
-  @JsonProperty("available_for_pickup")
+  @SerializedName("available_for_pickup")
   private Boolean availableForPickup = null;
 
-  @JsonProperty("available_electronically")
+  @SerializedName("available_electronically")
   private Boolean availableElectronically = null;
 
-  @JsonProperty("category_id")
+  @SerializedName("category_id")
   private String categoryId = null;
 
-  @JsonProperty("tax_ids")
+  @SerializedName("tax_ids")
   private List<String> taxIds = new ArrayList<String>();
 
-  @JsonProperty("modifier_list_info")
+  @SerializedName("modifier_list_info")
   private List<CatalogItemModifierListInfo> modifierListInfo = new ArrayList<CatalogItemModifierListInfo>();
 
-  @JsonProperty("image_url")
+  @SerializedName("image_url")
   private String imageUrl = null;
 
-  @JsonProperty("variations")
+  @SerializedName("variations")
   private List<CatalogObject> variations = new ArrayList<CatalogObject>();
 
   /**
    * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for all possible values.
    */
   public enum ProductTypeEnum {
+    @SerializedName("REGULAR")
     REGULAR("REGULAR"),
     
+    @SerializedName("GIFT_CARD")
     GIFT_CARD("GIFT_CARD"),
     
+    @SerializedName("APPOINTMENTS_SERVICE")
     APPOINTMENTS_SERVICE("APPOINTMENTS_SERVICE"),
     
+    @SerializedName("RETAIL_ITEM")
     RETAIL_ITEM("RETAIL_ITEM"),
     
+    @SerializedName("RESTAURANT_ITEM")
     RESTAURANT_ITEM("RESTAURANT_ITEM");
 
     private String value;
@@ -89,22 +98,12 @@ public class CatalogItem {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ProductTypeEnum fromValue(String text) {
-      for (ProductTypeEnum b : ProductTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("product_type")
+  @SerializedName("product_type")
   private ProductTypeEnum productType = null;
 
-  @JsonProperty("skip_modifier_screen")
+  @SerializedName("skip_modifier_screen")
   private Boolean skipModifierScreen = null;
 
   public CatalogItem name(String name) {

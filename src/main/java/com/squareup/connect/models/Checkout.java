@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.Order;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Square Checkout lets merchants accept online payments for supported payment types using a checkout workflow hosted on squareup.com.
@@ -27,31 +31,31 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Square Checkout lets merchants accept online payments for supported payment types using a checkout workflow hosted on squareup.com.")
 
 public class Checkout {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("checkout_page_url")
+  @SerializedName("checkout_page_url")
   private String checkoutPageUrl = null;
 
-  @JsonProperty("ask_for_shipping_address")
+  @SerializedName("ask_for_shipping_address")
   private Boolean askForShippingAddress = null;
 
-  @JsonProperty("merchant_support_email")
+  @SerializedName("merchant_support_email")
   private String merchantSupportEmail = null;
 
-  @JsonProperty("pre_populate_buyer_email")
+  @SerializedName("pre_populate_buyer_email")
   private String prePopulateBuyerEmail = null;
 
-  @JsonProperty("pre_populate_shipping_address")
+  @SerializedName("pre_populate_shipping_address")
   private Address prePopulateShippingAddress = null;
 
-  @JsonProperty("redirect_url")
+  @SerializedName("redirect_url")
   private String redirectUrl = null;
 
-  @JsonProperty("order")
+  @SerializedName("order")
   private Order order = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
   public Checkout id(String id) {

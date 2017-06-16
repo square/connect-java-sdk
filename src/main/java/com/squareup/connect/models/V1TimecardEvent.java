@@ -14,37 +14,49 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1TimecardEvent
  */
 
 public class V1TimecardEvent {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
   /**
    * The ID of the timecard to list events for.
    */
   public enum EventTypeEnum {
+    @SerializedName("API_CREATE")
     API_CREATE("API_CREATE"),
     
+    @SerializedName("API_EDIT")
     API_EDIT("API_EDIT"),
     
+    @SerializedName("API_DELETE")
     API_DELETE("API_DELETE"),
     
+    @SerializedName("REGISTER_CLOCKIN")
     REGISTER_CLOCKIN("REGISTER_CLOCKIN"),
     
+    @SerializedName("REGISTER_CLOCKOUT")
     REGISTER_CLOCKOUT("REGISTER_CLOCKOUT"),
     
+    @SerializedName("DASHBOARD_SUPERVISOR_CLOSE")
     DASHBOARD_SUPERVISOR_CLOSE("DASHBOARD_SUPERVISOR_CLOSE"),
     
+    @SerializedName("DASHBOARD_EDIT")
     DASHBOARD_EDIT("DASHBOARD_EDIT"),
     
+    @SerializedName("DASHBOARD_DELETE")
     DASHBOARD_DELETE("DASHBOARD_DELETE");
 
     private String value;
@@ -57,28 +69,18 @@ public class V1TimecardEvent {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String text) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("event_type")
+  @SerializedName("event_type")
   private EventTypeEnum eventType = null;
 
-  @JsonProperty("clockin_time")
+  @SerializedName("clockin_time")
   private String clockinTime = null;
 
-  @JsonProperty("clockout_time")
+  @SerializedName("clockout_time")
   private String clockoutTime = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
   public V1TimecardEvent id(String id) {

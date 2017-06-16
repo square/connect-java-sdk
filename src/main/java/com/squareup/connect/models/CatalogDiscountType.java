@@ -15,20 +15,24 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * How to apply a [CatalogDiscount](#type-catalogdiscount) to a [CatalogItem](#type-catalogitem).
  */
 public enum CatalogDiscountType {
   
+  @SerializedName("FIXED_PERCENTAGE")
   FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
   
+  @SerializedName("FIXED_AMOUNT")
   FIXED_AMOUNT("FIXED_AMOUNT"),
   
+  @SerializedName("VARIABLE_PERCENTAGE")
   VARIABLE_PERCENTAGE("VARIABLE_PERCENTAGE"),
   
+  @SerializedName("VARIABLE_AMOUNT")
   VARIABLE_AMOUNT("VARIABLE_AMOUNT");
 
   private String value;
@@ -40,16 +44,6 @@ public enum CatalogDiscountType {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static CatalogDiscountType fromValue(String text) {
-    for (CatalogDiscountType b : CatalogDiscountType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

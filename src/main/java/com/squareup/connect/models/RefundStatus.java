@@ -15,20 +15,24 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates a refund's current status.
  */
 public enum RefundStatus {
   
+  @SerializedName("PENDING")
   PENDING("PENDING"),
   
+  @SerializedName("APPROVED")
   APPROVED("APPROVED"),
   
+  @SerializedName("REJECTED")
   REJECTED("REJECTED"),
   
+  @SerializedName("FAILED")
   FAILED("FAILED");
 
   private String value;
@@ -40,16 +44,6 @@ public enum RefundStatus {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static RefundStatus fromValue(String text) {
-    for (RefundStatus b : RefundStatus.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

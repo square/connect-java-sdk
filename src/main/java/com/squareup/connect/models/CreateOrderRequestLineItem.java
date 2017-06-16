@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents a line item to include in an order. Each line item describes a different product to purchase, with its own quantity and price details.
@@ -26,13 +30,13 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a line item to include in an order. Each line item describes a different product to purchase, with its own quantity and price details.")
 
 public class CreateOrderRequestLineItem {
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("quantity")
+  @SerializedName("quantity")
   private String quantity = null;
 
-  @JsonProperty("base_price_money")
+  @SerializedName("base_price_money")
   private Money basePriceMoney = null;
 
   public CreateOrderRequestLineItem name(String name) {

@@ -14,13 +14,17 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Money;
 import com.squareup.connect.models.TenderCardDetails;
 import com.squareup.connect.models.TenderCashDetails;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents a tender (i.e., a method of payment) used in a Square transaction.
@@ -28,44 +32,50 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a tender (i.e., a method of payment) used in a Square transaction.")
 
 public class Tender {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("location_id")
+  @SerializedName("location_id")
   private String locationId = null;
 
-  @JsonProperty("transaction_id")
+  @SerializedName("transaction_id")
   private String transactionId = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("note")
+  @SerializedName("note")
   private String note = null;
 
-  @JsonProperty("amount_money")
+  @SerializedName("amount_money")
   private Money amountMoney = null;
 
-  @JsonProperty("processing_fee_money")
+  @SerializedName("processing_fee_money")
   private Money processingFeeMoney = null;
 
-  @JsonProperty("customer_id")
+  @SerializedName("customer_id")
   private String customerId = null;
 
   /**
    * The type of tender, such as `CARD` or `CASH`.
    */
   public enum TypeEnum {
+    @SerializedName("CARD")
     CARD("CARD"),
     
+    @SerializedName("CASH")
     CASH("CASH"),
     
+    @SerializedName("THIRD_PARTY_CARD")
     THIRD_PARTY_CARD("THIRD_PARTY_CARD"),
     
+    @SerializedName("SQUARE_GIFT_CARD")
     SQUARE_GIFT_CARD("SQUARE_GIFT_CARD"),
     
+    @SerializedName("NO_SALE")
     NO_SALE("NO_SALE"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -78,25 +88,15 @@ public class Tender {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
-  @JsonProperty("card_details")
+  @SerializedName("card_details")
   private TenderCardDetails cardDetails = null;
 
-  @JsonProperty("cash_details")
+  @SerializedName("cash_details")
   private TenderCashDetails cashDetails = null;
 
   public Tender id(String id) {

@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents a timecard for an employee.
@@ -25,31 +29,31 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a timecard for an employee.")
 
 public class V1Timecard {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("employee_id")
+  @SerializedName("employee_id")
   private String employeeId = null;
 
-  @JsonProperty("deleted")
+  @SerializedName("deleted")
   private Boolean deleted = null;
 
-  @JsonProperty("clockin_time")
+  @SerializedName("clockin_time")
   private String clockinTime = null;
 
-  @JsonProperty("clockout_time")
+  @SerializedName("clockout_time")
   private String clockoutTime = null;
 
-  @JsonProperty("clockin_location_id")
+  @SerializedName("clockin_location_id")
   private String clockinLocationId = null;
 
-  @JsonProperty("clockout_location_id")
+  @SerializedName("clockout_location_id")
   private String clockoutLocationId = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("updated_at")
+  @SerializedName("updated_at")
   private String updatedAt = null;
 
    /**

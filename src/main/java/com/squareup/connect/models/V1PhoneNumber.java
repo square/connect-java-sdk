@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents a phone number.
@@ -25,10 +29,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a phone number.")
 
 public class V1PhoneNumber {
-  @JsonProperty("calling_code")
+  @SerializedName("calling_code")
   private String callingCode = null;
 
-  @JsonProperty("number")
+  @SerializedName("number")
   private String number = null;
 
   public V1PhoneNumber callingCode(String callingCode) {

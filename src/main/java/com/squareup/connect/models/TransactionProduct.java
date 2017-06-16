@@ -15,28 +15,36 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates the Square product used to process a transaction.
  */
 public enum TransactionProduct {
   
+  @SerializedName("REGISTER")
   REGISTER("REGISTER"),
   
+  @SerializedName("EXTERNAL_API")
   EXTERNAL_API("EXTERNAL_API"),
   
+  @SerializedName("BILLING")
   BILLING("BILLING"),
   
+  @SerializedName("APPOINTMENTS")
   APPOINTMENTS("APPOINTMENTS"),
   
+  @SerializedName("INVOICES")
   INVOICES("INVOICES"),
   
+  @SerializedName("ONLINE_STORE")
   ONLINE_STORE("ONLINE_STORE"),
   
+  @SerializedName("PAYROLL")
   PAYROLL("PAYROLL"),
   
+  @SerializedName("OTHER")
   OTHER("OTHER");
 
   private String value;
@@ -48,16 +56,6 @@ public enum TransactionProduct {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static TransactionProduct fromValue(String text) {
-    for (TransactionProduct b : TransactionProduct.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

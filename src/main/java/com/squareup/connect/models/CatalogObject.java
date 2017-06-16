@@ -14,8 +14,11 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogCategory;
 import com.squareup.connect.models.CatalogDiscount;
 import com.squareup.connect.models.CatalogItem;
@@ -26,6 +29,7 @@ import com.squareup.connect.models.CatalogTax;
 import com.squareup.connect.models.CatalogV1Id;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,18 +43,25 @@ public class CatalogObject {
    * The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below.  See [CatalogObjectType](#type-catalogobjecttype) for all possible values.
    */
   public enum TypeEnum {
+    @SerializedName("ITEM")
     ITEM("ITEM"),
     
+    @SerializedName("CATEGORY")
     CATEGORY("CATEGORY"),
     
+    @SerializedName("ITEM_VARIATION")
     ITEM_VARIATION("ITEM_VARIATION"),
     
+    @SerializedName("TAX")
     TAX("TAX"),
     
+    @SerializedName("DISCOUNT")
     DISCOUNT("DISCOUNT"),
     
+    @SerializedName("MODIFIER_LIST")
     MODIFIER_LIST("MODIFIER_LIST"),
     
+    @SerializedName("MODIFIER")
     MODIFIER("MODIFIER");
 
     private String value;
@@ -63,64 +74,54 @@ public class CatalogObject {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("updated_at")
+  @SerializedName("updated_at")
   private String updatedAt = null;
 
-  @JsonProperty("version")
+  @SerializedName("version")
   private Long version = null;
 
-  @JsonProperty("is_deleted")
+  @SerializedName("is_deleted")
   private Boolean isDeleted = null;
 
-  @JsonProperty("catalog_v1_ids")
+  @SerializedName("catalog_v1_ids")
   private List<CatalogV1Id> catalogV1Ids = new ArrayList<CatalogV1Id>();
 
-  @JsonProperty("present_at_all_locations")
+  @SerializedName("present_at_all_locations")
   private Boolean presentAtAllLocations = null;
 
-  @JsonProperty("present_at_location_ids")
+  @SerializedName("present_at_location_ids")
   private List<String> presentAtLocationIds = new ArrayList<String>();
 
-  @JsonProperty("absent_at_location_ids")
+  @SerializedName("absent_at_location_ids")
   private List<String> absentAtLocationIds = new ArrayList<String>();
 
-  @JsonProperty("item_data")
+  @SerializedName("item_data")
   private CatalogItem itemData = null;
 
-  @JsonProperty("category_data")
+  @SerializedName("category_data")
   private CatalogCategory categoryData = null;
 
-  @JsonProperty("item_variation_data")
+  @SerializedName("item_variation_data")
   private CatalogItemVariation itemVariationData = null;
 
-  @JsonProperty("tax_data")
+  @SerializedName("tax_data")
   private CatalogTax taxData = null;
 
-  @JsonProperty("discount_data")
+  @SerializedName("discount_data")
   private CatalogDiscount discountData = null;
 
-  @JsonProperty("modifier_list_data")
+  @SerializedName("modifier_list_data")
   private CatalogModifierList modifierListData = null;
 
-  @JsonProperty("modifier_data")
+  @SerializedName("modifier_data")
   private CatalogModifier modifierData = null;
 
   public CatalogObject type(TypeEnum type) {

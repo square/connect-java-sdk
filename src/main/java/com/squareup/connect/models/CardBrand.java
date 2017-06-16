@@ -15,30 +15,39 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates a credit card's brand, such as `VISA`.
  */
 public enum CardBrand {
   
+  @SerializedName("OTHER_BRAND")
   OTHER_BRAND("OTHER_BRAND"),
   
+  @SerializedName("VISA")
   VISA("VISA"),
   
+  @SerializedName("MASTERCARD")
   MASTERCARD("MASTERCARD"),
   
+  @SerializedName("AMERICAN_EXPRESS")
   AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
   
+  @SerializedName("DISCOVER")
   DISCOVER("DISCOVER"),
   
+  @SerializedName("DISCOVER_DINERS")
   DISCOVER_DINERS("DISCOVER_DINERS"),
   
+  @SerializedName("JCB")
   JCB("JCB"),
   
+  @SerializedName("CHINA_UNIONPAY")
   CHINA_UNIONPAY("CHINA_UNIONPAY"),
   
+  @SerializedName("SQUARE_GIFT_CARD")
   SQUARE_GIFT_CARD("SQUARE_GIFT_CARD");
 
   private String value;
@@ -50,16 +59,6 @@ public enum CardBrand {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static CardBrand fromValue(String text) {
-    for (CardBrand b : CardBrand.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

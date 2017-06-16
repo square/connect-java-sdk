@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * 
@@ -25,10 +29,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class CatalogQueryExact {
-  @JsonProperty("attribute_name")
+  @SerializedName("attribute_name")
   private String attributeName = null;
 
-  @JsonProperty("attribute_value")
+  @SerializedName("attribute_value")
   private String attributeValue = null;
 
   public CatalogQueryExact attributeName(String attributeName) {

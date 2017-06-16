@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Defines the query parameters that can be included in a request to the [ListTransactions](#endpoint-listtransactions) endpoint.
@@ -25,18 +29,20 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Defines the query parameters that can be included in a request to the [ListTransactions](#endpoint-listtransactions) endpoint.")
 
 public class ListTransactionsRequest {
-  @JsonProperty("begin_time")
+  @SerializedName("begin_time")
   private String beginTime = null;
 
-  @JsonProperty("end_time")
+  @SerializedName("end_time")
   private String endTime = null;
 
   /**
    * The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC`
    */
   public enum SortOrderEnum {
+    @SerializedName("DESC")
     DESC("DESC"),
     
+    @SerializedName("ASC")
     ASC("ASC");
 
     private String value;
@@ -49,22 +55,12 @@ public class ListTransactionsRequest {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static SortOrderEnum fromValue(String text) {
-      for (SortOrderEnum b : SortOrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("sort_order")
+  @SerializedName("sort_order")
   private SortOrderEnum sortOrder = null;
 
-  @JsonProperty("cursor")
+  @SerializedName("cursor")
   private String cursor = null;
 
   public ListTransactionsRequest beginTime(String beginTime) {

@@ -15,14 +15,15 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates account capabilities that a business's location might or might not have enabled.
  */
 public enum LocationCapability {
   
+  @SerializedName("CREDIT_CARD_PROCESSING")
   PROCESSING("CREDIT_CARD_PROCESSING");
 
   private String value;
@@ -34,16 +35,6 @@ public enum LocationCapability {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static LocationCapability fromValue(String text) {
-    for (LocationCapability b : LocationCapability.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

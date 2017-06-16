@@ -14,8 +14,11 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.Error;
 import com.squareup.connect.models.V1Money;
@@ -23,6 +26,7 @@ import com.squareup.connect.models.V1OrderHistoryEntry;
 import com.squareup.connect.models.V1Tender;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,35 +36,41 @@ import java.util.List;
  */
 
 public class V1Order {
-  @JsonProperty("errors")
+  @SerializedName("errors")
   private List<Error> errors = new ArrayList<Error>();
 
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("buyer_email")
+  @SerializedName("buyer_email")
   private String buyerEmail = null;
 
-  @JsonProperty("recipient_name")
+  @SerializedName("recipient_name")
   private String recipientName = null;
 
-  @JsonProperty("recipient_phone_number")
+  @SerializedName("recipient_phone_number")
   private String recipientPhoneNumber = null;
 
   /**
    * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.
    */
   public enum StateEnum {
+    @SerializedName("PENDING")
     PENDING("PENDING"),
     
+    @SerializedName("OPEN")
     OPEN("OPEN"),
     
+    @SerializedName("COMPLETED")
     COMPLETED("COMPLETED"),
     
+    @SerializedName("CANCELED")
     CANCELED("CANCELED"),
     
+    @SerializedName("REFUNDED")
     REFUNDED("REFUNDED"),
     
+    @SerializedName("REJECTED")
     REJECTED("REJECTED");
 
     private String value;
@@ -73,76 +83,66 @@ public class V1Order {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static StateEnum fromValue(String text) {
-      for (StateEnum b : StateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("state")
+  @SerializedName("state")
   private StateEnum state = null;
 
-  @JsonProperty("shipping_address")
+  @SerializedName("shipping_address")
   private Address shippingAddress = null;
 
-  @JsonProperty("subtotal_money")
+  @SerializedName("subtotal_money")
   private V1Money subtotalMoney = null;
 
-  @JsonProperty("total_shipping_money")
+  @SerializedName("total_shipping_money")
   private V1Money totalShippingMoney = null;
 
-  @JsonProperty("total_tax_money")
+  @SerializedName("total_tax_money")
   private V1Money totalTaxMoney = null;
 
-  @JsonProperty("total_price_money")
+  @SerializedName("total_price_money")
   private V1Money totalPriceMoney = null;
 
-  @JsonProperty("total_discount_money")
+  @SerializedName("total_discount_money")
   private V1Money totalDiscountMoney = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("updated_at")
+  @SerializedName("updated_at")
   private String updatedAt = null;
 
-  @JsonProperty("expires_at")
+  @SerializedName("expires_at")
   private String expiresAt = null;
 
-  @JsonProperty("payment_id")
+  @SerializedName("payment_id")
   private String paymentId = null;
 
-  @JsonProperty("buyer_note")
+  @SerializedName("buyer_note")
   private String buyerNote = null;
 
-  @JsonProperty("completed_note")
+  @SerializedName("completed_note")
   private String completedNote = null;
 
-  @JsonProperty("refunded_note")
+  @SerializedName("refunded_note")
   private String refundedNote = null;
 
-  @JsonProperty("canceled_note")
+  @SerializedName("canceled_note")
   private String canceledNote = null;
 
-  @JsonProperty("tender")
+  @SerializedName("tender")
   private V1Tender tender = null;
 
-  @JsonProperty("order_history")
+  @SerializedName("order_history")
   private List<V1OrderHistoryEntry> orderHistory = new ArrayList<V1OrderHistoryEntry>();
 
-  @JsonProperty("promo_code")
+  @SerializedName("promo_code")
   private String promoCode = null;
 
-  @JsonProperty("btc_receive_address")
+  @SerializedName("btc_receive_address")
   private String btcReceiveAddress = null;
 
-  @JsonProperty("btc_price_satoshi")
+  @SerializedName("btc_price_satoshi")
   private BigDecimal btcPriceSatoshi = null;
 
   public V1Order errors(List<Error> errors) {

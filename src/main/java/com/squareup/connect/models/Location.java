@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,22 +32,23 @@ import java.util.List;
 @ApiModel(description = "Represents one of a business's locations.")
 
 public class Location {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("address")
+  @SerializedName("address")
   private Address address = null;
 
-  @JsonProperty("timezone")
+  @SerializedName("timezone")
   private String timezone = null;
 
   /**
    * Gets or Sets capabilities
    */
   public enum CapabilitiesEnum {
+    @SerializedName("CREDIT_CARD_PROCESSING")
     PROCESSING("CREDIT_CARD_PROCESSING");
 
     private String value;
@@ -56,19 +61,9 @@ public class Location {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static CapabilitiesEnum fromValue(String text) {
-      for (CapabilitiesEnum b : CapabilitiesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("capabilities")
+  @SerializedName("capabilities")
   private List<CapabilitiesEnum> capabilities = new ArrayList<CapabilitiesEnum>();
 
   public Location id(String id) {

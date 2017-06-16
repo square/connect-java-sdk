@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents a refund processed for a Square transaction.
@@ -26,37 +30,41 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a refund processed for a Square transaction.")
 
 public class Refund {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("location_id")
+  @SerializedName("location_id")
   private String locationId = null;
 
-  @JsonProperty("transaction_id")
+  @SerializedName("transaction_id")
   private String transactionId = null;
 
-  @JsonProperty("tender_id")
+  @SerializedName("tender_id")
   private String tenderId = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("reason")
+  @SerializedName("reason")
   private String reason = null;
 
-  @JsonProperty("amount_money")
+  @SerializedName("amount_money")
   private Money amountMoney = null;
 
   /**
    * The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`).
    */
   public enum StatusEnum {
+    @SerializedName("PENDING")
     PENDING("PENDING"),
     
+    @SerializedName("APPROVED")
     APPROVED("APPROVED"),
     
+    @SerializedName("REJECTED")
     REJECTED("REJECTED"),
     
+    @SerializedName("FAILED")
     FAILED("FAILED");
 
     private String value;
@@ -69,22 +77,12 @@ public class Refund {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("status")
+  @SerializedName("status")
   private StatusEnum status = null;
 
-  @JsonProperty("processing_fee_money")
+  @SerializedName("processing_fee_money")
   private Money processingFeeMoney = null;
 
   public Refund id(String id) {

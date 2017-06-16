@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents the details of a tender with &#x60;type&#x60; &#x60;CASH&#x60;.
@@ -26,10 +30,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents the details of a tender with `type` `CASH`.")
 
 public class TenderCashDetails {
-  @JsonProperty("buyer_tendered_money")
+  @SerializedName("buyer_tendered_money")
   private Money buyerTenderedMoney = null;
 
-  @JsonProperty("change_back_money")
+  @SerializedName("change_back_money")
   private Money changeBackMoney = null;
 
   public TenderCashDetails buyerTenderedMoney(Money buyerTenderedMoney) {

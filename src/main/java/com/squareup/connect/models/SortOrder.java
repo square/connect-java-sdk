@@ -15,16 +15,18 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * The order (e.g., chronological or alphabetical) in which results from a request are returned.
  */
 public enum SortOrder {
   
+  @SerializedName("DESC")
   DESC("DESC"),
   
+  @SerializedName("ASC")
   ASC("ASC");
 
   private String value;
@@ -36,16 +38,6 @@ public enum SortOrder {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static SortOrder fromValue(String text) {
-    for (SortOrder b : SortOrder.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

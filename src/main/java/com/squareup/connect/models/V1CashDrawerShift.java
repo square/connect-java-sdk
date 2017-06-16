@@ -14,13 +14,17 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Device;
 import com.squareup.connect.models.V1CashDrawerEvent;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,17 +33,20 @@ import java.util.List;
  */
 
 public class V1CashDrawerShift {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
   /**
    * The shift's current state.
    */
   public enum EventTypeEnum {
+    @SerializedName("OPEN")
     OPEN("OPEN"),
     
+    @SerializedName("ENDED")
     ENDED("ENDED"),
     
+    @SerializedName("CLOSED")
     CLOSED("CLOSED");
 
     private String value;
@@ -52,70 +59,60 @@ public class V1CashDrawerShift {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String text) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("event_type")
+  @SerializedName("event_type")
   private EventTypeEnum eventType = null;
 
-  @JsonProperty("opened_at")
+  @SerializedName("opened_at")
   private String openedAt = null;
 
-  @JsonProperty("ended_at")
+  @SerializedName("ended_at")
   private Boolean endedAt = null;
 
-  @JsonProperty("closed_at")
+  @SerializedName("closed_at")
   private String closedAt = null;
 
-  @JsonProperty("employee_ids")
+  @SerializedName("employee_ids")
   private List<String> employeeIds = new ArrayList<String>();
 
-  @JsonProperty("opening_employee_id")
+  @SerializedName("opening_employee_id")
   private String openingEmployeeId = null;
 
-  @JsonProperty("ending_employee_id")
+  @SerializedName("ending_employee_id")
   private String endingEmployeeId = null;
 
-  @JsonProperty("closing_employee_id")
+  @SerializedName("closing_employee_id")
   private String closingEmployeeId = null;
 
-  @JsonProperty("description")
+  @SerializedName("description")
   private String description = null;
 
-  @JsonProperty("starting_cash_money")
+  @SerializedName("starting_cash_money")
   private V1Money startingCashMoney = null;
 
-  @JsonProperty("cash_payment_money")
+  @SerializedName("cash_payment_money")
   private V1Money cashPaymentMoney = null;
 
-  @JsonProperty("cash_refunds_money")
+  @SerializedName("cash_refunds_money")
   private V1Money cashRefundsMoney = null;
 
-  @JsonProperty("cash_paid_in_money")
+  @SerializedName("cash_paid_in_money")
   private V1Money cashPaidInMoney = null;
 
-  @JsonProperty("cash_paid_out_money")
+  @SerializedName("cash_paid_out_money")
   private V1Money cashPaidOutMoney = null;
 
-  @JsonProperty("expected_cash_money")
+  @SerializedName("expected_cash_money")
   private V1Money expectedCashMoney = null;
 
-  @JsonProperty("closed_cash_money")
+  @SerializedName("closed_cash_money")
   private V1Money closedCashMoney = null;
 
-  @JsonProperty("device")
+  @SerializedName("device")
   private Device device = null;
 
-  @JsonProperty("events")
+  @SerializedName("events")
   private List<V1CashDrawerEvent> events = new ArrayList<V1CashDrawerEvent>();
 
   public V1CashDrawerShift id(String id) {

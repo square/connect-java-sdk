@@ -15,24 +15,30 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates a tender's type.
  */
 public enum TenderType {
   
+  @SerializedName("CARD")
   CARD("CARD"),
   
+  @SerializedName("CASH")
   CASH("CASH"),
   
+  @SerializedName("THIRD_PARTY_CARD")
   THIRD_PARTY_CARD("THIRD_PARTY_CARD"),
   
+  @SerializedName("SQUARE_GIFT_CARD")
   SQUARE_GIFT_CARD("SQUARE_GIFT_CARD"),
   
+  @SerializedName("NO_SALE")
   NO_SALE("NO_SALE"),
   
+  @SerializedName("OTHER")
   OTHER("OTHER");
 
   private String value;
@@ -44,16 +50,6 @@ public enum TenderType {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static TenderType fromValue(String text) {
-    for (TenderType b : TenderType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

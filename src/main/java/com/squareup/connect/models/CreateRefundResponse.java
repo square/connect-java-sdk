@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Error;
 import com.squareup.connect.models.Refund;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +33,10 @@ import java.util.List;
 @ApiModel(description = "Defines the fields that are included in the response body of a request to the [CreateRefund](#endpoint-createrefund) endpoint.  One of `errors` or `refund` is present in a given response (never both).")
 
 public class CreateRefundResponse {
-  @JsonProperty("errors")
+  @SerializedName("errors")
   private List<Error> errors = new ArrayList<Error>();
 
-  @JsonProperty("refund")
+  @SerializedName("refund")
   private Refund refund = null;
 
   public CreateRefundResponse errors(List<Error> errors) {

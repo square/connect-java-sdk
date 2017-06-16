@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
@@ -25,13 +29,13 @@ import java.math.BigDecimal;
  */
 
 public class V1AdjustInventoryRequest {
-  @JsonProperty("quantity_delta")
+  @SerializedName("quantity_delta")
   private BigDecimal quantityDelta = null;
 
-  @JsonProperty("adjustment_type")
+  @SerializedName("adjustment_type")
   private BigDecimal adjustmentType = null;
 
-  @JsonProperty("memo")
+  @SerializedName("memo")
   private String memo = null;
 
   public V1AdjustInventoryRequest quantityDelta(BigDecimal quantityDelta) {

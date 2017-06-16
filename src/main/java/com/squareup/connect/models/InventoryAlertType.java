@@ -15,16 +15,18 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates whether Square should alert the merchant when the inventory quantity of a [CatalogItemVariation](#type-catalogitemvariation) is low.
  */
 public enum InventoryAlertType {
   
+  @SerializedName("NONE")
   NONE("NONE"),
   
+  @SerializedName("LOW_QUANTITY")
   LOW_QUANTITY("LOW_QUANTITY");
 
   private String value;
@@ -36,16 +38,6 @@ public enum InventoryAlertType {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static InventoryAlertType fromValue(String text) {
-    for (InventoryAlertType b : InventoryAlertType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

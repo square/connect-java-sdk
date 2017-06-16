@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Defines the fields that are included in the request body of a request to the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
@@ -26,13 +30,13 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Defines the fields that are included in the request body of a request to the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.")
 
 public class CreateCustomerCardRequest {
-  @JsonProperty("card_nonce")
+  @SerializedName("card_nonce")
   private String cardNonce = null;
 
-  @JsonProperty("billing_address")
+  @SerializedName("billing_address")
   private Address billingAddress = null;
 
-  @JsonProperty("cardholder_name")
+  @SerializedName("cardholder_name")
   private String cardholderName = null;
 
   public CreateCustomerCardRequest cardNonce(String cardNonce) {

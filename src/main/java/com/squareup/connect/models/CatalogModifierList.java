@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,15 +32,17 @@ import java.util.List;
 @ApiModel(description = "A modifier list in the Catalog object model. A [CatalogModifierList](#type-catalogmodifierlist) contains [Modifier](#type-catalogmodifier)s that can be applied to a [CatalogItem](#type-catalogitem) at the time of sale.  For example, a modifier list \"Condiments\" that would apply to a \"Hot Dog\" [CatalogItem](#type-catalogitem) might contain [CatalogModifier](#type-catalogmodifier)s \"Ketchup\", \"Mustard\", and \"Relish\". The `selection_type` field specifies whether or not multiple selections from the modifier list are allowed.")
 
 public class CatalogModifierList {
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
   /**
    * Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist) can be applied to a single [CatalogItem](#type-catalogitem). See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for all possible values.
    */
   public enum SelectionTypeEnum {
+    @SerializedName("SINGLE")
     SINGLE("SINGLE"),
     
+    @SerializedName("MULTIPLE")
     MULTIPLE("MULTIPLE");
 
     private String value;
@@ -49,22 +55,12 @@ public class CatalogModifierList {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static SelectionTypeEnum fromValue(String text) {
-      for (SelectionTypeEnum b : SelectionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("selection_type")
+  @SerializedName("selection_type")
   private SelectionTypeEnum selectionType = null;
 
-  @JsonProperty("modifiers")
+  @SerializedName("modifiers")
   private List<CatalogObject> modifiers = new ArrayList<CatalogObject>();
 
   public CatalogModifierList name(String name) {

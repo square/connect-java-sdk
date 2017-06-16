@@ -14,14 +14,18 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.Order;
 import com.squareup.connect.models.Refund;
 import com.squareup.connect.models.Tender;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,42 +35,50 @@ import java.util.List;
 @ApiModel(description = "Represents a transaction processed with Square, either with the Connect API or with Square Register.  The `tenders` field of this object lists all methods of payment used to pay in the transaction.")
 
 public class Transaction {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("location_id")
+  @SerializedName("location_id")
   private String locationId = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("tenders")
+  @SerializedName("tenders")
   private List<Tender> tenders = new ArrayList<Tender>();
 
-  @JsonProperty("refunds")
+  @SerializedName("refunds")
   private List<Refund> refunds = new ArrayList<Refund>();
 
-  @JsonProperty("reference_id")
+  @SerializedName("reference_id")
   private String referenceId = null;
 
   /**
    * The Square product that processed the transaction.
    */
   public enum ProductEnum {
+    @SerializedName("REGISTER")
     REGISTER("REGISTER"),
     
+    @SerializedName("EXTERNAL_API")
     EXTERNAL_API("EXTERNAL_API"),
     
+    @SerializedName("BILLING")
     BILLING("BILLING"),
     
+    @SerializedName("APPOINTMENTS")
     APPOINTMENTS("APPOINTMENTS"),
     
+    @SerializedName("INVOICES")
     INVOICES("INVOICES"),
     
+    @SerializedName("ONLINE_STORE")
     ONLINE_STORE("ONLINE_STORE"),
     
+    @SerializedName("PAYROLL")
     PAYROLL("PAYROLL"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -79,28 +91,18 @@ public class Transaction {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ProductEnum fromValue(String text) {
-      for (ProductEnum b : ProductEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("product")
+  @SerializedName("product")
   private ProductEnum product = null;
 
-  @JsonProperty("client_id")
+  @SerializedName("client_id")
   private String clientId = null;
 
-  @JsonProperty("order")
+  @SerializedName("order")
   private Order order = null;
 
-  @JsonProperty("shipping_address")
+  @SerializedName("shipping_address")
   private Address shippingAddress = null;
 
   public Transaction id(String id) {

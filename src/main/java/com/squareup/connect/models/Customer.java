@@ -14,14 +14,18 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.Card;
 import com.squareup.connect.models.CustomerGroupInfo;
 import com.squareup.connect.models.CustomerPreferences;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,49 +35,49 @@ import java.util.List;
 @ApiModel(description = "Represents one of a business's customers, which can have one or more cards on file associated with it.")
 
 public class Customer {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("updated_at")
+  @SerializedName("updated_at")
   private String updatedAt = null;
 
-  @JsonProperty("cards")
+  @SerializedName("cards")
   private List<Card> cards = new ArrayList<Card>();
 
-  @JsonProperty("given_name")
+  @SerializedName("given_name")
   private String givenName = null;
 
-  @JsonProperty("family_name")
+  @SerializedName("family_name")
   private String familyName = null;
 
-  @JsonProperty("nickname")
+  @SerializedName("nickname")
   private String nickname = null;
 
-  @JsonProperty("company_name")
+  @SerializedName("company_name")
   private String companyName = null;
 
-  @JsonProperty("email_address")
+  @SerializedName("email_address")
   private String emailAddress = null;
 
-  @JsonProperty("address")
+  @SerializedName("address")
   private Address address = null;
 
-  @JsonProperty("phone_number")
+  @SerializedName("phone_number")
   private String phoneNumber = null;
 
-  @JsonProperty("reference_id")
+  @SerializedName("reference_id")
   private String referenceId = null;
 
-  @JsonProperty("note")
+  @SerializedName("note")
   private String note = null;
 
-  @JsonProperty("preferences")
+  @SerializedName("preferences")
   private CustomerPreferences preferences = null;
 
-  @JsonProperty("groups")
+  @SerializedName("groups")
   private List<CustomerGroupInfo> groups = new ArrayList<CustomerGroupInfo>();
 
   public Customer id(String id) {

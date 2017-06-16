@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Money;
 import com.squareup.connect.models.OrderLineItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,19 +33,19 @@ import java.util.List;
 @ApiModel(description = "Contains all information related to a single order to process with Square, including line items that specify the products to purchase")
 
 public class Order {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("location_id")
+  @SerializedName("location_id")
   private String locationId = null;
 
-  @JsonProperty("reference_id")
+  @SerializedName("reference_id")
   private String referenceId = null;
 
-  @JsonProperty("line_items")
+  @SerializedName("line_items")
   private List<OrderLineItem> lineItems = new ArrayList<OrderLineItem>();
 
-  @JsonProperty("total_money")
+  @SerializedName("total_money")
   private Money totalMoney = null;
 
   public Order id(String id) {

@@ -14,33 +14,37 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1ModifierOption
  */
 
 public class V1ModifierOption {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("price_money")
+  @SerializedName("price_money")
   private V1Money priceMoney = null;
 
-  @JsonProperty("on_by_default")
+  @SerializedName("on_by_default")
   private Boolean onByDefault = null;
 
-  @JsonProperty("ordinal")
+  @SerializedName("ordinal")
   private Integer ordinal = null;
 
-  @JsonProperty("modifier_list_id")
+  @SerializedName("modifier_list_id")
   private String modifierListId = null;
 
   public V1ModifierOption id(String id) {

@@ -15,16 +15,18 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Whether to the tax amount should be additional to or included in to the [CatalogItem](#type-catalogitem) price.
  */
 public enum TaxInclusionType {
   
+  @SerializedName("ADDITIVE")
   ADDITIVE("ADDITIVE"),
   
+  @SerializedName("INCLUSIVE")
   INCLUSIVE("INCLUSIVE");
 
   private String value;
@@ -36,16 +38,6 @@ public enum TaxInclusionType {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static TaxInclusionType fromValue(String text) {
-    for (TaxInclusionType b : TaxInclusionType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

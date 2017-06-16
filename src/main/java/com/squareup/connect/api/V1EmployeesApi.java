@@ -10,15 +10,22 @@
  * Do not edit the class manually.
  */
 
+
 package com.squareup.connect.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiCallback;
 import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiResponse;
 import com.squareup.connect.Configuration;
-import com.squareup.connect.models.*;
 import com.squareup.connect.Pair;
+import com.squareup.connect.ProgressRequestBody;
+import com.squareup.connect.ProgressResponseBody;
+
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
 
 import com.squareup.connect.models.V1CashDrawerShift;
 import com.squareup.connect.models.V1Employee;
@@ -26,753 +33,2199 @@ import com.squareup.connect.models.V1EmployeeRole;
 import com.squareup.connect.models.V1Timecard;
 import com.squareup.connect.models.V1TimecardEvent;
 
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class V1EmployeesApi {
-  private ApiClient apiClient;
+    private ApiClient apiClient;
 
-  public V1EmployeesApi() {
-    this(Configuration.getDefaultApiClient());
-  }
+    public V1EmployeesApi() {
+        this(Configuration.getDefaultApiClient());
+    }
 
-  public V1EmployeesApi(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
+    public V1EmployeesApi(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
-  public ApiClient getApiClient() {
-    return apiClient;
-  }
+    public ApiClient getApiClient() {
+        return apiClient;
+    }
 
-  public void setApiClient(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
+    public void setApiClient(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
-  /**
-   * Creates an employee for a business.
-   * Creates an employee for a business.
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Employee
-   * @throws ApiException if fails to make API call
-   */
-  public V1Employee createEmployee(V1Employee body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createEmployee");
+    /**
+     * Build call for createEmployee
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createEmployeeCall(V1Employee body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/employees";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/employees";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createEmployeeValidateBeforeCall(V1Employee body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createEmployee(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createEmployeeCall(body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Creates an employee for a business.
+     * Creates an employee for a business.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Employee
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Employee createEmployee(V1Employee body) throws ApiException {
+        ApiResponse<V1Employee> resp = createEmployeeWithHttpInfo(body);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Creates an employee for a business.
+     * Creates an employee for a business.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Employee&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Employee> createEmployeeWithHttpInfo(V1Employee body) throws ApiException {
+        com.squareup.okhttp.Call call = createEmployeeValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<V1Employee>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Creates an employee for a business. (asynchronously)
+     * Creates an employee for a business.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createEmployeeAsync(V1Employee body, final ApiCallback<V1Employee> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1Employee> localVarReturnType = new GenericType<V1Employee>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates an employee role you can then assign to employees.
-   * Creates an employee role you can then assign to employees.
-   * @param employeeRole An EmployeeRole object with a name and permissions, and an optional owner flag. (required)
-   * @return V1EmployeeRole
-   * @throws ApiException if fails to make API call
-   */
-  public V1EmployeeRole createEmployeeRole(V1EmployeeRole employeeRole) throws ApiException {
-    Object localVarPostBody = employeeRole;
-    
-    // verify the required parameter 'employeeRole' is set
-    if (employeeRole == null) {
-      throw new ApiException(400, "Missing the required parameter 'employeeRole' when calling createEmployeeRole");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createEmployeeValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Employee>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createEmployeeRole
+     * @param employeeRole An EmployeeRole object with a name and permissions, and an optional owner flag. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createEmployeeRoleCall(V1EmployeeRole employeeRole, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = employeeRole;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/roles";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/roles";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createEmployeeRoleValidateBeforeCall(V1EmployeeRole employeeRole, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'employeeRole' is set
+        if (employeeRole == null) {
+            throw new ApiException("Missing the required parameter 'employeeRole' when calling createEmployeeRole(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createEmployeeRoleCall(employeeRole, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Creates an employee role you can then assign to employees.
+     * Creates an employee role you can then assign to employees.
+     * @param employeeRole An EmployeeRole object with a name and permissions, and an optional owner flag. (required)
+     * @return V1EmployeeRole
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1EmployeeRole createEmployeeRole(V1EmployeeRole employeeRole) throws ApiException {
+        ApiResponse<V1EmployeeRole> resp = createEmployeeRoleWithHttpInfo(employeeRole);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Creates an employee role you can then assign to employees.
+     * Creates an employee role you can then assign to employees.
+     * @param employeeRole An EmployeeRole object with a name and permissions, and an optional owner flag. (required)
+     * @return ApiResponse&lt;V1EmployeeRole&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1EmployeeRole> createEmployeeRoleWithHttpInfo(V1EmployeeRole employeeRole) throws ApiException {
+        com.squareup.okhttp.Call call = createEmployeeRoleValidateBeforeCall(employeeRole, null, null);
+        Type localVarReturnType = new TypeToken<V1EmployeeRole>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Creates an employee role you can then assign to employees. (asynchronously)
+     * Creates an employee role you can then assign to employees.
+     * @param employeeRole An EmployeeRole object with a name and permissions, and an optional owner flag. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createEmployeeRoleAsync(V1EmployeeRole employeeRole, final ApiCallback<V1EmployeeRole> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1EmployeeRole> localVarReturnType = new GenericType<V1EmployeeRole>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates a timecard for an employee. Each timecard corresponds to a single shift.
-   * Creates a timecard for an employee. Each timecard corresponds to a single shift.
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Timecard
-   * @throws ApiException if fails to make API call
-   */
-  public V1Timecard createTimecard(V1Timecard body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createTimecard");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createEmployeeRoleValidateBeforeCall(employeeRole, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1EmployeeRole>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createTimecard
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createTimecardCall(V1Timecard body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/timecards";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/timecards";
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createTimecardValidateBeforeCall(V1Timecard body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createTimecard(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createTimecardCall(body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Creates a timecard for an employee. Each timecard corresponds to a single shift.
+     * Creates a timecard for an employee. Each timecard corresponds to a single shift.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Timecard
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Timecard createTimecard(V1Timecard body) throws ApiException {
+        ApiResponse<V1Timecard> resp = createTimecardWithHttpInfo(body);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Creates a timecard for an employee. Each timecard corresponds to a single shift.
+     * Creates a timecard for an employee. Each timecard corresponds to a single shift.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Timecard&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Timecard> createTimecardWithHttpInfo(V1Timecard body) throws ApiException {
+        com.squareup.okhttp.Call call = createTimecardValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<V1Timecard>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Creates a timecard for an employee. Each timecard corresponds to a single shift. (asynchronously)
+     * Creates a timecard for an employee. Each timecard corresponds to a single shift.
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createTimecardAsync(V1Timecard body, final ApiCallback<V1Timecard> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1Timecard> localVarReturnType = new GenericType<V1Timecard>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
-   * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
-   * @param timecardId The ID of the timecard to delete. (required)
-   * @return Object
-   * @throws ApiException if fails to make API call
-   */
-  public Object deleteTimecard(String timecardId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'timecardId' is set
-    if (timecardId == null) {
-      throw new ApiException(400, "Missing the required parameter 'timecardId' when calling deleteTimecard");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createTimecardValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Timecard>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteTimecard
+     * @param timecardId The ID of the timecard to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteTimecardCall(String timecardId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/timecards/{timecard_id}"
+            .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/timecards/{timecard_id}"
-      .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteTimecardValidateBeforeCall(String timecardId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'timecardId' is set
+        if (timecardId == null) {
+            throw new ApiException("Missing the required parameter 'timecardId' when calling deleteTimecard(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteTimecardCall(timecardId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+     * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+     * @param timecardId The ID of the timecard to delete. (required)
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Object deleteTimecard(String timecardId) throws ApiException {
+        ApiResponse<Object> resp = deleteTimecardWithHttpInfo(timecardId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+     * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+     * @param timecardId The ID of the timecard to delete. (required)
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Object> deleteTimecardWithHttpInfo(String timecardId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteTimecardValidateBeforeCall(timecardId, null, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information. (asynchronously)
+     * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+     * @param timecardId The ID of the timecard to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteTimecardAsync(String timecardId, final ApiCallback<Object> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
-   * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
-   * @param locationId The ID of the location to list cash drawer shifts for. (required)
-   * @param order The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC (optional)
-   * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time minus 90 days. (optional)
-   * @param endTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time. (optional)
-   * @return List&lt;V1CashDrawerShift&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1CashDrawerShift> listCashDrawerShifts(String locationId, String order, String beginTime, String endTime) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listCashDrawerShifts");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteTimecardValidateBeforeCall(timecardId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listCashDrawerShifts
+     * @param locationId The ID of the location to list cash drawer shifts for. (required)
+     * @param order The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time minus 90 days. (optional)
+     * @param endTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listCashDrawerShiftsCall(String locationId, String order, String beginTime, String endTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/cash-drawer-shifts"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (order != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        if (beginTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/cash-drawer-shifts"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listCashDrawerShiftsValidateBeforeCall(String locationId, String order, String beginTime, String endTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listCashDrawerShifts(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listCashDrawerShiftsCall(locationId, order, beginTime, endTime, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
+    /**
+     * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+     * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+     * @param locationId The ID of the location to list cash drawer shifts for. (required)
+     * @param order The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time minus 90 days. (optional)
+     * @param endTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time. (optional)
+     * @return List&lt;V1CashDrawerShift&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1CashDrawerShift> listCashDrawerShifts(String locationId, String order, String beginTime, String endTime) throws ApiException {
+        ApiResponse<List<V1CashDrawerShift>> resp = listCashDrawerShiftsWithHttpInfo(locationId, order, beginTime, endTime);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+     * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+     * @param locationId The ID of the location to list cash drawer shifts for. (required)
+     * @param order The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time minus 90 days. (optional)
+     * @param endTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time. (optional)
+     * @return ApiResponse&lt;List&lt;V1CashDrawerShift&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1CashDrawerShift>> listCashDrawerShiftsWithHttpInfo(String locationId, String order, String beginTime, String endTime) throws ApiException {
+        com.squareup.okhttp.Call call = listCashDrawerShiftsValidateBeforeCall(locationId, order, beginTime, endTime, null, null);
+        Type localVarReturnType = new TypeToken<List<V1CashDrawerShift>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days. (asynchronously)
+     * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+     * @param locationId The ID of the location to list cash drawer shifts for. (required)
+     * @param order The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC (optional)
+     * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time minus 90 days. (optional)
+     * @param endTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listCashDrawerShiftsAsync(String locationId, String order, String beginTime, String endTime, final ApiCallback<List<V1CashDrawerShift>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<List<V1CashDrawerShift>> localVarReturnType = new GenericType<List<V1CashDrawerShift>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides summary information for all of a business&#39;s employee roles.
-   * Provides summary information for all of a business&#39;s employee roles.
-   * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
-   * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
-   * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
-   * @return List&lt;V1EmployeeRole&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1EmployeeRole> listEmployeeRoles(String order, Integer limit, String cursor) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/me/roles";
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+        com.squareup.okhttp.Call call = listCashDrawerShiftsValidateBeforeCall(locationId, order, beginTime, endTime, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1CashDrawerShift>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listEmployeeRoles
+     * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listEmployeeRolesCall(String order, Integer limit, String cursor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/roles";
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (order != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        if (cursor != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    GenericType<List<V1EmployeeRole>> localVarReturnType = new GenericType<List<V1EmployeeRole>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides summary information for all of a business&#39;s employees.
-   * Provides summary information for all of a business&#39;s employees.
-   * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC  (optional)
-   * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format (optional)
-   * @param endUpdatedAt If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
-   * @param beginCreatedAt If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
-   * @param endCreatedAt If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
-   * @param status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). (optional)
-   * @param externalId If provided, the endpoint returns only employee entities with the specified external_id. (optional)
-   * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
-   * @return List&lt;V1Employee&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Employee> listEmployees(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/me/employees";
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_updated_at", beginUpdatedAt));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_updated_at", endUpdatedAt));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_created_at", beginCreatedAt));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_created_at", endCreatedAt));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_id", externalId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<List<V1Employee>> localVarReturnType = new GenericType<List<V1Employee>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides summary information for all events associated with a particular timecard.
-   * Provides summary information for all events associated with a particular timecard.
-   * @param timecardId The ID of the timecard to list events for. (required)
-   * @return List&lt;V1TimecardEvent&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1TimecardEvent> listTimecardEvents(String timecardId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'timecardId' is set
-    if (timecardId == null) {
-      throw new ApiException(400, "Missing the required parameter 'timecardId' when calling listTimecardEvents");
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/timecards/{timecard_id}/events"
-      .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listEmployeeRolesValidateBeforeCall(String order, Integer limit, String cursor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        
+        com.squareup.okhttp.Call call = listEmployeeRolesCall(order, limit, cursor, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides summary information for all of a business&#39;s employee roles.
+     * Provides summary information for all of a business&#39;s employee roles.
+     * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+     * @return List&lt;V1EmployeeRole&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1EmployeeRole> listEmployeeRoles(String order, Integer limit, String cursor) throws ApiException {
+        ApiResponse<List<V1EmployeeRole>> resp = listEmployeeRolesWithHttpInfo(order, limit, cursor);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides summary information for all of a business&#39;s employee roles.
+     * Provides summary information for all of a business&#39;s employee roles.
+     * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+     * @return ApiResponse&lt;List&lt;V1EmployeeRole&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1EmployeeRole>> listEmployeeRolesWithHttpInfo(String order, Integer limit, String cursor) throws ApiException {
+        com.squareup.okhttp.Call call = listEmployeeRolesValidateBeforeCall(order, limit, cursor, null, null);
+        Type localVarReturnType = new TypeToken<List<V1EmployeeRole>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides summary information for all of a business&#39;s employee roles. (asynchronously)
+     * Provides summary information for all of a business&#39;s employee roles.
+     * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listEmployeeRolesAsync(String order, Integer limit, String cursor, final ApiCallback<List<V1EmployeeRole>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<List<V1TimecardEvent>> localVarReturnType = new GenericType<List<V1TimecardEvent>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides summary information for all of a business&#39;s employee timecards.
-   * Provides summary information for all of a business&#39;s employee timecards.
-   * @param order The order in which timecards are listed in the response, based on their created_at field. (optional)
-   * @param employeeId If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
-   * @param beginClockinTime If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
-   * @param endClockinTime If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
-   * @param beginClockoutTime If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
-   * @param endClockoutTime If filtering results by their clockout_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
-   * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
-   * @param endUpdatedAt If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
-   * @param deleted If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. (optional)
-   * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
-   * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
-   * @return List&lt;V1Timecard&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Timecard> listTimecards(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String cursor) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/me/timecards";
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "employee_id", employeeId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_clockin_time", beginClockinTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_clockin_time", endClockinTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_clockout_time", beginClockoutTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_clockout_time", endClockoutTime));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_updated_at", beginUpdatedAt));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_updated_at", endUpdatedAt));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "deleted", deleted));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+        com.squareup.okhttp.Call call = listEmployeeRolesValidateBeforeCall(order, limit, cursor, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1EmployeeRole>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listEmployees
+     * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC  (optional)
+     * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format (optional)
+     * @param endUpdatedAt If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginCreatedAt If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endCreatedAt If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). (optional)
+     * @param externalId If provided, the endpoint returns only employee entities with the specified external_id. (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listEmployeesCall(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/employees";
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (order != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        if (beginUpdatedAt != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_updated_at", beginUpdatedAt));
+        if (endUpdatedAt != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_updated_at", endUpdatedAt));
+        if (beginCreatedAt != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_created_at", beginCreatedAt));
+        if (endCreatedAt != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_created_at", endCreatedAt));
+        if (status != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
+        if (externalId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_id", externalId));
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    GenericType<List<V1Timecard>> localVarReturnType = new GenericType<List<V1Timecard>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
-   * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
-   * @param locationId The ID of the location to list cash drawer shifts for. (required)
-   * @param shiftId The shift&#39;s ID. (required)
-   * @return V1CashDrawerShift
-   * @throws ApiException if fails to make API call
-   */
-  public V1CashDrawerShift retrieveCashDrawerShift(String locationId, String shiftId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveCashDrawerShift");
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'shiftId' is set
-    if (shiftId == null) {
-      throw new ApiException(400, "Missing the required parameter 'shiftId' when calling retrieveCashDrawerShift");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listEmployeesValidateBeforeCall(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        
+        com.squareup.okhttp.Call call = listEmployeesCall(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Provides summary information for all of a business&#39;s employees.
+     * Provides summary information for all of a business&#39;s employees.
+     * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC  (optional)
+     * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format (optional)
+     * @param endUpdatedAt If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginCreatedAt If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endCreatedAt If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). (optional)
+     * @param externalId If provided, the endpoint returns only employee entities with the specified external_id. (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @return List&lt;V1Employee&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Employee> listEmployees(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit) throws ApiException {
+        ApiResponse<List<V1Employee>> resp = listEmployeesWithHttpInfo(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit);
+        return resp.getData();
+    }
+
+    /**
+     * Provides summary information for all of a business&#39;s employees.
+     * Provides summary information for all of a business&#39;s employees.
+     * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC  (optional)
+     * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format (optional)
+     * @param endUpdatedAt If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginCreatedAt If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endCreatedAt If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). (optional)
+     * @param externalId If provided, the endpoint returns only employee entities with the specified external_id. (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @return ApiResponse&lt;List&lt;V1Employee&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Employee>> listEmployeesWithHttpInfo(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit) throws ApiException {
+        com.squareup.okhttp.Call call = listEmployeesValidateBeforeCall(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Employee>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Provides summary information for all of a business&#39;s employees. (asynchronously)
+     * Provides summary information for all of a business&#39;s employees.
+     * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC  (optional)
+     * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format (optional)
+     * @param endUpdatedAt If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginCreatedAt If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endCreatedAt If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). (optional)
+     * @param externalId If provided, the endpoint returns only employee entities with the specified external_id. (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listEmployeesAsync(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit, final ApiCallback<List<V1Employee>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listEmployeesValidateBeforeCall(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Employee>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listTimecardEvents
+     * @param timecardId The ID of the timecard to list events for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listTimecardEventsCall(String timecardId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/timecards/{timecard_id}/events"
+            .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/cash-drawer-shifts/{shift_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "shift_id" + "\\}", apiClient.escapeString(shiftId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listTimecardEventsValidateBeforeCall(String timecardId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'timecardId' is set
+        if (timecardId == null) {
+            throw new ApiException("Missing the required parameter 'timecardId' when calling listTimecardEvents(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listTimecardEventsCall(timecardId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides summary information for all events associated with a particular timecard.
+     * Provides summary information for all events associated with a particular timecard.
+     * @param timecardId The ID of the timecard to list events for. (required)
+     * @return List&lt;V1TimecardEvent&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1TimecardEvent> listTimecardEvents(String timecardId) throws ApiException {
+        ApiResponse<List<V1TimecardEvent>> resp = listTimecardEventsWithHttpInfo(timecardId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides summary information for all events associated with a particular timecard.
+     * Provides summary information for all events associated with a particular timecard.
+     * @param timecardId The ID of the timecard to list events for. (required)
+     * @return ApiResponse&lt;List&lt;V1TimecardEvent&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1TimecardEvent>> listTimecardEventsWithHttpInfo(String timecardId) throws ApiException {
+        com.squareup.okhttp.Call call = listTimecardEventsValidateBeforeCall(timecardId, null, null);
+        Type localVarReturnType = new TypeToken<List<V1TimecardEvent>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides summary information for all events associated with a particular timecard. (asynchronously)
+     * Provides summary information for all events associated with a particular timecard.
+     * @param timecardId The ID of the timecard to list events for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listTimecardEventsAsync(String timecardId, final ApiCallback<List<V1TimecardEvent>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1CashDrawerShift> localVarReturnType = new GenericType<V1CashDrawerShift>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides the details for a single employee.
-   * Provides the details for a single employee.
-   * @param employeeId The employee&#39;s ID. (required)
-   * @return V1Employee
-   * @throws ApiException if fails to make API call
-   */
-  public V1Employee retrieveEmployee(String employeeId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'employeeId' is set
-    if (employeeId == null) {
-      throw new ApiException(400, "Missing the required parameter 'employeeId' when calling retrieveEmployee");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listTimecardEventsValidateBeforeCall(timecardId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1TimecardEvent>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listTimecards
+     * @param order The order in which timecards are listed in the response, based on their created_at field. (optional)
+     * @param employeeId If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
+     * @param beginClockinTime If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endClockinTime If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginClockoutTime If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endClockoutTime If filtering results by their clockout_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endUpdatedAt If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param deleted If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listTimecardsCall(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String cursor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/timecards";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (order != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
+        if (employeeId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "employee_id", employeeId));
+        if (beginClockinTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_clockin_time", beginClockinTime));
+        if (endClockinTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_clockin_time", endClockinTime));
+        if (beginClockoutTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_clockout_time", beginClockoutTime));
+        if (endClockoutTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_clockout_time", endClockoutTime));
+        if (beginUpdatedAt != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_updated_at", beginUpdatedAt));
+        if (endUpdatedAt != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_updated_at", endUpdatedAt));
+        if (deleted != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "deleted", deleted));
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        if (cursor != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/employees/{employee_id}"
-      .replaceAll("\\{" + "employee_id" + "\\}", apiClient.escapeString(employeeId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listTimecardsValidateBeforeCall(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String cursor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        
+        com.squareup.okhttp.Call call = listTimecardsCall(order, employeeId, beginClockinTime, endClockinTime, beginClockoutTime, endClockoutTime, beginUpdatedAt, endUpdatedAt, deleted, limit, cursor, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides summary information for all of a business&#39;s employee timecards.
+     * Provides summary information for all of a business&#39;s employee timecards.
+     * @param order The order in which timecards are listed in the response, based on their created_at field. (optional)
+     * @param employeeId If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
+     * @param beginClockinTime If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endClockinTime If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginClockoutTime If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endClockoutTime If filtering results by their clockout_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endUpdatedAt If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param deleted If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+     * @return List&lt;V1Timecard&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Timecard> listTimecards(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String cursor) throws ApiException {
+        ApiResponse<List<V1Timecard>> resp = listTimecardsWithHttpInfo(order, employeeId, beginClockinTime, endClockinTime, beginClockoutTime, endClockoutTime, beginUpdatedAt, endUpdatedAt, deleted, limit, cursor);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides summary information for all of a business&#39;s employee timecards.
+     * Provides summary information for all of a business&#39;s employee timecards.
+     * @param order The order in which timecards are listed in the response, based on their created_at field. (optional)
+     * @param employeeId If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
+     * @param beginClockinTime If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endClockinTime If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginClockoutTime If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endClockoutTime If filtering results by their clockout_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endUpdatedAt If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param deleted If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+     * @return ApiResponse&lt;List&lt;V1Timecard&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Timecard>> listTimecardsWithHttpInfo(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String cursor) throws ApiException {
+        com.squareup.okhttp.Call call = listTimecardsValidateBeforeCall(order, employeeId, beginClockinTime, endClockinTime, beginClockoutTime, endClockoutTime, beginUpdatedAt, endUpdatedAt, deleted, limit, cursor, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Timecard>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides summary information for all of a business&#39;s employee timecards. (asynchronously)
+     * Provides summary information for all of a business&#39;s employee timecards.
+     * @param order The order in which timecards are listed in the response, based on their created_at field. (optional)
+     * @param employeeId If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
+     * @param beginClockinTime If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endClockinTime If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginClockoutTime If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endClockoutTime If filtering results by their clockout_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
+     * @param endUpdatedAt If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
+     * @param deleted If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. (optional)
+     * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+     * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listTimecardsAsync(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String cursor, final ApiCallback<List<V1Timecard>> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1Employee> localVarReturnType = new GenericType<V1Employee>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides the details for a single employee role.
-   * Provides the details for a single employee role.
-   * @param roleId The role&#39;s ID. (required)
-   * @return V1EmployeeRole
-   * @throws ApiException if fails to make API call
-   */
-  public V1EmployeeRole retrieveEmployeeRole(String roleId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'roleId' is set
-    if (roleId == null) {
-      throw new ApiException(400, "Missing the required parameter 'roleId' when calling retrieveEmployeeRole");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listTimecardsValidateBeforeCall(order, employeeId, beginClockinTime, endClockinTime, beginClockoutTime, endClockoutTime, beginUpdatedAt, endUpdatedAt, deleted, limit, cursor, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Timecard>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveCashDrawerShift
+     * @param locationId The ID of the location to list cash drawer shifts for. (required)
+     * @param shiftId The shift&#39;s ID. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveCashDrawerShiftCall(String locationId, String shiftId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/cash-drawer-shifts/{shift_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "shift_id" + "\\}", apiClient.escapeString(shiftId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/roles/{role_id}"
-      .replaceAll("\\{" + "role_id" + "\\}", apiClient.escapeString(roleId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveCashDrawerShiftValidateBeforeCall(String locationId, String shiftId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling retrieveCashDrawerShift(Async)");
+        }
+        
+        // verify the required parameter 'shiftId' is set
+        if (shiftId == null) {
+            throw new ApiException("Missing the required parameter 'shiftId' when calling retrieveCashDrawerShift(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveCashDrawerShiftCall(locationId, shiftId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+     * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+     * @param locationId The ID of the location to list cash drawer shifts for. (required)
+     * @param shiftId The shift&#39;s ID. (required)
+     * @return V1CashDrawerShift
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1CashDrawerShift retrieveCashDrawerShift(String locationId, String shiftId) throws ApiException {
+        ApiResponse<V1CashDrawerShift> resp = retrieveCashDrawerShiftWithHttpInfo(locationId, shiftId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+     * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+     * @param locationId The ID of the location to list cash drawer shifts for. (required)
+     * @param shiftId The shift&#39;s ID. (required)
+     * @return ApiResponse&lt;V1CashDrawerShift&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1CashDrawerShift> retrieveCashDrawerShiftWithHttpInfo(String locationId, String shiftId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveCashDrawerShiftValidateBeforeCall(locationId, shiftId, null, null);
+        Type localVarReturnType = new TypeToken<V1CashDrawerShift>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides the details for a single cash drawer shift, including all events that occurred during the shift. (asynchronously)
+     * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+     * @param locationId The ID of the location to list cash drawer shifts for. (required)
+     * @param shiftId The shift&#39;s ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveCashDrawerShiftAsync(String locationId, String shiftId, final ApiCallback<V1CashDrawerShift> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1EmployeeRole> localVarReturnType = new GenericType<V1EmployeeRole>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides the details for a single timecard.
-   * Provides the details for a single timecard.
-   * @param timecardId The timecard&#39;s ID. (required)
-   * @return V1Timecard
-   * @throws ApiException if fails to make API call
-   */
-  public V1Timecard retrieveTimecard(String timecardId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'timecardId' is set
-    if (timecardId == null) {
-      throw new ApiException(400, "Missing the required parameter 'timecardId' when calling retrieveTimecard");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveCashDrawerShiftValidateBeforeCall(locationId, shiftId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1CashDrawerShift>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveEmployee
+     * @param employeeId The employee&#39;s ID. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveEmployeeCall(String employeeId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/employees/{employee_id}"
+            .replaceAll("\\{" + "employee_id" + "\\}", apiClient.escapeString(employeeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/timecards/{timecard_id}"
-      .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveEmployeeValidateBeforeCall(String employeeId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'employeeId' is set
+        if (employeeId == null) {
+            throw new ApiException("Missing the required parameter 'employeeId' when calling retrieveEmployee(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveEmployeeCall(employeeId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides the details for a single employee.
+     * Provides the details for a single employee.
+     * @param employeeId The employee&#39;s ID. (required)
+     * @return V1Employee
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Employee retrieveEmployee(String employeeId) throws ApiException {
+        ApiResponse<V1Employee> resp = retrieveEmployeeWithHttpInfo(employeeId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides the details for a single employee.
+     * Provides the details for a single employee.
+     * @param employeeId The employee&#39;s ID. (required)
+     * @return ApiResponse&lt;V1Employee&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Employee> retrieveEmployeeWithHttpInfo(String employeeId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveEmployeeValidateBeforeCall(employeeId, null, null);
+        Type localVarReturnType = new TypeToken<V1Employee>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides the details for a single employee. (asynchronously)
+     * Provides the details for a single employee.
+     * @param employeeId The employee&#39;s ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveEmployeeAsync(String employeeId, final ApiCallback<V1Employee> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1Timecard> localVarReturnType = new GenericType<V1Timecard>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * V1 UpdateEmployee
-   * 
-   * @param employeeId The ID of the role to modify. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Employee
-   * @throws ApiException if fails to make API call
-   */
-  public V1Employee updateEmployee(String employeeId, V1Employee body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'employeeId' is set
-    if (employeeId == null) {
-      throw new ApiException(400, "Missing the required parameter 'employeeId' when calling updateEmployee");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveEmployeeValidateBeforeCall(employeeId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Employee>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveEmployeeRole
+     * @param roleId The role&#39;s ID. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveEmployeeRoleCall(String roleId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/roles/{role_id}"
+            .replaceAll("\\{" + "role_id" + "\\}", apiClient.escapeString(roleId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateEmployee");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveEmployeeRoleValidateBeforeCall(String roleId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'roleId' is set
+        if (roleId == null) {
+            throw new ApiException("Missing the required parameter 'roleId' when calling retrieveEmployeeRole(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveEmployeeRoleCall(roleId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Provides the details for a single employee role.
+     * Provides the details for a single employee role.
+     * @param roleId The role&#39;s ID. (required)
+     * @return V1EmployeeRole
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1EmployeeRole retrieveEmployeeRole(String roleId) throws ApiException {
+        ApiResponse<V1EmployeeRole> resp = retrieveEmployeeRoleWithHttpInfo(roleId);
+        return resp.getData();
+    }
+
+    /**
+     * Provides the details for a single employee role.
+     * Provides the details for a single employee role.
+     * @param roleId The role&#39;s ID. (required)
+     * @return ApiResponse&lt;V1EmployeeRole&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1EmployeeRole> retrieveEmployeeRoleWithHttpInfo(String roleId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveEmployeeRoleValidateBeforeCall(roleId, null, null);
+        Type localVarReturnType = new TypeToken<V1EmployeeRole>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Provides the details for a single employee role. (asynchronously)
+     * Provides the details for a single employee role.
+     * @param roleId The role&#39;s ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveEmployeeRoleAsync(String roleId, final ApiCallback<V1EmployeeRole> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveEmployeeRoleValidateBeforeCall(roleId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1EmployeeRole>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveTimecard
+     * @param timecardId The timecard&#39;s ID. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveTimecardCall(String timecardId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/timecards/{timecard_id}"
+            .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/employees/{employee_id}"
-      .replaceAll("\\{" + "employee_id" + "\\}", apiClient.escapeString(employeeId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveTimecardValidateBeforeCall(String timecardId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'timecardId' is set
+        if (timecardId == null) {
+            throw new ApiException("Missing the required parameter 'timecardId' when calling retrieveTimecard(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveTimecardCall(timecardId, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Provides the details for a single timecard.
+     * Provides the details for a single timecard.
+     * @param timecardId The timecard&#39;s ID. (required)
+     * @return V1Timecard
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Timecard retrieveTimecard(String timecardId) throws ApiException {
+        ApiResponse<V1Timecard> resp = retrieveTimecardWithHttpInfo(timecardId);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Provides the details for a single timecard.
+     * Provides the details for a single timecard.
+     * @param timecardId The timecard&#39;s ID. (required)
+     * @return ApiResponse&lt;V1Timecard&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Timecard> retrieveTimecardWithHttpInfo(String timecardId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveTimecardValidateBeforeCall(timecardId, null, null);
+        Type localVarReturnType = new TypeToken<V1Timecard>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Provides the details for a single timecard. (asynchronously)
+     * Provides the details for a single timecard.
+     * @param timecardId The timecard&#39;s ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveTimecardAsync(String timecardId, final ApiCallback<V1Timecard> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1Employee> localVarReturnType = new GenericType<V1Employee>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the details of an employee role.
-   * Modifies the details of an employee role.
-   * @param roleId The ID of the role to modify. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1EmployeeRole
-   * @throws ApiException if fails to make API call
-   */
-  public V1EmployeeRole updateEmployeeRole(String roleId, V1EmployeeRole body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'roleId' is set
-    if (roleId == null) {
-      throw new ApiException(400, "Missing the required parameter 'roleId' when calling updateEmployeeRole");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveTimecardValidateBeforeCall(timecardId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Timecard>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateEmployee
+     * @param employeeId The ID of the role to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateEmployeeCall(String employeeId, V1Employee body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/employees/{employee_id}"
+            .replaceAll("\\{" + "employee_id" + "\\}", apiClient.escapeString(employeeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateEmployeeRole");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateEmployeeValidateBeforeCall(String employeeId, V1Employee body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'employeeId' is set
+        if (employeeId == null) {
+            throw new ApiException("Missing the required parameter 'employeeId' when calling updateEmployee(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateEmployee(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateEmployeeCall(employeeId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * V1 UpdateEmployee
+     * 
+     * @param employeeId The ID of the role to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Employee
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Employee updateEmployee(String employeeId, V1Employee body) throws ApiException {
+        ApiResponse<V1Employee> resp = updateEmployeeWithHttpInfo(employeeId, body);
+        return resp.getData();
+    }
+
+    /**
+     * V1 UpdateEmployee
+     * 
+     * @param employeeId The ID of the role to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Employee&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Employee> updateEmployeeWithHttpInfo(String employeeId, V1Employee body) throws ApiException {
+        com.squareup.okhttp.Call call = updateEmployeeValidateBeforeCall(employeeId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Employee>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * V1 UpdateEmployee (asynchronously)
+     * 
+     * @param employeeId The ID of the role to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateEmployeeAsync(String employeeId, V1Employee body, final ApiCallback<V1Employee> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateEmployeeValidateBeforeCall(employeeId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Employee>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateEmployeeRole
+     * @param roleId The ID of the role to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateEmployeeRoleCall(String roleId, V1EmployeeRole body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/roles/{role_id}"
+            .replaceAll("\\{" + "role_id" + "\\}", apiClient.escapeString(roleId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // create path and map variables
-    String localVarPath = "/v1/me/roles/{role_id}"
-      .replaceAll("\\{" + "role_id" + "\\}", apiClient.escapeString(roleId.toString()));
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateEmployeeRoleValidateBeforeCall(String roleId, V1EmployeeRole body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'roleId' is set
+        if (roleId == null) {
+            throw new ApiException("Missing the required parameter 'roleId' when calling updateEmployeeRole(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateEmployeeRole(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateEmployeeRoleCall(roleId, body, progressListener, progressRequestListener);
+        return call;
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        
+        
+        
+        
+    }
 
+    /**
+     * Modifies the details of an employee role.
+     * Modifies the details of an employee role.
+     * @param roleId The ID of the role to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1EmployeeRole
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1EmployeeRole updateEmployeeRole(String roleId, V1EmployeeRole body) throws ApiException {
+        ApiResponse<V1EmployeeRole> resp = updateEmployeeRoleWithHttpInfo(roleId, body);
+        return resp.getData();
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Modifies the details of an employee role.
+     * Modifies the details of an employee role.
+     * @param roleId The ID of the role to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1EmployeeRole&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1EmployeeRole> updateEmployeeRoleWithHttpInfo(String roleId, V1EmployeeRole body) throws ApiException {
+        com.squareup.okhttp.Call call = updateEmployeeRoleValidateBeforeCall(roleId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1EmployeeRole>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     * Modifies the details of an employee role. (asynchronously)
+     * Modifies the details of an employee role.
+     * @param roleId The ID of the role to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateEmployeeRoleAsync(String roleId, V1EmployeeRole body, final ApiCallback<V1EmployeeRole> callback) throws ApiException {
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    GenericType<V1EmployeeRole> localVarReturnType = new GenericType<V1EmployeeRole>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
-   * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
-   * @param timecardId TThe ID of the timecard to modify. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Timecard
-   * @throws ApiException if fails to make API call
-   */
-  public V1Timecard updateTimecard(String timecardId, V1Timecard body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'timecardId' is set
-    if (timecardId == null) {
-      throw new ApiException(400, "Missing the required parameter 'timecardId' when calling updateTimecard");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateEmployeeRoleValidateBeforeCall(roleId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1EmployeeRole>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateTimecard
+     * @param timecardId TThe ID of the timecard to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateTimecardCall(String timecardId, V1Timecard body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/me/timecards/{timecard_id}"
+            .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateTimecard");
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateTimecardValidateBeforeCall(String timecardId, V1Timecard body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'timecardId' is set
+        if (timecardId == null) {
+            throw new ApiException("Missing the required parameter 'timecardId' when calling updateTimecard(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateTimecard(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateTimecardCall(timecardId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/me/timecards/{timecard_id}"
-      .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
 
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+     * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+     * @param timecardId TThe ID of the timecard to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Timecard
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Timecard updateTimecard(String timecardId, V1Timecard body) throws ApiException {
+        ApiResponse<V1Timecard> resp = updateTimecardWithHttpInfo(timecardId, body);
+        return resp.getData();
+    }
 
+    /**
+     * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+     * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+     * @param timecardId TThe ID of the timecard to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Timecard&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Timecard> updateTimecardWithHttpInfo(String timecardId, V1Timecard body) throws ApiException {
+        com.squareup.okhttp.Call call = updateTimecardValidateBeforeCall(timecardId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Timecard>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint. (asynchronously)
+     * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+     * @param timecardId TThe ID of the timecard to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateTimecardAsync(String timecardId, V1Timecard body, final ApiCallback<V1Timecard> callback) throws ApiException {
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-    String[] localVarAuthNames = new String[] { "oauth2" };
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
 
-    GenericType<V1Timecard> localVarReturnType = new GenericType<V1Timecard>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateTimecardValidateBeforeCall(timecardId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Timecard>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
 }

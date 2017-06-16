@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Error;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,24 +32,26 @@ import java.util.List;
  */
 
 public class V1PaymentTax {
-  @JsonProperty("errors")
+  @SerializedName("errors")
   private List<Error> errors = new ArrayList<Error>();
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("applied_money")
+  @SerializedName("applied_money")
   private V1Money appliedMoney = null;
 
-  @JsonProperty("rate")
+  @SerializedName("rate")
   private String rate = null;
 
   /**
    * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.
    */
   public enum InclusionTypeEnum {
+    @SerializedName("ADDITIVE")
     ADDITIVE("ADDITIVE"),
     
+    @SerializedName("INCLUSIVE")
     INCLUSIVE("INCLUSIVE");
 
     private String value;
@@ -58,22 +64,12 @@ public class V1PaymentTax {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static InclusionTypeEnum fromValue(String text) {
-      for (InclusionTypeEnum b : InclusionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("inclusion_type")
+  @SerializedName("inclusion_type")
   private InclusionTypeEnum inclusionType = null;
 
-  @JsonProperty("fee_id")
+  @SerializedName("fee_id")
   private String feeId = null;
 
   public V1PaymentTax errors(List<Error> errors) {

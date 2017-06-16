@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Represents the non-confidential details of a credit card.
@@ -26,29 +30,38 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents the non-confidential details of a credit card.")
 
 public class Card {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
   /**
    * The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for all possible values.
    */
   public enum CardBrandEnum {
+    @SerializedName("OTHER_BRAND")
     OTHER_BRAND("OTHER_BRAND"),
     
+    @SerializedName("VISA")
     VISA("VISA"),
     
+    @SerializedName("MASTERCARD")
     MASTERCARD("MASTERCARD"),
     
+    @SerializedName("AMERICAN_EXPRESS")
     AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
     
+    @SerializedName("DISCOVER")
     DISCOVER("DISCOVER"),
     
+    @SerializedName("DISCOVER_DINERS")
     DISCOVER_DINERS("DISCOVER_DINERS"),
     
+    @SerializedName("JCB")
     JCB("JCB"),
     
+    @SerializedName("CHINA_UNIONPAY")
     CHINA_UNIONPAY("CHINA_UNIONPAY"),
     
+    @SerializedName("SQUARE_GIFT_CARD")
     SQUARE_GIFT_CARD("SQUARE_GIFT_CARD");
 
     private String value;
@@ -61,34 +74,24 @@ public class Card {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static CardBrandEnum fromValue(String text) {
-      for (CardBrandEnum b : CardBrandEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("card_brand")
+  @SerializedName("card_brand")
   private CardBrandEnum cardBrand = null;
 
-  @JsonProperty("last_4")
+  @SerializedName("last_4")
   private String last4 = null;
 
-  @JsonProperty("exp_month")
+  @SerializedName("exp_month")
   private Long expMonth = null;
 
-  @JsonProperty("exp_year")
+  @SerializedName("exp_year")
   private Long expYear = null;
 
-  @JsonProperty("cardholder_name")
+  @SerializedName("cardholder_name")
   private String cardholderName = null;
 
-  @JsonProperty("billing_address")
+  @SerializedName("billing_address")
   private Address billingAddress = null;
 
   public Card id(String id) {

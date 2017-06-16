@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import com.squareup.connect.models.V1SettlementEntry;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,15 +32,17 @@ import java.util.List;
  */
 
 public class V1Settlement {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
   /**
    * The settlement's current status.
    */
   public enum StatusEnum {
+    @SerializedName("FAILED")
     FAILED("FAILED"),
     
+    @SerializedName("SENT")
     SENT("SENT");
 
     private String value;
@@ -49,31 +55,21 @@ public class V1Settlement {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("status")
+  @SerializedName("status")
   private StatusEnum status = null;
 
-  @JsonProperty("total_money")
+  @SerializedName("total_money")
   private V1Money totalMoney = null;
 
-  @JsonProperty("initiated_at")
+  @SerializedName("initiated_at")
   private String initiatedAt = null;
 
-  @JsonProperty("bank_account_id")
+  @SerializedName("bank_account_id")
   private String bankAccountId = null;
 
-  @JsonProperty("entries")
+  @SerializedName("entries")
   private List<V1SettlementEntry> entries = new ArrayList<V1SettlementEntry>();
 
   public V1Settlement id(String id) {

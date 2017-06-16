@@ -15,26 +15,33 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Possible kinds of [CatalogObject](#type-catalogobject)s returned from the Catalog, each contaning type-specific properties in the `*_data` field corresponding to the object type.
  */
 public enum CatalogObjectType {
   
+  @SerializedName("ITEM")
   ITEM("ITEM"),
   
+  @SerializedName("CATEGORY")
   CATEGORY("CATEGORY"),
   
+  @SerializedName("ITEM_VARIATION")
   ITEM_VARIATION("ITEM_VARIATION"),
   
+  @SerializedName("TAX")
   TAX("TAX"),
   
+  @SerializedName("DISCOUNT")
   DISCOUNT("DISCOUNT"),
   
+  @SerializedName("MODIFIER_LIST")
   MODIFIER_LIST("MODIFIER_LIST"),
   
+  @SerializedName("MODIFIER")
   MODIFIER("MODIFIER");
 
   private String value;
@@ -46,16 +53,6 @@ public enum CatalogObjectType {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static CatalogObjectType fromValue(String text) {
-    for (CatalogObjectType b : CatalogObjectType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

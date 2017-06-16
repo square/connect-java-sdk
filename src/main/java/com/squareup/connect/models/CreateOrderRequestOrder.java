@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CreateOrderRequestLineItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +32,10 @@ import java.util.List;
 @ApiModel(description = "The object describes the order.")
 
 public class CreateOrderRequestOrder {
-  @JsonProperty("reference_id")
+  @SerializedName("reference_id")
   private String referenceId = null;
 
-  @JsonProperty("line_items")
+  @SerializedName("line_items")
   private List<CreateOrderRequestLineItem> lineItems = new ArrayList<CreateOrderRequestLineItem>();
 
   public CreateOrderRequestOrder referenceId(String referenceId) {

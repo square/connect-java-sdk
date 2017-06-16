@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1Refund
@@ -29,8 +33,10 @@ public class V1Refund {
    * The type of refund 
    */
   public enum TypeEnum {
+    @SerializedName("FULL")
     FULL("FULL"),
     
+    @SerializedName("PARTIAL")
     PARTIAL("PARTIAL");
 
     private String value;
@@ -43,37 +49,27 @@ public class V1Refund {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
-  @JsonProperty("reason")
+  @SerializedName("reason")
   private String reason = null;
 
-  @JsonProperty("refunded_money")
+  @SerializedName("refunded_money")
   private V1Money refundedMoney = null;
 
-  @JsonProperty("created_at")
+  @SerializedName("created_at")
   private String createdAt = null;
 
-  @JsonProperty("processed_at")
+  @SerializedName("processed_at")
   private String processedAt = null;
 
-  @JsonProperty("payment_id")
+  @SerializedName("payment_id")
   private String paymentId = null;
 
-  @JsonProperty("merchant_id")
+  @SerializedName("merchant_id")
   private String merchantId = null;
 
   public V1Refund type(TypeEnum type) {

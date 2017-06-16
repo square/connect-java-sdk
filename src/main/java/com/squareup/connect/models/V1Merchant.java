@@ -14,13 +14,17 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.V1MerchantLocationDetails;
 import com.squareup.connect.models.V1PhoneNumber;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,21 +34,23 @@ import java.util.List;
 @ApiModel(description = "Defines the fields that are included in the response body of a request to the **RetrieveBusiness** endpoint.")
 
 public class V1Merchant {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("email")
+  @SerializedName("email")
   private String email = null;
 
   /**
    * Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION.
    */
   public enum AccountTypeEnum {
+    @SerializedName("LOCATION")
     LOCATION("LOCATION"),
     
+    @SerializedName("BUSINESS")
     BUSINESS("BUSINESS");
 
     private String value;
@@ -57,144 +63,184 @@ public class V1Merchant {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static AccountTypeEnum fromValue(String text) {
-      for (AccountTypeEnum b : AccountTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("account_type")
+  @SerializedName("account_type")
   private AccountTypeEnum accountType = null;
 
-  @JsonProperty("account_capabilities")
+  @SerializedName("account_capabilities")
   private List<String> accountCapabilities = new ArrayList<String>();
 
-  @JsonProperty("country_code")
+  @SerializedName("country_code")
   private String countryCode = null;
 
-  @JsonProperty("language_code")
+  @SerializedName("language_code")
   private String languageCode = null;
 
-  @JsonProperty("currency_code")
+  @SerializedName("currency_code")
   private String currencyCode = null;
 
-  @JsonProperty("business_name")
+  @SerializedName("business_name")
   private String businessName = null;
 
-  @JsonProperty("business_address")
+  @SerializedName("business_address")
   private Address businessAddress = null;
 
-  @JsonProperty("business_phone")
+  @SerializedName("business_phone")
   private V1PhoneNumber businessPhone = null;
 
   /**
    * The type of business operated by the merchant.
    */
   public enum BusinessTypeEnum {
+    @SerializedName("ACCOUNTING")
     ACCOUNTING("ACCOUNTING"),
     
+    @SerializedName("APPAREL_AND_ACCESSORY_SHOPS")
     APPAREL_AND_ACCESSORY_SHOPS("APPAREL_AND_ACCESSORY_SHOPS"),
     
+    @SerializedName("ART_DEALERS_GALLERIES")
     ART_DEALERS_GALLERIES("ART_DEALERS_GALLERIES"),
     
+    @SerializedName("ART_DESIGN_AND_PHOTOGRAPHY")
     ART_DESIGN_AND_PHOTOGRAPHY("ART_DESIGN_AND_PHOTOGRAPHY"),
     
+    @SerializedName("BAR_CLUB_LOUNGE")
     BAR_CLUB_LOUNGE("BAR_CLUB_LOUNGE"),
     
+    @SerializedName("BEAUTY_AND_BARBER_SHOPS")
     BEAUTY_AND_BARBER_SHOPS("BEAUTY_AND_BARBER_SHOPS"),
     
+    @SerializedName("BOOK_STORES")
     BOOK_STORES("BOOK_STORES"),
     
+    @SerializedName("BUSINESS_SERVICES")
     BUSINESS_SERVICES("BUSINESS_SERVICES"),
     
+    @SerializedName("CATERING")
     CATERING("CATERING"),
     
+    @SerializedName("CHARITABLE_SOCIAL_SERVICE_ORGANIZATIONS")
     CHARITABLE_SOCIAL_SERVICE_ORGANIZATIONS("CHARITABLE_SOCIAL_SERVICE_ORGANIZATIONS"),
     
+    @SerializedName("CHARITIBLE_ORGS")
     CHARITIBLE_ORGS("CHARITIBLE_ORGS"),
     
+    @SerializedName("CLEANING_SERVICES")
     CLEANING_SERVICES("CLEANING_SERVICES"),
     
+    @SerializedName("COMPUTER_EQUIPMENT_SOFTWARE_MAINTENANCE_REPAIR_SERVICES")
     COMPUTER_EQUIPMENT_SOFTWARE_MAINTENANCE_REPAIR_SERVICES("COMPUTER_EQUIPMENT_SOFTWARE_MAINTENANCE_REPAIR_SERVICES"),
     
+    @SerializedName("CONSULTANT")
     CONSULTANT("CONSULTANT"),
     
+    @SerializedName("CONTRACTORS")
     CONTRACTORS("CONTRACTORS"),
     
+    @SerializedName("DELIVERY_SERVICES")
     DELIVERY_SERVICES("DELIVERY_SERVICES"),
     
+    @SerializedName("DENTISTRY")
     DENTISTRY("DENTISTRY"),
     
+    @SerializedName("EDUCATION")
     EDUCATION("EDUCATION"),
     
+    @SerializedName("FOOD_STORES_CONVENIENCE_STORES_AND_SPECIALTY_MARKETS")
     FOOD_STORES_CONVENIENCE_STORES_AND_SPECIALTY_MARKETS("FOOD_STORES_CONVENIENCE_STORES_AND_SPECIALTY_MARKETS"),
     
+    @SerializedName("FOOD_TRUCK_CART")
     FOOD_TRUCK_CART("FOOD_TRUCK_CART"),
     
+    @SerializedName("FURNITURE_HOME_AND_OFFICE_EQUIPMENT")
     FURNITURE_HOME_AND_OFFICE_EQUIPMENT("FURNITURE_HOME_AND_OFFICE_EQUIPMENT"),
     
+    @SerializedName("FURNITURE_HOME_GOODS")
     FURNITURE_HOME_GOODS("FURNITURE_HOME_GOODS"),
     
+    @SerializedName("HOTELS_AND_LODGING")
     HOTELS_AND_LODGING("HOTELS_AND_LODGING"),
     
+    @SerializedName("INDIVIDUAL_USE")
     INDIVIDUAL_USE("INDIVIDUAL_USE"),
     
+    @SerializedName("JEWELRY_AND_WATCHES")
     JEWELRY_AND_WATCHES("JEWELRY_AND_WATCHES"),
     
+    @SerializedName("LANDSCAPING_AND_HORTICULTURAL_SERVICES")
     LANDSCAPING_AND_HORTICULTURAL_SERVICES("LANDSCAPING_AND_HORTICULTURAL_SERVICES"),
     
+    @SerializedName("LANGUAGE_SCHOOLS")
     LANGUAGE_SCHOOLS("LANGUAGE_SCHOOLS"),
     
+    @SerializedName("LEGAL_SERVICES")
     LEGAL_SERVICES("LEGAL_SERVICES"),
     
+    @SerializedName("MEDICAL_PRACTITIONERS")
     MEDICAL_PRACTITIONERS("MEDICAL_PRACTITIONERS"),
     
+    @SerializedName("MEDICAL_SERVICES_AND_HEALTH_PRACTITIONERS")
     MEDICAL_SERVICES_AND_HEALTH_PRACTITIONERS("MEDICAL_SERVICES_AND_HEALTH_PRACTITIONERS"),
     
+    @SerializedName("MEMBERSHIP_ORGANIZATIONS")
     MEMBERSHIP_ORGANIZATIONS("MEMBERSHIP_ORGANIZATIONS"),
     
+    @SerializedName("MUSIC_AND_ENTERTAINMENT")
     MUSIC_AND_ENTERTAINMENT("MUSIC_AND_ENTERTAINMENT"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER"),
     
+    @SerializedName("OUTDOOR_MARKETS")
     OUTDOOR_MARKETS("OUTDOOR_MARKETS"),
     
+    @SerializedName("PERSONAL_SERVICES")
     PERSONAL_SERVICES("PERSONAL_SERVICES"),
     
+    @SerializedName("POLITICAL_ORGANIZATIONS")
     POLITICAL_ORGANIZATIONS("POLITICAL_ORGANIZATIONS"),
     
+    @SerializedName("PROFESSIONAL_SERVICES")
     PROFESSIONAL_SERVICES("PROFESSIONAL_SERVICES"),
     
+    @SerializedName("REAL_ESTATE")
     REAL_ESTATE("REAL_ESTATE"),
     
+    @SerializedName("RECREATION_SERVICES")
     RECREATION_SERVICES("RECREATION_SERVICES"),
     
+    @SerializedName("REPAIR_SHOPS_AND_RELATED_SERVICES")
     REPAIR_SHOPS_AND_RELATED_SERVICES("REPAIR_SHOPS_AND_RELATED_SERVICES"),
     
+    @SerializedName("RESTAURANTS")
     RESTAURANTS("RESTAURANTS"),
     
+    @SerializedName("RETAIL_SHOPS")
     RETAIL_SHOPS("RETAIL_SHOPS"),
     
+    @SerializedName("SCHOOLS_AND_EDUCATIONAL_SERVICES")
     SCHOOLS_AND_EDUCATIONAL_SERVICES("SCHOOLS_AND_EDUCATIONAL_SERVICES"),
     
+    @SerializedName("SPORTING_GOODS")
     SPORTING_GOODS("SPORTING_GOODS"),
     
+    @SerializedName("TAXICABS_AND_LIMOUSINES")
     TAXICABS_AND_LIMOUSINES("TAXICABS_AND_LIMOUSINES"),
     
+    @SerializedName("TICKET_SALES")
     TICKET_SALES("TICKET_SALES"),
     
+    @SerializedName("TOURISM")
     TOURISM("TOURISM"),
     
+    @SerializedName("TRAVEL_TOURISM")
     TRAVEL_TOURISM("TRAVEL_TOURISM"),
     
+    @SerializedName("VETERINARY_SERVICES")
     VETERINARY_SERVICES("VETERINARY_SERVICES"),
     
+    @SerializedName("WEB_DEV_DESIGN")
     WEB_DEV_DESIGN("WEB_DEV_DESIGN");
 
     private String value;
@@ -207,28 +253,18 @@ public class V1Merchant {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static BusinessTypeEnum fromValue(String text) {
-      for (BusinessTypeEnum b : BusinessTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("business_type")
+  @SerializedName("business_type")
   private BusinessTypeEnum businessType = null;
 
-  @JsonProperty("shipping_address ")
+  @SerializedName("shipping_address ")
   private Address shippingAddress_ = null;
 
-  @JsonProperty("location_details")
+  @SerializedName("location_details")
   private V1MerchantLocationDetails locationDetails = null;
 
-  @JsonProperty("market_url")
+  @SerializedName("market_url")
   private String marketUrl = null;
 
   public V1Merchant id(String id) {

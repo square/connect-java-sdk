@@ -14,37 +14,44 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1Discount
  */
 
 public class V1Discount {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("rate")
+  @SerializedName("rate")
   private String rate = null;
 
-  @JsonProperty("amount_money")
+  @SerializedName("amount_money")
   private V1Money amountMoney = null;
 
   /**
    * Indicates whether the discount is a FIXED value or entered at the time of sale.
    */
   public enum DiscountTypeEnum {
+    @SerializedName("FIXED")
     FIXED("FIXED"),
     
+    @SerializedName("VARIABLE_PERCENTAGE")
     VARIABLE_PERCENTAGE("VARIABLE_PERCENTAGE"),
     
+    @SerializedName("VARIABLE_AMOUNT")
     VARIABLE_AMOUNT("VARIABLE_AMOUNT");
 
     private String value;
@@ -57,44 +64,43 @@ public class V1Discount {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static DiscountTypeEnum fromValue(String text) {
-      for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("discount_type")
+  @SerializedName("discount_type")
   private DiscountTypeEnum discountType = null;
 
-  @JsonProperty("pin_required")
+  @SerializedName("pin_required")
   private Boolean pinRequired = null;
 
   /**
    * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6.
    */
   public enum ColorEnum {
+    @SerializedName("9da2a6")
     _9DA2A6("9da2a6"),
     
+    @SerializedName("4ab200")
     _4AB200("4ab200"),
     
+    @SerializedName("0b8000")
     _0B8000("0b8000"),
     
+    @SerializedName("2952cc")
     _2952CC("2952cc"),
     
+    @SerializedName("a82ee5")
     A82EE5("a82ee5"),
     
+    @SerializedName("e5457a")
     E5457A("e5457a"),
     
+    @SerializedName("b21212")
     B21212("b21212"),
     
+    @SerializedName("593c00")
     _593C00("593c00"),
     
+    @SerializedName("e5BF00")
     E5BF00("e5BF00");
 
     private String value;
@@ -107,19 +113,9 @@ public class V1Discount {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ColorEnum fromValue(String text) {
-      for (ColorEnum b : ColorEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("color")
+  @SerializedName("color")
   private ColorEnum color = null;
 
   public V1Discount id(String id) {

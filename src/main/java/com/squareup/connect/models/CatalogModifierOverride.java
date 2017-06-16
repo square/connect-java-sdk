@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * 
@@ -25,10 +29,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class CatalogModifierOverride {
-  @JsonProperty("modifier_id")
+  @SerializedName("modifier_id")
   private String modifierId = null;
 
-  @JsonProperty("on_by_default")
+  @SerializedName("on_by_default")
   private Boolean onByDefault = null;
 
   public CatalogModifierOverride modifierId(String modifierId) {

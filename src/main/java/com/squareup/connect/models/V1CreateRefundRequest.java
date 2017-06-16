@@ -14,26 +14,32 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1CreateRefundRequest
  */
 
 public class V1CreateRefundRequest {
-  @JsonProperty("payment_id")
+  @SerializedName("payment_id")
   private String paymentId = null;
 
   /**
    * TThe type of refund (FULL or PARTIAL).
    */
   public enum TypeEnum {
+    @SerializedName("FULL")
     FULL("FULL"),
     
+    @SerializedName("PARTIAL")
     PARTIAL("PARTIAL");
 
     private String value;
@@ -46,28 +52,18 @@ public class V1CreateRefundRequest {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
-  @JsonProperty("reason")
+  @SerializedName("reason")
   private String reason = null;
 
-  @JsonProperty("refunded_money")
+  @SerializedName("refunded_money")
   private V1Money refundedMoney = null;
 
-  @JsonProperty("request_idempotence_key")
+  @SerializedName("request_idempotence_key")
   private String requestIdempotenceKey = null;
 
   public V1CreateRefundRequest paymentId(String paymentId) {

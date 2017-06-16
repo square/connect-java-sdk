@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * 
@@ -25,37 +29,37 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class CatalogInfoResponseLimits {
-  @JsonProperty("batch_upsert_max_objects_per_batch")
+  @SerializedName("batch_upsert_max_objects_per_batch")
   private Integer batchUpsertMaxObjectsPerBatch = null;
 
-  @JsonProperty("batch_upsert_max_total_objects")
+  @SerializedName("batch_upsert_max_total_objects")
   private Integer batchUpsertMaxTotalObjects = null;
 
-  @JsonProperty("batch_retrieve_max_object_ids")
+  @SerializedName("batch_retrieve_max_object_ids")
   private Integer batchRetrieveMaxObjectIds = null;
 
-  @JsonProperty("search_max_page_limit")
+  @SerializedName("search_max_page_limit")
   private Integer searchMaxPageLimit = null;
 
-  @JsonProperty("batch_delete_max_object_ids")
+  @SerializedName("batch_delete_max_object_ids")
   private Integer batchDeleteMaxObjectIds = null;
 
-  @JsonProperty("update_item_taxes_max_item_ids")
+  @SerializedName("update_item_taxes_max_item_ids")
   private Integer updateItemTaxesMaxItemIds = null;
 
-  @JsonProperty("update_item_taxes_max_taxes_to_enable")
+  @SerializedName("update_item_taxes_max_taxes_to_enable")
   private Integer updateItemTaxesMaxTaxesToEnable = null;
 
-  @JsonProperty("update_item_taxes_max_taxes_to_disable")
+  @SerializedName("update_item_taxes_max_taxes_to_disable")
   private Integer updateItemTaxesMaxTaxesToDisable = null;
 
-  @JsonProperty("update_item_modifier_lists_max_item_ids")
+  @SerializedName("update_item_modifier_lists_max_item_ids")
   private Integer updateItemModifierListsMaxItemIds = null;
 
-  @JsonProperty("update_item_modifier_lists_max_modifier_lists_to_enable")
+  @SerializedName("update_item_modifier_lists_max_modifier_lists_to_enable")
   private Integer updateItemModifierListsMaxModifierListsToEnable = null;
 
-  @JsonProperty("update_item_modifier_lists_max_modifier_lists_to_disable")
+  @SerializedName("update_item_modifier_lists_max_modifier_lists_to_disable")
   private Integer updateItemModifierListsMaxModifierListsToDisable = null;
 
   public CatalogInfoResponseLimits batchUpsertMaxObjectsPerBatch(Integer batchUpsertMaxObjectsPerBatch) {

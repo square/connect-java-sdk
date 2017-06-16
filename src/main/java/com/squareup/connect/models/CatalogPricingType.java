@@ -15,16 +15,18 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates whether the price of a [CatalogItemVariation](#type-catalogitemvariation) should be entered manually at the time of sale.
  */
 public enum CatalogPricingType {
   
+  @SerializedName("FIXED_PRICING")
   FIXED_PRICING("FIXED_PRICING"),
   
+  @SerializedName("VARIABLE_PRICING")
   VARIABLE_PRICING("VARIABLE_PRICING");
 
   private String value;
@@ -36,16 +38,6 @@ public enum CatalogPricingType {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static CatalogPricingType fromValue(String text) {
-    for (CatalogPricingType b : CatalogPricingType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

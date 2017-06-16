@@ -15,22 +15,27 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates the method used to enter the card's details.
  */
 public enum TenderCardDetailsEntryMethod {
   
+  @SerializedName("SWIPED")
   SWIPED("SWIPED"),
   
+  @SerializedName("KEYED")
   KEYED("KEYED"),
   
+  @SerializedName("EMV")
   EMV("EMV"),
   
+  @SerializedName("ON_FILE")
   ON_FILE("ON_FILE"),
   
+  @SerializedName("CONTACTLESS")
   CONTACTLESS("CONTACTLESS");
 
   private String value;
@@ -42,16 +47,6 @@ public enum TenderCardDetailsEntryMethod {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static TenderCardDetailsEntryMethod fromValue(String text) {
-    for (TenderCardDetailsEntryMethod b : TenderCardDetailsEntryMethod.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

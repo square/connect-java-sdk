@@ -14,13 +14,17 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogIdMapping;
 import com.squareup.connect.models.CatalogObject;
 import com.squareup.connect.models.Error;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,16 +34,16 @@ import java.util.List;
 @ApiModel(description = "")
 
 public class BatchUpsertCatalogObjectsResponse {
-  @JsonProperty("errors")
+  @SerializedName("errors")
   private List<Error> errors = new ArrayList<Error>();
 
-  @JsonProperty("objects")
+  @SerializedName("objects")
   private List<CatalogObject> objects = new ArrayList<CatalogObject>();
 
-  @JsonProperty("updated_at")
+  @SerializedName("updated_at")
   private String updatedAt = null;
 
-  @JsonProperty("id_mappings")
+  @SerializedName("id_mappings")
   private List<CatalogIdMapping> idMappings = new ArrayList<CatalogIdMapping>();
 
   public BatchUpsertCatalogObjectsResponse errors(List<Error> errors) {

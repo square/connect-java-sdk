@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,13 +31,13 @@ import java.util.List;
 @ApiModel(description = "")
 
 public class UpdateItemTaxesRequest {
-  @JsonProperty("item_ids")
+  @SerializedName("item_ids")
   private List<String> itemIds = new ArrayList<String>();
 
-  @JsonProperty("taxes_to_enable")
+  @SerializedName("taxes_to_enable")
   private List<String> taxesToEnable = new ArrayList<String>();
 
-  @JsonProperty("taxes_to_disable")
+  @SerializedName("taxes_to_disable")
   private List<String> taxesToDisable = new ArrayList<String>();
 
   public UpdateItemTaxesRequest itemIds(List<String> itemIds) {

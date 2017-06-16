@@ -10,15 +10,22 @@
  * Do not edit the class manually.
  */
 
+
 package com.squareup.connect.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiCallback;
 import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.ApiResponse;
 import com.squareup.connect.Configuration;
-import com.squareup.connect.models.*;
 import com.squareup.connect.Pair;
+import com.squareup.connect.ProgressRequestBody;
+import com.squareup.connect.ProgressResponseBody;
+
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
 
 import com.squareup.connect.models.V1AdjustInventoryRequest;
 import com.squareup.connect.models.V1Category;
@@ -33,2069 +40,5599 @@ import com.squareup.connect.models.V1PageCell;
 import com.squareup.connect.models.V1UpdateModifierListRequest;
 import com.squareup.connect.models.V1Variation;
 
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class V1ItemsApi {
-  private ApiClient apiClient;
-
-  public V1ItemsApi() {
-    this(Configuration.getDefaultApiClient());
-  }
-
-  public V1ItemsApi(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
-
-  public ApiClient getApiClient() {
-    return apiClient;
-  }
-
-  public void setApiClient(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
-
-  /**
-   * Adjusts an item variation&#39;s current available inventory.
-   * Adjusts an item variation&#39;s current available inventory.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param variationId The ID of the variation to adjust inventory information for. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1InventoryEntry
-   * @throws ApiException if fails to make API call
-   */
-  public V1InventoryEntry adjustInventory(String locationId, String variationId, V1AdjustInventoryRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling adjustInventory");
-    }
-    
-    // verify the required parameter 'variationId' is set
-    if (variationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'variationId' when calling adjustInventory");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling adjustInventory");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/inventory/{variation_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "variation_id" + "\\}", apiClient.escapeString(variationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1InventoryEntry> localVarReturnType = new GenericType<V1InventoryEntry>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
-   * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
-   * @param locationId The ID of the fee&#39;s associated location. (required)
-   * @param itemId The ID of the item to add the fee to. (required)
-   * @param feeId The ID of the fee to apply. (required)
-   * @return V1Item
-   * @throws ApiException if fails to make API call
-   */
-  public V1Item applyFee(String locationId, String itemId, String feeId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling applyFee");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling applyFee");
-    }
-    
-    // verify the required parameter 'feeId' is set
-    if (feeId == null) {
-      throw new ApiException(400, "Missing the required parameter 'feeId' when calling applyFee");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}/fees/{fee_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
-      .replaceAll("\\{" + "fee_id" + "\\}", apiClient.escapeString(feeId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
-   * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param modifierListId The ID of the modifier list to apply. (required)
-   * @param itemId The ID of the item to add the modifier list to. (required)
-   * @return V1Item
-   * @throws ApiException if fails to make API call
-   */
-  public V1Item applyModifierList(String locationId, String modifierListId, String itemId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling applyModifierList");
-    }
-    
-    // verify the required parameter 'modifierListId' is set
-    if (modifierListId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierListId' when calling applyModifierList");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling applyModifierList");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates an item category.
-   * Creates an item category.
-   * @param locationId The ID of the location to create an item for. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Category
-   * @throws ApiException if fails to make API call
-   */
-  public V1Category createCategory(String locationId, V1Category body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createCategory");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createCategory");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/categories"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Category> localVarReturnType = new GenericType<V1Category>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates a discount.
-   * Creates a discount.
-   * @param locationId The ID of the location to create an item for. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Discount
-   * @throws ApiException if fails to make API call
-   */
-  public V1Discount createDiscount(String locationId, V1Discount body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createDiscount");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createDiscount");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/discounts"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Discount> localVarReturnType = new GenericType<V1Discount>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates a fee (tax).
-   * Creates a fee (tax).
-   * @param locationId The ID of the location to create a fee for. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Fee
-   * @throws ApiException if fails to make API call
-   */
-  public V1Fee createFee(String locationId, V1Fee body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createFee");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createFee");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/fees"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Fee> localVarReturnType = new GenericType<V1Fee>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates an item and at least one variation for it.
-   * Creates an item and at least one variation for it.
-   * @param locationId The ID of the location to create an item for. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Item
-   * @throws ApiException if fails to make API call
-   */
-  public V1Item createItem(String locationId, V1Item body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createItem");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createItem");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates an item modifier list and at least one modifier option for it.
-   * Creates an item modifier list and at least one modifier option for it.
-   * @param locationId The ID of the location to create a modifier list for. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1ModifierList
-   * @throws ApiException if fails to make API call
-   */
-  public V1ModifierList createModifierList(String locationId, V1ModifierList body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createModifierList");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createModifierList");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/modifier-lists"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1ModifierList> localVarReturnType = new GenericType<V1ModifierList>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates an item modifier option and adds it to a modifier list.
-   * Creates an item modifier option and adds it to a modifier list.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param modifierListId The ID of the modifier list to edit. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1ModifierOption
-   * @throws ApiException if fails to make API call
-   */
-  public V1ModifierOption createModifierOption(String locationId, String modifierListId, V1ModifierOption body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createModifierOption");
-    }
-    
-    // verify the required parameter 'modifierListId' is set
-    if (modifierListId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierListId' when calling createModifierOption");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createModifierOption");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1ModifierOption> localVarReturnType = new GenericType<V1ModifierOption>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates a Favorites page in Square Register.
-   * Creates a Favorites page in Square Register.
-   * @param locationId The ID of the location to create an item for. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Page
-   * @throws ApiException if fails to make API call
-   */
-  public V1Page createPage(String locationId, V1Page body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createPage");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createPage");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/pages"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Creates an item variation for an existing item.
-   * Creates an item variation for an existing item.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param itemId The item&#39;s ID. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Variation
-   * @throws ApiException if fails to make API call
-   */
-  public V1Variation createVariation(String locationId, String itemId, V1Variation body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling createVariation");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling createVariation");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling createVariation");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}/variations"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Variation> localVarReturnType = new GenericType<V1Variation>() {};
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes an existing item category.
-   * Deletes an existing item category.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param categoryId The ID of the category to delete. (required)
-   * @return V1Category
-   * @throws ApiException if fails to make API call
-   */
-  public V1Category deleteCategory(String locationId, String categoryId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deleteCategory");
-    }
-    
-    // verify the required parameter 'categoryId' is set
-    if (categoryId == null) {
-      throw new ApiException(400, "Missing the required parameter 'categoryId' when calling deleteCategory");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/categories/{category_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "category_id" + "\\}", apiClient.escapeString(categoryId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Category> localVarReturnType = new GenericType<V1Category>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes an existing discount.
-   * Deletes an existing discount.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param discountId The ID of the discount to delete. (required)
-   * @return V1Discount
-   * @throws ApiException if fails to make API call
-   */
-  public V1Discount deleteDiscount(String locationId, String discountId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deleteDiscount");
-    }
-    
-    // verify the required parameter 'discountId' is set
-    if (discountId == null) {
-      throw new ApiException(400, "Missing the required parameter 'discountId' when calling deleteDiscount");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/discounts/{discount_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "discount_id" + "\\}", apiClient.escapeString(discountId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Discount> localVarReturnType = new GenericType<V1Discount>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes an existing fee (tax).
-   * Deletes an existing fee (tax).
-   * @param locationId The ID of the fee&#39;s associated location. (required)
-   * @param feeId The ID of the fee to delete. (required)
-   * @return V1Fee
-   * @throws ApiException if fails to make API call
-   */
-  public V1Fee deleteFee(String locationId, String feeId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deleteFee");
-    }
-    
-    // verify the required parameter 'feeId' is set
-    if (feeId == null) {
-      throw new ApiException(400, "Missing the required parameter 'feeId' when calling deleteFee");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/fees/{fee_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "fee_id" + "\\}", apiClient.escapeString(feeId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Fee> localVarReturnType = new GenericType<V1Fee>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes an existing item and all item variations associated with it.
-   * Deletes an existing item and all item variations associated with it.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param itemId The ID of the item to modify. (required)
-   * @return V1Item
-   * @throws ApiException if fails to make API call
-   */
-  public V1Item deleteItem(String locationId, String itemId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deleteItem");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling deleteItem");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes an existing item modifier list and all modifier options associated with it.
-   * Deletes an existing item modifier list and all modifier options associated with it.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param modifierListId The ID of the modifier list to delete. (required)
-   * @return V1ModifierList
-   * @throws ApiException if fails to make API call
-   */
-  public V1ModifierList deleteModifierList(String locationId, String modifierListId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deleteModifierList");
-    }
-    
-    // verify the required parameter 'modifierListId' is set
-    if (modifierListId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierListId' when calling deleteModifierList");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1ModifierList> localVarReturnType = new GenericType<V1ModifierList>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes an existing item modifier option from a modifier list.
-   * Deletes an existing item modifier option from a modifier list.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param modifierListId The ID of the modifier list to delete. (required)
-   * @param modifierOptionId The ID of the modifier list to edit. (required)
-   * @return V1ModifierOption
-   * @throws ApiException if fails to make API call
-   */
-  public V1ModifierOption deleteModifierOption(String locationId, String modifierListId, String modifierOptionId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deleteModifierOption");
-    }
-    
-    // verify the required parameter 'modifierListId' is set
-    if (modifierListId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierListId' when calling deleteModifierOption");
-    }
-    
-    // verify the required parameter 'modifierOptionId' is set
-    if (modifierOptionId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierOptionId' when calling deleteModifierOption");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()))
-      .replaceAll("\\{" + "modifier_option_id" + "\\}", apiClient.escapeString(modifierOptionId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1ModifierOption> localVarReturnType = new GenericType<V1ModifierOption>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes an existing Favorites page and all of its cells.
-   * Deletes an existing Favorites page and all of its cells.
-   * @param locationId The ID of the Favorites page&#39;s associated location. (required)
-   * @param pageId The ID of the page to delete. (required)
-   * @return V1Page
-   * @throws ApiException if fails to make API call
-   */
-  public V1Page deletePage(String locationId, String pageId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deletePage");
-    }
-    
-    // verify the required parameter 'pageId' is set
-    if (pageId == null) {
-      throw new ApiException(400, "Missing the required parameter 'pageId' when calling deletePage");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/pages/{page_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "page_id" + "\\}", apiClient.escapeString(pageId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes a cell from a Favorites page in Square Register.
-   * Deletes a cell from a Favorites page in Square Register.
-   * @param locationId The ID of the Favorites page&#39;s associated location. (required)
-   * @param pageId The ID of the page to delete. (required)
-   * @param row The row of the cell to clear. Always an integer between 0 and 4, inclusive. Row 0 is the top row. (optional)
-   * @param column The column of the cell to clear. Always an integer between 0 and 4, inclusive. Column 0 is the leftmost column. (optional)
-   * @return V1Page
-   * @throws ApiException if fails to make API call
-   */
-  public V1Page deletePageCell(String locationId, String pageId, String row, String column) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deletePageCell");
-    }
-    
-    // verify the required parameter 'pageId' is set
-    if (pageId == null) {
-      throw new ApiException(400, "Missing the required parameter 'pageId' when calling deletePageCell");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/pages/{page_id}/cells"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "page_id" + "\\}", apiClient.escapeString(pageId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "row", row));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "column", column));
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Deletes an existing item variation from an item.
-   * Deletes an existing item variation from an item.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param itemId The ID of the item to delete. (required)
-   * @param variationId The ID of the variation to delete. (required)
-   * @return V1Variation
-   * @throws ApiException if fails to make API call
-   */
-  public V1Variation deleteVariation(String locationId, String itemId, String variationId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling deleteVariation");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling deleteVariation");
-    }
-    
-    // verify the required parameter 'variationId' is set
-    if (variationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'variationId' when calling deleteVariation");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}/variations/{variation_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
-      .replaceAll("\\{" + "variation_id" + "\\}", apiClient.escapeString(variationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Variation> localVarReturnType = new GenericType<V1Variation>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Lists all of a location&#39;s item categories.
-   * Lists all of a location&#39;s item categories.
-   * @param locationId The ID of the location to list categories for. (required)
-   * @return List&lt;V1Category&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Category> listCategories(String locationId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listCategories");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/categories"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<List<V1Category>> localVarReturnType = new GenericType<List<V1Category>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Lists all of a location&#39;s discounts.
-   * Lists all of a location&#39;s discounts.
-   * @param locationId The ID of the location to list categories for. (required)
-   * @return List&lt;V1Discount&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Discount> listDiscounts(String locationId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listDiscounts");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/discounts"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<List<V1Discount>> localVarReturnType = new GenericType<List<V1Discount>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Lists all of a location&#39;s fees (taxes).
-   * Lists all of a location&#39;s fees (taxes).
-   * @param locationId The ID of the location to list fees for. (required)
-   * @return List&lt;V1Fee&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Fee> listFees(String locationId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listFees");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/fees"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<List<V1Fee>> localVarReturnType = new GenericType<List<V1Fee>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
-   * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
-   * @return List&lt;V1InventoryEntry&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1InventoryEntry> listInventory(String locationId, Integer limit) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listInventory");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/inventory"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<List<V1InventoryEntry>> localVarReturnType = new GenericType<List<V1InventoryEntry>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides summary information for all of a location&#39;s items.
-   * Provides summary information for all of a location&#39;s items.
-   * @param locationId The ID of the location to list items for. (required)
-   * @return List&lt;V1Item&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Item> listItems(String locationId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listItems");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<List<V1Item>> localVarReturnType = new GenericType<List<V1Item>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Lists all of a location&#39;s modifier lists.
-   * Lists all of a location&#39;s modifier lists.
-   * @param locationId The ID of the location to list modifier lists for. (required)
-   * @return List&lt;V1ModifierList&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1ModifierList> listModifierLists(String locationId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listModifierLists");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/modifier-lists"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<List<V1ModifierList>> localVarReturnType = new GenericType<List<V1ModifierList>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Lists all of a location&#39;s Favorites pages in Square Register.
-   * Lists all of a location&#39;s Favorites pages in Square Register.
-   * @param locationId The ID of the location to list Favorites pages for. (required)
-   * @return List&lt;V1Page&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Page> listPages(String locationId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling listPages");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/pages"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<List<V1Page>> localVarReturnType = new GenericType<List<V1Page>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
-   * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
-   * @param locationId The ID of the fee&#39;s associated location. (required)
-   * @param itemId The ID of the item to add the fee to. (required)
-   * @param feeId The ID of the fee to apply. (required)
-   * @return V1Item
-   * @throws ApiException if fails to make API call
-   */
-  public V1Item removeFee(String locationId, String itemId, String feeId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling removeFee");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling removeFee");
-    }
-    
-    // verify the required parameter 'feeId' is set
-    if (feeId == null) {
-      throw new ApiException(400, "Missing the required parameter 'feeId' when calling removeFee");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}/fees/{fee_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
-      .replaceAll("\\{" + "fee_id" + "\\}", apiClient.escapeString(feeId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
-   * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param modifierListId The ID of the modifier list to remove. (required)
-   * @param itemId The ID of the item to remove the modifier list from. (required)
-   * @return V1Item
-   * @throws ApiException if fails to make API call
-   */
-  public V1Item removeModifierList(String locationId, String modifierListId, String itemId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling removeModifierList");
-    }
-    
-    // verify the required parameter 'modifierListId' is set
-    if (modifierListId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierListId' when calling removeModifierList");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling removeModifierList");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides the details for a single item, including associated modifier lists and fees.
-   * Provides the details for a single item, including associated modifier lists and fees.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param itemId The item&#39;s ID. (required)
-   * @return V1Item
-   * @throws ApiException if fails to make API call
-   */
-  public V1Item retrieveItem(String locationId, String itemId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveItem");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling retrieveItem");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Provides the details for a single modifier list.
-   * Provides the details for a single modifier list.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param modifierListId The modifier list&#39;s ID. (required)
-   * @return V1ModifierList
-   * @throws ApiException if fails to make API call
-   */
-  public V1ModifierList retrieveModifierList(String locationId, String modifierListId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveModifierList");
-    }
-    
-    // verify the required parameter 'modifierListId' is set
-    if (modifierListId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierListId' when calling retrieveModifierList");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1ModifierList> localVarReturnType = new GenericType<V1ModifierList>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the details of an existing item category.
-   * Modifies the details of an existing item category.
-   * @param locationId The ID of the category&#39;s associated location. (required)
-   * @param categoryId The ID of the category to edit. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Category
-   * @throws ApiException if fails to make API call
-   */
-  public V1Category updateCategory(String locationId, String categoryId, V1Category body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateCategory");
-    }
-    
-    // verify the required parameter 'categoryId' is set
-    if (categoryId == null) {
-      throw new ApiException(400, "Missing the required parameter 'categoryId' when calling updateCategory");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateCategory");
+    private ApiClient apiClient;
+
+    public V1ItemsApi() {
+        this(Configuration.getDefaultApiClient());
+    }
+
+    public V1ItemsApi(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
+
+    public ApiClient getApiClient() {
+        return apiClient;
+    }
+
+    public void setApiClient(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
+
+    /**
+     * Build call for adjustInventory
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param variationId The ID of the variation to adjust inventory information for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call adjustInventoryCall(String locationId, String variationId, V1AdjustInventoryRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/inventory/{variation_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "variation_id" + "\\}", apiClient.escapeString(variationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call adjustInventoryValidateBeforeCall(String locationId, String variationId, V1AdjustInventoryRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling adjustInventory(Async)");
+        }
+        
+        // verify the required parameter 'variationId' is set
+        if (variationId == null) {
+            throw new ApiException("Missing the required parameter 'variationId' when calling adjustInventory(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling adjustInventory(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = adjustInventoryCall(locationId, variationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Adjusts an item variation&#39;s current available inventory.
+     * Adjusts an item variation&#39;s current available inventory.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param variationId The ID of the variation to adjust inventory information for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1InventoryEntry
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1InventoryEntry adjustInventory(String locationId, String variationId, V1AdjustInventoryRequest body) throws ApiException {
+        ApiResponse<V1InventoryEntry> resp = adjustInventoryWithHttpInfo(locationId, variationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Adjusts an item variation&#39;s current available inventory.
+     * Adjusts an item variation&#39;s current available inventory.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param variationId The ID of the variation to adjust inventory information for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1InventoryEntry&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1InventoryEntry> adjustInventoryWithHttpInfo(String locationId, String variationId, V1AdjustInventoryRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = adjustInventoryValidateBeforeCall(locationId, variationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1InventoryEntry>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Adjusts an item variation&#39;s current available inventory. (asynchronously)
+     * Adjusts an item variation&#39;s current available inventory.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param variationId The ID of the variation to adjust inventory information for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call adjustInventoryAsync(String locationId, String variationId, V1AdjustInventoryRequest body, final ApiCallback<V1InventoryEntry> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = adjustInventoryValidateBeforeCall(locationId, variationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1InventoryEntry>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for applyFee
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param itemId The ID of the item to add the fee to. (required)
+     * @param feeId The ID of the fee to apply. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call applyFeeCall(String locationId, String itemId, String feeId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}/fees/{fee_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
+            .replaceAll("\\{" + "fee_id" + "\\}", apiClient.escapeString(feeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call applyFeeValidateBeforeCall(String locationId, String itemId, String feeId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling applyFee(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling applyFee(Async)");
+        }
+        
+        // verify the required parameter 'feeId' is set
+        if (feeId == null) {
+            throw new ApiException("Missing the required parameter 'feeId' when calling applyFee(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = applyFeeCall(locationId, itemId, feeId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+     * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param itemId The ID of the item to add the fee to. (required)
+     * @param feeId The ID of the fee to apply. (required)
+     * @return V1Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Item applyFee(String locationId, String itemId, String feeId) throws ApiException {
+        ApiResponse<V1Item> resp = applyFeeWithHttpInfo(locationId, itemId, feeId);
+        return resp.getData();
+    }
+
+    /**
+     * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+     * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param itemId The ID of the item to add the fee to. (required)
+     * @param feeId The ID of the fee to apply. (required)
+     * @return ApiResponse&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Item> applyFeeWithHttpInfo(String locationId, String itemId, String feeId) throws ApiException {
+        com.squareup.okhttp.Call call = applyFeeValidateBeforeCall(locationId, itemId, feeId, null, null);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register. (asynchronously)
+     * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param itemId The ID of the item to add the fee to. (required)
+     * @param feeId The ID of the fee to apply. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call applyFeeAsync(String locationId, String itemId, String feeId, final ApiCallback<V1Item> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = applyFeeValidateBeforeCall(locationId, itemId, feeId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for applyModifierList
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to apply. (required)
+     * @param itemId The ID of the item to add the modifier list to. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call applyModifierListCall(String locationId, String modifierListId, String itemId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call applyModifierListValidateBeforeCall(String locationId, String modifierListId, String itemId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling applyModifierList(Async)");
+        }
+        
+        // verify the required parameter 'modifierListId' is set
+        if (modifierListId == null) {
+            throw new ApiException("Missing the required parameter 'modifierListId' when calling applyModifierList(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling applyModifierList(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = applyModifierListCall(locationId, modifierListId, itemId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+     * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to apply. (required)
+     * @param itemId The ID of the item to add the modifier list to. (required)
+     * @return V1Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Item applyModifierList(String locationId, String modifierListId, String itemId) throws ApiException {
+        ApiResponse<V1Item> resp = applyModifierListWithHttpInfo(locationId, modifierListId, itemId);
+        return resp.getData();
+    }
+
+    /**
+     * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+     * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to apply. (required)
+     * @param itemId The ID of the item to add the modifier list to. (required)
+     * @return ApiResponse&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Item> applyModifierListWithHttpInfo(String locationId, String modifierListId, String itemId) throws ApiException {
+        com.squareup.okhttp.Call call = applyModifierListValidateBeforeCall(locationId, modifierListId, itemId, null, null);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item. (asynchronously)
+     * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to apply. (required)
+     * @param itemId The ID of the item to add the modifier list to. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call applyModifierListAsync(String locationId, String modifierListId, String itemId, final ApiCallback<V1Item> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = applyModifierListValidateBeforeCall(locationId, modifierListId, itemId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createCategory
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createCategoryCall(String locationId, V1Category body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/categories"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createCategoryValidateBeforeCall(String locationId, V1Category body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createCategory(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createCategory(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createCategoryCall(locationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Creates an item category.
+     * Creates an item category.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Category
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Category createCategory(String locationId, V1Category body) throws ApiException {
+        ApiResponse<V1Category> resp = createCategoryWithHttpInfo(locationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an item category.
+     * Creates an item category.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Category&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Category> createCategoryWithHttpInfo(String locationId, V1Category body) throws ApiException {
+        com.squareup.okhttp.Call call = createCategoryValidateBeforeCall(locationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Category>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Creates an item category. (asynchronously)
+     * Creates an item category.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createCategoryAsync(String locationId, V1Category body, final ApiCallback<V1Category> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createCategoryValidateBeforeCall(locationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Category>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createDiscount
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createDiscountCall(String locationId, V1Discount body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/discounts"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createDiscountValidateBeforeCall(String locationId, V1Discount body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createDiscount(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createDiscount(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createDiscountCall(locationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Creates a discount.
+     * Creates a discount.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Discount
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Discount createDiscount(String locationId, V1Discount body) throws ApiException {
+        ApiResponse<V1Discount> resp = createDiscountWithHttpInfo(locationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a discount.
+     * Creates a discount.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Discount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Discount> createDiscountWithHttpInfo(String locationId, V1Discount body) throws ApiException {
+        com.squareup.okhttp.Call call = createDiscountValidateBeforeCall(locationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Discount>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Creates a discount. (asynchronously)
+     * Creates a discount.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createDiscountAsync(String locationId, V1Discount body, final ApiCallback<V1Discount> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createDiscountValidateBeforeCall(locationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Discount>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createFee
+     * @param locationId The ID of the location to create a fee for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createFeeCall(String locationId, V1Fee body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/fees"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createFeeValidateBeforeCall(String locationId, V1Fee body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createFee(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createFee(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createFeeCall(locationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Creates a fee (tax).
+     * Creates a fee (tax).
+     * @param locationId The ID of the location to create a fee for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Fee
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Fee createFee(String locationId, V1Fee body) throws ApiException {
+        ApiResponse<V1Fee> resp = createFeeWithHttpInfo(locationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a fee (tax).
+     * Creates a fee (tax).
+     * @param locationId The ID of the location to create a fee for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Fee&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Fee> createFeeWithHttpInfo(String locationId, V1Fee body) throws ApiException {
+        com.squareup.okhttp.Call call = createFeeValidateBeforeCall(locationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Fee>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Creates a fee (tax). (asynchronously)
+     * Creates a fee (tax).
+     * @param locationId The ID of the location to create a fee for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createFeeAsync(String locationId, V1Fee body, final ApiCallback<V1Fee> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createFeeValidateBeforeCall(locationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Fee>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createItem
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createItemCall(String locationId, V1Item body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createItemValidateBeforeCall(String locationId, V1Item body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createItem(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createItem(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createItemCall(locationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Creates an item and at least one variation for it.
+     * Creates an item and at least one variation for it.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Item createItem(String locationId, V1Item body) throws ApiException {
+        ApiResponse<V1Item> resp = createItemWithHttpInfo(locationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an item and at least one variation for it.
+     * Creates an item and at least one variation for it.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Item> createItemWithHttpInfo(String locationId, V1Item body) throws ApiException {
+        com.squareup.okhttp.Call call = createItemValidateBeforeCall(locationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Creates an item and at least one variation for it. (asynchronously)
+     * Creates an item and at least one variation for it.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createItemAsync(String locationId, V1Item body, final ApiCallback<V1Item> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createItemValidateBeforeCall(locationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createModifierList
+     * @param locationId The ID of the location to create a modifier list for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createModifierListCall(String locationId, V1ModifierList body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/modifier-lists"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createModifierListValidateBeforeCall(String locationId, V1ModifierList body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createModifierList(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createModifierList(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createModifierListCall(locationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Creates an item modifier list and at least one modifier option for it.
+     * Creates an item modifier list and at least one modifier option for it.
+     * @param locationId The ID of the location to create a modifier list for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1ModifierList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1ModifierList createModifierList(String locationId, V1ModifierList body) throws ApiException {
+        ApiResponse<V1ModifierList> resp = createModifierListWithHttpInfo(locationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an item modifier list and at least one modifier option for it.
+     * Creates an item modifier list and at least one modifier option for it.
+     * @param locationId The ID of the location to create a modifier list for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1ModifierList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1ModifierList> createModifierListWithHttpInfo(String locationId, V1ModifierList body) throws ApiException {
+        com.squareup.okhttp.Call call = createModifierListValidateBeforeCall(locationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1ModifierList>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Creates an item modifier list and at least one modifier option for it. (asynchronously)
+     * Creates an item modifier list and at least one modifier option for it.
+     * @param locationId The ID of the location to create a modifier list for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createModifierListAsync(String locationId, V1ModifierList body, final ApiCallback<V1ModifierList> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createModifierListValidateBeforeCall(locationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1ModifierList>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createModifierOption
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createModifierOptionCall(String locationId, String modifierListId, V1ModifierOption body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createModifierOptionValidateBeforeCall(String locationId, String modifierListId, V1ModifierOption body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createModifierOption(Async)");
+        }
+        
+        // verify the required parameter 'modifierListId' is set
+        if (modifierListId == null) {
+            throw new ApiException("Missing the required parameter 'modifierListId' when calling createModifierOption(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createModifierOption(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createModifierOptionCall(locationId, modifierListId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Creates an item modifier option and adds it to a modifier list.
+     * Creates an item modifier option and adds it to a modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1ModifierOption
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1ModifierOption createModifierOption(String locationId, String modifierListId, V1ModifierOption body) throws ApiException {
+        ApiResponse<V1ModifierOption> resp = createModifierOptionWithHttpInfo(locationId, modifierListId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an item modifier option and adds it to a modifier list.
+     * Creates an item modifier option and adds it to a modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1ModifierOption&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1ModifierOption> createModifierOptionWithHttpInfo(String locationId, String modifierListId, V1ModifierOption body) throws ApiException {
+        com.squareup.okhttp.Call call = createModifierOptionValidateBeforeCall(locationId, modifierListId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1ModifierOption>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Creates an item modifier option and adds it to a modifier list. (asynchronously)
+     * Creates an item modifier option and adds it to a modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createModifierOptionAsync(String locationId, String modifierListId, V1ModifierOption body, final ApiCallback<V1ModifierOption> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createModifierOptionValidateBeforeCall(locationId, modifierListId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1ModifierOption>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createPage
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createPageCall(String locationId, V1Page body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/pages"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createPageValidateBeforeCall(String locationId, V1Page body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createPage(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createPage(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createPageCall(locationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Creates a Favorites page in Square Register.
+     * Creates a Favorites page in Square Register.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Page
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Page createPage(String locationId, V1Page body) throws ApiException {
+        ApiResponse<V1Page> resp = createPageWithHttpInfo(locationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a Favorites page in Square Register.
+     * Creates a Favorites page in Square Register.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Page&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Page> createPageWithHttpInfo(String locationId, V1Page body) throws ApiException {
+        com.squareup.okhttp.Call call = createPageValidateBeforeCall(locationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Creates a Favorites page in Square Register. (asynchronously)
+     * Creates a Favorites page in Square Register.
+     * @param locationId The ID of the location to create an item for. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createPageAsync(String locationId, V1Page body, final ApiCallback<V1Page> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createPageValidateBeforeCall(locationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for createVariation
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The item&#39;s ID. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createVariationCall(String locationId, String itemId, V1Variation body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}/variations"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createVariationValidateBeforeCall(String locationId, String itemId, V1Variation body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling createVariation(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling createVariation(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createVariation(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createVariationCall(locationId, itemId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Creates an item variation for an existing item.
+     * Creates an item variation for an existing item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The item&#39;s ID. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Variation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Variation createVariation(String locationId, String itemId, V1Variation body) throws ApiException {
+        ApiResponse<V1Variation> resp = createVariationWithHttpInfo(locationId, itemId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an item variation for an existing item.
+     * Creates an item variation for an existing item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The item&#39;s ID. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Variation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Variation> createVariationWithHttpInfo(String locationId, String itemId, V1Variation body) throws ApiException {
+        com.squareup.okhttp.Call call = createVariationValidateBeforeCall(locationId, itemId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Variation>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Creates an item variation for an existing item. (asynchronously)
+     * Creates an item variation for an existing item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The item&#39;s ID. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createVariationAsync(String locationId, String itemId, V1Variation body, final ApiCallback<V1Variation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createVariationValidateBeforeCall(locationId, itemId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Variation>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteCategory
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param categoryId The ID of the category to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteCategoryCall(String locationId, String categoryId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/categories/{category_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "category_id" + "\\}", apiClient.escapeString(categoryId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteCategoryValidateBeforeCall(String locationId, String categoryId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deleteCategory(Async)");
+        }
+        
+        // verify the required parameter 'categoryId' is set
+        if (categoryId == null) {
+            throw new ApiException("Missing the required parameter 'categoryId' when calling deleteCategory(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteCategoryCall(locationId, categoryId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes an existing item category.
+     * Deletes an existing item category.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param categoryId The ID of the category to delete. (required)
+     * @return V1Category
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Category deleteCategory(String locationId, String categoryId) throws ApiException {
+        ApiResponse<V1Category> resp = deleteCategoryWithHttpInfo(locationId, categoryId);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes an existing item category.
+     * Deletes an existing item category.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param categoryId The ID of the category to delete. (required)
+     * @return ApiResponse&lt;V1Category&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Category> deleteCategoryWithHttpInfo(String locationId, String categoryId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteCategoryValidateBeforeCall(locationId, categoryId, null, null);
+        Type localVarReturnType = new TypeToken<V1Category>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes an existing item category. (asynchronously)
+     * Deletes an existing item category.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param categoryId The ID of the category to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteCategoryAsync(String locationId, String categoryId, final ApiCallback<V1Category> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteCategoryValidateBeforeCall(locationId, categoryId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Category>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteDiscount
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param discountId The ID of the discount to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteDiscountCall(String locationId, String discountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/discounts/{discount_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "discount_id" + "\\}", apiClient.escapeString(discountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteDiscountValidateBeforeCall(String locationId, String discountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deleteDiscount(Async)");
+        }
+        
+        // verify the required parameter 'discountId' is set
+        if (discountId == null) {
+            throw new ApiException("Missing the required parameter 'discountId' when calling deleteDiscount(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteDiscountCall(locationId, discountId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes an existing discount.
+     * Deletes an existing discount.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param discountId The ID of the discount to delete. (required)
+     * @return V1Discount
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Discount deleteDiscount(String locationId, String discountId) throws ApiException {
+        ApiResponse<V1Discount> resp = deleteDiscountWithHttpInfo(locationId, discountId);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes an existing discount.
+     * Deletes an existing discount.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param discountId The ID of the discount to delete. (required)
+     * @return ApiResponse&lt;V1Discount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Discount> deleteDiscountWithHttpInfo(String locationId, String discountId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteDiscountValidateBeforeCall(locationId, discountId, null, null);
+        Type localVarReturnType = new TypeToken<V1Discount>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes an existing discount. (asynchronously)
+     * Deletes an existing discount.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param discountId The ID of the discount to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteDiscountAsync(String locationId, String discountId, final ApiCallback<V1Discount> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteDiscountValidateBeforeCall(locationId, discountId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Discount>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteFee
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param feeId The ID of the fee to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteFeeCall(String locationId, String feeId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/fees/{fee_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "fee_id" + "\\}", apiClient.escapeString(feeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteFeeValidateBeforeCall(String locationId, String feeId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deleteFee(Async)");
+        }
+        
+        // verify the required parameter 'feeId' is set
+        if (feeId == null) {
+            throw new ApiException("Missing the required parameter 'feeId' when calling deleteFee(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteFeeCall(locationId, feeId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes an existing fee (tax).
+     * Deletes an existing fee (tax).
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param feeId The ID of the fee to delete. (required)
+     * @return V1Fee
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Fee deleteFee(String locationId, String feeId) throws ApiException {
+        ApiResponse<V1Fee> resp = deleteFeeWithHttpInfo(locationId, feeId);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes an existing fee (tax).
+     * Deletes an existing fee (tax).
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param feeId The ID of the fee to delete. (required)
+     * @return ApiResponse&lt;V1Fee&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Fee> deleteFeeWithHttpInfo(String locationId, String feeId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteFeeValidateBeforeCall(locationId, feeId, null, null);
+        Type localVarReturnType = new TypeToken<V1Fee>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes an existing fee (tax). (asynchronously)
+     * Deletes an existing fee (tax).
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param feeId The ID of the fee to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteFeeAsync(String locationId, String feeId, final ApiCallback<V1Fee> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteFeeValidateBeforeCall(locationId, feeId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Fee>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteItem
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteItemCall(String locationId, String itemId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteItemValidateBeforeCall(String locationId, String itemId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deleteItem(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling deleteItem(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteItemCall(locationId, itemId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes an existing item and all item variations associated with it.
+     * Deletes an existing item and all item variations associated with it.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @return V1Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Item deleteItem(String locationId, String itemId) throws ApiException {
+        ApiResponse<V1Item> resp = deleteItemWithHttpInfo(locationId, itemId);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes an existing item and all item variations associated with it.
+     * Deletes an existing item and all item variations associated with it.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @return ApiResponse&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Item> deleteItemWithHttpInfo(String locationId, String itemId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteItemValidateBeforeCall(locationId, itemId, null, null);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes an existing item and all item variations associated with it. (asynchronously)
+     * Deletes an existing item and all item variations associated with it.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteItemAsync(String locationId, String itemId, final ApiCallback<V1Item> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteItemValidateBeforeCall(locationId, itemId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteModifierList
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteModifierListCall(String locationId, String modifierListId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteModifierListValidateBeforeCall(String locationId, String modifierListId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deleteModifierList(Async)");
+        }
+        
+        // verify the required parameter 'modifierListId' is set
+        if (modifierListId == null) {
+            throw new ApiException("Missing the required parameter 'modifierListId' when calling deleteModifierList(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteModifierListCall(locationId, modifierListId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes an existing item modifier list and all modifier options associated with it.
+     * Deletes an existing item modifier list and all modifier options associated with it.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to delete. (required)
+     * @return V1ModifierList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1ModifierList deleteModifierList(String locationId, String modifierListId) throws ApiException {
+        ApiResponse<V1ModifierList> resp = deleteModifierListWithHttpInfo(locationId, modifierListId);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes an existing item modifier list and all modifier options associated with it.
+     * Deletes an existing item modifier list and all modifier options associated with it.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to delete. (required)
+     * @return ApiResponse&lt;V1ModifierList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1ModifierList> deleteModifierListWithHttpInfo(String locationId, String modifierListId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteModifierListValidateBeforeCall(locationId, modifierListId, null, null);
+        Type localVarReturnType = new TypeToken<V1ModifierList>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes an existing item modifier list and all modifier options associated with it. (asynchronously)
+     * Deletes an existing item modifier list and all modifier options associated with it.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteModifierListAsync(String locationId, String modifierListId, final ApiCallback<V1ModifierList> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteModifierListValidateBeforeCall(locationId, modifierListId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1ModifierList>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteModifierOption
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to delete. (required)
+     * @param modifierOptionId The ID of the modifier list to edit. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteModifierOptionCall(String locationId, String modifierListId, String modifierOptionId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()))
+            .replaceAll("\\{" + "modifier_option_id" + "\\}", apiClient.escapeString(modifierOptionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteModifierOptionValidateBeforeCall(String locationId, String modifierListId, String modifierOptionId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deleteModifierOption(Async)");
+        }
+        
+        // verify the required parameter 'modifierListId' is set
+        if (modifierListId == null) {
+            throw new ApiException("Missing the required parameter 'modifierListId' when calling deleteModifierOption(Async)");
+        }
+        
+        // verify the required parameter 'modifierOptionId' is set
+        if (modifierOptionId == null) {
+            throw new ApiException("Missing the required parameter 'modifierOptionId' when calling deleteModifierOption(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteModifierOptionCall(locationId, modifierListId, modifierOptionId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes an existing item modifier option from a modifier list.
+     * Deletes an existing item modifier option from a modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to delete. (required)
+     * @param modifierOptionId The ID of the modifier list to edit. (required)
+     * @return V1ModifierOption
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1ModifierOption deleteModifierOption(String locationId, String modifierListId, String modifierOptionId) throws ApiException {
+        ApiResponse<V1ModifierOption> resp = deleteModifierOptionWithHttpInfo(locationId, modifierListId, modifierOptionId);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes an existing item modifier option from a modifier list.
+     * Deletes an existing item modifier option from a modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to delete. (required)
+     * @param modifierOptionId The ID of the modifier list to edit. (required)
+     * @return ApiResponse&lt;V1ModifierOption&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1ModifierOption> deleteModifierOptionWithHttpInfo(String locationId, String modifierListId, String modifierOptionId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteModifierOptionValidateBeforeCall(locationId, modifierListId, modifierOptionId, null, null);
+        Type localVarReturnType = new TypeToken<V1ModifierOption>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes an existing item modifier option from a modifier list. (asynchronously)
+     * Deletes an existing item modifier option from a modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to delete. (required)
+     * @param modifierOptionId The ID of the modifier list to edit. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteModifierOptionAsync(String locationId, String modifierListId, String modifierOptionId, final ApiCallback<V1ModifierOption> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteModifierOptionValidateBeforeCall(locationId, modifierListId, modifierOptionId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1ModifierOption>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deletePage
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deletePageCall(String locationId, String pageId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/pages/{page_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "page_id" + "\\}", apiClient.escapeString(pageId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deletePageValidateBeforeCall(String locationId, String pageId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deletePage(Async)");
+        }
+        
+        // verify the required parameter 'pageId' is set
+        if (pageId == null) {
+            throw new ApiException("Missing the required parameter 'pageId' when calling deletePage(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deletePageCall(locationId, pageId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes an existing Favorites page and all of its cells.
+     * Deletes an existing Favorites page and all of its cells.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page to delete. (required)
+     * @return V1Page
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Page deletePage(String locationId, String pageId) throws ApiException {
+        ApiResponse<V1Page> resp = deletePageWithHttpInfo(locationId, pageId);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes an existing Favorites page and all of its cells.
+     * Deletes an existing Favorites page and all of its cells.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page to delete. (required)
+     * @return ApiResponse&lt;V1Page&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Page> deletePageWithHttpInfo(String locationId, String pageId) throws ApiException {
+        com.squareup.okhttp.Call call = deletePageValidateBeforeCall(locationId, pageId, null, null);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes an existing Favorites page and all of its cells. (asynchronously)
+     * Deletes an existing Favorites page and all of its cells.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deletePageAsync(String locationId, String pageId, final ApiCallback<V1Page> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deletePageValidateBeforeCall(locationId, pageId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deletePageCell
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page to delete. (required)
+     * @param row The row of the cell to clear. Always an integer between 0 and 4, inclusive. Row 0 is the top row. (optional)
+     * @param column The column of the cell to clear. Always an integer between 0 and 4, inclusive. Column 0 is the leftmost column. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deletePageCellCall(String locationId, String pageId, String row, String column, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/pages/{page_id}/cells"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "page_id" + "\\}", apiClient.escapeString(pageId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (row != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "row", row));
+        if (column != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "column", column));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deletePageCellValidateBeforeCall(String locationId, String pageId, String row, String column, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deletePageCell(Async)");
+        }
+        
+        // verify the required parameter 'pageId' is set
+        if (pageId == null) {
+            throw new ApiException("Missing the required parameter 'pageId' when calling deletePageCell(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deletePageCellCall(locationId, pageId, row, column, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes a cell from a Favorites page in Square Register.
+     * Deletes a cell from a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page to delete. (required)
+     * @param row The row of the cell to clear. Always an integer between 0 and 4, inclusive. Row 0 is the top row. (optional)
+     * @param column The column of the cell to clear. Always an integer between 0 and 4, inclusive. Column 0 is the leftmost column. (optional)
+     * @return V1Page
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Page deletePageCell(String locationId, String pageId, String row, String column) throws ApiException {
+        ApiResponse<V1Page> resp = deletePageCellWithHttpInfo(locationId, pageId, row, column);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes a cell from a Favorites page in Square Register.
+     * Deletes a cell from a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page to delete. (required)
+     * @param row The row of the cell to clear. Always an integer between 0 and 4, inclusive. Row 0 is the top row. (optional)
+     * @param column The column of the cell to clear. Always an integer between 0 and 4, inclusive. Column 0 is the leftmost column. (optional)
+     * @return ApiResponse&lt;V1Page&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Page> deletePageCellWithHttpInfo(String locationId, String pageId, String row, String column) throws ApiException {
+        com.squareup.okhttp.Call call = deletePageCellValidateBeforeCall(locationId, pageId, row, column, null, null);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes a cell from a Favorites page in Square Register. (asynchronously)
+     * Deletes a cell from a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page to delete. (required)
+     * @param row The row of the cell to clear. Always an integer between 0 and 4, inclusive. Row 0 is the top row. (optional)
+     * @param column The column of the cell to clear. Always an integer between 0 and 4, inclusive. Column 0 is the leftmost column. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deletePageCellAsync(String locationId, String pageId, String row, String column, final ApiCallback<V1Page> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deletePageCellValidateBeforeCall(locationId, pageId, row, column, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteVariation
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to delete. (required)
+     * @param variationId The ID of the variation to delete. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteVariationCall(String locationId, String itemId, String variationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}/variations/{variation_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
+            .replaceAll("\\{" + "variation_id" + "\\}", apiClient.escapeString(variationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteVariationValidateBeforeCall(String locationId, String itemId, String variationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling deleteVariation(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling deleteVariation(Async)");
+        }
+        
+        // verify the required parameter 'variationId' is set
+        if (variationId == null) {
+            throw new ApiException("Missing the required parameter 'variationId' when calling deleteVariation(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteVariationCall(locationId, itemId, variationId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Deletes an existing item variation from an item.
+     * Deletes an existing item variation from an item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to delete. (required)
+     * @param variationId The ID of the variation to delete. (required)
+     * @return V1Variation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Variation deleteVariation(String locationId, String itemId, String variationId) throws ApiException {
+        ApiResponse<V1Variation> resp = deleteVariationWithHttpInfo(locationId, itemId, variationId);
+        return resp.getData();
+    }
+
+    /**
+     * Deletes an existing item variation from an item.
+     * Deletes an existing item variation from an item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to delete. (required)
+     * @param variationId The ID of the variation to delete. (required)
+     * @return ApiResponse&lt;V1Variation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Variation> deleteVariationWithHttpInfo(String locationId, String itemId, String variationId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteVariationValidateBeforeCall(locationId, itemId, variationId, null, null);
+        Type localVarReturnType = new TypeToken<V1Variation>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Deletes an existing item variation from an item. (asynchronously)
+     * Deletes an existing item variation from an item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to delete. (required)
+     * @param variationId The ID of the variation to delete. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteVariationAsync(String locationId, String itemId, String variationId, final ApiCallback<V1Variation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteVariationValidateBeforeCall(locationId, itemId, variationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Variation>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listCategories
+     * @param locationId The ID of the location to list categories for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listCategoriesCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/categories"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listCategoriesValidateBeforeCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listCategories(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listCategoriesCall(locationId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Lists all of a location&#39;s item categories.
+     * Lists all of a location&#39;s item categories.
+     * @param locationId The ID of the location to list categories for. (required)
+     * @return List&lt;V1Category&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Category> listCategories(String locationId) throws ApiException {
+        ApiResponse<List<V1Category>> resp = listCategoriesWithHttpInfo(locationId);
+        return resp.getData();
+    }
+
+    /**
+     * Lists all of a location&#39;s item categories.
+     * Lists all of a location&#39;s item categories.
+     * @param locationId The ID of the location to list categories for. (required)
+     * @return ApiResponse&lt;List&lt;V1Category&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Category>> listCategoriesWithHttpInfo(String locationId) throws ApiException {
+        com.squareup.okhttp.Call call = listCategoriesValidateBeforeCall(locationId, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Category>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Lists all of a location&#39;s item categories. (asynchronously)
+     * Lists all of a location&#39;s item categories.
+     * @param locationId The ID of the location to list categories for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listCategoriesAsync(String locationId, final ApiCallback<List<V1Category>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listCategoriesValidateBeforeCall(locationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Category>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listDiscounts
+     * @param locationId The ID of the location to list categories for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listDiscountsCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/discounts"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listDiscountsValidateBeforeCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listDiscounts(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listDiscountsCall(locationId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Lists all of a location&#39;s discounts.
+     * Lists all of a location&#39;s discounts.
+     * @param locationId The ID of the location to list categories for. (required)
+     * @return List&lt;V1Discount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Discount> listDiscounts(String locationId) throws ApiException {
+        ApiResponse<List<V1Discount>> resp = listDiscountsWithHttpInfo(locationId);
+        return resp.getData();
+    }
+
+    /**
+     * Lists all of a location&#39;s discounts.
+     * Lists all of a location&#39;s discounts.
+     * @param locationId The ID of the location to list categories for. (required)
+     * @return ApiResponse&lt;List&lt;V1Discount&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Discount>> listDiscountsWithHttpInfo(String locationId) throws ApiException {
+        com.squareup.okhttp.Call call = listDiscountsValidateBeforeCall(locationId, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Discount>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Lists all of a location&#39;s discounts. (asynchronously)
+     * Lists all of a location&#39;s discounts.
+     * @param locationId The ID of the location to list categories for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listDiscountsAsync(String locationId, final ApiCallback<List<V1Discount>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listDiscountsValidateBeforeCall(locationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Discount>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listFees
+     * @param locationId The ID of the location to list fees for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listFeesCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/fees"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listFeesValidateBeforeCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listFees(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listFeesCall(locationId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Lists all of a location&#39;s fees (taxes).
+     * Lists all of a location&#39;s fees (taxes).
+     * @param locationId The ID of the location to list fees for. (required)
+     * @return List&lt;V1Fee&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Fee> listFees(String locationId) throws ApiException {
+        ApiResponse<List<V1Fee>> resp = listFeesWithHttpInfo(locationId);
+        return resp.getData();
+    }
+
+    /**
+     * Lists all of a location&#39;s fees (taxes).
+     * Lists all of a location&#39;s fees (taxes).
+     * @param locationId The ID of the location to list fees for. (required)
+     * @return ApiResponse&lt;List&lt;V1Fee&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Fee>> listFeesWithHttpInfo(String locationId) throws ApiException {
+        com.squareup.okhttp.Call call = listFeesValidateBeforeCall(locationId, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Fee>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Lists all of a location&#39;s fees (taxes). (asynchronously)
+     * Lists all of a location&#39;s fees (taxes).
+     * @param locationId The ID of the location to list fees for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listFeesAsync(String locationId, final ApiCallback<List<V1Fee>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listFeesValidateBeforeCall(locationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Fee>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listInventory
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listInventoryCall(String locationId, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/inventory"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listInventoryValidateBeforeCall(String locationId, Integer limit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listInventory(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listInventoryCall(locationId, limit, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+     * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
+     * @return List&lt;V1InventoryEntry&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1InventoryEntry> listInventory(String locationId, Integer limit) throws ApiException {
+        ApiResponse<List<V1InventoryEntry>> resp = listInventoryWithHttpInfo(locationId, limit);
+        return resp.getData();
+    }
+
+    /**
+     * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+     * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
+     * @return ApiResponse&lt;List&lt;V1InventoryEntry&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1InventoryEntry>> listInventoryWithHttpInfo(String locationId, Integer limit) throws ApiException {
+        com.squareup.okhttp.Call call = listInventoryValidateBeforeCall(locationId, limit, null, null);
+        Type localVarReturnType = new TypeToken<List<V1InventoryEntry>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations. (asynchronously)
+     * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listInventoryAsync(String locationId, Integer limit, final ApiCallback<List<V1InventoryEntry>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listInventoryValidateBeforeCall(locationId, limit, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1InventoryEntry>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listItems
+     * @param locationId The ID of the location to list items for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listItemsCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listItemsValidateBeforeCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listItems(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listItemsCall(locationId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Provides summary information for all of a location&#39;s items.
+     * Provides summary information for all of a location&#39;s items.
+     * @param locationId The ID of the location to list items for. (required)
+     * @return List&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Item> listItems(String locationId) throws ApiException {
+        ApiResponse<List<V1Item>> resp = listItemsWithHttpInfo(locationId);
+        return resp.getData();
+    }
+
+    /**
+     * Provides summary information for all of a location&#39;s items.
+     * Provides summary information for all of a location&#39;s items.
+     * @param locationId The ID of the location to list items for. (required)
+     * @return ApiResponse&lt;List&lt;V1Item&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Item>> listItemsWithHttpInfo(String locationId) throws ApiException {
+        com.squareup.okhttp.Call call = listItemsValidateBeforeCall(locationId, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Item>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Provides summary information for all of a location&#39;s items. (asynchronously)
+     * Provides summary information for all of a location&#39;s items.
+     * @param locationId The ID of the location to list items for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listItemsAsync(String locationId, final ApiCallback<List<V1Item>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listItemsValidateBeforeCall(locationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Item>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listModifierLists
+     * @param locationId The ID of the location to list modifier lists for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listModifierListsCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/modifier-lists"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listModifierListsValidateBeforeCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listModifierLists(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listModifierListsCall(locationId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Lists all of a location&#39;s modifier lists.
+     * Lists all of a location&#39;s modifier lists.
+     * @param locationId The ID of the location to list modifier lists for. (required)
+     * @return List&lt;V1ModifierList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1ModifierList> listModifierLists(String locationId) throws ApiException {
+        ApiResponse<List<V1ModifierList>> resp = listModifierListsWithHttpInfo(locationId);
+        return resp.getData();
+    }
+
+    /**
+     * Lists all of a location&#39;s modifier lists.
+     * Lists all of a location&#39;s modifier lists.
+     * @param locationId The ID of the location to list modifier lists for. (required)
+     * @return ApiResponse&lt;List&lt;V1ModifierList&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1ModifierList>> listModifierListsWithHttpInfo(String locationId) throws ApiException {
+        com.squareup.okhttp.Call call = listModifierListsValidateBeforeCall(locationId, null, null);
+        Type localVarReturnType = new TypeToken<List<V1ModifierList>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Lists all of a location&#39;s modifier lists. (asynchronously)
+     * Lists all of a location&#39;s modifier lists.
+     * @param locationId The ID of the location to list modifier lists for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listModifierListsAsync(String locationId, final ApiCallback<List<V1ModifierList>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listModifierListsValidateBeforeCall(locationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1ModifierList>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listPages
+     * @param locationId The ID of the location to list Favorites pages for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listPagesCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/pages"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listPagesValidateBeforeCall(String locationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling listPages(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listPagesCall(locationId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Lists all of a location&#39;s Favorites pages in Square Register.
+     * Lists all of a location&#39;s Favorites pages in Square Register.
+     * @param locationId The ID of the location to list Favorites pages for. (required)
+     * @return List&lt;V1Page&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<V1Page> listPages(String locationId) throws ApiException {
+        ApiResponse<List<V1Page>> resp = listPagesWithHttpInfo(locationId);
+        return resp.getData();
+    }
+
+    /**
+     * Lists all of a location&#39;s Favorites pages in Square Register.
+     * Lists all of a location&#39;s Favorites pages in Square Register.
+     * @param locationId The ID of the location to list Favorites pages for. (required)
+     * @return ApiResponse&lt;List&lt;V1Page&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<V1Page>> listPagesWithHttpInfo(String locationId) throws ApiException {
+        com.squareup.okhttp.Call call = listPagesValidateBeforeCall(locationId, null, null);
+        Type localVarReturnType = new TypeToken<List<V1Page>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Lists all of a location&#39;s Favorites pages in Square Register. (asynchronously)
+     * Lists all of a location&#39;s Favorites pages in Square Register.
+     * @param locationId The ID of the location to list Favorites pages for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listPagesAsync(String locationId, final ApiCallback<List<V1Page>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listPagesValidateBeforeCall(locationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<V1Page>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for removeFee
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param itemId The ID of the item to add the fee to. (required)
+     * @param feeId The ID of the fee to apply. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call removeFeeCall(String locationId, String itemId, String feeId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}/fees/{fee_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
+            .replaceAll("\\{" + "fee_id" + "\\}", apiClient.escapeString(feeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call removeFeeValidateBeforeCall(String locationId, String itemId, String feeId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling removeFee(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling removeFee(Async)");
+        }
+        
+        // verify the required parameter 'feeId' is set
+        if (feeId == null) {
+            throw new ApiException("Missing the required parameter 'feeId' when calling removeFee(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = removeFeeCall(locationId, itemId, feeId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+     * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param itemId The ID of the item to add the fee to. (required)
+     * @param feeId The ID of the fee to apply. (required)
+     * @return V1Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Item removeFee(String locationId, String itemId, String feeId) throws ApiException {
+        ApiResponse<V1Item> resp = removeFeeWithHttpInfo(locationId, itemId, feeId);
+        return resp.getData();
+    }
+
+    /**
+     * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+     * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param itemId The ID of the item to add the fee to. (required)
+     * @param feeId The ID of the fee to apply. (required)
+     * @return ApiResponse&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Item> removeFeeWithHttpInfo(String locationId, String itemId, String feeId) throws ApiException {
+        com.squareup.okhttp.Call call = removeFeeValidateBeforeCall(locationId, itemId, feeId, null, null);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register. (asynchronously)
+     * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param itemId The ID of the item to add the fee to. (required)
+     * @param feeId The ID of the fee to apply. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call removeFeeAsync(String locationId, String itemId, String feeId, final ApiCallback<V1Item> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = removeFeeValidateBeforeCall(locationId, itemId, feeId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for removeModifierList
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to remove. (required)
+     * @param itemId The ID of the item to remove the modifier list from. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call removeModifierListCall(String locationId, String modifierListId, String itemId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call removeModifierListValidateBeforeCall(String locationId, String modifierListId, String itemId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling removeModifierList(Async)");
+        }
+        
+        // verify the required parameter 'modifierListId' is set
+        if (modifierListId == null) {
+            throw new ApiException("Missing the required parameter 'modifierListId' when calling removeModifierList(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling removeModifierList(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = removeModifierListCall(locationId, modifierListId, itemId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+     * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to remove. (required)
+     * @param itemId The ID of the item to remove the modifier list from. (required)
+     * @return V1Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Item removeModifierList(String locationId, String modifierListId, String itemId) throws ApiException {
+        ApiResponse<V1Item> resp = removeModifierListWithHttpInfo(locationId, modifierListId, itemId);
+        return resp.getData();
+    }
+
+    /**
+     * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+     * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to remove. (required)
+     * @param itemId The ID of the item to remove the modifier list from. (required)
+     * @return ApiResponse&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Item> removeModifierListWithHttpInfo(String locationId, String modifierListId, String itemId) throws ApiException {
+        com.squareup.okhttp.Call call = removeModifierListValidateBeforeCall(locationId, modifierListId, itemId, null, null);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item. (asynchronously)
+     * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to remove. (required)
+     * @param itemId The ID of the item to remove the modifier list from. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call removeModifierListAsync(String locationId, String modifierListId, String itemId, final ApiCallback<V1Item> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = removeModifierListValidateBeforeCall(locationId, modifierListId, itemId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveItem
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The item&#39;s ID. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveItemCall(String locationId, String itemId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveItemValidateBeforeCall(String locationId, String itemId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling retrieveItem(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling retrieveItem(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveItemCall(locationId, itemId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Provides the details for a single item, including associated modifier lists and fees.
+     * Provides the details for a single item, including associated modifier lists and fees.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The item&#39;s ID. (required)
+     * @return V1Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Item retrieveItem(String locationId, String itemId) throws ApiException {
+        ApiResponse<V1Item> resp = retrieveItemWithHttpInfo(locationId, itemId);
+        return resp.getData();
+    }
+
+    /**
+     * Provides the details for a single item, including associated modifier lists and fees.
+     * Provides the details for a single item, including associated modifier lists and fees.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The item&#39;s ID. (required)
+     * @return ApiResponse&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Item> retrieveItemWithHttpInfo(String locationId, String itemId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveItemValidateBeforeCall(locationId, itemId, null, null);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Provides the details for a single item, including associated modifier lists and fees. (asynchronously)
+     * Provides the details for a single item, including associated modifier lists and fees.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The item&#39;s ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveItemAsync(String locationId, String itemId, final ApiCallback<V1Item> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveItemValidateBeforeCall(locationId, itemId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for retrieveModifierList
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The modifier list&#39;s ID. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call retrieveModifierListCall(String locationId, String modifierListId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call retrieveModifierListValidateBeforeCall(String locationId, String modifierListId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling retrieveModifierList(Async)");
+        }
+        
+        // verify the required parameter 'modifierListId' is set
+        if (modifierListId == null) {
+            throw new ApiException("Missing the required parameter 'modifierListId' when calling retrieveModifierList(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = retrieveModifierListCall(locationId, modifierListId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Provides the details for a single modifier list.
+     * Provides the details for a single modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The modifier list&#39;s ID. (required)
+     * @return V1ModifierList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1ModifierList retrieveModifierList(String locationId, String modifierListId) throws ApiException {
+        ApiResponse<V1ModifierList> resp = retrieveModifierListWithHttpInfo(locationId, modifierListId);
+        return resp.getData();
+    }
+
+    /**
+     * Provides the details for a single modifier list.
+     * Provides the details for a single modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The modifier list&#39;s ID. (required)
+     * @return ApiResponse&lt;V1ModifierList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1ModifierList> retrieveModifierListWithHttpInfo(String locationId, String modifierListId) throws ApiException {
+        com.squareup.okhttp.Call call = retrieveModifierListValidateBeforeCall(locationId, modifierListId, null, null);
+        Type localVarReturnType = new TypeToken<V1ModifierList>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Provides the details for a single modifier list. (asynchronously)
+     * Provides the details for a single modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The modifier list&#39;s ID. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call retrieveModifierListAsync(String locationId, String modifierListId, final ApiCallback<V1ModifierList> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = retrieveModifierListValidateBeforeCall(locationId, modifierListId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1ModifierList>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateCategory
+     * @param locationId The ID of the category&#39;s associated location. (required)
+     * @param categoryId The ID of the category to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateCategoryCall(String locationId, String categoryId, V1Category body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/categories/{category_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "category_id" + "\\}", apiClient.escapeString(categoryId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateCategoryValidateBeforeCall(String locationId, String categoryId, V1Category body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updateCategory(Async)");
+        }
+        
+        // verify the required parameter 'categoryId' is set
+        if (categoryId == null) {
+            throw new ApiException("Missing the required parameter 'categoryId' when calling updateCategory(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateCategory(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateCategoryCall(locationId, categoryId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies the details of an existing item category.
+     * Modifies the details of an existing item category.
+     * @param locationId The ID of the category&#39;s associated location. (required)
+     * @param categoryId The ID of the category to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Category
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Category updateCategory(String locationId, String categoryId, V1Category body) throws ApiException {
+        ApiResponse<V1Category> resp = updateCategoryWithHttpInfo(locationId, categoryId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies the details of an existing item category.
+     * Modifies the details of an existing item category.
+     * @param locationId The ID of the category&#39;s associated location. (required)
+     * @param categoryId The ID of the category to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Category&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Category> updateCategoryWithHttpInfo(String locationId, String categoryId, V1Category body) throws ApiException {
+        com.squareup.okhttp.Call call = updateCategoryValidateBeforeCall(locationId, categoryId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Category>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies the details of an existing item category. (asynchronously)
+     * Modifies the details of an existing item category.
+     * @param locationId The ID of the category&#39;s associated location. (required)
+     * @param categoryId The ID of the category to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateCategoryAsync(String locationId, String categoryId, V1Category body, final ApiCallback<V1Category> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateCategoryValidateBeforeCall(locationId, categoryId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Category>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateDiscount
+     * @param locationId The ID of the category&#39;s associated location. (required)
+     * @param discountId The ID of the discount to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateDiscountCall(String locationId, String discountId, V1Discount body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/discounts/{discount_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "discount_id" + "\\}", apiClient.escapeString(discountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateDiscountValidateBeforeCall(String locationId, String discountId, V1Discount body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updateDiscount(Async)");
+        }
+        
+        // verify the required parameter 'discountId' is set
+        if (discountId == null) {
+            throw new ApiException("Missing the required parameter 'discountId' when calling updateDiscount(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateDiscount(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateDiscountCall(locationId, discountId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies the details of an existing discount.
+     * Modifies the details of an existing discount.
+     * @param locationId The ID of the category&#39;s associated location. (required)
+     * @param discountId The ID of the discount to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Discount
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Discount updateDiscount(String locationId, String discountId, V1Discount body) throws ApiException {
+        ApiResponse<V1Discount> resp = updateDiscountWithHttpInfo(locationId, discountId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies the details of an existing discount.
+     * Modifies the details of an existing discount.
+     * @param locationId The ID of the category&#39;s associated location. (required)
+     * @param discountId The ID of the discount to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Discount&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Discount> updateDiscountWithHttpInfo(String locationId, String discountId, V1Discount body) throws ApiException {
+        com.squareup.okhttp.Call call = updateDiscountValidateBeforeCall(locationId, discountId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Discount>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies the details of an existing discount. (asynchronously)
+     * Modifies the details of an existing discount.
+     * @param locationId The ID of the category&#39;s associated location. (required)
+     * @param discountId The ID of the discount to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateDiscountAsync(String locationId, String discountId, V1Discount body, final ApiCallback<V1Discount> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateDiscountValidateBeforeCall(locationId, discountId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Discount>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateFee
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param feeId The ID of the fee to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateFeeCall(String locationId, String feeId, V1Fee body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/fees/{fee_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "fee_id" + "\\}", apiClient.escapeString(feeId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateFeeValidateBeforeCall(String locationId, String feeId, V1Fee body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updateFee(Async)");
+        }
+        
+        // verify the required parameter 'feeId' is set
+        if (feeId == null) {
+            throw new ApiException("Missing the required parameter 'feeId' when calling updateFee(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateFee(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateFeeCall(locationId, feeId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies the details of an existing fee (tax).
+     * Modifies the details of an existing fee (tax).
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param feeId The ID of the fee to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Fee
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Fee updateFee(String locationId, String feeId, V1Fee body) throws ApiException {
+        ApiResponse<V1Fee> resp = updateFeeWithHttpInfo(locationId, feeId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies the details of an existing fee (tax).
+     * Modifies the details of an existing fee (tax).
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param feeId The ID of the fee to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Fee&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Fee> updateFeeWithHttpInfo(String locationId, String feeId, V1Fee body) throws ApiException {
+        com.squareup.okhttp.Call call = updateFeeValidateBeforeCall(locationId, feeId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Fee>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies the details of an existing fee (tax). (asynchronously)
+     * Modifies the details of an existing fee (tax).
+     * @param locationId The ID of the fee&#39;s associated location. (required)
+     * @param feeId The ID of the fee to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateFeeAsync(String locationId, String feeId, V1Fee body, final ApiCallback<V1Fee> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateFeeValidateBeforeCall(locationId, feeId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Fee>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateItem
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateItemCall(String locationId, String itemId, V1Item body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateItemValidateBeforeCall(String locationId, String itemId, V1Item body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updateItem(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling updateItem(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateItem(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateItemCall(locationId, itemId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies the core details of an existing item.
+     * Modifies the core details of an existing item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Item
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Item updateItem(String locationId, String itemId, V1Item body) throws ApiException {
+        ApiResponse<V1Item> resp = updateItemWithHttpInfo(locationId, itemId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies the core details of an existing item.
+     * Modifies the core details of an existing item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Item&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Item> updateItemWithHttpInfo(String locationId, String itemId, V1Item body) throws ApiException {
+        com.squareup.okhttp.Call call = updateItemValidateBeforeCall(locationId, itemId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies the core details of an existing item. (asynchronously)
+     * Modifies the core details of an existing item.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateItemAsync(String locationId, String itemId, V1Item body, final ApiCallback<V1Item> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateItemValidateBeforeCall(locationId, itemId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Item>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateModifierList
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateModifierListCall(String locationId, String modifierListId, V1UpdateModifierListRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateModifierListValidateBeforeCall(String locationId, String modifierListId, V1UpdateModifierListRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updateModifierList(Async)");
+        }
+        
+        // verify the required parameter 'modifierListId' is set
+        if (modifierListId == null) {
+            throw new ApiException("Missing the required parameter 'modifierListId' when calling updateModifierList(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateModifierList(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateModifierListCall(locationId, modifierListId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies the details of an existing item modifier list.
+     * Modifies the details of an existing item modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1ModifierList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1ModifierList updateModifierList(String locationId, String modifierListId, V1UpdateModifierListRequest body) throws ApiException {
+        ApiResponse<V1ModifierList> resp = updateModifierListWithHttpInfo(locationId, modifierListId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies the details of an existing item modifier list.
+     * Modifies the details of an existing item modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1ModifierList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1ModifierList> updateModifierListWithHttpInfo(String locationId, String modifierListId, V1UpdateModifierListRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = updateModifierListValidateBeforeCall(locationId, modifierListId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1ModifierList>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies the details of an existing item modifier list. (asynchronously)
+     * Modifies the details of an existing item modifier list.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateModifierListAsync(String locationId, String modifierListId, V1UpdateModifierListRequest body, final ApiCallback<V1ModifierList> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateModifierListValidateBeforeCall(locationId, modifierListId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1ModifierList>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateModifierOption
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param modifierOptionId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateModifierOptionCall(String locationId, String modifierListId, String modifierOptionId, V1ModifierOption body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()))
+            .replaceAll("\\{" + "modifier_option_id" + "\\}", apiClient.escapeString(modifierOptionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateModifierOptionValidateBeforeCall(String locationId, String modifierListId, String modifierOptionId, V1ModifierOption body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updateModifierOption(Async)");
+        }
+        
+        // verify the required parameter 'modifierListId' is set
+        if (modifierListId == null) {
+            throw new ApiException("Missing the required parameter 'modifierListId' when calling updateModifierOption(Async)");
+        }
+        
+        // verify the required parameter 'modifierOptionId' is set
+        if (modifierOptionId == null) {
+            throw new ApiException("Missing the required parameter 'modifierOptionId' when calling updateModifierOption(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateModifierOption(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateModifierOptionCall(locationId, modifierListId, modifierOptionId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies the details of an existing item modifier option.
+     * Modifies the details of an existing item modifier option.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param modifierOptionId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1ModifierOption
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1ModifierOption updateModifierOption(String locationId, String modifierListId, String modifierOptionId, V1ModifierOption body) throws ApiException {
+        ApiResponse<V1ModifierOption> resp = updateModifierOptionWithHttpInfo(locationId, modifierListId, modifierOptionId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies the details of an existing item modifier option.
+     * Modifies the details of an existing item modifier option.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param modifierOptionId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1ModifierOption&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1ModifierOption> updateModifierOptionWithHttpInfo(String locationId, String modifierListId, String modifierOptionId, V1ModifierOption body) throws ApiException {
+        com.squareup.okhttp.Call call = updateModifierOptionValidateBeforeCall(locationId, modifierListId, modifierOptionId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1ModifierOption>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies the details of an existing item modifier option. (asynchronously)
+     * Modifies the details of an existing item modifier option.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param modifierListId The ID of the modifier list to edit. (required)
+     * @param modifierOptionId The ID of the modifier list to edit. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateModifierOptionAsync(String locationId, String modifierListId, String modifierOptionId, V1ModifierOption body, final ApiCallback<V1ModifierOption> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateModifierOptionValidateBeforeCall(locationId, modifierListId, modifierOptionId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1ModifierOption>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updatePage
+     * @param locationId The ID of the Favorites page&#39;s associated location (required)
+     * @param pageId The ID of the page to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updatePageCall(String locationId, String pageId, V1Page body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/pages/{page_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "page_id" + "\\}", apiClient.escapeString(pageId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updatePageValidateBeforeCall(String locationId, String pageId, V1Page body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updatePage(Async)");
+        }
+        
+        // verify the required parameter 'pageId' is set
+        if (pageId == null) {
+            throw new ApiException("Missing the required parameter 'pageId' when calling updatePage(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updatePage(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updatePageCall(locationId, pageId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies the details of a Favorites page in Square Register.
+     * Modifies the details of a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location (required)
+     * @param pageId The ID of the page to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Page
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Page updatePage(String locationId, String pageId, V1Page body) throws ApiException {
+        ApiResponse<V1Page> resp = updatePageWithHttpInfo(locationId, pageId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies the details of a Favorites page in Square Register.
+     * Modifies the details of a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location (required)
+     * @param pageId The ID of the page to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Page&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Page> updatePageWithHttpInfo(String locationId, String pageId, V1Page body) throws ApiException {
+        com.squareup.okhttp.Call call = updatePageValidateBeforeCall(locationId, pageId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies the details of a Favorites page in Square Register. (asynchronously)
+     * Modifies the details of a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location (required)
+     * @param pageId The ID of the page to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updatePageAsync(String locationId, String pageId, V1Page body, final ApiCallback<V1Page> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updatePageValidateBeforeCall(locationId, pageId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updatePageCell
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page the cell belongs to. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updatePageCellCall(String locationId, String pageId, V1PageCell body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/pages/{page_id}/cells"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "page_id" + "\\}", apiClient.escapeString(pageId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updatePageCellValidateBeforeCall(String locationId, String pageId, V1PageCell body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updatePageCell(Async)");
+        }
+        
+        // verify the required parameter 'pageId' is set
+        if (pageId == null) {
+            throw new ApiException("Missing the required parameter 'pageId' when calling updatePageCell(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updatePageCell(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updatePageCellCall(locationId, pageId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies a cell of a Favorites page in Square Register.
+     * Modifies a cell of a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page the cell belongs to. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Page
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Page updatePageCell(String locationId, String pageId, V1PageCell body) throws ApiException {
+        ApiResponse<V1Page> resp = updatePageCellWithHttpInfo(locationId, pageId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies a cell of a Favorites page in Square Register.
+     * Modifies a cell of a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page the cell belongs to. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Page&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Page> updatePageCellWithHttpInfo(String locationId, String pageId, V1PageCell body) throws ApiException {
+        com.squareup.okhttp.Call call = updatePageCellValidateBeforeCall(locationId, pageId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies a cell of a Favorites page in Square Register. (asynchronously)
+     * Modifies a cell of a Favorites page in Square Register.
+     * @param locationId The ID of the Favorites page&#39;s associated location. (required)
+     * @param pageId The ID of the page the cell belongs to. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updatePageCellAsync(String locationId, String pageId, V1PageCell body, final ApiCallback<V1Page> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updatePageCellValidateBeforeCall(locationId, pageId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Page>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateVariation
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param variationId The ID of the variation to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateVariationCall(String locationId, String itemId, String variationId, V1Variation body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/v1/{location_id}/items/{item_id}/variations/{variation_id}"
+            .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
+            .replaceAll("\\{" + "variation_id" + "\\}", apiClient.escapeString(variationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateVariationValidateBeforeCall(String locationId, String itemId, String variationId, V1Variation body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'locationId' is set
+        if (locationId == null) {
+            throw new ApiException("Missing the required parameter 'locationId' when calling updateVariation(Async)");
+        }
+        
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException("Missing the required parameter 'itemId' when calling updateVariation(Async)");
+        }
+        
+        // verify the required parameter 'variationId' is set
+        if (variationId == null) {
+            throw new ApiException("Missing the required parameter 'variationId' when calling updateVariation(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateVariation(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = updateVariationCall(locationId, itemId, variationId, body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Modifies the details of an existing item variation.
+     * Modifies the details of an existing item variation.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param variationId The ID of the variation to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return V1Variation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public V1Variation updateVariation(String locationId, String itemId, String variationId, V1Variation body) throws ApiException {
+        ApiResponse<V1Variation> resp = updateVariationWithHttpInfo(locationId, itemId, variationId, body);
+        return resp.getData();
+    }
+
+    /**
+     * Modifies the details of an existing item variation.
+     * Modifies the details of an existing item variation.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param variationId The ID of the variation to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @return ApiResponse&lt;V1Variation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<V1Variation> updateVariationWithHttpInfo(String locationId, String itemId, String variationId, V1Variation body) throws ApiException {
+        com.squareup.okhttp.Call call = updateVariationValidateBeforeCall(locationId, itemId, variationId, body, null, null);
+        Type localVarReturnType = new TypeToken<V1Variation>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Modifies the details of an existing item variation. (asynchronously)
+     * Modifies the details of an existing item variation.
+     * @param locationId The ID of the item&#39;s associated location. (required)
+     * @param itemId The ID of the item to modify. (required)
+     * @param variationId The ID of the variation to modify. (required)
+     * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateVariationAsync(String locationId, String itemId, String variationId, V1Variation body, final ApiCallback<V1Variation> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateVariationValidateBeforeCall(locationId, itemId, variationId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<V1Variation>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/categories/{category_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "category_id" + "\\}", apiClient.escapeString(categoryId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Category> localVarReturnType = new GenericType<V1Category>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the details of an existing discount.
-   * Modifies the details of an existing discount.
-   * @param locationId The ID of the category&#39;s associated location. (required)
-   * @param discountId The ID of the discount to edit. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Discount
-   * @throws ApiException if fails to make API call
-   */
-  public V1Discount updateDiscount(String locationId, String discountId, V1Discount body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateDiscount");
-    }
-    
-    // verify the required parameter 'discountId' is set
-    if (discountId == null) {
-      throw new ApiException(400, "Missing the required parameter 'discountId' when calling updateDiscount");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateDiscount");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/discounts/{discount_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "discount_id" + "\\}", apiClient.escapeString(discountId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Discount> localVarReturnType = new GenericType<V1Discount>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the details of an existing fee (tax).
-   * Modifies the details of an existing fee (tax).
-   * @param locationId The ID of the fee&#39;s associated location. (required)
-   * @param feeId The ID of the fee to edit. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Fee
-   * @throws ApiException if fails to make API call
-   */
-  public V1Fee updateFee(String locationId, String feeId, V1Fee body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateFee");
-    }
-    
-    // verify the required parameter 'feeId' is set
-    if (feeId == null) {
-      throw new ApiException(400, "Missing the required parameter 'feeId' when calling updateFee");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateFee");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/fees/{fee_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "fee_id" + "\\}", apiClient.escapeString(feeId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Fee> localVarReturnType = new GenericType<V1Fee>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the core details of an existing item.
-   * Modifies the core details of an existing item.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param itemId The ID of the item to modify. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Item
-   * @throws ApiException if fails to make API call
-   */
-  public V1Item updateItem(String locationId, String itemId, V1Item body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateItem");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling updateItem");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateItem");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the details of an existing item modifier list.
-   * Modifies the details of an existing item modifier list.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param modifierListId The ID of the modifier list to edit. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1ModifierList
-   * @throws ApiException if fails to make API call
-   */
-  public V1ModifierList updateModifierList(String locationId, String modifierListId, V1UpdateModifierListRequest body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateModifierList");
-    }
-    
-    // verify the required parameter 'modifierListId' is set
-    if (modifierListId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierListId' when calling updateModifierList");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateModifierList");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1ModifierList> localVarReturnType = new GenericType<V1ModifierList>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the details of an existing item modifier option.
-   * Modifies the details of an existing item modifier option.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param modifierListId The ID of the modifier list to edit. (required)
-   * @param modifierOptionId The ID of the modifier list to edit. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1ModifierOption
-   * @throws ApiException if fails to make API call
-   */
-  public V1ModifierOption updateModifierOption(String locationId, String modifierListId, String modifierOptionId, V1ModifierOption body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateModifierOption");
-    }
-    
-    // verify the required parameter 'modifierListId' is set
-    if (modifierListId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierListId' when calling updateModifierOption");
-    }
-    
-    // verify the required parameter 'modifierOptionId' is set
-    if (modifierOptionId == null) {
-      throw new ApiException(400, "Missing the required parameter 'modifierOptionId' when calling updateModifierOption");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateModifierOption");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "modifier_list_id" + "\\}", apiClient.escapeString(modifierListId.toString()))
-      .replaceAll("\\{" + "modifier_option_id" + "\\}", apiClient.escapeString(modifierOptionId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1ModifierOption> localVarReturnType = new GenericType<V1ModifierOption>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the details of a Favorites page in Square Register.
-   * Modifies the details of a Favorites page in Square Register.
-   * @param locationId The ID of the Favorites page&#39;s associated location (required)
-   * @param pageId The ID of the page to modify. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Page
-   * @throws ApiException if fails to make API call
-   */
-  public V1Page updatePage(String locationId, String pageId, V1Page body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updatePage");
-    }
-    
-    // verify the required parameter 'pageId' is set
-    if (pageId == null) {
-      throw new ApiException(400, "Missing the required parameter 'pageId' when calling updatePage");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updatePage");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/pages/{page_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "page_id" + "\\}", apiClient.escapeString(pageId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies a cell of a Favorites page in Square Register.
-   * Modifies a cell of a Favorites page in Square Register.
-   * @param locationId The ID of the Favorites page&#39;s associated location. (required)
-   * @param pageId The ID of the page the cell belongs to. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Page
-   * @throws ApiException if fails to make API call
-   */
-  public V1Page updatePageCell(String locationId, String pageId, V1PageCell body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updatePageCell");
-    }
-    
-    // verify the required parameter 'pageId' is set
-    if (pageId == null) {
-      throw new ApiException(400, "Missing the required parameter 'pageId' when calling updatePageCell");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updatePageCell");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/pages/{page_id}/cells"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "page_id" + "\\}", apiClient.escapeString(pageId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Modifies the details of an existing item variation.
-   * Modifies the details of an existing item variation.
-   * @param locationId The ID of the item&#39;s associated location. (required)
-   * @param itemId The ID of the item to modify. (required)
-   * @param variationId The ID of the variation to modify. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @return V1Variation
-   * @throws ApiException if fails to make API call
-   */
-  public V1Variation updateVariation(String locationId, String itemId, String variationId, V1Variation body) throws ApiException {
-    Object localVarPostBody = body;
-    
-    // verify the required parameter 'locationId' is set
-    if (locationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateVariation");
-    }
-    
-    // verify the required parameter 'itemId' is set
-    if (itemId == null) {
-      throw new ApiException(400, "Missing the required parameter 'itemId' when calling updateVariation");
-    }
-    
-    // verify the required parameter 'variationId' is set
-    if (variationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'variationId' when calling updateVariation");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling updateVariation");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{location_id}/items/{item_id}/variations/{variation_id}"
-      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
-      .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
-      .replaceAll("\\{" + "variation_id" + "\\}", apiClient.escapeString(variationId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "oauth2" };
-
-    GenericType<V1Variation> localVarReturnType = new GenericType<V1Variation>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
 }

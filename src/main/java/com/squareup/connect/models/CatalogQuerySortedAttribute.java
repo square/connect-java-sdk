@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * 
@@ -25,18 +29,20 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class CatalogQuerySortedAttribute {
-  @JsonProperty("attribute_name")
+  @SerializedName("attribute_name")
   private String attributeName = null;
 
-  @JsonProperty("initial_attribute_value")
+  @SerializedName("initial_attribute_value")
   private String initialAttributeValue = null;
 
   /**
    * The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending).
    */
   public enum SortOrderEnum {
+    @SerializedName("DESC")
     DESC("DESC"),
     
+    @SerializedName("ASC")
     ASC("ASC");
 
     private String value;
@@ -49,19 +55,9 @@ public class CatalogQuerySortedAttribute {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static SortOrderEnum fromValue(String text) {
-      for (SortOrderEnum b : SortOrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("sort_order")
+  @SerializedName("sort_order")
   private SortOrderEnum sortOrder = null;
 
   public CatalogQuerySortedAttribute attributeName(String attributeName) {

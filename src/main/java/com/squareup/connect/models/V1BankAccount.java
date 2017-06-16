@@ -14,51 +14,61 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1BankAccount
  */
 
 public class V1BankAccount {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("merchant_id")
+  @SerializedName("merchant_id")
   private String merchantId = null;
 
-  @JsonProperty("bank_name")
+  @SerializedName("bank_name")
   private String bankName = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("routing_number")
+  @SerializedName("routing_number")
   private String routingNumber = null;
 
-  @JsonProperty("account_number_suffix")
+  @SerializedName("account_number_suffix")
   private String accountNumberSuffix = null;
 
-  @JsonProperty("currency_code")
+  @SerializedName("currency_code")
   private String currencyCode = null;
 
   /**
    * The bank account's type (for example, savings or checking).
    */
   public enum TypeEnum {
+    @SerializedName("BUSINESS_CHECKING")
     BUSINESS_CHECKING("BUSINESS_CHECKING"),
     
+    @SerializedName("CHECKING")
     CHECKING("CHECKING"),
     
+    @SerializedName("INVESTMENT")
     INVESTMENT("INVESTMENT"),
     
+    @SerializedName("LOAN")
     LOAN("LOAN"),
     
+    @SerializedName("SAVINGS")
     SAVINGS("SAVINGS"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -71,19 +81,9 @@ public class V1BankAccount {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
   public V1BankAccount id(String id) {

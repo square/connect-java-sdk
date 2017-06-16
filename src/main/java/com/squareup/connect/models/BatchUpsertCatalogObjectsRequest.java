@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogObjectBatch;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +32,10 @@ import java.util.List;
 @ApiModel(description = "")
 
 public class BatchUpsertCatalogObjectsRequest {
-  @JsonProperty("idempotency_key")
+  @SerializedName("idempotency_key")
   private String idempotencyKey = null;
 
-  @JsonProperty("batches")
+  @SerializedName("batches")
   private List<CatalogObjectBatch> batches = new ArrayList<CatalogObjectBatch>();
 
   public BatchUpsertCatalogObjectsRequest idempotencyKey(String idempotencyKey) {

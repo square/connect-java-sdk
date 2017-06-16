@@ -14,12 +14,16 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.CreateOrderRequestOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.
@@ -27,25 +31,25 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.")
 
 public class CreateCheckoutRequest {
-  @JsonProperty("idempotency_key")
+  @SerializedName("idempotency_key")
   private String idempotencyKey = null;
 
-  @JsonProperty("order")
+  @SerializedName("order")
   private CreateOrderRequestOrder order = null;
 
-  @JsonProperty("ask_for_shipping_address")
+  @SerializedName("ask_for_shipping_address")
   private Boolean askForShippingAddress = null;
 
-  @JsonProperty("merchant_support_email")
+  @SerializedName("merchant_support_email")
   private String merchantSupportEmail = null;
 
-  @JsonProperty("pre_populate_buyer_email")
+  @SerializedName("pre_populate_buyer_email")
   private String prePopulateBuyerEmail = null;
 
-  @JsonProperty("pre_populate_shipping_address")
+  @SerializedName("pre_populate_shipping_address")
   private Address prePopulateShippingAddress = null;
 
-  @JsonProperty("redirect_url")
+  @SerializedName("redirect_url")
   private String redirectUrl = null;
 
   public CreateCheckoutRequest idempotencyKey(String idempotencyKey) {

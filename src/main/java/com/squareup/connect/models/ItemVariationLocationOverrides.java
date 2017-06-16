@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Price and inventory overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific location.
@@ -26,18 +30,20 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Price and inventory overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific location.")
 
 public class ItemVariationLocationOverrides {
-  @JsonProperty("location_id")
+  @SerializedName("location_id")
   private String locationId = null;
 
-  @JsonProperty("price_money")
+  @SerializedName("price_money")
   private Money priceMoney = null;
 
   /**
    * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given location. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
    */
   public enum PricingTypeEnum {
+    @SerializedName("FIXED_PRICING")
     FIXED_PRICING("FIXED_PRICING"),
     
+    @SerializedName("VARIABLE_PRICING")
     VARIABLE_PRICING("VARIABLE_PRICING");
 
     private String value;
@@ -50,30 +56,22 @@ public class ItemVariationLocationOverrides {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static PricingTypeEnum fromValue(String text) {
-      for (PricingTypeEnum b : PricingTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("pricing_type")
+  @SerializedName("pricing_type")
   private PricingTypeEnum pricingType = null;
 
-  @JsonProperty("track_inventory")
+  @SerializedName("track_inventory")
   private Boolean trackInventory = null;
 
   /**
    * Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values.
    */
   public enum InventoryAlertTypeEnum {
+    @SerializedName("NONE")
     NONE("NONE"),
     
+    @SerializedName("LOW_QUANTITY")
     LOW_QUANTITY("LOW_QUANTITY");
 
     private String value;
@@ -86,22 +84,12 @@ public class ItemVariationLocationOverrides {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static InventoryAlertTypeEnum fromValue(String text) {
-      for (InventoryAlertTypeEnum b : InventoryAlertTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("inventory_alert_type")
+  @SerializedName("inventory_alert_type")
   private InventoryAlertTypeEnum inventoryAlertType = null;
 
-  @JsonProperty("inventory_alert_threshold")
+  @SerializedName("inventory_alert_threshold")
   private Long inventoryAlertThreshold = null;
 
   public ItemVariationLocationOverrides locationId(String locationId) {

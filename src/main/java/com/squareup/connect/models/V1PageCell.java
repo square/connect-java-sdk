@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,25 +30,29 @@ import java.util.List;
  */
 
 public class V1PageCell {
-  @JsonProperty("page_id")
+  @SerializedName("page_id")
   private String pageId = null;
 
-  @JsonProperty("row")
+  @SerializedName("row")
   private Integer row = null;
 
-  @JsonProperty("column")
+  @SerializedName("column")
   private Integer column = null;
 
   /**
    * Gets or Sets objectType
    */
   public enum ObjectTypeEnum {
+    @SerializedName("ITEM")
     ITEM("ITEM"),
     
+    @SerializedName("DISCOUNT")
     DISCOUNT("DISCOUNT"),
     
+    @SerializedName("CATEGORY")
     CATEGORY("CATEGORY"),
     
+    @SerializedName("PLACEHOLDER")
     PLACEHOLDER("PLACEHOLDER");
 
     private String value;
@@ -57,32 +65,25 @@ public class V1PageCell {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ObjectTypeEnum fromValue(String text) {
-      for (ObjectTypeEnum b : ObjectTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("object_type")
+  @SerializedName("object_type")
   private List<ObjectTypeEnum> objectType = new ArrayList<ObjectTypeEnum>();
 
-  @JsonProperty("object_id")
+  @SerializedName("object_id")
   private String objectId = null;
 
   /**
    * Gets or Sets placeholderType
    */
   public enum PlaceholderTypeEnum {
+    @SerializedName("ALL_ITEMS")
     ALL_ITEMS("ALL_ITEMS"),
     
+    @SerializedName("DISCOUNTS_CATEGORY")
     DISCOUNTS_CATEGORY("DISCOUNTS_CATEGORY"),
     
+    @SerializedName("REWARDS_FINDER")
     REWARDS_FINDER("REWARDS_FINDER");
 
     private String value;
@@ -95,19 +96,9 @@ public class V1PageCell {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static PlaceholderTypeEnum fromValue(String text) {
-      for (PlaceholderTypeEnum b : PlaceholderTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("placeholder_type")
+  @SerializedName("placeholder_type")
   private List<PlaceholderTypeEnum> placeholderType = new ArrayList<PlaceholderTypeEnum>();
 
   public V1PageCell pageId(String pageId) {

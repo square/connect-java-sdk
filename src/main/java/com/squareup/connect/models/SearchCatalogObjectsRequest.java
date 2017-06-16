@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,25 +32,32 @@ import java.util.List;
 @ApiModel(description = "")
 
 public class SearchCatalogObjectsRequest {
-  @JsonProperty("cursor")
+  @SerializedName("cursor")
   private String cursor = null;
 
   /**
    * Gets or Sets objectTypes
    */
   public enum ObjectTypesEnum {
+    @SerializedName("ITEM")
     ITEM("ITEM"),
     
+    @SerializedName("CATEGORY")
     CATEGORY("CATEGORY"),
     
+    @SerializedName("ITEM_VARIATION")
     ITEM_VARIATION("ITEM_VARIATION"),
     
+    @SerializedName("TAX")
     TAX("TAX"),
     
+    @SerializedName("DISCOUNT")
     DISCOUNT("DISCOUNT"),
     
+    @SerializedName("MODIFIER_LIST")
     MODIFIER_LIST("MODIFIER_LIST"),
     
+    @SerializedName("MODIFIER")
     MODIFIER("MODIFIER");
 
     private String value;
@@ -59,34 +70,24 @@ public class SearchCatalogObjectsRequest {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ObjectTypesEnum fromValue(String text) {
-      for (ObjectTypesEnum b : ObjectTypesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("object_types")
+  @SerializedName("object_types")
   private List<ObjectTypesEnum> objectTypes = new ArrayList<ObjectTypesEnum>();
 
-  @JsonProperty("include_deleted_objects")
+  @SerializedName("include_deleted_objects")
   private Boolean includeDeletedObjects = null;
 
-  @JsonProperty("include_related_objects")
+  @SerializedName("include_related_objects")
   private Boolean includeRelatedObjects = null;
 
-  @JsonProperty("begin_time")
+  @SerializedName("begin_time")
   private String beginTime = null;
 
-  @JsonProperty("query")
+  @SerializedName("query")
   private CatalogQuery query = null;
 
-  @JsonProperty("limit")
+  @SerializedName("limit")
   private Integer limit = null;
 
   public SearchCatalogObjectsRequest cursor(String cursor) {

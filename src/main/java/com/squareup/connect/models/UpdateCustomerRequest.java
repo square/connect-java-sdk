@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Defines the body parameters that can be provided in a request to the [UpdateCustomer](#endpoint-updatecustomer) endpoint.
@@ -26,31 +30,31 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Defines the body parameters that can be provided in a request to the [UpdateCustomer](#endpoint-updatecustomer) endpoint.")
 
 public class UpdateCustomerRequest {
-  @JsonProperty("given_name")
+  @SerializedName("given_name")
   private String givenName = null;
 
-  @JsonProperty("family_name")
+  @SerializedName("family_name")
   private String familyName = null;
 
-  @JsonProperty("company_name")
+  @SerializedName("company_name")
   private String companyName = null;
 
-  @JsonProperty("nickname")
+  @SerializedName("nickname")
   private String nickname = null;
 
-  @JsonProperty("email_address")
+  @SerializedName("email_address")
   private String emailAddress = null;
 
-  @JsonProperty("address")
+  @SerializedName("address")
   private Address address = null;
 
-  @JsonProperty("phone_number")
+  @SerializedName("phone_number")
   private String phoneNumber = null;
 
-  @JsonProperty("reference_id")
+  @SerializedName("reference_id")
   private String referenceId = null;
 
-  @JsonProperty("note")
+  @SerializedName("note")
   private String note = null;
 
   public UpdateCustomerRequest givenName(String givenName) {

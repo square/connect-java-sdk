@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * A discount in the Catalog object model.
@@ -26,19 +30,23 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "A discount in the Catalog object model.")
 
 public class CatalogDiscount {
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
   /**
    * Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for all possible values.
    */
   public enum DiscountTypeEnum {
+    @SerializedName("FIXED_PERCENTAGE")
     FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
     
+    @SerializedName("FIXED_AMOUNT")
     FIXED_AMOUNT("FIXED_AMOUNT"),
     
+    @SerializedName("VARIABLE_PERCENTAGE")
     VARIABLE_PERCENTAGE("VARIABLE_PERCENTAGE"),
     
+    @SerializedName("VARIABLE_AMOUNT")
     VARIABLE_AMOUNT("VARIABLE_AMOUNT");
 
     private String value;
@@ -51,31 +59,21 @@ public class CatalogDiscount {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static DiscountTypeEnum fromValue(String text) {
-      for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("discount_type")
+  @SerializedName("discount_type")
   private DiscountTypeEnum discountType = null;
 
-  @JsonProperty("percentage")
+  @SerializedName("percentage")
   private String percentage = null;
 
-  @JsonProperty("amount_money")
+  @SerializedName("amount_money")
   private Money amountMoney = null;
 
-  @JsonProperty("pin_required")
+  @SerializedName("pin_required")
   private Boolean pinRequired = null;
 
-  @JsonProperty("label_color")
+  @SerializedName("label_color")
   private String labelColor = null;
 
   public CatalogDiscount name(String name) {

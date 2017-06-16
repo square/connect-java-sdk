@@ -14,11 +14,15 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * A modifier in the Catalog object model.
@@ -26,10 +30,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "A modifier in the Catalog object model.")
 
 public class CatalogModifier {
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("price_money")
+  @SerializedName("price_money")
   private Money priceMoney = null;
 
   public CatalogModifier name(String name) {

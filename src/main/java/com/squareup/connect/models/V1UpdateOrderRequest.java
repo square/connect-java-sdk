@@ -14,10 +14,14 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1UpdateOrderRequest
@@ -28,10 +32,13 @@ public class V1UpdateOrderRequest {
    * The action to perform on the order (COMPLETE, CANCEL, or REFUND).
    */
   public enum ActionEnum {
+    @SerializedName("COMPLETE")
     COMPLETE("COMPLETE"),
     
+    @SerializedName("CANCEL")
     CANCEL("CANCEL"),
     
+    @SerializedName("REFUND")
     REFUND("REFUND");
 
     private String value;
@@ -44,31 +51,21 @@ public class V1UpdateOrderRequest {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static ActionEnum fromValue(String text) {
-      for (ActionEnum b : ActionEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("action")
+  @SerializedName("action")
   private ActionEnum action = null;
 
-  @JsonProperty("shipped_tracking_number")
+  @SerializedName("shipped_tracking_number")
   private String shippedTrackingNumber = null;
 
-  @JsonProperty("completed_note")
+  @SerializedName("completed_note")
   private String completedNote = null;
 
-  @JsonProperty("refunded_note")
+  @SerializedName("refunded_note")
   private String refundedNote = null;
 
-  @JsonProperty("canceled_note")
+  @SerializedName("canceled_note")
   private String canceledNote = null;
 
   public V1UpdateOrderRequest action(ActionEnum action) {

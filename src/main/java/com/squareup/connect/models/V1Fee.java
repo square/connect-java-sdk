@@ -14,33 +14,40 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * V1Fee
  */
 
 public class V1Fee {
-  @JsonProperty("id")
+  @SerializedName("id")
   private String id = null;
 
-  @JsonProperty("name")
+  @SerializedName("name")
   private String name = null;
 
-  @JsonProperty("rate")
+  @SerializedName("rate")
   private String rate = null;
 
   /**
    * Forthcoming
    */
   public enum CalculationPhaseEnum {
+    @SerializedName("FEE_SUBTOTAL_PHASE")
     FEE_SUBTOTAL_PHASE("FEE_SUBTOTAL_PHASE"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER"),
     
+    @SerializedName("FEE_TOTAL_PHASE")
     FEE_TOTAL_PHASE("FEE_TOTAL_PHASE");
 
     private String value;
@@ -53,25 +60,16 @@ public class V1Fee {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static CalculationPhaseEnum fromValue(String text) {
-      for (CalculationPhaseEnum b : CalculationPhaseEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("calculation_phase")
+  @SerializedName("calculation_phase")
   private CalculationPhaseEnum calculationPhase = null;
 
   /**
    * The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees.
    */
   public enum AdjustmentTypeEnum {
+    @SerializedName("TAX")
     TAX("TAX");
 
     private String value;
@@ -84,33 +82,25 @@ public class V1Fee {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static AdjustmentTypeEnum fromValue(String text) {
-      for (AdjustmentTypeEnum b : AdjustmentTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("adjustment_type")
+  @SerializedName("adjustment_type")
   private AdjustmentTypeEnum adjustmentType = null;
 
-  @JsonProperty("applies_to_custom_amounts")
+  @SerializedName("applies_to_custom_amounts")
   private Boolean appliesToCustomAmounts = null;
 
-  @JsonProperty("enabled")
+  @SerializedName("enabled")
   private Boolean enabled = null;
 
   /**
    * Whether the fee is ADDITIVE or INCLUSIVE.
    */
   public enum InclusionTypeEnum {
+    @SerializedName("ADDITIVE")
     ADDITIVE("ADDITIVE"),
     
+    @SerializedName("INCLUSIVE")
     INCLUSIVE("INCLUSIVE");
 
     private String value;
@@ -123,39 +113,37 @@ public class V1Fee {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static InclusionTypeEnum fromValue(String text) {
-      for (InclusionTypeEnum b : InclusionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("inclusion_type")
+  @SerializedName("inclusion_type")
   private InclusionTypeEnum inclusionType = null;
 
   /**
    * In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants.
    */
   public enum TypeEnum {
+    @SerializedName("CA_GST")
     CA_GST("CA_GST"),
     
+    @SerializedName("CA_HST")
     CA_HST("CA_HST"),
     
+    @SerializedName("CA_PST")
     CA_PST("CA_PST"),
     
+    @SerializedName("CA_QST")
     CA_QST("CA_QST"),
     
+    @SerializedName("JP_CONSUMPTION_TAX")
     JP_CONSUMPTION_TAX("JP_CONSUMPTION_TAX"),
     
+    @SerializedName("CA_PEI_PST")
     CA_PEI_PST("CA_PEI_PST"),
     
+    @SerializedName("US_SALES_TAX")
     US_SALES_TAX("US_SALES_TAX"),
     
+    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -168,19 +156,9 @@ public class V1Fee {
     public String toString() {
       return String.valueOf(value);
     }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
   }
 
-  @JsonProperty("type")
+  @SerializedName("type")
   private TypeEnum type = null;
 
   public V1Fee id(String id) {

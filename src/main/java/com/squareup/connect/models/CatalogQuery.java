@@ -14,8 +14,11 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogQueryExact;
 import com.squareup.connect.models.CatalogQueryItemsForModifierList;
 import com.squareup.connect.models.CatalogQueryItemsForTax;
@@ -25,6 +28,7 @@ import com.squareup.connect.models.CatalogQuerySortedAttribute;
 import com.squareup.connect.models.CatalogQueryText;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest) request. Only one query field may be present.  Where an attribute name is required, it should be specified as the name of any field marked \&quot;searchable\&quot; from the structured data types for the desired result object type(s) ([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation), [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax), [CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist), or [CatalogModifier](#type-catalogmodifier)).  For example, a query that should return Items may specify an attribute names from any of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely &#x60;\&quot;name\&quot;&#x60;, &#x60;\&quot;description\&quot;&#x60;, and &#x60;\&quot;abbreviation\&quot;&#x60;.
@@ -32,25 +36,25 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest) request. Only one query field may be present.  Where an attribute name is required, it should be specified as the name of any field marked \"searchable\" from the structured data types for the desired result object type(s) ([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation), [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax), [CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist), or [CatalogModifier](#type-catalogmodifier)).  For example, a query that should return Items may specify an attribute names from any of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely `\"name\"`, `\"description\"`, and `\"abbreviation\"`.")
 
 public class CatalogQuery {
-  @JsonProperty("sorted_attribute_query")
+  @SerializedName("sorted_attribute_query")
   private CatalogQuerySortedAttribute sortedAttributeQuery = null;
 
-  @JsonProperty("exact_query")
+  @SerializedName("exact_query")
   private CatalogQueryExact exactQuery = null;
 
-  @JsonProperty("prefix_query")
+  @SerializedName("prefix_query")
   private CatalogQueryPrefix prefixQuery = null;
 
-  @JsonProperty("range_query")
+  @SerializedName("range_query")
   private CatalogQueryRange rangeQuery = null;
 
-  @JsonProperty("text_query")
+  @SerializedName("text_query")
   private CatalogQueryText textQuery = null;
 
-  @JsonProperty("items_for_tax_query")
+  @SerializedName("items_for_tax_query")
   private CatalogQueryItemsForTax itemsForTaxQuery = null;
 
-  @JsonProperty("items_for_modifier_list_query")
+  @SerializedName("items_for_modifier_list_query")
   private CatalogQueryItemsForModifierList itemsForModifierListQuery = null;
 
   public CatalogQuery sortedAttributeQuery(CatalogQuerySortedAttribute sortedAttributeQuery) {

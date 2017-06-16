@@ -15,20 +15,24 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates the card transaction's current status.
  */
 public enum TenderCardDetailsStatus {
   
+  @SerializedName("AUTHORIZED")
   AUTHORIZED("AUTHORIZED"),
   
+  @SerializedName("CAPTURED")
   CAPTURED("CAPTURED"),
   
+  @SerializedName("VOIDED")
   VOIDED("VOIDED"),
   
+  @SerializedName("FAILED")
   FAILED("FAILED");
 
   private String value;
@@ -40,16 +44,6 @@ public enum TenderCardDetailsStatus {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static TenderCardDetailsStatus fromValue(String text) {
-    for (TenderCardDetailsStatus b : TenderCardDetailsStatus.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 

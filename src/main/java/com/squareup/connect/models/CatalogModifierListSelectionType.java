@@ -15,16 +15,18 @@ package com.squareup.connect.models;
 
 import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Indicates whether a [CatalogModifierList](#type-catalogmodifierlist) supports multiple selections.
  */
 public enum CatalogModifierListSelectionType {
   
+  @SerializedName("SINGLE")
   SINGLE("SINGLE"),
   
+  @SerializedName("MULTIPLE")
   MULTIPLE("MULTIPLE");
 
   private String value;
@@ -36,16 +38,6 @@ public enum CatalogModifierListSelectionType {
   @Override
   public String toString() {
     return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static CatalogModifierListSelectionType fromValue(String text) {
-    for (CatalogModifierListSelectionType b : CatalogModifierListSelectionType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 }
 
