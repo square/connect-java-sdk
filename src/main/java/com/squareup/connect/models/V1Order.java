@@ -14,11 +14,7 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.Error;
 import com.squareup.connect.models.V1Money;
@@ -26,7 +22,6 @@ import com.squareup.connect.models.V1OrderHistoryEntry;
 import com.squareup.connect.models.V1Tender;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;

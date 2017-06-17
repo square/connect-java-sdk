@@ -14,11 +14,7 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogCategory;
 import com.squareup.connect.models.CatalogDiscount;
 import com.squareup.connect.models.CatalogItem;
@@ -29,7 +25,6 @@ import com.squareup.connect.models.CatalogTax;
 import com.squareup.connect.models.CatalogV1Id;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

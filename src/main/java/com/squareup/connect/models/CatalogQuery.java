@@ -14,11 +14,7 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import com.squareup.connect.models.CatalogQueryExact;
 import com.squareup.connect.models.CatalogQueryItemsForModifierList;
 import com.squareup.connect.models.CatalogQueryItemsForTax;
@@ -28,7 +24,6 @@ import com.squareup.connect.models.CatalogQuerySortedAttribute;
 import com.squareup.connect.models.CatalogQueryText;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 
 /**
  * A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest) request. Only one query field may be present.  Where an attribute name is required, it should be specified as the name of any field marked \&quot;searchable\&quot; from the structured data types for the desired result object type(s) ([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation), [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax), [CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist), or [CatalogModifier](#type-catalogmodifier)).  For example, a query that should return Items may specify an attribute names from any of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely &#x60;\&quot;name\&quot;&#x60;, &#x60;\&quot;description\&quot;&#x60;, and &#x60;\&quot;abbreviation\&quot;&#x60;.
