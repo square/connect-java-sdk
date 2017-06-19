@@ -73,7 +73,7 @@ public class ApiClient {
     this.dateFormat = new RFC3339DateFormat();
 
     // Set default User-Agent.
-    setUserAgent("Square-Connect-Java/2.0.2");
+    setUserAgent("Square-Connect-Java/2.1.1");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
