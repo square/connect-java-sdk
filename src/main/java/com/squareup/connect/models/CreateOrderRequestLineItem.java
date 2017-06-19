@@ -16,9 +16,13 @@ package com.squareup.connect.models;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.squareup.connect.models.CreateOrderRequestDiscount;
+import com.squareup.connect.models.CreateOrderRequestTax;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a line item to include in an order. Each line item describes a different product to purchase, with its own quantity and price details.
@@ -35,6 +39,12 @@ public class CreateOrderRequestLineItem {
   @JsonProperty("base_price_money")
   private Money basePriceMoney = null;
 
+  @JsonProperty("taxes")
+  private List<CreateOrderRequestTax> taxes = new ArrayList<CreateOrderRequestTax>();
+
+  @JsonProperty("discounts")
+  private List<CreateOrderRequestDiscount> discounts = new ArrayList<CreateOrderRequestDiscount>();
+
   public CreateOrderRequestLineItem name(String name) {
     this.name = name;
     return this;
@@ -44,7 +54,7 @@ public class CreateOrderRequestLineItem {
    * The name of the line item. This value cannot exceed 500 characters.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name of the line item. This value cannot exceed 500 characters.")
+  @ApiModelProperty(value = "The name of the line item. This value cannot exceed 500 characters.")
   public String getName() {
     return name;
   }
@@ -80,13 +90,59 @@ public class CreateOrderRequestLineItem {
    * The base price for a single unit of the line item's associated variation. If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.
    * @return basePriceMoney
   **/
-  @ApiModelProperty(required = true, value = "The base price for a single unit of the line item's associated variation. If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.")
+  @ApiModelProperty(value = "The base price for a single unit of the line item's associated variation. If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.")
   public Money getBasePriceMoney() {
     return basePriceMoney;
   }
 
   public void setBasePriceMoney(Money basePriceMoney) {
     this.basePriceMoney = basePriceMoney;
+  }
+
+  public CreateOrderRequestLineItem taxes(List<CreateOrderRequestTax> taxes) {
+    this.taxes = taxes;
+    return this;
+  }
+
+  public CreateOrderRequestLineItem addTaxesItem(CreateOrderRequestTax taxesItem) {
+    this.taxes.add(taxesItem);
+    return this;
+  }
+
+   /**
+   * The taxes include the custom taxes.
+   * @return taxes
+  **/
+  @ApiModelProperty(value = "The taxes include the custom taxes.")
+  public List<CreateOrderRequestTax> getTaxes() {
+    return taxes;
+  }
+
+  public void setTaxes(List<CreateOrderRequestTax> taxes) {
+    this.taxes = taxes;
+  }
+
+  public CreateOrderRequestLineItem discounts(List<CreateOrderRequestDiscount> discounts) {
+    this.discounts = discounts;
+    return this;
+  }
+
+  public CreateOrderRequestLineItem addDiscountsItem(CreateOrderRequestDiscount discountsItem) {
+    this.discounts.add(discountsItem);
+    return this;
+  }
+
+   /**
+   * The discounts include the custom discounts.
+   * @return discounts
+  **/
+  @ApiModelProperty(value = "The discounts include the custom discounts.")
+  public List<CreateOrderRequestDiscount> getDiscounts() {
+    return discounts;
+  }
+
+  public void setDiscounts(List<CreateOrderRequestDiscount> discounts) {
+    this.discounts = discounts;
   }
 
 
@@ -101,12 +157,14 @@ public class CreateOrderRequestLineItem {
     CreateOrderRequestLineItem createOrderRequestLineItem = (CreateOrderRequestLineItem) o;
     return Objects.equals(this.name, createOrderRequestLineItem.name) &&
         Objects.equals(this.quantity, createOrderRequestLineItem.quantity) &&
-        Objects.equals(this.basePriceMoney, createOrderRequestLineItem.basePriceMoney);
+        Objects.equals(this.basePriceMoney, createOrderRequestLineItem.basePriceMoney) &&
+        Objects.equals(this.taxes, createOrderRequestLineItem.taxes) &&
+        Objects.equals(this.discounts, createOrderRequestLineItem.discounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, quantity, basePriceMoney);
+    return Objects.hash(name, quantity, basePriceMoney, taxes, discounts);
   }
 
 
@@ -118,6 +176,8 @@ public class CreateOrderRequestLineItem {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
+    sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
+    sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -19,23 +19,19 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * The type of a [CatalogItem](#type-catalogitem). Connect V2 only allows the creation of `REGULAR` items.
+ * Represents how a tax applied to a line item or an order.
  */
-public enum CatalogItemProductType {
+public enum OrderLineItemTaxTaxType {
   
-  REGULAR("REGULAR"),
+  UNKNOWN("UNKNOWN"),
   
-  GIFT_CARD("GIFT_CARD"),
+  ADDITIVE("ADDITIVE"),
   
-  APPOINTMENTS_SERVICE("APPOINTMENTS_SERVICE"),
-  
-  RETAIL_ITEM("RETAIL_ITEM"),
-  
-  RESTAURANT_ITEM("RESTAURANT_ITEM");
+  INCLUSIVE("INCLUSIVE");
 
   private String value;
 
-  CatalogItemProductType(String value) {
+  OrderLineItemTaxTaxType(String value) {
     this.value = value;
   }
 
@@ -45,8 +41,8 @@ public enum CatalogItemProductType {
   }
 
   @JsonCreator
-  public static CatalogItemProductType fromValue(String text) {
-    for (CatalogItemProductType b : CatalogItemProductType.values()) {
+  public static OrderLineItemTaxTaxType fromValue(String text) {
+    for (OrderLineItemTaxTaxType b : OrderLineItemTaxTaxType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **referenceId** | **String** | A client specified identifier to associate an entity in another system with this order. |  [optional]
 **lineItems** | [**List&lt;OrderLineItem&gt;**](OrderLineItem.md) | The line items included in the order. Every order has at least one line item. |  [optional]
 **totalMoney** | [**Money**](Money.md) | The total amount of money to collect for the order. |  [optional]
+**totalTaxMoney** | [**Money**](Money.md) | The total tax amount of money to collect for the order. |  [optional]
+**totalDiscountMoney** | [**Money**](Money.md) | The total discount amount of money to collect for the order. |  [optional]
 
 
 

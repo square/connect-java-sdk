@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.1.0</version>
+    <version>2.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.1.0"
+compile "com.squareup:connect:2.2.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.1.0.jar
+* target/connect-2.2.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -243,8 +243,10 @@ Class | Method | HTTP request | Description
  - [CreateCustomerCardResponse](docs/CreateCustomerCardResponse.md)
  - [CreateCustomerRequest](docs/CreateCustomerRequest.md)
  - [CreateCustomerResponse](docs/CreateCustomerResponse.md)
+ - [CreateOrderRequest](docs/CreateOrderRequest.md)
+ - [CreateOrderRequestDiscount](docs/CreateOrderRequestDiscount.md)
  - [CreateOrderRequestLineItem](docs/CreateOrderRequestLineItem.md)
- - [CreateOrderRequestOrder](docs/CreateOrderRequestOrder.md)
+ - [CreateOrderRequestTax](docs/CreateOrderRequestTax.md)
  - [CreateRefundRequest](docs/CreateRefundRequest.md)
  - [CreateRefundResponse](docs/CreateRefundResponse.md)
  - [Currency](docs/Currency.md)
@@ -278,6 +280,11 @@ Class | Method | HTTP request | Description
  - [Money](docs/Money.md)
  - [Order](docs/Order.md)
  - [OrderLineItem](docs/OrderLineItem.md)
+ - [OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
+ - [OrderLineItemDiscountDiscountType](docs/OrderLineItemDiscountDiscountType.md)
+ - [OrderLineItemDiscountScope](docs/OrderLineItemDiscountScope.md)
+ - [OrderLineItemTax](docs/OrderLineItemTax.md)
+ - [OrderLineItemTaxTaxType](docs/OrderLineItemTaxTaxType.md)
  - [Refund](docs/Refund.md)
  - [RefundStatus](docs/RefundStatus.md)
  - [RetrieveCatalogObjectRequest](docs/RetrieveCatalogObjectRequest.md)

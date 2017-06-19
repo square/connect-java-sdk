@@ -163,10 +163,10 @@ public class CatalogTax {
   }
 
    /**
-   * The percentage of the tax in decimal form, using a '.' as the decimal separator and without a '%' sign. A value of `7.5` corresponds to 7.5%.
+   * The percentage of the tax in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign. A value of `7.5` corresponds to 7.5%.
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax in decimal form, using a '.' as the decimal separator and without a '%' sign. A value of `7.5` corresponds to 7.5%.")
+  @ApiModelProperty(value = "The percentage of the tax in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign. A value of `7.5` corresponds to 7.5%.")
   public String getPercentage() {
     return percentage;
   }

@@ -147,10 +147,10 @@ public class CatalogObject {
   }
 
    /**
-   * A unique Square-assigned identifier to reference this object in the catalog.
+   * An identifier to reference this object in the catalog. When a new CatalogObject is inserted, the client should set the id to a temporary identifier starting with a `'#'` character. Other objects being inserted or updated within the same request may use this identifier to refer to the new object.  When the server receives the new object, it will supply a unique identifier that replaces the temporary identifier for all future references.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "A unique Square-assigned identifier to reference this object in the catalog.")
+  @ApiModelProperty(required = true, value = "An identifier to reference this object in the catalog. When a new CatalogObject is inserted, the client should set the id to a temporary identifier starting with a `'#'` character. Other objects being inserted or updated within the same request may use this identifier to refer to the new object.  When the server receives the new object, it will supply a unique identifier that replaces the temporary identifier for all future references.")
   public String getId() {
     return id;
   }
@@ -201,10 +201,10 @@ public class CatalogObject {
   }
 
    /**
-   * If `true`, the object has been deleted from the database. Must be `false` for new objects being inserted. When deleted, the `updated_at` field will equal the deletion time. being inserted. When deleted, the `updated_at` field will equal the deletion time.
+   * If `true`, the object has been deleted from the database. Must be `false` for new objects being inserted. When deleted, the `updated_at` field will equal the deletion time.
    * @return isDeleted
   **/
-  @ApiModelProperty(value = "If `true`, the object has been deleted from the database. Must be `false` for new objects being inserted. When deleted, the `updated_at` field will equal the deletion time. being inserted. When deleted, the `updated_at` field will equal the deletion time.")
+  @ApiModelProperty(value = "If `true`, the object has been deleted from the database. Must be `false` for new objects being inserted. When deleted, the `updated_at` field will equal the deletion time.")
   public Boolean getIsDeleted() {
     return isDeleted;
   }
@@ -224,10 +224,10 @@ public class CatalogObject {
   }
 
    /**
-   * The Connect V1 IDs for this object at each location where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
+   * The Connect V1 IDs for this object at each [location][#type-location] where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
    * @return catalogV1Ids
   **/
-  @ApiModelProperty(value = "The Connect V1 IDs for this object at each location where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.")
+  @ApiModelProperty(value = "The Connect V1 IDs for this object at each [location][#type-location] where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.")
   public List<CatalogV1Id> getCatalogV1Ids() {
     return catalogV1Ids;
   }

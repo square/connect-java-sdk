@@ -91,6 +91,9 @@ public class Card {
   @JsonProperty("billing_address")
   private Address billingAddress = null;
 
+  @JsonProperty("fingerprint")
+  private String fingerprint = null;
+
   public Card id(String id) {
     this.id = id;
     return this;
@@ -217,6 +220,24 @@ public class Card {
     this.billingAddress = billingAddress;
   }
 
+  public Card fingerprint(String fingerprint) {
+    this.fingerprint = fingerprint;
+    return this;
+  }
+
+   /**
+   * The unique string fingerprint for the card.  The fingerprint is based on the credit card number and is unique to the merchant.  If a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case. Note: Fingerprint may not exist on old transactions.
+   * @return fingerprint
+  **/
+  @ApiModelProperty(value = "The unique string fingerprint for the card.  The fingerprint is based on the credit card number and is unique to the merchant.  If a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case. Note: Fingerprint may not exist on old transactions.")
+  public String getFingerprint() {
+    return fingerprint;
+  }
+
+  public void setFingerprint(String fingerprint) {
+    this.fingerprint = fingerprint;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -233,12 +254,13 @@ public class Card {
         Objects.equals(this.expMonth, card.expMonth) &&
         Objects.equals(this.expYear, card.expYear) &&
         Objects.equals(this.cardholderName, card.cardholderName) &&
-        Objects.equals(this.billingAddress, card.billingAddress);
+        Objects.equals(this.billingAddress, card.billingAddress) &&
+        Objects.equals(this.fingerprint, card.fingerprint);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cardBrand, last4, expMonth, expYear, cardholderName, billingAddress);
+    return Objects.hash(id, cardBrand, last4, expMonth, expYear, cardholderName, billingAddress, fingerprint);
   }
 
 
@@ -254,6 +276,7 @@ public class Card {
     sb.append("    expYear: ").append(toIndentedString(expYear)).append("\n");
     sb.append("    cardholderName: ").append(toIndentedString(cardholderName)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
+    sb.append("    fingerprint: ").append(toIndentedString(fingerprint)).append("\n");
     sb.append("}");
     return sb.toString();
   }
