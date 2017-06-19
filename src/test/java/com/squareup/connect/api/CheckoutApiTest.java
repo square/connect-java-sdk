@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.squareup.connect.api;
 
 import com.squareup.connect.ApiClient;
@@ -20,8 +19,10 @@ import com.squareup.connect.auth.OAuth;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.CreateCheckoutRequest;
 import com.squareup.connect.models.CreateCheckoutResponse;
+import com.squareup.connect.models.CreateOrderRequest;
+import com.squareup.connect.models.CreateOrderRequestDiscount;
 import com.squareup.connect.models.CreateOrderRequestLineItem;
-import com.squareup.connect.models.CreateOrderRequestOrder;
+import com.squareup.connect.models.CreateOrderRequestTax;
 import com.squareup.connect.models.Money;
 import com.squareup.connect.utils.APITest;
 import com.squareup.connect.utils.Account;
@@ -37,66 +38,109 @@ import static org.junit.Assert.assertTrue;
  */
 public class CheckoutApiTest extends APITest {
 
-    private final ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private final CheckoutApi api = new CheckoutApi();
-    private String locationId;
+  private final ApiClient defaultClient = Configuration.getDefaultApiClient();
+  private final CheckoutApi api = new CheckoutApi();
+  private String locationId;
 
-    @Before
-    public void setup() {
-        Account testAccount = accounts.get("US-Prod-Sandbox");
-        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-        oauth2.setAccessToken(testAccount.accessToken);
-        this.locationId = testAccount.locationId;
-    }
+  @Before
+  public void setup() {
+    Account testAccount = accounts.get("US-Prod-Sandbox");
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken(testAccount.accessToken);
+    this.locationId = testAccount.locationId;
+  }
 
-    
-    /**
-     * CreateCheckout
-     *
-     * Creates a [Checkout](#type-checkout) response that links a &#x60;checkoutId&#x60; and &#x60;checkout_page_url&#x60; that customers can be directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void createCheckoutTest() throws ApiException {
+  /**
+   * CreateCheckout
+   *
+   * Creates a [Checkout](#type-checkout) response that links a &#x60;checkoutId&#x60; and
+   * &#x60;checkout_page_url&#x60; that customers can be directed to in order to provide their
+   * payment information using a payment processing workflow hosted on connect.squareup.com.
+   *
+   * @throws ApiException if the Api call fails
+   */
+  @Test
+  public void createCheckoutTest() throws ApiException {
 
-        CreateCheckoutRequest body = new CreateCheckoutRequest()
-            .idempotencyKey(UUID.randomUUID().toString())
-            .order(new CreateOrderRequestOrder()
-                .referenceId("my-order-001")
-                .lineItems(Arrays.asList(
-                    new CreateOrderRequestLineItem()
-                        .name("line-item-1")
-                        .quantity("1")
-                        .basePriceMoney(new Money()
-                            .amount(1599L)
-                            .currency(Money.CurrencyEnum.USD)),
-                    new CreateOrderRequestLineItem()
-                        .name("line-item-2")
-                        .quantity("2")
-                        .basePriceMoney(new Money()
-                            .amount(799L)
-                            .currency(Money.CurrencyEnum.USD))
-                ))
+    CreateCheckoutRequest body = new CreateCheckoutRequest()
+        .idempotencyKey(UUID.randomUUID().toString())
+        .order(new CreateOrderRequest()
+            .referenceId("reference_id")
+            .lineItems(Arrays.asList(
+                new CreateOrderRequestLineItem()
+                    .name("Printed T Shirt")
+                    .quantity("2")
+                    .basePriceMoney(new Money()
+                        .amount(1500L)
+                        .currency(Money.CurrencyEnum.USD))
+                    .addDiscountsItem(
+                        new CreateOrderRequestDiscount()
+                            .name("7% off previous season item")
+                            .percentage("7")
+                    )
+                    .addDiscountsItem(
+                        new CreateOrderRequestDiscount()
+                            .name("$3 off Customer Discount")
+                            .amountMoney(new Money()
+                                .amount(300L)
+                                .currency(Money.CurrencyEnum.USD))
+                    ),
+                new CreateOrderRequestLineItem()
+                    .name("Slim Jeans")
+                    .quantity("1")
+                    .basePriceMoney(new Money()
+                        .amount(2500L)
+                        .currency(Money.CurrencyEnum.USD)),
+                new CreateOrderRequestLineItem()
+                    .name("Woven Sweate")
+                    .quantity("3")
+                    .basePriceMoney(new Money()
+                        .amount(3500L)
+                        .currency(Money.CurrencyEnum.USD))
+                    .addDiscountsItem(new CreateOrderRequestDiscount()
+                        .name("$11 off Customer Discount")
+                        .amountMoney(new Money()
+                            .amount(1100L)
+                            .currency(Money.CurrencyEnum.USD)))
+                    .addTaxesItem(new CreateOrderRequestTax()
+                        .name("Fair Trade Tax")
+                        .percentage("5")
+                    )
+
+            ))
+            .discounts(Arrays.asList(
+                new CreateOrderRequestDiscount()
+                    .name("Father's day 12% OFF")
+                    .percentage("12"),
+                new CreateOrderRequestDiscount()
+                    .name("Global Sales $55 OFF")
+                    .amountMoney(new Money()
+                        .amount(5500L)
+                        .currency(Money.CurrencyEnum.USD))
+            ))
+            .addTaxesItem(new CreateOrderRequestTax()
+                .name("Sales Tax")
+                .type(CreateOrderRequestTax.TypeEnum.ADDITIVE)
+                .percentage("8.5")
             )
-            .askForShippingAddress(true)
-            .merchantSupportEmail("merchant+support@website.com")
-            .prePopulateBuyerEmail("buyer@email.com")
-            .prePopulateShippingAddress(new Address()
-                .addressLine1("500 Electric Ave")
-                .addressLine2("Suite 600")
-                .locality("New York")
-                .administrativeDistrictLevel1("NY")
-                .postalCode("20003")
-                .country(Address.CountryEnum.US)
-            )
-            .redirectUrl("https://merchant.website.com/order-confirm");
+        )
+        .askForShippingAddress(true)
+        .merchantSupportEmail("merchant+support@website.com")
+        .prePopulateBuyerEmail("example@email.com")
+        .prePopulateShippingAddress(new Address()
+            .addressLine1("1455 Market St.")
+            .addressLine2("Suite 600")
+            .locality("San Francisco")
+            .administrativeDistrictLevel1("CA")
+            .postalCode("94103")
+            .firstName("Jane")
+            .lastName("Doe")
+        )
+        .redirectUrl("https://merchant.website.com/order-confirm");
 
-        CreateCheckoutResponse response = api.createCheckout(locationId, body);
+    CreateCheckoutResponse response = api.createCheckout(locationId, body);
 
-        assertTrue(response.getErrors().isEmpty());
-        assertTrue(response.getCheckout().getCheckoutPageUrl().startsWith("https://connect."));
-    }
-    
+    assertTrue(response.getErrors().isEmpty());
+    assertTrue(response.getCheckout().getCheckoutPageUrl().startsWith("https://connect."));
+  }
 }
