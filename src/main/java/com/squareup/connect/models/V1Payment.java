@@ -42,7 +42,7 @@ public class V1Payment {
   private String createdAt = null;
 
   @JsonProperty("creator_id")
-  private Boolean creatorId = null;
+  private String creatorId = null;
 
   @JsonProperty("device")
   private Device device = null;
@@ -158,7 +158,7 @@ public class V1Payment {
     this.createdAt = createdAt;
   }
 
-  public V1Payment creatorId(Boolean creatorId) {
+  public V1Payment creatorId(String creatorId) {
     this.creatorId = creatorId;
     return this;
   }
@@ -168,11 +168,11 @@ public class V1Payment {
    * @return creatorId
   **/
   @ApiModelProperty(value = "The unique identifier of the Square account that took the payment.")
-  public Boolean getCreatorId() {
+  public String getCreatorId() {
     return creatorId;
   }
 
-  public void setCreatorId(Boolean creatorId) {
+  public void setCreatorId(String creatorId) {
     this.creatorId = creatorId;
   }
 
