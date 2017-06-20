@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** | The payment&#39;s unique identifier. |  [optional]
 **merchantId** | **String** | The unique identifier of the merchant that took the payment. |  [optional]
 **createdAt** | **String** | The time when the payment was created, in ISO 8601 format. |  [optional]
-**creatorId** | **Boolean** | The unique identifier of the Square account that took the payment. |  [optional]
+**creatorId** | **String** | The unique identifier of the Square account that took the payment. |  [optional]
 **device** | [**Device**](Device.md) | The device that took the payment. |  [optional]
 **paymentUrl** | **String** | The URL of the payment&#39;s detail page in the merchant dashboard. The merchant must be signed in to the merchant dashboard to view this page. |  [optional]
 **receiptUrl** | **String** | The URL of the receipt for the payment. Note that for split tender payments, this URL corresponds to the receipt for the first tender listed in the payment&#39;s tender field. Each Tender object has its own receipt_url field you can use to get the other receipts associated with a split tender payment. |  [optional]

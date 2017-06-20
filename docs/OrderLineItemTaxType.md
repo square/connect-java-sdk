@@ -1,5 +1,5 @@
 
-# OrderLineItemTaxTaxType
+# OrderLineItemTaxType
 
 ## Enum
 

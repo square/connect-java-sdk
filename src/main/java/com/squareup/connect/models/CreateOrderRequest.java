@@ -25,14 +25,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the parameters that can be included in the body of a request to the [CreateOrder](#endpoint-createorder) endpoint.
+ * Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.
  */
-@ApiModel(description = "Defines the parameters that can be included in the body of a request to the [CreateOrder](#endpoint-createorder) endpoint.")
+@ApiModel(description = "Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.")
 
 public class CreateOrderRequest {
-  @JsonProperty("idempotency_key")
-  private String idempotencyKey = null;
-
   @JsonProperty("reference_id")
   private String referenceId = null;
 
@@ -44,24 +41,6 @@ public class CreateOrderRequest {
 
   @JsonProperty("discounts")
   private List<CreateOrderRequestDiscount> discounts = new ArrayList<CreateOrderRequestDiscount>();
-
-  public CreateOrderRequest idempotencyKey(String idempotencyKey) {
-    this.idempotencyKey = idempotencyKey;
-    return this;
-  }
-
-   /**
-   * A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency keys](#idempotencykeys) for more information.
-   * @return idempotencyKey
-  **/
-  @ApiModelProperty(value = "A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency keys](#idempotencykeys) for more information.")
-  public String getIdempotencyKey() {
-    return idempotencyKey;
-  }
-
-  public void setIdempotencyKey(String idempotencyKey) {
-    this.idempotencyKey = idempotencyKey;
-  }
 
   public CreateOrderRequest referenceId(String referenceId) {
     this.referenceId = referenceId;
@@ -160,8 +139,7 @@ public class CreateOrderRequest {
       return false;
     }
     CreateOrderRequest createOrderRequest = (CreateOrderRequest) o;
-    return Objects.equals(this.idempotencyKey, createOrderRequest.idempotencyKey) &&
-        Objects.equals(this.referenceId, createOrderRequest.referenceId) &&
+    return Objects.equals(this.referenceId, createOrderRequest.referenceId) &&
         Objects.equals(this.lineItems, createOrderRequest.lineItems) &&
         Objects.equals(this.taxes, createOrderRequest.taxes) &&
         Objects.equals(this.discounts, createOrderRequest.discounts);
@@ -169,7 +147,7 @@ public class CreateOrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(idempotencyKey, referenceId, lineItems, taxes, discounts);
+    return Objects.hash(referenceId, lineItems, taxes, discounts);
   }
 
 
@@ -178,7 +156,6 @@ public class CreateOrderRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequest {\n");
     
-    sb.append("    idempotencyKey: ").append(toIndentedString(idempotencyKey)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");

@@ -112,10 +112,10 @@ public class OrderLineItemTax {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.
+   * The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.")
+  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.")
   public String getPercentage() {
     return percentage;
   }

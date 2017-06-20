@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 /**
  * Represents how a discount applied to a line item or an order.
  */
-public enum OrderLineItemDiscountDiscountType {
+public enum OrderLineItemDiscountType {
   
   UNKNOWN("UNKNOWN"),
   
@@ -35,7 +35,7 @@ public enum OrderLineItemDiscountDiscountType {
 
   private String value;
 
-  OrderLineItemDiscountDiscountType(String value) {
+  OrderLineItemDiscountType(String value) {
     this.value = value;
   }
 
@@ -45,8 +45,8 @@ public enum OrderLineItemDiscountDiscountType {
   }
 
   @JsonCreator
-  public static OrderLineItemDiscountDiscountType fromValue(String text) {
-    for (OrderLineItemDiscountDiscountType b : OrderLineItemDiscountDiscountType.values()) {
+  public static OrderLineItemDiscountType fromValue(String text) {
+    for (OrderLineItemDiscountType b : OrderLineItemDiscountType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

@@ -1,5 +1,5 @@
 
-# OrderLineItemDiscountDiscountType
+# OrderLineItemDiscountType
 
 ## Enum
 

@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 /**
  * Represents how a tax applied to a line item or an order.
  */
-public enum OrderLineItemTaxTaxType {
+public enum OrderLineItemTaxType {
   
   UNKNOWN("UNKNOWN"),
   
@@ -31,7 +31,7 @@ public enum OrderLineItemTaxTaxType {
 
   private String value;
 
-  OrderLineItemTaxTaxType(String value) {
+  OrderLineItemTaxType(String value) {
     this.value = value;
   }
 
@@ -41,8 +41,8 @@ public enum OrderLineItemTaxTaxType {
   }
 
   @JsonCreator
-  public static OrderLineItemTaxTaxType fromValue(String text) {
-    for (OrderLineItemTaxTaxType b : OrderLineItemTaxTaxType.values()) {
+  public static OrderLineItemTaxType fromValue(String text) {
+    for (OrderLineItemTaxType b : OrderLineItemTaxType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

@@ -4,7 +4,7 @@
 ## Enum
 
 
-* `LINEITEM` (value: `"LINEITEM"`)
+* `LINE_ITEM` (value: `"LINE_ITEM"`)
 
 * `ORDER` (value: `"ORDER"`)
 

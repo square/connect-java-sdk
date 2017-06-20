@@ -29,7 +29,7 @@ public class CreateOrderRequestTax {
   private String name = null;
 
   /**
-   * The type is either `ADDITIVE` or `INCLUSIVE`. The default is ADDITIVE.
+   * The type is either `ADDITIVE` or `INCLUSIVE`.  The default is ADDITIVE.
    */
   public enum TypeEnum {
     UNKNOWN("UNKNOWN"),
@@ -90,10 +90,10 @@ public class CreateOrderRequestTax {
   }
 
    /**
-   * The type is either `ADDITIVE` or `INCLUSIVE`. The default is ADDITIVE.
+   * The type is either `ADDITIVE` or `INCLUSIVE`.  The default is ADDITIVE.
    * @return type
   **/
-  @ApiModelProperty(value = "The type is either `ADDITIVE` or `INCLUSIVE`. The default is ADDITIVE.")
+  @ApiModelProperty(value = "The type is either `ADDITIVE` or `INCLUSIVE`.  The default is ADDITIVE.")
   public TypeEnum getType() {
     return type;
   }
@@ -108,10 +108,10 @@ public class CreateOrderRequestTax {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
+   * The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0")
+  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0")
   public String getPercentage() {
     return percentage;
   }

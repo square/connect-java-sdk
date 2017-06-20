@@ -59,10 +59,10 @@ public class CreateOrderRequestDiscount {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
+   * The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0")
+  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0")
   public String getPercentage() {
     return percentage;
   }

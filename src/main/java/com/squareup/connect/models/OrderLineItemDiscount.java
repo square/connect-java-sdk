@@ -30,7 +30,7 @@ public class OrderLineItemDiscount {
   private String name = null;
 
   /**
-   * The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT as VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.
+   * The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.
    */
   public enum TypeEnum {
     UNKNOWN("UNKNOWN"),
@@ -81,7 +81,7 @@ public class OrderLineItemDiscount {
    * The scope of the discount.
    */
   public enum ScopeEnum {
-    LINEITEM("LINEITEM"),
+    LINE_ITEM("LINE_ITEM"),
     
     ORDER("ORDER");
 
@@ -134,10 +134,10 @@ public class OrderLineItemDiscount {
   }
 
    /**
-   * The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT as VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.
+   * The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.
    * @return type
   **/
-  @ApiModelProperty(value = "The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT as VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.")
+  @ApiModelProperty(value = "The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.")
   public TypeEnum getType() {
     return type;
   }
@@ -152,10 +152,10 @@ public class OrderLineItemDiscount {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.
+   * The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.")
+  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.")
   public String getPercentage() {
     return percentage;
   }

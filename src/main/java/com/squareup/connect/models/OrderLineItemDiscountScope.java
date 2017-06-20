@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public enum OrderLineItemDiscountScope {
   
-  LINEITEM("LINEITEM"),
+  LINE_ITEM("LINE_ITEM"),
   
   ORDER("ORDER");
 
