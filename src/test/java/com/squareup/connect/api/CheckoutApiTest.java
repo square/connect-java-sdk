@@ -133,6 +133,7 @@ public class CheckoutApiTest extends APITest {
             .locality("San Francisco")
             .administrativeDistrictLevel1("CA")
             .postalCode("94103")
+            .country("US")
             .firstName("Jane")
             .lastName("Doe")
         )
