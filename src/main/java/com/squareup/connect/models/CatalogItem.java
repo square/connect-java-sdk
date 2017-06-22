@@ -167,10 +167,10 @@ public class CatalogItem {
   }
 
    /**
-   * The color of the item's display label in the Square Point of Sale app.  Searchable.
+   * The color of the item's display label in the Square Point of Sale app.
    * @return labelColor
   **/
-  @ApiModelProperty(value = "The color of the item's display label in the Square Point of Sale app.  Searchable.")
+  @ApiModelProperty(value = "The color of the item's display label in the Square Point of Sale app.")
   public String getLabelColor() {
     return labelColor;
   }

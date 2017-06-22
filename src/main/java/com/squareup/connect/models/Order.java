@@ -29,9 +29,6 @@ import java.util.List;
 @ApiModel(description = "Contains all information related to a single order to process with Square, including line items that specify the products to purchase")
 
 public class Order {
-  @JsonProperty("id")
-  private String id = null;
-
   @JsonProperty("location_id")
   private String locationId = null;
 
@@ -44,23 +41,11 @@ public class Order {
   @JsonProperty("total_money")
   private Money totalMoney = null;
 
-  public Order id(String id) {
-    this.id = id;
-    return this;
-  }
+  @JsonProperty("total_tax_money")
+  private Money totalTaxMoney = null;
 
-   /**
-   * The order's unique ID.  This value is not present if the order was not created with the [CreateOrder](#endpoint-createorder) endpoint.
-   * @return id
-  **/
-  @ApiModelProperty(value = "The order's unique ID.  This value is not present if the order was not created with the [CreateOrder](#endpoint-createorder) endpoint.")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
+  @JsonProperty("total_discount_money")
+  private Money totalDiscountMoney = null;
 
   public Order locationId(String locationId) {
     this.locationId = locationId;
@@ -139,6 +124,42 @@ public class Order {
     this.totalMoney = totalMoney;
   }
 
+  public Order totalTaxMoney(Money totalTaxMoney) {
+    this.totalTaxMoney = totalTaxMoney;
+    return this;
+  }
+
+   /**
+   * The total tax amount of money to collect for the order.
+   * @return totalTaxMoney
+  **/
+  @ApiModelProperty(value = "The total tax amount of money to collect for the order.")
+  public Money getTotalTaxMoney() {
+    return totalTaxMoney;
+  }
+
+  public void setTotalTaxMoney(Money totalTaxMoney) {
+    this.totalTaxMoney = totalTaxMoney;
+  }
+
+  public Order totalDiscountMoney(Money totalDiscountMoney) {
+    this.totalDiscountMoney = totalDiscountMoney;
+    return this;
+  }
+
+   /**
+   * The total discount amount of money to collect for the order.
+   * @return totalDiscountMoney
+  **/
+  @ApiModelProperty(value = "The total discount amount of money to collect for the order.")
+  public Money getTotalDiscountMoney() {
+    return totalDiscountMoney;
+  }
+
+  public void setTotalDiscountMoney(Money totalDiscountMoney) {
+    this.totalDiscountMoney = totalDiscountMoney;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -149,16 +170,17 @@ public class Order {
       return false;
     }
     Order order = (Order) o;
-    return Objects.equals(this.id, order.id) &&
-        Objects.equals(this.locationId, order.locationId) &&
+    return Objects.equals(this.locationId, order.locationId) &&
         Objects.equals(this.referenceId, order.referenceId) &&
         Objects.equals(this.lineItems, order.lineItems) &&
-        Objects.equals(this.totalMoney, order.totalMoney);
+        Objects.equals(this.totalMoney, order.totalMoney) &&
+        Objects.equals(this.totalTaxMoney, order.totalTaxMoney) &&
+        Objects.equals(this.totalDiscountMoney, order.totalDiscountMoney);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, referenceId, lineItems, totalMoney);
+    return Objects.hash(locationId, referenceId, lineItems, totalMoney, totalTaxMoney, totalDiscountMoney);
   }
 
 
@@ -167,11 +189,12 @@ public class Order {
     StringBuilder sb = new StringBuilder();
     sb.append("class Order {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
     sb.append("    totalMoney: ").append(toIndentedString(totalMoney)).append("\n");
+    sb.append("    totalTaxMoney: ").append(toIndentedString(totalTaxMoney)).append("\n");
+    sb.append("    totalDiscountMoney: ").append(toIndentedString(totalDiscountMoney)).append("\n");
     sb.append("}");
     return sb.toString();
   }

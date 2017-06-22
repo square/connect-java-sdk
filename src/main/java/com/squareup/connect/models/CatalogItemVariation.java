@@ -244,10 +244,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * Per-location price and inventory overrides.
+   * Per-[location][#type-location] price and inventory overrides.
    * @return locationOverrides
   **/
-  @ApiModelProperty(value = "Per-location price and inventory overrides.")
+  @ApiModelProperty(value = "Per-[location][#type-location] price and inventory overrides.")
   public List<ItemVariationLocationOverrides> getLocationOverrides() {
     return locationOverrides;
   }

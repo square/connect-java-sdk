@@ -16,25 +16,33 @@ package com.squareup.connect.models;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.squareup.connect.models.CreateOrderRequestDiscount;
 import com.squareup.connect.models.CreateOrderRequestLineItem;
+import com.squareup.connect.models.CreateOrderRequestTax;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The object describes the order.
+ * Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.
  */
-@ApiModel(description = "The object describes the order.")
+@ApiModel(description = "Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.")
 
-public class CreateOrderRequestOrder {
+public class CreateOrderRequest {
   @JsonProperty("reference_id")
   private String referenceId = null;
 
   @JsonProperty("line_items")
   private List<CreateOrderRequestLineItem> lineItems = new ArrayList<CreateOrderRequestLineItem>();
 
-  public CreateOrderRequestOrder referenceId(String referenceId) {
+  @JsonProperty("taxes")
+  private List<CreateOrderRequestTax> taxes = new ArrayList<CreateOrderRequestTax>();
+
+  @JsonProperty("discounts")
+  private List<CreateOrderRequestDiscount> discounts = new ArrayList<CreateOrderRequestDiscount>();
+
+  public CreateOrderRequest referenceId(String referenceId) {
     this.referenceId = referenceId;
     return this;
   }
@@ -52,12 +60,12 @@ public class CreateOrderRequestOrder {
     this.referenceId = referenceId;
   }
 
-  public CreateOrderRequestOrder lineItems(List<CreateOrderRequestLineItem> lineItems) {
+  public CreateOrderRequest lineItems(List<CreateOrderRequestLineItem> lineItems) {
     this.lineItems = lineItems;
     return this;
   }
 
-  public CreateOrderRequestOrder addLineItemsItem(CreateOrderRequestLineItem lineItemsItem) {
+  public CreateOrderRequest addLineItemsItem(CreateOrderRequestLineItem lineItemsItem) {
     this.lineItems.add(lineItemsItem);
     return this;
   }
@@ -75,6 +83,52 @@ public class CreateOrderRequestOrder {
     this.lineItems = lineItems;
   }
 
+  public CreateOrderRequest taxes(List<CreateOrderRequestTax> taxes) {
+    this.taxes = taxes;
+    return this;
+  }
+
+  public CreateOrderRequest addTaxesItem(CreateOrderRequestTax taxesItem) {
+    this.taxes.add(taxesItem);
+    return this;
+  }
+
+   /**
+   * The taxes include the custom taxes.
+   * @return taxes
+  **/
+  @ApiModelProperty(value = "The taxes include the custom taxes.")
+  public List<CreateOrderRequestTax> getTaxes() {
+    return taxes;
+  }
+
+  public void setTaxes(List<CreateOrderRequestTax> taxes) {
+    this.taxes = taxes;
+  }
+
+  public CreateOrderRequest discounts(List<CreateOrderRequestDiscount> discounts) {
+    this.discounts = discounts;
+    return this;
+  }
+
+  public CreateOrderRequest addDiscountsItem(CreateOrderRequestDiscount discountsItem) {
+    this.discounts.add(discountsItem);
+    return this;
+  }
+
+   /**
+   * The discounts include the custom discounts .
+   * @return discounts
+  **/
+  @ApiModelProperty(value = "The discounts include the custom discounts .")
+  public List<CreateOrderRequestDiscount> getDiscounts() {
+    return discounts;
+  }
+
+  public void setDiscounts(List<CreateOrderRequestDiscount> discounts) {
+    this.discounts = discounts;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -84,24 +138,28 @@ public class CreateOrderRequestOrder {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateOrderRequestOrder createOrderRequestOrder = (CreateOrderRequestOrder) o;
-    return Objects.equals(this.referenceId, createOrderRequestOrder.referenceId) &&
-        Objects.equals(this.lineItems, createOrderRequestOrder.lineItems);
+    CreateOrderRequest createOrderRequest = (CreateOrderRequest) o;
+    return Objects.equals(this.referenceId, createOrderRequest.referenceId) &&
+        Objects.equals(this.lineItems, createOrderRequest.lineItems) &&
+        Objects.equals(this.taxes, createOrderRequest.taxes) &&
+        Objects.equals(this.discounts, createOrderRequest.discounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(referenceId, lineItems);
+    return Objects.hash(referenceId, lineItems, taxes, discounts);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateOrderRequestOrder {\n");
+    sb.append("class CreateOrderRequest {\n");
     
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
+    sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
+    sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }

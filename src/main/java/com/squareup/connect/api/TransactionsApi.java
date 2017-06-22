@@ -141,7 +141,7 @@ public class TransactionsApi {
       }
   /**
    * CreateRefund
-   * Initiates a refund for a previously charged tender.
+   * Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See (this article)[https://squareup.com/help/us/en/article/5060] for more information on refund behavior.
    * @param locationId The ID of the original transaction&#39;s associated location. (required)
    * @param transactionId The ID of the original transaction that includes the tender to refund. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)

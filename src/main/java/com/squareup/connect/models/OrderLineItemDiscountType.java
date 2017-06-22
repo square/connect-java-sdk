@@ -19,23 +19,23 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * The type of a [CatalogItem](#type-catalogitem). Connect V2 only allows the creation of `REGULAR` items.
+ * Indicates how the discount is applied to the associated line item or order.
  */
-public enum CatalogItemProductType {
+public enum OrderLineItemDiscountType {
   
-  REGULAR("REGULAR"),
+  UNKNOWN("UNKNOWN"),
   
-  GIFT_CARD("GIFT_CARD"),
+  FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
   
-  APPOINTMENTS_SERVICE("APPOINTMENTS_SERVICE"),
+  FIXED_AMOUNT("FIXED_AMOUNT"),
   
-  RETAIL_ITEM("RETAIL_ITEM"),
+  VARIABLE_PERCENTAGE("VARIABLE_PERCENTAGE"),
   
-  RESTAURANT_ITEM("RESTAURANT_ITEM");
+  VARIABLE_AMOUNT("VARIABLE_AMOUNT");
 
   private String value;
 
-  CatalogItemProductType(String value) {
+  OrderLineItemDiscountType(String value) {
     this.value = value;
   }
 
@@ -45,8 +45,8 @@ public enum CatalogItemProductType {
   }
 
   @JsonCreator
-  public static CatalogItemProductType fromValue(String text) {
-    for (CatalogItemProductType b : CatalogItemProductType.values()) {
+  public static OrderLineItemDiscountType fromValue(String text) {
+    for (OrderLineItemDiscountType b : OrderLineItemDiscountType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

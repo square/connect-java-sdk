@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Price and inventory overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific location.
+ * Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location][#type-location].
  */
-@ApiModel(description = "Price and inventory overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific location.")
+@ApiModel(description = "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location][#type-location].")
 
 public class ItemVariationLocationOverrides {
   @JsonProperty("location_id")
@@ -33,7 +33,7 @@ public class ItemVariationLocationOverrides {
   private Money priceMoney = null;
 
   /**
-   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given location. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
+   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location]. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
    */
   public enum PricingTypeEnum {
     FIXED_PRICING("FIXED_PRICING"),
@@ -110,10 +110,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The ID of the location.
+   * The ID of the [location][#type-location].
    * @return locationId
   **/
-  @ApiModelProperty(value = "The ID of the location.")
+  @ApiModelProperty(value = "The ID of the [location][#type-location].")
   public String getLocationId() {
     return locationId;
   }
@@ -128,10 +128,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given location, or blank for variable pricing.
+   * The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location], or blank for variable pricing.
    * @return priceMoney
   **/
-  @ApiModelProperty(value = "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given location, or blank for variable pricing.")
+  @ApiModelProperty(value = "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location], or blank for variable pricing.")
   public Money getPriceMoney() {
     return priceMoney;
   }
@@ -146,10 +146,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given location. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
+   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location]. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
    * @return pricingType
   **/
-  @ApiModelProperty(value = "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given location. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.")
+  @ApiModelProperty(value = "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location]. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.")
   public PricingTypeEnum getPricingType() {
     return pricingType;
   }
@@ -164,10 +164,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this location.
+   * If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location][#type-location].
    * @return trackInventory
   **/
-  @ApiModelProperty(value = "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this location.")
+  @ApiModelProperty(value = "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location][#type-location].")
   public Boolean getTrackInventory() {
     return trackInventory;
   }

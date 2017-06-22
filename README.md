@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.1.1</version>
+    <version>2.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.1.1"
+compile "com.squareup:connect:2.2.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.1.1.jar
+* target/connect-2.2.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -243,8 +243,10 @@ Class | Method | HTTP request | Description
  - [CreateCustomerCardResponse](docs/CreateCustomerCardResponse.md)
  - [CreateCustomerRequest](docs/CreateCustomerRequest.md)
  - [CreateCustomerResponse](docs/CreateCustomerResponse.md)
+ - [CreateOrderRequest](docs/CreateOrderRequest.md)
+ - [CreateOrderRequestDiscount](docs/CreateOrderRequestDiscount.md)
  - [CreateOrderRequestLineItem](docs/CreateOrderRequestLineItem.md)
- - [CreateOrderRequestOrder](docs/CreateOrderRequestOrder.md)
+ - [CreateOrderRequestTax](docs/CreateOrderRequestTax.md)
  - [CreateRefundRequest](docs/CreateRefundRequest.md)
  - [CreateRefundResponse](docs/CreateRefundResponse.md)
  - [Currency](docs/Currency.md)
@@ -278,6 +280,11 @@ Class | Method | HTTP request | Description
  - [Money](docs/Money.md)
  - [Order](docs/Order.md)
  - [OrderLineItem](docs/OrderLineItem.md)
+ - [OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
+ - [OrderLineItemDiscountScope](docs/OrderLineItemDiscountScope.md)
+ - [OrderLineItemDiscountType](docs/OrderLineItemDiscountType.md)
+ - [OrderLineItemTax](docs/OrderLineItemTax.md)
+ - [OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
  - [Refund](docs/Refund.md)
  - [RefundStatus](docs/RefundStatus.md)
  - [RetrieveCatalogObjectRequest](docs/RetrieveCatalogObjectRequest.md)
@@ -367,8 +374,8 @@ Authentication schemes defined for the API:
   - BANK_ACCOUNTS_READ: GET endpoints related to a merchant&#39;s bank accounts
   - ITEMS_READ: GET endpoints related to a merchant&#39;s item library
   - ITEMS_WRITE: POST, PUT, and DELETE endpoints related to a merchant&#39;s item library
-  - ORDERS_READ: GET endpoints related to a merchant&#39;s Square online store.
-  - ORDERS_WRITE: POST, PUT, and DELETE endpoints related to a merchant&#39;s Square online store
+  - ORDERS_READ: GET endpoints related to a merchant&#39;s orders
+  - ORDERS_WRITE: POST, PUT, and DELETE endpoints related to a merchant&#39;s orders
   - EMPLOYEES_READ: GET endpoints related to employee management
   - EMPLOYEES_WRITE: POST, PUT, and DELETE endpoints related to employee management
   - TIMECARDS_READ: GET endpoints related to employee timecards

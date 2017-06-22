@@ -17,8 +17,12 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.squareup.connect.models.Money;
+import com.squareup.connect.models.OrderLineItemDiscount;
+import com.squareup.connect.models.OrderLineItemTax;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a line item in an order. Each line item describes a different product to purchase, with its own quantity and price details.
@@ -26,38 +30,29 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a line item in an order. Each line item describes a different product to purchase, with its own quantity and price details.")
 
 public class OrderLineItem {
-  @JsonProperty("id")
-  private String id = null;
-
   @JsonProperty("name")
   private String name = null;
 
   @JsonProperty("quantity")
   private String quantity = null;
 
+  @JsonProperty("taxes")
+  private List<OrderLineItemTax> taxes = new ArrayList<OrderLineItemTax>();
+
+  @JsonProperty("discounts")
+  private List<OrderLineItemDiscount> discounts = new ArrayList<OrderLineItemDiscount>();
+
   @JsonProperty("base_price_money")
   private Money basePriceMoney = null;
 
+  @JsonProperty("total_tax_money")
+  private Money totalTaxMoney = null;
+
+  @JsonProperty("total_discount_money")
+  private Money totalDiscountMoney = null;
+
   @JsonProperty("total_money")
   private Money totalMoney = null;
-
-  public OrderLineItem id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * The line item's ID, unique only within this order.
-   * @return id
-  **/
-  @ApiModelProperty(value = "The line item's ID, unique only within this order.")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
 
   public OrderLineItem name(String name) {
     this.name = name;
@@ -95,22 +90,104 @@ public class OrderLineItem {
     this.quantity = quantity;
   }
 
+  public OrderLineItem taxes(List<OrderLineItemTax> taxes) {
+    this.taxes = taxes;
+    return this;
+  }
+
+  public OrderLineItem addTaxesItem(OrderLineItemTax taxesItem) {
+    this.taxes.add(taxesItem);
+    return this;
+  }
+
+   /**
+   * The taxes applied to this line item.
+   * @return taxes
+  **/
+  @ApiModelProperty(value = "The taxes applied to this line item.")
+  public List<OrderLineItemTax> getTaxes() {
+    return taxes;
+  }
+
+  public void setTaxes(List<OrderLineItemTax> taxes) {
+    this.taxes = taxes;
+  }
+
+  public OrderLineItem discounts(List<OrderLineItemDiscount> discounts) {
+    this.discounts = discounts;
+    return this;
+  }
+
+  public OrderLineItem addDiscountsItem(OrderLineItemDiscount discountsItem) {
+    this.discounts.add(discountsItem);
+    return this;
+  }
+
+   /**
+   * The discounts applied to this line item.
+   * @return discounts
+  **/
+  @ApiModelProperty(value = "The discounts applied to this line item.")
+  public List<OrderLineItemDiscount> getDiscounts() {
+    return discounts;
+  }
+
+  public void setDiscounts(List<OrderLineItemDiscount> discounts) {
+    this.discounts = discounts;
+  }
+
   public OrderLineItem basePriceMoney(Money basePriceMoney) {
     this.basePriceMoney = basePriceMoney;
     return this;
   }
 
    /**
-   * The base price for a single unit of the line item's associated variation.  If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.
+   * The base price for a single unit of the line item.
    * @return basePriceMoney
   **/
-  @ApiModelProperty(value = "The base price for a single unit of the line item's associated variation.  If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.")
+  @ApiModelProperty(value = "The base price for a single unit of the line item.")
   public Money getBasePriceMoney() {
     return basePriceMoney;
   }
 
   public void setBasePriceMoney(Money basePriceMoney) {
     this.basePriceMoney = basePriceMoney;
+  }
+
+  public OrderLineItem totalTaxMoney(Money totalTaxMoney) {
+    this.totalTaxMoney = totalTaxMoney;
+    return this;
+  }
+
+   /**
+   * The total tax amount of money to collect for the line item.
+   * @return totalTaxMoney
+  **/
+  @ApiModelProperty(value = "The total tax amount of money to collect for the line item.")
+  public Money getTotalTaxMoney() {
+    return totalTaxMoney;
+  }
+
+  public void setTotalTaxMoney(Money totalTaxMoney) {
+    this.totalTaxMoney = totalTaxMoney;
+  }
+
+  public OrderLineItem totalDiscountMoney(Money totalDiscountMoney) {
+    this.totalDiscountMoney = totalDiscountMoney;
+    return this;
+  }
+
+   /**
+   * The total discount amount of money to collect for the line item.
+   * @return totalDiscountMoney
+  **/
+  @ApiModelProperty(value = "The total discount amount of money to collect for the line item.")
+  public Money getTotalDiscountMoney() {
+    return totalDiscountMoney;
+  }
+
+  public void setTotalDiscountMoney(Money totalDiscountMoney) {
+    this.totalDiscountMoney = totalDiscountMoney;
   }
 
   public OrderLineItem totalMoney(Money totalMoney) {
@@ -141,16 +218,19 @@ public class OrderLineItem {
       return false;
     }
     OrderLineItem orderLineItem = (OrderLineItem) o;
-    return Objects.equals(this.id, orderLineItem.id) &&
-        Objects.equals(this.name, orderLineItem.name) &&
+    return Objects.equals(this.name, orderLineItem.name) &&
         Objects.equals(this.quantity, orderLineItem.quantity) &&
+        Objects.equals(this.taxes, orderLineItem.taxes) &&
+        Objects.equals(this.discounts, orderLineItem.discounts) &&
         Objects.equals(this.basePriceMoney, orderLineItem.basePriceMoney) &&
+        Objects.equals(this.totalTaxMoney, orderLineItem.totalTaxMoney) &&
+        Objects.equals(this.totalDiscountMoney, orderLineItem.totalDiscountMoney) &&
         Objects.equals(this.totalMoney, orderLineItem.totalMoney);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, quantity, basePriceMoney, totalMoney);
+    return Objects.hash(name, quantity, taxes, discounts, basePriceMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
   }
 
 
@@ -159,10 +239,13 @@ public class OrderLineItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLineItem {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
+    sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
+    sb.append("    totalTaxMoney: ").append(toIndentedString(totalTaxMoney)).append("\n");
+    sb.append("    totalDiscountMoney: ").append(toIndentedString(totalDiscountMoney)).append("\n");
     sb.append("    totalMoney: ").append(toIndentedString(totalMoney)).append("\n");
     sb.append("}");
     return sb.toString();
