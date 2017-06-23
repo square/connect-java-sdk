@@ -124,10 +124,11 @@ public class V1EmployeesApi {
    * Creates a timecard for an employee. Each timecard corresponds to a single shift.
    * Creates a timecard for an employee. Each timecard corresponds to a single shift.
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return V1Timecard
    * @throws ApiException if fails to make API call
    */
-  public V1Timecard createTimecard(V1Timecard body) throws ApiException {
+  public V1Timecard createTimecard(V1Timecard body, String batchToken) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -143,6 +144,7 @@ public class V1EmployeesApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     
@@ -256,11 +258,11 @@ public class V1EmployeesApi {
    * Provides summary information for all of a business&#39;s employee roles.
    * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
    * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
-   * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1EmployeeRole&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1EmployeeRole> listEmployeeRoles(String order, Integer limit, String cursor) throws ApiException {
+  public List<V1EmployeeRole> listEmployeeRoles(String order, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -273,7 +275,7 @@ public class V1EmployeesApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     
@@ -303,10 +305,11 @@ public class V1EmployeesApi {
    * @param status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). (optional)
    * @param externalId If provided, the endpoint returns only employee entities with the specified external_id. (optional)
    * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Employee&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1Employee> listEmployees(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit) throws ApiException {
+  public List<V1Employee> listEmployees(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -325,6 +328,7 @@ public class V1EmployeesApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_id", externalId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     

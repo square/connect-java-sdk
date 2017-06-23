@@ -136,10 +136,11 @@ public class V1TransactionsApi {
    * @param locationId The ID of the location to list online store orders for. (required)
    * @param order TThe order in which payments are listed in the response. (optional)
    * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Order&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1Order> listOrders(String locationId, String order, Integer limit) throws ApiException {
+  public List<V1Order> listOrders(String locationId, String order, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -158,6 +159,7 @@ public class V1TransactionsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     
@@ -184,10 +186,11 @@ public class V1TransactionsApi {
    * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
    * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Payment&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
+  public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -208,6 +211,7 @@ public class V1TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     
@@ -234,10 +238,11 @@ public class V1TransactionsApi {
    * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
    * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Refund&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1Refund> listRefunds(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
+  public List<V1Refund> listRefunds(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -258,6 +263,7 @@ public class V1TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     
@@ -285,10 +291,11 @@ public class V1TransactionsApi {
    * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
    * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
    * @param status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Settlement&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1Settlement> listSettlements(String locationId, String order, String beginTime, String endTime, Integer limit, String status) throws ApiException {
+  public List<V1Settlement> listSettlements(String locationId, String order, String beginTime, String endTime, Integer limit, String status, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -310,6 +317,7 @@ public class V1TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     

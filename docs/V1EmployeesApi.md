@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 <a name="createTimecard"></a>
 # **createTimecard**
-> V1Timecard createTimecard(body)
+> V1Timecard createTimecard(body, batchToken)
 
 Creates a timecard for an employee. Each timecard corresponds to a single shift.
 
@@ -153,8 +153,9 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
 V1Timecard body = new V1Timecard(); // V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    V1Timecard result = apiInstance.createTimecard(body);
+    V1Timecard result = apiInstance.createTimecard(body, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1EmployeesApi#createTimecard");
@@ -167,6 +168,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
@@ -295,7 +297,7 @@ Name | Type | Description  | Notes
 
 <a name="listEmployeeRoles"></a>
 # **listEmployeeRoles**
-> List&lt;V1EmployeeRole&gt; listEmployeeRoles(order, limit, cursor)
+> List&lt;V1EmployeeRole&gt; listEmployeeRoles(order, limit, batchToken)
 
 Provides summary information for all of a business&#39;s employee roles.
 
@@ -319,9 +321,9 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1EmployeesApi apiInstance = new V1EmployeesApi();
 String order = "order_example"; // String | The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
 Integer limit = 56; // Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-String cursor = "cursor_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1EmployeeRole> result = apiInstance.listEmployeeRoles(order, limit, cursor);
+    List<V1EmployeeRole> result = apiInstance.listEmployeeRoles(order, limit, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1EmployeesApi#listEmployeeRoles");
@@ -335,7 +337,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | **String**| The order in which employees are listed in the response, based on their created_at field.Default value: ASC  | [optional] [enum: ASC, DESC]
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional]
- **cursor** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
@@ -352,7 +354,7 @@ Name | Type | Description  | Notes
 
 <a name="listEmployees"></a>
 # **listEmployees**
-> List&lt;V1Employee&gt; listEmployees(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit)
+> List&lt;V1Employee&gt; listEmployees(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit, batchToken)
 
 Provides summary information for all of a business&#39;s employees.
 
@@ -382,8 +384,9 @@ String endCreatedAt = "endCreatedAt_example"; // String | If filtering results b
 String status = "status_example"; // String | If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE).
 String externalId = "externalId_example"; // String | If provided, the endpoint returns only employee entities with the specified external_id.
 Integer limit = 56; // Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1Employee> result = apiInstance.listEmployees(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit);
+    List<V1Employee> result = apiInstance.listEmployees(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1EmployeesApi#listEmployees");
@@ -403,6 +406,7 @@ Name | Type | Description  | Notes
  **status** | **String**| If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). | [optional] [enum: ACTIVE, INACTIVE]
  **externalId** | **String**| If provided, the endpoint returns only employee entities with the specified external_id. | [optional]
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional]
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
