@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 
 <a name="createItem"></a>
 # **createItem**
-> V1Item createItem(locationId, body)
+> V1Item createItem(locationId, body, batchToken)
 
 Creates an item and at least one variation for it.
 
@@ -408,8 +408,9 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to create an item for.
 V1Item body = new V1Item(); // V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    V1Item result = apiInstance.createItem(locationId, body);
+    V1Item result = apiInstance.createItem(locationId, body, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1ItemsApi#createItem");
@@ -423,6 +424,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to create an item for. |
  **body** | [**V1Item**](V1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
@@ -1325,7 +1327,7 @@ Name | Type | Description  | Notes
 
 <a name="listInventory"></a>
 # **listInventory**
-> List&lt;V1InventoryEntry&gt; listInventory(locationId, limit)
+> List&lt;V1InventoryEntry&gt; listInventory(locationId, limit, batchToken)
 
 Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
 
@@ -1349,8 +1351,9 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the item's associated location.
 Integer limit = 56; // Integer | The maximum number of inventory entries to return in a single response. This value cannot exceed 1000.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1InventoryEntry> result = apiInstance.listInventory(locationId, limit);
+    List<V1InventoryEntry> result = apiInstance.listInventory(locationId, limit, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1ItemsApi#listInventory");
@@ -1364,6 +1367,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the item&#39;s associated location. |
  **limit** | **Integer**| The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. | [optional]
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
