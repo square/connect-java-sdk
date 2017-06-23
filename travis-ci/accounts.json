@@ -1,0 +1,14 @@
+{
+    "US-Prod": {
+        "email": "dev-platform-acceptance-user+prod@squareup.com",
+        "access_token": "sq0atp-Ia7T-t2OF4bajl2C3dwmsQ",
+        "location_id": "1CERV69DFV387",
+        "application_id": "sq0idp-DftgZWQTjeXanU76Chwfkw"
+    },
+    "US-Prod-Sandbox": {
+        "email": "dev-platform-acceptance-user+prod@squareup.com",
+        "access_token": "sandbox-sq0atb-z-cIj7ZxR4xkk38892TCEA",
+        "location_id": "CBASEEffqN8pnVNXwoCL0dSGMVAgAQ",
+        "application_id": "sandbox-sq0idp-DftgZWQTjeXanU76Chwfkw"
+    }
+}
