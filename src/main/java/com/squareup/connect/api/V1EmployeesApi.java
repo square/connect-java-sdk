@@ -124,11 +124,10 @@ public class V1EmployeesApi {
    * Creates a timecard for an employee. Each timecard corresponds to a single shift.
    * Creates a timecard for an employee. Each timecard corresponds to a single shift.
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return V1Timecard
    * @throws ApiException if fails to make API call
    */
-  public V1Timecard createTimecard(V1Timecard body, String batchToken) throws ApiException {
+  public V1Timecard createTimecard(V1Timecard body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -144,7 +143,6 @@ public class V1EmployeesApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     
@@ -402,11 +400,11 @@ public class V1EmployeesApi {
    * @param endUpdatedAt If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
    * @param deleted If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. (optional)
    * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
-   * @param cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Timecard&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1Timecard> listTimecards(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String cursor) throws ApiException {
+  public List<V1Timecard> listTimecards(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -427,7 +425,7 @@ public class V1EmployeesApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_updated_at", endUpdatedAt));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "deleted", deleted));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     

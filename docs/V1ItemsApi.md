@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 
 <a name="createItem"></a>
 # **createItem**
-> V1Item createItem(locationId, body, batchToken)
+> V1Item createItem(locationId, body)
 
 Creates an item and at least one variation for it.
 
@@ -408,9 +408,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to create an item for.
 V1Item body = new V1Item(); // V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
-String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    V1Item result = apiInstance.createItem(locationId, body, batchToken);
+    V1Item result = apiInstance.createItem(locationId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1ItemsApi#createItem");
@@ -424,7 +423,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to create an item for. |
  **body** | [**V1Item**](V1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
- **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
@@ -1384,7 +1382,7 @@ Name | Type | Description  | Notes
 
 <a name="listItems"></a>
 # **listItems**
-> List&lt;V1Item&gt; listItems(locationId)
+> List&lt;V1Item&gt; listItems(locationId, batchToken)
 
 Provides summary information for all of a location&#39;s items.
 
@@ -1407,8 +1405,9 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to list items for.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1Item> result = apiInstance.listItems(locationId);
+    List<V1Item> result = apiInstance.listItems(locationId, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1ItemsApi#listItems");
@@ -1421,6 +1420,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to list items for. |
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 

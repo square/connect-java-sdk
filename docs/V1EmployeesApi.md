@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 <a name="createTimecard"></a>
 # **createTimecard**
-> V1Timecard createTimecard(body, batchToken)
+> V1Timecard createTimecard(body)
 
 Creates a timecard for an employee. Each timecard corresponds to a single shift.
 
@@ -153,9 +153,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
 V1Timecard body = new V1Timecard(); // V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
-String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    V1Timecard result = apiInstance.createTimecard(body, batchToken);
+    V1Timecard result = apiInstance.createTimecard(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1EmployeesApi#createTimecard");
@@ -168,7 +167,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
- **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
@@ -476,7 +474,7 @@ Name | Type | Description  | Notes
 
 <a name="listTimecards"></a>
 # **listTimecards**
-> List&lt;V1Timecard&gt; listTimecards(order, employeeId, beginClockinTime, endClockinTime, beginClockoutTime, endClockoutTime, beginUpdatedAt, endUpdatedAt, deleted, limit, cursor)
+> List&lt;V1Timecard&gt; listTimecards(order, employeeId, beginClockinTime, endClockinTime, beginClockoutTime, endClockoutTime, beginUpdatedAt, endUpdatedAt, deleted, limit, batchToken)
 
 Provides summary information for all of a business&#39;s employee timecards.
 
@@ -508,9 +506,9 @@ String beginUpdatedAt = "beginUpdatedAt_example"; // String | If filtering resul
 String endUpdatedAt = "endUpdatedAt_example"; // String | If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format.
 Boolean deleted = true; // Boolean | If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don't provide this parameter, both valid and deleted timecards are returned.
 Integer limit = 56; // Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-String cursor = "cursor_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1Timecard> result = apiInstance.listTimecards(order, employeeId, beginClockinTime, endClockinTime, beginClockoutTime, endClockoutTime, beginUpdatedAt, endUpdatedAt, deleted, limit, cursor);
+    List<V1Timecard> result = apiInstance.listTimecards(order, employeeId, beginClockinTime, endClockinTime, beginClockoutTime, endClockoutTime, beginUpdatedAt, endUpdatedAt, deleted, limit, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1EmployeesApi#listTimecards");
@@ -532,7 +530,7 @@ Name | Type | Description  | Notes
  **endUpdatedAt** | **String**| If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. | [optional]
  **deleted** | **Boolean**| If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. | [optional]
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional]
- **cursor** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
