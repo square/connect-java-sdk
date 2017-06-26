@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 <a name="createTimecard"></a>
 # **createTimecard**
-> V1Timecard createTimecard(body, batchToken)
+> V1Timecard createTimecard(body)
 
 Creates a timecard for an employee. Each timecard corresponds to a single shift.
 
@@ -153,9 +153,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
 V1Timecard body = new V1Timecard(); // V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
-String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    V1Timecard result = apiInstance.createTimecard(body, batchToken);
+    V1Timecard result = apiInstance.createTimecard(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1EmployeesApi#createTimecard");
@@ -168,7 +167,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
- **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 

@@ -361,11 +361,10 @@ public class V1ItemsApi {
    * Creates an item and at least one variation for it.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
-   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return V1Item
    * @throws ApiException if fails to make API call
    */
-  public V1Item createItem(String locationId, V1Item body, String batchToken) throws ApiException {
+  public V1Item createItem(String locationId, V1Item body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -387,7 +386,6 @@ public class V1ItemsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     
@@ -1247,10 +1245,11 @@ public class V1ItemsApi {
    * Provides summary information for all of a location&#39;s items.
    * Provides summary information for all of a location&#39;s items.
    * @param locationId The ID of the location to list items for. (required)
+   * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Item&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1Item> listItems(String locationId) throws ApiException {
+  public List<V1Item> listItems(String locationId, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1267,6 +1266,7 @@ public class V1ItemsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
     
