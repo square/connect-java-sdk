@@ -72,7 +72,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the item's associated location.
 String variationId = "variationId_example"; // String | The ID of the variation to adjust inventory information for.
-V1AdjustInventoryRequest body = new V1AdjustInventoryRequest(); // V1AdjustInventoryRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1AdjustInventoryRequest body = new v1AdjustInventoryRequest(); // V1AdjustInventoryRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1InventoryEntry result = apiInstance.adjustInventory(locationId, variationId, body);
     System.out.println(result);
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the item&#39;s associated location. |
  **variationId** | **String**| The ID of the variation to adjust inventory information for. |
- **body** | [**V1AdjustInventoryRequest**](V1AdjustInventoryRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1AdjustInventoryRequest**](v1AdjustInventoryRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -242,7 +242,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to create an item for.
-V1Category body = new V1Category(); // V1Category | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Category body = new v1Category(); // V1Category | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Category result = apiInstance.createCategory(locationId, body);
     System.out.println(result);
@@ -257,7 +257,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to create an item for. |
- **body** | [**V1Category**](V1Category.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Category**](v1Category.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -297,7 +297,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to create an item for.
-V1Discount body = new V1Discount(); // V1Discount | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Discount body = new v1Discount(); // V1Discount | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Discount result = apiInstance.createDiscount(locationId, body);
     System.out.println(result);
@@ -312,7 +312,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to create an item for. |
- **body** | [**V1Discount**](V1Discount.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Discount**](v1Discount.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -352,7 +352,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to create a fee for.
-V1Fee body = new V1Fee(); // V1Fee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Fee body = new v1Fee(); // V1Fee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Fee result = apiInstance.createFee(locationId, body);
     System.out.println(result);
@@ -367,7 +367,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to create a fee for. |
- **body** | [**V1Fee**](V1Fee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Fee**](v1Fee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -407,7 +407,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to create an item for.
-V1Item body = new V1Item(); // V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Item body = new v1Item(); // V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Item result = apiInstance.createItem(locationId, body);
     System.out.println(result);
@@ -422,7 +422,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to create an item for. |
- **body** | [**V1Item**](V1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Item**](v1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -462,7 +462,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to create a modifier list for.
-V1ModifierList body = new V1ModifierList(); // V1ModifierList | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1ModifierList body = new v1ModifierList(); // V1ModifierList | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1ModifierList result = apiInstance.createModifierList(locationId, body);
     System.out.println(result);
@@ -477,7 +477,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to create a modifier list for. |
- **body** | [**V1ModifierList**](V1ModifierList.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1ModifierList**](v1ModifierList.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -518,7 +518,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the item's associated location.
 String modifierListId = "modifierListId_example"; // String | The ID of the modifier list to edit.
-V1ModifierOption body = new V1ModifierOption(); // V1ModifierOption | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1ModifierOption body = new v1ModifierOption(); // V1ModifierOption | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1ModifierOption result = apiInstance.createModifierOption(locationId, modifierListId, body);
     System.out.println(result);
@@ -534,7 +534,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the item&#39;s associated location. |
  **modifierListId** | **String**| The ID of the modifier list to edit. |
- **body** | [**V1ModifierOption**](V1ModifierOption.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1ModifierOption**](v1ModifierOption.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -574,7 +574,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the location to create an item for.
-V1Page body = new V1Page(); // V1Page | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Page body = new v1Page(); // V1Page | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Page result = apiInstance.createPage(locationId, body);
     System.out.println(result);
@@ -589,7 +589,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the location to create an item for. |
- **body** | [**V1Page**](V1Page.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Page**](v1Page.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -630,7 +630,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the item's associated location.
 String itemId = "itemId_example"; // String | The item's ID.
-V1Variation body = new V1Variation(); // V1Variation | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Variation body = new v1Variation(); // V1Variation | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Variation result = apiInstance.createVariation(locationId, itemId, body);
     System.out.println(result);
@@ -646,7 +646,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the item&#39;s associated location. |
  **itemId** | **String**| The item&#39;s ID. |
- **body** | [**V1Variation**](V1Variation.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Variation**](v1Variation.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -1787,7 +1787,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the category's associated location.
 String categoryId = "categoryId_example"; // String | The ID of the category to edit.
-V1Category body = new V1Category(); // V1Category | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Category body = new v1Category(); // V1Category | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Category result = apiInstance.updateCategory(locationId, categoryId, body);
     System.out.println(result);
@@ -1803,7 +1803,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the category&#39;s associated location. |
  **categoryId** | **String**| The ID of the category to edit. |
- **body** | [**V1Category**](V1Category.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Category**](v1Category.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -1844,7 +1844,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the category's associated location.
 String discountId = "discountId_example"; // String | The ID of the discount to edit.
-V1Discount body = new V1Discount(); // V1Discount | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Discount body = new v1Discount(); // V1Discount | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Discount result = apiInstance.updateDiscount(locationId, discountId, body);
     System.out.println(result);
@@ -1860,7 +1860,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the category&#39;s associated location. |
  **discountId** | **String**| The ID of the discount to edit. |
- **body** | [**V1Discount**](V1Discount.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Discount**](v1Discount.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -1901,7 +1901,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the fee's associated location.
 String feeId = "feeId_example"; // String | The ID of the fee to edit.
-V1Fee body = new V1Fee(); // V1Fee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Fee body = new v1Fee(); // V1Fee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Fee result = apiInstance.updateFee(locationId, feeId, body);
     System.out.println(result);
@@ -1917,7 +1917,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the fee&#39;s associated location. |
  **feeId** | **String**| The ID of the fee to edit. |
- **body** | [**V1Fee**](V1Fee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Fee**](v1Fee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -1958,7 +1958,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the item's associated location.
 String itemId = "itemId_example"; // String | The ID of the item to modify.
-V1Item body = new V1Item(); // V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Item body = new v1Item(); // V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Item result = apiInstance.updateItem(locationId, itemId, body);
     System.out.println(result);
@@ -1974,7 +1974,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the item&#39;s associated location. |
  **itemId** | **String**| The ID of the item to modify. |
- **body** | [**V1Item**](V1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Item**](v1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -2015,7 +2015,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the item's associated location.
 String modifierListId = "modifierListId_example"; // String | The ID of the modifier list to edit.
-V1UpdateModifierListRequest body = new V1UpdateModifierListRequest(); // V1UpdateModifierListRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1UpdateModifierListRequest body = new v1UpdateModifierListRequest(); // V1UpdateModifierListRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1ModifierList result = apiInstance.updateModifierList(locationId, modifierListId, body);
     System.out.println(result);
@@ -2031,7 +2031,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the item&#39;s associated location. |
  **modifierListId** | **String**| The ID of the modifier list to edit. |
- **body** | [**V1UpdateModifierListRequest**](V1UpdateModifierListRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1UpdateModifierListRequest**](v1UpdateModifierListRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -2073,7 +2073,7 @@ V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the item's associated location.
 String modifierListId = "modifierListId_example"; // String | The ID of the modifier list to edit.
 String modifierOptionId = "modifierOptionId_example"; // String | The ID of the modifier list to edit.
-V1ModifierOption body = new V1ModifierOption(); // V1ModifierOption | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1ModifierOption body = new v1ModifierOption(); // V1ModifierOption | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1ModifierOption result = apiInstance.updateModifierOption(locationId, modifierListId, modifierOptionId, body);
     System.out.println(result);
@@ -2090,7 +2090,7 @@ Name | Type | Description  | Notes
  **locationId** | **String**| The ID of the item&#39;s associated location. |
  **modifierListId** | **String**| The ID of the modifier list to edit. |
  **modifierOptionId** | **String**| The ID of the modifier list to edit. |
- **body** | [**V1ModifierOption**](V1ModifierOption.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1ModifierOption**](v1ModifierOption.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -2131,7 +2131,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the Favorites page's associated location
 String pageId = "pageId_example"; // String | The ID of the page to modify.
-V1Page body = new V1Page(); // V1Page | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Page body = new v1Page(); // V1Page | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Page result = apiInstance.updatePage(locationId, pageId, body);
     System.out.println(result);
@@ -2147,7 +2147,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the Favorites page&#39;s associated location |
  **pageId** | **String**| The ID of the page to modify. |
- **body** | [**V1Page**](V1Page.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Page**](v1Page.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -2188,7 +2188,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the Favorites page's associated location.
 String pageId = "pageId_example"; // String | The ID of the page the cell belongs to.
-V1PageCell body = new V1PageCell(); // V1PageCell | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1PageCell body = new v1PageCell(); // V1PageCell | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Page result = apiInstance.updatePageCell(locationId, pageId, body);
     System.out.println(result);
@@ -2204,7 +2204,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the Favorites page&#39;s associated location. |
  **pageId** | **String**| The ID of the page the cell belongs to. |
- **body** | [**V1PageCell**](V1PageCell.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1PageCell**](v1PageCell.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -2246,7 +2246,7 @@ V1ItemsApi apiInstance = new V1ItemsApi();
 String locationId = "locationId_example"; // String | The ID of the item's associated location.
 String itemId = "itemId_example"; // String | The ID of the item to modify.
 String variationId = "variationId_example"; // String | The ID of the variation to modify.
-V1Variation body = new V1Variation(); // V1Variation | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Variation body = new v1Variation(); // V1Variation | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Variation result = apiInstance.updateVariation(locationId, itemId, variationId, body);
     System.out.println(result);
@@ -2263,7 +2263,7 @@ Name | Type | Description  | Notes
  **locationId** | **String**| The ID of the item&#39;s associated location. |
  **itemId** | **String**| The ID of the item to modify. |
  **variationId** | **String**| The ID of the variation to modify. |
- **body** | [**V1Variation**](V1Variation.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Variation**](v1Variation.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
