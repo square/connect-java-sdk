@@ -4,7 +4,6 @@ import com.squareup.connect.ApiException;
 import com.squareup.connect.ApiClient;
 import com.squareup.connect.Configuration;
 import com.squareup.connect.Pair;
-import com.squareup.connect.CompleteResponse;
 
 import javax.ws.rs.core.GenericType;
 
@@ -83,7 +82,7 @@ public class CustomersApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CreateCustomerResponse> localVarReturnType = new GenericType<CreateCustomerResponse>() {};
-    CompleteResponse<CreateCustomerResponse> completeResponse = (CompleteResponse<CreateCustomerResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<CreateCustomerResponse>) completeResponse = (CompleteResponse<CreateCustomerResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -174,7 +173,7 @@ public class CustomersApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CreateCustomerCardResponse> localVarReturnType = new GenericType<CreateCustomerCardResponse>() {};
-    CompleteResponse<CreateCustomerCardResponse> completeResponse = (CompleteResponse<CreateCustomerCardResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<CreateCustomerCardResponse>) completeResponse = (CompleteResponse<CreateCustomerCardResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -266,7 +265,7 @@ public class CustomersApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<DeleteCustomerResponse> localVarReturnType = new GenericType<DeleteCustomerResponse>() {};
-    CompleteResponse<DeleteCustomerResponse> completeResponse = (CompleteResponse<DeleteCustomerResponse>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<DeleteCustomerResponse>) completeResponse = (CompleteResponse<DeleteCustomerResponse>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -359,7 +358,7 @@ public class CustomersApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<DeleteCustomerCardResponse> localVarReturnType = new GenericType<DeleteCustomerCardResponse>() {};
-    CompleteResponse<DeleteCustomerCardResponse> completeResponse = (CompleteResponse<DeleteCustomerCardResponse>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<DeleteCustomerCardResponse>) completeResponse = (CompleteResponse<DeleteCustomerCardResponse>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -447,7 +446,7 @@ public class CustomersApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<ListCustomersResponse> localVarReturnType = new GenericType<ListCustomersResponse>() {};
-    CompleteResponse<ListCustomersResponse> completeResponse = (CompleteResponse<ListCustomersResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<ListCustomersResponse>) completeResponse = (CompleteResponse<ListCustomersResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -528,7 +527,7 @@ public class CustomersApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<RetrieveCustomerResponse> localVarReturnType = new GenericType<RetrieveCustomerResponse>() {};
-    CompleteResponse<RetrieveCustomerResponse> completeResponse = (CompleteResponse<RetrieveCustomerResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<RetrieveCustomerResponse>) completeResponse = (CompleteResponse<RetrieveCustomerResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -620,7 +619,7 @@ public class CustomersApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<UpdateCustomerResponse> localVarReturnType = new GenericType<UpdateCustomerResponse>() {};
-    CompleteResponse<UpdateCustomerResponse> completeResponse = (CompleteResponse<UpdateCustomerResponse>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<UpdateCustomerResponse>) completeResponse = (CompleteResponse<UpdateCustomerResponse>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 

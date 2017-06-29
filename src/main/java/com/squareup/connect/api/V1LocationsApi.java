@@ -4,7 +4,6 @@ import com.squareup.connect.ApiException;
 import com.squareup.connect.ApiClient;
 import com.squareup.connect.Configuration;
 import com.squareup.connect.Pair;
-import com.squareup.connect.CompleteResponse;
 
 import javax.ws.rs.core.GenericType;
 
@@ -68,7 +67,7 @@ public class V1LocationsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Merchant>> localVarReturnType = new GenericType<List<V1Merchant>>() {};
-    CompleteResponse<List<V1Merchant>> completeResponse = (CompleteResponse<List<V1Merchant>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<List<V1Merchant>>) completeResponse = (CompleteResponse<List<V1Merchant>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -140,7 +139,7 @@ public class V1LocationsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Merchant> localVarReturnType = new GenericType<V1Merchant>() {};
-    CompleteResponse<V1Merchant> completeResponse = (CompleteResponse<V1Merchant>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<V1Merchant>) completeResponse = (CompleteResponse<V1Merchant>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 

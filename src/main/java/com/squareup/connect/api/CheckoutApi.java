@@ -4,7 +4,6 @@ import com.squareup.connect.ApiException;
 import com.squareup.connect.ApiClient;
 import com.squareup.connect.Configuration;
 import com.squareup.connect.Pair;
-import com.squareup.connect.CompleteResponse;
 
 import javax.ws.rs.core.GenericType;
 
@@ -82,7 +81,7 @@ public class CheckoutApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CreateCheckoutResponse> localVarReturnType = new GenericType<CreateCheckoutResponse>() {};
-    CompleteResponse<CreateCheckoutResponse> completeResponse = (CompleteResponse<CreateCheckoutResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    (CompleteResponse<CreateCheckoutResponse>) completeResponse = (CompleteResponse<CreateCheckoutResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
