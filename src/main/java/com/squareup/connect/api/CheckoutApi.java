@@ -82,7 +82,7 @@ public class CheckoutApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<CreateCheckoutResponse> localVarReturnType = new GenericType<CreateCheckoutResponse>() {};
-    (CompleteResponse<CreateCheckoutResponse>) completeResponse = (CompleteResponse<CreateCheckoutResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<CreateCheckoutResponse> completeResponse = (CompleteResponse<CreateCheckoutResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
