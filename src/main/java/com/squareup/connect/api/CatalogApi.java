@@ -4,6 +4,7 @@ import com.squareup.connect.ApiException;
 import com.squareup.connect.ApiClient;
 import com.squareup.connect.Configuration;
 import com.squareup.connect.Pair;
+import com.squareup.connect.CompleteResponse;
 
 import javax.ws.rs.core.GenericType;
 
