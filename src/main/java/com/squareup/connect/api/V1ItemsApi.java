@@ -99,7 +99,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1InventoryEntry> localVarReturnType = new GenericType<V1InventoryEntry>() {};
-    (CompleteResponse<V1InventoryEntry>) completeResponse = (CompleteResponse<V1InventoryEntry>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1InventoryEntry> completeResponse = (CompleteResponse<V1InventoryEntry>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -212,7 +212,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    (CompleteResponse<V1Item>) completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Item> completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -326,7 +326,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    (CompleteResponse<V1Item>) completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Item> completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -432,7 +432,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Category> localVarReturnType = new GenericType<V1Category>() {};
-    (CompleteResponse<V1Category>) completeResponse = (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Category> completeResponse = (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -530,7 +530,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Discount> localVarReturnType = new GenericType<V1Discount>() {};
-    (CompleteResponse<V1Discount>) completeResponse = (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Discount> completeResponse = (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -628,7 +628,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Fee> localVarReturnType = new GenericType<V1Fee>() {};
-    (CompleteResponse<V1Fee>) completeResponse = (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Fee> completeResponse = (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -726,7 +726,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    (CompleteResponse<V1Item>) completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Item> completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -824,7 +824,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1ModifierList> localVarReturnType = new GenericType<V1ModifierList>() {};
-    (CompleteResponse<V1ModifierList>) completeResponse = (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1ModifierList> completeResponse = (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -929,7 +929,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1ModifierOption> localVarReturnType = new GenericType<V1ModifierOption>() {};
-    (CompleteResponse<V1ModifierOption>) completeResponse = (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1ModifierOption> completeResponse = (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1034,7 +1034,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    (CompleteResponse<V1Page>) completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Page> completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1139,7 +1139,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Variation> localVarReturnType = new GenericType<V1Variation>() {};
-    (CompleteResponse<V1Variation>) completeResponse = (CompleteResponse<V1Variation>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Variation> completeResponse = (CompleteResponse<V1Variation>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1245,7 +1245,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Category> localVarReturnType = new GenericType<V1Category>() {};
-    (CompleteResponse<V1Category>) completeResponse = (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Category> completeResponse = (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1345,7 +1345,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Discount> localVarReturnType = new GenericType<V1Discount>() {};
-    (CompleteResponse<V1Discount>) completeResponse = (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Discount> completeResponse = (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1445,7 +1445,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Fee> localVarReturnType = new GenericType<V1Fee>() {};
-    (CompleteResponse<V1Fee>) completeResponse = (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Fee> completeResponse = (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1545,7 +1545,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    (CompleteResponse<V1Item>) completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Item> completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1645,7 +1645,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1ModifierList> localVarReturnType = new GenericType<V1ModifierList>() {};
-    (CompleteResponse<V1ModifierList>) completeResponse = (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1ModifierList> completeResponse = (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1752,7 +1752,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1ModifierOption> localVarReturnType = new GenericType<V1ModifierOption>() {};
-    (CompleteResponse<V1ModifierOption>) completeResponse = (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1ModifierOption> completeResponse = (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1859,7 +1859,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    (CompleteResponse<V1Page>) completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Page> completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1963,7 +1963,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    (CompleteResponse<V1Page>) completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Page> completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2074,7 +2074,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Variation> localVarReturnType = new GenericType<V1Variation>() {};
-    (CompleteResponse<V1Variation>) completeResponse = (CompleteResponse<V1Variation>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Variation> completeResponse = (CompleteResponse<V1Variation>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2174,7 +2174,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Category>> localVarReturnType = new GenericType<List<V1Category>>() {};
-    (CompleteResponse<List<V1Category>>) completeResponse = (CompleteResponse<List<V1Category>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1Category>> completeResponse = (CompleteResponse<List<V1Category>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2260,7 +2260,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Discount>> localVarReturnType = new GenericType<List<V1Discount>>() {};
-    (CompleteResponse<List<V1Discount>>) completeResponse = (CompleteResponse<List<V1Discount>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1Discount>> completeResponse = (CompleteResponse<List<V1Discount>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2346,7 +2346,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Fee>> localVarReturnType = new GenericType<List<V1Fee>>() {};
-    (CompleteResponse<List<V1Fee>>) completeResponse = (CompleteResponse<List<V1Fee>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1Fee>> completeResponse = (CompleteResponse<List<V1Fee>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2436,7 +2436,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1InventoryEntry>> localVarReturnType = new GenericType<List<V1InventoryEntry>>() {};
-    (CompleteResponse<List<V1InventoryEntry>>) completeResponse = (CompleteResponse<List<V1InventoryEntry>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1InventoryEntry>> completeResponse = (CompleteResponse<List<V1InventoryEntry>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2528,7 +2528,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Item>> localVarReturnType = new GenericType<List<V1Item>>() {};
-    (CompleteResponse<List<V1Item>>) completeResponse = (CompleteResponse<List<V1Item>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1Item>> completeResponse = (CompleteResponse<List<V1Item>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2616,7 +2616,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1ModifierList>> localVarReturnType = new GenericType<List<V1ModifierList>>() {};
-    (CompleteResponse<List<V1ModifierList>>) completeResponse = (CompleteResponse<List<V1ModifierList>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1ModifierList>> completeResponse = (CompleteResponse<List<V1ModifierList>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2702,7 +2702,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Page>> localVarReturnType = new GenericType<List<V1Page>>() {};
-    (CompleteResponse<List<V1Page>>) completeResponse = (CompleteResponse<List<V1Page>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1Page>> completeResponse = (CompleteResponse<List<V1Page>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2802,7 +2802,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    (CompleteResponse<V1Item>) completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Item> completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -2916,7 +2916,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    (CompleteResponse<V1Item>) completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Item> completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3023,7 +3023,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    (CompleteResponse<V1Item>) completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Item> completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3123,7 +3123,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1ModifierList> localVarReturnType = new GenericType<V1ModifierList>() {};
-    (CompleteResponse<V1ModifierList>) completeResponse = (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1ModifierList> completeResponse = (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3229,7 +3229,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Category> localVarReturnType = new GenericType<V1Category>() {};
-    (CompleteResponse<V1Category>) completeResponse = (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Category> completeResponse = (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3341,7 +3341,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Discount> localVarReturnType = new GenericType<V1Discount>() {};
-    (CompleteResponse<V1Discount>) completeResponse = (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Discount> completeResponse = (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3453,7 +3453,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Fee> localVarReturnType = new GenericType<V1Fee>() {};
-    (CompleteResponse<V1Fee>) completeResponse = (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Fee> completeResponse = (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3565,7 +3565,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Item> localVarReturnType = new GenericType<V1Item>() {};
-    (CompleteResponse<V1Item>) completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Item> completeResponse = (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3677,7 +3677,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1ModifierList> localVarReturnType = new GenericType<V1ModifierList>() {};
-    (CompleteResponse<V1ModifierList>) completeResponse = (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1ModifierList> completeResponse = (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3796,7 +3796,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1ModifierOption> localVarReturnType = new GenericType<V1ModifierOption>() {};
-    (CompleteResponse<V1ModifierOption>) completeResponse = (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1ModifierOption> completeResponse = (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -3915,7 +3915,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    (CompleteResponse<V1Page>) completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Page> completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -4027,7 +4027,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Page> localVarReturnType = new GenericType<V1Page>() {};
-    (CompleteResponse<V1Page>) completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Page> completeResponse = (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -4146,7 +4146,7 @@ public class V1ItemsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Variation> localVarReturnType = new GenericType<V1Variation>() {};
-    (CompleteResponse<V1Variation>) completeResponse = (CompleteResponse<V1Variation>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Variation> completeResponse = (CompleteResponse<V1Variation>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 

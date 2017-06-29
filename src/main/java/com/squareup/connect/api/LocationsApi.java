@@ -68,7 +68,7 @@ public class LocationsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<ListLocationsResponse> localVarReturnType = new GenericType<ListLocationsResponse>() {};
-    (CompleteResponse<ListLocationsResponse>) completeResponse = (CompleteResponse<ListLocationsResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<ListLocationsResponse> completeResponse = (CompleteResponse<ListLocationsResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 

@@ -78,7 +78,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Employee> localVarReturnType = new GenericType<V1Employee>() {};
-    (CompleteResponse<V1Employee>) completeResponse = (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Employee> completeResponse = (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -162,7 +162,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1EmployeeRole> localVarReturnType = new GenericType<V1EmployeeRole>() {};
-    (CompleteResponse<V1EmployeeRole>) completeResponse = (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1EmployeeRole> completeResponse = (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -246,7 +246,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Timecard> localVarReturnType = new GenericType<V1Timecard>() {};
-    (CompleteResponse<V1Timecard>) completeResponse = (CompleteResponse<V1Timecard>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Timecard> completeResponse = (CompleteResponse<V1Timecard>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -331,7 +331,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    (CompleteResponse<Object>) completeResponse = (CompleteResponse<Object>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<Object> completeResponse = (CompleteResponse<Object>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -423,7 +423,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1CashDrawerShift>> localVarReturnType = new GenericType<List<V1CashDrawerShift>>() {};
-    (CompleteResponse<List<V1CashDrawerShift>>) completeResponse = (CompleteResponse<List<V1CashDrawerShift>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1CashDrawerShift>> completeResponse = (CompleteResponse<List<V1CashDrawerShift>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -514,7 +514,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1EmployeeRole>> localVarReturnType = new GenericType<List<V1EmployeeRole>>() {};
-    (CompleteResponse<List<V1EmployeeRole>>) completeResponse = (CompleteResponse<List<V1EmployeeRole>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1EmployeeRole>> completeResponse = (CompleteResponse<List<V1EmployeeRole>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -610,7 +610,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Employee>> localVarReturnType = new GenericType<List<V1Employee>>() {};
-    (CompleteResponse<List<V1Employee>>) completeResponse = (CompleteResponse<List<V1Employee>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1Employee>> completeResponse = (CompleteResponse<List<V1Employee>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -707,7 +707,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1TimecardEvent>> localVarReturnType = new GenericType<List<V1TimecardEvent>>() {};
-    (CompleteResponse<List<V1TimecardEvent>>) completeResponse = (CompleteResponse<List<V1TimecardEvent>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1TimecardEvent>> completeResponse = (CompleteResponse<List<V1TimecardEvent>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -808,7 +808,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Timecard>> localVarReturnType = new GenericType<List<V1Timecard>>() {};
-    (CompleteResponse<List<V1Timecard>>) completeResponse = (CompleteResponse<List<V1Timecard>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1Timecard>> completeResponse = (CompleteResponse<List<V1Timecard>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -916,7 +916,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1CashDrawerShift> localVarReturnType = new GenericType<V1CashDrawerShift>() {};
-    (CompleteResponse<V1CashDrawerShift>) completeResponse = (CompleteResponse<V1CashDrawerShift>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1CashDrawerShift> completeResponse = (CompleteResponse<V1CashDrawerShift>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1009,7 +1009,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Employee> localVarReturnType = new GenericType<V1Employee>() {};
-    (CompleteResponse<V1Employee>) completeResponse = (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Employee> completeResponse = (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1095,7 +1095,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1EmployeeRole> localVarReturnType = new GenericType<V1EmployeeRole>() {};
-    (CompleteResponse<V1EmployeeRole>) completeResponse = (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1EmployeeRole> completeResponse = (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1181,7 +1181,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Timecard> localVarReturnType = new GenericType<V1Timecard>() {};
-    (CompleteResponse<V1Timecard>) completeResponse = (CompleteResponse<V1Timecard>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Timecard> completeResponse = (CompleteResponse<V1Timecard>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1273,7 +1273,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Employee> localVarReturnType = new GenericType<V1Employee>() {};
-    (CompleteResponse<V1Employee>) completeResponse = (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Employee> completeResponse = (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1371,7 +1371,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1EmployeeRole> localVarReturnType = new GenericType<V1EmployeeRole>() {};
-    (CompleteResponse<V1EmployeeRole>) completeResponse = (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1EmployeeRole> completeResponse = (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
@@ -1469,7 +1469,7 @@ public class V1EmployeesApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Timecard> localVarReturnType = new GenericType<V1Timecard>() {};
-    (CompleteResponse<V1Timecard>) completeResponse = (CompleteResponse<V1Timecard>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Timecard> completeResponse = (CompleteResponse<V1Timecard>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     return completeResponse.getData();
       }
 
