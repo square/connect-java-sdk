@@ -16,6 +16,7 @@ package com.squareup.connect.models;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.V1Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -33,6 +34,9 @@ public class V1Variation {
 
   @JsonProperty("item_id")
   private String itemId = null;
+
+  @JsonProperty("ordinal")
+  private Integer ordinal = null;
 
   /**
    * Indicates whether the item variation's price is fixed or determined at the time of sale.
@@ -177,6 +181,24 @@ public class V1Variation {
     this.itemId = itemId;
   }
 
+  public V1Variation ordinal(Integer ordinal) {
+    this.ordinal = ordinal;
+    return this;
+  }
+
+   /**
+   * Indicates the variation's list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order
+   * @return ordinal
+  **/
+  @ApiModelProperty(value = "Indicates the variation's list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order")
+  public Integer getOrdinal() {
+    return ordinal;
+  }
+
+  public void setOrdinal(Integer ordinal) {
+    this.ordinal = ordinal;
+  }
+
   public V1Variation pricingType(PricingTypeEnum pricingType) {
     this.pricingType = pricingType;
     return this;
@@ -316,6 +338,7 @@ public class V1Variation {
     return Objects.equals(this.id, v1Variation.id) &&
         Objects.equals(this.name, v1Variation.name) &&
         Objects.equals(this.itemId, v1Variation.itemId) &&
+        Objects.equals(this.ordinal, v1Variation.ordinal) &&
         Objects.equals(this.pricingType, v1Variation.pricingType) &&
         Objects.equals(this.priceMoney, v1Variation.priceMoney) &&
         Objects.equals(this.sku, v1Variation.sku) &&
@@ -327,7 +350,7 @@ public class V1Variation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, itemId, pricingType, priceMoney, sku, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData);
+    return Objects.hash(id, name, itemId, ordinal, pricingType, priceMoney, sku, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData);
   }
 
 
@@ -339,6 +362,7 @@ public class V1Variation {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    ordinal: ").append(toIndentedString(ordinal)).append("\n");
     sb.append("    pricingType: ").append(toIndentedString(pricingType)).append("\n");
     sb.append("    priceMoney: ").append(toIndentedString(priceMoney)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
