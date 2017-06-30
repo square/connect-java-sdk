@@ -46,7 +46,7 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
-V1Employee body = new v1Employee(); // V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Employee body = new V1Employee(); // V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Employee result = apiInstance.createEmployee(body);
     System.out.println(result);
@@ -60,7 +60,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**V1Employee**](v1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Employee**](V1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -99,7 +99,7 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
-V1EmployeeRole employeeRole = new v1EmployeeRole(); // V1EmployeeRole | An EmployeeRole object with a name and permissions, and an optional owner flag.
+V1EmployeeRole employeeRole = new V1EmployeeRole(); // V1EmployeeRole | An EmployeeRole object with a name and permissions, and an optional owner flag.
 try {
     V1EmployeeRole result = apiInstance.createEmployeeRole(employeeRole);
     System.out.println(result);
@@ -113,7 +113,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **employeeRole** | [**V1EmployeeRole**](v1EmployeeRole.md)| An EmployeeRole object with a name and permissions, and an optional owner flag. |
+ **employeeRole** | [**V1EmployeeRole**](V1EmployeeRole.md)| An EmployeeRole object with a name and permissions, and an optional owner flag. |
 
 ### Return type
 
@@ -152,7 +152,7 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
-V1Timecard body = new v1Timecard(); // V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Timecard body = new V1Timecard(); // V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Timecard result = apiInstance.createTimecard(body);
     System.out.println(result);
@@ -166,7 +166,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**V1Timecard**](v1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -780,7 +780,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
 String employeeId = "employeeId_example"; // String | The ID of the role to modify.
-V1Employee body = new v1Employee(); // V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Employee body = new V1Employee(); // V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Employee result = apiInstance.updateEmployee(employeeId, body);
     System.out.println(result);
@@ -795,7 +795,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **employeeId** | **String**| The ID of the role to modify. |
- **body** | [**V1Employee**](v1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Employee**](V1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -835,7 +835,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
 String roleId = "roleId_example"; // String | The ID of the role to modify.
-V1EmployeeRole body = new v1EmployeeRole(); // V1EmployeeRole | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1EmployeeRole body = new V1EmployeeRole(); // V1EmployeeRole | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1EmployeeRole result = apiInstance.updateEmployeeRole(roleId, body);
     System.out.println(result);
@@ -850,7 +850,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **roleId** | **String**| The ID of the role to modify. |
- **body** | [**V1EmployeeRole**](v1EmployeeRole.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1EmployeeRole**](V1EmployeeRole.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
@@ -890,7 +890,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1EmployeesApi apiInstance = new V1EmployeesApi();
 String timecardId = "timecardId_example"; // String | TThe ID of the timecard to modify.
-V1Timecard body = new v1Timecard(); // V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+V1Timecard body = new V1Timecard(); // V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     V1Timecard result = apiInstance.updateTimecard(timecardId, body);
     System.out.println(result);
@@ -905,7 +905,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **timecardId** | **String**| TThe ID of the timecard to modify. |
- **body** | [**V1Timecard**](v1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+ **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
 
