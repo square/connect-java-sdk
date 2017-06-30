@@ -42,7 +42,7 @@ public class V1ItemsApiTest {
 
     private final V1ItemsApi api = new V1ItemsApi();
 
-    
+
     /**
      * Adjusts an item variation&#39;s current available inventory.
      *
@@ -60,7 +60,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
      *
@@ -78,7 +78,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
      *
@@ -96,7 +96,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates an item category.
      *
@@ -113,7 +113,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates a discount.
      *
@@ -130,7 +130,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates a fee (tax).
      *
@@ -147,7 +147,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates an item and at least one variation for it.
      *
@@ -164,7 +164,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates an item modifier list and at least one modifier option for it.
      *
@@ -181,7 +181,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates an item modifier option and adds it to a modifier list.
      *
@@ -199,7 +199,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates a Favorites page in Square Register.
      *
@@ -216,7 +216,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates an item variation for an existing item.
      *
@@ -234,7 +234,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes an existing item category.
      *
@@ -251,7 +251,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes an existing discount.
      *
@@ -268,7 +268,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes an existing fee (tax).
      *
@@ -285,7 +285,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes an existing item and all item variations associated with it.
      *
@@ -302,7 +302,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes an existing item modifier list and all modifier options associated with it.
      *
@@ -319,7 +319,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes an existing item modifier option from a modifier list.
      *
@@ -337,7 +337,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes an existing Favorites page and all of its cells.
      *
@@ -354,7 +354,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes a cell from a Favorites page in Square Register.
      *
@@ -373,7 +373,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes an existing item variation from an item.
      *
@@ -391,7 +391,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Lists all of a location&#39;s item categories.
      *
@@ -407,7 +407,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Lists all of a location&#39;s discounts.
      *
@@ -423,7 +423,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Lists all of a location&#39;s fees (taxes).
      *
@@ -439,7 +439,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
      *
@@ -452,11 +452,12 @@ public class V1ItemsApiTest {
     public void listInventoryTest() throws ApiException {
         String locationId = null;
         Integer limit = null;
-        List<V1InventoryEntry> response = api.listInventory(locationId, limit);
+        String batchToken = null;
+        List<V1InventoryEntry> response = api.listInventory(locationId, limit, batchToken);
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides summary information for all of a location&#39;s items.
      *
@@ -468,11 +469,12 @@ public class V1ItemsApiTest {
     @Test
     public void listItemsTest() throws ApiException {
         String locationId = null;
-        List<V1Item> response = api.listItems(locationId);
+        String batchToken = null;
+        List<V1Item> response = api.listItems(locationId, batchToken);
 
         // TODO: test validations
     }
-    
+
     /**
      * Lists all of a location&#39;s modifier lists.
      *
@@ -488,7 +490,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Lists all of a location&#39;s Favorites pages in Square Register.
      *
@@ -504,7 +506,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
      *
@@ -522,7 +524,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
      *
@@ -540,7 +542,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides the details for a single item, including associated modifier lists and fees.
      *
@@ -557,7 +559,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides the details for a single modifier list.
      *
@@ -574,7 +576,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the details of an existing item category.
      *
@@ -592,7 +594,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the details of an existing discount.
      *
@@ -610,7 +612,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the details of an existing fee (tax).
      *
@@ -628,7 +630,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the core details of an existing item.
      *
@@ -646,7 +648,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the details of an existing item modifier list.
      *
@@ -664,7 +666,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the details of an existing item modifier option.
      *
@@ -683,7 +685,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the details of a Favorites page in Square Register.
      *
@@ -701,7 +703,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies a cell of a Favorites page in Square Register.
      *
@@ -719,7 +721,7 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the details of an existing item variation.
      *
@@ -738,5 +740,5 @@ public class V1ItemsApiTest {
 
         // TODO: test validations
     }
-    
+
 }

@@ -37,7 +37,7 @@ public class V1TransactionsApiTest {
 
     private final V1TransactionsApi api = new V1TransactionsApi();
 
-    
+
     /**
      * Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
      *
@@ -54,7 +54,7 @@ public class V1TransactionsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
      *
@@ -70,7 +70,7 @@ public class V1TransactionsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides summary information for a merchant&#39;s online store orders.
      *
@@ -84,11 +84,12 @@ public class V1TransactionsApiTest {
         String locationId = null;
         String order = null;
         Integer limit = null;
-        List<V1Order> response = api.listOrders(locationId, order, limit);
+        String batchToken = null;
+        List<V1Order> response = api.listOrders(locationId, order, limit, batchToken);
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
      *
@@ -104,11 +105,12 @@ public class V1TransactionsApiTest {
         String beginTime = null;
         String endTime = null;
         Integer limit = null;
-        List<V1Payment> response = api.listPayments(locationId, order, beginTime, endTime, limit);
+        String batchToken = null;
+        List<V1Payment> response = api.listPayments(locationId, order, beginTime, endTime, limit, batchToken);
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
      *
@@ -124,15 +126,16 @@ public class V1TransactionsApiTest {
         String beginTime = null;
         String endTime = null;
         Integer limit = null;
-        List<V1Refund> response = api.listRefunds(locationId, order, beginTime, endTime, limit);
+        String batchToken = null;
+        List<V1Refund> response = api.listRefunds(locationId, order, beginTime, endTime, limit, batchToken);
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
      *
-     * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
+     * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -145,11 +148,12 @@ public class V1TransactionsApiTest {
         String endTime = null;
         Integer limit = null;
         String status = null;
-        List<V1Settlement> response = api.listSettlements(locationId, order, beginTime, endTime, limit, status);
+        String batchToken = null;
+        List<V1Settlement> response = api.listSettlements(locationId, order, beginTime, endTime, limit, status, batchToken);
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
      *
@@ -166,7 +170,7 @@ public class V1TransactionsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides comprehensive information for a single online store order, including the order&#39;s history.
      *
@@ -183,7 +187,7 @@ public class V1TransactionsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides comprehensive information for a single payment.
      *
@@ -200,7 +204,7 @@ public class V1TransactionsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
      *
@@ -217,7 +221,7 @@ public class V1TransactionsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
      *
@@ -235,5 +239,5 @@ public class V1TransactionsApiTest {
 
         // TODO: test validations
     }
-    
+
 }
