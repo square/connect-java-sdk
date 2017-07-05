@@ -16,6 +16,7 @@ package com.squareup.connect.models;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Device;
 import com.squareup.connect.models.V1Money;
 import com.squareup.connect.models.V1PaymentItemization;
