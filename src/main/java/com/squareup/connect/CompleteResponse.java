@@ -5,8 +5,8 @@ import javax.ws.rs.core.MultivaluedMap;
 import org.glassfish.jersey.uri.UriComponent;
 
 public class CompleteResponse<T> {
-    private T data;
-    private Response response;
+    private final T data;
+    private final Response response;
 
     public CompleteResponse(T data, Response response) {
         this.data = data;
