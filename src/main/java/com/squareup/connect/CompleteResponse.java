@@ -26,9 +26,7 @@ public class CompleteResponse<T> {
 
         if (link != null) {
             MultivaluedMap<String, String> parameters = UriComponent.decodeQuery(link.getUri(), true);
-            if (parameters.containsKey("batch_token")) {
-                return parameters.getFirst("batch_token");
-            }
+            return parameters.getFirst("batch_token");
         }
 
         return null;
