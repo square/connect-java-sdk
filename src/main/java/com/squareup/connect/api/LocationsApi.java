@@ -4,6 +4,7 @@ import com.squareup.connect.ApiException;
 import com.squareup.connect.ApiClient;
 import com.squareup.connect.Configuration;
 import com.squareup.connect.Pair;
+import com.squareup.connect.CompleteResponse;
 
 import javax.ws.rs.core.GenericType;
 
@@ -67,6 +68,43 @@ public class LocationsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<ListLocationsResponse> localVarReturnType = new GenericType<ListLocationsResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<ListLocationsResponse> completeResponse = (CompleteResponse<ListLocationsResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    return completeResponse.getData();
       }
+
+  /**
+   * ListLocations
+   * Provides the details for all of a business&#39;s locations.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
+   * @return CompleteResponse<ListLocationsResponse>
+   * @throws ApiException if fails to make API call
+   */
+  public CompleteResponse<ListLocationsResponse>listLocationsWithHttpInfo() throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v2/locations";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<ListLocationsResponse> localVarReturnType = new GenericType<ListLocationsResponse>() {};
+    return (CompleteResponse<ListLocationsResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+  }
 }
