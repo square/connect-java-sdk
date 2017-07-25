@@ -17,14 +17,14 @@ import java.util.List;
 import java.util.Map;
 
 
-public class OrderApi {
+public class OrdersApi {
   private ApiClient apiClient;
 
-  public OrderApi() {
+  public OrdersApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public OrderApi(ApiClient apiClient) {
+  public OrdersApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 

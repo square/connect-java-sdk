@@ -1,10 +1,10 @@
-# OrderApi
+# OrdersApi
 
 All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createOrder**](OrderApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
+[**createOrder**](OrdersApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
 
 
 <a name="createOrder"></a>
@@ -22,7 +22,7 @@ Creates an [Order](#type-order) that can then be included as referenced &#x60;or
 //import com.squareup.connect.ApiException;
 //import com.squareup.connect.Configuration;
 //import com.squareup.connect.auth.*;
-//import com.squareup.connect.api.OrderApi;
+//import com.squareup.connect.api.OrdersApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -30,14 +30,14 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-OrderApi apiInstance = new OrderApi();
+OrdersApi apiInstance = new OrdersApi();
 String locationId = "locationId_example"; // String | The ID of the business location to associate the order with.
 CreateOrderRequest body = new CreateOrderRequest(); // CreateOrderRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     CreateOrderResponse result = apiInstance.createOrder(locationId, body);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling OrderApi#createOrder");
+    System.err.println("Exception when calling OrdersApi#createOrder");
     e.printStackTrace();
 }
 ```
