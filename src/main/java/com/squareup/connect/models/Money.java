@@ -33,6 +33,8 @@ public class Money {
    * The type of currency, in __ISO 4217 format__. For example, the currency code for US dollars is `USD`.  See [Currency](#type-currency) for possible values.
    */
   public enum CurrencyEnum {
+    UNKNOWN_CURRENCY("UNKNOWN_CURRENCY"),
+    
     AED("AED"),
     
     AFN("AFN"),

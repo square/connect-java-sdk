@@ -26,6 +26,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a tax that applies to either a single line item or an entire order.")
 
 public class CreateOrderRequestTax {
+  @JsonProperty("catalog_object_id")
+  private String catalogObjectId = null;
+
   @JsonProperty("name")
   private String name = null;
 
@@ -66,6 +69,24 @@ public class CreateOrderRequestTax {
 
   @JsonProperty("percentage")
   private String percentage = null;
+
+  public CreateOrderRequestTax catalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+    return this;
+  }
+
+   /**
+   * The catalog object id from existing [CatalogTax](#type-catalogtax).  Do not provide a value for this field if you provide values in other fields for a custom tax.
+   * @return catalogObjectId
+  **/
+  @ApiModelProperty(value = "The catalog object id from existing [CatalogTax](#type-catalogtax).  Do not provide a value for this field if you provide values in other fields for a custom tax.")
+  public String getCatalogObjectId() {
+    return catalogObjectId;
+  }
+
+  public void setCatalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+  }
 
   public CreateOrderRequestTax name(String name) {
     this.name = name;
@@ -131,14 +152,15 @@ public class CreateOrderRequestTax {
       return false;
     }
     CreateOrderRequestTax createOrderRequestTax = (CreateOrderRequestTax) o;
-    return Objects.equals(this.name, createOrderRequestTax.name) &&
+    return Objects.equals(this.catalogObjectId, createOrderRequestTax.catalogObjectId) &&
+        Objects.equals(this.name, createOrderRequestTax.name) &&
         Objects.equals(this.type, createOrderRequestTax.type) &&
         Objects.equals(this.percentage, createOrderRequestTax.percentage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, percentage);
+    return Objects.hash(catalogObjectId, name, type, percentage);
   }
 
 
@@ -147,6 +169,7 @@ public class CreateOrderRequestTax {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequestTax {\n");
     
+    sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");

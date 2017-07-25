@@ -26,11 +26,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.
+ * Defines the parameters that can be included in the body of a request to the [CreateOrder](#endpoint-createorder) endpoint.  It is also included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint. The idempotency_key field is ignored when the CreateOrderRequest is included in a CreateCheckout request
  */
-@ApiModel(description = "Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.")
+@ApiModel(description = "Defines the parameters that can be included in the body of a request to the [CreateOrder](#endpoint-createorder) endpoint.  It is also included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint. The idempotency_key field is ignored when the CreateOrderRequest is included in a CreateCheckout request")
 
 public class CreateOrderRequest {
+  @JsonProperty("idempotency_key")
+  private String idempotencyKey = null;
+
   @JsonProperty("reference_id")
   private String referenceId = null;
 
@@ -42,6 +45,24 @@ public class CreateOrderRequest {
 
   @JsonProperty("discounts")
   private List<CreateOrderRequestDiscount> discounts = new ArrayList<CreateOrderRequestDiscount>();
+
+  public CreateOrderRequest idempotencyKey(String idempotencyKey) {
+    this.idempotencyKey = idempotencyKey;
+    return this;
+  }
+
+   /**
+   * A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency keys](#idempotencykeys) for more information.
+   * @return idempotencyKey
+  **/
+  @ApiModelProperty(value = "A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency keys](#idempotencykeys) for more information.")
+  public String getIdempotencyKey() {
+    return idempotencyKey;
+  }
+
+  public void setIdempotencyKey(String idempotencyKey) {
+    this.idempotencyKey = idempotencyKey;
+  }
 
   public CreateOrderRequest referenceId(String referenceId) {
     this.referenceId = referenceId;
@@ -72,10 +93,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * The line items to associate with this order.  Each line item represents a different product (or a custom monetary amount) to include in a purchase.
+   * The line items to associate with this order.  Each line item represents a different product to include in a purchase.
    * @return lineItems
   **/
-  @ApiModelProperty(required = true, value = "The line items to associate with this order.  Each line item represents a different product (or a custom monetary amount) to include in a purchase.")
+  @ApiModelProperty(required = true, value = "The line items to associate with this order.  Each line item represents a different product to include in a purchase.")
   public List<CreateOrderRequestLineItem> getLineItems() {
     return lineItems;
   }
@@ -95,10 +116,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * The taxes include the custom taxes.
+   * The taxes to include on the order.
    * @return taxes
   **/
-  @ApiModelProperty(value = "The taxes include the custom taxes.")
+  @ApiModelProperty(value = "The taxes to include on the order.")
   public List<CreateOrderRequestTax> getTaxes() {
     return taxes;
   }
@@ -118,10 +139,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * The discounts include the custom discounts .
+   * The discounts to include on the order.
    * @return discounts
   **/
-  @ApiModelProperty(value = "The discounts include the custom discounts .")
+  @ApiModelProperty(value = "The discounts to include on the order.")
   public List<CreateOrderRequestDiscount> getDiscounts() {
     return discounts;
   }
@@ -140,7 +161,8 @@ public class CreateOrderRequest {
       return false;
     }
     CreateOrderRequest createOrderRequest = (CreateOrderRequest) o;
-    return Objects.equals(this.referenceId, createOrderRequest.referenceId) &&
+    return Objects.equals(this.idempotencyKey, createOrderRequest.idempotencyKey) &&
+        Objects.equals(this.referenceId, createOrderRequest.referenceId) &&
         Objects.equals(this.lineItems, createOrderRequest.lineItems) &&
         Objects.equals(this.taxes, createOrderRequest.taxes) &&
         Objects.equals(this.discounts, createOrderRequest.discounts);
@@ -148,7 +170,7 @@ public class CreateOrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(referenceId, lineItems, taxes, discounts);
+    return Objects.hash(idempotencyKey, referenceId, lineItems, taxes, discounts);
   }
 
 
@@ -157,6 +179,7 @@ public class CreateOrderRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequest {\n");
     
+    sb.append("    idempotencyKey: ").append(toIndentedString(idempotencyKey)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");

@@ -72,6 +72,39 @@ public class Location {
   @JsonProperty("capabilities")
   private List<CapabilitiesEnum> capabilities = new ArrayList<CapabilitiesEnum>();
 
+  /**
+   * The location's status  See [LocationStatus](#type-locationstatus) for possible values.
+   */
+  public enum StatusEnum {
+    ACTIVE("ACTIVE"),
+    
+    INACTIVE("INACTIVE");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusEnum fromValue(String text) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("status")
+  private StatusEnum status = null;
+
   public Location id(String id) {
     this.id = id;
     return this;
@@ -167,6 +200,24 @@ public class Location {
     this.capabilities = capabilities;
   }
 
+  public Location status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The location's status  See [LocationStatus](#type-locationstatus) for possible values.
+   * @return status
+  **/
+  @ApiModelProperty(value = "The location's status  See [LocationStatus](#type-locationstatus) for possible values.")
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -181,12 +232,13 @@ public class Location {
         Objects.equals(this.name, location.name) &&
         Objects.equals(this.address, location.address) &&
         Objects.equals(this.timezone, location.timezone) &&
-        Objects.equals(this.capabilities, location.capabilities);
+        Objects.equals(this.capabilities, location.capabilities) &&
+        Objects.equals(this.status, location.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, address, timezone, capabilities);
+    return Objects.hash(id, name, address, timezone, capabilities, status);
   }
 
 
@@ -200,6 +252,7 @@ public class Location {
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    capabilities: ").append(toIndentedString(capabilities)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

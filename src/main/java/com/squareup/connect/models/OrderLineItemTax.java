@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a tax that applies to one or more line items in an order.")
 
 public class OrderLineItemTax {
+  @JsonProperty("catalog_object_id")
+  private String catalogObjectId = null;
+
   @JsonProperty("name")
   private String name = null;
 
@@ -70,6 +73,24 @@ public class OrderLineItemTax {
 
   @JsonProperty("applied_money")
   private Money appliedMoney = null;
+
+  public OrderLineItemTax catalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+    return this;
+  }
+
+   /**
+   * The catalog object id referencing [CatalogTax](#type-catalogtax).
+   * @return catalogObjectId
+  **/
+  @ApiModelProperty(value = "The catalog object id referencing [CatalogTax](#type-catalogtax).")
+  public String getCatalogObjectId() {
+    return catalogObjectId;
+  }
+
+  public void setCatalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+  }
 
   public OrderLineItemTax name(String name) {
     this.name = name;
@@ -153,7 +174,8 @@ public class OrderLineItemTax {
       return false;
     }
     OrderLineItemTax orderLineItemTax = (OrderLineItemTax) o;
-    return Objects.equals(this.name, orderLineItemTax.name) &&
+    return Objects.equals(this.catalogObjectId, orderLineItemTax.catalogObjectId) &&
+        Objects.equals(this.name, orderLineItemTax.name) &&
         Objects.equals(this.type, orderLineItemTax.type) &&
         Objects.equals(this.percentage, orderLineItemTax.percentage) &&
         Objects.equals(this.appliedMoney, orderLineItemTax.appliedMoney);
@@ -161,7 +183,7 @@ public class OrderLineItemTax {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, percentage, appliedMoney);
+    return Objects.hash(catalogObjectId, name, type, percentage, appliedMoney);
   }
 
 
@@ -170,6 +192,7 @@ public class OrderLineItemTax {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLineItemTax {\n");
     
+    sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");

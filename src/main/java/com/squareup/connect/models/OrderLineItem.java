@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Money;
 import com.squareup.connect.models.OrderLineItemDiscount;
+import com.squareup.connect.models.OrderLineItemModifier;
 import com.squareup.connect.models.OrderLineItemTax;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -37,6 +38,18 @@ public class OrderLineItem {
   @JsonProperty("quantity")
   private String quantity = null;
 
+  @JsonProperty("note")
+  private String note = null;
+
+  @JsonProperty("catalog_object_id")
+  private String catalogObjectId = null;
+
+  @JsonProperty("variation_name")
+  private String variationName = null;
+
+  @JsonProperty("modifiers")
+  private List<OrderLineItemModifier> modifiers = new ArrayList<OrderLineItemModifier>();
+
   @JsonProperty("taxes")
   private List<OrderLineItemTax> taxes = new ArrayList<OrderLineItemTax>();
 
@@ -45,6 +58,9 @@ public class OrderLineItem {
 
   @JsonProperty("base_price_money")
   private Money basePriceMoney = null;
+
+  @JsonProperty("gross_sales_money")
+  private Money grossSalesMoney = null;
 
   @JsonProperty("total_tax_money")
   private Money totalTaxMoney = null;
@@ -89,6 +105,83 @@ public class OrderLineItem {
 
   public void setQuantity(String quantity) {
     this.quantity = quantity;
+  }
+
+  public OrderLineItem note(String note) {
+    this.note = note;
+    return this;
+  }
+
+   /**
+   * The note of the line item.
+   * @return note
+  **/
+  @ApiModelProperty(value = "The note of the line item.")
+  public String getNote() {
+    return note;
+  }
+
+  public void setNote(String note) {
+    this.note = note;
+  }
+
+  public OrderLineItem catalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+    return this;
+  }
+
+   /**
+   * The [CatalogItemVariation](#type-catalogitemvariation) id applied to this line item.
+   * @return catalogObjectId
+  **/
+  @ApiModelProperty(value = "The [CatalogItemVariation](#type-catalogitemvariation) id applied to this line item.")
+  public String getCatalogObjectId() {
+    return catalogObjectId;
+  }
+
+  public void setCatalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+  }
+
+  public OrderLineItem variationName(String variationName) {
+    this.variationName = variationName;
+    return this;
+  }
+
+   /**
+   * The name of the variation applied to this line item.
+   * @return variationName
+  **/
+  @ApiModelProperty(value = "The name of the variation applied to this line item.")
+  public String getVariationName() {
+    return variationName;
+  }
+
+  public void setVariationName(String variationName) {
+    this.variationName = variationName;
+  }
+
+  public OrderLineItem modifiers(List<OrderLineItemModifier> modifiers) {
+    this.modifiers = modifiers;
+    return this;
+  }
+
+  public OrderLineItem addModifiersItem(OrderLineItemModifier modifiersItem) {
+    this.modifiers.add(modifiersItem);
+    return this;
+  }
+
+   /**
+   * The [CatalogModifier](#type-catalogmodifier)s applied to this line item.
+   * @return modifiers
+  **/
+  @ApiModelProperty(value = "The [CatalogModifier](#type-catalogmodifier)s applied to this line item.")
+  public List<OrderLineItemModifier> getModifiers() {
+    return modifiers;
+  }
+
+  public void setModifiers(List<OrderLineItemModifier> modifiers) {
+    this.modifiers = modifiers;
   }
 
   public OrderLineItem taxes(List<OrderLineItemTax> taxes) {
@@ -153,6 +246,24 @@ public class OrderLineItem {
 
   public void setBasePriceMoney(Money basePriceMoney) {
     this.basePriceMoney = basePriceMoney;
+  }
+
+  public OrderLineItem grossSalesMoney(Money grossSalesMoney) {
+    this.grossSalesMoney = grossSalesMoney;
+    return this;
+  }
+
+   /**
+   * The gross sales amount of money calculated as (item base price + modifiers price) * quantity.
+   * @return grossSalesMoney
+  **/
+  @ApiModelProperty(value = "The gross sales amount of money calculated as (item base price + modifiers price) * quantity.")
+  public Money getGrossSalesMoney() {
+    return grossSalesMoney;
+  }
+
+  public void setGrossSalesMoney(Money grossSalesMoney) {
+    this.grossSalesMoney = grossSalesMoney;
   }
 
   public OrderLineItem totalTaxMoney(Money totalTaxMoney) {
@@ -221,9 +332,14 @@ public class OrderLineItem {
     OrderLineItem orderLineItem = (OrderLineItem) o;
     return Objects.equals(this.name, orderLineItem.name) &&
         Objects.equals(this.quantity, orderLineItem.quantity) &&
+        Objects.equals(this.note, orderLineItem.note) &&
+        Objects.equals(this.catalogObjectId, orderLineItem.catalogObjectId) &&
+        Objects.equals(this.variationName, orderLineItem.variationName) &&
+        Objects.equals(this.modifiers, orderLineItem.modifiers) &&
         Objects.equals(this.taxes, orderLineItem.taxes) &&
         Objects.equals(this.discounts, orderLineItem.discounts) &&
         Objects.equals(this.basePriceMoney, orderLineItem.basePriceMoney) &&
+        Objects.equals(this.grossSalesMoney, orderLineItem.grossSalesMoney) &&
         Objects.equals(this.totalTaxMoney, orderLineItem.totalTaxMoney) &&
         Objects.equals(this.totalDiscountMoney, orderLineItem.totalDiscountMoney) &&
         Objects.equals(this.totalMoney, orderLineItem.totalMoney);
@@ -231,7 +347,7 @@ public class OrderLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, quantity, taxes, discounts, basePriceMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
+    return Objects.hash(name, quantity, note, catalogObjectId, variationName, modifiers, taxes, discounts, basePriceMoney, grossSalesMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
   }
 
 
@@ -242,9 +358,14 @@ public class OrderLineItem {
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
+    sb.append("    variationName: ").append(toIndentedString(variationName)).append("\n");
+    sb.append("    modifiers: ").append(toIndentedString(modifiers)).append("\n");
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
+    sb.append("    grossSalesMoney: ").append(toIndentedString(grossSalesMoney)).append("\n");
     sb.append("    totalTaxMoney: ").append(toIndentedString(totalTaxMoney)).append("\n");
     sb.append("    totalDiscountMoney: ").append(toIndentedString(totalDiscountMoney)).append("\n");
     sb.append("    totalMoney: ").append(toIndentedString(totalMoney)).append("\n");

@@ -1,0 +1,64 @@
+# OrderApi
+
+All URIs are relative to *https://connect.squareup.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**createOrder**](OrderApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
+
+
+<a name="createOrder"></a>
+# **createOrder**
+> CreateOrderResponse createOrder(locationId, body)
+
+CreateOrder
+
+Creates an [Order](#type-order) that can then be included as referenced &#x60;order_id&#x60; in a request to the [Charge](#endpoint-charge) endpoint. Orders specify products for purchase, along with discounts, taxes, and other settings to apply to the purchase.  To associate a created order with a request to the Charge endpoint, provide the order&#39;s &#x60;id&#x60; in the &#x60;order_id&#x60; field of your request.  You cannot modify an order after you create it. If you need to modify an order, instead create a new order with modified details.
+
+### Example
+```java
+// Import classes:
+//import com.squareup.connect.ApiClient;
+//import com.squareup.connect.ApiException;
+//import com.squareup.connect.Configuration;
+//import com.squareup.connect.auth.*;
+//import com.squareup.connect.api.OrderApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+OrderApi apiInstance = new OrderApi();
+String locationId = "locationId_example"; // String | The ID of the business location to associate the order with.
+CreateOrderRequest body = new CreateOrderRequest(); // CreateOrderRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+try {
+    CreateOrderResponse result = apiInstance.createOrder(locationId, body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling OrderApi#createOrder");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **locationId** | **String**| The ID of the business location to associate the order with. |
+ **body** | [**CreateOrderRequest**](CreateOrderRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+
+### Return type
+
+[**CreateOrderResponse**](CreateOrderResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+

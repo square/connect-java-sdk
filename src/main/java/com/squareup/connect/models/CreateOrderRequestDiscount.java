@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a discount that to either a single line item or an entire order.")
 
 public class CreateOrderRequestDiscount {
+  @JsonProperty("catalog_object_id")
+  private String catalogObjectId = null;
+
   @JsonProperty("name")
   private String name = null;
 
@@ -35,6 +38,24 @@ public class CreateOrderRequestDiscount {
 
   @JsonProperty("amount_money")
   private Money amountMoney = null;
+
+  public CreateOrderRequestDiscount catalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+    return this;
+  }
+
+   /**
+   * The catalog object id from exsiting [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for a custom discount.
+   * @return catalogObjectId
+  **/
+  @ApiModelProperty(value = "The catalog object id from exsiting [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for a custom discount.")
+  public String getCatalogObjectId() {
+    return catalogObjectId;
+  }
+
+  public void setCatalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+  }
 
   public CreateOrderRequestDiscount name(String name) {
     this.name = name;
@@ -100,14 +121,15 @@ public class CreateOrderRequestDiscount {
       return false;
     }
     CreateOrderRequestDiscount createOrderRequestDiscount = (CreateOrderRequestDiscount) o;
-    return Objects.equals(this.name, createOrderRequestDiscount.name) &&
+    return Objects.equals(this.catalogObjectId, createOrderRequestDiscount.catalogObjectId) &&
+        Objects.equals(this.name, createOrderRequestDiscount.name) &&
         Objects.equals(this.percentage, createOrderRequestDiscount.percentage) &&
         Objects.equals(this.amountMoney, createOrderRequestDiscount.amountMoney);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, percentage, amountMoney);
+    return Objects.hash(catalogObjectId, name, percentage, amountMoney);
   }
 
 
@@ -116,6 +138,7 @@ public class CreateOrderRequestDiscount {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequestDiscount {\n");
     
+    sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
     sb.append("    amountMoney: ").append(toIndentedString(amountMoney)).append("\n");
