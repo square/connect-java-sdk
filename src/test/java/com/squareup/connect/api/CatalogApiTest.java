@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.squareup.connect.api;
 
 import com.squareup.connect.ApiClient;
@@ -23,21 +22,15 @@ import com.squareup.connect.models.BatchRetrieveCatalogObjectsRequest;
 import com.squareup.connect.models.BatchRetrieveCatalogObjectsResponse;
 import com.squareup.connect.models.BatchUpsertCatalogObjectsRequest;
 import com.squareup.connect.models.BatchUpsertCatalogObjectsResponse;
-import com.squareup.connect.models.CatalogCategory;
 import com.squareup.connect.models.CatalogDiscount;
-import com.squareup.connect.models.CatalogIdMapping;
 import com.squareup.connect.models.CatalogInfoResponse;
 import com.squareup.connect.models.CatalogItem;
-import com.squareup.connect.models.CatalogItemModifierListInfo;
 import com.squareup.connect.models.CatalogItemVariation;
-import com.squareup.connect.models.CatalogModifier;
-import com.squareup.connect.models.CatalogModifierList;
 import com.squareup.connect.models.CatalogObject;
 import com.squareup.connect.models.CatalogObjectBatch;
 import com.squareup.connect.models.CatalogQuery;
 import com.squareup.connect.models.CatalogQueryItemsForTax;
 import com.squareup.connect.models.CatalogQueryPrefix;
-import com.squareup.connect.models.CatalogTax;
 import com.squareup.connect.models.DeleteCatalogObjectResponse;
 import com.squareup.connect.models.ListCatalogResponse;
 import com.squareup.connect.models.Money;
@@ -52,24 +45,19 @@ import com.squareup.connect.models.UpsertCatalogObjectRequest;
 import com.squareup.connect.models.UpsertCatalogObjectResponse;
 import com.squareup.connect.utils.APITest;
 import com.squareup.connect.utils.Account;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
 import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 /**
  * API tests for CatalogApi
@@ -79,133 +67,7 @@ public class CatalogApiTest extends APITest {
     private final ApiClient defaultClient = Configuration.getDefaultApiClient();
     private final CatalogApi api = new CatalogApi();
 
-    private static final CatalogObject beverages = new CatalogObject()
-        .type(CatalogObject.TypeEnum.CATEGORY)
-        .id("#Beverages")
-        .categoryData(new CatalogCategory()
-            .name("Beverages"));
-
-    private static final CatalogObject milks = new CatalogObject()
-        .type(CatalogObject.TypeEnum.MODIFIER_LIST)
-        .id("#Milks")
-        .modifierListData(new CatalogModifierList()
-            .name("Milks")
-            .modifiers(asList(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
-                    .id("#WholeMilk")
-                    .modifierData(new CatalogModifier()
-                        .name("Whole Milk")),
-                new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
-                    .id("#SkimMilk")
-                    .modifierData(new CatalogModifier()
-                        .name("Skim Milk")),
-                new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
-                    .id("#SoyMilk")
-                    .modifierData(new CatalogModifier()
-                        .name("SoyMilk")
-                        .priceMoney(new Money().amount(50L).currency(Money.CurrencyEnum.USD))))));
-
-    private static final CatalogObject syrups = new CatalogObject()
-        .type(CatalogObject.TypeEnum.MODIFIER_LIST)
-        .id("#Syrups")
-        .modifierListData(new CatalogModifierList()
-            .name("Syrups")
-            .modifiers(asList(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
-                    .id("#Hazelnut")
-                    .modifierData(new CatalogModifier()
-                        .name("Hazelnut")),
-                new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
-                    .id("#Vanilla")
-                    .modifierData(new CatalogModifier()
-                        .name("Vanilla")),
-                new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
-                    .id("#Chocolate")
-                    .modifierData(new CatalogModifier()
-                        .name("Chocolate")))));
-
-    private static final CatalogObject coffee = new CatalogObject()
-        .type(CatalogObject.TypeEnum.ITEM)
-        .id("#Coffee")
-        .presentAtAllLocations(true)
-        .itemData(new CatalogItem()
-            .name("Coffee")
-            .description("Hot bean juice")
-            .abbreviation("Co")
-            .categoryId("#Beverages")
-            .modifierListInfo(singletonList(new CatalogItemModifierListInfo().modifierListId("#Milks")))
-            .taxIds(singletonList("#SalesTax"))
-            .variations(asList(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM_VARIATION)
-                    .id("#SmallCoffee")
-                    .presentAtAllLocations(true)
-                    .itemVariationData(new CatalogItemVariation()
-                        .itemId("#Coffee")
-                        .name("Small")
-                        .pricingType(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING)
-                        .priceMoney(new Money().amount(195L).currency(Money.CurrencyEnum.USD))),
-                new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM_VARIATION)
-                    .id("#LargeCoffee")
-                    .presentAtAllLocations(true)
-                    .itemVariationData(new CatalogItemVariation()
-                        .itemId("#Coffee")
-                        .name("Large")
-                        .pricingType(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING)
-                        .priceMoney(new Money().amount(250L).currency(Money.CurrencyEnum.USD)))))
-        );
-
-    private static final CatalogObject tea = new CatalogObject()
-        .type(CatalogObject.TypeEnum.ITEM)
-        .id("#Tea")
-        .presentAtAllLocations(true)
-        .itemData(new CatalogItem()
-            .name("Tea")
-            .description("Hot leaf juice")
-            .abbreviation("Te")
-            .categoryId("#Beverages")
-            .modifierListInfo(singletonList(new CatalogItemModifierListInfo().modifierListId("#Milks")))
-            .taxIds(singletonList("#SalesTax"))
-            .variations(asList(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM_VARIATION)
-                    .id("#SmallTea")
-                    .presentAtAllLocations(true)
-                    .itemVariationData(new CatalogItemVariation()
-                        .itemId("#Tea")
-                        .name("Small")
-                        .pricingType(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING)
-                        .priceMoney(new Money().amount(150L).currency(Money.CurrencyEnum.USD))),
-                new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM_VARIATION)
-                    .id("#LargeTea")
-                    .presentAtAllLocations(true)
-                    .itemVariationData(new CatalogItemVariation()
-                        .itemId("#Tea")
-                        .name("Large")
-                        .pricingType(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING)
-                        .priceMoney(new Money().amount(200L).currency(Money.CurrencyEnum.USD)))))
-        );
-
-    private static final CatalogObject salesTax = new CatalogObject()
-        .type(CatalogObject.TypeEnum.TAX)
-        .id("#SalesTax")
-        .presentAtAllLocations(true)
-        .taxData(new CatalogTax()
-            .name("Sales Tax")
-            .calculationPhase(CatalogTax.CalculationPhaseEnum.SUBTOTAL_PHASE)
-            .inclusionType(CatalogTax.InclusionTypeEnum.ADDITIVE)
-            .percentage("5.0")
-            .appliesToCustomAmounts(true)
-            .enabled(true));
-
-    public static final List<CatalogObject> OBJECTS = asList(beverages, milks, syrups, coffee, tea, salesTax);
-
-    // Mapping from client to server id, refreshed before each test.
-    public Map<String,String> idMap = new HashMap<>();
+    private CatalogFixtures catalogFixtures;
 
     @Before
     public void setup() {
@@ -214,75 +76,37 @@ public class CatalogApiTest extends APITest {
         OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
         oauth2.setAccessToken(testAccount.accessToken);
 
-        try {
-            buildTestCatalog();
-        } catch (ApiException e) {
-            fail(e.getMessage());
-        }
+        catalogFixtures = CatalogFixtures.populateCatalog(api);
     }
 
     @After
-    public void tearDown() {
-        try {
-            deleteTestCatalog();
-        } catch (ApiException e) {
-            fail(e.getMessage());
-        }
-    }
-
-    private void buildTestCatalog() throws ApiException {
-        BatchUpsertCatalogObjectsResponse response = api.batchUpsertCatalogObjects(new BatchUpsertCatalogObjectsRequest()
-            .idempotencyKey(UUID.randomUUID().toString())
-            .addBatchesItem(new CatalogObjectBatch().objects(OBJECTS)));
-
-        for (CatalogIdMapping idMapping : response.getIdMappings()) {
-            idMap.put(idMapping.getClientObjectId(), idMapping.getObjectId());
-        }
-    }
-
-    private void deleteTestCatalog() throws ApiException {
-        String cursor = "";
-        List<String> objectsToDelete = new ArrayList<>();
-        while (true) {
-            ListCatalogResponse response = api.listCatalog(cursor, null);
-            for (CatalogObject object : response.getObjects()) {
-                objectsToDelete.add(object.getId());
-            }
-
-            cursor = response.getCursor();
-            if (cursor == null || cursor.isEmpty()) {
-                break;
-            }
-        }
-
-        while (objectsToDelete.size() > 0) {
-            int elements = Math.min(200, objectsToDelete.size());
-            BatchDeleteCatalogObjectsResponse response =
-                api.batchDeleteCatalogObjects(new BatchDeleteCatalogObjectsRequest()
-                    .objectIds(objectsToDelete.subList(0, elements)));
-            objectsToDelete = objectsToDelete.subList(elements, objectsToDelete.size());
-        }
+    public void tearDown() throws Exception {
+        catalogFixtures.close();
     }
 
     /**
-     * BatchDeleteCatalogObjects
-     * <p>
-     * Deletes a set of [CatalogItem](#type-catalogitem)s based on the provided list of target IDs and returns a set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a CatalogItem will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.  &#x60;BatchDeleteCatalogObjects&#x60; succeeds even if only a portion of the targeted IDs can be deleted. The response will only include IDs that were actually deleted.
+     * BatchDeleteCatalogObjects <p> Deletes a set of [CatalogItem](#type-catalogitem)s based on the
+     * provided list of target IDs and returns a set of successfully deleted IDs in the response.
+     * Deletion is a cascading event such that all children of the targeted object are also deleted.
+     * For example, deleting a CatalogItem will also delete all of its
+     * [CatalogItemVariation](#type-catalogitemvariation) children.  &#x60;BatchDeleteCatalogObjects&#x60;
+     * succeeds even if only a portion of the targeted IDs can be deleted. The response will only
+     * include IDs that were actually deleted.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void batchDeleteCatalogObjectsTest() throws ApiException {
-        String coffeeId = idMap.get("#Coffee");
-        String smallCoffeeId = idMap.get("#SmallCoffee");
-        String largeCoffeeId = idMap.get("#LargeCoffee");
-        String smallTeaId = idMap.get("#SmallTea");
+        String coffeeId = catalogFixtures.getObjectId(CatalogFixtures.COFFEE_CLIENT_ID);
+        String smallCoffeeId = catalogFixtures.getObjectId(CatalogFixtures.SMALL_COFFEE_CLIENT_ID);
+        String largeCoffeeId = catalogFixtures.getObjectId(CatalogFixtures.LARGE_COFFEE_CLIENT_ID);
+        String smallTeaId = catalogFixtures.getObjectId(CatalogFixtures.SMALL_TEA_CLIENT_ID);
 
         BatchDeleteCatalogObjectsRequest body = new BatchDeleteCatalogObjectsRequest()
             .objectIds(asList(coffeeId, smallTeaId));
         BatchDeleteCatalogObjectsResponse response = api.batchDeleteCatalogObjects(body);
 
-        assertEquals(4,response.getDeletedObjectIds().size());
+        assertEquals(4, response.getDeletedObjectIds().size());
         assertTrue(response.getDeletedObjectIds().contains(coffeeId));
         assertTrue(response.getDeletedObjectIds().contains(smallCoffeeId));
         assertTrue(response.getDeletedObjectIds().contains(largeCoffeeId));
@@ -290,18 +114,20 @@ public class CatalogApiTest extends APITest {
     }
 
     /**
-     * BatchRetrieveCatalogObjects
-     * <p>
-     * Returns a set of objects based on the provided ID. [CatalogItem](#type-catalogitem)s returned in the set include all of the child information including: all [CatalogItemVariation](#type-catalogitemvariation) objects, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
+     * BatchRetrieveCatalogObjects <p> Returns a set of objects based on the provided ID.
+     * [CatalogItem](#type-catalogitem)s returned in the set include all of the child information
+     * including: all [CatalogItemVariation](#type-catalogitemvariation) objects, references to its
+     * [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any
+     * [CatalogTax](#type-catalogtax) objects that apply to it.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void batchRetrieveCatalogObjectsTest() throws ApiException {
-        String coffeeId = idMap.get("#Coffee");
-        String salesTaxId = idMap.get("#SalesTax");
-        String beveragesId = idMap.get("#Beverages");
-        String milksId = idMap.get("#Milks");
+        String coffeeId = catalogFixtures.getObjectId(CatalogFixtures.COFFEE_CLIENT_ID);
+        String salesTaxId = catalogFixtures.getObjectId(CatalogFixtures.SALES_TAX_CLIENT_ID);
+        String beveragesId = catalogFixtures.getObjectId(CatalogFixtures.BEVERAGES_CLIENT_ID);
+        String milksId = catalogFixtures.getObjectId(CatalogFixtures.MILKS_CLIENT_ID);
 
         BatchRetrieveCatalogObjectsRequest body = new BatchRetrieveCatalogObjectsRequest()
             .addObjectIdsItem(coffeeId)
@@ -332,23 +158,57 @@ public class CatalogApiTest extends APITest {
         assertEquals(1, actualCoffee.getItemData().getTaxIds().size());
         assertEquals(salesTaxId, actualCoffee.getItemData().getTaxIds().get(0));
         assertEquals(1, actualCoffee.getItemData().getModifierListInfo().size());
-        assertEquals(milksId, actualCoffee.getItemData().getModifierListInfo().get(0).getModifierListId());
-        assertEquals(0, actualCoffee.getItemData().getModifierListInfo().get(0).getModifierOverrides().size());
-        assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getMinSelectedModifiers());
-        assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getMaxSelectedModifiers());
+        assertEquals(milksId,
+            actualCoffee.getItemData().getModifierListInfo().get(0).getModifierListId());
+        assertEquals(0,
+            actualCoffee.getItemData().getModifierListInfo().get(0).getModifierOverrides().size());
+        assertNull(
+            actualCoffee.getItemData().getModifierListInfo().get(0).getMinSelectedModifiers());
+        assertNull(
+            actualCoffee.getItemData().getModifierListInfo().get(0).getMaxSelectedModifiers());
         assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getEnabled());
         assertNull(actualCoffee.getItemData().getImageUrl());
 
         assertEquals(2, actualCoffee.getItemData().getVariations().size());
-        assertEquals("Small", actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getName());
-        assertEquals(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING, actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getPricingType());
-        assertEquals(Long.valueOf(195), actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getPriceMoney().getAmount());
-        assertEquals(Money.CurrencyEnum.USD, actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getPriceMoney().getCurrency());
+        assertEquals("Small",
+            actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getName());
+        assertEquals(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING, actualCoffee.getItemData()
+            .getVariations()
+            .get(0)
+            .getItemVariationData()
+            .getPricingType());
+        assertEquals(Long.valueOf(195), actualCoffee.getItemData()
+            .getVariations()
+            .get(0)
+            .getItemVariationData()
+            .getPriceMoney()
+            .getAmount());
+        assertEquals(Money.CurrencyEnum.USD, actualCoffee.getItemData()
+            .getVariations()
+            .get(0)
+            .getItemVariationData()
+            .getPriceMoney()
+            .getCurrency());
 
-        assertEquals("Large", actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getName());
-        assertEquals(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING, actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getPricingType());
-        assertEquals(Long.valueOf(250), actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getPriceMoney().getAmount());
-        assertEquals(Money.CurrencyEnum.USD, actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getPriceMoney().getCurrency());
+        assertEquals("Large",
+            actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getName());
+        assertEquals(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING, actualCoffee.getItemData()
+            .getVariations()
+            .get(1)
+            .getItemVariationData()
+            .getPricingType());
+        assertEquals(Long.valueOf(250), actualCoffee.getItemData()
+            .getVariations()
+            .get(1)
+            .getItemVariationData()
+            .getPriceMoney()
+            .getAmount());
+        assertEquals(Money.CurrencyEnum.USD, actualCoffee.getItemData()
+            .getVariations()
+            .get(1)
+            .getItemVariationData()
+            .getPriceMoney()
+            .getCurrency());
 
         assertNull(actualCoffee.getCategoryData());
         assertNull(actualCoffee.getItemVariationData());
@@ -364,9 +224,14 @@ public class CatalogApiTest extends APITest {
     }
 
     /**
-     * BatchUpsertCatalogObjects
-     * <p>
-     * Creates or updates up to 10,000 target objects based on the provided list of objects. The target objects are grouped into batches and each batch is inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in some way, or violates a database constraint, the entire batch containing that item will be disregarded. However, other batches in the same request may still succeed. Each batch may contain up to 1,000 objects, and batches will be processed in order as long as the total object count for the request (items, variations, modifier lists, discounts, and taxes) is no more than 10,000.
+     * BatchUpsertCatalogObjects <p> Creates or updates up to 10,000 target objects based on the
+     * provided list of objects. The target objects are grouped into batches and each batch is
+     * inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in
+     * some way, or violates a database constraint, the entire batch containing that item will be
+     * disregarded. However, other batches in the same request may still succeed. Each batch may
+     * contain up to 1,000 objects, and batches will be processed in order as long as the total
+     * object count for the request (items, variations, modifier lists, discounts, and taxes) is no
+     * more than 10,000.
      *
      * @throws ApiException if the Api call fails
      */
@@ -394,7 +259,8 @@ public class CatalogApiTest extends APITest {
                             .itemVariationData(new CatalogItemVariation()
                                 .itemId(itemId)
                                 .name("Regular")
-                                .pricingType(CatalogItemVariation.PricingTypeEnum.VARIABLE_PRICING)))));
+                                .pricingType(
+                                    CatalogItemVariation.PricingTypeEnum.VARIABLE_PRICING)))));
                 numObjects++;
             }
         }
@@ -408,52 +274,62 @@ public class CatalogApiTest extends APITest {
     }
 
     /**
-     * CatalogInfo
-     * <p>
-     * Returns information about the Square Catalog API, such as batch size limits for &#x60;BatchUpsertCatalogObjects&#x60;.
+     * CatalogInfo <p> Returns information about the Square Catalog API, such as batch size limits
+     * for &#x60;BatchUpsertCatalogObjects&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void catalogInfoTest() throws ApiException {
         CatalogInfoResponse response = api.catalogInfo();
-        assertEquals(Integer.valueOf(1000), response.getLimits().getBatchUpsertMaxObjectsPerBatch());
+        assertEquals(Integer.valueOf(1000),
+            response.getLimits().getBatchUpsertMaxObjectsPerBatch());
         assertEquals(Integer.valueOf(10000), response.getLimits().getBatchUpsertMaxTotalObjects());
         assertEquals(Integer.valueOf(1000), response.getLimits().getBatchRetrieveMaxObjectIds());
         assertEquals(Integer.valueOf(1000), response.getLimits().getSearchMaxPageLimit());
         assertEquals(Integer.valueOf(200), response.getLimits().getBatchDeleteMaxObjectIds());
         assertEquals(Integer.valueOf(1000), response.getLimits().getUpdateItemTaxesMaxItemIds());
-        assertEquals(Integer.valueOf(1000), response.getLimits().getUpdateItemTaxesMaxTaxesToEnable());
-        assertEquals(Integer.valueOf(1000), response.getLimits().getUpdateItemTaxesMaxTaxesToDisable());
-        assertEquals(Integer.valueOf(1000), response.getLimits().getUpdateItemModifierListsMaxItemIds());
-        assertEquals(Integer.valueOf(1000), response.getLimits().getUpdateItemModifierListsMaxModifierListsToEnable());
-        assertEquals(Integer.valueOf(1000), response.getLimits().getUpdateItemModifierListsMaxModifierListsToDisable());
+        assertEquals(Integer.valueOf(1000),
+            response.getLimits().getUpdateItemTaxesMaxTaxesToEnable());
+        assertEquals(Integer.valueOf(1000),
+            response.getLimits().getUpdateItemTaxesMaxTaxesToDisable());
+        assertEquals(Integer.valueOf(1000),
+            response.getLimits().getUpdateItemModifierListsMaxItemIds());
+        assertEquals(Integer.valueOf(1000),
+            response.getLimits().getUpdateItemModifierListsMaxModifierListsToEnable());
+        assertEquals(Integer.valueOf(1000),
+            response.getLimits().getUpdateItemModifierListsMaxModifierListsToDisable());
     }
 
     /**
-     * DeleteCatalogObject
-     * <p>
-     * Deletes a single [CatalogObject](#type-catalogobject) based on the provided ID and returns the set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a [CatalogItem](#type-catalogitem) will also delete all of its [CatalogItemVariation](#type-catalogitemvariation) children.
+     * DeleteCatalogObject <p> Deletes a single [CatalogObject](#type-catalogobject) based on the
+     * provided ID and returns the set of successfully deleted IDs in the response. Deletion is a
+     * cascading event such that all children of the targeted object are also deleted. For example,
+     * deleting a [CatalogItem](#type-catalogitem) will also delete all of its
+     * [CatalogItemVariation](#type-catalogitemvariation) children.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteCatalogObjectTest() throws ApiException {
-        String coffeeId = idMap.get("#Coffee");
-        String smallCoffeeId = idMap.get("#SmallCoffee");
-        String largeCoffeeId = idMap.get("#LargeCoffee");
+        String coffeeId = catalogFixtures.getObjectId(CatalogFixtures.COFFEE_CLIENT_ID);
+        String smallCoffeeId = catalogFixtures.getObjectId(CatalogFixtures.SMALL_COFFEE_CLIENT_ID);
+        String largeCoffeeId = catalogFixtures.getObjectId(CatalogFixtures.LARGE_COFFEE_CLIENT_ID);
         DeleteCatalogObjectResponse response = api.deleteCatalogObject(coffeeId);
 
-        assertEquals(3,response.getDeletedObjectIds().size());
+        assertEquals(3, response.getDeletedObjectIds().size());
         assertTrue(response.getDeletedObjectIds().contains(coffeeId));
         assertTrue(response.getDeletedObjectIds().contains(smallCoffeeId));
         assertTrue(response.getDeletedObjectIds().contains(largeCoffeeId));
     }
 
     /**
-     * ListCatalog
-     * <p>
-     * Returns a list of [CatalogObject](#type-catalogobject)s that includes all objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem) and [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter is specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types: &#x60;ITEM&#x60;, &#x60;ITEM_VARIATION&#x60;, &#x60;MODIFIER&#x60;, &#x60;MODIFIER_LIST&#x60;, &#x60;CATEGORY&#x60;, &#x60;DISCOUNT&#x60;, &#x60;TAX&#x60;.
+     * ListCatalog <p> Returns a list of [CatalogObject](#type-catalogobject)s that includes all
+     * objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem) and
+     * [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter is specified as a
+     * comma-separated list of valid [CatalogObject](#type-catalogobject) types: &#x60;ITEM&#x60;,
+     * &#x60;ITEM_VARIATION&#x60;, &#x60;MODIFIER&#x60;, &#x60;MODIFIER_LIST&#x60;,
+     * &#x60;CATEGORY&#x60;, &#x60;DISCOUNT&#x60;, &#x60;TAX&#x60;.
      *
      * @throws ApiException if the Api call fails
      */
@@ -472,19 +348,22 @@ public class CatalogApiTest extends APITest {
                 break;
             }
         }
-        assertEquals(OBJECTS.size(), allObjects.size());
+        assertEquals(CatalogFixtures.OBJECTS.size(), allObjects.size());
     }
 
     /**
-     * RetrieveCatalogObject
-     * <p>
-     * Returns a single [CatalogItem](#type-catalogitem) as a [CatalogObject](#type-catalogobject) based on the provided ID. The returned object includes all of the relevant [CatalogItem](#type-catalogitem) information including: [CatalogItemVariation](#type-catalogitemvariation) children, references to its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
+     * RetrieveCatalogObject <p> Returns a single [CatalogItem](#type-catalogitem) as a
+     * [CatalogObject](#type-catalogobject) based on the provided ID. The returned object includes
+     * all of the relevant [CatalogItem](#type-catalogitem) information including:
+     * [CatalogItemVariation](#type-catalogitemvariation) children, references to its
+     * [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any
+     * [CatalogTax](#type-catalogtax) objects that apply to it.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void retrieveCatalogObjectTest() throws ApiException {
-        String objectId = idMap.get("#Coffee");
+        String objectId = catalogFixtures.getObjectId(CatalogFixtures.COFFEE_CLIENT_ID);
         RetrieveCatalogObjectResponse response = api.retrieveCatalogObject(objectId, true);
 
         assertTrue(response.getErrors().isEmpty());
@@ -496,13 +375,17 @@ public class CatalogApiTest extends APITest {
         boolean gotSalesTax = false;
         boolean gotBeverages = false;
         for (CatalogObject relatedObject : response.getRelatedObjects()) {
-            if (relatedObject.getType() == CatalogObject.TypeEnum.MODIFIER_LIST && relatedObject.getModifierListData().getName().equals("Milks")) {
+            if (relatedObject.getType() == CatalogObject.TypeEnum.MODIFIER_LIST
+                && relatedObject.getModifierListData().getName().equals("Milks")) {
                 gotMilks = true;
             }
-            if (relatedObject.getType() == CatalogObject.TypeEnum.TAX && relatedObject.getTaxData().getName().equals("Sales Tax")) {
+            if (relatedObject.getType() == CatalogObject.TypeEnum.TAX && relatedObject.getTaxData()
+                .getName()
+                .equals("Sales Tax")) {
                 gotSalesTax = true;
             }
-            if (relatedObject.getType() == CatalogObject.TypeEnum.CATEGORY && relatedObject.getCategoryData().getName().equals("Beverages")) {
+            if (relatedObject.getType() == CatalogObject.TypeEnum.CATEGORY
+                && relatedObject.getCategoryData().getName().equals("Beverages")) {
                 gotBeverages = true;
             }
         }
@@ -512,9 +395,11 @@ public class CatalogApiTest extends APITest {
     }
 
     /**
-     * SearchCatalogObjects
-     * <p>
-     * Queries the targeted catalog using a variety of query types ([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute), ([CatalogQueryExact](#type-catalogqueryexact, ([CatalogQueryRange](#type-catalogqueryrange), ([CatalogQueryText](#type-catalogquerytext), ([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), ([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).
+     * SearchCatalogObjects <p> Queries the targeted catalog using a variety of query types
+     * ([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),
+     * ([CatalogQueryExact](#type-catalogqueryexact, ([CatalogQueryRange](#type-catalogqueryrange),
+     * ([CatalogQueryText](#type-catalogquerytext), ([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax),
+     * ([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).
      *
      * @throws ApiException if the Api call fails
      */
@@ -535,7 +420,9 @@ public class CatalogApiTest extends APITest {
 
         SearchCatalogObjectsRequest query2 = new SearchCatalogObjectsRequest()
             .query(new CatalogQuery()
-                .itemsForTaxQuery(new CatalogQueryItemsForTax().addTaxIdsItem(idMap.get("#SalesTax"))))
+                .itemsForTaxQuery(
+                    new CatalogQueryItemsForTax().addTaxIdsItem(
+                        catalogFixtures.getObjectId(CatalogFixtures.SALES_TAX_CLIENT_ID))))
             .includeDeletedObjects(false)
             .includeRelatedObjects(false);
         SearchCatalogObjectsResponse response2 = api.searchCatalogObjects(query2);
@@ -558,21 +445,26 @@ public class CatalogApiTest extends APITest {
     }
 
     /**
-     * UpdateItemModifierLists
-     * <p>
-     * Updates the [CatalogModifierList](#type-catalogmodifierlist) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
+     * UpdateItemModifierLists <p> Updates the [CatalogModifierList](#type-catalogmodifierlist)
+     * objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform
+     * an upsert on the entire item.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void updateItemModifierListsTest() throws ApiException {
-        String coffeeId = idMap.get("#Coffee");
-        String milksId = idMap.get("#Milks");
-        String syrupsId = idMap.get("#Syrups");
+        String coffeeId = catalogFixtures.getObjectId(CatalogFixtures.COFFEE_CLIENT_ID);
+        String milksId = catalogFixtures.getObjectId(CatalogFixtures.MILKS_CLIENT_ID);
+        String syrupsId = catalogFixtures.getObjectId("#Syrups");
 
         RetrieveCatalogObjectResponse objectBefore = api.retrieveCatalogObject(coffeeId, false);
         assertEquals(1, objectBefore.getObject().getItemData().getModifierListInfo().size());
-        assertEquals(milksId, objectBefore.getObject().getItemData().getModifierListInfo().get(0).getModifierListId());
+        assertEquals(milksId,
+            objectBefore.getObject()
+                .getItemData()
+                .getModifierListInfo()
+                .get(0)
+                .getModifierListId());
 
         UpdateItemModifierListsRequest body = new UpdateItemModifierListsRequest()
             .addItemIdsItem(coffeeId)
@@ -582,20 +474,21 @@ public class CatalogApiTest extends APITest {
 
         RetrieveCatalogObjectResponse objectAfter = api.retrieveCatalogObject(coffeeId, false);
         assertEquals(1, objectAfter.getObject().getItemData().getModifierListInfo().size());
-        assertEquals(syrupsId, objectAfter.getObject().getItemData().getModifierListInfo().get(0).getModifierListId());
+        assertEquals(syrupsId,
+            objectAfter.getObject().getItemData().getModifierListInfo().get(0).getModifierListId());
     }
 
     /**
-     * UpdateItemTaxes
-     * <p>
-     * Updates the [CatalogTax](#type-catalogtax) objects that apply to the targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
+     * UpdateItemTaxes <p> Updates the [CatalogTax](#type-catalogtax) objects that apply to the
+     * targeted [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire
+     * item.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void updateItemTaxesTest() throws ApiException {
-        String coffeeId = idMap.get("#Coffee");
-        String salesTaxId = idMap.get("#SalesTax");
+        String coffeeId = catalogFixtures.getObjectId(CatalogFixtures.COFFEE_CLIENT_ID);
+        String salesTaxId = catalogFixtures.getObjectId(CatalogFixtures.SALES_TAX_CLIENT_ID);
 
         RetrieveCatalogObjectResponse objectBefore = api.retrieveCatalogObject(coffeeId, false);
         assertEquals(1, objectBefore.getObject().getItemData().getTaxIds().size());

@@ -35,7 +35,7 @@ public class V1EmployeesApiTest {
 
     private final V1EmployeesApi api = new V1EmployeesApi();
 
-    
+
     /**
      * Creates an employee for a business.
      *
@@ -51,7 +51,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates an employee role you can then assign to employees.
      *
@@ -67,7 +67,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Creates a timecard for an employee. Each timecard corresponds to a single shift.
      *
@@ -83,7 +83,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
      *
@@ -99,7 +99,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
      *
@@ -118,7 +118,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides summary information for all of a business&#39;s employee roles.
      *
@@ -136,7 +136,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides summary information for all of a business&#39;s employees.
      *
@@ -155,11 +155,11 @@ public class V1EmployeesApiTest {
         String status = null;
         String externalId = null;
         Integer limit = null;
-        List<V1Employee> response = api.listEmployees(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit);
+        List<V1Employee> response = api.listEmployees(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit, null);
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides summary information for all events associated with a particular timecard.
      *
@@ -175,7 +175,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides summary information for all of a business&#39;s employee timecards.
      *
@@ -201,7 +201,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
      *
@@ -218,7 +218,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides the details for a single employee.
      *
@@ -234,7 +234,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides the details for a single employee role.
      *
@@ -250,7 +250,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Provides the details for a single timecard.
      *
@@ -266,11 +266,11 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * V1 UpdateEmployee
      *
-     * 
+     *
      *
      * @throws ApiException
      *          if the Api call fails
@@ -283,7 +283,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies the details of an employee role.
      *
@@ -300,7 +300,7 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
      *
@@ -317,5 +317,5 @@ public class V1EmployeesApiTest {
 
         // TODO: test validations
     }
-    
+
 }
