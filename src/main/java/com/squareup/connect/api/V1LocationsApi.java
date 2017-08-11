@@ -4,6 +4,7 @@ import com.squareup.connect.ApiException;
 import com.squareup.connect.ApiClient;
 import com.squareup.connect.Configuration;
 import com.squareup.connect.Pair;
+import com.squareup.connect.CompleteResponse;
 
 import javax.ws.rs.core.GenericType;
 
@@ -67,8 +68,45 @@ public class V1LocationsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<List<V1Merchant>> localVarReturnType = new GenericType<List<V1Merchant>>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<List<V1Merchant>> completeResponse = (CompleteResponse<List<V1Merchant>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    return completeResponse.getData();
       }
+
+  /**
+   * Provides details for a business&#39;s locations, including their IDs.
+   * Provides details for a business&#39;s locations, including their IDs.
+   * @return CompleteResponse<List<V1Merchant>>
+   * @throws ApiException if fails to make API call
+   */
+  public CompleteResponse<List<V1Merchant>>listLocationsWithHttpInfo() throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/me/locations";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<List<V1Merchant>> localVarReturnType = new GenericType<List<V1Merchant>>() {};
+    return (CompleteResponse<List<V1Merchant>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+  }
   /**
    * Get a business&#39;s information.
    * Get a business&#39;s information.
@@ -102,6 +140,43 @@ public class V1LocationsApi {
     String[] localVarAuthNames = new String[] { "oauth2" };
 
     GenericType<V1Merchant> localVarReturnType = new GenericType<V1Merchant>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    CompleteResponse<V1Merchant> completeResponse = (CompleteResponse<V1Merchant>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    return completeResponse.getData();
       }
+
+  /**
+   * Get a business&#39;s information.
+   * Get a business&#39;s information.
+   * @return CompleteResponse<V1Merchant>
+   * @throws ApiException if fails to make API call
+   */
+  public CompleteResponse<V1Merchant>retrieveBusinessWithHttpInfo() throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/me";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<V1Merchant> localVarReturnType = new GenericType<V1Merchant>() {};
+    return (CompleteResponse<V1Merchant>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+  }
 }
