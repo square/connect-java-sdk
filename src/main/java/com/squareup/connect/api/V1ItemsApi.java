@@ -2397,6 +2397,17 @@ public class V1ItemsApi {
    * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
+   * @return List&lt;V1InventoryEntry&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<V1InventoryEntry> listInventory(String locationId, Integer limit) throws ApiException {
+    return listInventory(locationId, limit, null);
+  }
+    /**
+   * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+   * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+   * @param locationId The ID of the item&#39;s associated location. (required)
+   * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1InventoryEntry&gt;
    * @throws ApiException if fails to make API call
@@ -2485,6 +2496,16 @@ public class V1ItemsApi {
 
     GenericType<List<V1InventoryEntry>> localVarReturnType = new GenericType<List<V1InventoryEntry>>() {};
     return (CompleteResponse<List<V1InventoryEntry>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+  }
+  /**
+   * Provides summary information for all of a location&#39;s items.
+   * Provides summary information for all of a location&#39;s items.
+   * @param locationId The ID of the location to list items for. (required)
+   * @return List&lt;V1Item&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<V1Item> listItems(String locationId) throws ApiException {
+    return listItems(locationId, null);
   }
   /**
    * Provides summary information for all of a location&#39;s items.
