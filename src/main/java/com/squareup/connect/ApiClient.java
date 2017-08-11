@@ -73,7 +73,7 @@ public class ApiClient {
     this.dateFormat = new RFC3339DateFormat();
 
     // Set default User-Agent.
-    setUserAgent("Square-Connect-Java/2.2.0");
+    setUserAgent("Square-Connect-Java/2.2.1");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
@@ -630,7 +630,7 @@ public class ApiClient {
    * @return The response body in type of string
    * @throws ApiException API exception
    */
-  public <T> T invokeAPI(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, String[] authNames, GenericType<T> returnType) throws ApiException {
+  public <T> CompleteResponse<T> invokeAPI(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, String[] authNames, GenericType<T> returnType) throws ApiException {
     updateParamsForAuth(authNames, queryParams, headerParams);
 
     // Not using `.target(this.basePath).path(path)` below,
@@ -691,7 +691,7 @@ public class ApiClient {
       if (returnType == null)
         return null;
       else
-        return deserialize(response, returnType);
+        return new CompleteResponse<T>(deserialize(response, returnType), response);
     } else {
       String message = "error";
       String respBody = null;
