@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 <a name="listOrders"></a>
 # **listOrders**
-> List&lt;V1Order&gt; listOrders(locationId, order, limit)
+> List&lt;V1Order&gt; listOrders(locationId, order, limit, batchToken)
 
 Provides summary information for a merchant&#39;s online store orders.
 
@@ -152,8 +152,9 @@ V1TransactionsApi apiInstance = new V1TransactionsApi();
 String locationId = "locationId_example"; // String | The ID of the location to list online store orders for.
 String order = "order_example"; // String | TThe order in which payments are listed in the response.
 Integer limit = 56; // Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1Order> result = apiInstance.listOrders(locationId, order, limit);
+    List<V1Order> result = apiInstance.listOrders(locationId, order, limit, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1TransactionsApi#listOrders");
@@ -168,6 +169,7 @@ Name | Type | Description  | Notes
  **locationId** | **String**| The ID of the location to list online store orders for. |
  **order** | **String**| TThe order in which payments are listed in the response. | [optional] [enum: ASC, DESC]
  **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional]
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
@@ -184,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="listPayments"></a>
 # **listPayments**
-> List&lt;V1Payment&gt; listPayments(locationId, order, beginTime, endTime, limit)
+> List&lt;V1Payment&gt; listPayments(locationId, order, beginTime, endTime, limit, batchToken)
 
 Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
 
@@ -211,8 +213,9 @@ String order = "order_example"; // String | The order in which payments are list
 String beginTime = "beginTime_example"; // String | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
 String endTime = "endTime_example"; // String | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
 Integer limit = 56; // Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1Payment> result = apiInstance.listPayments(locationId, order, beginTime, endTime, limit);
+    List<V1Payment> result = apiInstance.listPayments(locationId, order, beginTime, endTime, limit, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1TransactionsApi#listPayments");
@@ -229,6 +232,7 @@ Name | Type | Description  | Notes
  **beginTime** | **String**| The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. | [optional]
  **endTime** | **String**| The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. | [optional]
  **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional]
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
@@ -245,7 +249,7 @@ Name | Type | Description  | Notes
 
 <a name="listRefunds"></a>
 # **listRefunds**
-> List&lt;V1Refund&gt; listRefunds(locationId, order, beginTime, endTime, limit)
+> List&lt;V1Refund&gt; listRefunds(locationId, order, beginTime, endTime, limit, batchToken)
 
 Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
 
@@ -272,8 +276,9 @@ String order = "order_example"; // String | TThe order in which payments are lis
 String beginTime = "beginTime_example"; // String | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
 String endTime = "endTime_example"; // String | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
 Integer limit = 56; // Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1Refund> result = apiInstance.listRefunds(locationId, order, beginTime, endTime, limit);
+    List<V1Refund> result = apiInstance.listRefunds(locationId, order, beginTime, endTime, limit, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1TransactionsApi#listRefunds");
@@ -290,6 +295,7 @@ Name | Type | Description  | Notes
  **beginTime** | **String**| The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. | [optional]
  **endTime** | **String**| The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. | [optional]
  **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional]
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 
@@ -306,7 +312,7 @@ Name | Type | Description  | Notes
 
 <a name="listSettlements"></a>
 # **listSettlements**
-> List&lt;V1Settlement&gt; listSettlements(locationId, order, beginTime, endTime, limit, status)
+> List&lt;V1Settlement&gt; listSettlements(locationId, order, beginTime, endTime, limit, status, batchToken)
 
 Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
 
@@ -334,8 +340,9 @@ String beginTime = "beginTime_example"; // String | The beginning of the request
 String endTime = "endTime_example"; // String | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
 Integer limit = 56; // Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
 String status = "status_example"; // String | Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED).
+String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
-    List<V1Settlement> result = apiInstance.listSettlements(locationId, order, beginTime, endTime, limit, status);
+    List<V1Settlement> result = apiInstance.listSettlements(locationId, order, beginTime, endTime, limit, status, batchToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1TransactionsApi#listSettlements");
@@ -353,6 +360,7 @@ Name | Type | Description  | Notes
  **endTime** | **String**| The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. | [optional]
  **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional]
  **status** | **String**| Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). | [optional] [enum: SENT, FAILED]
+ **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
 

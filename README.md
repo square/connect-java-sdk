@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.2.0</version>
+    <version>2.2.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.2.0"
+compile "com.squareup:connect:2.2.1"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.2.0.jar
+* target/connect-2.2.1.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -363,7 +363,7 @@ Authentication schemes defined for the API:
 
 - **Type**: OAuth
 - **Flow**: accessCode
-- **Authorization URL**: https://connect.squareup.com/oauth2/authorize?&lt;PARAMETERS&gt;
+- **Authorization URL**: https://connect.squareup.com/oauth2/authorize
 - **Scopes**: 
   - MERCHANT_PROFILE_READ: GET endpoints related to a merchant&#39;s business and location entities. Almost all Connect API applications need this permission in order to obtain a merchant&#39;s location IDs
   - PAYMENTS_READ: GET endpoints related to transactions and refunds
@@ -381,6 +381,55 @@ Authentication schemes defined for the API:
   - TIMECARDS_READ: GET endpoints related to employee timecards
   - TIMECARDS_WRITE: POST, PUT, and DELETE endpoints related to employee timecards
 
+
+## Pagination of V1 Endpoints
+
+V1 Endpoints return pagination information via HTTP headers. In order to obtain
+response headers and extract the `batch_token` parameter you will need to follow
+the following steps:
+
+1. Use the full information endpoint methods of each API to get the response HTTP
+Headers. They are named as their simple counterpart with a `WithHttpInfo` suffix.
+Hence `listEmployeeRoles` would be called `listEmployeeRolesWithHttpInfo`. This
+method returns a `CompleteResponse` object with the response data deserialized along
+with a helper to retrieve the token if present.
+
+2. Use `String batchToken = completeResponse.getBatchToken();`
+to extract the token and proceed to get the following page if a token is present.
+
+### Example
+
+```java
+// Import classes:
+//import .ApiClient;
+//import .ApiException;
+//import .Configuration;
+//import .CompleteResponse;
+//import .auth.*;
+//import .api.V1EmployeesApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+V1EmployeesApi apiInstance = new V1EmployeesApi();
+String order = "order_example"; // String | The order in which employees are listed in the response, based on their created_at field.Default value: ASC
+Integer limit = 56; // Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+String batchToken = null;
+try {
+    do {
+        CompleteResponse<List<V1EmployeeRole>> completeResponse = apiInstance.listEmployeeRoles(order, limit, batchToken);
+        System.out.println(completeResponse.getData());
+
+        batchToken = completeResponse.getBatchToken();
+    } while (batchToken != null);
+} catch (ApiException e) {
+    System.err.println("Exception when calling V1EmployeesApi#listEmployeeRoles");
+    e.printStackTrace();
+}
+```
 
 ## Recommendation
 
