@@ -113,6 +113,8 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**retrieveCustomer**](docs/CustomersApi.md#retrieveCustomer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
 *CustomersApi* | [**updateCustomer**](docs/CustomersApi.md#updateCustomer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
+*OrdersApi* | [**batchRetrieveOrders**](docs/OrdersApi.md#batchRetrieveOrders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve | BatchRetrieveOrders
+*OrdersApi* | [**createOrder**](docs/OrdersApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
 *TransactionsApi* | [**captureTransaction**](docs/TransactionsApi.md#captureTransaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/capture | CaptureTransaction
 *TransactionsApi* | [**charge**](docs/TransactionsApi.md#charge) | **POST** /v2/locations/{location_id}/transactions | Charge
 *TransactionsApi* | [**createRefund**](docs/TransactionsApi.md#createRefund) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/refund | CreateRefund
@@ -194,10 +196,14 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Address](docs/Address.md)
+ - [ApplicationReceivable](docs/ApplicationReceivable.md)
+ - [ApplicationReceivableRefund](docs/ApplicationReceivableRefund.md)
  - [BatchDeleteCatalogObjectsRequest](docs/BatchDeleteCatalogObjectsRequest.md)
  - [BatchDeleteCatalogObjectsResponse](docs/BatchDeleteCatalogObjectsResponse.md)
  - [BatchRetrieveCatalogObjectsRequest](docs/BatchRetrieveCatalogObjectsRequest.md)
  - [BatchRetrieveCatalogObjectsResponse](docs/BatchRetrieveCatalogObjectsResponse.md)
+ - [BatchRetrieveOrdersRequest](docs/BatchRetrieveOrdersRequest.md)
+ - [BatchRetrieveOrdersResponse](docs/BatchRetrieveOrdersResponse.md)
  - [BatchUpsertCatalogObjectsRequest](docs/BatchUpsertCatalogObjectsRequest.md)
  - [BatchUpsertCatalogObjectsResponse](docs/BatchUpsertCatalogObjectsResponse.md)
  - [CaptureTransactionRequest](docs/CaptureTransactionRequest.md)
@@ -246,7 +252,9 @@ Class | Method | HTTP request | Description
  - [CreateOrderRequest](docs/CreateOrderRequest.md)
  - [CreateOrderRequestDiscount](docs/CreateOrderRequestDiscount.md)
  - [CreateOrderRequestLineItem](docs/CreateOrderRequestLineItem.md)
+ - [CreateOrderRequestModifier](docs/CreateOrderRequestModifier.md)
  - [CreateOrderRequestTax](docs/CreateOrderRequestTax.md)
+ - [CreateOrderResponse](docs/CreateOrderResponse.md)
  - [CreateRefundRequest](docs/CreateRefundRequest.md)
  - [CreateRefundResponse](docs/CreateRefundResponse.md)
  - [Currency](docs/Currency.md)
@@ -277,12 +285,14 @@ Class | Method | HTTP request | Description
  - [ListTransactionsResponse](docs/ListTransactionsResponse.md)
  - [Location](docs/Location.md)
  - [LocationCapability](docs/LocationCapability.md)
+ - [LocationStatus](docs/LocationStatus.md)
  - [Money](docs/Money.md)
  - [Order](docs/Order.md)
  - [OrderLineItem](docs/OrderLineItem.md)
  - [OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
  - [OrderLineItemDiscountScope](docs/OrderLineItemDiscountScope.md)
  - [OrderLineItemDiscountType](docs/OrderLineItemDiscountType.md)
+ - [OrderLineItemModifier](docs/OrderLineItemModifier.md)
  - [OrderLineItemTax](docs/OrderLineItemTax.md)
  - [OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
  - [Refund](docs/Refund.md)

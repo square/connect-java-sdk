@@ -65,21 +65,6 @@ public class V1Refund {
   @JsonProperty("refunded_money")
   private V1Money refundedMoney = null;
 
-  @JsonProperty("refunded_processing_fee_money")
-  private V1Money refundedProcessingFeeMoney = null;
-
-  @JsonProperty("refunded_additive_tax_money")
-  private V1Money refundedAdditiveTaxMoney = null;
-
-  @JsonProperty("refunded_inclusive_tax_money")
-  private V1Money refundedInclusiveTaxMoney = null;
-
-  @JsonProperty("refunded_tip_money")
-  private V1Money refundedTipMoney = null;
-
-  @JsonProperty("refunded_discount_money")
-  private V1Money refundedDiscountMoney = null;
-
   @JsonProperty("created_at")
   private String createdAt = null;
 
@@ -144,96 +129,6 @@ public class V1Refund {
 
   public void setRefundedMoney(V1Money refundedMoney) {
     this.refundedMoney = refundedMoney;
-  }
-
-  public V1Refund refundedProcessingFeeMoney(V1Money refundedProcessingFeeMoney) {
-    this.refundedProcessingFeeMoney = refundedProcessingFeeMoney;
-    return this;
-  }
-
-   /**
-   * The amount of processing fee money refunded.
-   * @return refundedProcessingFeeMoney
-  **/
-  @ApiModelProperty(value = "The amount of processing fee money refunded.")
-  public V1Money getRefundedProcessingFeeMoney() {
-    return refundedProcessingFeeMoney;
-  }
-
-  public void setRefundedProcessingFeeMoney(V1Money refundedProcessingFeeMoney) {
-    this.refundedProcessingFeeMoney = refundedProcessingFeeMoney;
-  }
-
-  public V1Refund refundedAdditiveTaxMoney(V1Money refundedAdditiveTaxMoney) {
-    this.refundedAdditiveTaxMoney = refundedAdditiveTaxMoney;
-    return this;
-  }
-
-   /**
-   * The amount of additive tax money refunded.
-   * @return refundedAdditiveTaxMoney
-  **/
-  @ApiModelProperty(value = "The amount of additive tax money refunded.")
-  public V1Money getRefundedAdditiveTaxMoney() {
-    return refundedAdditiveTaxMoney;
-  }
-
-  public void setRefundedAdditiveTaxMoney(V1Money refundedAdditiveTaxMoney) {
-    this.refundedAdditiveTaxMoney = refundedAdditiveTaxMoney;
-  }
-
-  public V1Refund refundedInclusiveTaxMoney(V1Money refundedInclusiveTaxMoney) {
-    this.refundedInclusiveTaxMoney = refundedInclusiveTaxMoney;
-    return this;
-  }
-
-   /**
-   * The amount of inclusive tax money refunded.
-   * @return refundedInclusiveTaxMoney
-  **/
-  @ApiModelProperty(value = "The amount of inclusive tax money refunded.")
-  public V1Money getRefundedInclusiveTaxMoney() {
-    return refundedInclusiveTaxMoney;
-  }
-
-  public void setRefundedInclusiveTaxMoney(V1Money refundedInclusiveTaxMoney) {
-    this.refundedInclusiveTaxMoney = refundedInclusiveTaxMoney;
-  }
-
-  public V1Refund refundedTipMoney(V1Money refundedTipMoney) {
-    this.refundedTipMoney = refundedTipMoney;
-    return this;
-  }
-
-   /**
-   * The amount of tip money refunded.
-   * @return refundedTipMoney
-  **/
-  @ApiModelProperty(value = "The amount of tip money refunded.")
-  public V1Money getRefundedTipMoney() {
-    return refundedTipMoney;
-  }
-
-  public void setRefundedTipMoney(V1Money refundedTipMoney) {
-    this.refundedTipMoney = refundedTipMoney;
-  }
-
-  public V1Refund refundedDiscountMoney(V1Money refundedDiscountMoney) {
-    this.refundedDiscountMoney = refundedDiscountMoney;
-    return this;
-  }
-
-   /**
-   * The amount of discount money refunded.
-   * @return refundedDiscountMoney
-  **/
-  @ApiModelProperty(value = "The amount of discount money refunded.")
-  public V1Money getRefundedDiscountMoney() {
-    return refundedDiscountMoney;
-  }
-
-  public void setRefundedDiscountMoney(V1Money refundedDiscountMoney) {
-    this.refundedDiscountMoney = refundedDiscountMoney;
   }
 
   public V1Refund createdAt(String createdAt) {
@@ -321,11 +216,6 @@ public class V1Refund {
     return Objects.equals(this.type, v1Refund.type) &&
         Objects.equals(this.reason, v1Refund.reason) &&
         Objects.equals(this.refundedMoney, v1Refund.refundedMoney) &&
-        Objects.equals(this.refundedProcessingFeeMoney, v1Refund.refundedProcessingFeeMoney) &&
-        Objects.equals(this.refundedAdditiveTaxMoney, v1Refund.refundedAdditiveTaxMoney) &&
-        Objects.equals(this.refundedInclusiveTaxMoney, v1Refund.refundedInclusiveTaxMoney) &&
-        Objects.equals(this.refundedTipMoney, v1Refund.refundedTipMoney) &&
-        Objects.equals(this.refundedDiscountMoney, v1Refund.refundedDiscountMoney) &&
         Objects.equals(this.createdAt, v1Refund.createdAt) &&
         Objects.equals(this.processedAt, v1Refund.processedAt) &&
         Objects.equals(this.paymentId, v1Refund.paymentId) &&
@@ -334,7 +224,7 @@ public class V1Refund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, reason, refundedMoney, refundedProcessingFeeMoney, refundedAdditiveTaxMoney, refundedInclusiveTaxMoney, refundedTipMoney, refundedDiscountMoney, createdAt, processedAt, paymentId, merchantId);
+    return Objects.hash(type, reason, refundedMoney, createdAt, processedAt, paymentId, merchantId);
   }
 
 
@@ -346,11 +236,6 @@ public class V1Refund {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    refundedMoney: ").append(toIndentedString(refundedMoney)).append("\n");
-    sb.append("    refundedProcessingFeeMoney: ").append(toIndentedString(refundedProcessingFeeMoney)).append("\n");
-    sb.append("    refundedAdditiveTaxMoney: ").append(toIndentedString(refundedAdditiveTaxMoney)).append("\n");
-    sb.append("    refundedInclusiveTaxMoney: ").append(toIndentedString(refundedInclusiveTaxMoney)).append("\n");
-    sb.append("    refundedTipMoney: ").append(toIndentedString(refundedTipMoney)).append("\n");
-    sb.append("    refundedDiscountMoney: ").append(toIndentedString(refundedDiscountMoney)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    processedAt: ").append(toIndentedString(processedAt)).append("\n");
     sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");

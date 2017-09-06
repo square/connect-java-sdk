@@ -559,25 +559,6 @@ public class V1EmployeesApi {
     GenericType<List<V1EmployeeRole>> localVarReturnType = new GenericType<List<V1EmployeeRole>>() {};
     return (CompleteResponse<List<V1EmployeeRole>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
-
-  /**
-   * Provides summary information for all of a business&#39;s employees.
-   * Provides summary information for all of a business&#39;s employees.
-   * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC  (optional)
-   * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format (optional)
-   * @param endUpdatedAt If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
-   * @param beginCreatedAt If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
-   * @param endCreatedAt If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
-   * @param status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). (optional)
-   * @param externalId If provided, the endpoint returns only employee entities with the specified external_id. (optional)
-   * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
-   * @return List&lt;V1Employee&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Employee> listEmployees(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit) throws ApiException {
-    return listEmployees(order, beginUpdatedAt, endUpdatedAt, beginCreatedAt, endCreatedAt, status, externalId, limit, null);
-  }
-
   /**
    * Provides summary information for all of a business&#39;s employees.
    * Provides summary information for all of a business&#39;s employees.

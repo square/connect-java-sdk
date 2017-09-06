@@ -21,19 +21,22 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a tax that applies to either a single line item or an entire order.
+ * Represents a tax that can apply to either a single line item or an entire order.
  */
-@ApiModel(description = "Represents a tax that applies to either a single line item or an entire order.")
+@ApiModel(description = "Represents a tax that can apply to either a single line item or an entire order.")
 
 public class CreateOrderRequestTax {
+  @JsonProperty("catalog_object_id")
+  private String catalogObjectId = null;
+
   @JsonProperty("name")
   private String name = null;
 
   /**
-   * Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
+   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
    */
   public enum TypeEnum {
-    UNKNOWN("UNKNOWN"),
+    UNKNOWN_TAX("UNKNOWN_TAX"),
     
     ADDITIVE("ADDITIVE"),
     
@@ -67,16 +70,34 @@ public class CreateOrderRequestTax {
   @JsonProperty("percentage")
   private String percentage = null;
 
+  public CreateOrderRequestTax catalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+    return this;
+  }
+
+   /**
+   * Only used for catalog taxes. The catalog object ID of an existing [CatalogTax](#type-catalogtax).  Do not provide a value for this field if you provide values in other fields for an ad hoc tax.
+   * @return catalogObjectId
+  **/
+  @ApiModelProperty(value = "Only used for catalog taxes. The catalog object ID of an existing [CatalogTax](#type-catalogtax).  Do not provide a value for this field if you provide values in other fields for an ad hoc tax.")
+  public String getCatalogObjectId() {
+    return catalogObjectId;
+  }
+
+  public void setCatalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+  }
+
   public CreateOrderRequestTax name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * The tax's name.
+   * Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set catalog_object_id.
    * @return name
   **/
-  @ApiModelProperty(value = "The tax's name.")
+  @ApiModelProperty(value = "Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set catalog_object_id.")
   public String getName() {
     return name;
   }
@@ -91,10 +112,10 @@ public class CreateOrderRequestTax {
   }
 
    /**
-   * Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
+   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
    * @return type
   **/
-  @ApiModelProperty(value = "Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.")
+  @ApiModelProperty(value = "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.")
   public TypeEnum getType() {
     return type;
   }
@@ -109,10 +130,10 @@ public class CreateOrderRequestTax {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
+   * Only used for ad hoc taxes. The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0")
+  @ApiModelProperty(value = "Only used for ad hoc taxes. The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0")
   public String getPercentage() {
     return percentage;
   }
@@ -131,14 +152,15 @@ public class CreateOrderRequestTax {
       return false;
     }
     CreateOrderRequestTax createOrderRequestTax = (CreateOrderRequestTax) o;
-    return Objects.equals(this.name, createOrderRequestTax.name) &&
+    return Objects.equals(this.catalogObjectId, createOrderRequestTax.catalogObjectId) &&
+        Objects.equals(this.name, createOrderRequestTax.name) &&
         Objects.equals(this.type, createOrderRequestTax.type) &&
         Objects.equals(this.percentage, createOrderRequestTax.percentage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, percentage);
+    return Objects.hash(catalogObjectId, name, type, percentage);
   }
 
 
@@ -147,6 +169,7 @@ public class CreateOrderRequestTax {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequestTax {\n");
     
+    sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");

@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public enum OrderLineItemDiscountType {
   
-  UNKNOWN("UNKNOWN"),
+  UNKNOWN_DISCOUNT("UNKNOWN_DISCOUNT"),
   
   FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
   
