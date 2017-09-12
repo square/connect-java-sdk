@@ -4,6 +4,8 @@
 ## Enum
 
 
+* `UNKNOWN_CURRENCY` (value: `"UNKNOWN_CURRENCY"`)
+
 * `AED` (value: `"AED"`)
 
 * `AFN` (value: `"AFN"`)

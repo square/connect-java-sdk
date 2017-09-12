@@ -399,10 +399,10 @@ public class V1Payment {
   }
 
    /**
-   * Get swedishRoundingMoney
+   * The total of all sales, including any applicable taxes, rounded to the smallest legal unit of currency (e.g., the nearest penny in USD, the nearest nickel in CAD)
    * @return swedishRoundingMoney
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The total of all sales, including any applicable taxes, rounded to the smallest legal unit of currency (e.g., the nearest penny in USD, the nearest nickel in CAD)")
   public V1Money getSwedishRoundingMoney() {
     return swedishRoundingMoney;
   }
@@ -417,10 +417,10 @@ public class V1Payment {
   }
 
    /**
-   * Get grossSalesMoney
+   * The total of all sales, including any applicable taxes.
    * @return grossSalesMoney
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The total of all sales, including any applicable taxes.")
   public V1Money getGrossSalesMoney() {
     return grossSalesMoney;
   }
@@ -435,10 +435,10 @@ public class V1Payment {
   }
 
    /**
-   * Get netSalesMoney
+   * The total of all sales, minus any applicable taxes.
    * @return netSalesMoney
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The total of all sales, minus any applicable taxes.")
   public V1Money getNetSalesMoney() {
     return netSalesMoney;
   }

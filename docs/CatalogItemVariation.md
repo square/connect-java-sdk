@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **upc** | **String** | The item variation&#39;s UPC, if any. Searchable. |  [optional]
 **pricingType** | [**PricingTypeEnum**](#PricingTypeEnum) | Indicates whether the item variation&#39;s price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values. |  [optional]
 **priceMoney** | [**Money**](Money.md) | The item variation&#39;s price, if fixed pricing is used. |  [optional]
-**locationOverrides** | [**List&lt;ItemVariationLocationOverrides&gt;**](ItemVariationLocationOverrides.md) | Per-[location][#type-location] price and inventory overrides. |  [optional]
+**locationOverrides** | [**List&lt;ItemVariationLocationOverrides&gt;**](ItemVariationLocationOverrides.md) | Per-[location](#type-location) price and inventory overrides. |  [optional]
 **trackInventory** | **Boolean** | If &#x60;true&#x60;, inventory tracking is active for the variation. |  [optional]
 **inventoryAlertType** | [**InventoryAlertTypeEnum**](#InventoryAlertTypeEnum) | Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its &#x60;inventory_alert_threshold&#x60;. See [InventoryAlertType](#type-inventoryalerttype) for all possible values. |  [optional]
 **inventoryAlertThreshold** | **Long** | If the inventory quantity for the variation is less than or equal to this value and &#x60;inventory_alert_type&#x60; is &#x60;LOW_QUANTITY&#x60;, the variation displays an alert in the merchant dashboard.  This value is always an integer. |  [optional]

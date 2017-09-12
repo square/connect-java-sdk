@@ -33,6 +33,8 @@ public class Money {
    * The type of currency, in __ISO 4217 format__. For example, the currency code for US dollars is `USD`.  See [Currency](#type-currency) for possible values.
    */
   public enum CurrencyEnum {
+    UNKNOWN_CURRENCY("UNKNOWN_CURRENCY"),
+    
     AED("AED"),
     
     AFN("AFN"),
@@ -425,6 +427,8 @@ public class Money {
 
    /**
    * The amount of money, in the smallest denomination of the currency indicated by `currency`. For example, when `currency` is `USD`, `amount` is in cents.
+   * minimum: 0
+   * maximum: 99999999
    * @return amount
   **/
   @ApiModelProperty(value = "The amount of money, in the smallest denomination of the currency indicated by `currency`. For example, when `currency` is `USD`, `amount` is in cents.")

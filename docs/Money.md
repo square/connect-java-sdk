@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 ## Enum: CurrencyEnum
 Name | Value
 ---- | -----
+UNKNOWN_CURRENCY | &quot;UNKNOWN_CURRENCY&quot;
 AED | &quot;AED&quot;
 AFN | &quot;AFN&quot;
 ALL | &quot;ALL&quot;

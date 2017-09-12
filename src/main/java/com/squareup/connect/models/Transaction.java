@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Address;
-import com.squareup.connect.models.Order;
 import com.squareup.connect.models.Refund;
 import com.squareup.connect.models.Tender;
 import io.swagger.annotations.ApiModel;
@@ -98,11 +97,11 @@ public class Transaction {
   @JsonProperty("client_id")
   private String clientId = null;
 
-  @JsonProperty("order")
-  private Order order = null;
-
   @JsonProperty("shipping_address")
   private Address shippingAddress = null;
+
+  @JsonProperty("order_id")
+  private String orderId = null;
 
   public Transaction id(String id) {
     this.id = id;
@@ -258,24 +257,6 @@ public class Transaction {
     this.clientId = clientId;
   }
 
-  public Transaction order(Order order) {
-    this.order = order;
-    return this;
-  }
-
-   /**
-   * The order associated with this transaction, if any.
-   * @return order
-  **/
-  @ApiModelProperty(value = "The order associated with this transaction, if any.")
-  public Order getOrder() {
-    return order;
-  }
-
-  public void setOrder(Order order) {
-    this.order = order;
-  }
-
   public Transaction shippingAddress(Address shippingAddress) {
     this.shippingAddress = shippingAddress;
     return this;
@@ -292,6 +273,24 @@ public class Transaction {
 
   public void setShippingAddress(Address shippingAddress) {
     this.shippingAddress = shippingAddress;
+  }
+
+  public Transaction orderId(String orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * The order_id is an identifier for the order associated with this transaction, if any.
+   * @return orderId
+  **/
+  @ApiModelProperty(value = "The order_id is an identifier for the order associated with this transaction, if any.")
+  public String getOrderId() {
+    return orderId;
+  }
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 
 
@@ -312,13 +311,13 @@ public class Transaction {
         Objects.equals(this.referenceId, transaction.referenceId) &&
         Objects.equals(this.product, transaction.product) &&
         Objects.equals(this.clientId, transaction.clientId) &&
-        Objects.equals(this.order, transaction.order) &&
-        Objects.equals(this.shippingAddress, transaction.shippingAddress);
+        Objects.equals(this.shippingAddress, transaction.shippingAddress) &&
+        Objects.equals(this.orderId, transaction.orderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, createdAt, tenders, refunds, referenceId, product, clientId, order, shippingAddress);
+    return Objects.hash(id, locationId, createdAt, tenders, refunds, referenceId, product, clientId, shippingAddress, orderId);
   }
 
 
@@ -335,8 +334,8 @@ public class Transaction {
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
-    sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

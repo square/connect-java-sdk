@@ -30,6 +30,9 @@ import java.util.List;
 @ApiModel(description = "Contains all information related to a single order to process with Square, including line items that specify the products to purchase")
 
 public class Order {
+  @JsonProperty("id")
+  private String id = null;
+
   @JsonProperty("location_id")
   private String locationId = null;
 
@@ -47,6 +50,24 @@ public class Order {
 
   @JsonProperty("total_discount_money")
   private Money totalDiscountMoney = null;
+
+  public Order id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-createorder) endpoint.
+   * @return id
+  **/
+  @ApiModelProperty(value = "The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-createorder) endpoint.")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public Order locationId(String locationId) {
     this.locationId = locationId;
@@ -171,7 +192,8 @@ public class Order {
       return false;
     }
     Order order = (Order) o;
-    return Objects.equals(this.locationId, order.locationId) &&
+    return Objects.equals(this.id, order.id) &&
+        Objects.equals(this.locationId, order.locationId) &&
         Objects.equals(this.referenceId, order.referenceId) &&
         Objects.equals(this.lineItems, order.lineItems) &&
         Objects.equals(this.totalMoney, order.totalMoney) &&
@@ -181,7 +203,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(locationId, referenceId, lineItems, totalMoney, totalTaxMoney, totalDiscountMoney);
+    return Objects.hash(id, locationId, referenceId, lineItems, totalMoney, totalTaxMoney, totalDiscountMoney);
   }
 
 
@@ -190,6 +212,7 @@ public class Order {
     StringBuilder sb = new StringBuilder();
     sb.append("class Order {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");

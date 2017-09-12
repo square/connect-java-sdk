@@ -4,7 +4,7 @@
 ## Enum
 
 
-* `UNKNOWN` (value: `"UNKNOWN"`)
+* `UNKNOWN_TAX` (value: `"UNKNOWN_TAX"`)
 
 * `ADDITIVE` (value: `"ADDITIVE"`)
 

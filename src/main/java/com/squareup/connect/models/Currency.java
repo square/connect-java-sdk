@@ -23,6 +23,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public enum Currency {
   
+  UNKNOWN_CURRENCY("UNKNOWN_CURRENCY"),
+  
   AED("AED"),
   
   AFN("AFN"),

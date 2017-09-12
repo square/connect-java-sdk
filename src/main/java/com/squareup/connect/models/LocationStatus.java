@@ -19,19 +19,17 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Indicates whether this is a line item or order-level discount.
+ * Indicates the location's status.
  */
-public enum OrderLineItemDiscountScope {
+public enum LocationStatus {
   
-  OTHER_DISCOUNT_SCOPE("OTHER_DISCOUNT_SCOPE"),
+  ACTIVE("ACTIVE"),
   
-  LINE_ITEM("LINE_ITEM"),
-  
-  ORDER("ORDER");
+  INACTIVE("INACTIVE");
 
   private String value;
 
-  OrderLineItemDiscountScope(String value) {
+  LocationStatus(String value) {
     this.value = value;
   }
 
@@ -41,8 +39,8 @@ public enum OrderLineItemDiscountScope {
   }
 
   @JsonCreator
-  public static OrderLineItemDiscountScope fromValue(String text) {
-    for (OrderLineItemDiscountScope b : OrderLineItemDiscountScope.values()) {
+  public static LocationStatus fromValue(String text) {
+    for (LocationStatus b : LocationStatus.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
