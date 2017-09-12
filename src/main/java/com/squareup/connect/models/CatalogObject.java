@@ -225,10 +225,10 @@ public class CatalogObject {
   }
 
    /**
-   * The Connect V1 IDs for this object at each [location][#type-location] where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
+   * The Connect V1 IDs for this object at each [location](#type-location) where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
    * @return catalogV1Ids
   **/
-  @ApiModelProperty(value = "The Connect V1 IDs for this object at each [location][#type-location] where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.")
+  @ApiModelProperty(value = "The Connect V1 IDs for this object at each [location](#type-location) where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.")
   public List<CatalogV1Id> getCatalogV1Ids() {
     return catalogV1Ids;
   }

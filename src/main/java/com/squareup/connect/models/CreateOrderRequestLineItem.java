@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.CreateOrderRequestDiscount;
+import com.squareup.connect.models.CreateOrderRequestModifier;
 import com.squareup.connect.models.CreateOrderRequestTax;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
@@ -26,9 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a line item to include in an order. Each line item describes a different product to purchase, with its own quantity and price details.
+ * Represents a line item to include in an order. Each line item describes a different product to purchase, with its own quantity and price details.  Line items can either reference objects from the merchant&#39;s catalog, or can alternatively specify a name and price instead.
  */
-@ApiModel(description = "Represents a line item to include in an order. Each line item describes a different product to purchase, with its own quantity and price details.")
+@ApiModel(description = "Represents a line item to include in an order. Each line item describes a different product to purchase, with its own quantity and price details.  Line items can either reference objects from the merchant's catalog, or can alternatively specify a name and price instead.")
 
 public class CreateOrderRequestLineItem {
   @JsonProperty("name")
@@ -39,6 +40,18 @@ public class CreateOrderRequestLineItem {
 
   @JsonProperty("base_price_money")
   private Money basePriceMoney = null;
+
+  @JsonProperty("variation_name")
+  private String variationName = null;
+
+  @JsonProperty("note")
+  private String note = null;
+
+  @JsonProperty("catalog_object_id")
+  private String catalogObjectId = null;
+
+  @JsonProperty("modifiers")
+  private List<CreateOrderRequestModifier> modifiers = new ArrayList<CreateOrderRequestModifier>();
 
   @JsonProperty("taxes")
   private List<CreateOrderRequestTax> taxes = new ArrayList<CreateOrderRequestTax>();
@@ -52,10 +65,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * The name of the line item. This value cannot exceed 500 characters.
+   * Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.  Do not provide a value for this field if you provide values in catalog_object_id.
    * @return name
   **/
-  @ApiModelProperty(value = "The name of the line item. This value cannot exceed 500 characters.")
+  @ApiModelProperty(value = "Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.  Do not provide a value for this field if you provide values in catalog_object_id.")
   public String getName() {
     return name;
   }
@@ -70,10 +83,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * The quantity to purchase, as a string representation of a number. Currently, only integer values are supported.
+   * The quantity to purchase, as a string representation of a number.  This string must have a positive integer value.
    * @return quantity
   **/
-  @ApiModelProperty(required = true, value = "The quantity to purchase, as a string representation of a number. Currently, only integer values are supported.")
+  @ApiModelProperty(required = true, value = "The quantity to purchase, as a string representation of a number.  This string must have a positive integer value.")
   public String getQuantity() {
     return quantity;
   }
@@ -88,16 +101,93 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * The base price for a single unit of the line item's associated variation. If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.
+   * Only used for ad hoc line items. The base price for a single unit of the line item's associated variation.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.
    * @return basePriceMoney
   **/
-  @ApiModelProperty(value = "The base price for a single unit of the line item's associated variation. If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.")
+  @ApiModelProperty(value = "Only used for ad hoc line items. The base price for a single unit of the line item's associated variation.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.")
   public Money getBasePriceMoney() {
     return basePriceMoney;
   }
 
   public void setBasePriceMoney(Money basePriceMoney) {
     this.basePriceMoney = basePriceMoney;
+  }
+
+  public CreateOrderRequestLineItem variationName(String variationName) {
+    this.variationName = variationName;
+    return this;
+  }
+
+   /**
+   * Only used for ad hoc line items. The variation name of the line item. This value cannot exceed 255 characters.  If this value is not set for an ad hoc line item, the default value of `Regular` is used.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.
+   * @return variationName
+  **/
+  @ApiModelProperty(value = "Only used for ad hoc line items. The variation name of the line item. This value cannot exceed 255 characters.  If this value is not set for an ad hoc line item, the default value of `Regular` is used.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.")
+  public String getVariationName() {
+    return variationName;
+  }
+
+  public void setVariationName(String variationName) {
+    this.variationName = variationName;
+  }
+
+  public CreateOrderRequestLineItem note(String note) {
+    this.note = note;
+    return this;
+  }
+
+   /**
+   * The note of the line item. This value cannot exceed 50 characters.
+   * @return note
+  **/
+  @ApiModelProperty(value = "The note of the line item. This value cannot exceed 50 characters.")
+  public String getNote() {
+    return note;
+  }
+
+  public void setNote(String note) {
+    this.note = note;
+  }
+
+  public CreateOrderRequestLineItem catalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+    return this;
+  }
+
+   /**
+   * Only used for Catalog line items. The catalog object ID from existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.
+   * @return catalogObjectId
+  **/
+  @ApiModelProperty(value = "Only used for Catalog line items. The catalog object ID from existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.")
+  public String getCatalogObjectId() {
+    return catalogObjectId;
+  }
+
+  public void setCatalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+  }
+
+  public CreateOrderRequestLineItem modifiers(List<CreateOrderRequestModifier> modifiers) {
+    this.modifiers = modifiers;
+    return this;
+  }
+
+  public CreateOrderRequestLineItem addModifiersItem(CreateOrderRequestModifier modifiersItem) {
+    this.modifiers.add(modifiersItem);
+    return this;
+  }
+
+   /**
+   * Only used for Catalog line items. The modifiers to include on the line item.
+   * @return modifiers
+  **/
+  @ApiModelProperty(value = "Only used for Catalog line items. The modifiers to include on the line item.")
+  public List<CreateOrderRequestModifier> getModifiers() {
+    return modifiers;
+  }
+
+  public void setModifiers(List<CreateOrderRequestModifier> modifiers) {
+    this.modifiers = modifiers;
   }
 
   public CreateOrderRequestLineItem taxes(List<CreateOrderRequestTax> taxes) {
@@ -111,10 +201,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * The taxes include the custom taxes.
+   * The taxes to include on the line item.
    * @return taxes
   **/
-  @ApiModelProperty(value = "The taxes include the custom taxes.")
+  @ApiModelProperty(value = "The taxes to include on the line item.")
   public List<CreateOrderRequestTax> getTaxes() {
     return taxes;
   }
@@ -134,10 +224,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * The discounts include the custom discounts.
+   * The discounts to include on the line item.
    * @return discounts
   **/
-  @ApiModelProperty(value = "The discounts include the custom discounts.")
+  @ApiModelProperty(value = "The discounts to include on the line item.")
   public List<CreateOrderRequestDiscount> getDiscounts() {
     return discounts;
   }
@@ -159,13 +249,17 @@ public class CreateOrderRequestLineItem {
     return Objects.equals(this.name, createOrderRequestLineItem.name) &&
         Objects.equals(this.quantity, createOrderRequestLineItem.quantity) &&
         Objects.equals(this.basePriceMoney, createOrderRequestLineItem.basePriceMoney) &&
+        Objects.equals(this.variationName, createOrderRequestLineItem.variationName) &&
+        Objects.equals(this.note, createOrderRequestLineItem.note) &&
+        Objects.equals(this.catalogObjectId, createOrderRequestLineItem.catalogObjectId) &&
+        Objects.equals(this.modifiers, createOrderRequestLineItem.modifiers) &&
         Objects.equals(this.taxes, createOrderRequestLineItem.taxes) &&
         Objects.equals(this.discounts, createOrderRequestLineItem.discounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, quantity, basePriceMoney, taxes, discounts);
+    return Objects.hash(name, quantity, basePriceMoney, variationName, note, catalogObjectId, modifiers, taxes, discounts);
   }
 
 
@@ -177,6 +271,10 @@ public class CreateOrderRequestLineItem {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
+    sb.append("    variationName: ").append(toIndentedString(variationName)).append("\n");
+    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
+    sb.append("    modifiers: ").append(toIndentedString(modifiers)).append("\n");
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("}");

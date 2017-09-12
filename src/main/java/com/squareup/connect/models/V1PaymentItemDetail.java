@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 
 /**
  * V1PaymentItemDetail
@@ -30,7 +29,7 @@ public class V1PaymentItemDetail {
   private String categoryName = null;
 
   @JsonProperty("sku")
-  private BigDecimal sku = null;
+  private String sku = null;
 
   @JsonProperty("item_id")
   private String itemId = null;
@@ -56,7 +55,7 @@ public class V1PaymentItemDetail {
     this.categoryName = categoryName;
   }
 
-  public V1PaymentItemDetail sku(BigDecimal sku) {
+  public V1PaymentItemDetail sku(String sku) {
     this.sku = sku;
     return this;
   }
@@ -66,11 +65,11 @@ public class V1PaymentItemDetail {
    * @return sku
   **/
   @ApiModelProperty(value = " The item's merchant-defined SKU, if any.")
-  public BigDecimal getSku() {
+  public String getSku() {
     return sku;
   }
 
-  public void setSku(BigDecimal sku) {
+  public void setSku(String sku) {
     this.sku = sku;
   }
 

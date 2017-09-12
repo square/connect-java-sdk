@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.2.0</version>
+    <version>2.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.2.0"
+compile "com.squareup:connect:2.3.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.2.0.jar
+* target/connect-2.3.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -113,6 +113,8 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**retrieveCustomer**](docs/CustomersApi.md#retrieveCustomer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
 *CustomersApi* | [**updateCustomer**](docs/CustomersApi.md#updateCustomer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
+*OrdersApi* | [**batchRetrieveOrders**](docs/OrdersApi.md#batchRetrieveOrders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve | BatchRetrieveOrders
+*OrdersApi* | [**createOrder**](docs/OrdersApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
 *TransactionsApi* | [**captureTransaction**](docs/TransactionsApi.md#captureTransaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/capture | CaptureTransaction
 *TransactionsApi* | [**charge**](docs/TransactionsApi.md#charge) | **POST** /v2/locations/{location_id}/transactions | Charge
 *TransactionsApi* | [**createRefund**](docs/TransactionsApi.md#createRefund) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/refund | CreateRefund
@@ -198,6 +200,8 @@ Class | Method | HTTP request | Description
  - [BatchDeleteCatalogObjectsResponse](docs/BatchDeleteCatalogObjectsResponse.md)
  - [BatchRetrieveCatalogObjectsRequest](docs/BatchRetrieveCatalogObjectsRequest.md)
  - [BatchRetrieveCatalogObjectsResponse](docs/BatchRetrieveCatalogObjectsResponse.md)
+ - [BatchRetrieveOrdersRequest](docs/BatchRetrieveOrdersRequest.md)
+ - [BatchRetrieveOrdersResponse](docs/BatchRetrieveOrdersResponse.md)
  - [BatchUpsertCatalogObjectsRequest](docs/BatchUpsertCatalogObjectsRequest.md)
  - [BatchUpsertCatalogObjectsResponse](docs/BatchUpsertCatalogObjectsResponse.md)
  - [CaptureTransactionRequest](docs/CaptureTransactionRequest.md)
@@ -246,7 +250,9 @@ Class | Method | HTTP request | Description
  - [CreateOrderRequest](docs/CreateOrderRequest.md)
  - [CreateOrderRequestDiscount](docs/CreateOrderRequestDiscount.md)
  - [CreateOrderRequestLineItem](docs/CreateOrderRequestLineItem.md)
+ - [CreateOrderRequestModifier](docs/CreateOrderRequestModifier.md)
  - [CreateOrderRequestTax](docs/CreateOrderRequestTax.md)
+ - [CreateOrderResponse](docs/CreateOrderResponse.md)
  - [CreateRefundRequest](docs/CreateRefundRequest.md)
  - [CreateRefundResponse](docs/CreateRefundResponse.md)
  - [Currency](docs/Currency.md)
@@ -277,12 +283,14 @@ Class | Method | HTTP request | Description
  - [ListTransactionsResponse](docs/ListTransactionsResponse.md)
  - [Location](docs/Location.md)
  - [LocationCapability](docs/LocationCapability.md)
+ - [LocationStatus](docs/LocationStatus.md)
  - [Money](docs/Money.md)
  - [Order](docs/Order.md)
  - [OrderLineItem](docs/OrderLineItem.md)
  - [OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
  - [OrderLineItemDiscountScope](docs/OrderLineItemDiscountScope.md)
  - [OrderLineItemDiscountType](docs/OrderLineItemDiscountType.md)
+ - [OrderLineItemModifier](docs/OrderLineItemModifier.md)
  - [OrderLineItemTax](docs/OrderLineItemTax.md)
  - [OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
  - [Refund](docs/Refund.md)
@@ -363,7 +371,7 @@ Authentication schemes defined for the API:
 
 - **Type**: OAuth
 - **Flow**: accessCode
-- **Authorization URL**: https://connect.squareup.com/oauth2/authorize?&lt;PARAMETERS&gt;
+- **Authorization URL**: https://connect.squareup.com/oauth2/authorize
 - **Scopes**: 
   - MERCHANT_PROFILE_READ: GET endpoints related to a merchant&#39;s business and location entities. Almost all Connect API applications need this permission in order to obtain a merchant&#39;s location IDs
   - PAYMENTS_READ: GET endpoints related to transactions and refunds

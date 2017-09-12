@@ -4,7 +4,7 @@
 ## Enum
 
 
-* `UNKNOWN` (value: `"UNKNOWN"`)
+* `UNKNOWN_DISCOUNT` (value: `"UNKNOWN_DISCOUNT"`)
 
 * `FIXED_PERCENTAGE` (value: `"FIXED_PERCENTAGE"`)
 
