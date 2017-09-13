@@ -20,3 +20,5 @@ build
 git_push.sh
 build.sbt
 AndroidManifest.xml
+
+travis-ci/accounts.json
