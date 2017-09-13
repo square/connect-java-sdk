@@ -231,18 +231,6 @@ public class V1TransactionsApi {
    * @param locationId The ID of the location to list online store orders for. (required)
    * @param order TThe order in which payments are listed in the response. (optional)
    * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
-   * @return List&lt;V1Order&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Order> listOrders(String locationId, String order, Integer limit) throws ApiException {
-    return listOrders(locationId, order, limit, null);
-  }
-  /**
-   * Provides summary information for a merchant&#39;s online store orders.
-   * Provides summary information for a merchant&#39;s online store orders.
-   * @param locationId The ID of the location to list online store orders for. (required)
-   * @param order TThe order in which payments are listed in the response. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Order&gt;
    * @throws ApiException if fails to make API call
@@ -334,20 +322,6 @@ public class V1TransactionsApi {
 
     GenericType<List<V1Order>> localVarReturnType = new GenericType<List<V1Order>>() {};
     return (CompleteResponse<List<V1Order>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-  }
-  /**
-   * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-   * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-   * @param locationId The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
-   * @param order The order in which payments are listed in the response. (optional)
-   * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
-   * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
-   * @return List&lt;V1Payment&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
-    return listPayments(locationId, order, beginTime, endTime, limit, null);
   }
   /**
    * Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
@@ -463,20 +437,6 @@ public class V1TransactionsApi {
    * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
    * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
-   * @return List&lt;V1Refund&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Refund> listRefunds(String locationId, String order, String beginTime, String endTime, Integer limit) throws ApiException {
-    return listRefunds(locationId, order, beginTime, endTime, limit, null);
-  }
-  /**
-   * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
-   * Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
-   * @param locationId The ID of the location to list refunds for. (required)
-   * @param order TThe order in which payments are listed in the response. (optional)
-   * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
-   * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Refund&gt;
    * @throws ApiException if fails to make API call
@@ -578,21 +538,6 @@ public class V1TransactionsApi {
   /**
    * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
    * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
-   * @param locationId The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
-   * @param order TThe order in which payments are listed in the response. (optional)
-   * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
-   * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
-   * @param status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
-   * @return List&lt;V1Settlement&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<V1Settlement> listSettlements(String locationId, String order, String beginTime, String endTime, Integer limit, String status) throws ApiException {
-    return listSettlements(locationId, order, beginTime, endTime, limit, status, null);
-  }
-  /**
-   * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
-   * Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
    * @param locationId The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
    * @param order TThe order in which payments are listed in the response. (optional)
    * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)

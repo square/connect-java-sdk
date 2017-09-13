@@ -22,11 +22,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a discount that to either a single line item or an entire order.
+ * Represents a discount that can apply to either a single line item or an entire order.
  */
-@ApiModel(description = "Represents a discount that to either a single line item or an entire order.")
+@ApiModel(description = "Represents a discount that can apply to either a single line item or an entire order.")
 
 public class CreateOrderRequestDiscount {
+  @JsonProperty("catalog_object_id")
+  private String catalogObjectId = null;
+
   @JsonProperty("name")
   private String name = null;
 
@@ -36,16 +39,34 @@ public class CreateOrderRequestDiscount {
   @JsonProperty("amount_money")
   private Money amountMoney = null;
 
+  public CreateOrderRequestDiscount catalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+    return this;
+  }
+
+   /**
+   * Only used for catalog taxes. The catalog object ID from exsiting [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.
+   * @return catalogObjectId
+  **/
+  @ApiModelProperty(value = "Only used for catalog taxes. The catalog object ID from exsiting [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.")
+  public String getCatalogObjectId() {
+    return catalogObjectId;
+  }
+
+  public void setCatalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+  }
+
   public CreateOrderRequestDiscount name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * The discount's name.
+   * Only used for ad hoc discounts. The discount's name.
    * @return name
   **/
-  @ApiModelProperty(value = "The discount's name.")
+  @ApiModelProperty(value = "Only used for ad hoc discounts. The discount's name.")
   public String getName() {
     return name;
   }
@@ -60,10 +81,10 @@ public class CreateOrderRequestDiscount {
   }
 
    /**
-   * The percentage of the discount, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
+   * Only used for ad hoc discounts. The percentage of the discount, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the discount, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0")
+  @ApiModelProperty(value = "Only used for ad hoc discounts. The percentage of the discount, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0")
   public String getPercentage() {
     return percentage;
   }
@@ -78,10 +99,10 @@ public class CreateOrderRequestDiscount {
   }
 
    /**
-   * The monetary amount of the discount.
+   * Only used for ad hoc discounts. The monetary amount of the discount.
    * @return amountMoney
   **/
-  @ApiModelProperty(value = "The monetary amount of the discount.")
+  @ApiModelProperty(value = "Only used for ad hoc discounts. The monetary amount of the discount.")
   public Money getAmountMoney() {
     return amountMoney;
   }
@@ -100,14 +121,15 @@ public class CreateOrderRequestDiscount {
       return false;
     }
     CreateOrderRequestDiscount createOrderRequestDiscount = (CreateOrderRequestDiscount) o;
-    return Objects.equals(this.name, createOrderRequestDiscount.name) &&
+    return Objects.equals(this.catalogObjectId, createOrderRequestDiscount.catalogObjectId) &&
+        Objects.equals(this.name, createOrderRequestDiscount.name) &&
         Objects.equals(this.percentage, createOrderRequestDiscount.percentage) &&
         Objects.equals(this.amountMoney, createOrderRequestDiscount.amountMoney);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, percentage, amountMoney);
+    return Objects.hash(catalogObjectId, name, percentage, amountMoney);
   }
 
 
@@ -116,6 +138,7 @@ public class CreateOrderRequestDiscount {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequestDiscount {\n");
     
+    sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
     sb.append("    amountMoney: ").append(toIndentedString(amountMoney)).append("\n");

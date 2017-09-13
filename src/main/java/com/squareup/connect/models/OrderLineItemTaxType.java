@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public enum OrderLineItemTaxType {
   
-  UNKNOWN("UNKNOWN"),
+  UNKNOWN_TAX("UNKNOWN_TAX"),
   
   ADDITIVE("ADDITIVE"),
   

@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a discount that applies to one or more line items in an order.  Fixed-amount, order-level discounts are distributed across all non-zero line item totals. The amount distributed to each line item is relative to that item’s contribution to the order subtotal.")
 
 public class OrderLineItemDiscount {
+  @JsonProperty("catalog_object_id")
+  private String catalogObjectId = null;
+
   @JsonProperty("name")
   private String name = null;
 
@@ -34,7 +37,7 @@ public class OrderLineItemDiscount {
    * The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.  See [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values.
    */
   public enum TypeEnum {
-    UNKNOWN("UNKNOWN"),
+    UNKNOWN_DISCOUNT("UNKNOWN_DISCOUNT"),
     
     FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
     
@@ -82,6 +85,8 @@ public class OrderLineItemDiscount {
    * Indicates the level at which the discount applies. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.
    */
   public enum ScopeEnum {
+    OTHER_DISCOUNT_SCOPE("OTHER_DISCOUNT_SCOPE"),
+    
     LINE_ITEM("LINE_ITEM"),
     
     ORDER("ORDER");
@@ -110,6 +115,24 @@ public class OrderLineItemDiscount {
 
   @JsonProperty("scope")
   private ScopeEnum scope = null;
+
+  public OrderLineItemDiscount catalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+    return this;
+  }
+
+   /**
+   * The catalog object id referencing [CatalogDiscount](#type-catalogdiscount).
+   * @return catalogObjectId
+  **/
+  @ApiModelProperty(value = "The catalog object id referencing [CatalogDiscount](#type-catalogdiscount).")
+  public String getCatalogObjectId() {
+    return catalogObjectId;
+  }
+
+  public void setCatalogObjectId(String catalogObjectId) {
+    this.catalogObjectId = catalogObjectId;
+  }
 
   public OrderLineItemDiscount name(String name) {
     this.name = name;
@@ -229,7 +252,8 @@ public class OrderLineItemDiscount {
       return false;
     }
     OrderLineItemDiscount orderLineItemDiscount = (OrderLineItemDiscount) o;
-    return Objects.equals(this.name, orderLineItemDiscount.name) &&
+    return Objects.equals(this.catalogObjectId, orderLineItemDiscount.catalogObjectId) &&
+        Objects.equals(this.name, orderLineItemDiscount.name) &&
         Objects.equals(this.type, orderLineItemDiscount.type) &&
         Objects.equals(this.percentage, orderLineItemDiscount.percentage) &&
         Objects.equals(this.amountMoney, orderLineItemDiscount.amountMoney) &&
@@ -239,7 +263,7 @@ public class OrderLineItemDiscount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, percentage, amountMoney, appliedMoney, scope);
+    return Objects.hash(catalogObjectId, name, type, percentage, amountMoney, appliedMoney, scope);
   }
 
 
@@ -248,6 +272,7 @@ public class OrderLineItemDiscount {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLineItemDiscount {\n");
     
+    sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
