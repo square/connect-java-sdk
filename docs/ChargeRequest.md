@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **billingAddress** | [**Address**](Address.md) | The buyer&#39;s billing address. This value is optional, but this transaction is ineligible for chargeback protection if neither this parameter nor &#x60;shipping_address&#x60; is provided. |  [optional]
 **shippingAddress** | [**Address**](Address.md) | The buyer&#39;s shipping address, if available. This value is optional, but this transaction is ineligible for chargeback protection if neither this parameter nor &#x60;billing_address&#x60; is provided. |  [optional]
 **buyerEmailAddress** | **String** | The buyer&#39;s email address, if available. This value is optional, but this transaction is ineligible for chargeback protection if it is not provided. |  [optional]
+**orderId** | **String** | The ID of the order to associate with this transaction.  If you provide this value, the &#x60;amount_money&#x60; value of your request must __exactly match__ the &#x60;total_money&#x60; value of the order&#39;s &#x60;order_amounts&#x60; field. |  [optional]
 
 
 
