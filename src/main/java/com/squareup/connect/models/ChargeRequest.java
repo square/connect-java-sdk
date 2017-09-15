@@ -61,6 +61,9 @@ public class ChargeRequest {
   @JsonProperty("buyer_email_address")
   private String buyerEmailAddress = null;
 
+  @JsonProperty("order_id")
+  private String orderId = null;
+
   public ChargeRequest idempotencyKey(String idempotencyKey) {
     this.idempotencyKey = idempotencyKey;
     return this;
@@ -259,6 +262,24 @@ public class ChargeRequest {
     this.buyerEmailAddress = buyerEmailAddress;
   }
 
+  public ChargeRequest orderId(String orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the `total_money` value of the order's `order_amounts` field.
+   * @return orderId
+  **/
+  @ApiModelProperty(value = "The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the `total_money` value of the order's `order_amounts` field.")
+  public String getOrderId() {
+    return orderId;
+  }
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -279,12 +300,13 @@ public class ChargeRequest {
         Objects.equals(this.customerId, chargeRequest.customerId) &&
         Objects.equals(this.billingAddress, chargeRequest.billingAddress) &&
         Objects.equals(this.shippingAddress, chargeRequest.shippingAddress) &&
-        Objects.equals(this.buyerEmailAddress, chargeRequest.buyerEmailAddress);
+        Objects.equals(this.buyerEmailAddress, chargeRequest.buyerEmailAddress) &&
+        Objects.equals(this.orderId, chargeRequest.orderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idempotencyKey, amountMoney, cardNonce, customerCardId, delayCapture, referenceId, note, customerId, billingAddress, shippingAddress, buyerEmailAddress);
+    return Objects.hash(idempotencyKey, amountMoney, cardNonce, customerCardId, delayCapture, referenceId, note, customerId, billingAddress, shippingAddress, buyerEmailAddress, orderId);
   }
 
 
@@ -304,6 +326,7 @@ public class ChargeRequest {
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
     sb.append("    buyerEmailAddress: ").append(toIndentedString(buyerEmailAddress)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
