@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.3.1</version>
+    <version>2.4.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.3.1"
+compile "com.squareup:connect:2.4.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.3.1.jar
+* target/connect-2.4.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -59,12 +59,12 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.squareup.connect.*;
 import com.squareup.connect.auth.*;
 import com.squareup.connect.models.*;
-import com.squareup.connect.api.CatalogApi;
+import com.squareup.connect.api.ApplePayApi;
 
 import java.io.File;
 import java.util.*;
 
-public class CatalogApiExample {
+public class ApplePayApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -73,13 +73,13 @@ public class CatalogApiExample {
         OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-        CatalogApi apiInstance = new CatalogApi();
-        BatchDeleteCatalogObjectsRequest body = new BatchDeleteCatalogObjectsRequest(); // BatchDeleteCatalogObjectsRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+        ApplePayApi apiInstance = new ApplePayApi();
+        RegisterDomainRequest body = new RegisterDomainRequest(); // RegisterDomainRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
         try {
-            BatchDeleteCatalogObjectsResponse result = apiInstance.batchDeleteCatalogObjects(body);
+            RegisterDomainResponse result = apiInstance.registerDomain(body);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogApi#batchDeleteCatalogObjects");
+            System.err.println("Exception when calling ApplePayApi#registerDomain");
             e.printStackTrace();
         }
     }
@@ -93,6 +93,7 @@ All URIs are relative to *https://connect.squareup.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ApplePayApi* | [**registerDomain**](docs/ApplePayApi.md#registerDomain) | **POST** /v2/apple-pay/domains | RegisterDomain
 *CatalogApi* | [**batchDeleteCatalogObjects**](docs/CatalogApi.md#batchDeleteCatalogObjects) | **POST** /v2/catalog/batch-delete | BatchDeleteCatalogObjects
 *CatalogApi* | [**batchRetrieveCatalogObjects**](docs/CatalogApi.md#batchRetrieveCatalogObjects) | **POST** /v2/catalog/batch-retrieve | BatchRetrieveCatalogObjects
 *CatalogApi* | [**batchUpsertCatalogObjects**](docs/CatalogApi.md#batchUpsertCatalogObjects) | **POST** /v2/catalog/batch-upsert | BatchUpsertCatalogObjects
@@ -284,6 +285,7 @@ Class | Method | HTTP request | Description
  - [Location](docs/Location.md)
  - [LocationCapability](docs/LocationCapability.md)
  - [LocationStatus](docs/LocationStatus.md)
+ - [LocationType](docs/LocationType.md)
  - [Money](docs/Money.md)
  - [Order](docs/Order.md)
  - [OrderLineItem](docs/OrderLineItem.md)
@@ -295,6 +297,9 @@ Class | Method | HTTP request | Description
  - [OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
  - [Refund](docs/Refund.md)
  - [RefundStatus](docs/RefundStatus.md)
+ - [RegisterDomainRequest](docs/RegisterDomainRequest.md)
+ - [RegisterDomainResponse](docs/RegisterDomainResponse.md)
+ - [RegisterDomainResponseStatus](docs/RegisterDomainResponseStatus.md)
  - [RetrieveCatalogObjectRequest](docs/RetrieveCatalogObjectRequest.md)
  - [RetrieveCatalogObjectResponse](docs/RetrieveCatalogObjectResponse.md)
  - [RetrieveCustomerRequest](docs/RetrieveCustomerRequest.md)

@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.squareup'
-version = '2.3.1'
+version = '2.4.0'
 
 buildscript {
     repositories {

@@ -19,15 +19,17 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Indicates payment capabilities that a business's location might or might not have enabled.
+ * The status of domain registration.
  */
-public enum LocationCapability {
+public enum RegisterDomainResponseStatus {
   
-  PROCESSING("CREDIT_CARD_PROCESSING");
+  PENDING("PENDING"),
+  
+  VERIFIED("VERIFIED");
 
   private String value;
 
-  LocationCapability(String value) {
+  RegisterDomainResponseStatus(String value) {
     this.value = value;
   }
 
@@ -37,8 +39,8 @@ public enum LocationCapability {
   }
 
   @JsonCreator
-  public static LocationCapability fromValue(String text) {
-    for (LocationCapability b : LocationCapability.values()) {
+  public static RegisterDomainResponseStatus fromValue(String text) {
+    for (RegisterDomainResponseStatus b : RegisterDomainResponseStatus.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
