@@ -55,36 +55,39 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-
-import com.squareup.connect.*;
-import com.squareup.connect.auth.*;
-import com.squareup.connect.models.*;
-import com.squareup.connect.api.ApplePayApi;
+import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.api.LocationsApi;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Location;
+import com.squareup.connect.models.Location.CapabilitiesEnum;
 
 import java.io.File;
 import java.util.*;
 
-public class ApplePayApiExample {
+public class Example {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure OAuth2 access token for authorization: oauth2
-        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+        ApiClient apiClient = Configuration.getDefaultApiClient();
 
-        ApplePayApi apiInstance = new ApplePayApi();
-        RegisterDomainRequest body = new RegisterDomainRequest(); // RegisterDomainRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) apiClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR_ACCESS_TOKEN");
+
+        // List all locations
+        LocationsApi locationsApi = new LocationsApi();
+        locationsApi.setApiClient(apiClient);
+
         try {
-            RegisterDomainResponse result = apiInstance.registerDomain(body);
-            System.out.println(result);
+            List<Location> locations = locationsApi.listLocations().getLocations();
+            System.out.println(locations);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ApplePayApi#registerDomain");
+            System.err.println("Exception when calling API");
             e.printStackTrace();
         }
     }
 }
-
 ```
 
 ## Documentation for API Endpoints
