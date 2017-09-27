@@ -19,15 +19,17 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Indicates payment capabilities that a business's location might or might not have enabled.
+ * Indicates the location's type.
  */
-public enum LocationCapability {
+public enum LocationType {
   
-  PROCESSING("CREDIT_CARD_PROCESSING");
+  PHYSICAL("PHYSICAL"),
+  
+  MOBILE("MOBILE");
 
   private String value;
 
-  LocationCapability(String value) {
+  LocationType(String value) {
     this.value = value;
   }
 
@@ -37,8 +39,8 @@ public enum LocationCapability {
   }
 
   @JsonCreator
-  public static LocationCapability fromValue(String text) {
-    for (LocationCapability b : LocationCapability.values()) {
+  public static LocationType fromValue(String text) {
+    for (LocationType b : LocationType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

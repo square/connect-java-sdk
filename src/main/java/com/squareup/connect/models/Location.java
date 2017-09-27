@@ -1040,6 +1040,39 @@ public class Location {
   @JsonProperty("business_name")
   private String businessName = null;
 
+  /**
+   * The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values.
+   */
+  public enum TypeEnum {
+    PHYSICAL("PHYSICAL"),
+    
+    MOBILE("MOBILE");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("type")
+  private TypeEnum type = null;
+
   public Location id(String id) {
     this.id = id;
     return this;
@@ -1064,10 +1097,10 @@ public class Location {
   }
 
    /**
-   * The location's name. Location names are set by the location owner and displayed in the dashboard as the location's nickname
+   * The location's name. Location names are set by the account owner and displayed in the dashboard as the location's nickname
    * @return name
   **/
-  @ApiModelProperty(value = "The location's name. Location names are set by the location owner and displayed in the dashboard as the location's nickname")
+  @ApiModelProperty(value = "The location's name. Location names are set by the account owner and displayed in the dashboard as the location's nickname")
   public String getName() {
     return name;
   }
@@ -1279,6 +1312,24 @@ public class Location {
     this.businessName = businessName;
   }
 
+  public Location type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values.
+   * @return type
+  **/
+  @ApiModelProperty(value = "The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values.")
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1301,12 +1352,13 @@ public class Location {
         Objects.equals(this.languageCode, location.languageCode) &&
         Objects.equals(this.currency, location.currency) &&
         Objects.equals(this.phoneNumber, location.phoneNumber) &&
-        Objects.equals(this.businessName, location.businessName);
+        Objects.equals(this.businessName, location.businessName) &&
+        Objects.equals(this.type, location.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName);
+    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type);
   }
 
 
@@ -1328,6 +1380,7 @@ public class Location {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    businessName: ").append(toIndentedString(businessName)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
