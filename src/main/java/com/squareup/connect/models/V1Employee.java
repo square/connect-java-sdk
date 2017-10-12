@@ -88,6 +88,11 @@ public class V1Employee {
   @JsonProperty("updated_at")
   private String updatedAt = null;
 
+  public V1Employee id(String id) {
+    this.id = id;
+    return this;
+  }
+
    /**
    * The employee's unique ID.
    * @return id
@@ -95,6 +100,10 @@ public class V1Employee {
   @ApiModelProperty(value = "The employee's unique ID.")
   public String getId() {
     return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public V1Employee firstName(String firstName) {
@@ -197,6 +206,11 @@ public class V1Employee {
     this.email = email;
   }
 
+  public V1Employee status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
    /**
    * CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard. 
    * @return status
@@ -204,6 +218,15 @@ public class V1Employee {
   @ApiModelProperty(value = "CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard. ")
   public StatusEnum getStatus() {
     return status;
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+  public V1Employee externalId(String externalId) {
+    this.externalId = externalId;
+    return this;
   }
 
    /**
@@ -215,6 +238,15 @@ public class V1Employee {
     return externalId;
   }
 
+  public void setExternalId(String externalId) {
+    this.externalId = externalId;
+  }
+
+  public V1Employee createdAt(String createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
    /**
    * The time when the employee entity was created, in ISO 8601 format.
    * @return createdAt
@@ -224,6 +256,15 @@ public class V1Employee {
     return createdAt;
   }
 
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public V1Employee updatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
    /**
    * The time when the employee entity was most recently updated, in ISO 8601 format.
    * @return updatedAt
@@ -231,6 +272,10 @@ public class V1Employee {
   @ApiModelProperty(value = "The time when the employee entity was most recently updated, in ISO 8601 format.")
   public String getUpdatedAt() {
     return updatedAt;
+  }
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 

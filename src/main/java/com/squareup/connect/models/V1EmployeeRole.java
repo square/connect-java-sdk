@@ -85,6 +85,11 @@ public class V1EmployeeRole {
   @JsonProperty("updated_at")
   private String updatedAt = null;
 
+  public V1EmployeeRole id(String id) {
+    this.id = id;
+    return this;
+  }
+
    /**
    * The role's unique ID, Can only be set by Square.
    * @return id
@@ -92,6 +97,10 @@ public class V1EmployeeRole {
   @ApiModelProperty(value = "The role's unique ID, Can only be set by Square.")
   public String getId() {
     return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public V1EmployeeRole name(String name) {
@@ -153,6 +162,11 @@ public class V1EmployeeRole {
     this.isOwner = isOwner;
   }
 
+  public V1EmployeeRole createdAt(String createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
    /**
    * The time when the employee entity was created, in ISO 8601 format. Is set by Square when the Role is created.
    * @return createdAt
@@ -162,6 +176,15 @@ public class V1EmployeeRole {
     return createdAt;
   }
 
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public V1EmployeeRole updatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
    /**
    * The time when the employee entity was most recently updated, in ISO 8601 format. Is set by Square when the Role updated.
    * @return updatedAt
@@ -169,6 +192,10 @@ public class V1EmployeeRole {
   @ApiModelProperty(value = "The time when the employee entity was most recently updated, in ISO 8601 format. Is set by Square when the Role updated.")
   public String getUpdatedAt() {
     return updatedAt;
+  }
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 
