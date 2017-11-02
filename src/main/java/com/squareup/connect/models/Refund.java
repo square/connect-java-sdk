@@ -17,9 +17,12 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.squareup.connect.models.AdditionalRecipient;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a refund processed for a Square transaction.
@@ -87,6 +90,9 @@ public class Refund {
 
   @JsonProperty("processing_fee_money")
   private Money processingFeeMoney = null;
+
+  @JsonProperty("additional_recipients")
+  private List<AdditionalRecipient> additionalRecipients = new ArrayList<AdditionalRecipient>();
 
   public Refund id(String id) {
     this.id = id;
@@ -250,6 +256,29 @@ public class Refund {
     this.processingFeeMoney = processingFeeMoney;
   }
 
+  public Refund additionalRecipients(List<AdditionalRecipient> additionalRecipients) {
+    this.additionalRecipients = additionalRecipients;
+    return this;
+  }
+
+  public Refund addAdditionalRecipientsItem(AdditionalRecipient additionalRecipientsItem) {
+    this.additionalRecipients.add(additionalRecipientsItem);
+    return this;
+  }
+
+   /**
+   * Additional recipients (other than the merchant) receiving a portion of this refund. For example, fees assessed on a refund of a purchase by a third party integration.
+   * @return additionalRecipients
+  **/
+  @ApiModelProperty(value = "Additional recipients (other than the merchant) receiving a portion of this refund. For example, fees assessed on a refund of a purchase by a third party integration.")
+  public List<AdditionalRecipient> getAdditionalRecipients() {
+    return additionalRecipients;
+  }
+
+  public void setAdditionalRecipients(List<AdditionalRecipient> additionalRecipients) {
+    this.additionalRecipients = additionalRecipients;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -268,12 +297,13 @@ public class Refund {
         Objects.equals(this.reason, refund.reason) &&
         Objects.equals(this.amountMoney, refund.amountMoney) &&
         Objects.equals(this.status, refund.status) &&
-        Objects.equals(this.processingFeeMoney, refund.processingFeeMoney);
+        Objects.equals(this.processingFeeMoney, refund.processingFeeMoney) &&
+        Objects.equals(this.additionalRecipients, refund.additionalRecipients);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, transactionId, tenderId, createdAt, reason, amountMoney, status, processingFeeMoney);
+    return Objects.hash(id, locationId, transactionId, tenderId, createdAt, reason, amountMoney, status, processingFeeMoney, additionalRecipients);
   }
 
 
@@ -291,6 +321,7 @@ public class Refund {
     sb.append("    amountMoney: ").append(toIndentedString(amountMoney)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    processingFeeMoney: ").append(toIndentedString(processingFeeMoney)).append("\n");
+    sb.append("    additionalRecipients: ").append(toIndentedString(additionalRecipients)).append("\n");
     sb.append("}");
     return sb.toString();
   }

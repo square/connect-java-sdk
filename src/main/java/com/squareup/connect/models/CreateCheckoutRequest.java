@@ -18,9 +18,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Address;
+import com.squareup.connect.models.ChargeRequestAdditionalRecipient;
 import com.squareup.connect.models.CreateOrderRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.
@@ -48,6 +51,9 @@ public class CreateCheckoutRequest {
 
   @JsonProperty("redirect_url")
   private String redirectUrl = null;
+
+  @JsonProperty("additional_recipients")
+  private List<ChargeRequestAdditionalRecipient> additionalRecipients = new ArrayList<ChargeRequestAdditionalRecipient>();
 
   public CreateCheckoutRequest idempotencyKey(String idempotencyKey) {
     this.idempotencyKey = idempotencyKey;
@@ -175,6 +181,29 @@ public class CreateCheckoutRequest {
     this.redirectUrl = redirectUrl;
   }
 
+  public CreateCheckoutRequest additionalRecipients(List<ChargeRequestAdditionalRecipient> additionalRecipients) {
+    this.additionalRecipients = additionalRecipients;
+    return this;
+  }
+
+  public CreateCheckoutRequest addAdditionalRecipientsItem(ChargeRequestAdditionalRecipient additionalRecipientsItem) {
+    this.additionalRecipients.add(additionalRecipientsItem);
+    return this;
+  }
+
+   /**
+   * The basic primitive of multi party settlement. The value is optional. The transation facilitated by you can be splited from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `total_money` calcualted by Square for your order. The `location_id` must be the valid location of the app owner merchant.  This field is currently not supported in sandbox.
+   * @return additionalRecipients
+  **/
+  @ApiModelProperty(value = "The basic primitive of multi party settlement. The value is optional. The transation facilitated by you can be splited from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `total_money` calcualted by Square for your order. The `location_id` must be the valid location of the app owner merchant.  This field is currently not supported in sandbox.")
+  public List<ChargeRequestAdditionalRecipient> getAdditionalRecipients() {
+    return additionalRecipients;
+  }
+
+  public void setAdditionalRecipients(List<ChargeRequestAdditionalRecipient> additionalRecipients) {
+    this.additionalRecipients = additionalRecipients;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -191,12 +220,13 @@ public class CreateCheckoutRequest {
         Objects.equals(this.merchantSupportEmail, createCheckoutRequest.merchantSupportEmail) &&
         Objects.equals(this.prePopulateBuyerEmail, createCheckoutRequest.prePopulateBuyerEmail) &&
         Objects.equals(this.prePopulateShippingAddress, createCheckoutRequest.prePopulateShippingAddress) &&
-        Objects.equals(this.redirectUrl, createCheckoutRequest.redirectUrl);
+        Objects.equals(this.redirectUrl, createCheckoutRequest.redirectUrl) &&
+        Objects.equals(this.additionalRecipients, createCheckoutRequest.additionalRecipients);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idempotencyKey, order, askForShippingAddress, merchantSupportEmail, prePopulateBuyerEmail, prePopulateShippingAddress, redirectUrl);
+    return Objects.hash(idempotencyKey, order, askForShippingAddress, merchantSupportEmail, prePopulateBuyerEmail, prePopulateShippingAddress, redirectUrl, additionalRecipients);
   }
 
 
@@ -212,6 +242,7 @@ public class CreateCheckoutRequest {
     sb.append("    prePopulateBuyerEmail: ").append(toIndentedString(prePopulateBuyerEmail)).append("\n");
     sb.append("    prePopulateShippingAddress: ").append(toIndentedString(prePopulateShippingAddress)).append("\n");
     sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
+    sb.append("    additionalRecipients: ").append(toIndentedString(additionalRecipients)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.4.0</version>
+    <version>2.5.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.4.0"
+compile "com.squareup:connect:2.5.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.4.0.jar
+* target/connect-2.5.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -119,6 +119,8 @@ Class | Method | HTTP request | Description
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
 *OrdersApi* | [**batchRetrieveOrders**](docs/OrdersApi.md#batchRetrieveOrders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve | BatchRetrieveOrders
 *OrdersApi* | [**createOrder**](docs/OrdersApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
+*ReportingApi* | [**listAdditionalRecipientReceivableRefunds**](docs/ReportingApi.md#listAdditionalRecipientReceivableRefunds) | **GET** /v2/locations/{location_id}/additional-recipient-receivable-refunds | ListAdditionalRecipientReceivableRefunds
+*ReportingApi* | [**listAdditionalRecipientReceivables**](docs/ReportingApi.md#listAdditionalRecipientReceivables) | **GET** /v2/locations/{location_id}/additional-recipient-receivables | ListAdditionalRecipientReceivables
 *TransactionsApi* | [**captureTransaction**](docs/TransactionsApi.md#captureTransaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/capture | CaptureTransaction
 *TransactionsApi* | [**charge**](docs/TransactionsApi.md#charge) | **POST** /v2/locations/{location_id}/transactions | Charge
 *TransactionsApi* | [**createRefund**](docs/TransactionsApi.md#createRefund) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/refund | CreateRefund
@@ -199,6 +201,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AdditionalRecipient](docs/AdditionalRecipient.md)
+ - [AdditionalRecipientReceivable](docs/AdditionalRecipientReceivable.md)
+ - [AdditionalRecipientReceivableRefund](docs/AdditionalRecipientReceivableRefund.md)
  - [Address](docs/Address.md)
  - [BatchDeleteCatalogObjectsRequest](docs/BatchDeleteCatalogObjectsRequest.md)
  - [BatchDeleteCatalogObjectsResponse](docs/BatchDeleteCatalogObjectsResponse.md)
@@ -242,6 +247,7 @@ Class | Method | HTTP request | Description
  - [CatalogTax](docs/CatalogTax.md)
  - [CatalogV1Id](docs/CatalogV1Id.md)
  - [ChargeRequest](docs/ChargeRequest.md)
+ - [ChargeRequestAdditionalRecipient](docs/ChargeRequestAdditionalRecipient.md)
  - [ChargeResponse](docs/ChargeResponse.md)
  - [Checkout](docs/Checkout.md)
  - [Country](docs/Country.md)
@@ -275,6 +281,10 @@ Class | Method | HTTP request | Description
  - [ErrorCode](docs/ErrorCode.md)
  - [InventoryAlertType](docs/InventoryAlertType.md)
  - [ItemVariationLocationOverrides](docs/ItemVariationLocationOverrides.md)
+ - [ListAdditionalRecipientReceivableRefundsRequest](docs/ListAdditionalRecipientReceivableRefundsRequest.md)
+ - [ListAdditionalRecipientReceivableRefundsResponse](docs/ListAdditionalRecipientReceivableRefundsResponse.md)
+ - [ListAdditionalRecipientReceivablesRequest](docs/ListAdditionalRecipientReceivablesRequest.md)
+ - [ListAdditionalRecipientReceivablesResponse](docs/ListAdditionalRecipientReceivablesResponse.md)
  - [ListCatalogRequest](docs/ListCatalogRequest.md)
  - [ListCatalogResponse](docs/ListCatalogResponse.md)
  - [ListCustomersRequest](docs/ListCustomersRequest.md)
