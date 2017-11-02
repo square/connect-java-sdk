@@ -53,6 +53,11 @@ public class V1Timecard {
   @JsonProperty("updated_at")
   private String updatedAt = null;
 
+  public V1Timecard id(String id) {
+    this.id = id;
+    return this;
+  }
+
    /**
    * The timecard's unique ID.
    * @return id
@@ -60,6 +65,10 @@ public class V1Timecard {
   @ApiModelProperty(value = "The timecard's unique ID.")
   public String getId() {
     return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public V1Timecard employeeId(String employeeId) {
@@ -80,6 +89,11 @@ public class V1Timecard {
     this.employeeId = employeeId;
   }
 
+  public V1Timecard deleted(Boolean deleted) {
+    this.deleted = deleted;
+    return this;
+  }
+
    /**
    * If true, the timecard was deleted by the merchant, and it is no longer valid.
    * @return deleted
@@ -87,6 +101,10 @@ public class V1Timecard {
   @ApiModelProperty(value = "If true, the timecard was deleted by the merchant, and it is no longer valid.")
   public Boolean getDeleted() {
     return deleted;
+  }
+
+  public void setDeleted(Boolean deleted) {
+    this.deleted = deleted;
   }
 
   public V1Timecard clockinTime(String clockinTime) {
@@ -161,6 +179,11 @@ public class V1Timecard {
     this.clockoutLocationId = clockoutLocationId;
   }
 
+  public V1Timecard createdAt(String createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
    /**
    * The time when the timecard was created, in ISO 8601 format.
    * @return createdAt
@@ -170,6 +193,15 @@ public class V1Timecard {
     return createdAt;
   }
 
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public V1Timecard updatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
    /**
    * The time when the timecard was most recently updated, in ISO 8601 format.
    * @return updatedAt
@@ -177,6 +209,10 @@ public class V1Timecard {
   @ApiModelProperty(value = "The time when the timecard was most recently updated, in ISO 8601 format.")
   public String getUpdatedAt() {
     return updatedAt;
+  }
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 

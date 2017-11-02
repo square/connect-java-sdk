@@ -17,10 +17,13 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.squareup.connect.models.AdditionalRecipient;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Defines the parameters that can be included in the body of a request to the [Charge](#endpoint-charge) endpoint.
@@ -63,6 +66,9 @@ public class ChargeRequest {
 
   @JsonProperty("order_id")
   private String orderId = null;
+
+  @JsonProperty("additional_recipients")
+  private List<AdditionalRecipient> additionalRecipients = new ArrayList<AdditionalRecipient>();
 
   public ChargeRequest idempotencyKey(String idempotencyKey) {
     this.idempotencyKey = idempotencyKey;
@@ -280,6 +286,29 @@ public class ChargeRequest {
     this.orderId = orderId;
   }
 
+  public ChargeRequest additionalRecipients(List<AdditionalRecipient> additionalRecipients) {
+    this.additionalRecipients = additionalRecipients;
+    return this;
+  }
+
+  public ChargeRequest addAdditionalRecipientsItem(AdditionalRecipient additionalRecipientsItem) {
+    this.additionalRecipients.add(additionalRecipientsItem);
+    return this;
+  }
+
+   /**
+   * The basic primitive of multi party settlement. The value is optional. The transation facilitated by you can be splited from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in you charge's request. The `location_id` must be the valid location of the app owner merchant.  This field is currently not supported in sandbox.
+   * @return additionalRecipients
+  **/
+  @ApiModelProperty(value = "The basic primitive of multi party settlement. The value is optional. The transation facilitated by you can be splited from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in you charge's request. The `location_id` must be the valid location of the app owner merchant.  This field is currently not supported in sandbox.")
+  public List<AdditionalRecipient> getAdditionalRecipients() {
+    return additionalRecipients;
+  }
+
+  public void setAdditionalRecipients(List<AdditionalRecipient> additionalRecipients) {
+    this.additionalRecipients = additionalRecipients;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -301,12 +330,13 @@ public class ChargeRequest {
         Objects.equals(this.billingAddress, chargeRequest.billingAddress) &&
         Objects.equals(this.shippingAddress, chargeRequest.shippingAddress) &&
         Objects.equals(this.buyerEmailAddress, chargeRequest.buyerEmailAddress) &&
-        Objects.equals(this.orderId, chargeRequest.orderId);
+        Objects.equals(this.orderId, chargeRequest.orderId) &&
+        Objects.equals(this.additionalRecipients, chargeRequest.additionalRecipients);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idempotencyKey, amountMoney, cardNonce, customerCardId, delayCapture, referenceId, note, customerId, billingAddress, shippingAddress, buyerEmailAddress, orderId);
+    return Objects.hash(idempotencyKey, amountMoney, cardNonce, customerCardId, delayCapture, referenceId, note, customerId, billingAddress, shippingAddress, buyerEmailAddress, orderId, additionalRecipients);
   }
 
 
@@ -327,6 +357,7 @@ public class ChargeRequest {
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
     sb.append("    buyerEmailAddress: ").append(toIndentedString(buyerEmailAddress)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    additionalRecipients: ").append(toIndentedString(additionalRecipients)).append("\n");
     sb.append("}");
     return sb.toString();
   }

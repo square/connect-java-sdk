@@ -17,11 +17,14 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.squareup.connect.models.AdditionalRecipient;
 import com.squareup.connect.models.Money;
 import com.squareup.connect.models.TenderCardDetails;
 import com.squareup.connect.models.TenderCashDetails;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a tender (i.e., a method of payment) used in a Square transaction.
@@ -99,6 +102,9 @@ public class Tender {
 
   @JsonProperty("cash_details")
   private TenderCashDetails cashDetails = null;
+
+  @JsonProperty("additional_recipients")
+  private List<AdditionalRecipient> additionalRecipients = new ArrayList<AdditionalRecipient>();
 
   public Tender id(String id) {
     this.id = id;
@@ -298,6 +304,29 @@ public class Tender {
     this.cashDetails = cashDetails;
   }
 
+  public Tender additionalRecipients(List<AdditionalRecipient> additionalRecipients) {
+    this.additionalRecipients = additionalRecipients;
+    return this;
+  }
+
+  public Tender addAdditionalRecipientsItem(AdditionalRecipient additionalRecipientsItem) {
+    this.additionalRecipients.add(additionalRecipientsItem);
+    return this;
+  }
+
+   /**
+   * Additional recipients (other than the merchant) receiving a portion of this tender. For example, fees assessed on the purchase by a third party integration.
+   * @return additionalRecipients
+  **/
+  @ApiModelProperty(value = "Additional recipients (other than the merchant) receiving a portion of this tender. For example, fees assessed on the purchase by a third party integration.")
+  public List<AdditionalRecipient> getAdditionalRecipients() {
+    return additionalRecipients;
+  }
+
+  public void setAdditionalRecipients(List<AdditionalRecipient> additionalRecipients) {
+    this.additionalRecipients = additionalRecipients;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -318,12 +347,13 @@ public class Tender {
         Objects.equals(this.customerId, tender.customerId) &&
         Objects.equals(this.type, tender.type) &&
         Objects.equals(this.cardDetails, tender.cardDetails) &&
-        Objects.equals(this.cashDetails, tender.cashDetails);
+        Objects.equals(this.cashDetails, tender.cashDetails) &&
+        Objects.equals(this.additionalRecipients, tender.additionalRecipients);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, transactionId, createdAt, note, amountMoney, processingFeeMoney, customerId, type, cardDetails, cashDetails);
+    return Objects.hash(id, locationId, transactionId, createdAt, note, amountMoney, processingFeeMoney, customerId, type, cardDetails, cashDetails, additionalRecipients);
   }
 
 
@@ -343,6 +373,7 @@ public class Tender {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    cardDetails: ").append(toIndentedString(cardDetails)).append("\n");
     sb.append("    cashDetails: ").append(toIndentedString(cashDetails)).append("\n");
+    sb.append("    additionalRecipients: ").append(toIndentedString(additionalRecipients)).append("\n");
     sb.append("}");
     return sb.toString();
   }
