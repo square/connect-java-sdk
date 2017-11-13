@@ -73,11 +73,12 @@ public class ApiClient {
     this.dateFormat = new RFC3339DateFormat();
 
     // Set default User-Agent.
-    setUserAgent("Square-Connect-Java/2.5.0");
+    setUserAgent("Square-Connect-Java/2.5.1");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
     authentications.put("oauth2", new OAuth());
+    authentications.put("oauth2ClientSecret", new ApiKeyAuth("header", "Authorization"));
     // Prevent the authentications from being modified.
     authentications = Collections.unmodifiableMap(authentications);
   }

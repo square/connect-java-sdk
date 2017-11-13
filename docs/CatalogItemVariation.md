@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** | The item variation&#39;s name. Searchable. |  [optional]
 **sku** | **String** | The item variation&#39;s SKU, if any. Searchable. |  [optional]
 **upc** | **String** | The item variation&#39;s UPC, if any. Searchable. |  [optional]
+**ordinal** | **Integer** | The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent [CatalogItem](#type-catalogitem) is set according to the item variations&#39;s position. On reads, the value is not guaranteed to be sequential or unique. |  [optional]
 **pricingType** | [**PricingTypeEnum**](#PricingTypeEnum) | Indicates whether the item variation&#39;s price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values. |  [optional]
 **priceMoney** | [**Money**](Money.md) | The item variation&#39;s price, if fixed pricing is used. |  [optional]
 **locationOverrides** | [**List&lt;ItemVariationLocationOverrides&gt;**](ItemVariationLocationOverrides.md) | Per-[location](#type-location) price and inventory overrides. |  [optional]

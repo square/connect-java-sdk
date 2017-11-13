@@ -99,10 +99,10 @@ public class AdditionalRecipient {
   }
 
    /**
-   * The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server. TODO(botros): add required annotations on this, SETL-7263
+   * The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server.
    * @return receivableId
   **/
-  @ApiModelProperty(value = "The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server. TODO(botros): add required annotations on this, SETL-7263")
+  @ApiModelProperty(value = "The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server.")
   public String getReceivableId() {
     return receivableId;
   }

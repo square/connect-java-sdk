@@ -38,7 +38,7 @@ public class ReportingApi {
 
   /**
    * ListAdditionalRecipientReceivableRefunds
-   * Lists Additional Recipient Receivable Refunds for a particular location.  Max results per [page](#paginatingresults): 50
+   * Returns a list of refunded transactions (across all possible originating locations) relating to monies credited to the provided location ID by another Square account using the &#x60;additional_recipients&#x60; field in a transaction.  Max results per [page](#paginatingresults): 50
    * @param locationId The ID of the location to list AdditionalRecipientReceivableRefunds for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -90,7 +90,7 @@ public class ReportingApi {
 
   /**
    * ListAdditionalRecipientReceivableRefunds
-   * Lists Additional Recipient Receivable Refunds for a particular location.  Max results per [page](#paginatingresults): 50
+   * Returns a list of refunded transactions (across all possible originating locations) relating to monies credited to the provided location ID by another Square account using the &#x60;additional_recipients&#x60; field in a transaction.  Max results per [page](#paginatingresults): 50
    * @param locationId The ID of the location to list AdditionalRecipientReceivableRefunds for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -140,7 +140,7 @@ public class ReportingApi {
   }
   /**
    * ListAdditionalRecipientReceivables
-   * Lists Additional Recipient Receivables for a particular location.  Max results per [page](#paginatingresults): 50
+   * Returns a list of receivables (across all possible sending locations) representing monies credited to the provided location ID by another Square account using the &#x60;additional_recipients&#x60; field in a transaction.  Max results per [page](#paginatingresults): 50
    * @param locationId The ID of the location to list AdditionalRecipientReceivables for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -192,7 +192,7 @@ public class ReportingApi {
 
   /**
    * ListAdditionalRecipientReceivables
-   * Lists Additional Recipient Receivables for a particular location.  Max results per [page](#paginatingresults): 50
+   * Returns a list of receivables (across all possible sending locations) representing monies credited to the provided location ID by another Square account using the &#x60;additional_recipients&#x60; field in a transaction.  Max results per [page](#paginatingresults): 50
    * @param locationId The ID of the location to list AdditionalRecipientReceivables for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
