@@ -50,6 +50,9 @@ public class Tender {
   @JsonProperty("amount_money")
   private Money amountMoney = null;
 
+  @JsonProperty("tip_money")
+  private Money tipMoney = null;
+
   @JsonProperty("processing_fee_money")
   private Money processingFeeMoney = null;
 
@@ -214,6 +217,24 @@ public class Tender {
     this.amountMoney = amountMoney;
   }
 
+  public Tender tipMoney(Money tipMoney) {
+    this.tipMoney = tipMoney;
+    return this;
+  }
+
+   /**
+   * The tip's amount of the tender.
+   * @return tipMoney
+  **/
+  @ApiModelProperty(value = "The tip's amount of the tender.")
+  public Money getTipMoney() {
+    return tipMoney;
+  }
+
+  public void setTipMoney(Money tipMoney) {
+    this.tipMoney = tipMoney;
+  }
+
   public Tender processingFeeMoney(Money processingFeeMoney) {
     this.processingFeeMoney = processingFeeMoney;
     return this;
@@ -343,6 +364,7 @@ public class Tender {
         Objects.equals(this.createdAt, tender.createdAt) &&
         Objects.equals(this.note, tender.note) &&
         Objects.equals(this.amountMoney, tender.amountMoney) &&
+        Objects.equals(this.tipMoney, tender.tipMoney) &&
         Objects.equals(this.processingFeeMoney, tender.processingFeeMoney) &&
         Objects.equals(this.customerId, tender.customerId) &&
         Objects.equals(this.type, tender.type) &&
@@ -353,7 +375,7 @@ public class Tender {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, transactionId, createdAt, note, amountMoney, processingFeeMoney, customerId, type, cardDetails, cashDetails, additionalRecipients);
+    return Objects.hash(id, locationId, transactionId, createdAt, note, amountMoney, tipMoney, processingFeeMoney, customerId, type, cardDetails, cashDetails, additionalRecipients);
   }
 
 
@@ -368,6 +390,7 @@ public class Tender {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    amountMoney: ").append(toIndentedString(amountMoney)).append("\n");
+    sb.append("    tipMoney: ").append(toIndentedString(tipMoney)).append("\n");
     sb.append("    processingFeeMoney: ").append(toIndentedString(processingFeeMoney)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

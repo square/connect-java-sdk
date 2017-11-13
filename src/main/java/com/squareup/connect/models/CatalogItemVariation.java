@@ -42,6 +42,9 @@ public class CatalogItemVariation {
   @JsonProperty("upc")
   private String upc = null;
 
+  @JsonProperty("ordinal")
+  private Integer ordinal = null;
+
   /**
    * Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
    */
@@ -196,6 +199,24 @@ public class CatalogItemVariation {
 
   public void setUpc(String upc) {
     this.upc = upc;
+  }
+
+  public CatalogItemVariation ordinal(Integer ordinal) {
+    this.ordinal = ordinal;
+    return this;
+  }
+
+   /**
+   * The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent [CatalogItem](#type-catalogitem) is set according to the item variations's position. On reads, the value is not guaranteed to be sequential or unique.
+   * @return ordinal
+  **/
+  @ApiModelProperty(value = "The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent [CatalogItem](#type-catalogitem) is set according to the item variations's position. On reads, the value is not guaranteed to be sequential or unique.")
+  public Integer getOrdinal() {
+    return ordinal;
+  }
+
+  public void setOrdinal(Integer ordinal) {
+    this.ordinal = ordinal;
   }
 
   public CatalogItemVariation pricingType(PricingTypeEnum pricingType) {
@@ -361,6 +382,7 @@ public class CatalogItemVariation {
         Objects.equals(this.name, catalogItemVariation.name) &&
         Objects.equals(this.sku, catalogItemVariation.sku) &&
         Objects.equals(this.upc, catalogItemVariation.upc) &&
+        Objects.equals(this.ordinal, catalogItemVariation.ordinal) &&
         Objects.equals(this.pricingType, catalogItemVariation.pricingType) &&
         Objects.equals(this.priceMoney, catalogItemVariation.priceMoney) &&
         Objects.equals(this.locationOverrides, catalogItemVariation.locationOverrides) &&
@@ -373,7 +395,7 @@ public class CatalogItemVariation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, name, sku, upc, pricingType, priceMoney, locationOverrides, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, serviceDuration);
+    return Objects.hash(itemId, name, sku, upc, ordinal, pricingType, priceMoney, locationOverrides, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, serviceDuration);
   }
 
 
@@ -386,6 +408,7 @@ public class CatalogItemVariation {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    upc: ").append(toIndentedString(upc)).append("\n");
+    sb.append("    ordinal: ").append(toIndentedString(ordinal)).append("\n");
     sb.append("    pricingType: ").append(toIndentedString(pricingType)).append("\n");
     sb.append("    priceMoney: ").append(toIndentedString(priceMoney)).append("\n");
     sb.append("    locationOverrides: ").append(toIndentedString(locationOverrides)).append("\n");

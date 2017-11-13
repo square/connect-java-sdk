@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ListAdditionalRecipientReceivableRefunds
 
-Lists Additional Recipient Receivable Refunds for a particular location.  Max results per [page](#paginatingresults): 50
+Returns a list of refunded transactions (across all possible originating locations) relating to monies credited to the provided location ID by another Square account using the &#x60;additional_recipients&#x60; field in a transaction.  Max results per [page](#paginatingresults): 50
 
 ### Example
 ```java
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ListAdditionalRecipientReceivables
 
-Lists Additional Recipient Receivables for a particular location.  Max results per [page](#paginatingresults): 50
+Returns a list of receivables (across all possible sending locations) representing monies credited to the provided location ID by another Square account using the &#x60;additional_recipients&#x60; field in a transaction.  Max results per [page](#paginatingresults): 50
 
 ### Example
 ```java

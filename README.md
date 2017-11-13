@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.5.0</version>
+    <version>2.5.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.5.0"
+compile "com.squareup:connect:2.5.1"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.5.0.jar
+* target/connect-2.5.1.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -406,6 +406,13 @@ Authentication schemes defined for the API:
   - EMPLOYEES_WRITE: POST, PUT, and DELETE endpoints related to employee management
   - TIMECARDS_READ: GET endpoints related to employee timecards
   - TIMECARDS_WRITE: POST, PUT, and DELETE endpoints related to employee timecards
+  - PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS: Allow third party applications to deduct a portion of each transaction amount.
+
+### oauth2ClientSecret
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
 
 
 ## Pagination of V1 Endpoints

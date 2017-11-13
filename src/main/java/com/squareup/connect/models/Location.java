@@ -1073,6 +1073,9 @@ public class Location {
   @JsonProperty("type")
   private TypeEnum type = null;
 
+  @JsonProperty("website_url")
+  private String websiteUrl = null;
+
   public Location id(String id) {
     this.id = id;
     return this;
@@ -1330,6 +1333,24 @@ public class Location {
     this.type = type;
   }
 
+  public Location websiteUrl(String websiteUrl) {
+    this.websiteUrl = websiteUrl;
+    return this;
+  }
+
+   /**
+   * The location's website, as set by the account owner in the Square dashboard.  Default: none; only exists if explicitly set.
+   * @return websiteUrl
+  **/
+  @ApiModelProperty(value = "The location's website, as set by the account owner in the Square dashboard.  Default: none; only exists if explicitly set.")
+  public String getWebsiteUrl() {
+    return websiteUrl;
+  }
+
+  public void setWebsiteUrl(String websiteUrl) {
+    this.websiteUrl = websiteUrl;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1353,12 +1374,13 @@ public class Location {
         Objects.equals(this.currency, location.currency) &&
         Objects.equals(this.phoneNumber, location.phoneNumber) &&
         Objects.equals(this.businessName, location.businessName) &&
-        Objects.equals(this.type, location.type);
+        Objects.equals(this.type, location.type) &&
+        Objects.equals(this.websiteUrl, location.websiteUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type);
+    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl);
   }
 
 
@@ -1381,6 +1403,7 @@ public class Location {
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    businessName: ").append(toIndentedString(businessName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    websiteUrl: ").append(toIndentedString(websiteUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -19,8 +19,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * V1PageCell
@@ -37,7 +35,7 @@ public class V1PageCell {
   private Integer column = null;
 
   /**
-   * Gets or Sets objectType
+   * The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER).
    */
   public enum ObjectTypeEnum {
     ITEM("ITEM"),
@@ -71,13 +69,13 @@ public class V1PageCell {
   }
 
   @JsonProperty("object_type")
-  private List<ObjectTypeEnum> objectType = new ArrayList<ObjectTypeEnum>();
+  private ObjectTypeEnum objectType = null;
 
   @JsonProperty("object_id")
   private String objectId = null;
 
   /**
-   * Gets or Sets placeholderType
+   * For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior.
    */
   public enum PlaceholderTypeEnum {
     ALL_ITEMS("ALL_ITEMS"),
@@ -109,7 +107,7 @@ public class V1PageCell {
   }
 
   @JsonProperty("placeholder_type")
-  private List<PlaceholderTypeEnum> placeholderType = new ArrayList<PlaceholderTypeEnum>();
+  private PlaceholderTypeEnum placeholderType = null;
 
   public V1PageCell pageId(String pageId) {
     this.pageId = pageId;
@@ -165,13 +163,8 @@ public class V1PageCell {
     this.column = column;
   }
 
-  public V1PageCell objectType(List<ObjectTypeEnum> objectType) {
+  public V1PageCell objectType(ObjectTypeEnum objectType) {
     this.objectType = objectType;
-    return this;
-  }
-
-  public V1PageCell addObjectTypeItem(ObjectTypeEnum objectTypeItem) {
-    this.objectType.add(objectTypeItem);
     return this;
   }
 
@@ -180,11 +173,11 @@ public class V1PageCell {
    * @return objectType
   **/
   @ApiModelProperty(value = "The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER).")
-  public List<ObjectTypeEnum> getObjectType() {
+  public ObjectTypeEnum getObjectType() {
     return objectType;
   }
 
-  public void setObjectType(List<ObjectTypeEnum> objectType) {
+  public void setObjectType(ObjectTypeEnum objectType) {
     this.objectType = objectType;
   }
 
@@ -206,13 +199,8 @@ public class V1PageCell {
     this.objectId = objectId;
   }
 
-  public V1PageCell placeholderType(List<PlaceholderTypeEnum> placeholderType) {
+  public V1PageCell placeholderType(PlaceholderTypeEnum placeholderType) {
     this.placeholderType = placeholderType;
-    return this;
-  }
-
-  public V1PageCell addPlaceholderTypeItem(PlaceholderTypeEnum placeholderTypeItem) {
-    this.placeholderType.add(placeholderTypeItem);
     return this;
   }
 
@@ -221,11 +209,11 @@ public class V1PageCell {
    * @return placeholderType
   **/
   @ApiModelProperty(value = "For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior.")
-  public List<PlaceholderTypeEnum> getPlaceholderType() {
+  public PlaceholderTypeEnum getPlaceholderType() {
     return placeholderType;
   }
 
-  public void setPlaceholderType(List<PlaceholderTypeEnum> placeholderType) {
+  public void setPlaceholderType(PlaceholderTypeEnum placeholderType) {
     this.placeholderType = placeholderType;
   }
 
