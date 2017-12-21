@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 2.5.2 (2017-12-21)
+
+* Fix V1 pagination token extraction logic so that `CompleteResponse.getBatchToken()` 
+  returns a valid token when included in the Link Header.
+
 ## Version 2.5.1 (2017-11-10)
 
 * `ordinal` is added to `CatalogItemVariation`
