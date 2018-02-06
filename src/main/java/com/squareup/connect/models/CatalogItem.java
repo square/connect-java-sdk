@@ -71,13 +71,13 @@ public class CatalogItem {
    */
   public enum ProductTypeEnum {
     REGULAR("REGULAR"),
-    
+
     GIFT_CARD("GIFT_CARD"),
-    
+
     APPOINTMENTS_SERVICE("APPOINTMENTS_SERVICE"),
-    
+
     RETAIL_ITEM("RETAIL_ITEM"),
-    
+
     RESTAURANT_ITEM("RESTAURANT_ITEM");
 
     private String value;
@@ -117,7 +117,7 @@ public class CatalogItem {
    * The item's name. Searchable.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The item's name. Searchable.")
+  @ApiModelProperty(value = "The item's name. Searchable.")
   public String getName() {
     return name;
   }
@@ -411,7 +411,7 @@ public class CatalogItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogItem {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    abbreviation: ").append(toIndentedString(abbreviation)).append("\n");
@@ -440,6 +440,6 @@ public class CatalogItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

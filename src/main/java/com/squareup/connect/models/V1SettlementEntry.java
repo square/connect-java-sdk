@@ -34,41 +34,43 @@ public class V1SettlementEntry {
    */
   public enum TypeEnum {
     ADJUSTMENT("ADJUSTMENT"),
-    
+
     BALANCE_CHARGE("BALANCE_CHARGE"),
-    
+
     CHARGE("CHARGE"),
-    
+
     FREE_PROCESSING("FREE_PROCESSING"),
-    
+
     HOLD_ADJUSTMENT("HOLD_ADJUSTMENT"),
-    
+
     PAID_SERVICE_FEE("PAID_SERVICE_FEE"),
-    
+
     PAID_SERVICE_FEE_REFUND("PAID_SERVICE_FEE_REFUND"),
-    
+
     REDEMPTION_CODE("REDEMPTION_CODE"),
-    
+
     REFUND("REFUND"),
-    
+
     RETURNED_PAYOUT("RETURNED_PAYOUT"),
-    
+
     SQUARE_CAPITAL_ADVANCE("SQUARE_CAPITAL_ADVANCE"),
-    
+
     SQUARE_CAPITAL_PAYMENT("SQUARE_CAPITAL_PAYMENT"),
-    
+
     SQUARE_CAPITAL_REVERSED_PAYMENT("SQUARE_CAPITAL_REVERSED_PAYMENT"),
-    
+
     SUBSCRIPTION_FEE("SUBSCRIPTION_FEE"),
-    
+
     SUBSCRIPTION_FEE_REFUND("SUBSCRIPTION_FEE_REFUND"),
-    
+
     INCENTED_PAYMENT("INCENTED_PAYMENT"),
-    
+
+    OTHER("OTHER"),
+
     RETURNED_ACH_ENTRY("RETURNED_ACH_ENTRY"),
-    
+
     RETURNED_SQUARE_275("RETURNED_SQUARE_275"),
-    
+
     SQUARE_275("SQUARE_275");
 
     private String value;
@@ -200,7 +202,7 @@ public class V1SettlementEntry {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1SettlementEntry {\n");
-    
+
     sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    amountMoney: ").append(toIndentedString(amountMoney)).append("\n");
@@ -219,6 +221,6 @@ public class V1SettlementEntry {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

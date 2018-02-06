@@ -37,7 +37,7 @@ public class CatalogModifierList {
    */
   public enum SelectionTypeEnum {
     SINGLE("SINGLE"),
-    
+
     MULTIPLE("MULTIPLE");
 
     private String value;
@@ -77,7 +77,7 @@ public class CatalogModifierList {
    * The [CatalogModifierList](#type-catalogmodifierlist)'s name. Searchable.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The [CatalogModifierList](#type-catalogmodifierlist)'s name. Searchable.")
+  @ApiModelProperty(value = "The [CatalogModifierList](#type-catalogmodifierlist)'s name. Searchable.")
   public String getName() {
     return name;
   }
@@ -152,7 +152,7 @@ public class CatalogModifierList {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogModifierList {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    selectionType: ").append(toIndentedString(selectionType)).append("\n");
     sb.append("    modifiers: ").append(toIndentedString(modifiers)).append("\n");
@@ -170,6 +170,6 @@ public class CatalogModifierList {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 
