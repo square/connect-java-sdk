@@ -155,10 +155,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * Only used for Catalog line items. The catalog object ID from existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.
+   * Only used for Catalog line items. The catalog object ID for an existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "Only used for Catalog line items. The catalog object ID from existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.")
+  @ApiModelProperty(value = "Only used for Catalog line items. The catalog object ID for an existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
@@ -267,7 +267,7 @@ public class CreateOrderRequestLineItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequestLineItem {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
@@ -291,6 +291,6 @@ public class CreateOrderRequestLineItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

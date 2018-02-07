@@ -1,8 +1,12 @@
 # Change Log
 
+## Version 2.5.3 (2018-01-06)
+
+* `OTHER` enum value is added to `Type` on `V1SettlementEntry`
+
 ## Version 2.5.2 (2017-12-21)
 
-* Fix V1 pagination token extraction logic so that `CompleteResponse.getBatchToken()` 
+* Fix V1 pagination token extraction logic so that `CompleteResponse.getBatchToken()`
   returns a valid token when included in the Link Header.
 
 ## Version 2.5.1 (2017-11-10)

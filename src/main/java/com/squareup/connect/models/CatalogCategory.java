@@ -38,7 +38,7 @@ public class CatalogCategory {
    * The category's name. Searchable.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The category's name. Searchable.")
+  @ApiModelProperty(value = "The category's name. Searchable.")
   public String getName() {
     return name;
   }
@@ -70,7 +70,7 @@ public class CatalogCategory {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogCategory {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -86,6 +86,6 @@ public class CatalogCategory {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

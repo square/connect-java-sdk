@@ -42,7 +42,7 @@ public class CatalogModifier {
    * The modifier's name. Searchable.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The modifier's name. Searchable.")
+  @ApiModelProperty(value = "The modifier's name. Searchable.")
   public String getName() {
     return name;
   }
@@ -93,7 +93,7 @@ public class CatalogModifier {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogModifier {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    priceMoney: ").append(toIndentedString(priceMoney)).append("\n");
     sb.append("}");
@@ -110,6 +110,6 @@ public class CatalogModifier {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -45,10 +45,10 @@ public class CreateOrderRequestDiscount {
   }
 
    /**
-   * Only used for catalog taxes. The catalog object ID from exsiting [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.
+   * Only used for catalog discounts. The catalog object ID for an existing [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "Only used for catalog taxes. The catalog object ID from exsiting [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.")
+  @ApiModelProperty(value = "Only used for catalog discounts. The catalog object ID for an existing [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
@@ -137,7 +137,7 @@ public class CreateOrderRequestDiscount {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequestDiscount {\n");
-    
+
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
@@ -156,6 +156,6 @@ public class CreateOrderRequestDiscount {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 
