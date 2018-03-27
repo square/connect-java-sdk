@@ -94,10 +94,10 @@ public class CreateOrderRequestTax {
   }
 
    /**
-   * Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set catalog_object_id.
+   * Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set `catalog_object_id`.
    * @return name
   **/
-  @ApiModelProperty(value = "Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set catalog_object_id.")
+  @ApiModelProperty(value = "Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set `catalog_object_id`.")
   public String getName() {
     return name;
   }

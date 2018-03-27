@@ -78,7 +78,7 @@ public class Order {
    * The ID of the merchant location this order is associated with.
    * @return locationId
   **/
-  @ApiModelProperty(value = "The ID of the merchant location this order is associated with.")
+  @ApiModelProperty(required = true, value = "The ID of the merchant location this order is associated with.")
   public String getLocationId() {
     return locationId;
   }
@@ -119,7 +119,7 @@ public class Order {
    * The line items included in the order. Every order has at least one line item.
    * @return lineItems
   **/
-  @ApiModelProperty(value = "The line items included in the order. Every order has at least one line item.")
+  @ApiModelProperty(required = true, value = "The line items included in the order. Every order has at least one line item.")
   public List<OrderLineItem> getLineItems() {
     return lineItems;
   }

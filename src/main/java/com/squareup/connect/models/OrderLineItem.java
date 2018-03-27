@@ -98,7 +98,7 @@ public class OrderLineItem {
    * The quantity purchased, as a string representation of a number.
    * @return quantity
   **/
-  @ApiModelProperty(value = "The quantity purchased, as a string representation of a number.")
+  @ApiModelProperty(required = true, value = "The quantity purchased, as a string representation of a number.")
   public String getQuantity() {
     return quantity;
   }

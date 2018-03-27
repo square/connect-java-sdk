@@ -65,10 +65,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.  Do not provide a value for this field if you provide values in catalog_object_id.
+   * Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.  Do not provide a value for this field if you provide a value for `catalog_object_id`.
    * @return name
   **/
-  @ApiModelProperty(value = "Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.  Do not provide a value for this field if you provide values in catalog_object_id.")
+  @ApiModelProperty(value = "Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.  Do not provide a value for this field if you provide a value for `catalog_object_id`.")
   public String getName() {
     return name;
   }
@@ -101,10 +101,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * Only used for ad hoc line items. The base price for a single unit of the line item's associated variation.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.
+   * The base price for a single unit of the line item.  `base_price_money` is required for ad hoc line items and variable priced [CatalogItemVariation](#type-catalogitemvariation)s. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation's price.
    * @return basePriceMoney
   **/
-  @ApiModelProperty(value = "Only used for ad hoc line items. The base price for a single unit of the line item's associated variation.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.")
+  @ApiModelProperty(value = "The base price for a single unit of the line item.  `base_price_money` is required for ad hoc line items and variable priced [CatalogItemVariation](#type-catalogitemvariation)s. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation's price.")
   public Money getBasePriceMoney() {
     return basePriceMoney;
   }
