@@ -53,17 +53,17 @@ public class TransactionsApi {
    */
   public CaptureTransactionResponse captureTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling captureTransaction");
     }
-
+    
     // verify the required parameter 'transactionId' is set
     if (transactionId == null) {
       throw new ApiException(400, "Missing the required parameter 'transactionId' when calling captureTransaction");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions/{transaction_id}/capture"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
@@ -75,8 +75,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -104,17 +104,17 @@ public class TransactionsApi {
    */
   public CompleteResponse<CaptureTransactionResponse>captureTransactionWithHttpInfo(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling captureTransaction");
     }
-
+    
     // verify the required parameter 'transactionId' is set
     if (transactionId == null) {
       throw new ApiException(400, "Missing the required parameter 'transactionId' when calling captureTransaction");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions/{transaction_id}/capture"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
@@ -126,8 +126,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -153,17 +153,17 @@ public class TransactionsApi {
    */
   public ChargeResponse charge(String locationId, ChargeRequest body) throws ApiException {
     Object localVarPostBody = body;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling charge");
     }
-
+    
     // verify the required parameter 'body' is set
     if (body == null) {
       throw new ApiException(400, "Missing the required parameter 'body' when calling charge");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
@@ -174,8 +174,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -203,17 +203,17 @@ public class TransactionsApi {
    */
   public CompleteResponse<ChargeResponse>chargeWithHttpInfo(String locationId, ChargeRequest body) throws ApiException {
     Object localVarPostBody = body;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling charge");
     }
-
+    
     // verify the required parameter 'body' is set
     if (body == null) {
       throw new ApiException(400, "Missing the required parameter 'body' when calling charge");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
@@ -224,8 +224,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -252,22 +252,22 @@ public class TransactionsApi {
    */
   public CreateRefundResponse createRefund(String locationId, String transactionId, CreateRefundRequest body) throws ApiException {
     Object localVarPostBody = body;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling createRefund");
     }
-
+    
     // verify the required parameter 'transactionId' is set
     if (transactionId == null) {
       throw new ApiException(400, "Missing the required parameter 'transactionId' when calling createRefund");
     }
-
+    
     // verify the required parameter 'body' is set
     if (body == null) {
       throw new ApiException(400, "Missing the required parameter 'body' when calling createRefund");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions/{transaction_id}/refund"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
@@ -279,8 +279,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -309,22 +309,22 @@ public class TransactionsApi {
    */
   public CompleteResponse<CreateRefundResponse>createRefundWithHttpInfo(String locationId, String transactionId, CreateRefundRequest body) throws ApiException {
     Object localVarPostBody = body;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling createRefund");
     }
-
+    
     // verify the required parameter 'transactionId' is set
     if (transactionId == null) {
       throw new ApiException(400, "Missing the required parameter 'transactionId' when calling createRefund");
     }
-
+    
     // verify the required parameter 'body' is set
     if (body == null) {
       throw new ApiException(400, "Missing the required parameter 'body' when calling createRefund");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions/{transaction_id}/refund"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
@@ -336,8 +336,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -366,12 +366,12 @@ public class TransactionsApi {
    */
   public ListRefundsResponse listRefunds(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling listRefunds");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/refunds"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
@@ -386,8 +386,8 @@ public class TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -418,12 +418,12 @@ public class TransactionsApi {
    */
   public CompleteResponse<ListRefundsResponse>listRefundsWithHttpInfo(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling listRefunds");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/refunds"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
@@ -438,8 +438,8 @@ public class TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -468,12 +468,12 @@ public class TransactionsApi {
    */
   public ListTransactionsResponse listTransactions(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling listTransactions");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
@@ -488,8 +488,8 @@ public class TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -520,12 +520,12 @@ public class TransactionsApi {
    */
   public CompleteResponse<ListTransactionsResponse>listTransactionsWithHttpInfo(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling listTransactions");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
@@ -540,8 +540,8 @@ public class TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -567,17 +567,17 @@ public class TransactionsApi {
    */
   public RetrieveTransactionResponse retrieveTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveTransaction");
     }
-
+    
     // verify the required parameter 'transactionId' is set
     if (transactionId == null) {
       throw new ApiException(400, "Missing the required parameter 'transactionId' when calling retrieveTransaction");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions/{transaction_id}"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
@@ -589,8 +589,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -618,17 +618,17 @@ public class TransactionsApi {
    */
   public CompleteResponse<RetrieveTransactionResponse>retrieveTransactionWithHttpInfo(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveTransaction");
     }
-
+    
     // verify the required parameter 'transactionId' is set
     if (transactionId == null) {
       throw new ApiException(400, "Missing the required parameter 'transactionId' when calling retrieveTransaction");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions/{transaction_id}"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
@@ -640,8 +640,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -667,17 +667,17 @@ public class TransactionsApi {
    */
   public VoidTransactionResponse voidTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling voidTransaction");
     }
-
+    
     // verify the required parameter 'transactionId' is set
     if (transactionId == null) {
       throw new ApiException(400, "Missing the required parameter 'transactionId' when calling voidTransaction");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions/{transaction_id}/void"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
@@ -689,8 +689,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -718,17 +718,17 @@ public class TransactionsApi {
    */
   public CompleteResponse<VoidTransactionResponse>voidTransactionWithHttpInfo(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'locationId' is set
     if (locationId == null) {
       throw new ApiException(400, "Missing the required parameter 'locationId' when calling voidTransaction");
     }
-
+    
     // verify the required parameter 'transactionId' is set
     if (transactionId == null) {
       throw new ApiException(400, "Missing the required parameter 'transactionId' when calling voidTransaction");
     }
-
+    
     // create path and map variables
     String localVarPath = "/v2/locations/{location_id}/transactions/{transaction_id}/void"
       .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
@@ -740,8 +740,8 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };

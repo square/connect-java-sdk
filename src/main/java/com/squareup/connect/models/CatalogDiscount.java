@@ -35,11 +35,11 @@ public class CatalogDiscount {
    */
   public enum DiscountTypeEnum {
     FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
-
+    
     FIXED_AMOUNT("FIXED_AMOUNT"),
-
+    
     VARIABLE_PERCENTAGE("VARIABLE_PERCENTAGE"),
-
+    
     VARIABLE_AMOUNT("VARIABLE_AMOUNT");
 
     private String value;
@@ -215,7 +215,7 @@ public class CatalogDiscount {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogDiscount {\n");
-
+    
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
@@ -236,6 +236,6 @@ public class CatalogDiscount {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
+  
 }
 

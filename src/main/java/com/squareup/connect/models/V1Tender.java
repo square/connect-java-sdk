@@ -34,19 +34,19 @@ public class V1Tender {
    */
   public enum TypeEnum {
     CREDIT_CARD("CREDIT_CARD"),
-
+    
     CASH("CASH"),
-
+    
     THIRD_PARTY_CARD("THIRD_PARTY_CARD"),
-
+    
     NO_SALE("NO_SALE"),
-
+    
     SQUARE_WALLET("SQUARE_WALLET"),
-
+    
     SQUARE_GIFT_CARD("SQUARE_GIFT_CARD"),
-
+    
     UNKNOWN("UNKNOWN"),
-
+    
     OTHER("OTHER");
 
     private String value;
@@ -88,21 +88,21 @@ public class V1Tender {
    */
   public enum CardBrandEnum {
     OTHER_BRAND("OTHER_BRAND"),
-
+    
     VISA("VISA"),
-
+    
     MASTER_CARD("MASTER_CARD"),
-
+    
     AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-
+    
     DISCOVER("DISCOVER"),
-
+    
     DISCOVER_DINERS("DISCOVER_DINERS"),
-
+    
     JCB("JCB"),
-
+    
     CHINA_UNIONPAY("CHINA_UNIONPAY"),
-
+    
     SQUARE_GIFT_CARD("SQUARE_GIFT_CARD");
 
     private String value;
@@ -138,17 +138,17 @@ public class V1Tender {
    */
   public enum EntryMethodEnum {
     MANUAL("MANUAL"),
-
+    
     SCANNED("SCANNED"),
-
+    
     SQUARE_CASH("SQUARE_CASH"),
-
+    
     SQUARE_WALLET("SQUARE_WALLET"),
-
+    
     SWIPED("SWIPED"),
-
+    
     WEB_FORM("WEB_FORM"),
-
+    
     OTHER("OTHER");
 
     private String value;
@@ -460,7 +460,7 @@ public class V1Tender {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1Tender {\n");
-
+    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -488,6 +488,6 @@ public class V1Tender {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
+  
 }
 

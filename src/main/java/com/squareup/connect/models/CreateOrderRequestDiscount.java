@@ -137,7 +137,7 @@ public class CreateOrderRequestDiscount {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequestDiscount {\n");
-
+    
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
@@ -156,6 +156,6 @@ public class CreateOrderRequestDiscount {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
+  
 }
 

@@ -40,7 +40,7 @@ public class OrdersApi {
 
   /**
    * BatchRetrieveOrders
-   * Retrieves a set of [Order](#type-order)s by their IDs.  If a provided Order ID does not exist, it is ignored instead of resulting in an error.
+   * Retrieves a set of [Order](#type-order)s by their IDs.  If a given Order ID does not exist, the ID is ignored instead of generating an error.
    * @param locationId The ID of the orders&#39; associated location. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchRetrieveOrdersResponse
@@ -90,7 +90,7 @@ public class OrdersApi {
 
   /**
    * BatchRetrieveOrders
-   * Retrieves a set of [Order](#type-order)s by their IDs.  If a provided Order ID does not exist, it is ignored instead of resulting in an error.
+   * Retrieves a set of [Order](#type-order)s by their IDs.  If a given Order ID does not exist, the ID is ignored instead of generating an error.
    * @param locationId The ID of the orders&#39; associated location. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<BatchRetrieveOrdersResponse>
