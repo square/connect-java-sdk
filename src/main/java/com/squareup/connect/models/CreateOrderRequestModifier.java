@@ -17,17 +17,24 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a modifier applied to a single line item.
+ * Represents a modifier applied to a single line item.  Modifiers can reference existing objects in a merchant catalog or be constructed ad hoc at the time of purchase by providing a name and price.
  */
-@ApiModel(description = "Represents a modifier applied to a single line item.")
+@ApiModel(description = "Represents a modifier applied to a single line item.  Modifiers can reference existing objects in a merchant catalog or be constructed ad hoc at the time of purchase by providing a name and price.")
 
 public class CreateOrderRequestModifier {
   @JsonProperty("catalog_object_id")
   private String catalogObjectId = null;
+
+  @JsonProperty("name")
+  private String name = null;
+
+  @JsonProperty("base_price_money")
+  private Money basePriceMoney = null;
 
   public CreateOrderRequestModifier catalogObjectId(String catalogObjectId) {
     this.catalogObjectId = catalogObjectId;
@@ -38,13 +45,49 @@ public class CreateOrderRequestModifier {
    * The catalog object ID of a [CatalogModifier](#type-catalogmodifier).
    * @return catalogObjectId
   **/
-  @ApiModelProperty(required = true, value = "The catalog object ID of a [CatalogModifier](#type-catalogmodifier).")
+  @ApiModelProperty(value = "The catalog object ID of a [CatalogModifier](#type-catalogmodifier).")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
 
   public void setCatalogObjectId(String catalogObjectId) {
     this.catalogObjectId = catalogObjectId;
+  }
+
+  public CreateOrderRequestModifier name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Only used for ad hoc modifiers. The name of the modifier. `name` cannot exceed 255 characters.  Do not provide a value for `name` if you provide a value for `catalog_object_id`.
+   * @return name
+  **/
+  @ApiModelProperty(value = "Only used for ad hoc modifiers. The name of the modifier. `name` cannot exceed 255 characters.  Do not provide a value for `name` if you provide a value for `catalog_object_id`.")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CreateOrderRequestModifier basePriceMoney(Money basePriceMoney) {
+    this.basePriceMoney = basePriceMoney;
+    return this;
+  }
+
+   /**
+   * Only used for ad hoc modifiers. The base price for the modifier.  Do not provide a value for `base_price_money` if you provide a value for `catalog_object_id`.
+   * @return basePriceMoney
+  **/
+  @ApiModelProperty(value = "Only used for ad hoc modifiers. The base price for the modifier.  Do not provide a value for `base_price_money` if you provide a value for `catalog_object_id`.")
+  public Money getBasePriceMoney() {
+    return basePriceMoney;
+  }
+
+  public void setBasePriceMoney(Money basePriceMoney) {
+    this.basePriceMoney = basePriceMoney;
   }
 
 
@@ -57,12 +100,14 @@ public class CreateOrderRequestModifier {
       return false;
     }
     CreateOrderRequestModifier createOrderRequestModifier = (CreateOrderRequestModifier) o;
-    return Objects.equals(this.catalogObjectId, createOrderRequestModifier.catalogObjectId);
+    return Objects.equals(this.catalogObjectId, createOrderRequestModifier.catalogObjectId) &&
+        Objects.equals(this.name, createOrderRequestModifier.name) &&
+        Objects.equals(this.basePriceMoney, createOrderRequestModifier.basePriceMoney);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogObjectId);
+    return Objects.hash(catalogObjectId, name, basePriceMoney);
   }
 
 
@@ -72,6 +117,8 @@ public class CreateOrderRequestModifier {
     sb.append("class CreateOrderRequestModifier {\n");
     
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -189,10 +189,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * The item variation's UPC, if any. Searchable.
+   * The item variation's UPC, if any. Searchable in the Connect API. This field is only exposed in the Connect API. It is not exposed in Square's Dashboard, Square Point of Sale app or Retail Point of Sale app.
    * @return upc
   **/
-  @ApiModelProperty(value = "The item variation's UPC, if any. Searchable.")
+  @ApiModelProperty(value = "The item variation's UPC, if any. Searchable in the Connect API. This field is only exposed in the Connect API. It is not exposed in Square's Dashboard, Square Point of Sale app or Retail Point of Sale app.")
   public String getUpc() {
     return upc;
   }
