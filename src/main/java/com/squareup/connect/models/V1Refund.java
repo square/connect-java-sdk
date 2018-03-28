@@ -27,11 +27,11 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class V1Refund {
   /**
-   * The type of refund
+   * The type of refund 
    */
   public enum TypeEnum {
     FULL("FULL"),
-
+    
     PARTIAL("PARTIAL");
 
     private String value;
@@ -83,7 +83,7 @@ public class V1Refund {
   }
 
    /**
-   * The type of refund
+   * The type of refund 
    * @return type
   **/
   @ApiModelProperty(value = "The type of refund ")
@@ -191,7 +191,7 @@ public class V1Refund {
   }
 
    /**
-   *
+   * 
    * @return merchantId
   **/
   @ApiModelProperty(value = "")
@@ -232,7 +232,7 @@ public class V1Refund {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1Refund {\n");
-
+    
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    refundedMoney: ").append(toIndentedString(refundedMoney)).append("\n");
@@ -254,6 +254,6 @@ public class V1Refund {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
+  
 }
 

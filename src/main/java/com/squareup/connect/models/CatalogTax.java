@@ -34,7 +34,7 @@ public class CatalogTax {
    */
   public enum CalculationPhaseEnum {
     SUBTOTAL_PHASE("TAX_SUBTOTAL_PHASE"),
-
+    
     TOTAL_PHASE("TAX_TOTAL_PHASE");
 
     private String value;
@@ -67,7 +67,7 @@ public class CatalogTax {
    */
   public enum InclusionTypeEnum {
     ADDITIVE("ADDITIVE"),
-
+    
     INCLUSIVE("INCLUSIVE");
 
     private String value;
@@ -240,7 +240,7 @@ public class CatalogTax {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogTax {\n");
-
+    
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    calculationPhase: ").append(toIndentedString(calculationPhase)).append("\n");
     sb.append("    inclusionType: ").append(toIndentedString(inclusionType)).append("\n");
@@ -261,6 +261,6 @@ public class CatalogTax {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
+  
 }
 

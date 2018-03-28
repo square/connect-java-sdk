@@ -267,7 +267,7 @@ public class CreateOrderRequestLineItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequestLineItem {\n");
-
+    
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
@@ -291,6 +291,6 @@ public class CreateOrderRequestLineItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
+  
 }
 
