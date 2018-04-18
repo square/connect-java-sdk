@@ -527,10 +527,10 @@ public class V1Payment {
   }
 
    /**
-   * All of the refunds applied to the payment.
+   * All of the refunds applied to the payment. Note that the value of all refunds on a payment can exceed the value of all tenders if a merchant chooses to refund money to a tender after previously accepting returned goods as part of an exchange.
    * @return refunds
   **/
-  @ApiModelProperty(value = "All of the refunds applied to the payment.")
+  @ApiModelProperty(value = "All of the refunds applied to the payment. Note that the value of all refunds on a payment can exceed the value of all tenders if a merchant chooses to refund money to a tender after previously accepting returned goods as part of an exchange.")
   public List<V1Refund> getRefunds() {
     return refunds;
   }

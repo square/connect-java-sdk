@@ -275,7 +275,7 @@ String locationId = "locationId_example"; // String | The ID of the location to 
 String order = "order_example"; // String | TThe order in which payments are listed in the response.
 String beginTime = "beginTime_example"; // String | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
 String endTime = "endTime_example"; // String | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-Integer limit = 56; // Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
+Integer limit = 56; // Integer | The approximate number of refunds to return in a single response. Default: 100. Max: 200. Response may contain more results than the prescribed limit when refunds are made simultaneously to multiple tenders in a payment or when refunds are generated in an exchange to account for the value of returned goods.
 String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 try {
     List<V1Refund> result = apiInstance.listRefunds(locationId, order, beginTime, endTime, limit, batchToken);
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
  **order** | **String**| TThe order in which payments are listed in the response. | [optional] [enum: ASC, DESC]
  **beginTime** | **String**| The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. | [optional]
  **endTime** | **String**| The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. | [optional]
- **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional]
+ **limit** | **Integer**| The approximate number of refunds to return in a single response. Default: 100. Max: 200. Response may contain more results than the prescribed limit when refunds are made simultaneously to multiple tenders in a payment or when refunds are generated in an exchange to account for the value of returned goods. | [optional]
  **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
 
 ### Return type
@@ -510,7 +510,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 V1TransactionsApi apiInstance = new V1TransactionsApi();
 String locationId = "locationId_example"; // String | The ID of the payment's associated location.
-String paymentId = "paymentId_example"; // String | The payment's Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint.
+String paymentId = "paymentId_example"; // String | The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint.
 try {
     V1Payment result = apiInstance.retrievePayment(locationId, paymentId);
     System.out.println(result);
@@ -525,7 +525,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**| The ID of the payment&#39;s associated location. |
- **paymentId** | **String**| The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. |
+ **paymentId** | **String**| The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint. |
 
 ### Return type
 
