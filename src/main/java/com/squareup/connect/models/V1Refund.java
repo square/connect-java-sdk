@@ -77,6 +77,9 @@ public class V1Refund {
   @JsonProperty("merchant_id")
   private String merchantId = null;
 
+  @JsonProperty("is_exchange")
+  private Boolean isExchange = null;
+
   public V1Refund type(TypeEnum type) {
     this.type = type;
     return this;
@@ -137,10 +140,10 @@ public class V1Refund {
   }
 
    /**
-   * The time when the merchant initiated the refund for Square to process, in ISO 8601 format..
+   * The time when the merchant initiated the refund for Square to process, in ISO 8601 format.
    * @return createdAt
   **/
-  @ApiModelProperty(value = "The time when the merchant initiated the refund for Square to process, in ISO 8601 format..")
+  @ApiModelProperty(value = "The time when the merchant initiated the refund for Square to process, in ISO 8601 format.")
   public String getCreatedAt() {
     return createdAt;
   }
@@ -173,10 +176,10 @@ public class V1Refund {
   }
 
    /**
-   * The Square-issued ID of the payment the refund is applied to.
+   * A Square-issued ID associated with the refund. For single-tender refunds, payment_id is the ID of the original payment ID. For split-tender refunds, payment_id is the ID of the original tender. For exchange-based refunds (is_exchange == true), payment_id is the ID of the original payment ID even if the payment includes other tenders.
    * @return paymentId
   **/
-  @ApiModelProperty(value = "The Square-issued ID of the payment the refund is applied to.")
+  @ApiModelProperty(value = "A Square-issued ID associated with the refund. For single-tender refunds, payment_id is the ID of the original payment ID. For split-tender refunds, payment_id is the ID of the original tender. For exchange-based refunds (is_exchange == true), payment_id is the ID of the original payment ID even if the payment includes other tenders.")
   public String getPaymentId() {
     return paymentId;
   }
@@ -203,6 +206,24 @@ public class V1Refund {
     this.merchantId = merchantId;
   }
 
+  public V1Refund isExchange(Boolean isExchange) {
+    this.isExchange = isExchange;
+    return this;
+  }
+
+   /**
+   * Indicates whether or not the refund is associated with an exchange. If is_exchange is true, the refund reflects the value of goods returned in the exchange not the total money refunded.
+   * @return isExchange
+  **/
+  @ApiModelProperty(value = "Indicates whether or not the refund is associated with an exchange. If is_exchange is true, the refund reflects the value of goods returned in the exchange not the total money refunded.")
+  public Boolean getIsExchange() {
+    return isExchange;
+  }
+
+  public void setIsExchange(Boolean isExchange) {
+    this.isExchange = isExchange;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -219,12 +240,13 @@ public class V1Refund {
         Objects.equals(this.createdAt, v1Refund.createdAt) &&
         Objects.equals(this.processedAt, v1Refund.processedAt) &&
         Objects.equals(this.paymentId, v1Refund.paymentId) &&
-        Objects.equals(this.merchantId, v1Refund.merchantId);
+        Objects.equals(this.merchantId, v1Refund.merchantId) &&
+        Objects.equals(this.isExchange, v1Refund.isExchange);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, reason, refundedMoney, createdAt, processedAt, paymentId, merchantId);
+    return Objects.hash(type, reason, refundedMoney, createdAt, processedAt, paymentId, merchantId, isExchange);
   }
 
 
@@ -240,6 +262,7 @@ public class V1Refund {
     sb.append("    processedAt: ").append(toIndentedString(processedAt)).append("\n");
     sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
+    sb.append("    isExchange: ").append(toIndentedString(isExchange)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -436,7 +436,7 @@ public class V1TransactionsApi {
    * @param order TThe order in which payments are listed in the response. (optional)
    * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+   * @param limit The approximate number of refunds to return in a single response. Default: 100. Max: 200. Response may contain more results than the prescribed limit when refunds are made simultaneously to multiple tenders in a payment or when refunds are generated in an exchange to account for the value of returned goods. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Refund&gt;
    * @throws ApiException if fails to make API call
@@ -490,7 +490,7 @@ public class V1TransactionsApi {
    * @param order TThe order in which payments are listed in the response. (optional)
    * @param beginTime The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-   * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+   * @param limit The approximate number of refunds to return in a single response. Default: 100. Max: 200. Response may contain more results than the prescribed limit when refunds are made simultaneously to multiple tenders in a payment or when refunds are generated in an exchange to account for the value of returned goods. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return CompleteResponse<List<V1Refund>>
    * @throws ApiException if fails to make API call
@@ -849,7 +849,7 @@ public class V1TransactionsApi {
    * Provides comprehensive information for a single payment.
    * Provides comprehensive information for a single payment.
    * @param locationId The ID of the payment&#39;s associated location. (required)
-   * @param paymentId The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. (required)
+   * @param paymentId The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint. (required)
    * @return V1Payment
    * @throws ApiException if fails to make API call
    */
@@ -900,7 +900,7 @@ public class V1TransactionsApi {
    * Provides comprehensive information for a single payment.
    * Provides comprehensive information for a single payment.
    * @param locationId The ID of the payment&#39;s associated location. (required)
-   * @param paymentId The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. (required)
+   * @param paymentId The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint. (required)
    * @return CompleteResponse<V1Payment>
    * @throws ApiException if fails to make API call
    */

@@ -191,6 +191,9 @@ public class V1Tender {
   @JsonProperty("refunded_money")
   private V1Money refundedMoney = null;
 
+  @JsonProperty("is_exchange")
+  private Boolean isExchange = null;
+
   public V1Tender id(String id) {
     this.id = id;
     return this;
@@ -425,6 +428,24 @@ public class V1Tender {
     this.refundedMoney = refundedMoney;
   }
 
+  public V1Tender isExchange(Boolean isExchange) {
+    this.isExchange = isExchange;
+    return this;
+  }
+
+   /**
+   * Indicates whether or not the tender is associated with an exchange. If is_exchange is true, the tender represents the value of goods returned in an exchange not the actual money paid. The exchange value reduces the tender amounts needed to pay for items purchased in the exchange.
+   * @return isExchange
+  **/
+  @ApiModelProperty(value = "Indicates whether or not the tender is associated with an exchange. If is_exchange is true, the tender represents the value of goods returned in an exchange not the actual money paid. The exchange value reduces the tender amounts needed to pay for items purchased in the exchange.")
+  public Boolean getIsExchange() {
+    return isExchange;
+  }
+
+  public void setIsExchange(Boolean isExchange) {
+    this.isExchange = isExchange;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -447,12 +468,13 @@ public class V1Tender {
         Objects.equals(this.totalMoney, v1Tender.totalMoney) &&
         Objects.equals(this.tenderedMoney, v1Tender.tenderedMoney) &&
         Objects.equals(this.changeBackMoney, v1Tender.changeBackMoney) &&
-        Objects.equals(this.refundedMoney, v1Tender.refundedMoney);
+        Objects.equals(this.refundedMoney, v1Tender.refundedMoney) &&
+        Objects.equals(this.isExchange, v1Tender.isExchange);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, name, employeeId, receiptUrl, cardBrand, panSuffix, entryMethod, paymentNote, totalMoney, tenderedMoney, changeBackMoney, refundedMoney);
+    return Objects.hash(id, type, name, employeeId, receiptUrl, cardBrand, panSuffix, entryMethod, paymentNote, totalMoney, tenderedMoney, changeBackMoney, refundedMoney, isExchange);
   }
 
 
@@ -474,6 +496,7 @@ public class V1Tender {
     sb.append("    tenderedMoney: ").append(toIndentedString(tenderedMoney)).append("\n");
     sb.append("    changeBackMoney: ").append(toIndentedString(changeBackMoney)).append("\n");
     sb.append("    refundedMoney: ").append(toIndentedString(refundedMoney)).append("\n");
+    sb.append("    isExchange: ").append(toIndentedString(isExchange)).append("\n");
     sb.append("}");
     return sb.toString();
   }
