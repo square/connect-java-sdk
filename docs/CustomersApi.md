@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 <a name="listCustomers"></a>
 # **listCustomers**
-> ListCustomersResponse listCustomers(cursor)
+> ListCustomersResponse listCustomers(cursor, sortField, sortOrder)
 
 ListCustomers
 
@@ -254,8 +254,10 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
 String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+String sortField = "sortField_example"; // String | Indicates how Customers should be sorted. Default: `DEFAULT`.
+String sortOrder = "sortOrder_example"; // String | Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`.
 try {
-    ListCustomersResponse result = apiInstance.listCustomers(cursor);
+    ListCustomersResponse result = apiInstance.listCustomers(cursor, sortField, sortOrder);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CustomersApi#listCustomers");
@@ -268,6 +270,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. | [optional]
+ **sortField** | **String**| Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. | [optional] [enum: DEFAULT, CREATED_AT]
+ **sortOrder** | **String**| Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. | [optional] [enum: DESC, ASC]
 
 ### Return type
 

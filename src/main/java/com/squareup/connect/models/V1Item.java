@@ -179,6 +179,12 @@ public class V1Item {
   @JsonProperty("taxable")
   private Boolean taxable = null;
 
+  @JsonProperty("category_id")
+  private String categoryId = null;
+
+  @JsonProperty("available_for_pickup")
+  private Boolean availableForPickup = null;
+
   public V1Item id(String id) {
     this.id = id;
     return this;
@@ -446,6 +452,42 @@ public class V1Item {
     this.taxable = taxable;
   }
 
+  public V1Item categoryId(String categoryId) {
+    this.categoryId = categoryId;
+    return this;
+  }
+
+   /**
+   * The ID of the item's category, if any.
+   * @return categoryId
+  **/
+  @ApiModelProperty(value = "The ID of the item's category, if any.")
+  public String getCategoryId() {
+    return categoryId;
+  }
+
+  public void setCategoryId(String categoryId) {
+    this.categoryId = categoryId;
+  }
+
+  public V1Item availableForPickup(Boolean availableForPickup) {
+    this.availableForPickup = availableForPickup;
+    return this;
+  }
+
+   /**
+   * If true, the item can be added to pickup orders from the merchant's online store. Default value: false
+   * @return availableForPickup
+  **/
+  @ApiModelProperty(value = "If true, the item can be added to pickup orders from the merchant's online store. Default value: false")
+  public Boolean getAvailableForPickup() {
+    return availableForPickup;
+  }
+
+  public void setAvailableForPickup(Boolean availableForPickup) {
+    this.availableForPickup = availableForPickup;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -469,12 +511,14 @@ public class V1Item {
         Objects.equals(this.variations, v1Item.variations) &&
         Objects.equals(this.modifierLists, v1Item.modifierLists) &&
         Objects.equals(this.fees, v1Item.fees) &&
-        Objects.equals(this.taxable, v1Item.taxable);
+        Objects.equals(this.taxable, v1Item.taxable) &&
+        Objects.equals(this.categoryId, v1Item.categoryId) &&
+        Objects.equals(this.availableForPickup, v1Item.availableForPickup);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, type, color, abbreviation, visibility, availableOnline, masterImage, category, variations, modifierLists, fees, taxable);
+    return Objects.hash(id, name, description, type, color, abbreviation, visibility, availableOnline, masterImage, category, variations, modifierLists, fees, taxable, categoryId, availableForPickup);
   }
 
 
@@ -497,6 +541,8 @@ public class V1Item {
     sb.append("    modifierLists: ").append(toIndentedString(modifierLists)).append("\n");
     sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
     sb.append("    taxable: ").append(toIndentedString(taxable)).append("\n");
+    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
+    sb.append("    availableForPickup: ").append(toIndentedString(availableForPickup)).append("\n");
     sb.append("}");
     return sb.toString();
   }

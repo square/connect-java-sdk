@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **modifierLists** | [**List&lt;V1Variation&gt;**](V1Variation.md) | The modifier lists that apply to the item, if any. |  [optional]
 **fees** | [**List&lt;V1Fee&gt;**](V1Fee.md) | The fees that apply to the item, if any. |  [optional]
 **taxable** | **Boolean** | Deprecated. This field is not used. |  [optional]
+**categoryId** | **String** | The ID of the item&#39;s category, if any. |  [optional]
+**availableForPickup** | **Boolean** | If true, the item can be added to pickup orders from the merchant&#39;s online store. Default value: false |  [optional]
 
 
 <a name="TypeEnum"></a>

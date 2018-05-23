@@ -55,6 +55,9 @@ public class CreateCheckoutRequest {
   @JsonProperty("additional_recipients")
   private List<ChargeRequestAdditionalRecipient> additionalRecipients = new ArrayList<ChargeRequestAdditionalRecipient>();
 
+  @JsonProperty("note")
+  private String note = null;
+
   public CreateCheckoutRequest idempotencyKey(String idempotencyKey) {
     this.idempotencyKey = idempotencyKey;
     return this;
@@ -204,6 +207,24 @@ public class CreateCheckoutRequest {
     this.additionalRecipients = additionalRecipients;
   }
 
+  public CreateCheckoutRequest note(String note) {
+    this.note = note;
+    return this;
+  }
+
+   /**
+   * An optional note to associate with the checkout object.  This value cannot exceed 60 characters.
+   * @return note
+  **/
+  @ApiModelProperty(value = "An optional note to associate with the checkout object.  This value cannot exceed 60 characters.")
+  public String getNote() {
+    return note;
+  }
+
+  public void setNote(String note) {
+    this.note = note;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -221,12 +242,13 @@ public class CreateCheckoutRequest {
         Objects.equals(this.prePopulateBuyerEmail, createCheckoutRequest.prePopulateBuyerEmail) &&
         Objects.equals(this.prePopulateShippingAddress, createCheckoutRequest.prePopulateShippingAddress) &&
         Objects.equals(this.redirectUrl, createCheckoutRequest.redirectUrl) &&
-        Objects.equals(this.additionalRecipients, createCheckoutRequest.additionalRecipients);
+        Objects.equals(this.additionalRecipients, createCheckoutRequest.additionalRecipients) &&
+        Objects.equals(this.note, createCheckoutRequest.note);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idempotencyKey, order, askForShippingAddress, merchantSupportEmail, prePopulateBuyerEmail, prePopulateShippingAddress, redirectUrl, additionalRecipients);
+    return Objects.hash(idempotencyKey, order, askForShippingAddress, merchantSupportEmail, prePopulateBuyerEmail, prePopulateShippingAddress, redirectUrl, additionalRecipients, note);
   }
 
 
@@ -243,6 +265,7 @@ public class CreateCheckoutRequest {
     sb.append("    prePopulateShippingAddress: ").append(toIndentedString(prePopulateShippingAddress)).append("\n");
     sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
     sb.append("    additionalRecipients: ").append(toIndentedString(additionalRecipients)).append("\n");
+    sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");
     return sb.toString();
   }
