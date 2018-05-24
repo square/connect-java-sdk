@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.7.0</version>
+    <version>2.8.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.7.0"
+compile "com.squareup:connect:2.8.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.7.0.jar
+* target/connect-2.8.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -269,6 +269,7 @@ Class | Method | HTTP request | Description
  - [Customer](docs/Customer.md)
  - [CustomerGroupInfo](docs/CustomerGroupInfo.md)
  - [CustomerPreferences](docs/CustomerPreferences.md)
+ - [CustomerSortField](docs/CustomerSortField.md)
  - [DeleteCatalogObjectRequest](docs/DeleteCatalogObjectRequest.md)
  - [DeleteCatalogObjectResponse](docs/DeleteCatalogObjectResponse.md)
  - [DeleteCustomerCardRequest](docs/DeleteCustomerCardRequest.md)
@@ -367,6 +368,7 @@ Class | Method | HTTP request | Description
  - [V1PaymentItemDetail](docs/V1PaymentItemDetail.md)
  - [V1PaymentItemization](docs/V1PaymentItemization.md)
  - [V1PaymentModifier](docs/V1PaymentModifier.md)
+ - [V1PaymentSurcharge](docs/V1PaymentSurcharge.md)
  - [V1PaymentTax](docs/V1PaymentTax.md)
  - [V1PhoneNumber](docs/V1PhoneNumber.md)
  - [V1Refund](docs/V1Refund.md)

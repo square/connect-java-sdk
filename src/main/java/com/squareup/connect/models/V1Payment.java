@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Device;
 import com.squareup.connect.models.V1Money;
 import com.squareup.connect.models.V1PaymentItemization;
+import com.squareup.connect.models.V1PaymentSurcharge;
 import com.squareup.connect.models.V1PaymentTax;
 import com.squareup.connect.models.V1Refund;
 import com.squareup.connect.models.V1Tender;
@@ -104,6 +105,12 @@ public class V1Payment {
 
   @JsonProperty("itemizations")
   private List<V1PaymentItemization> itemizations = new ArrayList<V1PaymentItemization>();
+
+  @JsonProperty("surcharge_money")
+  private V1Money surchargeMoney = null;
+
+  @JsonProperty("surcharges")
+  private List<V1PaymentSurcharge> surcharges = new ArrayList<V1PaymentSurcharge>();
 
   public V1Payment id(String id) {
     this.id = id;
@@ -562,6 +569,47 @@ public class V1Payment {
     this.itemizations = itemizations;
   }
 
+  public V1Payment surchargeMoney(V1Money surchargeMoney) {
+    this.surchargeMoney = surchargeMoney;
+    return this;
+  }
+
+   /**
+   * The total of all surcharges applied to the payment.
+   * @return surchargeMoney
+  **/
+  @ApiModelProperty(value = "The total of all surcharges applied to the payment.")
+  public V1Money getSurchargeMoney() {
+    return surchargeMoney;
+  }
+
+  public void setSurchargeMoney(V1Money surchargeMoney) {
+    this.surchargeMoney = surchargeMoney;
+  }
+
+  public V1Payment surcharges(List<V1PaymentSurcharge> surcharges) {
+    this.surcharges = surcharges;
+    return this;
+  }
+
+  public V1Payment addSurchargesItem(V1PaymentSurcharge surchargesItem) {
+    this.surcharges.add(surchargesItem);
+    return this;
+  }
+
+   /**
+   * A list of all surcharges associated with the payment.
+   * @return surcharges
+  **/
+  @ApiModelProperty(value = "A list of all surcharges associated with the payment.")
+  public List<V1PaymentSurcharge> getSurcharges() {
+    return surcharges;
+  }
+
+  public void setSurcharges(List<V1PaymentSurcharge> surcharges) {
+    this.surcharges = surcharges;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -595,12 +643,14 @@ public class V1Payment {
         Objects.equals(this.additiveTax, v1Payment.additiveTax) &&
         Objects.equals(this.tender, v1Payment.tender) &&
         Objects.equals(this.refunds, v1Payment.refunds) &&
-        Objects.equals(this.itemizations, v1Payment.itemizations);
+        Objects.equals(this.itemizations, v1Payment.itemizations) &&
+        Objects.equals(this.surchargeMoney, v1Payment.surchargeMoney) &&
+        Objects.equals(this.surcharges, v1Payment.surcharges);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, merchantId, createdAt, creatorId, device, paymentUrl, receiptUrl, inclusiveTaxMoney, additiveTaxMoney, taxMoney, tipMoney, discountMoney, totalCollectedMoney, processingFeeMoney, netTotalMoney, refundedMoney, swedishRoundingMoney, grossSalesMoney, netSalesMoney, inclusiveTax, additiveTax, tender, refunds, itemizations);
+    return Objects.hash(id, merchantId, createdAt, creatorId, device, paymentUrl, receiptUrl, inclusiveTaxMoney, additiveTaxMoney, taxMoney, tipMoney, discountMoney, totalCollectedMoney, processingFeeMoney, netTotalMoney, refundedMoney, swedishRoundingMoney, grossSalesMoney, netSalesMoney, inclusiveTax, additiveTax, tender, refunds, itemizations, surchargeMoney, surcharges);
   }
 
 
@@ -633,6 +683,8 @@ public class V1Payment {
     sb.append("    tender: ").append(toIndentedString(tender)).append("\n");
     sb.append("    refunds: ").append(toIndentedString(refunds)).append("\n");
     sb.append("    itemizations: ").append(toIndentedString(itemizations)).append("\n");
+    sb.append("    surchargeMoney: ").append(toIndentedString(surchargeMoney)).append("\n");
+    sb.append("    surcharges: ").append(toIndentedString(surcharges)).append("\n");
     sb.append("}");
     return sb.toString();
   }

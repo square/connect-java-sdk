@@ -82,10 +82,12 @@ public class V1Page {
   }
 
    /**
-   * The page's position in the merchant's list of pages. Always an integer between 0 and 4, inclusive.
+   * The page's position in the merchant's list of pages. Always an integer between 0 and 6, inclusive.
+   * minimum: 0
+   * maximum: 6
    * @return pageIndex
   **/
-  @ApiModelProperty(value = "The page's position in the merchant's list of pages. Always an integer between 0 and 4, inclusive.")
+  @ApiModelProperty(value = "The page's position in the merchant's list of pages. Always an integer between 0 and 6, inclusive.")
   public Integer getPageIndex() {
     return pageIndex;
   }

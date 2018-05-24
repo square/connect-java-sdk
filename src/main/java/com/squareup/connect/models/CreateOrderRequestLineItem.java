@@ -137,10 +137,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * The note of the line item. This value cannot exceed 50 characters.
+   * The note of the line item. This value cannot exceed 500 characters.
    * @return note
   **/
-  @ApiModelProperty(value = "The note of the line item. This value cannot exceed 50 characters.")
+  @ApiModelProperty(value = "The note of the line item. This value cannot exceed 500 characters.")
   public String getNote() {
     return note;
   }
