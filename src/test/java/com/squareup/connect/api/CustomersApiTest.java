@@ -62,7 +62,7 @@ public class CustomersApiTest extends APITest {
 
     private void deleteCustomers() throws ApiException {
         while(true) {
-            ListCustomersResponse response = api.listCustomers("", "", "");
+            ListCustomersResponse response = api.listCustomers(null, null, null);
             if (response.getCustomers() == null || response.getCustomers().isEmpty()) {
                 return;
             }
@@ -210,7 +210,7 @@ public class CustomersApiTest extends APITest {
     @Test
     public void listCustomersTest() throws ApiException {
         String cursor = null;
-        ListCustomersResponse response = api.listCustomers(cursor, "", "");
+        ListCustomersResponse response = api.listCustomers(cursor, null, null);
 
         // TODO: test validations
     }
