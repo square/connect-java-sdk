@@ -17,10 +17,10 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.squareup.connect.models.Definitionsv1PaymentSurcharge;
 import com.squareup.connect.models.Device;
 import com.squareup.connect.models.V1Money;
 import com.squareup.connect.models.V1PaymentItemization;
+import com.squareup.connect.models.V1PaymentSurcharge;
 import com.squareup.connect.models.V1PaymentTax;
 import com.squareup.connect.models.V1Refund;
 import com.squareup.connect.models.V1Tender;
@@ -110,7 +110,7 @@ public class V1Payment {
   private V1Money surchargeMoney = null;
 
   @JsonProperty("surcharges")
-  private List<Definitionsv1PaymentSurcharge> surcharges = new ArrayList<Definitionsv1PaymentSurcharge>();
+  private List<V1PaymentSurcharge> surcharges = new ArrayList<V1PaymentSurcharge>();
 
   public V1Payment id(String id) {
     this.id = id;
@@ -587,12 +587,12 @@ public class V1Payment {
     this.surchargeMoney = surchargeMoney;
   }
 
-  public V1Payment surcharges(List<Definitionsv1PaymentSurcharge> surcharges) {
+  public V1Payment surcharges(List<V1PaymentSurcharge> surcharges) {
     this.surcharges = surcharges;
     return this;
   }
 
-  public V1Payment addSurchargesItem(Definitionsv1PaymentSurcharge surchargesItem) {
+  public V1Payment addSurchargesItem(V1PaymentSurcharge surchargesItem) {
     this.surcharges.add(surchargesItem);
     return this;
   }
@@ -602,11 +602,11 @@ public class V1Payment {
    * @return surcharges
   **/
   @ApiModelProperty(value = "A list of all surcharges associated with the payment.")
-  public List<Definitionsv1PaymentSurcharge> getSurcharges() {
+  public List<V1PaymentSurcharge> getSurcharges() {
     return surcharges;
   }
 
-  public void setSurcharges(List<Definitionsv1PaymentSurcharge> surcharges) {
+  public void setSurcharges(List<V1PaymentSurcharge> surcharges) {
     this.surcharges = surcharges;
   }
 

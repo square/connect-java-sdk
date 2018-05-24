@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **refunds** | [**List&lt;V1Refund&gt;**](V1Refund.md) | All of the refunds applied to the payment. Note that the value of all refunds on a payment can exceed the value of all tenders if a merchant chooses to refund money to a tender after previously accepting returned goods as part of an exchange. |  [optional]
 **itemizations** | [**List&lt;V1PaymentItemization&gt;**](V1PaymentItemization.md) | The items purchased in the payment. |  [optional]
 **surchargeMoney** | [**V1Money**](V1Money.md) | The total of all surcharges applied to the payment. |  [optional]
-**surcharges** | [**List&lt;Definitionsv1PaymentSurcharge&gt;**](Definitionsv1PaymentSurcharge.md) | A list of all surcharges associated with the payment. |  [optional]
+**surcharges** | [**List&lt;V1PaymentSurcharge&gt;**](V1PaymentSurcharge.md) | A list of all surcharges associated with the payment. |  [optional]
 
 
 
