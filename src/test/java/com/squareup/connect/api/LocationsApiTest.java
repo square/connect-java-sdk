@@ -29,7 +29,7 @@ import org.junit.Before;
  * API tests for LocationsApi
  */
 public class LocationsApiTest extends APITest {
-    
+
     private final ApiClient defaultClient = Configuration.getDefaultApiClient();
     private final LocationsApi api = new LocationsApi();
 
@@ -51,6 +51,6 @@ public class LocationsApiTest extends APITest {
     @Test
     public void listLocationsTest() throws ApiException {
         ListLocationsResponse response = api.listLocations();
-        Assert.assertEquals("CBASEEffqN8pnVNXwoCL0dSGMVAgAQ", response.getLocations().get(0).getId());
+        Assert.assertEquals(accounts.get("US-Prod-Sandbox").locationId, response.getLocations().get(0).getId());
     }
 }
