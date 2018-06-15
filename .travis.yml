@@ -9,7 +9,7 @@ cache:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
 before_install:
-- openssl aes-256-cbc -K $encrypted_6342d3141ac0_key -iv $encrypted_6342d3141ac0_iv -in ./travis-ci/accounts.enc -out ./travis-ci/accounts.json -d
+- openssl aes-256-cbc -K $encrypted_cef8742a9861_key -iv $encrypted_cef8742a9861_iv -in ./travis-ci/accounts.enc -out ./travis-ci/accounts.json -d
 - chmod a+x ./gradlew
 script:
 - ./gradlew test
