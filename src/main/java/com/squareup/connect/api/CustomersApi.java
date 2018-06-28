@@ -16,6 +16,8 @@ import com.squareup.connect.models.DeleteCustomerCardResponse;
 import com.squareup.connect.models.DeleteCustomerResponse;
 import com.squareup.connect.models.ListCustomersResponse;
 import com.squareup.connect.models.RetrieveCustomerResponse;
+import com.squareup.connect.models.SearchCustomersRequest;
+import com.squareup.connect.models.SearchCustomersResponse;
 import com.squareup.connect.models.UpdateCustomerRequest;
 import com.squareup.connect.models.UpdateCustomerResponse;
 
@@ -416,8 +418,8 @@ public class CustomersApi {
    * ListCustomers
    * Lists a business&#39;s customers.
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
-   * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. (optional)
-   * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. (optional)
+   * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)
+   * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)
    * @return ListCustomersResponse
    * @throws ApiException if fails to make API call
    */
@@ -459,8 +461,8 @@ public class CustomersApi {
    * ListCustomers
    * Lists a business&#39;s customers.
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
-   * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. (optional)
-   * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. (optional)
+   * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)
+   * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)
    * @return CompleteResponse<ListCustomersResponse>
    * @throws ApiException if fails to make API call
    */
@@ -581,6 +583,90 @@ public class CustomersApi {
 
     GenericType<RetrieveCustomerResponse> localVarReturnType = new GenericType<RetrieveCustomerResponse>() {};
     return (CompleteResponse<RetrieveCustomerResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+  }
+  /**
+   * SearchCustomers
+   * Searches a business&#39;s customers.
+   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @return SearchCustomersResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SearchCustomersResponse searchCustomers(SearchCustomersRequest body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling searchCustomers");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/customers/search";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<SearchCustomersResponse> localVarReturnType = new GenericType<SearchCustomersResponse>() {};
+    CompleteResponse<SearchCustomersResponse> completeResponse = (CompleteResponse<SearchCustomersResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    return completeResponse.getData();
+      }
+
+  /**
+   * SearchCustomers
+   * Searches a business&#39;s customers.
+   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @return CompleteResponse<SearchCustomersResponse>
+   * @throws ApiException if fails to make API call
+   */
+  public CompleteResponse<SearchCustomersResponse>searchCustomersWithHttpInfo(SearchCustomersRequest body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling searchCustomers");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/customers/search";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<SearchCustomersResponse> localVarReturnType = new GenericType<SearchCustomersResponse>() {};
+    return (CompleteResponse<SearchCustomersResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
    * UpdateCustomer

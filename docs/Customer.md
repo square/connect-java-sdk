@@ -19,6 +19,32 @@ Name | Type | Description | Notes
 **note** | **String** | A note to associate with the customer. |  [optional]
 **preferences** | [**CustomerPreferences**](CustomerPreferences.md) | The customer&#39;s preferences. |  [optional]
 **groups** | [**List&lt;CustomerGroupInfo&gt;**](CustomerGroupInfo.md) | The groups the customer belongs to. |  [optional]
+**creationSource** | [**CreationSourceEnum**](#CreationSourceEnum) | A creation source represents the method used to create the customer profile. |  [optional]
+
+
+<a name="CreationSourceEnum"></a>
+## Enum: CreationSourceEnum
+Name | Value
+---- | -----
+OTHER | &quot;OTHER&quot;
+APPOINTMENTS | &quot;APPOINTMENTS&quot;
+COUPON | &quot;COUPON&quot;
+DELETION_RECOVERY | &quot;DELETION_RECOVERY&quot;
+DIRECTORY | &quot;DIRECTORY&quot;
+EGIFTING | &quot;EGIFTING&quot;
+EMAIL_COLLECTION | &quot;EMAIL_COLLECTION&quot;
+FEEDBACK | &quot;FEEDBACK&quot;
+IMPORT | &quot;IMPORT&quot;
+INVOICES | &quot;INVOICES&quot;
+LOYALTY | &quot;LOYALTY&quot;
+MARKETING | &quot;MARKETING&quot;
+MERGE | &quot;MERGE&quot;
+ONLINE_STORE | &quot;ONLINE_STORE&quot;
+INSTANT_PROFILE | &quot;INSTANT_PROFILE&quot;
+TERMINAL | &quot;TERMINAL&quot;
+THIRD_PARTY | &quot;THIRD_PARTY&quot;
+THIRD_PARTY_IMPORT | &quot;THIRD_PARTY_IMPORT&quot;
+UNMERGE_RECOVERY | &quot;UNMERGE_RECOVERY&quot;
 
 
 

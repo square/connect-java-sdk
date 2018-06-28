@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.8.0</version>
+    <version>2.9.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.8.0"
+compile "com.squareup:connect:2.9.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.8.0.jar
+* target/connect-2.9.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -115,6 +115,7 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**deleteCustomerCard**](docs/CustomersApi.md#deleteCustomerCard) | **DELETE** /v2/customers/{customer_id}/cards/{card_id} | DeleteCustomerCard
 *CustomersApi* | [**listCustomers**](docs/CustomersApi.md#listCustomers) | **GET** /v2/customers | ListCustomers
 *CustomersApi* | [**retrieveCustomer**](docs/CustomersApi.md#retrieveCustomer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
+*CustomersApi* | [**searchCustomers**](docs/CustomersApi.md#searchCustomers) | **POST** /v2/customers/search | SearchCustomers
 *CustomersApi* | [**updateCustomer**](docs/CustomersApi.md#updateCustomer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
 *OrdersApi* | [**batchRetrieveOrders**](docs/OrdersApi.md#batchRetrieveOrders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve | BatchRetrieveOrders
@@ -267,8 +268,14 @@ Class | Method | HTTP request | Description
  - [CreateRefundResponse](docs/CreateRefundResponse.md)
  - [Currency](docs/Currency.md)
  - [Customer](docs/Customer.md)
+ - [CustomerCreationSource](docs/CustomerCreationSource.md)
+ - [CustomerCreationSourceFilter](docs/CustomerCreationSourceFilter.md)
+ - [CustomerFilter](docs/CustomerFilter.md)
  - [CustomerGroupInfo](docs/CustomerGroupInfo.md)
+ - [CustomerInclusionExclusion](docs/CustomerInclusionExclusion.md)
  - [CustomerPreferences](docs/CustomerPreferences.md)
+ - [CustomerQuery](docs/CustomerQuery.md)
+ - [CustomerSort](docs/CustomerSort.md)
  - [CustomerSortField](docs/CustomerSortField.md)
  - [DeleteCatalogObjectRequest](docs/DeleteCatalogObjectRequest.md)
  - [DeleteCatalogObjectResponse](docs/DeleteCatalogObjectResponse.md)
@@ -322,6 +329,8 @@ Class | Method | HTTP request | Description
  - [RetrieveTransactionResponse](docs/RetrieveTransactionResponse.md)
  - [SearchCatalogObjectsRequest](docs/SearchCatalogObjectsRequest.md)
  - [SearchCatalogObjectsResponse](docs/SearchCatalogObjectsResponse.md)
+ - [SearchCustomersRequest](docs/SearchCustomersRequest.md)
+ - [SearchCustomersResponse](docs/SearchCustomersResponse.md)
  - [SortOrder](docs/SortOrder.md)
  - [TaxCalculationPhase](docs/TaxCalculationPhase.md)
  - [TaxInclusionType](docs/TaxInclusionType.md)
@@ -331,6 +340,7 @@ Class | Method | HTTP request | Description
  - [TenderCardDetailsStatus](docs/TenderCardDetailsStatus.md)
  - [TenderCashDetails](docs/TenderCashDetails.md)
  - [TenderType](docs/TenderType.md)
+ - [TimeRange](docs/TimeRange.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionProduct](docs/TransactionProduct.md)
  - [UpdateCustomerRequest](docs/UpdateCustomerRequest.md)

@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteCustomerCard**](CustomersApi.md#deleteCustomerCard) | **DELETE** /v2/customers/{customer_id}/cards/{card_id} | DeleteCustomerCard
 [**listCustomers**](CustomersApi.md#listCustomers) | **GET** /v2/customers | ListCustomers
 [**retrieveCustomer**](CustomersApi.md#retrieveCustomer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
+[**searchCustomers**](CustomersApi.md#searchCustomers) | **POST** /v2/customers/search | SearchCustomers
 [**updateCustomer**](CustomersApi.md#updateCustomer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 
 
@@ -254,8 +255,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
 String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
-String sortField = "sortField_example"; // String | Indicates how Customers should be sorted. Default: `DEFAULT`.
-String sortOrder = "sortOrder_example"; // String | Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`.
+String sortField = "sortField_example"; // String | Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values.
+String sortOrder = "sortOrder_example"; // String | Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values.
 try {
     ListCustomersResponse result = apiInstance.listCustomers(cursor, sortField, sortOrder);
     System.out.println(result);
@@ -270,8 +271,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. | [optional]
- **sortField** | **String**| Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. | [optional] [enum: DEFAULT, CREATED_AT]
- **sortOrder** | **String**| Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. | [optional] [enum: DESC, ASC]
+ **sortField** | **String**| Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. | [optional] [enum: DEFAULT, CREATED_AT]
+ **sortOrder** | **String**| Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. | [optional] [enum: DESC, ASC]
 
 ### Return type
 
@@ -329,6 +330,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RetrieveCustomerResponse**](RetrieveCustomerResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="searchCustomers"></a>
+# **searchCustomers**
+> SearchCustomersResponse searchCustomers(body)
+
+SearchCustomers
+
+Searches a business&#39;s customers.
+
+### Example
+```java
+// Import classes:
+//import com.squareup.connect.ApiClient;
+//import com.squareup.connect.ApiException;
+//import com.squareup.connect.Configuration;
+//import com.squareup.connect.auth.*;
+//import com.squareup.connect.api.CustomersApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+CustomersApi apiInstance = new CustomersApi();
+SearchCustomersRequest body = new SearchCustomersRequest(); // SearchCustomersRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+try {
+    SearchCustomersResponse result = apiInstance.searchCustomers(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling CustomersApi#searchCustomers");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SearchCustomersRequest**](SearchCustomersRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+
+### Return type
+
+[**SearchCustomersResponse**](SearchCustomersResponse.md)
 
 ### Authorization
 
