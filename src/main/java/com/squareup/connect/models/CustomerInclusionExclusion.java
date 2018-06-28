@@ -19,19 +19,17 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Indicates whether this is a line item or order level discount.
+ * Indicates whether customers should be included in, or excluded from, the result set when they match the filtering criteria.
  */
-public enum OrderLineItemDiscountScope {
+public enum CustomerInclusionExclusion {
   
-  OTHER_DISCOUNT_SCOPE("OTHER_DISCOUNT_SCOPE"),
+  INCLUDE("INCLUDE"),
   
-  LINE_ITEM("LINE_ITEM"),
-  
-  ORDER("ORDER");
+  EXCLUDE("EXCLUDE");
 
   private String value;
 
-  OrderLineItemDiscountScope(String value) {
+  CustomerInclusionExclusion(String value) {
     this.value = value;
   }
 
@@ -41,8 +39,8 @@ public enum OrderLineItemDiscountScope {
   }
 
   @JsonCreator
-  public static OrderLineItemDiscountScope fromValue(String text) {
-    for (OrderLineItemDiscountScope b : OrderLineItemDiscountScope.values()) {
+  public static CustomerInclusionExclusion fromValue(String text) {
+    for (CustomerInclusionExclusion b : CustomerInclusionExclusion.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

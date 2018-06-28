@@ -95,10 +95,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The quantity purchased, as a string representation of a number.
+   * The quantity purchased, as a string representation of a number.  This string must have a positive integer value.
    * @return quantity
   **/
-  @ApiModelProperty(required = true, value = "The quantity purchased, as a string representation of a number.")
+  @ApiModelProperty(required = true, value = "The quantity purchased, as a string representation of a number.  This string must have a positive integer value.")
   public String getQuantity() {
     return quantity;
   }

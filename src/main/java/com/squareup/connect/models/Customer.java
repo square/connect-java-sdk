@@ -77,6 +77,73 @@ public class Customer {
   @JsonProperty("groups")
   private List<CustomerGroupInfo> groups = new ArrayList<CustomerGroupInfo>();
 
+  /**
+   * A creation source represents the method used to create the customer profile.
+   */
+  public enum CreationSourceEnum {
+    OTHER("OTHER"),
+    
+    APPOINTMENTS("APPOINTMENTS"),
+    
+    COUPON("COUPON"),
+    
+    DELETION_RECOVERY("DELETION_RECOVERY"),
+    
+    DIRECTORY("DIRECTORY"),
+    
+    EGIFTING("EGIFTING"),
+    
+    EMAIL_COLLECTION("EMAIL_COLLECTION"),
+    
+    FEEDBACK("FEEDBACK"),
+    
+    IMPORT("IMPORT"),
+    
+    INVOICES("INVOICES"),
+    
+    LOYALTY("LOYALTY"),
+    
+    MARKETING("MARKETING"),
+    
+    MERGE("MERGE"),
+    
+    ONLINE_STORE("ONLINE_STORE"),
+    
+    INSTANT_PROFILE("INSTANT_PROFILE"),
+    
+    TERMINAL("TERMINAL"),
+    
+    THIRD_PARTY("THIRD_PARTY"),
+    
+    THIRD_PARTY_IMPORT("THIRD_PARTY_IMPORT"),
+    
+    UNMERGE_RECOVERY("UNMERGE_RECOVERY");
+
+    private String value;
+
+    CreationSourceEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CreationSourceEnum fromValue(String text) {
+      for (CreationSourceEnum b : CreationSourceEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("creation_source")
+  private CreationSourceEnum creationSource = null;
+
   public Customer id(String id) {
     this.id = id;
     return this;
@@ -357,6 +424,24 @@ public class Customer {
     this.groups = groups;
   }
 
+  public Customer creationSource(CreationSourceEnum creationSource) {
+    this.creationSource = creationSource;
+    return this;
+  }
+
+   /**
+   * A creation source represents the method used to create the customer profile.
+   * @return creationSource
+  **/
+  @ApiModelProperty(value = "A creation source represents the method used to create the customer profile.")
+  public CreationSourceEnum getCreationSource() {
+    return creationSource;
+  }
+
+  public void setCreationSource(CreationSourceEnum creationSource) {
+    this.creationSource = creationSource;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -381,12 +466,13 @@ public class Customer {
         Objects.equals(this.referenceId, customer.referenceId) &&
         Objects.equals(this.note, customer.note) &&
         Objects.equals(this.preferences, customer.preferences) &&
-        Objects.equals(this.groups, customer.groups);
+        Objects.equals(this.groups, customer.groups) &&
+        Objects.equals(this.creationSource, customer.creationSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, cards, givenName, familyName, nickname, companyName, emailAddress, address, phoneNumber, referenceId, note, preferences, groups);
+    return Objects.hash(id, createdAt, updatedAt, cards, givenName, familyName, nickname, companyName, emailAddress, address, phoneNumber, referenceId, note, preferences, groups, creationSource);
   }
 
 
@@ -410,6 +496,7 @@ public class Customer {
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    preferences: ").append(toIndentedString(preferences)).append("\n");
     sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+    sb.append("    creationSource: ").append(toIndentedString(creationSource)).append("\n");
     sb.append("}");
     return sb.toString();
   }

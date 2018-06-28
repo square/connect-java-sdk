@@ -30,7 +30,7 @@ public class ListCustomersRequest {
   private String cursor = null;
 
   /**
-   * Indicates how Customers should be sorted. Default: `DEFAULT`.
+   * Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values.
    */
   public enum SortFieldEnum {
     DEFAULT("DEFAULT"),
@@ -63,7 +63,7 @@ public class ListCustomersRequest {
   private SortFieldEnum sortField = null;
 
   /**
-   * Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`.
+   * Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values.
    */
   public enum SortOrderEnum {
     DESC("DESC"),
@@ -119,10 +119,10 @@ public class ListCustomersRequest {
   }
 
    /**
-   * Indicates how Customers should be sorted. Default: `DEFAULT`.
+   * Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values.
    * @return sortField
   **/
-  @ApiModelProperty(value = "Indicates how Customers should be sorted. Default: `DEFAULT`.")
+  @ApiModelProperty(value = "Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values.")
   public SortFieldEnum getSortField() {
     return sortField;
   }
@@ -137,10 +137,10 @@ public class ListCustomersRequest {
   }
 
    /**
-   * Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`.
+   * Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values.
    * @return sortOrder
   **/
-  @ApiModelProperty(value = "Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`.")
+  @ApiModelProperty(value = "Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values.")
   public SortOrderEnum getSortOrder() {
     return sortOrder;
   }

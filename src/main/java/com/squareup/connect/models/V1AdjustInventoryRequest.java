@@ -29,8 +29,40 @@ public class V1AdjustInventoryRequest {
   @JsonProperty("quantity_delta")
   private BigDecimal quantityDelta = null;
 
+  /**
+   * The reason for the inventory adjustment.
+   */
+  public enum AdjustmentTypeEnum {
+    SALE("SALE"),
+    
+    RECEIVE_STOCK("RECEIVE_STOCK"),
+    
+    MANUAL_ADJUST("MANUAL_ADJUST");
+
+    private String value;
+
+    AdjustmentTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static AdjustmentTypeEnum fromValue(String text) {
+      for (AdjustmentTypeEnum b : AdjustmentTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
   @JsonProperty("adjustment_type")
-  private BigDecimal adjustmentType = null;
+  private AdjustmentTypeEnum adjustmentType = null;
 
   @JsonProperty("memo")
   private String memo = null;
@@ -53,7 +85,7 @@ public class V1AdjustInventoryRequest {
     this.quantityDelta = quantityDelta;
   }
 
-  public V1AdjustInventoryRequest adjustmentType(BigDecimal adjustmentType) {
+  public V1AdjustInventoryRequest adjustmentType(AdjustmentTypeEnum adjustmentType) {
     this.adjustmentType = adjustmentType;
     return this;
   }
@@ -63,11 +95,11 @@ public class V1AdjustInventoryRequest {
    * @return adjustmentType
   **/
   @ApiModelProperty(value = "The reason for the inventory adjustment.")
-  public BigDecimal getAdjustmentType() {
+  public AdjustmentTypeEnum getAdjustmentType() {
     return adjustmentType;
   }
 
-  public void setAdjustmentType(BigDecimal adjustmentType) {
+  public void setAdjustmentType(AdjustmentTypeEnum adjustmentType) {
     this.adjustmentType = adjustmentType;
   }
 
