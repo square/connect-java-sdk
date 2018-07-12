@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**List&lt;ValuesEnum&gt;**](#List&lt;ValuesEnum&gt;) | The list of creation sources used as filtering criteria. |  [optional]
+**values** | [**List&lt;ValuesEnum&gt;**](#List&lt;ValuesEnum&gt;) | The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values. |  [optional]
 **rule** | [**RuleEnum**](#RuleEnum) | Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: &#x60;INCLUDE&#x60;. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values. |  [optional]
 
 

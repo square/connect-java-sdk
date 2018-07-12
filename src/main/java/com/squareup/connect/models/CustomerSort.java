@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class CustomerSort {
   /**
-   * The field to sort the results on. It could be the total money spent at the merchant, the date of the first visit (etc).  Default value: `DEFAULT`.
+   * The field to sort the results on. It could be the total money spent at the merchant, the date of the first visit (etc). See [CustomerSortField](#type-customersortfield) for possible values. Default value: `DEFAULT`.
    */
   public enum FieldEnum {
     DEFAULT("DEFAULT"),
@@ -60,7 +60,7 @@ public class CustomerSort {
   private FieldEnum field = null;
 
   /**
-   * Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. Default value: `ASC`.
+   * Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. See [SortOrder](#type-sortorder) for possible values. Default value: `ASC`.
    */
   public enum OrderEnum {
     DESC("DESC"),
@@ -98,10 +98,10 @@ public class CustomerSort {
   }
 
    /**
-   * The field to sort the results on. It could be the total money spent at the merchant, the date of the first visit (etc).  Default value: `DEFAULT`.
+   * The field to sort the results on. It could be the total money spent at the merchant, the date of the first visit (etc). See [CustomerSortField](#type-customersortfield) for possible values. Default value: `DEFAULT`.
    * @return field
   **/
-  @ApiModelProperty(value = "The field to sort the results on. It could be the total money spent at the merchant, the date of the first visit (etc).  Default value: `DEFAULT`.")
+  @ApiModelProperty(value = "The field to sort the results on. It could be the total money spent at the merchant, the date of the first visit (etc). See [CustomerSortField](#type-customersortfield) for possible values. Default value: `DEFAULT`.")
   public FieldEnum getField() {
     return field;
   }
@@ -116,10 +116,10 @@ public class CustomerSort {
   }
 
    /**
-   * Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. Default value: `ASC`.
+   * Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. See [SortOrder](#type-sortorder) for possible values. Default value: `ASC`.
    * @return order
   **/
-  @ApiModelProperty(value = "Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. Default value: `ASC`.")
+  @ApiModelProperty(value = "Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. See [SortOrder](#type-sortorder) for possible values. Default value: `ASC`.")
   public OrderEnum getOrder() {
     return order;
   }

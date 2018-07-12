@@ -139,10 +139,10 @@ public class CustomerCreationSourceFilter {
   }
 
    /**
-   * The list of creation sources used as filtering criteria.
+   * The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values.
    * @return values
   **/
-  @ApiModelProperty(value = "The list of creation sources used as filtering criteria.")
+  @ApiModelProperty(value = "The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values.")
   public List<ValuesEnum> getValues() {
     return values;
   }
