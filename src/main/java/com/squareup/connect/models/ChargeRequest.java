@@ -184,10 +184,10 @@ public class ChargeRequest {
   }
 
    /**
-   * An optional note to associate with the transaction.  This value cannot exceed 60 characters.
+   * 
    * @return note
   **/
-  @ApiModelProperty(value = "An optional note to associate with the transaction.  This value cannot exceed 60 characters.")
+  @ApiModelProperty(value = "")
   public String getNote() {
     return note;
   }
@@ -274,10 +274,10 @@ public class ChargeRequest {
   }
 
    /**
-   * The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the `total_money` value of the order's `order_amounts` field.
+   * The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the value of the order's `total_money` field.
    * @return orderId
   **/
-  @ApiModelProperty(value = "The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the `total_money` value of the order's `order_amounts` field.")
+  @ApiModelProperty(value = "The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the value of the order's `total_money` field.")
   public String getOrderId() {
     return orderId;
   }
@@ -297,10 +297,10 @@ public class ChargeRequest {
   }
 
    /**
-   * The basic primitive of multi-party transaction. The value is optional. The transaction facilitated by you can be split from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in you charge's request. The `location_id` must be the valid location of the app owner merchant.  This field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.  This field is currently not supported in sandbox.
+   * The basic primitive of multi-party transaction. The value is optional. The transaction facilitated by you can be split from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in the charge request. The `location_id` must be the valid location of the app owner merchant.  This field requires the `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.  This field is currently not supported in sandbox.
    * @return additionalRecipients
   **/
-  @ApiModelProperty(value = "The basic primitive of multi-party transaction. The value is optional. The transaction facilitated by you can be split from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in you charge's request. The `location_id` must be the valid location of the app owner merchant.  This field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.  This field is currently not supported in sandbox.")
+  @ApiModelProperty(value = "The basic primitive of multi-party transaction. The value is optional. The transaction facilitated by you can be split from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in the charge request. The `location_id` must be the valid location of the app owner merchant.  This field requires the `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.  This field is currently not supported in sandbox.")
   public List<AdditionalRecipient> getAdditionalRecipients() {
     return additionalRecipients;
   }
