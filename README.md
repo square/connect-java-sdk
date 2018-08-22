@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20180712.1</version>
+    <version>2.20180712.2</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20180712.1"
+compile "com.squareup:connect:2.20180712.2"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20180712.1.jar
+* target/connect-2.20180712.2.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -119,6 +119,9 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**updateCustomer**](docs/CustomersApi.md#updateCustomer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
 *MobileAuthorizationApi* | [**createMobileAuthorizationCode**](docs/MobileAuthorizationApi.md#createMobileAuthorizationCode) | **POST** /mobile/authorization-code | CreateMobileAuthorizationCode
+*OAuthApi* | [**obtainToken**](docs/OAuthApi.md#obtainToken) | **POST** /oauth2/token | ObtainToken
+*OAuthApi* | [**renewToken**](docs/OAuthApi.md#renewToken) | **POST** /oauth2/clients/{client_id}/access-token/renew | RenewToken
+*OAuthApi* | [**revokeToken**](docs/OAuthApi.md#revokeToken) | **POST** /oauth2/revoke | RevokeToken
 *OrdersApi* | [**batchRetrieveOrders**](docs/OrdersApi.md#batchRetrieveOrders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve | BatchRetrieveOrders
 *OrdersApi* | [**createOrder**](docs/OrdersApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
 *ReportingApi* | [**listAdditionalRecipientReceivableRefunds**](docs/ReportingApi.md#listAdditionalRecipientReceivableRefunds) | **GET** /v2/locations/{location_id}/additional-recipient-receivable-refunds | ListAdditionalRecipientReceivableRefunds
@@ -311,6 +314,8 @@ Class | Method | HTTP request | Description
  - [LocationStatus](docs/LocationStatus.md)
  - [LocationType](docs/LocationType.md)
  - [Money](docs/Money.md)
+ - [ObtainTokenRequest](docs/ObtainTokenRequest.md)
+ - [ObtainTokenResponse](docs/ObtainTokenResponse.md)
  - [Order](docs/Order.md)
  - [OrderLineItem](docs/OrderLineItem.md)
  - [OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
@@ -324,12 +329,16 @@ Class | Method | HTTP request | Description
  - [RegisterDomainRequest](docs/RegisterDomainRequest.md)
  - [RegisterDomainResponse](docs/RegisterDomainResponse.md)
  - [RegisterDomainResponseStatus](docs/RegisterDomainResponseStatus.md)
+ - [RenewTokenRequest](docs/RenewTokenRequest.md)
+ - [RenewTokenResponse](docs/RenewTokenResponse.md)
  - [RetrieveCatalogObjectRequest](docs/RetrieveCatalogObjectRequest.md)
  - [RetrieveCatalogObjectResponse](docs/RetrieveCatalogObjectResponse.md)
  - [RetrieveCustomerRequest](docs/RetrieveCustomerRequest.md)
  - [RetrieveCustomerResponse](docs/RetrieveCustomerResponse.md)
  - [RetrieveTransactionRequest](docs/RetrieveTransactionRequest.md)
  - [RetrieveTransactionResponse](docs/RetrieveTransactionResponse.md)
+ - [RevokeTokenRequest](docs/RevokeTokenRequest.md)
+ - [RevokeTokenResponse](docs/RevokeTokenResponse.md)
  - [SearchCatalogObjectsRequest](docs/SearchCatalogObjectsRequest.md)
  - [SearchCatalogObjectsResponse](docs/SearchCatalogObjectsResponse.md)
  - [SearchCustomersRequest](docs/SearchCustomersRequest.md)
