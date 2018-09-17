@@ -65,6 +65,9 @@ public class Customer {
   @JsonProperty("phone_number")
   private String phoneNumber = null;
 
+  @JsonProperty("birthday")
+  private String birthday = null;
+
   @JsonProperty("reference_id")
   private String referenceId = null;
 
@@ -347,6 +350,24 @@ public class Customer {
     this.phoneNumber = phoneNumber;
   }
 
+  public Customer birthday(String birthday) {
+    this.birthday = birthday;
+    return this;
+  }
+
+   /**
+   * The customer's birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.
+   * @return birthday
+  **/
+  @ApiModelProperty(value = "The customer's birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.")
+  public String getBirthday() {
+    return birthday;
+  }
+
+  public void setBirthday(String birthday) {
+    this.birthday = birthday;
+  }
+
   public Customer referenceId(String referenceId) {
     this.referenceId = referenceId;
     return this;
@@ -463,6 +484,7 @@ public class Customer {
         Objects.equals(this.emailAddress, customer.emailAddress) &&
         Objects.equals(this.address, customer.address) &&
         Objects.equals(this.phoneNumber, customer.phoneNumber) &&
+        Objects.equals(this.birthday, customer.birthday) &&
         Objects.equals(this.referenceId, customer.referenceId) &&
         Objects.equals(this.note, customer.note) &&
         Objects.equals(this.preferences, customer.preferences) &&
@@ -472,7 +494,7 @@ public class Customer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, cards, givenName, familyName, nickname, companyName, emailAddress, address, phoneNumber, referenceId, note, preferences, groups, creationSource);
+    return Objects.hash(id, createdAt, updatedAt, cards, givenName, familyName, nickname, companyName, emailAddress, address, phoneNumber, birthday, referenceId, note, preferences, groups, creationSource);
   }
 
 
@@ -492,6 +514,7 @@ public class Customer {
     sb.append("    emailAddress: ").append(toIndentedString(emailAddress)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    birthday: ").append(toIndentedString(birthday)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    preferences: ").append(toIndentedString(preferences)).append("\n");

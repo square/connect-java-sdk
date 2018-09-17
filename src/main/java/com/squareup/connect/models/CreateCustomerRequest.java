@@ -54,6 +54,9 @@ public class CreateCustomerRequest {
   @JsonProperty("note")
   private String note = null;
 
+  @JsonProperty("birthday")
+  private String birthday = null;
+
   public CreateCustomerRequest givenName(String givenName) {
     this.givenName = givenName;
     return this;
@@ -216,6 +219,24 @@ public class CreateCustomerRequest {
     this.note = note;
   }
 
+  public CreateCustomerRequest birthday(String birthday) {
+    this.birthday = birthday;
+    return this;
+  }
+
+   /**
+   * The customer birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.
+   * @return birthday
+  **/
+  @ApiModelProperty(value = "The customer birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.")
+  public String getBirthday() {
+    return birthday;
+  }
+
+  public void setBirthday(String birthday) {
+    this.birthday = birthday;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -234,12 +255,13 @@ public class CreateCustomerRequest {
         Objects.equals(this.address, createCustomerRequest.address) &&
         Objects.equals(this.phoneNumber, createCustomerRequest.phoneNumber) &&
         Objects.equals(this.referenceId, createCustomerRequest.referenceId) &&
-        Objects.equals(this.note, createCustomerRequest.note);
+        Objects.equals(this.note, createCustomerRequest.note) &&
+        Objects.equals(this.birthday, createCustomerRequest.birthday);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(givenName, familyName, companyName, nickname, emailAddress, address, phoneNumber, referenceId, note);
+    return Objects.hash(givenName, familyName, companyName, nickname, emailAddress, address, phoneNumber, referenceId, note, birthday);
   }
 
 
@@ -257,6 +279,7 @@ public class CreateCustomerRequest {
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    birthday: ").append(toIndentedString(birthday)).append("\n");
     sb.append("}");
     return sb.toString();
   }

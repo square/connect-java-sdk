@@ -428,7 +428,6 @@ public class Money {
    /**
    * The amount of money, in the smallest denomination of the currency indicated by `currency`. For example, when `currency` is `USD`, `amount` is in cents.
    * minimum: 0
-   * maximum: 99999999
    * @return amount
   **/
   @ApiModelProperty(value = "The amount of money, in the smallest denomination of the currency indicated by `currency`. For example, when `currency` is `USD`, `amount` is in cents.")
