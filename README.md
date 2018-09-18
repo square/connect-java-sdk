@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20180712.2</version>
+    <version>2.20180918.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20180712.2"
+compile "com.squareup:connect:2.20180918.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20180712.2.jar
+* target/connect-2.20180918.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -117,6 +117,13 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**retrieveCustomer**](docs/CustomersApi.md#retrieveCustomer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
 *CustomersApi* | [**searchCustomers**](docs/CustomersApi.md#searchCustomers) | **POST** /v2/customers/search | SearchCustomers
 *CustomersApi* | [**updateCustomer**](docs/CustomersApi.md#updateCustomer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
+*InventoryApi* | [**batchChangeInventory**](docs/InventoryApi.md#batchChangeInventory) | **POST** /v2/inventory/batch-change | BatchChangeInventory
+*InventoryApi* | [**batchRetrieveInventoryChanges**](docs/InventoryApi.md#batchRetrieveInventoryChanges) | **POST** /v2/inventory/batch-retrieve-changes | BatchRetrieveInventoryChanges
+*InventoryApi* | [**batchRetrieveInventoryCounts**](docs/InventoryApi.md#batchRetrieveInventoryCounts) | **POST** /v2/inventory/batch-retrieve-counts | BatchRetrieveInventoryCounts
+*InventoryApi* | [**retrieveInventoryAdjustment**](docs/InventoryApi.md#retrieveInventoryAdjustment) | **GET** /v2/inventory/adjustment/{adjustment_id} | RetrieveInventoryAdjustment
+*InventoryApi* | [**retrieveInventoryChanges**](docs/InventoryApi.md#retrieveInventoryChanges) | **GET** /v2/inventory/{catalog_object_id}/changes | RetrieveInventoryChanges
+*InventoryApi* | [**retrieveInventoryCount**](docs/InventoryApi.md#retrieveInventoryCount) | **GET** /v2/inventory/{catalog_object_id} | RetrieveInventoryCount
+*InventoryApi* | [**retrieveInventoryPhysicalCount**](docs/InventoryApi.md#retrieveInventoryPhysicalCount) | **GET** /v2/inventory/physical-count/{physical_count_id} | RetrieveInventoryPhysicalCount
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
 *MobileAuthorizationApi* | [**createMobileAuthorizationCode**](docs/MobileAuthorizationApi.md#createMobileAuthorizationCode) | **POST** /mobile/authorization-code | CreateMobileAuthorizationCode
 *OAuthApi* | [**obtainToken**](docs/OAuthApi.md#obtainToken) | **POST** /oauth2/token | ObtainToken
@@ -210,10 +217,16 @@ Class | Method | HTTP request | Description
  - [AdditionalRecipientReceivable](docs/AdditionalRecipientReceivable.md)
  - [AdditionalRecipientReceivableRefund](docs/AdditionalRecipientReceivableRefund.md)
  - [Address](docs/Address.md)
+ - [BatchChangeInventoryRequest](docs/BatchChangeInventoryRequest.md)
+ - [BatchChangeInventoryResponse](docs/BatchChangeInventoryResponse.md)
  - [BatchDeleteCatalogObjectsRequest](docs/BatchDeleteCatalogObjectsRequest.md)
  - [BatchDeleteCatalogObjectsResponse](docs/BatchDeleteCatalogObjectsResponse.md)
  - [BatchRetrieveCatalogObjectsRequest](docs/BatchRetrieveCatalogObjectsRequest.md)
  - [BatchRetrieveCatalogObjectsResponse](docs/BatchRetrieveCatalogObjectsResponse.md)
+ - [BatchRetrieveInventoryChangesRequest](docs/BatchRetrieveInventoryChangesRequest.md)
+ - [BatchRetrieveInventoryChangesResponse](docs/BatchRetrieveInventoryChangesResponse.md)
+ - [BatchRetrieveInventoryCountsRequest](docs/BatchRetrieveInventoryCountsRequest.md)
+ - [BatchRetrieveInventoryCountsResponse](docs/BatchRetrieveInventoryCountsResponse.md)
  - [BatchRetrieveOrdersRequest](docs/BatchRetrieveOrdersRequest.md)
  - [BatchRetrieveOrdersResponse](docs/BatchRetrieveOrdersResponse.md)
  - [BatchUpsertCatalogObjectsRequest](docs/BatchUpsertCatalogObjectsRequest.md)
@@ -293,7 +306,14 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [ErrorCategory](docs/ErrorCategory.md)
  - [ErrorCode](docs/ErrorCode.md)
+ - [InventoryAdjustment](docs/InventoryAdjustment.md)
  - [InventoryAlertType](docs/InventoryAlertType.md)
+ - [InventoryChange](docs/InventoryChange.md)
+ - [InventoryChangeType](docs/InventoryChangeType.md)
+ - [InventoryCount](docs/InventoryCount.md)
+ - [InventoryPhysicalCount](docs/InventoryPhysicalCount.md)
+ - [InventoryState](docs/InventoryState.md)
+ - [InventoryTransfer](docs/InventoryTransfer.md)
  - [ItemVariationLocationOverrides](docs/ItemVariationLocationOverrides.md)
  - [ListAdditionalRecipientReceivableRefundsRequest](docs/ListAdditionalRecipientReceivableRefundsRequest.md)
  - [ListAdditionalRecipientReceivableRefundsResponse](docs/ListAdditionalRecipientReceivableRefundsResponse.md)
@@ -324,6 +344,7 @@ Class | Method | HTTP request | Description
  - [OrderLineItemModifier](docs/OrderLineItemModifier.md)
  - [OrderLineItemTax](docs/OrderLineItemTax.md)
  - [OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
+ - [Product](docs/Product.md)
  - [Refund](docs/Refund.md)
  - [RefundStatus](docs/RefundStatus.md)
  - [RegisterDomainRequest](docs/RegisterDomainRequest.md)
@@ -335,6 +356,14 @@ Class | Method | HTTP request | Description
  - [RetrieveCatalogObjectResponse](docs/RetrieveCatalogObjectResponse.md)
  - [RetrieveCustomerRequest](docs/RetrieveCustomerRequest.md)
  - [RetrieveCustomerResponse](docs/RetrieveCustomerResponse.md)
+ - [RetrieveInventoryAdjustmentRequest](docs/RetrieveInventoryAdjustmentRequest.md)
+ - [RetrieveInventoryAdjustmentResponse](docs/RetrieveInventoryAdjustmentResponse.md)
+ - [RetrieveInventoryChangesRequest](docs/RetrieveInventoryChangesRequest.md)
+ - [RetrieveInventoryChangesResponse](docs/RetrieveInventoryChangesResponse.md)
+ - [RetrieveInventoryCountRequest](docs/RetrieveInventoryCountRequest.md)
+ - [RetrieveInventoryCountResponse](docs/RetrieveInventoryCountResponse.md)
+ - [RetrieveInventoryPhysicalCountRequest](docs/RetrieveInventoryPhysicalCountRequest.md)
+ - [RetrieveInventoryPhysicalCountResponse](docs/RetrieveInventoryPhysicalCountResponse.md)
  - [RetrieveTransactionRequest](docs/RetrieveTransactionRequest.md)
  - [RetrieveTransactionResponse](docs/RetrieveTransactionResponse.md)
  - [RevokeTokenRequest](docs/RevokeTokenRequest.md)
@@ -344,6 +373,7 @@ Class | Method | HTTP request | Description
  - [SearchCustomersRequest](docs/SearchCustomersRequest.md)
  - [SearchCustomersResponse](docs/SearchCustomersResponse.md)
  - [SortOrder](docs/SortOrder.md)
+ - [SourceApplication](docs/SourceApplication.md)
  - [TaxCalculationPhase](docs/TaxCalculationPhase.md)
  - [TaxInclusionType](docs/TaxInclusionType.md)
  - [Tender](docs/Tender.md)
@@ -432,6 +462,8 @@ Authentication schemes defined for the API:
   - TIMECARDS_WRITE: POST, PUT, and DELETE endpoints related to employee timecards
   - PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS: Allow third party applications to deduct a portion of each transaction amount.
   - PAYMENTS_WRITE_IN_PERSON: POST, PUT, and DELETE endpoints. Grants write access to transaction and refunds information.
+  - INVENTORY_READ: GET endpoints related to a merchant&#39;s inventory
+  - INVENTORY_WRITE: POST, PUT, and DELETE endpoints related to a merchant&#39;s inventory
 
 ### oauth2ClientSecret
 

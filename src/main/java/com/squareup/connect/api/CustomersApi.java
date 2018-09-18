@@ -68,7 +68,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-07-12");
+    localVarHeaderParams.put("Square-Version", "2018-09-18");
 
     
     
@@ -159,7 +159,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-07-12");
+    localVarHeaderParams.put("Square-Version", "2018-09-18");
 
     
     
@@ -230,7 +230,7 @@ public class CustomersApi {
   }
   /**
    * DeleteCustomer
-   * Deletes a customer from a business, along with any linked cards on file.
+   * Deletes a customer from a business, along with any linked cards on file. When two profiles are merged into a single profile, that profile is assigned a new &#x60;customer_id&#x60;. You must use the new &#x60;customer_id&#x60; to delete merged profiles.
    * @param customerId The ID of the customer to delete. (required)
    * @return DeleteCustomerResponse
    * @throws ApiException if fails to make API call
@@ -251,7 +251,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-07-12");
+    localVarHeaderParams.put("Square-Version", "2018-09-18");
 
     
     
@@ -274,7 +274,7 @@ public class CustomersApi {
 
   /**
    * DeleteCustomer
-   * Deletes a customer from a business, along with any linked cards on file.
+   * Deletes a customer from a business, along with any linked cards on file. When two profiles are merged into a single profile, that profile is assigned a new &#x60;customer_id&#x60;. You must use the new &#x60;customer_id&#x60; to delete merged profiles.
    * @param customerId The ID of the customer to delete. (required)
    * @return CompleteResponse<DeleteCustomerResponse>
    * @throws ApiException if fails to make API call
@@ -344,7 +344,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-07-12");
+    localVarHeaderParams.put("Square-Version", "2018-09-18");
 
     
     
@@ -433,7 +433,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-07-12");
+    localVarHeaderParams.put("Square-Version", "2018-09-18");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_field", sortField));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -521,7 +521,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-07-12");
+    localVarHeaderParams.put("Square-Version", "2018-09-18");
 
     
     
@@ -606,7 +606,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-07-12");
+    localVarHeaderParams.put("Square-Version", "2018-09-18");
 
     
     
@@ -670,7 +670,7 @@ public class CustomersApi {
   }
   /**
    * UpdateCustomer
-   * Updates the details of an existing customer. The ID of the customer may change if the customer has been merged into another customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
+   * Updates the details of an existing customer. When two profiles are merged into a single profile, that profile is assigned a new &#x60;customer_id&#x60;. You must use the new &#x60;customer_id&#x60; to update merged profiles.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
    * @param customerId The ID of the customer to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateCustomerResponse
@@ -697,7 +697,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-07-12");
+    localVarHeaderParams.put("Square-Version", "2018-09-18");
 
     
     
@@ -720,7 +720,7 @@ public class CustomersApi {
 
   /**
    * UpdateCustomer
-   * Updates the details of an existing customer. The ID of the customer may change if the customer has been merged into another customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
+   * Updates the details of an existing customer. When two profiles are merged into a single profile, that profile is assigned a new &#x60;customer_id&#x60;. You must use the new &#x60;customer_id&#x60; to update merged profiles.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
    * @param customerId The ID of the customer to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<UpdateCustomerResponse>

@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
 
 /**
  * Represents a timecard for an employee.
@@ -52,6 +53,15 @@ public class V1Timecard {
 
   @JsonProperty("updated_at")
   private String updatedAt = null;
+
+  @JsonProperty("regular_seconds_worked")
+  private BigDecimal regularSecondsWorked = null;
+
+  @JsonProperty("overtime_seconds_worked")
+  private BigDecimal overtimeSecondsWorked = null;
+
+  @JsonProperty("doubletime_seconds_worked")
+  private BigDecimal doubletimeSecondsWorked = null;
 
   public V1Timecard id(String id) {
     this.id = id;
@@ -149,10 +159,10 @@ public class V1Timecard {
   }
 
    /**
-   * The ID of the location the employee clocked in from, if any.
+   * The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard’s timezone and overtime rules.
    * @return clockinLocationId
   **/
-  @ApiModelProperty(value = "The ID of the location the employee clocked in from, if any.")
+  @ApiModelProperty(value = "The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard’s timezone and overtime rules.")
   public String getClockinLocationId() {
     return clockinLocationId;
   }
@@ -215,6 +225,60 @@ public class V1Timecard {
     this.updatedAt = updatedAt;
   }
 
+  public V1Timecard regularSecondsWorked(BigDecimal regularSecondsWorked) {
+    this.regularSecondsWorked = regularSecondsWorked;
+    return this;
+  }
+
+   /**
+   * The total number of regular (non-overtime) seconds worked in the timecard.
+   * @return regularSecondsWorked
+  **/
+  @ApiModelProperty(value = "The total number of regular (non-overtime) seconds worked in the timecard.")
+  public BigDecimal getRegularSecondsWorked() {
+    return regularSecondsWorked;
+  }
+
+  public void setRegularSecondsWorked(BigDecimal regularSecondsWorked) {
+    this.regularSecondsWorked = regularSecondsWorked;
+  }
+
+  public V1Timecard overtimeSecondsWorked(BigDecimal overtimeSecondsWorked) {
+    this.overtimeSecondsWorked = overtimeSecondsWorked;
+    return this;
+  }
+
+   /**
+   * The total number of overtime seconds worked in the timecard.
+   * @return overtimeSecondsWorked
+  **/
+  @ApiModelProperty(value = "The total number of overtime seconds worked in the timecard.")
+  public BigDecimal getOvertimeSecondsWorked() {
+    return overtimeSecondsWorked;
+  }
+
+  public void setOvertimeSecondsWorked(BigDecimal overtimeSecondsWorked) {
+    this.overtimeSecondsWorked = overtimeSecondsWorked;
+  }
+
+  public V1Timecard doubletimeSecondsWorked(BigDecimal doubletimeSecondsWorked) {
+    this.doubletimeSecondsWorked = doubletimeSecondsWorked;
+    return this;
+  }
+
+   /**
+   * The total number of doubletime seconds worked in the timecard.
+   * @return doubletimeSecondsWorked
+  **/
+  @ApiModelProperty(value = "The total number of doubletime seconds worked in the timecard.")
+  public BigDecimal getDoubletimeSecondsWorked() {
+    return doubletimeSecondsWorked;
+  }
+
+  public void setDoubletimeSecondsWorked(BigDecimal doubletimeSecondsWorked) {
+    this.doubletimeSecondsWorked = doubletimeSecondsWorked;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -233,12 +297,15 @@ public class V1Timecard {
         Objects.equals(this.clockinLocationId, v1Timecard.clockinLocationId) &&
         Objects.equals(this.clockoutLocationId, v1Timecard.clockoutLocationId) &&
         Objects.equals(this.createdAt, v1Timecard.createdAt) &&
-        Objects.equals(this.updatedAt, v1Timecard.updatedAt);
+        Objects.equals(this.updatedAt, v1Timecard.updatedAt) &&
+        Objects.equals(this.regularSecondsWorked, v1Timecard.regularSecondsWorked) &&
+        Objects.equals(this.overtimeSecondsWorked, v1Timecard.overtimeSecondsWorked) &&
+        Objects.equals(this.doubletimeSecondsWorked, v1Timecard.doubletimeSecondsWorked);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, employeeId, deleted, clockinTime, clockoutTime, clockinLocationId, clockoutLocationId, createdAt, updatedAt);
+    return Objects.hash(id, employeeId, deleted, clockinTime, clockoutTime, clockinLocationId, clockoutLocationId, createdAt, updatedAt, regularSecondsWorked, overtimeSecondsWorked, doubletimeSecondsWorked);
   }
 
 
@@ -256,6 +323,9 @@ public class V1Timecard {
     sb.append("    clockoutLocationId: ").append(toIndentedString(clockoutLocationId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    regularSecondsWorked: ").append(toIndentedString(regularSecondsWorked)).append("\n");
+    sb.append("    overtimeSecondsWorked: ").append(toIndentedString(overtimeSecondsWorked)).append("\n");
+    sb.append("    doubletimeSecondsWorked: ").append(toIndentedString(doubletimeSecondsWorked)).append("\n");
     sb.append("}");
     return sb.toString();
   }
