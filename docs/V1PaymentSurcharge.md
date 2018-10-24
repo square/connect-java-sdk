@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **type** | [**TypeEnum**](#TypeEnum) | Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group. |  [optional]
 **taxable** | **Boolean** | Indicates whether the surcharge is taxable. |  [optional]
 **taxes** | [**List&lt;V1PaymentTax&gt;**](V1PaymentTax.md) | The list of taxes that should be applied to the surcharge. |  [optional]
-**surchargeId** | **String** |  |  [optional]
+**surchargeId** | **String** | A Square-issued unique identifier associated with the surcharge. |  [optional]
 
 
 <a name="TypeEnum"></a>

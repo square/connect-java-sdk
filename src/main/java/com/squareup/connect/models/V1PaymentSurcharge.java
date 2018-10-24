@@ -222,10 +222,10 @@ public class V1PaymentSurcharge {
   }
 
    /**
-   * Get surchargeId
+   * A Square-issued unique identifier associated with the surcharge.
    * @return surchargeId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A Square-issued unique identifier associated with the surcharge.")
   public String getSurchargeId() {
     return surchargeId;
   }

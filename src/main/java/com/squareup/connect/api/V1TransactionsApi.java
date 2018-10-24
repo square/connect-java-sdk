@@ -329,10 +329,11 @@ public class V1TransactionsApi {
    * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
    * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+   * @param includePartial Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed. (optional)
    * @return List&lt;V1Payment&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken) throws ApiException {
+  public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken, Boolean includePartial) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -353,6 +354,7 @@ public class V1TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_partial", includePartial));
 
     
     
@@ -382,10 +384,11 @@ public class V1TransactionsApi {
    * @param endTime The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
    * @param limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
+   * @param includePartial Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed. (optional)
    * @return CompleteResponse<List<V1Payment>>
    * @throws ApiException if fails to make API call
    */
-  public CompleteResponse<List<V1Payment>>listPaymentsWithHttpInfo(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken) throws ApiException {
+  public CompleteResponse<List<V1Payment>>listPaymentsWithHttpInfo(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken, Boolean includePartial) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -407,6 +410,7 @@ public class V1TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_partial", includePartial));
 
     
     

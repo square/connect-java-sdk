@@ -112,6 +112,9 @@ public class V1Payment {
   @JsonProperty("surcharges")
   private List<V1PaymentSurcharge> surcharges = new ArrayList<V1PaymentSurcharge>();
 
+  @JsonProperty("is_partial")
+  private Boolean isPartial = null;
+
   public V1Payment id(String id) {
     this.id = id;
     return this;
@@ -610,6 +613,24 @@ public class V1Payment {
     this.surcharges = surcharges;
   }
 
+  public V1Payment isPartial(Boolean isPartial) {
+    this.isPartial = isPartial;
+    return this;
+  }
+
+   /**
+   * Indicates whether or not the payment is only partially paid for. If true, this payment will have the tenders collected so far, but the itemizations will be empty until the payment is completed.
+   * @return isPartial
+  **/
+  @ApiModelProperty(value = "Indicates whether or not the payment is only partially paid for. If true, this payment will have the tenders collected so far, but the itemizations will be empty until the payment is completed.")
+  public Boolean getIsPartial() {
+    return isPartial;
+  }
+
+  public void setIsPartial(Boolean isPartial) {
+    this.isPartial = isPartial;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -645,12 +666,13 @@ public class V1Payment {
         Objects.equals(this.refunds, v1Payment.refunds) &&
         Objects.equals(this.itemizations, v1Payment.itemizations) &&
         Objects.equals(this.surchargeMoney, v1Payment.surchargeMoney) &&
-        Objects.equals(this.surcharges, v1Payment.surcharges);
+        Objects.equals(this.surcharges, v1Payment.surcharges) &&
+        Objects.equals(this.isPartial, v1Payment.isPartial);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, merchantId, createdAt, creatorId, device, paymentUrl, receiptUrl, inclusiveTaxMoney, additiveTaxMoney, taxMoney, tipMoney, discountMoney, totalCollectedMoney, processingFeeMoney, netTotalMoney, refundedMoney, swedishRoundingMoney, grossSalesMoney, netSalesMoney, inclusiveTax, additiveTax, tender, refunds, itemizations, surchargeMoney, surcharges);
+    return Objects.hash(id, merchantId, createdAt, creatorId, device, paymentUrl, receiptUrl, inclusiveTaxMoney, additiveTaxMoney, taxMoney, tipMoney, discountMoney, totalCollectedMoney, processingFeeMoney, netTotalMoney, refundedMoney, swedishRoundingMoney, grossSalesMoney, netSalesMoney, inclusiveTax, additiveTax, tender, refunds, itemizations, surchargeMoney, surcharges, isPartial);
   }
 
 
@@ -685,6 +707,7 @@ public class V1Payment {
     sb.append("    itemizations: ").append(toIndentedString(itemizations)).append("\n");
     sb.append("    surchargeMoney: ").append(toIndentedString(surchargeMoney)).append("\n");
     sb.append("    surcharges: ").append(toIndentedString(surcharges)).append("\n");
+    sb.append("    isPartial: ").append(toIndentedString(isPartial)).append("\n");
     sb.append("}");
     return sb.toString();
   }
