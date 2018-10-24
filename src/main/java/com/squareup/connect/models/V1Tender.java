@@ -185,6 +185,12 @@ public class V1Tender {
   @JsonProperty("tendered_money")
   private V1Money tenderedMoney = null;
 
+  @JsonProperty("tendered_at")
+  private String tenderedAt = null;
+
+  @JsonProperty("settled_at")
+  private String settledAt = null;
+
   @JsonProperty("change_back_money")
   private V1Money changeBackMoney = null;
 
@@ -392,6 +398,42 @@ public class V1Tender {
     this.tenderedMoney = tenderedMoney;
   }
 
+  public V1Tender tenderedAt(String tenderedAt) {
+    this.tenderedAt = tenderedAt;
+    return this;
+  }
+
+   /**
+   * The time when the tender was created, in ISO 8601 format.
+   * @return tenderedAt
+  **/
+  @ApiModelProperty(value = "The time when the tender was created, in ISO 8601 format.")
+  public String getTenderedAt() {
+    return tenderedAt;
+  }
+
+  public void setTenderedAt(String tenderedAt) {
+    this.tenderedAt = tenderedAt;
+  }
+
+  public V1Tender settledAt(String settledAt) {
+    this.settledAt = settledAt;
+    return this;
+  }
+
+   /**
+   * The time when the tender was settled, in ISO 8601 format.
+   * @return settledAt
+  **/
+  @ApiModelProperty(value = "The time when the tender was settled, in ISO 8601 format.")
+  public String getSettledAt() {
+    return settledAt;
+  }
+
+  public void setSettledAt(String settledAt) {
+    this.settledAt = settledAt;
+  }
+
   public V1Tender changeBackMoney(V1Money changeBackMoney) {
     this.changeBackMoney = changeBackMoney;
     return this;
@@ -467,6 +509,8 @@ public class V1Tender {
         Objects.equals(this.paymentNote, v1Tender.paymentNote) &&
         Objects.equals(this.totalMoney, v1Tender.totalMoney) &&
         Objects.equals(this.tenderedMoney, v1Tender.tenderedMoney) &&
+        Objects.equals(this.tenderedAt, v1Tender.tenderedAt) &&
+        Objects.equals(this.settledAt, v1Tender.settledAt) &&
         Objects.equals(this.changeBackMoney, v1Tender.changeBackMoney) &&
         Objects.equals(this.refundedMoney, v1Tender.refundedMoney) &&
         Objects.equals(this.isExchange, v1Tender.isExchange);
@@ -474,7 +518,7 @@ public class V1Tender {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, name, employeeId, receiptUrl, cardBrand, panSuffix, entryMethod, paymentNote, totalMoney, tenderedMoney, changeBackMoney, refundedMoney, isExchange);
+    return Objects.hash(id, type, name, employeeId, receiptUrl, cardBrand, panSuffix, entryMethod, paymentNote, totalMoney, tenderedMoney, tenderedAt, settledAt, changeBackMoney, refundedMoney, isExchange);
   }
 
 
@@ -494,6 +538,8 @@ public class V1Tender {
     sb.append("    paymentNote: ").append(toIndentedString(paymentNote)).append("\n");
     sb.append("    totalMoney: ").append(toIndentedString(totalMoney)).append("\n");
     sb.append("    tenderedMoney: ").append(toIndentedString(tenderedMoney)).append("\n");
+    sb.append("    tenderedAt: ").append(toIndentedString(tenderedAt)).append("\n");
+    sb.append("    settledAt: ").append(toIndentedString(settledAt)).append("\n");
     sb.append("    changeBackMoney: ").append(toIndentedString(changeBackMoney)).append("\n");
     sb.append("    refundedMoney: ").append(toIndentedString(refundedMoney)).append("\n");
     sb.append("    isExchange: ").append(toIndentedString(isExchange)).append("\n");

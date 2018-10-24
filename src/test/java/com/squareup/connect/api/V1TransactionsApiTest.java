@@ -106,7 +106,7 @@ public class V1TransactionsApiTest {
         String endTime = null;
         Integer limit = null;
         String batchToken = null;
-        List<V1Payment> response = api.listPayments(locationId, order, beginTime, endTime, limit, batchToken);
+        List<V1Payment> response = api.listPayments(locationId, order, beginTime, endTime, limit, batchToken, true);
 
         // TODO: test validations
     }

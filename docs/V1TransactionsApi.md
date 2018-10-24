@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="listPayments"></a>
 # **listPayments**
-> List&lt;V1Payment&gt; listPayments(locationId, order, beginTime, endTime, limit, batchToken)
+> List&lt;V1Payment&gt; listPayments(locationId, order, beginTime, endTime, limit, batchToken, includePartial)
 
 Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
 
@@ -214,8 +214,9 @@ String beginTime = "beginTime_example"; // String | The beginning of the request
 String endTime = "endTime_example"; // String | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
 Integer limit = 56; // Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
 String batchToken = "batchToken_example"; // String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+Boolean includePartial = true; // Boolean | Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed.
 try {
-    List<V1Payment> result = apiInstance.listPayments(locationId, order, beginTime, endTime, limit, batchToken);
+    List<V1Payment> result = apiInstance.listPayments(locationId, order, beginTime, endTime, limit, batchToken, includePartial);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling V1TransactionsApi#listPayments");
@@ -233,6 +234,7 @@ Name | Type | Description  | Notes
  **endTime** | **String**| The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. | [optional]
  **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional]
  **batchToken** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional]
+ **includePartial** | **Boolean**| Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed. | [optional]
 
 ### Return type
 
