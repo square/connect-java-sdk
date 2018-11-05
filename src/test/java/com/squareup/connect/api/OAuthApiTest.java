@@ -36,7 +36,7 @@ public class OAuthApiTest {
 
     private final OAuthApi api = new OAuthApi();
 
-    
+
     /**
      * ObtainToken
      *
@@ -52,7 +52,7 @@ public class OAuthApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * RenewToken
      *
@@ -69,7 +69,7 @@ public class OAuthApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * RevokeToken
      *
@@ -85,5 +85,5 @@ public class OAuthApiTest {
 
         // TODO: test validations
     }
-    
+
 }
