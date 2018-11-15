@@ -108,7 +108,7 @@ public class CustomersApiTest extends APITest {
         assertTrue(response.getErrors().isEmpty());
         assertNotNull(response.getCustomer().getId());
     }
-
+    
     /**
      * CreateCustomerCard
      *
@@ -142,7 +142,7 @@ public class CustomersApiTest extends APITest {
         assertTrue(response.getErrors().isEmpty());
         assertNotNull(response.getCard().getId());
     }
-
+    
     /**
      * DeleteCustomer
      *
@@ -162,7 +162,7 @@ public class CustomersApiTest extends APITest {
 
         assertTrue(response.getErrors().isEmpty());
     }
-
+    
     /**
      * DeleteCustomerCard
      *
@@ -198,7 +198,7 @@ public class CustomersApiTest extends APITest {
 
         assertTrue(response.getErrors().isEmpty());
     }
-
+    
     /**
      * ListCustomers
      *
@@ -214,7 +214,7 @@ public class CustomersApiTest extends APITest {
 
         // TODO: test validations
     }
-
+    
     /**
      * RetrieveCustomer
      *
@@ -235,7 +235,7 @@ public class CustomersApiTest extends APITest {
         assertTrue(response.getErrors().isEmpty());
         assertEquals(customer.getId(), response.getCustomer().getId());
     }
-
+    
     /**
      * UpdateCustomer
      *
@@ -260,5 +260,5 @@ public class CustomersApiTest extends APITest {
         assertTrue(response.getErrors().isEmpty());
         assertEquals("New.Amelia.Earhart@example.com", response.getCustomer().getEmailAddress());
     }
-
+    
 }

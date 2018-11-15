@@ -58,7 +58,7 @@ public class TransactionsApiTest extends APITest {
         oauth2.setAccessToken(testAccount.accessToken);
         this.locationId = testAccount.locationId;
     }
-
+    
     /**
      * CaptureTransaction
      *
@@ -81,7 +81,7 @@ public class TransactionsApiTest extends APITest {
 
         assertTrue(response.getErrors().isEmpty());
     }
-
+    
     /**
      * Charge
      *
@@ -122,7 +122,7 @@ public class TransactionsApiTest extends APITest {
         assertTrue(response.getErrors().isEmpty());
         assertNotNull(response.getTransaction().getId());
     }
-
+    
     /**
      * CreateRefund
      *
@@ -154,7 +154,7 @@ public class TransactionsApiTest extends APITest {
         assertTrue(response.getErrors().isEmpty());
         assertNotNull(response.getRefund().getId());
     }
-
+    
     /**
      * ListRefunds
      *
@@ -174,7 +174,7 @@ public class TransactionsApiTest extends APITest {
         assertTrue(response.getErrors().isEmpty());
         assertFalse(response.getRefunds().isEmpty());
     }
-
+    
     /**
      * ListTransactions
      *
@@ -193,7 +193,7 @@ public class TransactionsApiTest extends APITest {
         assertTrue(response.getErrors().isEmpty());
         assertFalse(response.getTransactions().isEmpty());
     }
-
+    
     /**
      * RetrieveTransaction
      *
@@ -239,5 +239,5 @@ public class TransactionsApiTest extends APITest {
 
         assertTrue(response.getErrors().isEmpty());
     }
-
+    
 }
