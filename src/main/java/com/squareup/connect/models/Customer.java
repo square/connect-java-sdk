@@ -212,10 +212,10 @@ public class Customer {
   }
 
    /**
-   * The non-confidential details of the customer's cards on file.
+   * The payment details of the customer's cards on file.
    * @return cards
   **/
-  @ApiModelProperty(value = "The non-confidential details of the customer's cards on file.")
+  @ApiModelProperty(value = "The payment details of the customer's cards on file.")
   public List<Card> getCards() {
     return cards;
   }

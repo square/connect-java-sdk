@@ -18,6 +18,10 @@
 
 * `PAYROLL` (value: `"PAYROLL"`)
 
+* `DASHBOARD` (value: `"DASHBOARD"`)
+
+* `ITEM_LIBRARY_IMPORT` (value: `"ITEM_LIBRARY_IMPORT"`)
+
 * `OTHER` (value: `"OTHER"`)
 
 

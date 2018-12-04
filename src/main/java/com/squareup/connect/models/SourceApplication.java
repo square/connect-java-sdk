@@ -44,6 +44,10 @@ public class SourceApplication {
     
     PAYROLL("PAYROLL"),
     
+    DASHBOARD("DASHBOARD"),
+    
+    ITEM_LIBRARY_IMPORT("ITEM_LIBRARY_IMPORT"),
+    
     OTHER("OTHER");
 
     private String value;

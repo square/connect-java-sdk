@@ -40,7 +40,7 @@ public class InventoryApiTest {
 
     private final InventoryApi api = new InventoryApi();
 
-    
+
     /**
      * BatchChangeInventory
      *
@@ -56,7 +56,7 @@ public class InventoryApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * BatchRetrieveInventoryChanges
      *
@@ -72,7 +72,7 @@ public class InventoryApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * BatchRetrieveInventoryCounts
      *
@@ -88,7 +88,7 @@ public class InventoryApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * RetrieveInventoryAdjustment
      *
@@ -104,7 +104,7 @@ public class InventoryApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * RetrieveInventoryChanges
      *
@@ -122,7 +122,7 @@ public class InventoryApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * RetrieveInventoryCount
      *
@@ -140,7 +140,7 @@ public class InventoryApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * RetrieveInventoryPhysicalCount
      *
@@ -156,5 +156,5 @@ public class InventoryApiTest {
 
         // TODO: test validations
     }
-    
+
 }
