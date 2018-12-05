@@ -31,7 +31,7 @@ public class V1LocationsApiTest {
 
     private final V1LocationsApi api = new V1LocationsApi();
 
-    
+
     /**
      * Provides details for a business&#39;s locations, including their IDs.
      *
@@ -46,7 +46,7 @@ public class V1LocationsApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Get a business&#39;s information.
      *
@@ -61,5 +61,5 @@ public class V1LocationsApiTest {
 
         // TODO: test validations
     }
-    
+
 }

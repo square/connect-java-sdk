@@ -5,7 +5,7 @@
   <artifactId>connect</artifactId>
   <packaging>jar</packaging>
   <name>connect</name>
-  <version>2.20180918.1</version>
+  <version>2.20181205.0</version>
   <url>https://github.com/square/connect-java-sdk/</url>
   <description>Java client library for the Square Connect API</description>
   <scm>

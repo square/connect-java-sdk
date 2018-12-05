@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Defines the body parameters that can be provided in a request to the [CreateCustomer](#endpoint-createcustomer) endpoint.")
 
 public class CreateCustomerRequest {
+  @JsonProperty("idempotency_key")
+  private String idempotencyKey = null;
+
   @JsonProperty("given_name")
   private String givenName = null;
 
@@ -56,6 +59,24 @@ public class CreateCustomerRequest {
 
   @JsonProperty("birthday")
   private String birthday = null;
+
+  public CreateCustomerRequest idempotencyKey(String idempotencyKey) {
+    this.idempotencyKey = idempotencyKey;
+    return this;
+  }
+
+   /**
+   * The idempotency key for the request. See the [Idempotency](/basics/api101/idempotency) guide for more information.
+   * @return idempotencyKey
+  **/
+  @ApiModelProperty(value = "The idempotency key for the request. See the [Idempotency](/basics/api101/idempotency) guide for more information.")
+  public String getIdempotencyKey() {
+    return idempotencyKey;
+  }
+
+  public void setIdempotencyKey(String idempotencyKey) {
+    this.idempotencyKey = idempotencyKey;
+  }
 
   public CreateCustomerRequest givenName(String givenName) {
     this.givenName = givenName;
@@ -247,7 +268,8 @@ public class CreateCustomerRequest {
       return false;
     }
     CreateCustomerRequest createCustomerRequest = (CreateCustomerRequest) o;
-    return Objects.equals(this.givenName, createCustomerRequest.givenName) &&
+    return Objects.equals(this.idempotencyKey, createCustomerRequest.idempotencyKey) &&
+        Objects.equals(this.givenName, createCustomerRequest.givenName) &&
         Objects.equals(this.familyName, createCustomerRequest.familyName) &&
         Objects.equals(this.companyName, createCustomerRequest.companyName) &&
         Objects.equals(this.nickname, createCustomerRequest.nickname) &&
@@ -261,7 +283,7 @@ public class CreateCustomerRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(givenName, familyName, companyName, nickname, emailAddress, address, phoneNumber, referenceId, note, birthday);
+    return Objects.hash(idempotencyKey, givenName, familyName, companyName, nickname, emailAddress, address, phoneNumber, referenceId, note, birthday);
   }
 
 
@@ -270,6 +292,7 @@ public class CreateCustomerRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateCustomerRequest {\n");
     
+    sb.append("    idempotencyKey: ").append(toIndentedString(idempotencyKey)).append("\n");
     sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
     sb.append("    familyName: ").append(toIndentedString(familyName)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
