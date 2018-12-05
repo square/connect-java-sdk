@@ -157,10 +157,10 @@ public class V1Payment {
   }
 
    /**
-   * The time when the payment was created, in ISO 8601 format.
+   * The time when the payment was created, in ISO 8601 format. Reflects the time of the first payment if the object represents an incomplete partial payment, and the time of the last or complete payment otherwise.
    * @return createdAt
   **/
-  @ApiModelProperty(value = "The time when the payment was created, in ISO 8601 format.")
+  @ApiModelProperty(value = "The time when the payment was created, in ISO 8601 format. Reflects the time of the first payment if the object represents an incomplete partial payment, and the time of the last or complete payment otherwise.")
   public String getCreatedAt() {
     return createdAt;
   }

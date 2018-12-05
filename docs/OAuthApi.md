@@ -75,9 +75,9 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: oauth2ClientSecret
 ApiKeyAuth oauth2ClientSecret = (ApiKeyAuth) defaultClient.getAuthentication("oauth2ClientSecret");
-oauth2ClientSecret.setApiKey("YOUR API KEY");
+oauth2ClientSecret.setApiKey("APPLICATION SECRET");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//oauth2ClientSecret.setApiKeyPrefix("Token");
+oauth2ClientSecret.setApiKeyPrefix("Client");
 
 OAuthApi apiInstance = new OAuthApi();
 String clientId = "clientId_example"; // String | Your application's ID, available from the [application dashboard](https://connect.squareup.com/apps).
@@ -132,9 +132,9 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: oauth2ClientSecret
 ApiKeyAuth oauth2ClientSecret = (ApiKeyAuth) defaultClient.getAuthentication("oauth2ClientSecret");
-oauth2ClientSecret.setApiKey("YOUR API KEY");
+oauth2ClientSecret.setApiKey("APPLICATION SECRET");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//oauth2ClientSecret.setApiKeyPrefix("Token");
+oauth2ClientSecret.setApiKeyPrefix("Client");
 
 OAuthApi apiInstance = new OAuthApi();
 RevokeTokenRequest body = new RevokeTokenRequest(); // RevokeTokenRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.

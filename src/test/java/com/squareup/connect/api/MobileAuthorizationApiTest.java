@@ -32,7 +32,7 @@ public class MobileAuthorizationApiTest {
 
     private final MobileAuthorizationApi api = new MobileAuthorizationApi();
 
-    
+
     /**
      * CreateMobileAuthorizationCode
      *
@@ -48,5 +48,5 @@ public class MobileAuthorizationApiTest {
 
         // TODO: test validations
     }
-    
+
 }
