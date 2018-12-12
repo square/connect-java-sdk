@@ -67,7 +67,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
 
     
     
@@ -165,7 +165,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
 
     
     

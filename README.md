@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20181205.0</version>
+    <version>2.20181212.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20181205.0"
+compile "com.squareup:connect:2.20181212.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20181205.0.jar
+* target/connect-2.20181212.0.jar
 * target/lib/*.jar
 
 ## Getting Started
