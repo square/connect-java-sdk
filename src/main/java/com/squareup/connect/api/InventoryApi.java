@@ -66,7 +66,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
 
     
     
@@ -150,7 +150,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
 
     
     
@@ -234,7 +234,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
 
     
     
@@ -319,7 +319,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
 
     
     
@@ -407,7 +407,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_ids", locationIds));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -501,7 +501,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_ids", locationIds));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -593,7 +593,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-05");
+    localVarHeaderParams.put("Square-Version", "2018-12-12");
 
     
     
