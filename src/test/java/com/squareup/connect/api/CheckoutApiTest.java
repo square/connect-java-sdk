@@ -136,7 +136,7 @@ public class CheckoutApiTest extends APITest {
                 .firstName("Jane")
                 .lastName("Doe")
             )
-            .redirectUrl("https://docs.connect.squareup.com/order-confirm");
+            .redirectUrl("https://merchant.website.com/order-confirm");
 
         CreateCheckoutResponse response = api.createCheckout(locationId, body);
 
