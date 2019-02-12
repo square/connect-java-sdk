@@ -74,6 +74,41 @@ public class OrderLineItemTax {
   @JsonProperty("applied_money")
   private Money appliedMoney = null;
 
+  /**
+   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values.
+   */
+  public enum ScopeEnum {
+    OTHER_TAX_SCOPE("OTHER_TAX_SCOPE"),
+    
+    LINE_ITEM("LINE_ITEM"),
+    
+    ORDER("ORDER");
+
+    private String value;
+
+    ScopeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ScopeEnum fromValue(String text) {
+      for (ScopeEnum b : ScopeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("scope")
+  private ScopeEnum scope = null;
+
   public OrderLineItemTax catalogObjectId(String catalogObjectId) {
     this.catalogObjectId = catalogObjectId;
     return this;
@@ -164,6 +199,24 @@ public class OrderLineItemTax {
     this.appliedMoney = appliedMoney;
   }
 
+  public OrderLineItemTax scope(ScopeEnum scope) {
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values.
+   * @return scope
+  **/
+  @ApiModelProperty(value = "Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values.")
+  public ScopeEnum getScope() {
+    return scope;
+  }
+
+  public void setScope(ScopeEnum scope) {
+    this.scope = scope;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -178,12 +231,13 @@ public class OrderLineItemTax {
         Objects.equals(this.name, orderLineItemTax.name) &&
         Objects.equals(this.type, orderLineItemTax.type) &&
         Objects.equals(this.percentage, orderLineItemTax.percentage) &&
-        Objects.equals(this.appliedMoney, orderLineItemTax.appliedMoney);
+        Objects.equals(this.appliedMoney, orderLineItemTax.appliedMoney) &&
+        Objects.equals(this.scope, orderLineItemTax.scope);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogObjectId, name, type, percentage, appliedMoney);
+    return Objects.hash(catalogObjectId, name, type, percentage, appliedMoney, scope);
   }
 
 
@@ -197,6 +251,7 @@ public class OrderLineItemTax {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
     sb.append("    appliedMoney: ").append(toIndentedString(appliedMoney)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("}");
     return sb.toString();
   }

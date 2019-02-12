@@ -184,10 +184,10 @@ public class CatalogObject {
   }
 
    /**
-   * The version of the object. When updating an object, the version supplied by the must match the version in the database, otherwise the write will be rejected as conflicting.
+   * The version of the object. When updating an object, the version supplied must match the version in the database, otherwise the write will be rejected as conflicting.
    * @return version
   **/
-  @ApiModelProperty(value = "The version of the object. When updating an object, the version supplied by the must match the version in the database, otherwise the write will be rejected as conflicting.")
+  @ApiModelProperty(value = "The version of the object. When updating an object, the version supplied must match the version in the database, otherwise the write will be rejected as conflicting.")
   public Long getVersion() {
     return version;
   }

@@ -18,7 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Money;
+import com.squareup.connect.models.OrderFulfillment;
 import com.squareup.connect.models.OrderLineItem;
+import com.squareup.connect.models.OrderLineItemDiscount;
+import com.squareup.connect.models.OrderLineItemTax;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -41,6 +44,15 @@ public class Order {
 
   @JsonProperty("line_items")
   private List<OrderLineItem> lineItems = new ArrayList<OrderLineItem>();
+
+  @JsonProperty("taxes")
+  private List<OrderLineItemTax> taxes = new ArrayList<OrderLineItemTax>();
+
+  @JsonProperty("discounts")
+  private List<OrderLineItemDiscount> discounts = new ArrayList<OrderLineItemDiscount>();
+
+  @JsonProperty("fulfillments")
+  private List<OrderFulfillment> fulfillments = new ArrayList<OrderFulfillment>();
 
   @JsonProperty("total_money")
   private Money totalMoney = null;
@@ -116,16 +128,85 @@ public class Order {
   }
 
    /**
-   * The line items included in the order. Every order has at least one line item.
+   * The line items included in the order.
    * @return lineItems
   **/
-  @ApiModelProperty(required = true, value = "The line items included in the order. Every order has at least one line item.")
+  @ApiModelProperty(value = "The line items included in the order.")
   public List<OrderLineItem> getLineItems() {
     return lineItems;
   }
 
   public void setLineItems(List<OrderLineItem> lineItems) {
     this.lineItems = lineItems;
+  }
+
+  public Order taxes(List<OrderLineItemTax> taxes) {
+    this.taxes = taxes;
+    return this;
+  }
+
+  public Order addTaxesItem(OrderLineItemTax taxesItem) {
+    this.taxes.add(taxesItem);
+    return this;
+  }
+
+   /**
+   * A list of taxes applied to this order. On read or retrieve, this list includes both order-level and item-level taxes. When creating an Order, set your order-level taxes in this list.
+   * @return taxes
+  **/
+  @ApiModelProperty(value = "A list of taxes applied to this order. On read or retrieve, this list includes both order-level and item-level taxes. When creating an Order, set your order-level taxes in this list.")
+  public List<OrderLineItemTax> getTaxes() {
+    return taxes;
+  }
+
+  public void setTaxes(List<OrderLineItemTax> taxes) {
+    this.taxes = taxes;
+  }
+
+  public Order discounts(List<OrderLineItemDiscount> discounts) {
+    this.discounts = discounts;
+    return this;
+  }
+
+  public Order addDiscountsItem(OrderLineItemDiscount discountsItem) {
+    this.discounts.add(discountsItem);
+    return this;
+  }
+
+   /**
+   * A list of discounts applied to this order. On read or retrieve, this list includes both order-level and item-level discounts. When creating an Order, set your order-level discounts in this list.
+   * @return discounts
+  **/
+  @ApiModelProperty(value = "A list of discounts applied to this order. On read or retrieve, this list includes both order-level and item-level discounts. When creating an Order, set your order-level discounts in this list.")
+  public List<OrderLineItemDiscount> getDiscounts() {
+    return discounts;
+  }
+
+  public void setDiscounts(List<OrderLineItemDiscount> discounts) {
+    this.discounts = discounts;
+  }
+
+  public Order fulfillments(List<OrderFulfillment> fulfillments) {
+    this.fulfillments = fulfillments;
+    return this;
+  }
+
+  public Order addFulfillmentsItem(OrderFulfillment fulfillmentsItem) {
+    this.fulfillments.add(fulfillmentsItem);
+    return this;
+  }
+
+   /**
+   * Details on order fulfillment.  Orders can only be created with at most one fulfillment. However, orders returned by the API may contain multiple fulfillments.
+   * @return fulfillments
+  **/
+  @ApiModelProperty(value = "Details on order fulfillment.  Orders can only be created with at most one fulfillment. However, orders returned by the API may contain multiple fulfillments.")
+  public List<OrderFulfillment> getFulfillments() {
+    return fulfillments;
+  }
+
+  public void setFulfillments(List<OrderFulfillment> fulfillments) {
+    this.fulfillments = fulfillments;
   }
 
   public Order totalMoney(Money totalMoney) {
@@ -196,6 +277,9 @@ public class Order {
         Objects.equals(this.locationId, order.locationId) &&
         Objects.equals(this.referenceId, order.referenceId) &&
         Objects.equals(this.lineItems, order.lineItems) &&
+        Objects.equals(this.taxes, order.taxes) &&
+        Objects.equals(this.discounts, order.discounts) &&
+        Objects.equals(this.fulfillments, order.fulfillments) &&
         Objects.equals(this.totalMoney, order.totalMoney) &&
         Objects.equals(this.totalTaxMoney, order.totalTaxMoney) &&
         Objects.equals(this.totalDiscountMoney, order.totalDiscountMoney);
@@ -203,7 +287,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, referenceId, lineItems, totalMoney, totalTaxMoney, totalDiscountMoney);
+    return Objects.hash(id, locationId, referenceId, lineItems, taxes, discounts, fulfillments, totalMoney, totalTaxMoney, totalDiscountMoney);
   }
 
 
@@ -216,6 +300,9 @@ public class Order {
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
+    sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
+    sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
+    sb.append("    fulfillments: ").append(toIndentedString(fulfillments)).append("\n");
     sb.append("    totalMoney: ").append(toIndentedString(totalMoney)).append("\n");
     sb.append("    totalTaxMoney: ").append(toIndentedString(totalTaxMoney)).append("\n");
     sb.append("    totalDiscountMoney: ").append(toIndentedString(totalDiscountMoney)).append("\n");

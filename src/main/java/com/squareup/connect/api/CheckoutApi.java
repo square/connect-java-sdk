@@ -38,7 +38,7 @@ public class CheckoutApi {
 
   /**
    * CreateCheckout
-   * Creates a [Checkout](#type-checkout) response that links a &#x60;checkoutId&#x60; and &#x60;checkout_page_url&#x60; that customers can be directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.
+   * Links a &#x60;checkoutId&#x60; to a &#x60;checkout_page_url&#x60; that customers will be directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.
    * @param locationId The ID of the business location to associate the checkout with. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateCheckoutResponse
@@ -65,7 +65,7 @@ public class CheckoutApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2018-12-12");
+    localVarHeaderParams.put("Square-Version", "2019-02-13");
 
     
     
@@ -88,7 +88,7 @@ public class CheckoutApi {
 
   /**
    * CreateCheckout
-   * Creates a [Checkout](#type-checkout) response that links a &#x60;checkoutId&#x60; and &#x60;checkout_page_url&#x60; that customers can be directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.
+   * Links a &#x60;checkoutId&#x60; to a &#x60;checkout_page_url&#x60; that customers will be directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.
    * @param locationId The ID of the business location to associate the checkout with. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<CreateCheckoutResponse>

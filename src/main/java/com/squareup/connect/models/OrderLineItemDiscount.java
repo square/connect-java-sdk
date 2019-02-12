@@ -82,7 +82,7 @@ public class OrderLineItemDiscount {
   private Money appliedMoney = null;
 
   /**
-   * Indicates the level at which the discount applies. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.
+   * Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.
    */
   public enum ScopeEnum {
     OTHER_DISCOUNT_SCOPE("OTHER_DISCOUNT_SCOPE"),
@@ -230,10 +230,10 @@ public class OrderLineItemDiscount {
   }
 
    /**
-   * Indicates the level at which the discount applies. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.
+   * Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.
    * @return scope
   **/
-  @ApiModelProperty(value = "Indicates the level at which the discount applies. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.")
+  @ApiModelProperty(value = "Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.")
   public ScopeEnum getScope() {
     return scope;
   }
