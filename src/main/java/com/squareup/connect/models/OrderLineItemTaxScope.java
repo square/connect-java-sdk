@@ -19,27 +19,19 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Possible kinds of [CatalogObject](#type-catalogobject)s returned from the Catalog, each containing type-specific properties in the `*_data` field corresponding to the object type.
+ * Indicates whether this is a line item or order level tax.
  */
-public enum CatalogObjectType {
+public enum OrderLineItemTaxScope {
   
-  ITEM("ITEM"),
+  OTHER_TAX_SCOPE("OTHER_TAX_SCOPE"),
   
-  CATEGORY("CATEGORY"),
+  LINE_ITEM("LINE_ITEM"),
   
-  ITEM_VARIATION("ITEM_VARIATION"),
-  
-  TAX("TAX"),
-  
-  DISCOUNT("DISCOUNT"),
-  
-  MODIFIER_LIST("MODIFIER_LIST"),
-  
-  MODIFIER("MODIFIER");
+  ORDER("ORDER");
 
   private String value;
 
-  CatalogObjectType(String value) {
+  OrderLineItemTaxScope(String value) {
     this.value = value;
   }
 
@@ -49,8 +41,8 @@ public enum CatalogObjectType {
   }
 
   @JsonCreator
-  public static CatalogObjectType fromValue(String text) {
-    for (CatalogObjectType b : CatalogObjectType.values()) {
+  public static OrderLineItemTaxScope fromValue(String text) {
+    for (OrderLineItemTaxScope b : OrderLineItemTaxScope.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

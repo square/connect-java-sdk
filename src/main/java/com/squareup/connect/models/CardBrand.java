@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Indicates a credit card's brand, such as `VISA` or `MASTERCARD`.
+ * Indicates a card's brand, such as `VISA` or `MASTERCARD`.
  */
 public enum CardBrand {
   

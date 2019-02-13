@@ -85,10 +85,10 @@ public class CatalogDiscount {
   }
 
    /**
-   * The discount's name. Searchable.
+   * The discount's name. Searchable. This field has max length of 255 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The discount's name. Searchable.")
+  @ApiModelProperty(value = "The discount's name. Searchable. This field has max length of 255 Unicode code points.")
   public String getName() {
     return name;
   }
@@ -175,10 +175,10 @@ public class CatalogDiscount {
   }
 
    /**
-   * The color of the discount's display label in the Square Point of Sale app.
+   * The color of the discount's display label in the Square Point of Sale app. This must be a valid hex color code.
    * @return labelColor
   **/
-  @ApiModelProperty(value = "The color of the discount's display label in the Square Point of Sale app.")
+  @ApiModelProperty(value = "The color of the discount's display label in the Square Point of Sale app. This must be a valid hex color code.")
   public String getLabelColor() {
     return labelColor;
   }

@@ -114,10 +114,10 @@ public class CatalogItem {
   }
 
    /**
-   * The item's name. Searchable.
+   * The item's name. Searchable. This field must not be empty. This field has max length of 512 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The item's name. Searchable.")
+  @ApiModelProperty(value = "The item's name. Searchable. This field must not be empty. This field has max length of 512 Unicode code points.")
   public String getName() {
     return name;
   }
@@ -132,10 +132,10 @@ public class CatalogItem {
   }
 
    /**
-   * The item's description. Searchable.
+   * The item's description. Searchable. This field has max length of 4096 Unicode code points.
    * @return description
   **/
-  @ApiModelProperty(value = "The item's description. Searchable.")
+  @ApiModelProperty(value = "The item's description. Searchable. This field has max length of 4096 Unicode code points.")
   public String getDescription() {
     return description;
   }
@@ -150,10 +150,10 @@ public class CatalogItem {
   }
 
    /**
-   * The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable.
+   * The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used. Searchable. This field has max length of 24 Unicode code points.
    * @return abbreviation
   **/
-  @ApiModelProperty(value = "The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable.")
+  @ApiModelProperty(value = "The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used. Searchable. This field has max length of 24 Unicode code points.")
   public String getAbbreviation() {
     return abbreviation;
   }
@@ -168,10 +168,10 @@ public class CatalogItem {
   }
 
    /**
-   * The color of the item's display label in the Square Point of Sale app.
+   * The color of the item's display label in the Square Point of Sale app. This must be a valid hex color code.
    * @return labelColor
   **/
-  @ApiModelProperty(value = "The color of the item's display label in the Square Point of Sale app.")
+  @ApiModelProperty(value = "The color of the item's display label in the Square Point of Sale app. This must be a valid hex color code.")
   public String getLabelColor() {
     return labelColor;
   }

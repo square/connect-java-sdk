@@ -35,10 +35,10 @@ public class CatalogCategory {
   }
 
    /**
-   * The category's name. Searchable.
+   * The category's name. Searchable. This field has max length of 255 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The category's name. Searchable.")
+  @ApiModelProperty(value = "The category's name. Searchable. This field has max length of 255 Unicode code points.")
   public String getName() {
     return name;
   }

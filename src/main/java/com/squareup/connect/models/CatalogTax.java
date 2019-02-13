@@ -110,10 +110,10 @@ public class CatalogTax {
   }
 
    /**
-   * The tax's name. Searchable.
+   * The tax's name. Searchable. This field has max length of 255 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The tax's name. Searchable.")
+  @ApiModelProperty(value = "The tax's name. Searchable. This field has max length of 255 Unicode code points.")
   public String getName() {
     return name;
   }

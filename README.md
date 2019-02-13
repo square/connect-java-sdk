@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20181212.0</version>
+    <version>2.20190213.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20181212.0"
+compile "com.squareup:connect:2.20190213.0"
 ```
 
 ### Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20181212.0.jar
+* target/connect-2.20190213.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -337,12 +337,19 @@ Class | Method | HTTP request | Description
  - [ObtainTokenRequest](docs/ObtainTokenRequest.md)
  - [ObtainTokenResponse](docs/ObtainTokenResponse.md)
  - [Order](docs/Order.md)
+ - [OrderFulfillment](docs/OrderFulfillment.md)
+ - [OrderFulfillmentPickupDetails](docs/OrderFulfillmentPickupDetails.md)
+ - [OrderFulfillmentPickupDetailsScheduleType](docs/OrderFulfillmentPickupDetailsScheduleType.md)
+ - [OrderFulfillmentRecipient](docs/OrderFulfillmentRecipient.md)
+ - [OrderFulfillmentState](docs/OrderFulfillmentState.md)
+ - [OrderFulfillmentType](docs/OrderFulfillmentType.md)
  - [OrderLineItem](docs/OrderLineItem.md)
  - [OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
  - [OrderLineItemDiscountScope](docs/OrderLineItemDiscountScope.md)
  - [OrderLineItemDiscountType](docs/OrderLineItemDiscountType.md)
  - [OrderLineItemModifier](docs/OrderLineItemModifier.md)
  - [OrderLineItemTax](docs/OrderLineItemTax.md)
+ - [OrderLineItemTaxScope](docs/OrderLineItemTaxScope.md)
  - [OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
  - [Product](docs/Product.md)
  - [Refund](docs/Refund.md)

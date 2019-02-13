@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.CreateOrderRequestDiscount;
 import com.squareup.connect.models.CreateOrderRequestLineItem;
 import com.squareup.connect.models.CreateOrderRequestTax;
+import com.squareup.connect.models.Order;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -31,6 +32,9 @@ import java.util.List;
 @ApiModel(description = "")
 
 public class CreateOrderRequest {
+  @JsonProperty("order")
+  private Order order = null;
+
   @JsonProperty("idempotency_key")
   private String idempotencyKey = null;
 
@@ -45,6 +49,24 @@ public class CreateOrderRequest {
 
   @JsonProperty("discounts")
   private List<CreateOrderRequestDiscount> discounts = new ArrayList<CreateOrderRequestDiscount>();
+
+  public CreateOrderRequest order(Order order) {
+    this.order = order;
+    return this;
+  }
+
+   /**
+   * The order to create. If this field is set, then the only other top-level field that can be set is the idempotency_key.
+   * @return order
+  **/
+  @ApiModelProperty(value = "The order to create. If this field is set, then the only other top-level field that can be set is the idempotency_key.")
+  public Order getOrder() {
+    return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
 
   public CreateOrderRequest idempotencyKey(String idempotencyKey) {
     this.idempotencyKey = idempotencyKey;
@@ -70,10 +92,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.
+   * __Deprecated__: Please set the reference_id on the nested [order](#type-order) field instead.  An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.
    * @return referenceId
   **/
-  @ApiModelProperty(value = "An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.")
+  @ApiModelProperty(value = "__Deprecated__: Please set the reference_id on the nested [order](#type-order) field instead.  An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.")
   public String getReferenceId() {
     return referenceId;
   }
@@ -93,10 +115,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * The line items to associate with this order.  Each line item represents a different product to include in a purchase.
+   * __Deprecated__: Please set the line_items on the nested [order](#type-order) field instead.  The line items to associate with this order.  Each line item represents a different product to include in a purchase.
    * @return lineItems
   **/
-  @ApiModelProperty(required = true, value = "The line items to associate with this order.  Each line item represents a different product to include in a purchase.")
+  @ApiModelProperty(value = "__Deprecated__: Please set the line_items on the nested [order](#type-order) field instead.  The line items to associate with this order.  Each line item represents a different product to include in a purchase.")
   public List<CreateOrderRequestLineItem> getLineItems() {
     return lineItems;
   }
@@ -116,10 +138,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * The taxes to include on the order.
+   * __Deprecated__: Please set the taxes on the nested [order](#type-order) field instead.  The taxes to include on the order.
    * @return taxes
   **/
-  @ApiModelProperty(value = "The taxes to include on the order.")
+  @ApiModelProperty(value = "__Deprecated__: Please set the taxes on the nested [order](#type-order) field instead.  The taxes to include on the order.")
   public List<CreateOrderRequestTax> getTaxes() {
     return taxes;
   }
@@ -139,10 +161,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * The discounts to include on the order.
+   * __Deprecated__: Please set the discounts on the nested [order](#type-order) field instead.  The discounts to include on the order.
    * @return discounts
   **/
-  @ApiModelProperty(value = "The discounts to include on the order.")
+  @ApiModelProperty(value = "__Deprecated__: Please set the discounts on the nested [order](#type-order) field instead.  The discounts to include on the order.")
   public List<CreateOrderRequestDiscount> getDiscounts() {
     return discounts;
   }
@@ -161,7 +183,8 @@ public class CreateOrderRequest {
       return false;
     }
     CreateOrderRequest createOrderRequest = (CreateOrderRequest) o;
-    return Objects.equals(this.idempotencyKey, createOrderRequest.idempotencyKey) &&
+    return Objects.equals(this.order, createOrderRequest.order) &&
+        Objects.equals(this.idempotencyKey, createOrderRequest.idempotencyKey) &&
         Objects.equals(this.referenceId, createOrderRequest.referenceId) &&
         Objects.equals(this.lineItems, createOrderRequest.lineItems) &&
         Objects.equals(this.taxes, createOrderRequest.taxes) &&
@@ -170,7 +193,7 @@ public class CreateOrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(idempotencyKey, referenceId, lineItems, taxes, discounts);
+    return Objects.hash(order, idempotencyKey, referenceId, lineItems, taxes, discounts);
   }
 
 
@@ -179,6 +202,7 @@ public class CreateOrderRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateOrderRequest {\n");
     
+    sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("    idempotencyKey: ").append(toIndentedString(idempotencyKey)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");

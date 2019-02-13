@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a discount that can apply to either a single line item or an entire order.
+ * __Deprecated__: Please use the [OrderLineItemDiscount](#type-orderlineitemdiscount) type in the order field of [CreateOrderRequest](#type-createorderrequest) instead.  Represents a discount that can apply to either a single line item or an entire order.
  */
-@ApiModel(description = "Represents a discount that can apply to either a single line item or an entire order.")
+@ApiModel(description = "__Deprecated__: Please use the [OrderLineItemDiscount](#type-orderlineitemdiscount) type in the order field of [CreateOrderRequest](#type-createorderrequest) instead.  Represents a discount that can apply to either a single line item or an entire order.")
 
 public class CreateOrderRequestDiscount {
   @JsonProperty("catalog_object_id")

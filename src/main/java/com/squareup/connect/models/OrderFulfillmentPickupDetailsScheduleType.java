@@ -19,27 +19,17 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Possible kinds of [CatalogObject](#type-catalogobject)s returned from the Catalog, each containing type-specific properties in the `*_data` field corresponding to the object type.
+ * The schedule type of the pickup fulfillment.
  */
-public enum CatalogObjectType {
+public enum OrderFulfillmentPickupDetailsScheduleType {
   
-  ITEM("ITEM"),
+  SCHEDULED("SCHEDULED"),
   
-  CATEGORY("CATEGORY"),
-  
-  ITEM_VARIATION("ITEM_VARIATION"),
-  
-  TAX("TAX"),
-  
-  DISCOUNT("DISCOUNT"),
-  
-  MODIFIER_LIST("MODIFIER_LIST"),
-  
-  MODIFIER("MODIFIER");
+  ASAP("ASAP");
 
   private String value;
 
-  CatalogObjectType(String value) {
+  OrderFulfillmentPickupDetailsScheduleType(String value) {
     this.value = value;
   }
 
@@ -49,8 +39,8 @@ public enum CatalogObjectType {
   }
 
   @JsonCreator
-  public static CatalogObjectType fromValue(String text) {
-    for (CatalogObjectType b : CatalogObjectType.values()) {
+  public static OrderFulfillmentPickupDetailsScheduleType fromValue(String text) {
+    for (OrderFulfillmentPickupDetailsScheduleType b : OrderFulfillmentPickupDetailsScheduleType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }
