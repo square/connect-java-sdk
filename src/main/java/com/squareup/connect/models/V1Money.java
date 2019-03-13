@@ -30,9 +30,11 @@ public class V1Money {
   private Integer amount = null;
 
   /**
-   * 
+   *  See [Currency](#type-currency) for possible values
    */
   public enum CurrencyCodeEnum {
+    UNKNOWN_CURRENCY("UNKNOWN_CURRENCY"),
+    
     AED("AED"),
     
     AFN("AFN"),
@@ -442,10 +444,10 @@ public class V1Money {
   }
 
    /**
-   * 
+   *  See [Currency](#type-currency) for possible values
    * @return currencyCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = " See [Currency](#type-currency) for possible values")
   public CurrencyCodeEnum getCurrencyCode() {
     return currencyCode;
   }

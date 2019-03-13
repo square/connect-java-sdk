@@ -24,13 +24,14 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1CreateRefundRequest
  */
+@ApiModel(description = "V1CreateRefundRequest")
 
 public class V1CreateRefundRequest {
   @JsonProperty("payment_id")
   private String paymentId = null;
 
   /**
-   * TThe type of refund (FULL or PARTIAL).
+   * TThe type of refund (FULL or PARTIAL). See [V1CreateRefundRequestType](#type-v1createrefundrequesttype) for possible values
    */
   public enum TypeEnum {
     FULL("FULL"),
@@ -77,10 +78,10 @@ public class V1CreateRefundRequest {
   }
 
    /**
-   * The ID of the payment to refund. If you're creating a PARTIAL refund for a split tender payment, instead provide the id of the particular tender you want to refund. See Split Tender Payments for details.
+   * The ID of the payment to refund. If you are creating a `PARTIAL` refund for a split tender payment, instead provide the id of the particular tender you want to refund.
    * @return paymentId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the payment to refund. If you're creating a PARTIAL refund for a split tender payment, instead provide the id of the particular tender you want to refund. See Split Tender Payments for details.")
+  @ApiModelProperty(required = true, value = "The ID of the payment to refund. If you are creating a `PARTIAL` refund for a split tender payment, instead provide the id of the particular tender you want to refund.")
   public String getPaymentId() {
     return paymentId;
   }
@@ -95,10 +96,10 @@ public class V1CreateRefundRequest {
   }
 
    /**
-   * TThe type of refund (FULL or PARTIAL).
+   * TThe type of refund (FULL or PARTIAL). See [V1CreateRefundRequestType](#type-v1createrefundrequesttype) for possible values
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "TThe type of refund (FULL or PARTIAL).")
+  @ApiModelProperty(required = true, value = "TThe type of refund (FULL or PARTIAL). See [V1CreateRefundRequestType](#type-v1createrefundrequesttype) for possible values")
   public TypeEnum getType() {
     return type;
   }

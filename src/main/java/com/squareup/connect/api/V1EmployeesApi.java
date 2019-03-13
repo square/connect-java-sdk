@@ -40,8 +40,8 @@ public class V1EmployeesApi {
   }
 
   /**
-   * Creates an employee for a business.
-   * Creates an employee for a business.
+   * CreateEmployee
+   *  Use the CreateEmployee endpoint to add an employee to a Square account. Employees created with the Connect API have an initial status of &#x60;INACTIVE&#x60;. Inactive employees cannot sign in to Square Point of Sale until they are activated from the Square Dashboard. Employee status cannot be changed with the Connect API.  &lt;aside class&#x3D;\&quot;important\&quot;&gt; Employee entities cannot be deleted. To disable employee profiles, set the employee&#39;s status to &lt;code&gt;INACTIVE&lt;/code&gt; &lt;/aside&gt;
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Employee
    * @throws ApiException if fails to make API call
@@ -61,6 +61,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -82,8 +83,8 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Creates an employee for a business.
-   * Creates an employee for a business.
+   * CreateEmployee
+   *  Use the CreateEmployee endpoint to add an employee to a Square account. Employees created with the Connect API have an initial status of &#x60;INACTIVE&#x60;. Inactive employees cannot sign in to Square Point of Sale until they are activated from the Square Dashboard. Employee status cannot be changed with the Connect API.  &lt;aside class&#x3D;\&quot;important\&quot;&gt; Employee entities cannot be deleted. To disable employee profiles, set the employee&#39;s status to &lt;code&gt;INACTIVE&lt;/code&gt; &lt;/aside&gt;
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<V1Employee>
    * @throws ApiException if fails to make API call
@@ -123,8 +124,8 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates an employee role you can then assign to employees.
-   * Creates an employee role you can then assign to employees.
+   * CreateEmployeeRole
+   * Creates an employee role you can then assign to employees.  Square accounts can include any number of roles that can be assigned to employees. These roles define the actions and permissions granted to an employee with that role. For example, an employee with a \&quot;Shift Manager\&quot; role might be able to issue refunds in Square Point of Sale, whereas an employee with a \&quot;Clerk\&quot; role might not.  Roles are assigned with the [V1UpdateEmployee](#endpoint-v1updateemployee) endpoint. An employee can have only one role at a time.  If an employee has no role, they have none of the permissions associated with roles. All employees can accept payments with Square Point of Sale.
    * @param employeeRole An EmployeeRole object with a name and permissions, and an optional owner flag. (required)
    * @return V1EmployeeRole
    * @throws ApiException if fails to make API call
@@ -144,6 +145,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -165,8 +167,8 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Creates an employee role you can then assign to employees.
-   * Creates an employee role you can then assign to employees.
+   * CreateEmployeeRole
+   * Creates an employee role you can then assign to employees.  Square accounts can include any number of roles that can be assigned to employees. These roles define the actions and permissions granted to an employee with that role. For example, an employee with a \&quot;Shift Manager\&quot; role might be able to issue refunds in Square Point of Sale, whereas an employee with a \&quot;Clerk\&quot; role might not.  Roles are assigned with the [V1UpdateEmployee](#endpoint-v1updateemployee) endpoint. An employee can have only one role at a time.  If an employee has no role, they have none of the permissions associated with roles. All employees can accept payments with Square Point of Sale.
    * @param employeeRole An EmployeeRole object with a name and permissions, and an optional owner flag. (required)
    * @return CompleteResponse<V1EmployeeRole>
    * @throws ApiException if fails to make API call
@@ -206,8 +208,8 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates a timecard for an employee. Each timecard corresponds to a single shift.
-   * Creates a timecard for an employee. Each timecard corresponds to a single shift.
+   * CreateTimecard
+   * Creates a timecard for an employee and clocks them in with an &#x60;API_CREATE&#x60; event and a &#x60;clockin_time&#x60; set to the current time unless the request provides a different value. To import timecards from another system (rather than clocking someone in). Specify the &#x60;clockin_time&#x60; and* &#x60;clockout_time&#x60; in the request.  Timecards correspond to exactly one shift for a given employee, bounded by the &#x60;clockin_time&#x60; and &#x60;clockout_time&#x60; fields. An employee is considered clocked in if they have a timecard that doesn&#39;t have a &#x60;clockout_time&#x60; set. An employee that is currently clocked in cannot be clocked in a second time.
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Timecard
    * @throws ApiException if fails to make API call
@@ -227,6 +229,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -248,8 +251,8 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Creates a timecard for an employee. Each timecard corresponds to a single shift.
-   * Creates a timecard for an employee. Each timecard corresponds to a single shift.
+   * CreateTimecard
+   * Creates a timecard for an employee and clocks them in with an &#x60;API_CREATE&#x60; event and a &#x60;clockin_time&#x60; set to the current time unless the request provides a different value. To import timecards from another system (rather than clocking someone in). Specify the &#x60;clockin_time&#x60; and* &#x60;clockout_time&#x60; in the request.  Timecards correspond to exactly one shift for a given employee, bounded by the &#x60;clockin_time&#x60; and &#x60;clockout_time&#x60; fields. An employee is considered clocked in if they have a timecard that doesn&#39;t have a &#x60;clockout_time&#x60; set. An employee that is currently clocked in cannot be clocked in a second time.
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<V1Timecard>
    * @throws ApiException if fails to make API call
@@ -289,8 +292,8 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1Timecard>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
-   * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+   * DeleteTimecard
+   * Deletes a timecard. Timecards can also be deleted through the Square Dashboard. Deleted timecards are still accessible through Connect API endpoints, but cannot be modified. The &#x60;deleted&#x60; field of the &#x60;Timecard&#x60; object indicates whether the timecard has been deleted.  *Note**: By default, deleted timecards appear alongside valid timecards in results returned by the [ListTimecards](#endpoint-v1employees-listtimecards) endpoint. To filter deleted timecards, include the &#x60;deleted&#x60; query parameter in the list request.  &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
    * @param timecardId The ID of the timecard to delete. (required)
    * @return Object
    * @throws ApiException if fails to make API call
@@ -311,6 +314,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -332,8 +336,8 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
-   * Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+   * DeleteTimecard
+   * Deletes a timecard. Timecards can also be deleted through the Square Dashboard. Deleted timecards are still accessible through Connect API endpoints, but cannot be modified. The &#x60;deleted&#x60; field of the &#x60;Timecard&#x60; object indicates whether the timecard has been deleted.  *Note**: By default, deleted timecards appear alongside valid timecards in results returned by the [ListTimecards](#endpoint-v1employees-listtimecards) endpoint. To filter deleted timecards, include the &#x60;deleted&#x60; query parameter in the list request.  &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
    * @param timecardId The ID of the timecard to delete. (required)
    * @return CompleteResponse<Object>
    * @throws ApiException if fails to make API call
@@ -374,7 +378,7 @@ public class V1EmployeesApi {
     return (CompleteResponse<Object>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+   * ListCashDrawerShifts
    * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
    * @param locationId The ID of the location to list cash drawer shifts for. (required)
    * @param order The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC (optional)
@@ -399,6 +403,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
@@ -423,7 +428,7 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+   * ListCashDrawerShifts
    * Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
    * @param locationId The ID of the location to list cash drawer shifts for. (required)
    * @param order The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC (optional)
@@ -471,9 +476,9 @@ public class V1EmployeesApi {
     return (CompleteResponse<List<V1CashDrawerShift>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
+   * ListEmployeeRoles
    * Provides summary information for all of a business&#39;s employee roles.
-   * Provides summary information for all of a business&#39;s employee roles.
-   * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
+   * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC (optional)
    * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1EmployeeRole&gt;
@@ -489,6 +494,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
@@ -513,9 +519,9 @@ public class V1EmployeesApi {
       }
 
   /**
+   * ListEmployeeRoles
    * Provides summary information for all of a business&#39;s employee roles.
-   * Provides summary information for all of a business&#39;s employee roles.
-   * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
+   * @param order The order in which employees are listed in the response, based on their created_at field.Default value: ASC (optional)
    * @param limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return CompleteResponse<List<V1EmployeeRole>>
@@ -554,9 +560,9 @@ public class V1EmployeesApi {
     return (CompleteResponse<List<V1EmployeeRole>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
+   * ListEmployees
    * Provides summary information for all of a business&#39;s employees.
-   * Provides summary information for all of a business&#39;s employees.
-   * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC  (optional)
+   * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC (optional)
    * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format (optional)
    * @param endUpdatedAt If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
    * @param beginCreatedAt If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
@@ -578,6 +584,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_updated_at", beginUpdatedAt));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_updated_at", endUpdatedAt));
@@ -608,9 +615,9 @@ public class V1EmployeesApi {
       }
 
   /**
+   * ListEmployees
    * Provides summary information for all of a business&#39;s employees.
-   * Provides summary information for all of a business&#39;s employees.
-   * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC  (optional)
+   * @param order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC (optional)
    * @param beginUpdatedAt If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format (optional)
    * @param endUpdatedAt If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. (optional)
    * @param beginCreatedAt If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
@@ -661,8 +668,8 @@ public class V1EmployeesApi {
     return (CompleteResponse<List<V1Employee>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides summary information for all events associated with a particular timecard.
-   * Provides summary information for all events associated with a particular timecard.
+   * ListTimecardEvents
+   * Provides summary information for all events associated with a particular timecard.  &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
    * @param timecardId The ID of the timecard to list events for. (required)
    * @return List&lt;V1TimecardEvent&gt;
    * @throws ApiException if fails to make API call
@@ -676,13 +683,14 @@ public class V1EmployeesApi {
     }
     
     // create path and map variables
-    String localVarPath = "/v1/me/timecards/{timecard_id}/events"
-      .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+    String localVarPath = "/v1/me/timecards/{timecard_id}/events";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "timecard_id", timecardId));
 
     
     
@@ -704,8 +712,8 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Provides summary information for all events associated with a particular timecard.
-   * Provides summary information for all events associated with a particular timecard.
+   * ListTimecardEvents
+   * Provides summary information for all events associated with a particular timecard.  &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
    * @param timecardId The ID of the timecard to list events for. (required)
    * @return CompleteResponse<List<V1TimecardEvent>>
    * @throws ApiException if fails to make API call
@@ -719,14 +727,14 @@ public class V1EmployeesApi {
     }
     
     // create path and map variables
-    String localVarPath = "/v1/me/timecards/{timecard_id}/events"
-      .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
+    String localVarPath = "/v1/me/timecards/{timecard_id}/events";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "timecard_id", timecardId));
 
     
     
@@ -746,7 +754,7 @@ public class V1EmployeesApi {
     return (CompleteResponse<List<V1TimecardEvent>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides summary information for all of a business&#39;s employee timecards.
+   * ListTimecards
    * Provides summary information for all of a business&#39;s employee timecards.
    * @param order The order in which timecards are listed in the response, based on their created_at field. (optional)
    * @param employeeId If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
@@ -772,6 +780,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "employee_id", employeeId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_clockin_time", beginClockinTime));
@@ -804,7 +813,7 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Provides summary information for all of a business&#39;s employee timecards.
+   * ListTimecards
    * Provides summary information for all of a business&#39;s employee timecards.
    * @param order The order in which timecards are listed in the response, based on their created_at field. (optional)
    * @param employeeId If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
@@ -861,7 +870,7 @@ public class V1EmployeesApi {
     return (CompleteResponse<List<V1Timecard>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+   * RetrieveCashDrawerShift
    * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
    * @param locationId The ID of the location to list cash drawer shifts for. (required)
    * @param shiftId The shift&#39;s ID. (required)
@@ -890,6 +899,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -911,7 +921,7 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+   * RetrieveCashDrawerShift
    * Provides the details for a single cash drawer shift, including all events that occurred during the shift.
    * @param locationId The ID of the location to list cash drawer shifts for. (required)
    * @param shiftId The shift&#39;s ID. (required)
@@ -960,7 +970,7 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1CashDrawerShift>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides the details for a single employee.
+   * RetrieveEmployee
    * Provides the details for a single employee.
    * @param employeeId The employee&#39;s ID. (required)
    * @return V1Employee
@@ -982,6 +992,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1003,7 +1014,7 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Provides the details for a single employee.
+   * RetrieveEmployee
    * Provides the details for a single employee.
    * @param employeeId The employee&#39;s ID. (required)
    * @return CompleteResponse<V1Employee>
@@ -1045,7 +1056,7 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides the details for a single employee role.
+   * RetrieveEmployeeRole
    * Provides the details for a single employee role.
    * @param roleId The role&#39;s ID. (required)
    * @return V1EmployeeRole
@@ -1067,6 +1078,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1088,7 +1100,7 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Provides the details for a single employee role.
+   * RetrieveEmployeeRole
    * Provides the details for a single employee role.
    * @param roleId The role&#39;s ID. (required)
    * @return CompleteResponse<V1EmployeeRole>
@@ -1130,8 +1142,8 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides the details for a single timecard.
-   * Provides the details for a single timecard.
+   * RetrieveTimecard
+   * Provides the details for a single timecard. &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
    * @param timecardId The timecard&#39;s ID. (required)
    * @return V1Timecard
    * @throws ApiException if fails to make API call
@@ -1152,6 +1164,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1173,8 +1186,8 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Provides the details for a single timecard.
-   * Provides the details for a single timecard.
+   * RetrieveTimecard
+   * Provides the details for a single timecard. &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
    * @param timecardId The timecard&#39;s ID. (required)
    * @return CompleteResponse<V1Timecard>
    * @throws ApiException if fails to make API call
@@ -1215,7 +1228,7 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1Timecard>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * V1 UpdateEmployee
+   * UpdateEmployee
    * 
    * @param employeeId The ID of the role to modify. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -1243,6 +1256,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1264,7 +1278,7 @@ public class V1EmployeesApi {
       }
 
   /**
-   * V1 UpdateEmployee
+   * UpdateEmployee
    * 
    * @param employeeId The ID of the role to modify. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -1312,7 +1326,7 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1Employee>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the details of an employee role.
+   * UpdateEmployeeRole
    * Modifies the details of an employee role.
    * @param roleId The ID of the role to modify. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -1340,6 +1354,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1361,7 +1376,7 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Modifies the details of an employee role.
+   * UpdateEmployeeRole
    * Modifies the details of an employee role.
    * @param roleId The ID of the role to modify. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -1409,10 +1424,10 @@ public class V1EmployeesApi {
     return (CompleteResponse<V1EmployeeRole>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
-   * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+   * UpdateTimecard
+   * Modifies the details of a timecard with an &#x60;API_EDIT&#x60; event for the timecard. Updating an active timecard with a &#x60;clockout_time&#x60; clocks the employee out.
    * @param timecardId TThe ID of the timecard to modify. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @param body An object containing the fields to POST for the request. See the corresponding object definition for field details. (required)
    * @return V1Timecard
    * @throws ApiException if fails to make API call
    */
@@ -1437,6 +1452,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1458,10 +1474,10 @@ public class V1EmployeesApi {
       }
 
   /**
-   * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
-   * Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+   * UpdateTimecard
+   * Modifies the details of a timecard with an &#x60;API_EDIT&#x60; event for the timecard. Updating an active timecard with a &#x60;clockout_time&#x60; clocks the employee out.
    * @param timecardId TThe ID of the timecard to modify. (required)
-   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @param body An object containing the fields to POST for the request. See the corresponding object definition for field details. (required)
    * @return CompleteResponse<V1Timecard>
    * @throws ApiException if fails to make API call
    */

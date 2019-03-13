@@ -159,10 +159,10 @@ public class V1Timecard {
   }
 
    /**
-   * The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard���s timezone and overtime rules.
+   * The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard’s timezone and overtime rules.
    * @return clockinLocationId
   **/
-  @ApiModelProperty(value = "The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard���s timezone and overtime rules.")
+  @ApiModelProperty(value = "The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard’s timezone and overtime rules.")
   public String getClockinLocationId() {
     return clockinLocationId;
   }

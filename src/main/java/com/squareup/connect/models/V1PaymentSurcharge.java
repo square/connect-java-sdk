@@ -27,6 +27,7 @@ import java.util.List;
 /**
  * V1PaymentSurcharge
  */
+@ApiModel(description = "V1PaymentSurcharge")
 
 public class V1PaymentSurcharge {
   @JsonProperty("name")
@@ -42,7 +43,7 @@ public class V1PaymentSurcharge {
   private V1Money amountMoney = null;
 
   /**
-   * Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group.
+   * Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group. See [V1PaymentSurchargeType](#type-v1paymentsurchargetype) for possible values
    */
   public enum TypeEnum {
     UNKNOWN("UNKNOWN"),
@@ -163,10 +164,10 @@ public class V1PaymentSurcharge {
   }
 
    /**
-   * Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group.
+   * Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group. See [V1PaymentSurchargeType](#type-v1paymentsurchargetype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group.")
+  @ApiModelProperty(value = "Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group. See [V1PaymentSurchargeType](#type-v1paymentsurchargetype) for possible values")
   public TypeEnum getType() {
     return type;
   }

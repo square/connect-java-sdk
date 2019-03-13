@@ -26,6 +26,7 @@ import java.util.List;
 /**
  * V1Page
  */
+@ApiModel(description = "V1Page")
 
 public class V1Page {
   @JsonProperty("id")

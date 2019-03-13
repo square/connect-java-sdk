@@ -1,6 +1,10 @@
 
 # CatalogItemModifierListInfo
 
+### Description
+
+Controls the properties of a [CatalogModifierList](#type-catalogmodifierlist) as it applies to this [CatalogItem](#type-catalogitem).
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -38,16 +38,25 @@ public class ObtainTokenRequest {
   @JsonProperty("redirect_uri")
   private String redirectUri = null;
 
+  @JsonProperty("grant_type")
+  private String grantType = null;
+
+  @JsonProperty("refresh_token")
+  private String refreshToken = null;
+
+  @JsonProperty("migration_token")
+  private String migrationToken = null;
+
   public ObtainTokenRequest clientId(String clientId) {
     this.clientId = clientId;
     return this;
   }
 
    /**
-   * Your application's ID, available from the [application dashboard](https://connect.squareup.com/apps).
+   * The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).
    * @return clientId
   **/
-  @ApiModelProperty(value = "Your application's ID, available from the [application dashboard](https://connect.squareup.com/apps).")
+  @ApiModelProperty(value = "The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).")
   public String getClientId() {
     return clientId;
   }
@@ -62,10 +71,10 @@ public class ObtainTokenRequest {
   }
 
    /**
-   * Your application's secret, available from the [application dashboard](https://connect.squareup.com/apps).
+   * The Square-issued application secret for your application,  available from the [application dashboard](https://connect.squareup.com/apps).
    * @return clientSecret
   **/
-  @ApiModelProperty(value = "Your application's secret, available from the [application dashboard](https://connect.squareup.com/apps).")
+  @ApiModelProperty(value = "The Square-issued application secret for your application,  available from the [application dashboard](https://connect.squareup.com/apps).")
   public String getClientSecret() {
     return clientSecret;
   }
@@ -80,10 +89,10 @@ public class ObtainTokenRequest {
   }
 
    /**
-   * The authorization code to exchange.
+   * The authorization code to exchange.  This is required if `grant_type` is set to `authorization_code`, to indicate that  the application wants to exchange an authorization code for an OAuth access token.
    * @return code
   **/
-  @ApiModelProperty(value = "The authorization code to exchange.")
+  @ApiModelProperty(value = "The authorization code to exchange.  This is required if `grant_type` is set to `authorization_code`, to indicate that  the application wants to exchange an authorization code for an OAuth access token.")
   public String getCode() {
     return code;
   }
@@ -110,6 +119,60 @@ public class ObtainTokenRequest {
     this.redirectUri = redirectUri;
   }
 
+  public ObtainTokenRequest grantType(String grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+   /**
+   * Specifies the method to request an OAuth access token.  Valid values are: `authorization_code`, `refresh_token`, and `migration_token`
+   * @return grantType
+  **/
+  @ApiModelProperty(value = "Specifies the method to request an OAuth access token.  Valid values are: `authorization_code`, `refresh_token`, and `migration_token`")
+  public String getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(String grantType) {
+    this.grantType = grantType;
+  }
+
+  public ObtainTokenRequest refreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
+    return this;
+  }
+
+   /**
+   * A valid refresh token for generating a new OAuth access token.  A valid refresh token is required if `grant_type` is set to `refresh_token` ,   to indicate the application wants a replacement for an expired OAuth access token.
+   * @return refreshToken
+  **/
+  @ApiModelProperty(value = "A valid refresh token for generating a new OAuth access token.  A valid refresh token is required if `grant_type` is set to `refresh_token` ,   to indicate the application wants a replacement for an expired OAuth access token.")
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
+  }
+
+  public ObtainTokenRequest migrationToken(String migrationToken) {
+    this.migrationToken = migrationToken;
+    return this;
+  }
+
+   /**
+   * Legacy OAuth access token obtained using a Connect API version prior  to 2019-03-13. This parameter is required if `grant_type` is set to  `migration_token` to indicate that the application wants to get a replacement   OAuth access token. The response also returns a refresh token.  For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).
+   * @return migrationToken
+  **/
+  @ApiModelProperty(value = "Legacy OAuth access token obtained using a Connect API version prior  to 2019-03-13. This parameter is required if `grant_type` is set to  `migration_token` to indicate that the application wants to get a replacement   OAuth access token. The response also returns a refresh token.  For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).")
+  public String getMigrationToken() {
+    return migrationToken;
+  }
+
+  public void setMigrationToken(String migrationToken) {
+    this.migrationToken = migrationToken;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -123,12 +186,15 @@ public class ObtainTokenRequest {
     return Objects.equals(this.clientId, obtainTokenRequest.clientId) &&
         Objects.equals(this.clientSecret, obtainTokenRequest.clientSecret) &&
         Objects.equals(this.code, obtainTokenRequest.code) &&
-        Objects.equals(this.redirectUri, obtainTokenRequest.redirectUri);
+        Objects.equals(this.redirectUri, obtainTokenRequest.redirectUri) &&
+        Objects.equals(this.grantType, obtainTokenRequest.grantType) &&
+        Objects.equals(this.refreshToken, obtainTokenRequest.refreshToken) &&
+        Objects.equals(this.migrationToken, obtainTokenRequest.migrationToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientId, clientSecret, code, redirectUri);
+    return Objects.hash(clientId, clientSecret, code, redirectUri, grantType, refreshToken, migrationToken);
   }
 
 
@@ -141,6 +207,9 @@ public class ObtainTokenRequest {
     sb.append("    clientSecret: ").append(toIndentedString(clientSecret)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
+    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("    migrationToken: ").append(toIndentedString(migrationToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }

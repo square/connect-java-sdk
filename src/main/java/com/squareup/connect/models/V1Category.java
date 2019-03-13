@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1Category
  */
+@ApiModel(description = "V1Category")
 
 public class V1Category {
   @JsonProperty("id")

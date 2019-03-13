@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1ItemImage
  */
+@ApiModel(description = "V1ItemImage")
 
 public class V1ItemImage {
   @JsonProperty("id")

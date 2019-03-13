@@ -23,13 +23,14 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1UpdateModifierListRequest
  */
+@ApiModel(description = "V1UpdateModifierListRequest")
 
 public class V1UpdateModifierListRequest {
   @JsonProperty("name")
   private String name = null;
 
   /**
-   * Indicates whether multiple options from the modifier list can be applied to a single item.
+   * Indicates whether multiple options from the modifier list can be applied to a single item. See [V1UpdateModifierListRequestSelectionType](#type-v1updatemodifierlistrequestselectiontype) for possible values
    */
   public enum SelectionTypeEnum {
     SINGLE("SINGLE"),
@@ -85,10 +86,10 @@ public class V1UpdateModifierListRequest {
   }
 
    /**
-   * Indicates whether multiple options from the modifier list can be applied to a single item.
+   * Indicates whether multiple options from the modifier list can be applied to a single item. See [V1UpdateModifierListRequestSelectionType](#type-v1updatemodifierlistrequestselectiontype) for possible values
    * @return selectionType
   **/
-  @ApiModelProperty(value = "Indicates whether multiple options from the modifier list can be applied to a single item.")
+  @ApiModelProperty(value = "Indicates whether multiple options from the modifier list can be applied to a single item. See [V1UpdateModifierListRequestSelectionType](#type-v1updatemodifierlistrequestselectiontype) for possible values")
   public SelectionTypeEnum getSelectionType() {
     return selectionType;
   }

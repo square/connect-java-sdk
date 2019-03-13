@@ -23,13 +23,14 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1TimecardEvent
  */
+@ApiModel(description = "V1TimecardEvent")
 
 public class V1TimecardEvent {
   @JsonProperty("id")
   private String id = null;
 
   /**
-   * The ID of the timecard to list events for.
+   * The ID of the timecard to list events for. See [V1TimecardEventEventType](#type-v1timecardeventeventtype) for possible values
    */
   public enum EventTypeEnum {
     API_CREATE("API_CREATE"),
@@ -106,10 +107,10 @@ public class V1TimecardEvent {
   }
 
    /**
-   * The ID of the timecard to list events for.
+   * The ID of the timecard to list events for. See [V1TimecardEventEventType](#type-v1timecardeventeventtype) for possible values
    * @return eventType
   **/
-  @ApiModelProperty(value = "The ID of the timecard to list events for.")
+  @ApiModelProperty(value = "The ID of the timecard to list events for. See [V1TimecardEventEventType](#type-v1timecardeventeventtype) for possible values")
   public EventTypeEnum getEventType() {
     return eventType;
   }

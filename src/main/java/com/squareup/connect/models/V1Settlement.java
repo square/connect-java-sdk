@@ -27,13 +27,14 @@ import java.util.List;
 /**
  * V1Settlement
  */
+@ApiModel(description = "V1Settlement")
 
 public class V1Settlement {
   @JsonProperty("id")
   private String id = null;
 
   /**
-   * The settlement's current status.
+   * The settlement's current status. See [V1SettlementStatus](#type-v1settlementstatus) for possible values
    */
   public enum StatusEnum {
     FAILED("FAILED"),
@@ -101,10 +102,10 @@ public class V1Settlement {
   }
 
    /**
-   * The settlement's current status.
+   * The settlement's current status. See [V1SettlementStatus](#type-v1settlementstatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "The settlement's current status.")
+  @ApiModelProperty(value = "The settlement's current status. See [V1SettlementStatus](#type-v1settlementstatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }

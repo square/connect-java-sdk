@@ -22,15 +22,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * V1Tender
+ * A tender represents a discrete monetary exchange. Square represents this exchange as a money object with a specific currency and amount, where the amount is given in the smallest denomination of the given currency.  Square POS can accept more than one form of tender for a single payment (such as by splitting a bill between a credit card and a gift card). The &#x60;tender&#x60; field of the Payment object lists all forms of tender used for the payment.  Split tender payments behave slightly differently from single tender payments:  The receipt_url for a split tender corresponds only to the first tender listed in the tender field. To get the receipt URLs for the remaining tenders, use the receipt_url fields of the corresponding Tender objects.  *A note on gift cards**: when a customer purchases a Square gift card from a merchant, the merchant receives the full amount of the gift card in the associated payment.  When that gift card is used as a tender, the balance of the gift card is reduced and the merchant receives no funds. A &#x60;Tender&#x60; object with a type of &#x60;SQUARE_GIFT_CARD&#x60; indicates a gift card was used for some or all of the associated payment.
  */
+@ApiModel(description = "A tender represents a discrete monetary exchange. Square represents this exchange as a money object with a specific currency and amount, where the amount is given in the smallest denomination of the given currency.  Square POS can accept more than one form of tender for a single payment (such as by splitting a bill between a credit card and a gift card). The `tender` field of the Payment object lists all forms of tender used for the payment.  Split tender payments behave slightly differently from single tender payments:  The receipt_url for a split tender corresponds only to the first tender listed in the tender field. To get the receipt URLs for the remaining tenders, use the receipt_url fields of the corresponding Tender objects.  *A note on gift cards**: when a customer purchases a Square gift card from a merchant, the merchant receives the full amount of the gift card in the associated payment.  When that gift card is used as a tender, the balance of the gift card is reduced and the merchant receives no funds. A `Tender` object with a type of `SQUARE_GIFT_CARD` indicates a gift card was used for some or all of the associated payment.")
 
 public class V1Tender {
   @JsonProperty("id")
   private String id = null;
 
   /**
-   * The type of tender.
+   * The type of tender. See [V1TenderType](#type-v1tendertype) for possible values
    */
   public enum TypeEnum {
     CREDIT_CARD("CREDIT_CARD"),
@@ -84,14 +85,14 @@ public class V1Tender {
   private String receiptUrl = null;
 
   /**
-   * The brand of credit card provided.
+   * The brand of credit card provided. See [CardBrand](#type-cardbrand) for possible values
    */
   public enum CardBrandEnum {
     OTHER_BRAND("OTHER_BRAND"),
     
     VISA("VISA"),
     
-    MASTER_CARD("MASTER_CARD"),
+    MASTERCARD("MASTERCARD"),
     
     AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
     
@@ -134,7 +135,7 @@ public class V1Tender {
   private String panSuffix = null;
 
   /**
-   * The tender's unique ID.
+   * The tender's unique ID. See [V1TenderEntryMethod](#type-v1tenderentrymethod) for possible values
    */
   public enum EntryMethodEnum {
     MANUAL("MANUAL"),
@@ -224,10 +225,10 @@ public class V1Tender {
   }
 
    /**
-   * The type of tender.
+   * The type of tender. See [V1TenderType](#type-v1tendertype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The type of tender.")
+  @ApiModelProperty(value = "The type of tender. See [V1TenderType](#type-v1tendertype) for possible values")
   public TypeEnum getType() {
     return type;
   }
@@ -296,10 +297,10 @@ public class V1Tender {
   }
 
    /**
-   * The brand of credit card provided.
+   * The brand of credit card provided. See [CardBrand](#type-cardbrand) for possible values
    * @return cardBrand
   **/
-  @ApiModelProperty(value = "The brand of credit card provided.")
+  @ApiModelProperty(value = "The brand of credit card provided. See [CardBrand](#type-cardbrand) for possible values")
   public CardBrandEnum getCardBrand() {
     return cardBrand;
   }
@@ -332,10 +333,10 @@ public class V1Tender {
   }
 
    /**
-   * The tender's unique ID.
+   * The tender's unique ID. See [V1TenderEntryMethod](#type-v1tenderentrymethod) for possible values
    * @return entryMethod
   **/
-  @ApiModelProperty(value = "The tender's unique ID.")
+  @ApiModelProperty(value = "The tender's unique ID. See [V1TenderEntryMethod](#type-v1tenderentrymethod) for possible values")
   public EntryMethodEnum getEntryMethod() {
     return entryMethod;
   }

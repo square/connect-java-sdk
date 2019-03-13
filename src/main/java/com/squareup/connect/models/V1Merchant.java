@@ -41,7 +41,7 @@ public class V1Merchant {
   private String email = null;
 
   /**
-   * Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION.
+   * Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION. See [V1MerchantAccountType](#type-v1merchantaccounttype) for possible values
    */
   public enum AccountTypeEnum {
     LOCATION("LOCATION"),
@@ -95,7 +95,7 @@ public class V1Merchant {
   private V1PhoneNumber businessPhone = null;
 
   /**
-   * The type of business operated by the merchant.
+   * The type of business operated by the merchant. See [V1MerchantBusinessType](#type-v1merchantbusinesstype) for possible values
    */
   public enum BusinessTypeEnum {
     ACCOUNTING("ACCOUNTING"),
@@ -223,8 +223,8 @@ public class V1Merchant {
   @JsonProperty("business_type")
   private BusinessTypeEnum businessType = null;
 
-  @JsonProperty("shipping_address ")
-  private Address shippingAddress_ = null;
+  @JsonProperty("shipping_address")
+  private Address shippingAddress = null;
 
   @JsonProperty("location_details")
   private V1MerchantLocationDetails locationDetails = null;
@@ -292,10 +292,10 @@ public class V1Merchant {
   }
 
    /**
-   * Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION.
+   * Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION. See [V1MerchantAccountType](#type-v1merchantaccounttype) for possible values
    * @return accountType
   **/
-  @ApiModelProperty(value = "Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION.")
+  @ApiModelProperty(value = "Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION. See [V1MerchantAccountType](#type-v1merchantaccounttype) for possible values")
   public AccountTypeEnum getAccountType() {
     return accountType;
   }
@@ -441,10 +441,10 @@ public class V1Merchant {
   }
 
    /**
-   * The type of business operated by the merchant.
+   * The type of business operated by the merchant. See [V1MerchantBusinessType](#type-v1merchantbusinesstype) for possible values
    * @return businessType
   **/
-  @ApiModelProperty(value = "The type of business operated by the merchant.")
+  @ApiModelProperty(value = "The type of business operated by the merchant. See [V1MerchantBusinessType](#type-v1merchantbusinesstype) for possible values")
   public BusinessTypeEnum getBusinessType() {
     return businessType;
   }
@@ -453,22 +453,22 @@ public class V1Merchant {
     this.businessType = businessType;
   }
 
-  public V1Merchant shippingAddress_(Address shippingAddress_) {
-    this.shippingAddress_ = shippingAddress_;
+  public V1Merchant shippingAddress(Address shippingAddress) {
+    this.shippingAddress = shippingAddress;
     return this;
   }
 
    /**
    * The merchant's shipping address.
-   * @return shippingAddress_
+   * @return shippingAddress
   **/
   @ApiModelProperty(value = "The merchant's shipping address.")
-  public Address getShippingAddress_() {
-    return shippingAddress_;
+  public Address getShippingAddress() {
+    return shippingAddress;
   }
 
-  public void setShippingAddress_(Address shippingAddress_) {
-    this.shippingAddress_ = shippingAddress_;
+  public void setShippingAddress(Address shippingAddress) {
+    this.shippingAddress = shippingAddress;
   }
 
   public V1Merchant locationDetails(V1MerchantLocationDetails locationDetails) {
@@ -477,10 +477,10 @@ public class V1Merchant {
   }
 
    /**
-   * Get locationDetails
+   * Additional information for a single-location account specified by its associated business account, if it has one.
    * @return locationDetails
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Additional information for a single-location account specified by its associated business account, if it has one.")
   public V1MerchantLocationDetails getLocationDetails() {
     return locationDetails;
   }
@@ -529,14 +529,14 @@ public class V1Merchant {
         Objects.equals(this.businessAddress, v1Merchant.businessAddress) &&
         Objects.equals(this.businessPhone, v1Merchant.businessPhone) &&
         Objects.equals(this.businessType, v1Merchant.businessType) &&
-        Objects.equals(this.shippingAddress_, v1Merchant.shippingAddress_) &&
+        Objects.equals(this.shippingAddress, v1Merchant.shippingAddress) &&
         Objects.equals(this.locationDetails, v1Merchant.locationDetails) &&
         Objects.equals(this.marketUrl, v1Merchant.marketUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, email, accountType, accountCapabilities, countryCode, languageCode, currencyCode, businessName, businessAddress, businessPhone, businessType, shippingAddress_, locationDetails, marketUrl);
+    return Objects.hash(id, name, email, accountType, accountCapabilities, countryCode, languageCode, currencyCode, businessName, businessAddress, businessPhone, businessType, shippingAddress, locationDetails, marketUrl);
   }
 
 
@@ -557,7 +557,7 @@ public class V1Merchant {
     sb.append("    businessAddress: ").append(toIndentedString(businessAddress)).append("\n");
     sb.append("    businessPhone: ").append(toIndentedString(businessPhone)).append("\n");
     sb.append("    businessType: ").append(toIndentedString(businessType)).append("\n");
-    sb.append("    shippingAddress_: ").append(toIndentedString(shippingAddress_)).append("\n");
+    sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
     sb.append("    locationDetails: ").append(toIndentedString(locationDetails)).append("\n");
     sb.append("    marketUrl: ").append(toIndentedString(marketUrl)).append("\n");
     sb.append("}");

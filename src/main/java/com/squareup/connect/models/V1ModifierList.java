@@ -26,6 +26,7 @@ import java.util.List;
 /**
  * V1ModifierList
  */
+@ApiModel(description = "V1ModifierList")
 
 public class V1ModifierList {
   @JsonProperty("id")
@@ -35,7 +36,7 @@ public class V1ModifierList {
   private String name = null;
 
   /**
-   * Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item.
+   * Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item. See [V1ModifierListSelectionType](#type-v1modifierlistselectiontype) for possible values
    */
   public enum SelectionTypeEnum {
     SINGLE("SINGLE"),
@@ -112,10 +113,10 @@ public class V1ModifierList {
   }
 
    /**
-   * Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item.
+   * Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item. See [V1ModifierListSelectionType](#type-v1modifierlistselectiontype) for possible values
    * @return selectionType
   **/
-  @ApiModelProperty(value = "Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item.")
+  @ApiModelProperty(value = "Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item. See [V1ModifierListSelectionType](#type-v1modifierlistselectiontype) for possible values")
   public SelectionTypeEnum getSelectionType() {
     return selectionType;
   }

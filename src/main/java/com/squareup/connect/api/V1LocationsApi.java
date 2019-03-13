@@ -36,7 +36,7 @@ public class V1LocationsApi {
   }
 
   /**
-   * Provides details for a business&#39;s locations, including their IDs.
+   * ListLocations
    * Provides details for a business&#39;s locations, including their IDs.
    * @return List&lt;V1Merchant&gt;
    * @throws ApiException if fails to make API call
@@ -51,6 +51,7 @@ public class V1LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -72,7 +73,7 @@ public class V1LocationsApi {
       }
 
   /**
-   * Provides details for a business&#39;s locations, including their IDs.
+   * ListLocations
    * Provides details for a business&#39;s locations, including their IDs.
    * @return CompleteResponse<List<V1Merchant>>
    * @throws ApiException if fails to make API call
@@ -107,7 +108,7 @@ public class V1LocationsApi {
     return (CompleteResponse<List<V1Merchant>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Get a business&#39;s information.
+   * RetrieveBusiness
    * Get a business&#39;s information.
    * @return V1Merchant
    * @throws ApiException if fails to make API call
@@ -122,6 +123,7 @@ public class V1LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -143,7 +145,7 @@ public class V1LocationsApi {
       }
 
   /**
-   * Get a business&#39;s information.
+   * RetrieveBusiness
    * Get a business&#39;s information.
    * @return CompleteResponse<V1Merchant>
    * @throws ApiException if fails to make API call

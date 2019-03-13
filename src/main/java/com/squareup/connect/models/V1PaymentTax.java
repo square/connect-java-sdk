@@ -27,6 +27,7 @@ import java.util.List;
 /**
  * V1PaymentTax
  */
+@ApiModel(description = "V1PaymentTax")
 
 public class V1PaymentTax {
   @JsonProperty("errors")
@@ -42,7 +43,7 @@ public class V1PaymentTax {
   private String rate = null;
 
   /**
-   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.
+   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1PaymentTaxInclusionType](#type-v1paymenttaxinclusiontype) for possible values
    */
   public enum InclusionTypeEnum {
     ADDITIVE("ADDITIVE"),
@@ -160,10 +161,10 @@ public class V1PaymentTax {
   }
 
    /**
-   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.
+   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1PaymentTaxInclusionType](#type-v1paymenttaxinclusiontype) for possible values
    * @return inclusionType
   **/
-  @ApiModelProperty(value = "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.")
+  @ApiModelProperty(value = "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1PaymentTaxInclusionType](#type-v1paymenttaxinclusiontype) for possible values")
   public InclusionTypeEnum getInclusionType() {
     return inclusionType;
   }

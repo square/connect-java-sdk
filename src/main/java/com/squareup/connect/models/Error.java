@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents an error encountered during a request to the Connect API.  See [Handling errors](#handlingerrors) for more information.
+ * Represents an error encountered during a request to the Connect API.
  */
-@ApiModel(description = "Represents an error encountered during a request to the Connect API.  See [Handling errors](#handlingerrors) for more information.")
+@ApiModel(description = "Represents an error encountered during a request to the Connect API.")
 
 public class Error {
   /**

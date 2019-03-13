@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1ModifierOption
  */
+@ApiModel(description = "V1ModifierOption")
 
 public class V1ModifierOption {
   @JsonProperty("id")

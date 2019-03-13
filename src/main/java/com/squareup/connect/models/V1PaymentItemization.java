@@ -29,8 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * V1PaymentItemization
+ * Payment include an&#x60; itemizations&#x60; field that lists the items purchased, along with associated fees, modifiers, and discounts. Each itemization has an &#x60;itemization_type&#x60; field that indicates which of the following the itemization represents:  &lt;ul&gt; &lt;li&gt;An item variation from the merchant&#39;s item library&lt;/li&gt; &lt;li&gt;A custom monetary amount&lt;/li&gt; &lt;li&gt; An action performed on a Square gift card, such as activating or reloading it. &lt;/li&gt; &lt;/ul&gt;  *Note**: itemization information included in a &#x60;Payment&#x60; object reflects details collected **at the time of the payment**. Details such as the name or price of items might have changed since the payment was processed.
  */
+@ApiModel(description = "Payment include an` itemizations` field that lists the items purchased, along with associated fees, modifiers, and discounts. Each itemization has an `itemization_type` field that indicates which of the following the itemization represents:  <ul> <li>An item variation from the merchant's item library</li> <li>A custom monetary amount</li> <li> An action performed on a Square gift card, such as activating or reloading it. </li> </ul>  *Note**: itemization information included in a `Payment` object reflects details collected **at the time of the payment**. Details such as the name or price of items might have changed since the payment was processed.")
 
 public class V1PaymentItemization {
   @JsonProperty("name")
@@ -40,7 +41,7 @@ public class V1PaymentItemization {
   private BigDecimal quantity = null;
 
   /**
-   * The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT
+   * The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT See [V1PaymentItemizationItemizationType](#type-v1paymentitemizationitemizationtype) for possible values
    */
   public enum ItemizationTypeEnum {
     ITEM("ITEM"),
@@ -155,10 +156,10 @@ public class V1PaymentItemization {
   }
 
    /**
-   * The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT
+   * The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT See [V1PaymentItemizationItemizationType](#type-v1paymentitemizationitemizationtype) for possible values
    * @return itemizationType
   **/
-  @ApiModelProperty(value = "The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT")
+  @ApiModelProperty(value = "The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT See [V1PaymentItemizationItemizationType](#type-v1paymentitemizationitemizationtype) for possible values")
   public ItemizationTypeEnum getItemizationType() {
     return itemizationType;
   }

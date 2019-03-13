@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1Discount
  */
+@ApiModel(description = "V1Discount")
 
 public class V1Discount {
   @JsonProperty("id")
@@ -39,7 +40,7 @@ public class V1Discount {
   private V1Money amountMoney = null;
 
   /**
-   * Indicates whether the discount is a FIXED value or entered at the time of sale.
+   * Indicates whether the discount is a FIXED value or entered at the time of sale. See [V1DiscountDiscountType](#type-v1discountdiscounttype) for possible values
    */
   public enum DiscountTypeEnum {
     FIXED("FIXED"),
@@ -77,7 +78,7 @@ public class V1Discount {
   private Boolean pinRequired = null;
 
   /**
-   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6.
+   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values
    */
   public enum ColorEnum {
     _9DA2A6("9da2a6"),
@@ -201,10 +202,10 @@ public class V1Discount {
   }
 
    /**
-   * Indicates whether the discount is a FIXED value or entered at the time of sale.
+   * Indicates whether the discount is a FIXED value or entered at the time of sale. See [V1DiscountDiscountType](#type-v1discountdiscounttype) for possible values
    * @return discountType
   **/
-  @ApiModelProperty(value = "Indicates whether the discount is a FIXED value or entered at the time of sale.")
+  @ApiModelProperty(value = "Indicates whether the discount is a FIXED value or entered at the time of sale. See [V1DiscountDiscountType](#type-v1discountdiscounttype) for possible values")
   public DiscountTypeEnum getDiscountType() {
     return discountType;
   }
@@ -237,10 +238,10 @@ public class V1Discount {
   }
 
    /**
-   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6.
+   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values
    * @return color
   **/
-  @ApiModelProperty(value = "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6.")
+  @ApiModelProperty(value = "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values")
   public ColorEnum getColor() {
     return color;
   }

@@ -29,6 +29,7 @@ import java.util.List;
 /**
  * V1Item
  */
+@ApiModel(description = "V1Item")
 
 public class V1Item {
   @JsonProperty("id")
@@ -41,7 +42,7 @@ public class V1Item {
   private String description = null;
 
   /**
-   * The item's type. This value is NORMAL for almost all items.
+   * The item's type. This value is NORMAL for almost all items. See [V1ItemType](#type-v1itemtype) for possible values
    */
   public enum TypeEnum {
     NORMAL("NORMAL"),
@@ -76,7 +77,7 @@ public class V1Item {
   private TypeEnum type = null;
 
   /**
-   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6.
+   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values
    */
   public enum ColorEnum {
     _9DA2A6("9da2a6"),
@@ -126,7 +127,7 @@ public class V1Item {
   private String abbreviation = null;
 
   /**
-   * Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE.
+   * Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE. See [V1ItemVisibility](#type-v1itemvisibility) for possible values
    */
   public enum VisibilityEnum {
     PUBLIC("PUBLIC"),
@@ -245,10 +246,10 @@ public class V1Item {
   }
 
    /**
-   * The item's type. This value is NORMAL for almost all items.
+   * The item's type. This value is NORMAL for almost all items. See [V1ItemType](#type-v1itemtype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The item's type. This value is NORMAL for almost all items.")
+  @ApiModelProperty(value = "The item's type. This value is NORMAL for almost all items. See [V1ItemType](#type-v1itemtype) for possible values")
   public TypeEnum getType() {
     return type;
   }
@@ -263,10 +264,10 @@ public class V1Item {
   }
 
    /**
-   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6.
+   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values
    * @return color
   **/
-  @ApiModelProperty(value = "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6.")
+  @ApiModelProperty(value = "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values")
   public ColorEnum getColor() {
     return color;
   }
@@ -299,10 +300,10 @@ public class V1Item {
   }
 
    /**
-   * Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE.
+   * Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE. See [V1ItemVisibility](#type-v1itemvisibility) for possible values
    * @return visibility
   **/
-  @ApiModelProperty(value = "Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE.")
+  @ApiModelProperty(value = "Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE. See [V1ItemVisibility](#type-v1itemvisibility) for possible values")
   public VisibilityEnum getVisibility() {
     return visibility;
   }

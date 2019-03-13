@@ -1,6 +1,10 @@
 
 # BatchChangeInventoryResponse
 
+### Description
+
+
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
