@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1Fee
  */
+@ApiModel(description = "V1Fee")
 
 public class V1Fee {
   @JsonProperty("id")
@@ -35,7 +36,7 @@ public class V1Fee {
   private String rate = null;
 
   /**
-   * Forthcoming
+   * Forthcoming See [V1FeeCalculationPhase](#type-v1feecalculationphase) for possible values
    */
   public enum CalculationPhaseEnum {
     FEE_SUBTOTAL_PHASE("FEE_SUBTOTAL_PHASE"),
@@ -70,7 +71,7 @@ public class V1Fee {
   private CalculationPhaseEnum calculationPhase = null;
 
   /**
-   * The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees.
+   * The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees. See [V1FeeAdjustmentType](#type-v1feeadjustmenttype) for possible values
    */
   public enum AdjustmentTypeEnum {
     TAX("TAX");
@@ -107,7 +108,7 @@ public class V1Fee {
   private Boolean enabled = null;
 
   /**
-   * Whether the fee is ADDITIVE or INCLUSIVE.
+   * Whether the fee is ADDITIVE or INCLUSIVE. See [V1FeeInclusionType](#type-v1feeinclusiontype) for possible values
    */
   public enum InclusionTypeEnum {
     ADDITIVE("ADDITIVE"),
@@ -140,7 +141,7 @@ public class V1Fee {
   private InclusionTypeEnum inclusionType = null;
 
   /**
-   * In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants.
+   * In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants. See [V1FeeType](#type-v1feetype) for possible values
    */
   public enum TypeEnum {
     CA_GST("CA_GST"),
@@ -244,10 +245,10 @@ public class V1Fee {
   }
 
    /**
-   * Forthcoming
+   * Forthcoming See [V1FeeCalculationPhase](#type-v1feecalculationphase) for possible values
    * @return calculationPhase
   **/
-  @ApiModelProperty(value = "Forthcoming")
+  @ApiModelProperty(value = "Forthcoming See [V1FeeCalculationPhase](#type-v1feecalculationphase) for possible values")
   public CalculationPhaseEnum getCalculationPhase() {
     return calculationPhase;
   }
@@ -262,10 +263,10 @@ public class V1Fee {
   }
 
    /**
-   * The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees.
+   * The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees. See [V1FeeAdjustmentType](#type-v1feeadjustmenttype) for possible values
    * @return adjustmentType
   **/
-  @ApiModelProperty(value = "The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees.")
+  @ApiModelProperty(value = "The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees. See [V1FeeAdjustmentType](#type-v1feeadjustmenttype) for possible values")
   public AdjustmentTypeEnum getAdjustmentType() {
     return adjustmentType;
   }
@@ -316,10 +317,10 @@ public class V1Fee {
   }
 
    /**
-   * Whether the fee is ADDITIVE or INCLUSIVE.
+   * Whether the fee is ADDITIVE or INCLUSIVE. See [V1FeeInclusionType](#type-v1feeinclusiontype) for possible values
    * @return inclusionType
   **/
-  @ApiModelProperty(value = "Whether the fee is ADDITIVE or INCLUSIVE.")
+  @ApiModelProperty(value = "Whether the fee is ADDITIVE or INCLUSIVE. See [V1FeeInclusionType](#type-v1feeinclusiontype) for possible values")
   public InclusionTypeEnum getInclusionType() {
     return inclusionType;
   }
@@ -334,10 +335,10 @@ public class V1Fee {
   }
 
    /**
-   * In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants.
+   * In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants. See [V1FeeType](#type-v1feetype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants.")
+  @ApiModelProperty(value = "In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants. See [V1FeeType](#type-v1feetype) for possible values")
   public TypeEnum getType() {
     return type;
   }

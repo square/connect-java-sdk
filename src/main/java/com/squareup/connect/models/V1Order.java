@@ -31,6 +31,7 @@ import java.util.List;
 /**
  * V1Order
  */
+@ApiModel(description = "V1Order")
 
 public class V1Order {
   @JsonProperty("errors")
@@ -49,7 +50,7 @@ public class V1Order {
   private String recipientPhoneNumber = null;
 
   /**
-   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.
+   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1OrderState](#type-v1orderstate) for possible values
    */
   public enum StateEnum {
     PENDING("PENDING"),
@@ -247,10 +248,10 @@ public class V1Order {
   }
 
    /**
-   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.
+   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1OrderState](#type-v1orderstate) for possible values
    * @return state
   **/
-  @ApiModelProperty(value = "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.")
+  @ApiModelProperty(value = "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1OrderState](#type-v1orderstate) for possible values")
   public StateEnum getState() {
     return state;
   }

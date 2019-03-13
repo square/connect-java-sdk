@@ -47,16 +47,19 @@ public class ObtainTokenResponse {
   @JsonProperty("id_token")
   private String idToken = null;
 
+  @JsonProperty("refresh_token")
+  private String refreshToken = null;
+
   public ObtainTokenResponse accessToken(String accessToken) {
     this.accessToken = accessToken;
     return this;
   }
 
    /**
-   * Your application's access token. You provide this token in a header with every request to Connect API endpoints. See [Request and response headers](https://docs.connect.squareup.com/api/connect/v2/#requestandresponseheaders) for the format of this header.
+   * A valid OAuth access token. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.
    * @return accessToken
   **/
-  @ApiModelProperty(value = "Your application's access token. You provide this token in a header with every request to Connect API endpoints. See [Request and response headers](https://docs.connect.squareup.com/api/connect/v2/#requestandresponseheaders) for the format of this header.")
+  @ApiModelProperty(value = "A valid OAuth access token. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.")
   public String getAccessToken() {
     return accessToken;
   }
@@ -125,10 +128,10 @@ public class ObtainTokenResponse {
   }
 
    /**
-   * The ID of the merchant [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) associated with the authorization. Only present if the merchant signed up for a subscription during authorization.
+   * __Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if  the merchant signed up for a subscription during authorization.
    * @return subscriptionId
   **/
-  @ApiModelProperty(value = "The ID of the merchant [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) associated with the authorization. Only present if the merchant signed up for a subscription during authorization.")
+  @ApiModelProperty(value = "__Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if  the merchant signed up for a subscription during authorization.")
   public String getSubscriptionId() {
     return subscriptionId;
   }
@@ -173,6 +176,24 @@ public class ObtainTokenResponse {
     this.idToken = idToken;
   }
 
+  public ObtainTokenResponse refreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
+    return this;
+  }
+
+   /**
+   * A refresh token.  For more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).
+   * @return refreshToken
+  **/
+  @ApiModelProperty(value = "A refresh token.  For more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).")
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -189,12 +210,13 @@ public class ObtainTokenResponse {
         Objects.equals(this.merchantId, obtainTokenResponse.merchantId) &&
         Objects.equals(this.subscriptionId, obtainTokenResponse.subscriptionId) &&
         Objects.equals(this.planId, obtainTokenResponse.planId) &&
-        Objects.equals(this.idToken, obtainTokenResponse.idToken);
+        Objects.equals(this.idToken, obtainTokenResponse.idToken) &&
+        Objects.equals(this.refreshToken, obtainTokenResponse.refreshToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessToken, tokenType, expiresAt, merchantId, subscriptionId, planId, idToken);
+    return Objects.hash(accessToken, tokenType, expiresAt, merchantId, subscriptionId, planId, idToken, refreshToken);
   }
 
 
@@ -210,6 +232,7 @@ public class ObtainTokenResponse {
     sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
     sb.append("    planId: ").append(toIndentedString(planId)).append("\n");
     sb.append("    idToken: ").append(toIndentedString(idToken)).append("\n");
+    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }

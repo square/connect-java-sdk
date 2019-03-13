@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1PaymentDiscount
  */
+@ApiModel(description = "V1PaymentDiscount")
 
 public class V1PaymentDiscount {
   @JsonProperty("name")

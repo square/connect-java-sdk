@@ -1,17 +1,22 @@
 
 # V1Money
 
+### Description
+
+
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **Integer** | Amount in the lowest denominated value of this Currency. E.g. in USD these are cents, in JPY they are Yen (which do not have a &#39;cent&#39; concept). |  [optional]
-**currencyCode** | [**CurrencyCodeEnum**](#CurrencyCodeEnum) |  |  [optional]
+**currencyCode** | [**CurrencyCodeEnum**](#CurrencyCodeEnum) |  See [Currency](#type-currency) for possible values |  [optional]
 
 
 <a name="CurrencyCodeEnum"></a>
 ## Enum: CurrencyCodeEnum
 Name | Value
 ---- | -----
+UNKNOWN_CURRENCY | &quot;UNKNOWN_CURRENCY&quot;
 AED | &quot;AED&quot;
 AFN | &quot;AFN&quot;
 ALL | &quot;ALL&quot;

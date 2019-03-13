@@ -24,6 +24,7 @@ import java.math.BigDecimal;
 /**
  * V1InventoryEntry
  */
+@ApiModel(description = "V1InventoryEntry")
 
 public class V1InventoryEntry {
   @JsonProperty("variation_id")

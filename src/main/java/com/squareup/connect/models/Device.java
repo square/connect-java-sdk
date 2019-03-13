@@ -21,8 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Device
+ * 
  */
+@ApiModel(description = "")
 
 public class Device {
   @JsonProperty("id")

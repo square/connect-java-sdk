@@ -150,10 +150,10 @@ public class CatalogItem {
   }
 
    /**
-   * The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used. Searchable. This field has max length of 24 Unicode code points.
+   * The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable. This field has max length of 24 Unicode code points.
    * @return abbreviation
   **/
-  @ApiModelProperty(value = "The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used. Searchable. This field has max length of 24 Unicode code points.")
+  @ApiModelProperty(value = "The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable. This field has max length of 24 Unicode code points.")
   public String getAbbreviation() {
     return abbreviation;
   }

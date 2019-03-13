@@ -38,10 +38,10 @@ public class ListCatalogRequest {
   }
 
    /**
-   * The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information.
+   * The pagination cursor returned in the previous response. Leave unset for an initial request. See [Pagination](/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information.")
+  @ApiModelProperty(value = "The pagination cursor returned in the previous response. Leave unset for an initial request. See [Pagination](/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }

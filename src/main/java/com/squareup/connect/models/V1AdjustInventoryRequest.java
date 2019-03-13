@@ -24,13 +24,14 @@ import java.math.BigDecimal;
 /**
  * V1AdjustInventoryRequest
  */
+@ApiModel(description = "V1AdjustInventoryRequest")
 
 public class V1AdjustInventoryRequest {
   @JsonProperty("quantity_delta")
   private BigDecimal quantityDelta = null;
 
   /**
-   * The reason for the inventory adjustment.
+   * The reason for the inventory adjustment. See [V1AdjustInventoryRequestAdjustmentType](#type-v1adjustinventoryrequestadjustmenttype) for possible values
    */
   public enum AdjustmentTypeEnum {
     SALE("SALE"),
@@ -91,10 +92,10 @@ public class V1AdjustInventoryRequest {
   }
 
    /**
-   * The reason for the inventory adjustment.
+   * The reason for the inventory adjustment. See [V1AdjustInventoryRequestAdjustmentType](#type-v1adjustinventoryrequestadjustmenttype) for possible values
    * @return adjustmentType
   **/
-  @ApiModelProperty(value = "The reason for the inventory adjustment.")
+  @ApiModelProperty(value = "The reason for the inventory adjustment. See [V1AdjustInventoryRequestAdjustmentType](#type-v1adjustinventoryrequestadjustmenttype) for possible values")
   public AdjustmentTypeEnum getAdjustmentType() {
     return adjustmentType;
   }

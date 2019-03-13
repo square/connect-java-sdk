@@ -47,7 +47,7 @@ public class V1ItemsApi {
   }
 
   /**
-   * Adjusts an item variation&#39;s current available inventory.
+   * AdjustInventory
    * Adjusts an item variation&#39;s current available inventory.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param variationId The ID of the variation to adjust inventory information for. (required)
@@ -82,6 +82,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -103,7 +104,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Adjusts an item variation&#39;s current available inventory.
+   * AdjustInventory
    * Adjusts an item variation&#39;s current available inventory.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param variationId The ID of the variation to adjust inventory information for. (required)
@@ -158,7 +159,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1InventoryEntry>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+   * ApplyFee
    * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
    * @param locationId The ID of the fee&#39;s associated location. (required)
    * @param itemId The ID of the item to add the fee to. (required)
@@ -194,6 +195,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -215,7 +217,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+   * ApplyFee
    * Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
    * @param locationId The ID of the fee&#39;s associated location. (required)
    * @param itemId The ID of the item to add the fee to. (required)
@@ -271,7 +273,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+   * ApplyModifierList
    * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to apply. (required)
@@ -307,6 +309,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -328,7 +331,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+   * ApplyModifierList
    * Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to apply. (required)
@@ -384,7 +387,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates an item category.
+   * CreateCategory
    * Creates an item category.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -412,6 +415,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -433,7 +437,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Creates an item category.
+   * CreateCategory
    * Creates an item category.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -481,7 +485,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates a discount.
+   * CreateDiscount
    * Creates a discount.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -509,6 +513,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -530,7 +535,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Creates a discount.
+   * CreateDiscount
    * Creates a discount.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -578,7 +583,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates a fee (tax).
+   * CreateFee
    * Creates a fee (tax).
    * @param locationId The ID of the location to create a fee for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -606,6 +611,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -627,7 +633,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Creates a fee (tax).
+   * CreateFee
    * Creates a fee (tax).
    * @param locationId The ID of the location to create a fee for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -675,8 +681,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates an item and at least one variation for it.
-   * Creates an item and at least one variation for it.
+   * CreateItem
+   * Creates an item and at least one variation for it. Item-related entities include fields you can use to associate them with entities in a non-Square system.  When you create an item-related entity, you can optionally specify its &#x60;id&#x60;. This value must be unique among all IDs ever specified for the account, including those specified by other applications. You can never reuse an entity ID. If you do not specify an ID, Square generates one for the entity.  Item variations have a &#x60;user_data&#x60; string that lets you associate arbitrary metadata with the variation. The string cannot exceed 255 characters.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Item
@@ -703,6 +709,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -724,8 +731,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Creates an item and at least one variation for it.
-   * Creates an item and at least one variation for it.
+   * CreateItem
+   * Creates an item and at least one variation for it. Item-related entities include fields you can use to associate them with entities in a non-Square system.  When you create an item-related entity, you can optionally specify its &#x60;id&#x60;. This value must be unique among all IDs ever specified for the account, including those specified by other applications. You can never reuse an entity ID. If you do not specify an ID, Square generates one for the entity.  Item variations have a &#x60;user_data&#x60; string that lets you associate arbitrary metadata with the variation. The string cannot exceed 255 characters.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<V1Item>
@@ -772,7 +779,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates an item modifier list and at least one modifier option for it.
+   * CreateModifierList
    * Creates an item modifier list and at least one modifier option for it.
    * @param locationId The ID of the location to create a modifier list for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -800,6 +807,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -821,7 +829,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Creates an item modifier list and at least one modifier option for it.
+   * CreateModifierList
    * Creates an item modifier list and at least one modifier option for it.
    * @param locationId The ID of the location to create a modifier list for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -869,7 +877,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates an item modifier option and adds it to a modifier list.
+   * CreateModifierOption
    * Creates an item modifier option and adds it to a modifier list.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to edit. (required)
@@ -904,6 +912,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -925,7 +934,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Creates an item modifier option and adds it to a modifier list.
+   * CreateModifierOption
    * Creates an item modifier option and adds it to a modifier list.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to edit. (required)
@@ -980,7 +989,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates a Favorites page in Square Register.
+   * CreatePage
    * Creates a Favorites page in Square Register.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -1008,6 +1017,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1029,7 +1039,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Creates a Favorites page in Square Register.
+   * CreatePage
    * Creates a Favorites page in Square Register.
    * @param locationId The ID of the location to create an item for. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -1077,7 +1087,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Creates an item variation for an existing item.
+   * CreateVariation
    * Creates an item variation for an existing item.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The item&#39;s ID. (required)
@@ -1112,6 +1122,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1133,7 +1144,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Creates an item variation for an existing item.
+   * CreateVariation
    * Creates an item variation for an existing item.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The item&#39;s ID. (required)
@@ -1188,8 +1199,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Variation>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes an existing item category.
-   * Deletes an existing item category.
+   * DeleteCategory
+   * Deletes an existing item category. *Note**: DeleteCategory returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteCategoryRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param categoryId The ID of the category to delete. (required)
    * @return V1Category
@@ -1217,6 +1228,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1238,8 +1250,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes an existing item category.
-   * Deletes an existing item category.
+   * DeleteCategory
+   * Deletes an existing item category. *Note**: DeleteCategory returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteCategoryRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param categoryId The ID of the category to delete. (required)
    * @return CompleteResponse<V1Category>
@@ -1287,8 +1299,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes an existing discount.
-   * Deletes an existing discount.
+   * DeleteDiscount
+   * Deletes an existing discount. *Note**: DeleteDiscount returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteDiscountRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param discountId The ID of the discount to delete. (required)
    * @return V1Discount
@@ -1316,6 +1328,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1337,8 +1350,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes an existing discount.
-   * Deletes an existing discount.
+   * DeleteDiscount
+   * Deletes an existing discount. *Note**: DeleteDiscount returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteDiscountRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param discountId The ID of the discount to delete. (required)
    * @return CompleteResponse<V1Discount>
@@ -1386,8 +1399,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes an existing fee (tax).
-   * Deletes an existing fee (tax).
+   * DeleteFee
+   * Deletes an existing fee (tax). *Note**: DeleteFee returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteFeeRequest&#x60; object as documented below.
    * @param locationId The ID of the fee&#39;s associated location. (required)
    * @param feeId The ID of the fee to delete. (required)
    * @return V1Fee
@@ -1415,6 +1428,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1436,8 +1450,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes an existing fee (tax).
-   * Deletes an existing fee (tax).
+   * DeleteFee
+   * Deletes an existing fee (tax). *Note**: DeleteFee returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteFeeRequest&#x60; object as documented below.
    * @param locationId The ID of the fee&#39;s associated location. (required)
    * @param feeId The ID of the fee to delete. (required)
    * @return CompleteResponse<V1Fee>
@@ -1485,8 +1499,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes an existing item and all item variations associated with it.
-   * Deletes an existing item and all item variations associated with it.
+   * DeleteItem
+   * Deletes an existing item and all item variations associated with it. *Note**: DeleteItem returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteItemRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The ID of the item to modify. (required)
    * @return V1Item
@@ -1514,6 +1528,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1535,8 +1550,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes an existing item and all item variations associated with it.
-   * Deletes an existing item and all item variations associated with it.
+   * DeleteItem
+   * Deletes an existing item and all item variations associated with it. *Note**: DeleteItem returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteItemRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The ID of the item to modify. (required)
    * @return CompleteResponse<V1Item>
@@ -1584,8 +1599,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes an existing item modifier list and all modifier options associated with it.
-   * Deletes an existing item modifier list and all modifier options associated with it.
+   * DeleteModifierList
+   * Deletes an existing item modifier list and all modifier options associated with it. *Note**: DeleteModifierList returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierListRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to delete. (required)
    * @return V1ModifierList
@@ -1613,6 +1628,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1634,8 +1650,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes an existing item modifier list and all modifier options associated with it.
-   * Deletes an existing item modifier list and all modifier options associated with it.
+   * DeleteModifierList
+   * Deletes an existing item modifier list and all modifier options associated with it. *Note**: DeleteModifierList returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierListRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to delete. (required)
    * @return CompleteResponse<V1ModifierList>
@@ -1683,8 +1699,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes an existing item modifier option from a modifier list.
-   * Deletes an existing item modifier option from a modifier list.
+   * DeleteModifierOption
+   * Deletes an existing item modifier option from a modifier list. *Note**: DeleteModifierOption returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierOptionRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to delete. (required)
    * @param modifierOptionId The ID of the modifier list to edit. (required)
@@ -1719,6 +1735,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1740,8 +1757,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes an existing item modifier option from a modifier list.
-   * Deletes an existing item modifier option from a modifier list.
+   * DeleteModifierOption
+   * Deletes an existing item modifier option from a modifier list. *Note**: DeleteModifierOption returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierOptionRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to delete. (required)
    * @param modifierOptionId The ID of the modifier list to edit. (required)
@@ -1796,8 +1813,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes an existing Favorites page and all of its cells.
-   * Deletes an existing Favorites page and all of its cells.
+   * DeletePage
+   * Deletes an existing Favorites page and all of its cells. *Note**: DeletePage returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageRequest&#x60; object as documented below.
    * @param locationId The ID of the Favorites page&#39;s associated location. (required)
    * @param pageId The ID of the page to delete. (required)
    * @return V1Page
@@ -1825,6 +1842,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -1846,8 +1864,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes an existing Favorites page and all of its cells.
-   * Deletes an existing Favorites page and all of its cells.
+   * DeletePage
+   * Deletes an existing Favorites page and all of its cells. *Note**: DeletePage returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageRequest&#x60; object as documented below.
    * @param locationId The ID of the Favorites page&#39;s associated location. (required)
    * @param pageId The ID of the page to delete. (required)
    * @return CompleteResponse<V1Page>
@@ -1895,8 +1913,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes a cell from a Favorites page in Square Register.
-   * Deletes a cell from a Favorites page in Square Register.
+   * DeletePageCell
+   * Deletes a cell from a Favorites page in Square Register. *Note**: DeletePageCell returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageCellRequest&#x60; object as documented below.
    * @param locationId The ID of the Favorites page&#39;s associated location. (required)
    * @param pageId The ID of the page to delete. (required)
    * @param row The row of the cell to clear. Always an integer between 0 and 4, inclusive. Row 0 is the top row. (optional)
@@ -1926,6 +1944,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "row", row));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "column", column));
 
@@ -1949,8 +1968,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes a cell from a Favorites page in Square Register.
-   * Deletes a cell from a Favorites page in Square Register.
+   * DeletePageCell
+   * Deletes a cell from a Favorites page in Square Register. *Note**: DeletePageCell returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageCellRequest&#x60; object as documented below.
    * @param locationId The ID of the Favorites page&#39;s associated location. (required)
    * @param pageId The ID of the page to delete. (required)
    * @param row The row of the cell to clear. Always an integer between 0 and 4, inclusive. Row 0 is the top row. (optional)
@@ -2002,8 +2021,8 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Deletes an existing item variation from an item.
-   * Deletes an existing item variation from an item.
+   * DeleteVariation
+   * Deletes an existing item variation from an item. *Note**: DeleteVariation returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteVariationRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The ID of the item to delete. (required)
    * @param variationId The ID of the variation to delete. (required)
@@ -2038,6 +2057,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2059,8 +2079,8 @@ public class V1ItemsApi {
       }
 
   /**
-   * Deletes an existing item variation from an item.
-   * Deletes an existing item variation from an item.
+   * DeleteVariation
+   * Deletes an existing item variation from an item. *Note**: DeleteVariation returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteVariationRequest&#x60; object as documented below.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The ID of the item to delete. (required)
    * @param variationId The ID of the variation to delete. (required)
@@ -2115,7 +2135,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Variation>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Lists all of a location&#39;s item categories.
+   * ListCategories
    * Lists all of a location&#39;s item categories.
    * @param locationId The ID of the location to list categories for. (required)
    * @return List&lt;V1Category&gt;
@@ -2137,6 +2157,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2158,7 +2179,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Lists all of a location&#39;s item categories.
+   * ListCategories
    * Lists all of a location&#39;s item categories.
    * @param locationId The ID of the location to list categories for. (required)
    * @return CompleteResponse<List<V1Category>>
@@ -2200,7 +2221,7 @@ public class V1ItemsApi {
     return (CompleteResponse<List<V1Category>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Lists all of a location&#39;s discounts.
+   * ListDiscounts
    * Lists all of a location&#39;s discounts.
    * @param locationId The ID of the location to list categories for. (required)
    * @return List&lt;V1Discount&gt;
@@ -2222,6 +2243,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2243,7 +2265,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Lists all of a location&#39;s discounts.
+   * ListDiscounts
    * Lists all of a location&#39;s discounts.
    * @param locationId The ID of the location to list categories for. (required)
    * @return CompleteResponse<List<V1Discount>>
@@ -2285,7 +2307,7 @@ public class V1ItemsApi {
     return (CompleteResponse<List<V1Discount>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Lists all of a location&#39;s fees (taxes).
+   * ListFees
    * Lists all of a location&#39;s fees (taxes).
    * @param locationId The ID of the location to list fees for. (required)
    * @return List&lt;V1Fee&gt;
@@ -2307,6 +2329,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2328,7 +2351,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Lists all of a location&#39;s fees (taxes).
+   * ListFees
    * Lists all of a location&#39;s fees (taxes).
    * @param locationId The ID of the location to list fees for. (required)
    * @return CompleteResponse<List<V1Fee>>
@@ -2370,7 +2393,7 @@ public class V1ItemsApi {
     return (CompleteResponse<List<V1Fee>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+   * ListInventory
    * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
@@ -2394,6 +2417,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
@@ -2417,7 +2441,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+   * ListInventory
    * Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param limit The maximum number of inventory entries to return in a single response. This value cannot exceed 1000. (optional)
@@ -2463,7 +2487,7 @@ public class V1ItemsApi {
     return (CompleteResponse<List<V1InventoryEntry>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides summary information for all of a location&#39;s items.
+   * ListItems
    * Provides summary information for all of a location&#39;s items.
    * @param locationId The ID of the location to list items for. (required)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
@@ -2486,6 +2510,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
@@ -2508,7 +2533,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Provides summary information for all of a location&#39;s items.
+   * ListItems
    * Provides summary information for all of a location&#39;s items.
    * @param locationId The ID of the location to list items for. (required)
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
@@ -2552,7 +2577,7 @@ public class V1ItemsApi {
     return (CompleteResponse<List<V1Item>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Lists all of a location&#39;s modifier lists.
+   * ListModifierLists
    * Lists all of a location&#39;s modifier lists.
    * @param locationId The ID of the location to list modifier lists for. (required)
    * @return List&lt;V1ModifierList&gt;
@@ -2574,6 +2599,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2595,7 +2621,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Lists all of a location&#39;s modifier lists.
+   * ListModifierLists
    * Lists all of a location&#39;s modifier lists.
    * @param locationId The ID of the location to list modifier lists for. (required)
    * @return CompleteResponse<List<V1ModifierList>>
@@ -2637,7 +2663,7 @@ public class V1ItemsApi {
     return (CompleteResponse<List<V1ModifierList>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Lists all of a location&#39;s Favorites pages in Square Register.
+   * ListPages
    * Lists all of a location&#39;s Favorites pages in Square Register.
    * @param locationId The ID of the location to list Favorites pages for. (required)
    * @return List&lt;V1Page&gt;
@@ -2659,6 +2685,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2680,7 +2707,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Lists all of a location&#39;s Favorites pages in Square Register.
+   * ListPages
    * Lists all of a location&#39;s Favorites pages in Square Register.
    * @param locationId The ID of the location to list Favorites pages for. (required)
    * @return CompleteResponse<List<V1Page>>
@@ -2722,7 +2749,7 @@ public class V1ItemsApi {
     return (CompleteResponse<List<V1Page>>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+   * RemoveFee
    * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
    * @param locationId The ID of the fee&#39;s associated location. (required)
    * @param itemId The ID of the item to add the fee to. (required)
@@ -2758,6 +2785,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2779,7 +2807,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+   * RemoveFee
    * Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
    * @param locationId The ID of the fee&#39;s associated location. (required)
    * @param itemId The ID of the item to add the fee to. (required)
@@ -2835,7 +2863,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+   * RemoveModifierList
    * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to remove. (required)
@@ -2871,6 +2899,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2892,7 +2921,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+   * RemoveModifierList
    * Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to remove. (required)
@@ -2948,7 +2977,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides the details for a single item, including associated modifier lists and fees.
+   * RetrieveItem
    * Provides the details for a single item, including associated modifier lists and fees.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The item&#39;s ID. (required)
@@ -2977,6 +3006,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -2998,7 +3028,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Provides the details for a single item, including associated modifier lists and fees.
+   * RetrieveItem
    * Provides the details for a single item, including associated modifier lists and fees.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The item&#39;s ID. (required)
@@ -3047,7 +3077,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Provides the details for a single modifier list.
+   * RetrieveModifierList
    * Provides the details for a single modifier list.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The modifier list&#39;s ID. (required)
@@ -3076,6 +3106,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3097,7 +3128,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Provides the details for a single modifier list.
+   * RetrieveModifierList
    * Provides the details for a single modifier list.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The modifier list&#39;s ID. (required)
@@ -3146,7 +3177,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the details of an existing item category.
+   * UpdateCategory
    * Modifies the details of an existing item category.
    * @param locationId The ID of the category&#39;s associated location. (required)
    * @param categoryId The ID of the category to edit. (required)
@@ -3181,6 +3212,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3202,7 +3234,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies the details of an existing item category.
+   * UpdateCategory
    * Modifies the details of an existing item category.
    * @param locationId The ID of the category&#39;s associated location. (required)
    * @param categoryId The ID of the category to edit. (required)
@@ -3257,7 +3289,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Category>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the details of an existing discount.
+   * UpdateDiscount
    * Modifies the details of an existing discount.
    * @param locationId The ID of the category&#39;s associated location. (required)
    * @param discountId The ID of the discount to edit. (required)
@@ -3292,6 +3324,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3313,7 +3346,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies the details of an existing discount.
+   * UpdateDiscount
    * Modifies the details of an existing discount.
    * @param locationId The ID of the category&#39;s associated location. (required)
    * @param discountId The ID of the discount to edit. (required)
@@ -3368,7 +3401,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Discount>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the details of an existing fee (tax).
+   * UpdateFee
    * Modifies the details of an existing fee (tax).
    * @param locationId The ID of the fee&#39;s associated location. (required)
    * @param feeId The ID of the fee to edit. (required)
@@ -3403,6 +3436,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3424,7 +3458,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies the details of an existing fee (tax).
+   * UpdateFee
    * Modifies the details of an existing fee (tax).
    * @param locationId The ID of the fee&#39;s associated location. (required)
    * @param feeId The ID of the fee to edit. (required)
@@ -3479,7 +3513,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Fee>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the core details of an existing item.
+   * UpdateItem
    * Modifies the core details of an existing item.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The ID of the item to modify. (required)
@@ -3514,6 +3548,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3535,7 +3570,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies the core details of an existing item.
+   * UpdateItem
    * Modifies the core details of an existing item.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The ID of the item to modify. (required)
@@ -3590,7 +3625,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Item>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the details of an existing item modifier list.
+   * UpdateModifierList
    * Modifies the details of an existing item modifier list.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to edit. (required)
@@ -3625,6 +3660,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3646,7 +3682,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies the details of an existing item modifier list.
+   * UpdateModifierList
    * Modifies the details of an existing item modifier list.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to edit. (required)
@@ -3701,7 +3737,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1ModifierList>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the details of an existing item modifier option.
+   * UpdateModifierOption
    * Modifies the details of an existing item modifier option.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to edit. (required)
@@ -3743,6 +3779,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3764,7 +3801,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies the details of an existing item modifier option.
+   * UpdateModifierOption
    * Modifies the details of an existing item modifier option.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param modifierListId The ID of the modifier list to edit. (required)
@@ -3826,7 +3863,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1ModifierOption>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the details of a Favorites page in Square Register.
+   * UpdatePage
    * Modifies the details of a Favorites page in Square Register.
    * @param locationId The ID of the Favorites page&#39;s associated location (required)
    * @param pageId The ID of the page to modify. (required)
@@ -3861,6 +3898,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3882,7 +3920,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies the details of a Favorites page in Square Register.
+   * UpdatePage
    * Modifies the details of a Favorites page in Square Register.
    * @param locationId The ID of the Favorites page&#39;s associated location (required)
    * @param pageId The ID of the page to modify. (required)
@@ -3937,7 +3975,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies a cell of a Favorites page in Square Register.
+   * UpdatePageCell
    * Modifies a cell of a Favorites page in Square Register.
    * @param locationId The ID of the Favorites page&#39;s associated location. (required)
    * @param pageId The ID of the page the cell belongs to. (required)
@@ -3972,6 +4010,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -3993,7 +4032,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies a cell of a Favorites page in Square Register.
+   * UpdatePageCell
    * Modifies a cell of a Favorites page in Square Register.
    * @param locationId The ID of the Favorites page&#39;s associated location. (required)
    * @param pageId The ID of the page the cell belongs to. (required)
@@ -4048,7 +4087,7 @@ public class V1ItemsApi {
     return (CompleteResponse<V1Page>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
   /**
-   * Modifies the details of an existing item variation.
+   * UpdateVariation
    * Modifies the details of an existing item variation.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The ID of the item to modify. (required)
@@ -4090,6 +4129,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -4111,7 +4151,7 @@ public class V1ItemsApi {
       }
 
   /**
-   * Modifies the details of an existing item variation.
+   * UpdateVariation
    * Modifies the details of an existing item variation.
    * @param locationId The ID of the item&#39;s associated location. (required)
    * @param itemId The ID of the item to modify. (required)

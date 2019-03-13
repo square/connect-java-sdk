@@ -91,10 +91,10 @@ public class ListCustomersResponse {
   }
 
    /**
-   * A pagination cursor to retrieve the next set of results for your original query to the endpoint. This value is present only if the request succeeded and additional results are available.  See [Paginating results](#paginatingresults) for more information.
+   * A pagination cursor to retrieve the next set of results for your original query to the endpoint. This value is present only if the request succeeded and additional results are available.  See [Pagination](/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "A pagination cursor to retrieve the next set of results for your original query to the endpoint. This value is present only if the request succeeded and additional results are available.  See [Paginating results](#paginatingresults) for more information.")
+  @ApiModelProperty(value = "A pagination cursor to retrieve the next set of results for your original query to the endpoint. This value is present only if the request succeeded and additional results are available.  See [Pagination](/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }

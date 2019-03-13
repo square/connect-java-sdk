@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1BankAccount
  */
+@ApiModel(description = "V1BankAccount")
 
 public class V1BankAccount {
   @JsonProperty("id")
@@ -47,7 +48,7 @@ public class V1BankAccount {
   private String currencyCode = null;
 
   /**
-   * The bank account's type (for example, savings or checking).
+   * The bank account's type (for example, savings or checking). See [V1BankAccountType](#type-v1bankaccounttype) for possible values
    */
   public enum TypeEnum {
     BUSINESS_CHECKING("BUSINESS_CHECKING"),
@@ -219,10 +220,10 @@ public class V1BankAccount {
   }
 
    /**
-   * The bank account's type (for example, savings or checking).
+   * The bank account's type (for example, savings or checking). See [V1BankAccountType](#type-v1bankaccounttype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The bank account's type (for example, savings or checking).")
+  @ApiModelProperty(value = "The bank account's type (for example, savings or checking). See [V1BankAccountType](#type-v1bankaccounttype) for possible values")
   public TypeEnum getType() {
     return type;
   }

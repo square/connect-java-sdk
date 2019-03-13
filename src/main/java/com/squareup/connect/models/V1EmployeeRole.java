@@ -25,6 +25,7 @@ import java.util.List;
 /**
  * V1EmployeeRole
  */
+@ApiModel(description = "V1EmployeeRole")
 
 public class V1EmployeeRole {
   @JsonProperty("id")
@@ -132,10 +133,10 @@ public class V1EmployeeRole {
   }
 
    /**
-   * The role's permissions.
+   * The role's permissions. See [V1EmployeeRolePermissions](#type-v1employeerolepermissions) for possible values
    * @return permissions
   **/
-  @ApiModelProperty(required = true, value = "The role's permissions.")
+  @ApiModelProperty(required = true, value = "The role's permissions. See [V1EmployeeRolePermissions](#type-v1employeerolepermissions) for possible values")
   public List<PermissionsEnum> getPermissions() {
     return permissions;
   }

@@ -68,7 +68,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-02-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -159,7 +159,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-02-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -251,7 +251,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-02-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -344,7 +344,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-02-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -417,7 +417,7 @@ public class CustomersApi {
   /**
    * ListCustomers
    * Lists a business&#39;s customers.
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
    * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)
    * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)
    * @return ListCustomersResponse
@@ -433,7 +433,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-02-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_field", sortField));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -460,7 +460,7 @@ public class CustomersApi {
   /**
    * ListCustomers
    * Lists a business&#39;s customers.
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
    * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)
    * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)
    * @return CompleteResponse<ListCustomersResponse>
@@ -521,7 +521,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-02-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -606,7 +606,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-02-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     
@@ -697,7 +697,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-02-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-13");
 
     
     

@@ -1,6 +1,10 @@
 
 # InventoryChange
 
+### Description
+
+Represents a single physical count, inventory, adjustment, or transfer that is part of the history of inventory changes for a particular [CatalogObject](#type-catalogobject).
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -23,10 +23,11 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1UpdateOrderRequest
  */
+@ApiModel(description = "V1UpdateOrderRequest")
 
 public class V1UpdateOrderRequest {
   /**
-   * The action to perform on the order (COMPLETE, CANCEL, or REFUND).
+   * The action to perform on the order (COMPLETE, CANCEL, or REFUND). See [V1UpdateOrderRequestAction](#type-v1updateorderrequestaction) for possible values
    */
   public enum ActionEnum {
     COMPLETE("COMPLETE"),
@@ -78,10 +79,10 @@ public class V1UpdateOrderRequest {
   }
 
    /**
-   * The action to perform on the order (COMPLETE, CANCEL, or REFUND).
+   * The action to perform on the order (COMPLETE, CANCEL, or REFUND). See [V1UpdateOrderRequestAction](#type-v1updateorderrequestaction) for possible values
    * @return action
   **/
-  @ApiModelProperty(required = true, value = "The action to perform on the order (COMPLETE, CANCEL, or REFUND).")
+  @ApiModelProperty(required = true, value = "The action to perform on the order (COMPLETE, CANCEL, or REFUND). See [V1UpdateOrderRequestAction](#type-v1updateorderrequestaction) for possible values")
   public ActionEnum getAction() {
     return action;
   }

@@ -1,6 +1,10 @@
 
 # AdditionalRecipientReceivable
 
+### Description
+
+Represents a monetary distribution of part of a [Transaction](#type-transaction)'s amount for Transactions which included additional recipients. The location of this receivable is that same as the one specified in the [AdditionalRecipient](#type-additionalrecipient).
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

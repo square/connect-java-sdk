@@ -71,10 +71,10 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   * The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Paginating results](#paginatingresults) for more information.
+   * The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Paginating results](#paginatingresults) for more information.")
+  @ApiModelProperty(value = "The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }

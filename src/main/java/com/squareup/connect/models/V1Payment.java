@@ -30,8 +30,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * V1Payment
+ * A payment represents a paid transaction between a Square merchant and a customer. Payment details are usually available from Connect API endpoints within a few minutes after the transaction completes.  Each Payment object includes several fields that end in &#x60;_money&#x60;. These fields describe the various amounts of money that contribute to the payment total:  &lt;ul&gt; &lt;li&gt; Monetary values are &lt;b&gt;positive&lt;/b&gt; if they represent an &lt;em&gt;increase&lt;/em&gt; in the amount of money the merchant receives (e.g., &lt;code&gt;tax_money&lt;/code&gt;, &lt;code&gt;tip_money&lt;/code&gt;). &lt;/li&gt; &lt;li&gt; Monetary values are &lt;b&gt;negative&lt;/b&gt; if they represent an &lt;em&gt;decrease&lt;/em&gt; in the amount of money the merchant receives (e.g., &lt;code&gt;discount_money&lt;/code&gt;, &lt;code&gt;refunded_money&lt;/code&gt;). &lt;/li&gt; &lt;/ul&gt;
  */
+@ApiModel(description = "A payment represents a paid transaction between a Square merchant and a customer. Payment details are usually available from Connect API endpoints within a few minutes after the transaction completes.  Each Payment object includes several fields that end in `_money`. These fields describe the various amounts of money that contribute to the payment total:  <ul> <li> Monetary values are <b>positive</b> if they represent an <em>increase</em> in the amount of money the merchant receives (e.g., <code>tax_money</code>, <code>tip_money</code>). </li> <li> Monetary values are <b>negative</b> if they represent an <em>decrease</em> in the amount of money the merchant receives (e.g., <code>discount_money</code>, <code>refunded_money</code>). </li> </ul>")
 
 public class V1Payment {
   @JsonProperty("id")

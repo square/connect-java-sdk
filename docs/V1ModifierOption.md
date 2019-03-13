@@ -1,6 +1,10 @@
 
 # V1ModifierOption
 
+### Description
+
+V1ModifierOption
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

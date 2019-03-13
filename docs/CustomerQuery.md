@@ -1,6 +1,10 @@
 
 # CustomerQuery
 
+### Description
+
+Represents a query (filtering and sorting criteria) used to search for customer profiles.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

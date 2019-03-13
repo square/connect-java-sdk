@@ -338,10 +338,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * Arbitrary user metadata to associate with the item variation. Searchable. This field has max length of 255 Unicode code points.
+   * Arbitrary user metadata to associate with the item variation. Cannot exceed 255 characters. Searchable.
    * @return userData
   **/
-  @ApiModelProperty(value = "Arbitrary user metadata to associate with the item variation. Searchable. This field has max length of 255 Unicode code points.")
+  @ApiModelProperty(value = "Arbitrary user metadata to associate with the item variation. Cannot exceed 255 characters. Searchable.")
   public String getUserData() {
     return userData;
   }

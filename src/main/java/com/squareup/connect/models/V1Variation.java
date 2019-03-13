@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1Variation
  */
+@ApiModel(description = "V1Variation")
 
 public class V1Variation {
   @JsonProperty("id")
@@ -39,7 +40,7 @@ public class V1Variation {
   private Integer ordinal = null;
 
   /**
-   * Indicates whether the item variation's price is fixed or determined at the time of sale.
+   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [V1VariationPricingType](#type-v1variationpricingtype) for possible values
    */
   public enum PricingTypeEnum {
     FIXED_PRICING("FIXED_PRICING"),
@@ -81,7 +82,7 @@ public class V1Variation {
   private Boolean trackInventory = null;
 
   /**
-   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold.
+   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold. See [V1VariationInventoryAlertType](#type-v1variationinventoryalerttype) for possible values
    */
   public enum InventoryAlertTypeEnum {
     LOW_QUANTITY("LOW_QUANTITY"),
@@ -205,10 +206,10 @@ public class V1Variation {
   }
 
    /**
-   * Indicates whether the item variation's price is fixed or determined at the time of sale.
+   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [V1VariationPricingType](#type-v1variationpricingtype) for possible values
    * @return pricingType
   **/
-  @ApiModelProperty(value = "Indicates whether the item variation's price is fixed or determined at the time of sale.")
+  @ApiModelProperty(value = "Indicates whether the item variation's price is fixed or determined at the time of sale. See [V1VariationPricingType](#type-v1variationpricingtype) for possible values")
   public PricingTypeEnum getPricingType() {
     return pricingType;
   }
@@ -277,10 +278,10 @@ public class V1Variation {
   }
 
    /**
-   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold.
+   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold. See [V1VariationInventoryAlertType](#type-v1variationinventoryalerttype) for possible values
    * @return inventoryAlertType
   **/
-  @ApiModelProperty(value = "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold.")
+  @ApiModelProperty(value = "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold. See [V1VariationInventoryAlertType](#type-v1variationinventoryalerttype) for possible values")
   public InventoryAlertTypeEnum getInventoryAlertType() {
     return inventoryAlertType;
   }

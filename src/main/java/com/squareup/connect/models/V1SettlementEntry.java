@@ -24,13 +24,14 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1SettlementEntry
  */
+@ApiModel(description = "V1SettlementEntry")
 
 public class V1SettlementEntry {
   @JsonProperty("payment_id")
   private String paymentId = null;
 
   /**
-   * The settlement's current status.
+   * The settlement's current status. See [V1SettlementEntryType](#type-v1settlemententrytype) for possible values
    */
   public enum TypeEnum {
     ADJUSTMENT("ADJUSTMENT"),
@@ -71,7 +72,9 @@ public class V1SettlementEntry {
     
     RETURNED_SQUARE_275("RETURNED_SQUARE_275"),
     
-    SQUARE_275("SQUARE_275");
+    SQUARE_275("SQUARE_275"),
+    
+    SQUARE_CARD("SQUARE_CARD");
 
     private String value;
 
@@ -128,10 +131,10 @@ public class V1SettlementEntry {
   }
 
    /**
-   * The settlement's current status.
+   * The settlement's current status. See [V1SettlementEntryType](#type-v1settlemententrytype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The settlement's current status.")
+  @ApiModelProperty(value = "The settlement's current status. See [V1SettlementEntryType](#type-v1settlemententrytype) for possible values")
   public TypeEnum getType() {
     return type;
   }

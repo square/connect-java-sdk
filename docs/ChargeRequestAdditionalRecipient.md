@@ -1,6 +1,10 @@
 
 # ChargeRequestAdditionalRecipient
 
+### Description
+
+Represents an additional recipient (other than the merchant) entitled to a portion of the tender. Support is currently limited to USD, CAD and GBP currencies
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

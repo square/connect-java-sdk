@@ -28,10 +28,11 @@ import java.util.List;
 /**
  * V1Refund
  */
+@ApiModel(description = "V1Refund")
 
 public class V1Refund {
   /**
-   * The type of refund 
+   * The type of refund See [V1RefundType](#type-v1refundtype) for possible values
    */
   public enum TypeEnum {
     FULL("FULL"),
@@ -120,10 +121,10 @@ public class V1Refund {
   }
 
    /**
-   * The type of refund 
+   * The type of refund See [V1RefundType](#type-v1refundtype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The type of refund ")
+  @ApiModelProperty(value = "The type of refund See [V1RefundType](#type-v1refundtype) for possible values")
   public TypeEnum getType() {
     return type;
   }

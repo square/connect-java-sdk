@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1PageCell
  */
+@ApiModel(description = "V1PageCell")
 
 public class V1PageCell {
   @JsonProperty("page_id")
@@ -35,7 +36,7 @@ public class V1PageCell {
   private Integer column = null;
 
   /**
-   * The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER).
+   * The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER). See [V1PageCellObjectType](#type-v1pagecellobjecttype) for possible values
    */
   public enum ObjectTypeEnum {
     ITEM("ITEM"),
@@ -75,7 +76,7 @@ public class V1PageCell {
   private String objectId = null;
 
   /**
-   * For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior.
+   * For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior. See [V1PageCellPlaceholderType](#type-v1pagecellplaceholdertype) for possible values
    */
   public enum PlaceholderTypeEnum {
     ALL_ITEMS("ALL_ITEMS"),
@@ -169,10 +170,10 @@ public class V1PageCell {
   }
 
    /**
-   * The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER).
+   * The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER). See [V1PageCellObjectType](#type-v1pagecellobjecttype) for possible values
    * @return objectType
   **/
-  @ApiModelProperty(value = "The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER).")
+  @ApiModelProperty(value = "The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER). See [V1PageCellObjectType](#type-v1pagecellobjecttype) for possible values")
   public ObjectTypeEnum getObjectType() {
     return objectType;
   }
@@ -205,10 +206,10 @@ public class V1PageCell {
   }
 
    /**
-   * For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior.
+   * For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior. See [V1PageCellPlaceholderType](#type-v1pagecellplaceholdertype) for possible values
    * @return placeholderType
   **/
-  @ApiModelProperty(value = "For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior.")
+  @ApiModelProperty(value = "For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior. See [V1PageCellPlaceholderType](#type-v1pagecellplaceholdertype) for possible values")
   public PlaceholderTypeEnum getPlaceholderType() {
     return placeholderType;
   }

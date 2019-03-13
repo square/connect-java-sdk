@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1CashDrawerEvent
  */
+@ApiModel(description = "V1CashDrawerEvent")
 
 public class V1CashDrawerEvent {
   @JsonProperty("id")
@@ -33,7 +34,7 @@ public class V1CashDrawerEvent {
   private String employeeId = null;
 
   /**
-   * The type of event that occurred.
+   * The type of event that occurred. See [V1CashDrawerEventEventType](#type-v1cashdrawereventeventtype) for possible values
    */
   public enum EventTypeEnum {
     NO_SALE("NO_SALE"),
@@ -130,10 +131,10 @@ public class V1CashDrawerEvent {
   }
 
    /**
-   * The type of event that occurred.
+   * The type of event that occurred. See [V1CashDrawerEventEventType](#type-v1cashdrawereventeventtype) for possible values
    * @return eventType
   **/
-  @ApiModelProperty(value = "The type of event that occurred.")
+  @ApiModelProperty(value = "The type of event that occurred. See [V1CashDrawerEventEventType](#type-v1cashdrawereventeventtype) for possible values")
   public EventTypeEnum getEventType() {
     return eventType;
   }

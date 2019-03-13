@@ -23,10 +23,11 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * V1OrderHistoryEntry
  */
+@ApiModel(description = "V1OrderHistoryEntry")
 
 public class V1OrderHistoryEntry {
   /**
-   * The type of action performed on the order.
+   * The type of action performed on the order. See [V1OrderHistoryEntryAction](#type-v1orderhistoryentryaction) for possible values
    */
   public enum ActionEnum {
     ORDER_PLACED("ORDER_PLACED"),
@@ -77,10 +78,10 @@ public class V1OrderHistoryEntry {
   }
 
    /**
-   * The type of action performed on the order.
+   * The type of action performed on the order. See [V1OrderHistoryEntryAction](#type-v1orderhistoryentryaction) for possible values
    * @return action
   **/
-  @ApiModelProperty(value = "The type of action performed on the order.")
+  @ApiModelProperty(value = "The type of action performed on the order. See [V1OrderHistoryEntryAction](#type-v1orderhistoryentryaction) for possible values")
   public ActionEnum getAction() {
     return action;
   }

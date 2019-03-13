@@ -28,13 +28,14 @@ import java.util.List;
 /**
  * V1CashDrawerShift
  */
+@ApiModel(description = "V1CashDrawerShift")
 
 public class V1CashDrawerShift {
   @JsonProperty("id")
   private String id = null;
 
   /**
-   * The shift's current state.
+   * The shift's current state. See [V1CashDrawerShiftEventType](#type-v1cashdrawershifteventtype) for possible values
    */
   public enum EventTypeEnum {
     OPEN("OPEN"),
@@ -143,10 +144,10 @@ public class V1CashDrawerShift {
   }
 
    /**
-   * The shift's current state.
+   * The shift's current state. See [V1CashDrawerShiftEventType](#type-v1cashdrawershifteventtype) for possible values
    * @return eventType
   **/
-  @ApiModelProperty(value = "The shift's current state.")
+  @ApiModelProperty(value = "The shift's current state. See [V1CashDrawerShiftEventType](#type-v1cashdrawershifteventtype) for possible values")
   public EventTypeEnum getEventType() {
     return eventType;
   }
