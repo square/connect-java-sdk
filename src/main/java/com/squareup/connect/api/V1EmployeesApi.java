@@ -683,14 +683,14 @@ public class V1EmployeesApi {
     }
     
     // create path and map variables
-    String localVarPath = "/v1/me/timecards/{timecard_id}/events";
+    String localVarPath = "/v1/me/timecards/{timecard_id}/events"
+      .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
     localVarHeaderParams.put("Square-Version", "2019-03-13");
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "timecard_id", timecardId));
 
     
     
@@ -727,14 +727,14 @@ public class V1EmployeesApi {
     }
     
     // create path and map variables
-    String localVarPath = "/v1/me/timecards/{timecard_id}/events";
+    String localVarPath = "/v1/me/timecards/{timecard_id}/events"
+      .replaceAll("\\{" + "timecard_id" + "\\}", apiClient.escapeString(timecardId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "timecard_id", timecardId));
 
     
     
