@@ -14,11 +14,7 @@
 package com.squareup.connect.models;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 
@@ -26,27 +22,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class V1ListTimecardEventsRequest {
-  @JsonProperty("timecard_id")
-  private String timecardId = null;
-
-  public V1ListTimecardEventsRequest timecardId(String timecardId) {
-    this.timecardId = timecardId;
-    return this;
-  }
-
-   /**
-   * The ID of the timecard to list events for.
-   * @return timecardId
-  **/
-  @ApiModelProperty(required = true, value = "The ID of the timecard to list events for.")
-  public String getTimecardId() {
-    return timecardId;
-  }
-
-  public void setTimecardId(String timecardId) {
-    this.timecardId = timecardId;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -56,13 +31,12 @@ public class V1ListTimecardEventsRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    V1ListTimecardEventsRequest v1ListTimecardEventsRequest = (V1ListTimecardEventsRequest) o;
-    return Objects.equals(this.timecardId, v1ListTimecardEventsRequest.timecardId);
+    return true;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(timecardId);
+    return Objects.hash();
   }
 
 
@@ -71,7 +45,6 @@ public class V1ListTimecardEventsRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1ListTimecardEventsRequest {\n");
     
-    sb.append("    timecardId: ").append(toIndentedString(timecardId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

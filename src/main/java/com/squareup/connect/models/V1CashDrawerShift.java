@@ -73,7 +73,7 @@ public class V1CashDrawerShift {
   private String openedAt = null;
 
   @JsonProperty("ended_at")
-  private Boolean endedAt = null;
+  private String endedAt = null;
 
   @JsonProperty("closed_at")
   private String closedAt = null;
@@ -174,7 +174,7 @@ public class V1CashDrawerShift {
     this.openedAt = openedAt;
   }
 
-  public V1CashDrawerShift endedAt(Boolean endedAt) {
+  public V1CashDrawerShift endedAt(String endedAt) {
     this.endedAt = endedAt;
     return this;
   }
@@ -184,11 +184,11 @@ public class V1CashDrawerShift {
    * @return endedAt
   **/
   @ApiModelProperty(value = "The time when the shift ended, in ISO 8601 format.")
-  public Boolean getEndedAt() {
+  public String getEndedAt() {
     return endedAt;
   }
 
-  public void setEndedAt(Boolean endedAt) {
+  public void setEndedAt(String endedAt) {
     this.endedAt = endedAt;
   }
 
