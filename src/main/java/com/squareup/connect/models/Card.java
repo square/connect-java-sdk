@@ -31,7 +31,7 @@ public class Card {
   private String id = null;
 
   /**
-   * The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for all possible values.
+   * The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for possible values
    */
   public enum CardBrandEnum {
     OTHER_BRAND("OTHER_BRAND"),
@@ -119,10 +119,10 @@ public class Card {
   }
 
    /**
-   * The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for all possible values.
+   * The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for possible values
    * @return cardBrand
   **/
-  @ApiModelProperty(value = "The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for all possible values.")
+  @ApiModelProperty(value = "The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for possible values")
   public CardBrandEnum getCardBrand() {
     return cardBrand;
   }

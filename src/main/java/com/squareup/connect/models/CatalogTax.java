@@ -30,7 +30,7 @@ public class CatalogTax {
   private String name = null;
 
   /**
-   * Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for all possible values.
+   * Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for possible values
    */
   public enum CalculationPhaseEnum {
     SUBTOTAL_PHASE("TAX_SUBTOTAL_PHASE"),
@@ -63,7 +63,7 @@ public class CatalogTax {
   private CalculationPhaseEnum calculationPhase = null;
 
   /**
-   * Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for all possible values.
+   * Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for possible values
    */
   public enum InclusionTypeEnum {
     ADDITIVE("ADDITIVE"),
@@ -128,10 +128,10 @@ public class CatalogTax {
   }
 
    /**
-   * Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for all possible values.
+   * Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for possible values
    * @return calculationPhase
   **/
-  @ApiModelProperty(value = "Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for all possible values.")
+  @ApiModelProperty(value = "Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for possible values")
   public CalculationPhaseEnum getCalculationPhase() {
     return calculationPhase;
   }
@@ -146,10 +146,10 @@ public class CatalogTax {
   }
 
    /**
-   * Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for all possible values.
+   * Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for possible values
    * @return inclusionType
   **/
-  @ApiModelProperty(value = "Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for all possible values.")
+  @ApiModelProperty(value = "Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for possible values")
   public InclusionTypeEnum getInclusionType() {
     return inclusionType;
   }

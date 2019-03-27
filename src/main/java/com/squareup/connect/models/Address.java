@@ -60,7 +60,7 @@ public class Address {
   private String postalCode = null;
 
   /**
-   * The address's country, in ISO 3166-1-alpha-2 format.
+   * The address's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values
    */
   public enum CountryEnum {
     ZZ("ZZ"),
@@ -801,10 +801,10 @@ public class Address {
   }
 
    /**
-   * The address's country, in ISO 3166-1-alpha-2 format.
+   * The address's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values
    * @return country
   **/
-  @ApiModelProperty(value = "The address's country, in ISO 3166-1-alpha-2 format.")
+  @ApiModelProperty(value = "The address's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values")
   public CountryEnum getCountry() {
     return country;
   }

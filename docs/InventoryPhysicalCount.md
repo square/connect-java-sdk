@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **referenceId** | **String** | An optional ID provided by the application to tie the [InventoryPhysicalCount](#type-inventoryphysicalcount) to an external system. |  [optional]
 **catalogObjectId** | **String** | The Square generated ID of the [CatalogObject](#type-catalogobject) being tracked. |  [optional]
 **catalogObjectType** | **String** | The [CatalogObjectType](#type-catalogobjecttype) of the [CatalogObject](#type-catalogobject) being tracked. Tracking is only supported for the &#x60;ITEM_VARIATION&#x60; type. |  [optional]
-**state** | [**StateEnum**](#StateEnum) | The current [InventoryState](#type-inventorystate) for the related quantity of items. |  [optional]
+**state** | [**StateEnum**](#StateEnum) | The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values |  [optional]
 **locationId** | **String** | The Square ID of the [Location](#type-location) where the related quantity of items are being tracked. |  [optional]
 **quantity** | **String** | The number of items affected by the physical count as a decimal string. Fractional quantities are not supported. |  [optional]
 **source** | [**SourceApplication**](SourceApplication.md) | Read-only information about the application that submitted the physical count. |  [optional]

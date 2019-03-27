@@ -31,7 +31,7 @@ public class ShiftWorkday {
   private DateRange dateRange = null;
 
   /**
-   * The strategy on which the dates are applied.
+   * The strategy on which the dates are applied. See [ShiftWorkdayMatcher](#type-shiftworkdaymatcher) for possible values
    */
   public enum MatchShiftsByEnum {
     START_AT("START_AT"),
@@ -92,10 +92,10 @@ public class ShiftWorkday {
   }
 
    /**
-   * The strategy on which the dates are applied.
+   * The strategy on which the dates are applied. See [ShiftWorkdayMatcher](#type-shiftworkdaymatcher) for possible values
    * @return matchShiftsBy
   **/
-  @ApiModelProperty(value = "The strategy on which the dates are applied.")
+  @ApiModelProperty(value = "The strategy on which the dates are applied. See [ShiftWorkdayMatcher](#type-shiftworkdaymatcher) for possible values")
   public MatchShiftsByEnum getMatchShiftsBy() {
     return matchShiftsBy;
   }

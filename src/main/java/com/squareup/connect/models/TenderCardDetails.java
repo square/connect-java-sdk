@@ -28,7 +28,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class TenderCardDetails {
   /**
-   * The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values.
+   * The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values
    */
   public enum StatusEnum {
     AUTHORIZED("AUTHORIZED"),
@@ -68,7 +68,7 @@ public class TenderCardDetails {
   private Card card = null;
 
   /**
-   * The method used to enter the card's details for the transaction.
+   * The method used to enter the card's details for the transaction. See [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values
    */
   public enum EntryMethodEnum {
     SWIPED("SWIPED"),
@@ -112,10 +112,10 @@ public class TenderCardDetails {
   }
 
    /**
-   * The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values.
+   * The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values.")
+  @ApiModelProperty(value = "The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }
@@ -148,10 +148,10 @@ public class TenderCardDetails {
   }
 
    /**
-   * The method used to enter the card's details for the transaction.
+   * The method used to enter the card's details for the transaction. See [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values
    * @return entryMethod
   **/
-  @ApiModelProperty(value = "The method used to enter the card's details for the transaction.")
+  @ApiModelProperty(value = "The method used to enter the card's details for the transaction. See [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values")
   public EntryMethodEnum getEntryMethod() {
     return entryMethod;
   }

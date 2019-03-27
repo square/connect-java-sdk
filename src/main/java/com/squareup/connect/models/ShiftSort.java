@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ShiftSort {
   /**
-   * The field to sort on.
+   * The field to sort on. See [ShiftSortField](#type-shiftsortfield) for possible values
    */
   public enum FieldEnum {
     START_AT("START_AT"),
@@ -64,7 +64,7 @@ public class ShiftSort {
   private FieldEnum field = null;
 
   /**
-   * The order in which results are returned. Defaults to DESC.
+   * The order in which results are returned. Defaults to DESC. See [SortOrder](#type-sortorder) for possible values
    */
   public enum OrderEnum {
     DESC("DESC"),
@@ -102,10 +102,10 @@ public class ShiftSort {
   }
 
    /**
-   * The field to sort on.
+   * The field to sort on. See [ShiftSortField](#type-shiftsortfield) for possible values
    * @return field
   **/
-  @ApiModelProperty(value = "The field to sort on.")
+  @ApiModelProperty(value = "The field to sort on. See [ShiftSortField](#type-shiftsortfield) for possible values")
   public FieldEnum getField() {
     return field;
   }
@@ -120,10 +120,10 @@ public class ShiftSort {
   }
 
    /**
-   * The order in which results are returned. Defaults to DESC.
+   * The order in which results are returned. Defaults to DESC. See [SortOrder](#type-sortorder) for possible values
    * @return order
   **/
-  @ApiModelProperty(value = "The order in which results are returned. Defaults to DESC.")
+  @ApiModelProperty(value = "The order in which results are returned. Defaults to DESC. See [SortOrder](#type-sortorder) for possible values")
   public OrderEnum getOrder() {
     return order;
   }

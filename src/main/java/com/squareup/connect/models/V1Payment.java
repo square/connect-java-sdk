@@ -515,10 +515,10 @@ public class V1Payment {
   }
 
    /**
-   * All of the additive taxes associated with the payment.
+   * All of the tenders associated with the payment.
    * @return tender
   **/
-  @ApiModelProperty(value = "All of the additive taxes associated with the payment.")
+  @ApiModelProperty(value = "All of the tenders associated with the payment.")
   public List<V1Tender> getTender() {
     return tender;
   }

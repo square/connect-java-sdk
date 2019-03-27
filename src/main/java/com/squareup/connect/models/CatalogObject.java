@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.CatalogCategory;
 import com.squareup.connect.models.CatalogDiscount;
+import com.squareup.connect.models.CatalogImage;
 import com.squareup.connect.models.CatalogItem;
 import com.squareup.connect.models.CatalogItemVariation;
 import com.squareup.connect.models.CatalogModifier;
@@ -37,10 +38,12 @@ import java.util.List;
 
 public class CatalogObject {
   /**
-   * The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below.  See [CatalogObjectType](#type-catalogobjecttype) for all possible values.
+   * The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below. See [CatalogObjectType](#type-catalogobjecttype) for possible values
    */
   public enum TypeEnum {
     ITEM("ITEM"),
+    
+    IMAGE("IMAGE"),
     
     CATEGORY("CATEGORY"),
     
@@ -124,16 +127,19 @@ public class CatalogObject {
   @JsonProperty("modifier_data")
   private CatalogModifier modifierData = null;
 
+  @JsonProperty("image_data")
+  private CatalogImage imageData = null;
+
   public CatalogObject type(TypeEnum type) {
     this.type = type;
     return this;
   }
 
    /**
-   * The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below.  See [CatalogObjectType](#type-catalogobjecttype) for all possible values.
+   * The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below. See [CatalogObjectType](#type-catalogobjecttype) for possible values
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below.  See [CatalogObjectType](#type-catalogobjecttype) for all possible values.")
+  @ApiModelProperty(required = true, value = "The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below. See [CatalogObjectType](#type-catalogobjecttype) for possible values")
   public TypeEnum getType() {
     return type;
   }
@@ -427,6 +433,24 @@ public class CatalogObject {
     this.modifierData = modifierData;
   }
 
+  public CatalogObject imageData(CatalogImage imageData) {
+    this.imageData = imageData;
+    return this;
+  }
+
+   /**
+   * Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`.
+   * @return imageData
+  **/
+  @ApiModelProperty(value = "Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`.")
+  public CatalogImage getImageData() {
+    return imageData;
+  }
+
+  public void setImageData(CatalogImage imageData) {
+    this.imageData = imageData;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -452,12 +476,13 @@ public class CatalogObject {
         Objects.equals(this.taxData, catalogObject.taxData) &&
         Objects.equals(this.discountData, catalogObject.discountData) &&
         Objects.equals(this.modifierListData, catalogObject.modifierListData) &&
-        Objects.equals(this.modifierData, catalogObject.modifierData);
+        Objects.equals(this.modifierData, catalogObject.modifierData) &&
+        Objects.equals(this.imageData, catalogObject.imageData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData);
+    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, imageData);
   }
 
 
@@ -482,6 +507,7 @@ public class CatalogObject {
     sb.append("    discountData: ").append(toIndentedString(discountData)).append("\n");
     sb.append("    modifierListData: ").append(toIndentedString(modifierListData)).append("\n");
     sb.append("    modifierData: ").append(toIndentedString(modifierData)).append("\n");
+    sb.append("    imageData: ").append(toIndentedString(imageData)).append("\n");
     sb.append("}");
     return sb.toString();
   }

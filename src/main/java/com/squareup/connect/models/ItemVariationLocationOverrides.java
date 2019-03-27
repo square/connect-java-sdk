@@ -34,7 +34,7 @@ public class ItemVariationLocationOverrides {
   private Money priceMoney = null;
 
   /**
-   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
+   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for possible values
    */
   public enum PricingTypeEnum {
     FIXED_PRICING("FIXED_PRICING"),
@@ -70,7 +70,7 @@ public class ItemVariationLocationOverrides {
   private Boolean trackInventory = null;
 
   /**
-   * Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values.
+   * Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
    */
   public enum InventoryAlertTypeEnum {
     NONE("NONE"),
@@ -147,10 +147,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
+   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for possible values
    * @return pricingType
   **/
-  @ApiModelProperty(value = "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for all possible values.")
+  @ApiModelProperty(value = "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for possible values")
   public PricingTypeEnum getPricingType() {
     return pricingType;
   }
@@ -183,10 +183,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values.
+   * Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
    * @return inventoryAlertType
   **/
-  @ApiModelProperty(value = "Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values.")
+  @ApiModelProperty(value = "Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values")
   public InventoryAlertTypeEnum getInventoryAlertType() {
     return inventoryAlertType;
   }

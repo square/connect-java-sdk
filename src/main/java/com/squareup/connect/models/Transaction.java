@@ -50,7 +50,7 @@ public class Transaction {
   private String referenceId = null;
 
   /**
-   * The Square product that processed the transaction.
+   * The Square product that processed the transaction. See [TransactionProduct](#type-transactionproduct) for possible values
    */
   public enum ProductEnum {
     REGISTER("REGISTER"),
@@ -227,10 +227,10 @@ public class Transaction {
   }
 
    /**
-   * The Square product that processed the transaction.
+   * The Square product that processed the transaction. See [TransactionProduct](#type-transactionproduct) for possible values
    * @return product
   **/
-  @ApiModelProperty(value = "The Square product that processed the transaction.")
+  @ApiModelProperty(value = "The Square product that processed the transaction. See [TransactionProduct](#type-transactionproduct) for possible values")
   public ProductEnum getProduct() {
     return product;
   }

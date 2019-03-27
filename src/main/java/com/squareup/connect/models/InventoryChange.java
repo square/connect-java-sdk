@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class InventoryChange {
   /**
-   * Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for all possible values.
+   * Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for possible values
    */
   public enum TypeEnum {
     PHYSICAL_COUNT("PHYSICAL_COUNT"),
@@ -79,10 +79,10 @@ public class InventoryChange {
   }
 
    /**
-   * Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for all possible values.
+   * Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for all possible values.")
+  @ApiModelProperty(value = "Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for possible values")
   public TypeEnum getType() {
     return type;
   }

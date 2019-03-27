@@ -30,7 +30,7 @@ public class ListEmployeesRequest {
   private String locationId = null;
 
   /**
-   * Specifies the EmployeeStatus to filter the employee by.
+   * Specifies the EmployeeStatus to filter the employee by. See [EmployeeStatus](#type-employeestatus) for possible values
    */
   public enum StatusEnum {
     ACTIVE("ACTIVE"),
@@ -92,10 +92,10 @@ public class ListEmployeesRequest {
   }
 
    /**
-   * Specifies the EmployeeStatus to filter the employee by.
+   * Specifies the EmployeeStatus to filter the employee by. See [EmployeeStatus](#type-employeestatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "Specifies the EmployeeStatus to filter the employee by.")
+  @ApiModelProperty(value = "Specifies the EmployeeStatus to filter the employee by. See [EmployeeStatus](#type-employeestatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }

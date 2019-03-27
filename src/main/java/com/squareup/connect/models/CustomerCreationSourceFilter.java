@@ -96,7 +96,7 @@ public class CustomerCreationSourceFilter {
   private List<ValuesEnum> values = new ArrayList<ValuesEnum>();
 
   /**
-   * Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values.
+   * Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values
    */
   public enum RuleEnum {
     INCLUDE("INCLUDE"),
@@ -139,10 +139,10 @@ public class CustomerCreationSourceFilter {
   }
 
    /**
-   * The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values.
+   * The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values
    * @return values
   **/
-  @ApiModelProperty(value = "The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values.")
+  @ApiModelProperty(value = "The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values")
   public List<ValuesEnum> getValues() {
     return values;
   }
@@ -157,10 +157,10 @@ public class CustomerCreationSourceFilter {
   }
 
    /**
-   * Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values.
+   * Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values
    * @return rule
   **/
-  @ApiModelProperty(value = "Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values.")
+  @ApiModelProperty(value = "Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values")
   public RuleEnum getRule() {
     return rule;
   }

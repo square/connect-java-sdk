@@ -40,7 +40,7 @@ public class InventoryPhysicalCount {
   private String catalogObjectType = null;
 
   /**
-   * The current [InventoryState](#type-inventorystate) for the related quantity of items.
+   * The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values
    */
   public enum StateEnum {
     CUSTOM("CUSTOM"),
@@ -188,10 +188,10 @@ public class InventoryPhysicalCount {
   }
 
    /**
-   * The current [InventoryState](#type-inventorystate) for the related quantity of items.
+   * The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values
    * @return state
   **/
-  @ApiModelProperty(value = "The current [InventoryState](#type-inventorystate) for the related quantity of items.")
+  @ApiModelProperty(value = "The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values")
   public StateEnum getState() {
     return state;
   }

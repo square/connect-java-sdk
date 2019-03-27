@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class SourceApplication {
   /**
-   * Read-only [Product](#type-product) type for the application.
+   * Read-only [Product](#type-product) type for the application. See [Product](#type-product) for possible values
    */
   public enum ProductEnum {
     SQUARE_POS("SQUARE_POS"),
@@ -87,10 +87,10 @@ public class SourceApplication {
   }
 
    /**
-   * Read-only [Product](#type-product) type for the application.
+   * Read-only [Product](#type-product) type for the application. See [Product](#type-product) for possible values
    * @return product
   **/
-  @ApiModelProperty(value = "Read-only [Product](#type-product) type for the application.")
+  @ApiModelProperty(value = "Read-only [Product](#type-product) type for the application. See [Product](#type-product) for possible values")
   public ProductEnum getProduct() {
     return product;
   }

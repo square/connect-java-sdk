@@ -46,7 +46,7 @@ public class CatalogItemVariation {
   private Integer ordinal = null;
 
   /**
-   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
+   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for possible values
    */
   public enum PricingTypeEnum {
     FIXED_PRICING("FIXED_PRICING"),
@@ -88,7 +88,7 @@ public class CatalogItemVariation {
   private Boolean trackInventory = null;
 
   /**
-   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values.
+   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
    */
   public enum InventoryAlertTypeEnum {
     NONE("NONE"),
@@ -225,10 +225,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
+   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for possible values
    * @return pricingType
   **/
-  @ApiModelProperty(value = "Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.")
+  @ApiModelProperty(value = "Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for possible values")
   public PricingTypeEnum getPricingType() {
     return pricingType;
   }
@@ -302,10 +302,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values.
+   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
    * @return inventoryAlertType
   **/
-  @ApiModelProperty(value = "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values.")
+  @ApiModelProperty(value = "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values")
   public InventoryAlertTypeEnum getInventoryAlertType() {
     return inventoryAlertType;
   }

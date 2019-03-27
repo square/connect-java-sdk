@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190313.1</version>
+    <version>2.20190327.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190313.1"
+compile "com.squareup:connect:2.20190327.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -47,7 +47,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190313.1.jar
+* target/connect-2.20190327.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -256,6 +256,7 @@ Class | Method | HTTP request | Description
  - [CatalogDiscount](docs/CatalogDiscount.md)
  - [CatalogDiscountType](docs/CatalogDiscountType.md)
  - [CatalogIdMapping](docs/CatalogIdMapping.md)
+ - [CatalogImage](docs/CatalogImage.md)
  - [CatalogInfoRequest](docs/CatalogInfoRequest.md)
  - [CatalogInfoResponse](docs/CatalogInfoResponse.md)
  - [CatalogInfoResponseLimits](docs/CatalogInfoResponseLimits.md)

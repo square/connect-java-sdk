@@ -33,7 +33,7 @@ public class CatalogQuerySortedAttribute {
   private String initialAttributeValue = null;
 
   /**
-   * The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending).
+   * The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending). See [SortOrder](#type-sortorder) for possible values
    */
   public enum SortOrderEnum {
     DESC("DESC"),
@@ -107,10 +107,10 @@ public class CatalogQuerySortedAttribute {
   }
 
    /**
-   * The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending).
+   * The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending). See [SortOrder](#type-sortorder) for possible values
    * @return sortOrder
   **/
-  @ApiModelProperty(value = "The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending).")
+  @ApiModelProperty(value = "The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending). See [SortOrder](#type-sortorder) for possible values")
   public SortOrderEnum getSortOrder() {
     return sortOrder;
   }

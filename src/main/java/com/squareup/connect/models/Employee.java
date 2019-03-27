@@ -41,7 +41,7 @@ public class Employee {
   private List<String> locationIds = new ArrayList<String>();
 
   /**
-   * Specifies the status of the employee being fetched.
+   * Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
    */
   public enum StatusEnum {
     ACTIVE("ACTIVE"),
@@ -162,10 +162,10 @@ public class Employee {
   }
 
    /**
-   * Specifies the status of the employee being fetched.
+   * Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "Specifies the status of the employee being fetched.")
+  @ApiModelProperty(value = "Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }

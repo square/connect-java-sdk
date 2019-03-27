@@ -34,7 +34,7 @@ public class OrderLineItemTax {
   private String name = null;
 
   /**
-   * Indicates the calculation method used to apply the tax.  See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
+   * Indicates the calculation method used to apply the tax. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
    */
   public enum TypeEnum {
     UNKNOWN_TAX("UNKNOWN_TAX"),
@@ -75,7 +75,7 @@ public class OrderLineItemTax {
   private Money appliedMoney = null;
 
   /**
-   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values.
+   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values
    */
   public enum ScopeEnum {
     OTHER_TAX_SCOPE("OTHER_TAX_SCOPE"),
@@ -151,10 +151,10 @@ public class OrderLineItemTax {
   }
 
    /**
-   * Indicates the calculation method used to apply the tax.  See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
+   * Indicates the calculation method used to apply the tax. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "Indicates the calculation method used to apply the tax.  See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.")
+  @ApiModelProperty(value = "Indicates the calculation method used to apply the tax. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values")
   public TypeEnum getType() {
     return type;
   }
@@ -205,10 +205,10 @@ public class OrderLineItemTax {
   }
 
    /**
-   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values.
+   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values
    * @return scope
   **/
-  @ApiModelProperty(value = "Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values.")
+  @ApiModelProperty(value = "Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values")
   public ScopeEnum getScope() {
     return scope;
   }
