@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class Error {
   /**
-   * The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values.
+   * The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values
    */
   public enum CategoryEnum {
     API_ERROR("API_ERROR"),
@@ -286,10 +286,10 @@ public class Error {
   }
 
    /**
-   * The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values.
+   * The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values
    * @return category
   **/
-  @ApiModelProperty(required = true, value = "The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values.")
+  @ApiModelProperty(required = true, value = "The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values")
   public CategoryEnum getCategory() {
     return category;
   }

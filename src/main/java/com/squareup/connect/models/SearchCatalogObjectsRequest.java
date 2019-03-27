@@ -38,6 +38,8 @@ public class SearchCatalogObjectsRequest {
   public enum ObjectTypesEnum {
     ITEM("ITEM"),
     
+    IMAGE("IMAGE"),
+    
     CATEGORY("CATEGORY"),
     
     ITEM_VARIATION("ITEM_VARIATION"),
@@ -119,10 +121,10 @@ public class SearchCatalogObjectsRequest {
   }
 
    /**
-   * The desired set of object types to appear in the search results. The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.
+   * The desired set of object types to appear in the search results. The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`. See [CatalogObjectType](#type-catalogobjecttype) for possible values
    * @return objectTypes
   **/
-  @ApiModelProperty(value = "The desired set of object types to appear in the search results. The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.")
+  @ApiModelProperty(value = "The desired set of object types to appear in the search results. The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`. See [CatalogObjectType](#type-catalogobjecttype) for possible values")
   public List<ObjectTypesEnum> getObjectTypes() {
     return objectTypes;
   }

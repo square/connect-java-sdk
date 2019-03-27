@@ -67,7 +67,7 @@ public class CatalogItem {
   private List<CatalogObject> variations = new ArrayList<CatalogObject>();
 
   /**
-   * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for all possible values.
+   * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
    */
   public enum ProductTypeEnum {
     REGULAR("REGULAR"),
@@ -304,10 +304,10 @@ public class CatalogItem {
   }
 
    /**
-   * The URL of an image representing this item.
+   * __Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_data` in [`CatalogObject`](#type-catalogobject).
    * @return imageUrl
   **/
-  @ApiModelProperty(value = "The URL of an image representing this item.")
+  @ApiModelProperty(value = "__Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_data` in [`CatalogObject`](#type-catalogobject).")
   public String getImageUrl() {
     return imageUrl;
   }
@@ -345,10 +345,10 @@ public class CatalogItem {
   }
 
    /**
-   * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for all possible values.
+   * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
    * @return productType
   **/
-  @ApiModelProperty(value = "The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for all possible values.")
+  @ApiModelProperty(value = "The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values")
   public ProductTypeEnum getProductType() {
     return productType;
   }

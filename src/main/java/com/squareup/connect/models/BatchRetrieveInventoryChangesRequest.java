@@ -188,10 +188,10 @@ public class BatchRetrieveInventoryChangesRequest {
   }
 
    /**
-   * Filters results by [InventoryChangeType](#type-inventorychangetype). Default: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as a filter.
+   * Filters results by [InventoryChangeType](#type-inventorychangetype). Default: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as a filter. See [InventoryChangeType](#type-inventorychangetype) for possible values
    * @return types
   **/
-  @ApiModelProperty(value = "Filters results by [InventoryChangeType](#type-inventorychangetype). Default: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as a filter.")
+  @ApiModelProperty(value = "Filters results by [InventoryChangeType](#type-inventorychangetype). Default: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as a filter. See [InventoryChangeType](#type-inventorychangetype) for possible values")
   public List<TypesEnum> getTypes() {
     return types;
   }
@@ -211,10 +211,10 @@ public class BatchRetrieveInventoryChangesRequest {
   }
 
    /**
-   * Filters `ADJUSTMENT` query results by [InventoryState](#type-inventorystate). Only applied when set. Default: unset.
+   * Filters `ADJUSTMENT` query results by [InventoryState](#type-inventorystate). Only applied when set. Default: unset. See [InventoryState](#type-inventorystate) for possible values
    * @return states
   **/
-  @ApiModelProperty(value = "Filters `ADJUSTMENT` query results by [InventoryState](#type-inventorystate). Only applied when set. Default: unset.")
+  @ApiModelProperty(value = "Filters `ADJUSTMENT` query results by [InventoryState](#type-inventorystate). Only applied when set. Default: unset. See [InventoryState](#type-inventorystate) for possible values")
   public List<StatesEnum> getStates() {
     return states;
   }

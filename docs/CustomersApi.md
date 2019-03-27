@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 CreateCustomerCard
 
-Adds a card on file to an existing customer.  As with charges, calls to &#x60;CreateCustomerCard&#x60; are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.
+Adds a card on file to an existing customer.  As with charges, calls to &#x60;CreateCustomerCard&#x60; are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.  Cards on file are automatically updated on a monthly basis to confirm they are still valid and can be charged.
 
 ### Example
 ```java
@@ -255,8 +255,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
 String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information.
-String sortField = "sortField_example"; // String | Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values.
-String sortOrder = "sortOrder_example"; // String | Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values.
+String sortField = "sortField_example"; // String | Indicates how Customers should be sorted. Default: `DEFAULT`.
+String sortOrder = "sortOrder_example"; // String | Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`.
 try {
     ListCustomersResponse result = apiInstance.listCustomers(cursor, sortField, sortOrder);
     System.out.println(result);
@@ -271,8 +271,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. | [optional]
- **sortField** | **String**| Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. | [optional] [enum: DEFAULT, CREATED_AT]
- **sortOrder** | **String**| Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. | [optional] [enum: DESC, ASC]
+ **sortField** | **String**| Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. | [optional] [enum: DEFAULT, CREATED_AT]
+ **sortOrder** | **String**| Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. | [optional] [enum: DESC, ASC]
 
 ### Return type
 

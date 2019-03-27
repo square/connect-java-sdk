@@ -81,7 +81,7 @@ public class Customer {
   private List<CustomerGroupInfo> groups = new ArrayList<CustomerGroupInfo>();
 
   /**
-   * A creation source represents the method used to create the customer profile.
+   * A creation source represents the method used to create the customer profile. See [CustomerCreationSource](#type-customercreationsource) for possible values
    */
   public enum CreationSourceEnum {
     OTHER("OTHER"),
@@ -451,10 +451,10 @@ public class Customer {
   }
 
    /**
-   * A creation source represents the method used to create the customer profile.
+   * A creation source represents the method used to create the customer profile. See [CustomerCreationSource](#type-customercreationsource) for possible values
    * @return creationSource
   **/
-  @ApiModelProperty(value = "A creation source represents the method used to create the customer profile.")
+  @ApiModelProperty(value = "A creation source represents the method used to create the customer profile. See [CustomerCreationSource](#type-customercreationsource) for possible values")
   public CreationSourceEnum getCreationSource() {
     return creationSource;
   }

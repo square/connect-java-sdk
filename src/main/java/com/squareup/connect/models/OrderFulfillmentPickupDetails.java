@@ -37,7 +37,7 @@ public class OrderFulfillmentPickupDetails {
   private String autoCompleteDuration = null;
 
   /**
-   * The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`.
+   * The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`. See [OrderFulfillmentPickupDetailsScheduleType](#type-orderfulfillmentpickupdetailsscheduletype) for possible values
    */
   public enum ScheduleTypeEnum {
     SCHEDULED("SCHEDULED"),
@@ -165,10 +165,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`.
+   * The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`. See [OrderFulfillmentPickupDetailsScheduleType](#type-orderfulfillmentpickupdetailsscheduletype) for possible values
    * @return scheduleType
   **/
-  @ApiModelProperty(value = "The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`.")
+  @ApiModelProperty(value = "The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`. See [OrderFulfillmentPickupDetailsScheduleType](#type-orderfulfillmentpickupdetailsscheduletype) for possible values")
   public ScheduleTypeEnum getScheduleType() {
     return scheduleType;
   }

@@ -37,7 +37,7 @@ public class ShiftFilter {
   private List<String> employeeId = new ArrayList<String>();
 
   /**
-   * Fetch a `Shift` instance by `Shift.status`.
+   * Fetch a `Shift` instance by `Shift.status`. See [ShiftFilterStatus](#type-shiftfilterstatus) for possible values
    */
   public enum StatusEnum {
     OPEN("OPEN"),
@@ -130,10 +130,10 @@ public class ShiftFilter {
   }
 
    /**
-   * Fetch a `Shift` instance by `Shift.status`.
+   * Fetch a `Shift` instance by `Shift.status`. See [ShiftFilterStatus](#type-shiftfilterstatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "Fetch a `Shift` instance by `Shift.status`.")
+  @ApiModelProperty(value = "Fetch a `Shift` instance by `Shift.status`. See [ShiftFilterStatus](#type-shiftfilterstatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }

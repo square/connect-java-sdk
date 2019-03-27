@@ -128,10 +128,10 @@ public class ObtainTokenResponse {
   }
 
    /**
-   * __Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if  the merchant signed up for a subscription during authorization.
+   * __Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
    * @return subscriptionId
   **/
-  @ApiModelProperty(value = "__Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if  the merchant signed up for a subscription during authorization.")
+  @ApiModelProperty(value = "__Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.")
   public String getSubscriptionId() {
     return subscriptionId;
   }
@@ -182,10 +182,10 @@ public class ObtainTokenResponse {
   }
 
    /**
-   * A refresh token.  For more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).
+   * A refresh token. For more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).
    * @return refreshToken
   **/
-  @ApiModelProperty(value = "A refresh token.  For more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).")
+  @ApiModelProperty(value = "A refresh token. For more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).")
   public String getRefreshToken() {
     return refreshToken;
   }

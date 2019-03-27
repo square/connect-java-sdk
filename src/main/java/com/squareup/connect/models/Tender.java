@@ -60,7 +60,7 @@ public class Tender {
   private String customerId = null;
 
   /**
-   * The type of tender, such as `CARD` or `CASH`.
+   * The type of tender, such as `CARD` or `CASH`. See [TenderType](#type-tendertype) for possible values
    */
   public enum TypeEnum {
     CARD("CARD"),
@@ -277,10 +277,10 @@ public class Tender {
   }
 
    /**
-   * The type of tender, such as `CARD` or `CASH`.
+   * The type of tender, such as `CARD` or `CASH`. See [TenderType](#type-tendertype) for possible values
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "The type of tender, such as `CARD` or `CASH`.")
+  @ApiModelProperty(required = true, value = "The type of tender, such as `CARD` or `CASH`. See [TenderType](#type-tendertype) for possible values")
   public TypeEnum getType() {
     return type;
   }

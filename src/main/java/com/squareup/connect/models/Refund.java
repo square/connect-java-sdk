@@ -52,7 +52,7 @@ public class Refund {
   private Money amountMoney = null;
 
   /**
-   * The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`).
+   * The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`). See [RefundStatus](#type-refundstatus) for possible values
    */
   public enum StatusEnum {
     PENDING("PENDING"),
@@ -226,10 +226,10 @@ public class Refund {
   }
 
    /**
-   * The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`).
+   * The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`). See [RefundStatus](#type-refundstatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(required = true, value = "The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`).")
+  @ApiModelProperty(required = true, value = "The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`). See [RefundStatus](#type-refundstatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }

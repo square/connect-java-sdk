@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **administrativeDistrictLevel2** | **String** | A civil entity within the address&#39;s &#x60;administrative_district_level_1&#x60;. In the US, this is the county. |  [optional]
 **administrativeDistrictLevel3** | **String** | A civil entity within the address&#39;s &#x60;administrative_district_level_2&#x60;, if any. |  [optional]
 **postalCode** | **String** | The address&#39;s postal code. |  [optional]
-**country** | [**CountryEnum**](#CountryEnum) | The address&#39;s country, in ISO 3166-1-alpha-2 format. |  [optional]
+**country** | [**CountryEnum**](#CountryEnum) | The address&#39;s country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values |  [optional]
 **firstName** | **String** | Optional first name when it&#39;s representing recipient. |  [optional]
 **lastName** | **String** | Optional last name when it&#39;s representing recipient. |  [optional]
 **organization** | **String** | Optional organization name when it&#39;s representing recipient. |  [optional]

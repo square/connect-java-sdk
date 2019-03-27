@@ -55,7 +55,7 @@ public class Shift {
   private List<ModelBreak> breaks = new ArrayList<ModelBreak>();
 
   /**
-   * Describes working state of the current `Shift`.
+   * Describes working state of the current `Shift`. See [ShiftStatus](#type-shiftstatus) for possible values
    */
   public enum StatusEnum {
     OPEN("OPEN"),
@@ -251,10 +251,10 @@ public class Shift {
   }
 
    /**
-   * Describes working state of the current `Shift`.
+   * Describes working state of the current `Shift`. See [ShiftStatus](#type-shiftstatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "Describes working state of the current `Shift`.")
+  @ApiModelProperty(value = "Describes working state of the current `Shift`. See [ShiftStatus](#type-shiftstatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }

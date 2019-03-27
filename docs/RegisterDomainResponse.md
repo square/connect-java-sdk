@@ -9,7 +9,7 @@ Defines the fields that are included in the response body of a request to the [R
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **errors** | [**List&lt;Error&gt;**](Error.md) | Any errors that occurred during the request. |  [optional]
-**status** | [**StatusEnum**](#StatusEnum) | Status of the domain registration.  See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values. |  [optional]
+**status** | [**StatusEnum**](#StatusEnum) | Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values |  [optional]
 
 
 <a name="StatusEnum"></a>

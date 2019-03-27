@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **netSalesMoney** | [**V1Money**](V1Money.md) | The total of all sales, minus any applicable taxes. |  [optional]
 **inclusiveTax** | [**List&lt;V1PaymentTax&gt;**](V1PaymentTax.md) | All of the inclusive taxes associated with the payment. |  [optional]
 **additiveTax** | [**List&lt;V1PaymentTax&gt;**](V1PaymentTax.md) | All of the additive taxes associated with the payment. |  [optional]
-**tender** | [**List&lt;V1Tender&gt;**](V1Tender.md) | All of the additive taxes associated with the payment. |  [optional]
+**tender** | [**List&lt;V1Tender&gt;**](V1Tender.md) | All of the tenders associated with the payment. |  [optional]
 **refunds** | [**List&lt;V1Refund&gt;**](V1Refund.md) | All of the refunds applied to the payment. Note that the value of all refunds on a payment can exceed the value of all tenders if a merchant chooses to refund money to a tender after previously accepting returned goods as part of an exchange. |  [optional]
 **itemizations** | [**List&lt;V1PaymentItemization&gt;**](V1PaymentItemization.md) | The items purchased in the payment. |  [optional]
 **surchargeMoney** | [**V1Money**](V1Money.md) | The total of all surcharges applied to the payment. |  [optional]

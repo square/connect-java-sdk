@@ -28,7 +28,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class OrderFulfillment {
   /**
-   * The type of the fulfillment.
+   * The type of the fulfillment. See [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values
    */
   public enum TypeEnum {
     PICKUP("PICKUP");
@@ -59,7 +59,7 @@ public class OrderFulfillment {
   private TypeEnum type = null;
 
   /**
-   * The state of the fulfillment.
+   * The state of the fulfillment. See [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values
    */
   public enum StateEnum {
     PROPOSED("PROPOSED"),
@@ -108,10 +108,10 @@ public class OrderFulfillment {
   }
 
    /**
-   * The type of the fulfillment.
+   * The type of the fulfillment. See [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The type of the fulfillment.")
+  @ApiModelProperty(value = "The type of the fulfillment. See [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values")
   public TypeEnum getType() {
     return type;
   }
@@ -126,10 +126,10 @@ public class OrderFulfillment {
   }
 
    /**
-   * The state of the fulfillment.
+   * The state of the fulfillment. See [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values
    * @return state
   **/
-  @ApiModelProperty(value = "The state of the fulfillment.")
+  @ApiModelProperty(value = "The state of the fulfillment. See [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values")
   public StateEnum getState() {
     return state;
   }

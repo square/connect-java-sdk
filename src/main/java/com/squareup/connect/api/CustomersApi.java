@@ -68,7 +68,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-27");
 
     
     
@@ -132,7 +132,7 @@ public class CustomersApi {
   }
   /**
    * CreateCustomerCard
-   * Adds a card on file to an existing customer.  As with charges, calls to &#x60;CreateCustomerCard&#x60; are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.
+   * Adds a card on file to an existing customer.  As with charges, calls to &#x60;CreateCustomerCard&#x60; are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.  Cards on file are automatically updated on a monthly basis to confirm they are still valid and can be charged.
    * @param customerId The ID of the customer to link the card on file to. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateCustomerCardResponse
@@ -159,7 +159,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-27");
 
     
     
@@ -182,7 +182,7 @@ public class CustomersApi {
 
   /**
    * CreateCustomerCard
-   * Adds a card on file to an existing customer.  As with charges, calls to &#x60;CreateCustomerCard&#x60; are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.
+   * Adds a card on file to an existing customer.  As with charges, calls to &#x60;CreateCustomerCard&#x60; are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.  Cards on file are automatically updated on a monthly basis to confirm they are still valid and can be charged.
    * @param customerId The ID of the customer to link the card on file to. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<CreateCustomerCardResponse>
@@ -251,7 +251,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-27");
 
     
     
@@ -344,7 +344,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-27");
 
     
     
@@ -418,8 +418,8 @@ public class CustomersApi {
    * ListCustomers
    * Lists a business&#39;s customers.
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
-   * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)
-   * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)
+   * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. (optional)
+   * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. (optional)
    * @return ListCustomersResponse
    * @throws ApiException if fails to make API call
    */
@@ -433,7 +433,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-27");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_field", sortField));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -461,8 +461,8 @@ public class CustomersApi {
    * ListCustomers
    * Lists a business&#39;s customers.
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
-   * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)
-   * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)
+   * @param sortField Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. (optional)
+   * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. (optional)
    * @return CompleteResponse<ListCustomersResponse>
    * @throws ApiException if fails to make API call
    */
@@ -521,7 +521,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-27");
 
     
     
@@ -606,7 +606,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-27");
 
     
     
@@ -697,7 +697,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-03-13");
+    localVarHeaderParams.put("Square-Version", "2019-03-27");
 
     
     

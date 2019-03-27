@@ -25,6 +25,8 @@ public enum CatalogObjectType {
   
   ITEM("ITEM"),
   
+  IMAGE("IMAGE"),
+  
   CATEGORY("CATEGORY"),
   
   ITEM_VARIATION("ITEM_VARIATION"),

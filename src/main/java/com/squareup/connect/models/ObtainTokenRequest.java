@@ -56,7 +56,7 @@ public class ObtainTokenRequest {
    * The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).
    * @return clientId
   **/
-  @ApiModelProperty(value = "The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).")
+  @ApiModelProperty(required = true, value = "The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).")
   public String getClientId() {
     return clientId;
   }
@@ -71,10 +71,10 @@ public class ObtainTokenRequest {
   }
 
    /**
-   * The Square-issued application secret for your application,  available from the [application dashboard](https://connect.squareup.com/apps).
+   * The Square-issued application secret for your application, available from the [application dashboard](https://connect.squareup.com/apps).
    * @return clientSecret
   **/
-  @ApiModelProperty(value = "The Square-issued application secret for your application,  available from the [application dashboard](https://connect.squareup.com/apps).")
+  @ApiModelProperty(required = true, value = "The Square-issued application secret for your application, available from the [application dashboard](https://connect.squareup.com/apps).")
   public String getClientSecret() {
     return clientSecret;
   }
@@ -89,10 +89,10 @@ public class ObtainTokenRequest {
   }
 
    /**
-   * The authorization code to exchange.  This is required if `grant_type` is set to `authorization_code`, to indicate that  the application wants to exchange an authorization code for an OAuth access token.
+   * The authorization code to exchange. This is required if `grant_type` is set to `authorization_code`, to indicate that the application wants to exchange an authorization code for an OAuth access token.
    * @return code
   **/
-  @ApiModelProperty(value = "The authorization code to exchange.  This is required if `grant_type` is set to `authorization_code`, to indicate that  the application wants to exchange an authorization code for an OAuth access token.")
+  @ApiModelProperty(value = "The authorization code to exchange. This is required if `grant_type` is set to `authorization_code`, to indicate that the application wants to exchange an authorization code for an OAuth access token.")
   public String getCode() {
     return code;
   }
@@ -125,10 +125,10 @@ public class ObtainTokenRequest {
   }
 
    /**
-   * Specifies the method to request an OAuth access token.  Valid values are: `authorization_code`, `refresh_token`, and `migration_token`
+   * Specifies the method to request an OAuth access token. Valid values are: `authorization_code`, `refresh_token`, and `migration_token`
    * @return grantType
   **/
-  @ApiModelProperty(value = "Specifies the method to request an OAuth access token.  Valid values are: `authorization_code`, `refresh_token`, and `migration_token`")
+  @ApiModelProperty(required = true, value = "Specifies the method to request an OAuth access token. Valid values are: `authorization_code`, `refresh_token`, and `migration_token`")
   public String getGrantType() {
     return grantType;
   }
@@ -143,10 +143,10 @@ public class ObtainTokenRequest {
   }
 
    /**
-   * A valid refresh token for generating a new OAuth access token.  A valid refresh token is required if `grant_type` is set to `refresh_token` ,   to indicate the application wants a replacement for an expired OAuth access token.
+   * A valid refresh token for generating a new OAuth access token. A valid refresh token is required if `grant_type` is set to `refresh_token` , to indicate the application wants a replacement for an expired OAuth access token.
    * @return refreshToken
   **/
-  @ApiModelProperty(value = "A valid refresh token for generating a new OAuth access token.  A valid refresh token is required if `grant_type` is set to `refresh_token` ,   to indicate the application wants a replacement for an expired OAuth access token.")
+  @ApiModelProperty(value = "A valid refresh token for generating a new OAuth access token. A valid refresh token is required if `grant_type` is set to `refresh_token` , to indicate the application wants a replacement for an expired OAuth access token.")
   public String getRefreshToken() {
     return refreshToken;
   }
@@ -161,10 +161,10 @@ public class ObtainTokenRequest {
   }
 
    /**
-   * Legacy OAuth access token obtained using a Connect API version prior  to 2019-03-13. This parameter is required if `grant_type` is set to  `migration_token` to indicate that the application wants to get a replacement   OAuth access token. The response also returns a refresh token.  For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).
+   * Legacy OAuth access token obtained using a Connect API version prior to 2019-03-13. This parameter is required if `grant_type` is set to `migration_token` to indicate that the application wants to get a replacement OAuth access token. The response also returns a refresh token. For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).
    * @return migrationToken
   **/
-  @ApiModelProperty(value = "Legacy OAuth access token obtained using a Connect API version prior  to 2019-03-13. This parameter is required if `grant_type` is set to  `migration_token` to indicate that the application wants to get a replacement   OAuth access token. The response also returns a refresh token.  For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).")
+  @ApiModelProperty(value = "Legacy OAuth access token obtained using a Connect API version prior to 2019-03-13. This parameter is required if `grant_type` is set to `migration_token` to indicate that the application wants to get a replacement OAuth access token. The response also returns a refresh token. For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).")
   public String getMigrationToken() {
     return migrationToken;
   }

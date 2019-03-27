@@ -33,7 +33,7 @@ public class ListRefundsRequest {
   private String endTime = null;
 
   /**
-   * The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC`
+   * The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC` See [SortOrder](#type-sortorder) for possible values
    */
   public enum SortOrderEnum {
     DESC("DESC"),
@@ -110,10 +110,10 @@ public class ListRefundsRequest {
   }
 
    /**
-   * The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC`
+   * The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC` See [SortOrder](#type-sortorder) for possible values
    * @return sortOrder
   **/
-  @ApiModelProperty(value = "The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC`")
+  @ApiModelProperty(value = "The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC` See [SortOrder](#type-sortorder) for possible values")
   public SortOrderEnum getSortOrder() {
     return sortOrder;
   }

@@ -34,7 +34,7 @@ public class InventoryTransfer {
   private String referenceId = null;
 
   /**
-   * The [InventoryState](#type-inventorystate) for the quantity of items being transfered.
+   * The [InventoryState](#type-inventorystate) for the quantity of items being transfered. See [InventoryState](#type-inventorystate) for possible values
    */
   public enum StateEnum {
     CUSTOM("CUSTOM"),
@@ -155,10 +155,10 @@ public class InventoryTransfer {
   }
 
    /**
-   * The [InventoryState](#type-inventorystate) for the quantity of items being transfered.
+   * The [InventoryState](#type-inventorystate) for the quantity of items being transfered. See [InventoryState](#type-inventorystate) for possible values
    * @return state
   **/
-  @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) for the quantity of items being transfered.")
+  @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) for the quantity of items being transfered. See [InventoryState](#type-inventorystate) for possible values")
   public StateEnum getState() {
     return state;
   }

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **firstName** | **String** | Given (first) name of the employee. |  [optional]
 **lastName** | **String** | Family (last) name of the employee |  [optional]
 **locationIds** | **List&lt;String&gt;** | A list of location IDs where this employee has access. |  [optional]
-**status** | [**StatusEnum**](#StatusEnum) | Specifies the status of the employee being fetched. |  [optional]
+**status** | [**StatusEnum**](#StatusEnum) | Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values |  [optional]
 **createdAt** | **String** | A read-only timestamp in RFC 3339 format. |  [optional]
 **updatedAt** | **String** | A read-only timestamp in RFC 3339 format. |  [optional]
 

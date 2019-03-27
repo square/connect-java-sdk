@@ -33,7 +33,7 @@ public class RegisterDomainResponse {
   private List<Error> errors = new ArrayList<Error>();
 
   /**
-   * Status of the domain registration.  See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values.
+   * Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values
    */
   public enum StatusEnum {
     PENDING("PENDING"),
@@ -94,10 +94,10 @@ public class RegisterDomainResponse {
   }
 
    /**
-   * Status of the domain registration.  See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values.
+   * Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "Status of the domain registration.  See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values.")
+  @ApiModelProperty(value = "Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }

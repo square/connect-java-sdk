@@ -73,7 +73,7 @@ public class Location {
   private List<CapabilitiesEnum> capabilities = new ArrayList<CapabilitiesEnum>();
 
   /**
-   * The location's status  See [LocationStatus](#type-locationstatus) for possible values.
+   * The location's status See [LocationStatus](#type-locationstatus) for possible values
    */
   public enum StatusEnum {
     ACTIVE("ACTIVE"),
@@ -112,7 +112,7 @@ public class Location {
   private String merchantId = null;
 
   /**
-   * The location's country, in ISO 3166-1-alpha-2 format.  See [Country](#type-country) for possible values.
+   * The location's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values
    */
   public enum CountryEnum {
     ZZ("ZZ"),
@@ -644,7 +644,7 @@ public class Location {
   private String languageCode = null;
 
   /**
-   * The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'.  See [Currency](#type-currency) for possible values.
+   * The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'. See [Currency](#type-currency) for possible values
    */
   public enum CurrencyEnum {
     UNKNOWN_CURRENCY("UNKNOWN_CURRENCY"),
@@ -1041,7 +1041,7 @@ public class Location {
   private String businessName = null;
 
   /**
-   * The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values.
+   * The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space. See [LocationType](#type-locationtype) for possible values
    */
   public enum TypeEnum {
     PHYSICAL("PHYSICAL"),
@@ -1159,10 +1159,10 @@ public class Location {
   }
 
    /**
-   * Indicates which Square features are enabled for the location.  See [LocationCapability](#type-locationcapability) for possible values.
+   * Indicates which Square features are enabled for the location. See [LocationCapability](#type-locationcapability) for possible values
    * @return capabilities
   **/
-  @ApiModelProperty(value = "Indicates which Square features are enabled for the location.  See [LocationCapability](#type-locationcapability) for possible values.")
+  @ApiModelProperty(value = "Indicates which Square features are enabled for the location. See [LocationCapability](#type-locationcapability) for possible values")
   public List<CapabilitiesEnum> getCapabilities() {
     return capabilities;
   }
@@ -1177,10 +1177,10 @@ public class Location {
   }
 
    /**
-   * The location's status  See [LocationStatus](#type-locationstatus) for possible values.
+   * The location's status See [LocationStatus](#type-locationstatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "The location's status  See [LocationStatus](#type-locationstatus) for possible values.")
+  @ApiModelProperty(value = "The location's status See [LocationStatus](#type-locationstatus) for possible values")
   public StatusEnum getStatus() {
     return status;
   }
@@ -1231,10 +1231,10 @@ public class Location {
   }
 
    /**
-   * The location's country, in ISO 3166-1-alpha-2 format.  See [Country](#type-country) for possible values.
+   * The location's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values
    * @return country
   **/
-  @ApiModelProperty(value = "The location's country, in ISO 3166-1-alpha-2 format.  See [Country](#type-country) for possible values.")
+  @ApiModelProperty(value = "The location's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values")
   public CountryEnum getCountry() {
     return country;
   }
@@ -1267,10 +1267,10 @@ public class Location {
   }
 
    /**
-   * The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'.  See [Currency](#type-currency) for possible values.
+   * The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'. See [Currency](#type-currency) for possible values
    * @return currency
   **/
-  @ApiModelProperty(value = "The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'.  See [Currency](#type-currency) for possible values.")
+  @ApiModelProperty(value = "The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'. See [Currency](#type-currency) for possible values")
   public CurrencyEnum getCurrency() {
     return currency;
   }
@@ -1321,10 +1321,10 @@ public class Location {
   }
 
    /**
-   * The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values.
+   * The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space. See [LocationType](#type-locationtype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values.")
+  @ApiModelProperty(value = "The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space. See [LocationType](#type-locationtype) for possible values")
   public TypeEnum getType() {
     return type;
   }

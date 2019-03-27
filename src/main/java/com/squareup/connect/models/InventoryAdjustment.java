@@ -35,7 +35,7 @@ public class InventoryAdjustment {
   private String referenceId = null;
 
   /**
-   * The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment.
+   * The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment. See [InventoryState](#type-inventorystate) for possible values
    */
   public enum FromStateEnum {
     CUSTOM("CUSTOM"),
@@ -88,7 +88,7 @@ public class InventoryAdjustment {
   private FromStateEnum fromState = null;
 
   /**
-   * The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment.
+   * The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment. See [InventoryState](#type-inventorystate) for possible values
    */
   public enum ToStateEnum {
     CUSTOM("CUSTOM"),
@@ -221,10 +221,10 @@ public class InventoryAdjustment {
   }
 
    /**
-   * The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment.
+   * The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment. See [InventoryState](#type-inventorystate) for possible values
    * @return fromState
   **/
-  @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment.")
+  @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment. See [InventoryState](#type-inventorystate) for possible values")
   public FromStateEnum getFromState() {
     return fromState;
   }
@@ -239,10 +239,10 @@ public class InventoryAdjustment {
   }
 
    /**
-   * The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment.
+   * The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment. See [InventoryState](#type-inventorystate) for possible values
    * @return toState
   **/
-  @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment.")
+  @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment. See [InventoryState](#type-inventorystate) for possible values")
   public ToStateEnum getToState() {
     return toState;
   }

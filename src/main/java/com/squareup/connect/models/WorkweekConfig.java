@@ -30,7 +30,7 @@ public class WorkweekConfig {
   private String id = null;
 
   /**
-   * The day of the week on which a business week cuts over for compensation purposes.
+   * The day of the week on which a business week cuts over for compensation purposes. See [Weekday](#type-weekday) for possible values
    */
   public enum StartOfWeekEnum {
     MON("MON"),
@@ -108,10 +108,10 @@ public class WorkweekConfig {
   }
 
    /**
-   * The day of the week on which a business week cuts over for compensation purposes.
+   * The day of the week on which a business week cuts over for compensation purposes. See [Weekday](#type-weekday) for possible values
    * @return startOfWeek
   **/
-  @ApiModelProperty(required = true, value = "The day of the week on which a business week cuts over for compensation purposes.")
+  @ApiModelProperty(required = true, value = "The day of the week on which a business week cuts over for compensation purposes. See [Weekday](#type-weekday) for possible values")
   public StartOfWeekEnum getStartOfWeek() {
     return startOfWeek;
   }

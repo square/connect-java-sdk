@@ -31,7 +31,7 @@ public class CatalogDiscount {
   private String name = null;
 
   /**
-   * Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for all possible values.
+   * Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for possible values
    */
   public enum DiscountTypeEnum {
     FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
@@ -103,10 +103,10 @@ public class CatalogDiscount {
   }
 
    /**
-   * Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for all possible values.
+   * Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for possible values
    * @return discountType
   **/
-  @ApiModelProperty(value = "Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for all possible values.")
+  @ApiModelProperty(value = "Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for possible values")
   public DiscountTypeEnum getDiscountType() {
     return discountType;
   }

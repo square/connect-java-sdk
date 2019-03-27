@@ -33,7 +33,7 @@ public class CreateOrderRequestTax {
   private String name = null;
 
   /**
-   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
+   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
    */
   public enum TypeEnum {
     UNKNOWN_TAX("UNKNOWN_TAX"),
@@ -112,10 +112,10 @@ public class CreateOrderRequestTax {
   }
 
    /**
-   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
+   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.")
+  @ApiModelProperty(value = "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values")
   public TypeEnum getType() {
     return type;
   }
