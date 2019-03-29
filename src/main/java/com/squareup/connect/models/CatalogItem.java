@@ -304,10 +304,10 @@ public class CatalogItem {
   }
 
    /**
-   * __Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_data` in [`CatalogObject`](#type-catalogobject).
+   * __Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_id` in [`CatalogObject`](#type-catalogobject).
    * @return imageUrl
   **/
-  @ApiModelProperty(value = "__Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_data` in [`CatalogObject`](#type-catalogobject).")
+  @ApiModelProperty(value = "__Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_id` in [`CatalogObject`](#type-catalogobject).")
   public String getImageUrl() {
     return imageUrl;
   }

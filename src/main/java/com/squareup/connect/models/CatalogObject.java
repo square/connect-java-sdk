@@ -106,6 +106,9 @@ public class CatalogObject {
   @JsonProperty("absent_at_location_ids")
   private List<String> absentAtLocationIds = new ArrayList<String>();
 
+  @JsonProperty("image_id")
+  private String imageId = null;
+
   @JsonProperty("item_data")
   private CatalogItem itemData = null;
 
@@ -307,6 +310,24 @@ public class CatalogObject {
     this.absentAtLocationIds = absentAtLocationIds;
   }
 
+  public CatalogObject imageId(String imageId) {
+    this.imageId = imageId;
+    return this;
+  }
+
+   /**
+   * Identifies the `CatalogImage` attached to this `CatalogObject`.
+   * @return imageId
+  **/
+  @ApiModelProperty(value = "Identifies the `CatalogImage` attached to this `CatalogObject`.")
+  public String getImageId() {
+    return imageId;
+  }
+
+  public void setImageId(String imageId) {
+    this.imageId = imageId;
+  }
+
   public CatalogObject itemData(CatalogItem itemData) {
     this.itemData = itemData;
     return this;
@@ -470,6 +491,7 @@ public class CatalogObject {
         Objects.equals(this.presentAtAllLocations, catalogObject.presentAtAllLocations) &&
         Objects.equals(this.presentAtLocationIds, catalogObject.presentAtLocationIds) &&
         Objects.equals(this.absentAtLocationIds, catalogObject.absentAtLocationIds) &&
+        Objects.equals(this.imageId, catalogObject.imageId) &&
         Objects.equals(this.itemData, catalogObject.itemData) &&
         Objects.equals(this.categoryData, catalogObject.categoryData) &&
         Objects.equals(this.itemVariationData, catalogObject.itemVariationData) &&
@@ -482,7 +504,7 @@ public class CatalogObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, imageData);
+    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, imageId, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, imageData);
   }
 
 
@@ -500,6 +522,7 @@ public class CatalogObject {
     sb.append("    presentAtAllLocations: ").append(toIndentedString(presentAtAllLocations)).append("\n");
     sb.append("    presentAtLocationIds: ").append(toIndentedString(presentAtLocationIds)).append("\n");
     sb.append("    absentAtLocationIds: ").append(toIndentedString(absentAtLocationIds)).append("\n");
+    sb.append("    imageId: ").append(toIndentedString(imageId)).append("\n");
     sb.append("    itemData: ").append(toIndentedString(itemData)).append("\n");
     sb.append("    categoryData: ").append(toIndentedString(categoryData)).append("\n");
     sb.append("    itemVariationData: ").append(toIndentedString(itemVariationData)).append("\n");
