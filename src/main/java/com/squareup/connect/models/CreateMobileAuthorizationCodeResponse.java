@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the fields that are included in the response body of a request to the [CreateMobileAuthorizationCode](#endpoint-createmobileauthorizationcode) endpoint.
+ * Defines the fields that are included in the response body of a request to the CreateMobileAuthorizationCode endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the [CreateMobileAuthorizationCode](#endpoint-createmobileauthorizationcode) endpoint.")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the CreateMobileAuthorizationCode endpoint.")
 
 public class CreateMobileAuthorizationCodeResponse {
   @JsonProperty("authorization_code")

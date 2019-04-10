@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the query parameters that can be included in a request to the [ListTransactions](#endpoint-listtransactions) endpoint.
+ * Defines the query parameters that can be included in a request to the ListTransactions endpoint.
  */
-@ApiModel(description = "Defines the query parameters that can be included in a request to the [ListTransactions](#endpoint-listtransactions) endpoint.")
+@ApiModel(description = "Defines the query parameters that can be included in a request to the ListTransactions endpoint.")
 
 public class ListTransactionsRequest {
   @JsonProperty("begin_time")

@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the fields included in the request body for the [SearchCustomers](#endpoint-searchcustomer) endpoint.
+ * Defines the fields included in the request body for the SearchCustomers endpoint.
  */
-@ApiModel(description = "Defines the fields included in the request body for the [SearchCustomers](#endpoint-searchcustomer) endpoint.")
+@ApiModel(description = "Defines the fields included in the request body for the SearchCustomers endpoint.")
 
 public class SearchCustomersRequest {
   @JsonProperty("cursor")

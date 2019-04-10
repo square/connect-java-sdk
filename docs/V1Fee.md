@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **enabled** | **Boolean** | If true, the fee is applied to all appropriate items. If false, the fee is not applied at all. |  [optional]
 **inclusionType** | [**InclusionTypeEnum**](#InclusionTypeEnum) | Whether the fee is ADDITIVE or INCLUSIVE. See [V1FeeInclusionType](#type-v1feeinclusiontype) for possible values |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants. See [V1FeeType](#type-v1feetype) for possible values |  [optional]
+**v2Id** | **String** | The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID. |  [optional]
 
 
 <a name="CalculationPhaseEnum"></a>

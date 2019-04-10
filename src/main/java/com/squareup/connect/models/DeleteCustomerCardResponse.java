@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint.
+ * Defines the fields that are included in the response body of a request to the DeleteCustomerCard endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint.")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the DeleteCustomerCard endpoint.")
 
 public class DeleteCustomerCardResponse {
   @JsonProperty("errors")

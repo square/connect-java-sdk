@@ -32,6 +32,9 @@ public class V1Category {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("v2_id")
+  private String v2Id = null;
+
   public V1Category id(String id) {
     this.id = id;
     return this;
@@ -68,6 +71,24 @@ public class V1Category {
     this.name = name;
   }
 
+  public V1Category v2Id(String v2Id) {
+    this.v2Id = v2Id;
+    return this;
+  }
+
+   /**
+   * The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+   * @return v2Id
+  **/
+  @ApiModelProperty(value = "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.")
+  public String getV2Id() {
+    return v2Id;
+  }
+
+  public void setV2Id(String v2Id) {
+    this.v2Id = v2Id;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -79,12 +100,13 @@ public class V1Category {
     }
     V1Category v1Category = (V1Category) o;
     return Objects.equals(this.id, v1Category.id) &&
-        Objects.equals(this.name, v1Category.name);
+        Objects.equals(this.name, v1Category.name) &&
+        Objects.equals(this.v2Id, v1Category.v2Id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id, name, v2Id);
   }
 
 
@@ -95,6 +117,7 @@ public class V1Category {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    v2Id: ").append(toIndentedString(v2Id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

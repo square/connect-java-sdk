@@ -124,6 +124,9 @@ public class V1Discount {
   @JsonProperty("color")
   private ColorEnum color = null;
 
+  @JsonProperty("v2_id")
+  private String v2Id = null;
+
   public V1Discount id(String id) {
     this.id = id;
     return this;
@@ -250,6 +253,24 @@ public class V1Discount {
     this.color = color;
   }
 
+  public V1Discount v2Id(String v2Id) {
+    this.v2Id = v2Id;
+    return this;
+  }
+
+   /**
+   * The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+   * @return v2Id
+  **/
+  @ApiModelProperty(value = "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.")
+  public String getV2Id() {
+    return v2Id;
+  }
+
+  public void setV2Id(String v2Id) {
+    this.v2Id = v2Id;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -266,12 +287,13 @@ public class V1Discount {
         Objects.equals(this.amountMoney, v1Discount.amountMoney) &&
         Objects.equals(this.discountType, v1Discount.discountType) &&
         Objects.equals(this.pinRequired, v1Discount.pinRequired) &&
-        Objects.equals(this.color, v1Discount.color);
+        Objects.equals(this.color, v1Discount.color) &&
+        Objects.equals(this.v2Id, v1Discount.v2Id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, rate, amountMoney, discountType, pinRequired, color);
+    return Objects.hash(id, name, rate, amountMoney, discountType, pinRequired, color, v2Id);
   }
 
 
@@ -287,6 +309,7 @@ public class V1Discount {
     sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
     sb.append("    pinRequired: ").append(toIndentedString(pinRequired)).append("\n");
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
+    sb.append("    v2Id: ").append(toIndentedString(v2Id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

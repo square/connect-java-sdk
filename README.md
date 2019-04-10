@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190327.1</version>
+    <version>2.20190410.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190327.1"
+compile "com.squareup:connect:2.20190410.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -70,7 +70,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190327.1.jar
+* target/connect-2.20190410.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -419,6 +419,7 @@ Class | Method | HTTP request | Description
  - [OrderLineItemTax](docs/OrderLineItemTax.md)
  - [OrderLineItemTaxScope](docs/OrderLineItemTaxScope.md)
  - [OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
+ - [OrderSource](docs/OrderSource.md)
  - [Product](docs/Product.md)
  - [Refund](docs/Refund.md)
  - [RefundStatus](docs/RefundStatus.md)
@@ -662,25 +663,27 @@ Authentication schemes defined for the API:
 - **Flow**: accessCode
 - **Authorization URL**: https://connect.squareup.com/oauth2/authorize
 - **Scopes**: 
-  - MERCHANT_PROFILE_READ: GET endpoints related to a merchant&#39;s business and location entities. Almost all Connect API applications need this permission in order to obtain a merchant&#39;s location IDs
-  - PAYMENTS_READ: GET endpoints related to transactions and refunds
-  - PAYMENTS_WRITE: POST, PUT, and DELETE endpoints related to transactions and refunds. E-commerce applications must request this permission
-  - CUSTOMERS_READ:  GET endpoints related to customer management
-  - CUSTOMERS_WRITE: POST, PUT, and DELETE endpoints related to customer management
-  - SETTLEMENTS_READ: GET endpoints related to settlements (deposits)
-  - BANK_ACCOUNTS_READ: GET endpoints related to a merchant&#39;s bank accounts
-  - ITEMS_READ: GET endpoints related to a merchant&#39;s item library
-  - ITEMS_WRITE: POST, PUT, and DELETE endpoints related to a merchant&#39;s item library
-  - ORDERS_READ: GET endpoints related to a merchant&#39;s orders
-  - ORDERS_WRITE: POST, PUT, and DELETE endpoints related to a merchant&#39;s orders
-  - EMPLOYEES_READ: GET endpoints related to employee management
-  - EMPLOYEES_WRITE: POST, PUT, and DELETE endpoints related to employee management
-  - TIMECARDS_READ: GET endpoints related to employee timecards
-  - TIMECARDS_WRITE: POST, PUT, and DELETE endpoints related to employee timecards
-  - PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS: Allow third party applications to deduct a portion of each transaction amount.
-  - PAYMENTS_WRITE_IN_PERSON: POST, PUT, and DELETE endpoints. Grants write access to transaction and refunds information.
-  - INVENTORY_READ: GET endpoints related to a merchant&#39;s inventory
-  - INVENTORY_WRITE: POST, PUT, and DELETE endpoints related to a merchant&#39;s inventory
+  - BANK_ACCOUNTS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to bank account information associated with the targeted Square account. For example, to call the Connect v1 ListBankAccounts endpoint.
+  - CUSTOMERS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to customer information. For example, to call the ListCustomers endpoint.
+  - CUSTOMERS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to customer information. For example, to create and update customer profiles.
+  - EMPLOYEES_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to employee profile information. For example, to call the Connect v1 Employees API.
+  - EMPLOYEES_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to employee profile information. For example, to create and modify employee profiles.
+  - INVENTORY_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to inventory information. For example, to call the RetrieveInventoryCount endpoint.
+  - INVENTORY_WRITE: __HTTP Method__:  &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to inventory information. For example, to call the BatchChangeInventory endpoint.
+  - ITEMS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to business and location information. For example, to obtain a location ID for subsequent activity.
+  - ITEMS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to product catalog information. For example, to modify or add to a product catalog.
+  - MERCHANT_PROFILE_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to business and location information. For example, to obtain a location ID for subsequent activity.
+  - ORDERS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to order information. For example, to call the BatchRetrieveOrders endpoint.
+  - ORDERS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to order information. For example, to call the CreateCheckout endpoint.
+  - PAYMENTS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to transaction and refund information. For example, to call the RetrieveTransaction endpoint.
+  - PAYMENTS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to transaction and refunds information. For example, to process payments with the Transactions or Checkout API.
+  - PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Allow third party applications to deduct a portion of each transaction amount. __Required__ to use multiparty transaction functionality with the Transactions API.
+  - PAYMENTS_WRITE_IN_PERSON: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to transaction and refunds information. For example, to process in-person payments.
+  - SETTLEMENTS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to settlement (deposit) information. For example, to call the Connect v1 ListSettlements endpoint.
+  - TIMECARDS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to employee timecard information. For example, to call the Connect v1 ListTimecards endpoint.
+  - TIMECARDS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to employee timecard information. For example, to create and modify timecards.
+  - TIMECARDS_SETTINGS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to employee timecard settings information. For example, to call the GetBreakType endpoint.
+  - TIMECARDS_SETTINGS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to employee timecard settings information. For example, to call the UpdateBreakType endpoint.
 
 ### oauth2ClientSecret
 

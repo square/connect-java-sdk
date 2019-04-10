@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the body parameters that can be provided in a request to the [CreateCustomer](#endpoint-createcustomer) endpoint.
+ * Defines the body parameters that can be provided in a request to the CreateCustomer endpoint.
  */
-@ApiModel(description = "Defines the body parameters that can be provided in a request to the [CreateCustomer](#endpoint-createcustomer) endpoint.")
+@ApiModel(description = "Defines the body parameters that can be provided in a request to the CreateCustomer endpoint.")
 
 public class CreateCustomerRequest {
   @JsonProperty("idempotency_key")

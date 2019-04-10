@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.
+ * Defines the parameters that can be included in the body of a request to the CreateCheckout endpoint.
  */
-@ApiModel(description = "Defines the parameters that can be included in the body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.")
+@ApiModel(description = "Defines the parameters that can be included in the body of a request to the CreateCheckout endpoint.")
 
 public class CreateCheckoutRequest {
   @JsonProperty("idempotency_key")

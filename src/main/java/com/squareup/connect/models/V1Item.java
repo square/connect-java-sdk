@@ -186,6 +186,9 @@ public class V1Item {
   @JsonProperty("available_for_pickup")
   private Boolean availableForPickup = null;
 
+  @JsonProperty("v2_id")
+  private String v2Id = null;
+
   public V1Item id(String id) {
     this.id = id;
     return this;
@@ -489,6 +492,24 @@ public class V1Item {
     this.availableForPickup = availableForPickup;
   }
 
+  public V1Item v2Id(String v2Id) {
+    this.v2Id = v2Id;
+    return this;
+  }
+
+   /**
+   * The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+   * @return v2Id
+  **/
+  @ApiModelProperty(value = "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.")
+  public String getV2Id() {
+    return v2Id;
+  }
+
+  public void setV2Id(String v2Id) {
+    this.v2Id = v2Id;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -514,12 +535,13 @@ public class V1Item {
         Objects.equals(this.fees, v1Item.fees) &&
         Objects.equals(this.taxable, v1Item.taxable) &&
         Objects.equals(this.categoryId, v1Item.categoryId) &&
-        Objects.equals(this.availableForPickup, v1Item.availableForPickup);
+        Objects.equals(this.availableForPickup, v1Item.availableForPickup) &&
+        Objects.equals(this.v2Id, v1Item.v2Id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, type, color, abbreviation, visibility, availableOnline, masterImage, category, variations, modifierLists, fees, taxable, categoryId, availableForPickup);
+    return Objects.hash(id, name, description, type, color, abbreviation, visibility, availableOnline, masterImage, category, variations, modifierLists, fees, taxable, categoryId, availableForPickup, v2Id);
   }
 
 
@@ -544,6 +566,7 @@ public class V1Item {
     sb.append("    taxable: ").append(toIndentedString(taxable)).append("\n");
     sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
     sb.append("    availableForPickup: ").append(toIndentedString(availableForPickup)).append("\n");
+    sb.append("    v2Id: ").append(toIndentedString(v2Id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

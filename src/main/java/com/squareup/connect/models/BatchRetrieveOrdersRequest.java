@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Defines the fields that are included in requests to the BatchRetrieveOrders endpoint.
  */
-@ApiModel(description = "")
+@ApiModel(description = "Defines the fields that are included in requests to the BatchRetrieveOrders endpoint.")
 
 public class BatchRetrieveOrdersRequest {
   @JsonProperty("order_ids")
