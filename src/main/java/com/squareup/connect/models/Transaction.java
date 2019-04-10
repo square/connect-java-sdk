@@ -209,10 +209,10 @@ public class Transaction {
   }
 
    /**
-   * If the transaction was created with the [Charge](#endpoint-charge) endpoint, this value is the same as the value provided for the `reference_id` parameter in the request to that endpoint. Otherwise, it is not set.
+   * If the transaction was created with the [Charge](#endpoint-transactions-charge) endpoint, this value is the same as the value provided for the `reference_id` parameter in the request to that endpoint. Otherwise, it is not set.
    * @return referenceId
   **/
-  @ApiModelProperty(value = "If the transaction was created with the [Charge](#endpoint-charge) endpoint, this value is the same as the value provided for the `reference_id` parameter in the request to that endpoint. Otherwise, it is not set.")
+  @ApiModelProperty(value = "If the transaction was created with the [Charge](#endpoint-transactions-charge) endpoint, this value is the same as the value provided for the `reference_id` parameter in the request to that endpoint. Otherwise, it is not set.")
   public String getReferenceId() {
     return referenceId;
   }

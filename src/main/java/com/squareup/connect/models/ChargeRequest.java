@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the parameters that can be included in the body of a request to the [Charge](#endpoint-charge) endpoint.
+ * Defines the parameters that can be included in the body of a request to the Charge endpoint.
  */
-@ApiModel(description = "Defines the parameters that can be included in the body of a request to the [Charge](#endpoint-charge) endpoint.")
+@ApiModel(description = "Defines the parameters that can be included in the body of a request to the Charge endpoint.")
 
 public class ChargeRequest {
   @JsonProperty("idempotency_key")

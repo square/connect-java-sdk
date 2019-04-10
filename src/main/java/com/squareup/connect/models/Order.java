@@ -22,6 +22,7 @@ import com.squareup.connect.models.OrderFulfillment;
 import com.squareup.connect.models.OrderLineItem;
 import com.squareup.connect.models.OrderLineItemDiscount;
 import com.squareup.connect.models.OrderLineItemTax;
+import com.squareup.connect.models.OrderSource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -41,6 +42,9 @@ public class Order {
 
   @JsonProperty("reference_id")
   private String referenceId = null;
+
+  @JsonProperty("source")
+  private OrderSource source = null;
 
   @JsonProperty("line_items")
   private List<OrderLineItem> lineItems = new ArrayList<OrderLineItem>();
@@ -69,10 +73,10 @@ public class Order {
   }
 
    /**
-   * The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-createorder) endpoint.
+   * The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-orders-createorder) endpoint.
    * @return id
   **/
-  @ApiModelProperty(value = "The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-createorder) endpoint.")
+  @ApiModelProperty(value = "The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-orders-createorder) endpoint.")
   public String getId() {
     return id;
   }
@@ -115,6 +119,24 @@ public class Order {
 
   public void setReferenceId(String referenceId) {
     this.referenceId = referenceId;
+  }
+
+  public Order source(OrderSource source) {
+    this.source = source;
+    return this;
+  }
+
+   /**
+   * The origination details of the order.
+   * @return source
+  **/
+  @ApiModelProperty(value = "The origination details of the order.")
+  public OrderSource getSource() {
+    return source;
+  }
+
+  public void setSource(OrderSource source) {
+    this.source = source;
   }
 
   public Order lineItems(List<OrderLineItem> lineItems) {
@@ -276,6 +298,7 @@ public class Order {
     return Objects.equals(this.id, order.id) &&
         Objects.equals(this.locationId, order.locationId) &&
         Objects.equals(this.referenceId, order.referenceId) &&
+        Objects.equals(this.source, order.source) &&
         Objects.equals(this.lineItems, order.lineItems) &&
         Objects.equals(this.taxes, order.taxes) &&
         Objects.equals(this.discounts, order.discounts) &&
@@ -287,7 +310,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, referenceId, lineItems, taxes, discounts, fulfillments, totalMoney, totalTaxMoney, totalDiscountMoney);
+    return Objects.hash(id, locationId, referenceId, source, lineItems, taxes, discounts, fulfillments, totalMoney, totalTaxMoney, totalDiscountMoney);
   }
 
 
@@ -299,6 +322,7 @@ public class Order {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");

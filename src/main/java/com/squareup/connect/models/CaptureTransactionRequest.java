@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * 
+ * Defines the query parameters for calls to the CaptureTransaction endpoint.
  */
-@ApiModel(description = "")
+@ApiModel(description = "Defines the query parameters for calls to the CaptureTransaction endpoint.")
 
 public class CaptureTransactionRequest {
 

@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the [VoidTransaction](#endpoint-voidtransaction) endpoint.
+ * Defines the fields that are included in the response body of a request to the VoidTransaction endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the [VoidTransaction](#endpoint-voidtransaction) endpoint.")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the VoidTransaction endpoint.")
 
 public class VoidTransactionResponse {
   @JsonProperty("errors")

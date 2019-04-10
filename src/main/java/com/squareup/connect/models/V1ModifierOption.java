@@ -45,6 +45,9 @@ public class V1ModifierOption {
   @JsonProperty("modifier_list_id")
   private String modifierListId = null;
 
+  @JsonProperty("v2_id")
+  private String v2Id = null;
+
   public V1ModifierOption id(String id) {
     this.id = id;
     return this;
@@ -153,6 +156,24 @@ public class V1ModifierOption {
     this.modifierListId = modifierListId;
   }
 
+  public V1ModifierOption v2Id(String v2Id) {
+    this.v2Id = v2Id;
+    return this;
+  }
+
+   /**
+   * The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+   * @return v2Id
+  **/
+  @ApiModelProperty(value = "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.")
+  public String getV2Id() {
+    return v2Id;
+  }
+
+  public void setV2Id(String v2Id) {
+    this.v2Id = v2Id;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -168,12 +189,13 @@ public class V1ModifierOption {
         Objects.equals(this.priceMoney, v1ModifierOption.priceMoney) &&
         Objects.equals(this.onByDefault, v1ModifierOption.onByDefault) &&
         Objects.equals(this.ordinal, v1ModifierOption.ordinal) &&
-        Objects.equals(this.modifierListId, v1ModifierOption.modifierListId);
+        Objects.equals(this.modifierListId, v1ModifierOption.modifierListId) &&
+        Objects.equals(this.v2Id, v1ModifierOption.v2Id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, priceMoney, onByDefault, ordinal, modifierListId);
+    return Objects.hash(id, name, priceMoney, onByDefault, ordinal, modifierListId, v2Id);
   }
 
 
@@ -188,6 +210,7 @@ public class V1ModifierOption {
     sb.append("    onByDefault: ").append(toIndentedString(onByDefault)).append("\n");
     sb.append("    ordinal: ").append(toIndentedString(ordinal)).append("\n");
     sb.append("    modifierListId: ").append(toIndentedString(modifierListId)).append("\n");
+    sb.append("    v2Id: ").append(toIndentedString(v2Id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

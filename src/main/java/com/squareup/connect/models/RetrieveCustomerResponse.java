@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the [RetrieveCustomer](#endpoint-retrievecustomer) endpoint.  One of &#x60;errors&#x60; or &#x60;customer&#x60; is present in a given response (never both).
+ * Defines the fields that are included in the response body of a request to the RetrieveCustomer endpoint.  One of &#x60;errors&#x60; or &#x60;customer&#x60; is present in a given response (never both).
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the [RetrieveCustomer](#endpoint-retrievecustomer) endpoint.  One of `errors` or `customer` is present in a given response (never both).")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the RetrieveCustomer endpoint.  One of `errors` or `customer` is present in a given response (never both).")
 
 public class RetrieveCustomerResponse {
   @JsonProperty("errors")

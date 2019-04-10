@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the query parameters that can be included in a request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.
+ * Defines the query parameters that can be included in a request to the ListAdditionalRecipientReceivables endpoint.
  */
-@ApiModel(description = "Defines the query parameters that can be included in a request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.")
+@ApiModel(description = "Defines the query parameters that can be included in a request to the ListAdditionalRecipientReceivables endpoint.")
 
 public class ListAdditionalRecipientReceivablesRequest {
   @JsonProperty("begin_time")

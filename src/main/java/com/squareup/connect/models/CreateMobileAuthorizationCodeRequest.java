@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the body parameters that can be provided in a request to the [CreateMobileAuthorizationCode](#endpoint-createmobileauthorizationcode) endpoint.
+ * Defines the body parameters that can be provided in a request to the CreateMobileAuthorizationCode endpoint.
  */
-@ApiModel(description = "Defines the body parameters that can be provided in a request to the [CreateMobileAuthorizationCode](#endpoint-createmobileauthorizationcode) endpoint.")
+@ApiModel(description = "Defines the body parameters that can be provided in a request to the CreateMobileAuthorizationCode endpoint.")
 
 public class CreateMobileAuthorizationCodeRequest {
   @JsonProperty("location_id")

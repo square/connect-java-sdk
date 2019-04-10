@@ -21,30 +21,30 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the parameters that can be included in the body of a request to the RegisterDomain endpoint.
+ * Represents the origination details of an order.
  */
-@ApiModel(description = "Defines the parameters that can be included in the body of a request to the RegisterDomain endpoint.")
+@ApiModel(description = "Represents the origination details of an order.")
 
-public class RegisterDomainRequest {
-  @JsonProperty("domain_name")
-  private String domainName = null;
+public class OrderSource {
+  @JsonProperty("name")
+  private String name = null;
 
-  public RegisterDomainRequest domainName(String domainName) {
-    this.domainName = domainName;
+  public OrderSource name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * A domain name as described in RFC-1034 that will be registered with ApplePay
-   * @return domainName
+   * The name used to identify the place (physical or digital) that an order originates.  If unset, the name defaults to the name of the application that created the order.
+   * @return name
   **/
-  @ApiModelProperty(required = true, value = "A domain name as described in RFC-1034 that will be registered with ApplePay")
-  public String getDomainName() {
-    return domainName;
+  @ApiModelProperty(value = "The name used to identify the place (physical or digital) that an order originates.  If unset, the name defaults to the name of the application that created the order.")
+  public String getName() {
+    return name;
   }
 
-  public void setDomainName(String domainName) {
-    this.domainName = domainName;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -56,22 +56,22 @@ public class RegisterDomainRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RegisterDomainRequest registerDomainRequest = (RegisterDomainRequest) o;
-    return Objects.equals(this.domainName, registerDomainRequest.domainName);
+    OrderSource orderSource = (OrderSource) o;
+    return Objects.equals(this.name, orderSource.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(domainName);
+    return Objects.hash(name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RegisterDomainRequest {\n");
+    sb.append("class OrderSource {\n");
     
-    sb.append("    domainName: ").append(toIndentedString(domainName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

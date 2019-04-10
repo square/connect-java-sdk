@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the query parameters that can be provided in a request to the [ListCustomers](#endpoint-listcustomers) endpoint.
+ * Defines the query parameters that can be provided in a request to the ListCustomers endpoint.
  */
-@ApiModel(description = "Defines the query parameters that can be provided in a request to the [ListCustomers](#endpoint-listcustomers) endpoint.")
+@ApiModel(description = "Defines the query parameters that can be provided in a request to the ListCustomers endpoint.")
 
 public class ListCustomersRequest {
   @JsonProperty("cursor")

@@ -185,6 +185,9 @@ public class V1Fee {
   @JsonProperty("type")
   private TypeEnum type = null;
 
+  @JsonProperty("v2_id")
+  private String v2Id = null;
+
   public V1Fee id(String id) {
     this.id = id;
     return this;
@@ -347,6 +350,24 @@ public class V1Fee {
     this.type = type;
   }
 
+  public V1Fee v2Id(String v2Id) {
+    this.v2Id = v2Id;
+    return this;
+  }
+
+   /**
+   * The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+   * @return v2Id
+  **/
+  @ApiModelProperty(value = "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.")
+  public String getV2Id() {
+    return v2Id;
+  }
+
+  public void setV2Id(String v2Id) {
+    this.v2Id = v2Id;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -365,12 +386,13 @@ public class V1Fee {
         Objects.equals(this.appliesToCustomAmounts, v1Fee.appliesToCustomAmounts) &&
         Objects.equals(this.enabled, v1Fee.enabled) &&
         Objects.equals(this.inclusionType, v1Fee.inclusionType) &&
-        Objects.equals(this.type, v1Fee.type);
+        Objects.equals(this.type, v1Fee.type) &&
+        Objects.equals(this.v2Id, v1Fee.v2Id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, rate, calculationPhase, adjustmentType, appliesToCustomAmounts, enabled, inclusionType, type);
+    return Objects.hash(id, name, rate, calculationPhase, adjustmentType, appliesToCustomAmounts, enabled, inclusionType, type, v2Id);
   }
 
 
@@ -388,6 +410,7 @@ public class V1Fee {
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    inclusionType: ").append(toIndentedString(inclusionType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    v2Id: ").append(toIndentedString(v2Id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

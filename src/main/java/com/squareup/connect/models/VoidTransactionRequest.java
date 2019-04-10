@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * 
+ * Defines the request body for calls to the VoidTransaction endpoint.
  */
-@ApiModel(description = "")
+@ApiModel(description = "Defines the request body for calls to the VoidTransaction endpoint.")
 
 public class VoidTransactionRequest {
 

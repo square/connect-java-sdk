@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the fields that are included in the request body of a request to the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
+ * Defines the fields that are included in the request body of a request to the CreateCustomerCard endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in the request body of a request to the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.")
+@ApiModel(description = "Defines the fields that are included in the request body of a request to the CreateCustomerCard endpoint.")
 
 public class CreateCustomerCardRequest {
   @JsonProperty("card_nonce")

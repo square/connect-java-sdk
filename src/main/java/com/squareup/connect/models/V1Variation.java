@@ -128,6 +128,9 @@ public class V1Variation {
   @JsonProperty("user_data")
   private String userData = null;
 
+  @JsonProperty("v2_id")
+  private String v2Id = null;
+
   public V1Variation id(String id) {
     this.id = id;
     return this;
@@ -326,6 +329,24 @@ public class V1Variation {
     this.userData = userData;
   }
 
+  public V1Variation v2Id(String v2Id) {
+    this.v2Id = v2Id;
+    return this;
+  }
+
+   /**
+   * The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+   * @return v2Id
+  **/
+  @ApiModelProperty(value = "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.")
+  public String getV2Id() {
+    return v2Id;
+  }
+
+  public void setV2Id(String v2Id) {
+    this.v2Id = v2Id;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -346,12 +367,13 @@ public class V1Variation {
         Objects.equals(this.trackInventory, v1Variation.trackInventory) &&
         Objects.equals(this.inventoryAlertType, v1Variation.inventoryAlertType) &&
         Objects.equals(this.inventoryAlertThreshold, v1Variation.inventoryAlertThreshold) &&
-        Objects.equals(this.userData, v1Variation.userData);
+        Objects.equals(this.userData, v1Variation.userData) &&
+        Objects.equals(this.v2Id, v1Variation.v2Id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, itemId, ordinal, pricingType, priceMoney, sku, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData);
+    return Objects.hash(id, name, itemId, ordinal, pricingType, priceMoney, sku, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, v2Id);
   }
 
 
@@ -371,6 +393,7 @@ public class V1Variation {
     sb.append("    inventoryAlertType: ").append(toIndentedString(inventoryAlertType)).append("\n");
     sb.append("    inventoryAlertThreshold: ").append(toIndentedString(inventoryAlertThreshold)).append("\n");
     sb.append("    userData: ").append(toIndentedString(userData)).append("\n");
+    sb.append("    v2Id: ").append(toIndentedString(v2Id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

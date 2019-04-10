@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.  One of &#x60;errors&#x60; or &#x60;additional_recipient_receivable_refunds&#x60; is present in a given response (never both).
+ * Defines the fields that are included in the response body of a request to the ListAdditionalRecipientReceivableRefunds endpoint.  One of &#x60;errors&#x60; or &#x60;additional_recipient_receivable_refunds&#x60; is present in a given response (never both).
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.  One of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the ListAdditionalRecipientReceivableRefunds endpoint.  One of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).")
 
 public class ListAdditionalRecipientReceivableRefundsResponse {
   @JsonProperty("errors")

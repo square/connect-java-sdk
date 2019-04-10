@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the [CaptureTransaction](#endpoint-capturetransaction) endpoint.
+ * Defines the fields that are included in the response body of a request to the CaptureTransaction endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the [CaptureTransaction](#endpoint-capturetransaction) endpoint.")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the CaptureTransaction endpoint.")
 
 public class CaptureTransactionResponse {
   @JsonProperty("errors")

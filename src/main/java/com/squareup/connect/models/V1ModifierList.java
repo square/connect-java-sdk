@@ -71,6 +71,9 @@ public class V1ModifierList {
   @JsonProperty("modifier_options")
   private List<V1ModifierOption> modifierOptions = new ArrayList<V1ModifierOption>();
 
+  @JsonProperty("v2_id")
+  private String v2Id = null;
+
   public V1ModifierList id(String id) {
     this.id = id;
     return this;
@@ -148,6 +151,24 @@ public class V1ModifierList {
     this.modifierOptions = modifierOptions;
   }
 
+  public V1ModifierList v2Id(String v2Id) {
+    this.v2Id = v2Id;
+    return this;
+  }
+
+   /**
+   * The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+   * @return v2Id
+  **/
+  @ApiModelProperty(value = "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.")
+  public String getV2Id() {
+    return v2Id;
+  }
+
+  public void setV2Id(String v2Id) {
+    this.v2Id = v2Id;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -161,12 +182,13 @@ public class V1ModifierList {
     return Objects.equals(this.id, v1ModifierList.id) &&
         Objects.equals(this.name, v1ModifierList.name) &&
         Objects.equals(this.selectionType, v1ModifierList.selectionType) &&
-        Objects.equals(this.modifierOptions, v1ModifierList.modifierOptions);
+        Objects.equals(this.modifierOptions, v1ModifierList.modifierOptions) &&
+        Objects.equals(this.v2Id, v1ModifierList.v2Id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, selectionType, modifierOptions);
+    return Objects.hash(id, name, selectionType, modifierOptions, v2Id);
   }
 
 
@@ -179,6 +201,7 @@ public class V1ModifierList {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    selectionType: ").append(toIndentedString(selectionType)).append("\n");
     sb.append("    modifierOptions: ").append(toIndentedString(modifierOptions)).append("\n");
+    sb.append("    v2Id: ").append(toIndentedString(v2Id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

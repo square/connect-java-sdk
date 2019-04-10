@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * 
+ * Defines the fields that are included in a request to the DeleteCustomer endpoint.
  */
-@ApiModel(description = "")
+@ApiModel(description = "Defines the fields that are included in a request to the DeleteCustomer endpoint.")
 
 public class DeleteCustomerRequest {
 

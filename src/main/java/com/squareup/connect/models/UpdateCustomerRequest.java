@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the body parameters that can be provided in a request to the [UpdateCustomer](#endpoint-updatecustomer) endpoint.
+ * Defines the body parameters that can be provided in a request to the UpdateCustomer endpoint.
  */
-@ApiModel(description = "Defines the body parameters that can be provided in a request to the [UpdateCustomer](#endpoint-updatecustomer) endpoint.")
+@ApiModel(description = "Defines the body parameters that can be provided in a request to the UpdateCustomer endpoint.")
 
 public class UpdateCustomerRequest {
   @JsonProperty("given_name")

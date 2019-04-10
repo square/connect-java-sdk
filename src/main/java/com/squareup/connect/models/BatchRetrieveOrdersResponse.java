@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the [BatchRetrieveOrders](#endpoint-batchretrieveorders) endpoint.
+ * Defines the fields that are included in the response body of a request to the BatchRetrieveOrders endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the [BatchRetrieveOrders](#endpoint-batchretrieveorders) endpoint.")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the BatchRetrieveOrders endpoint.")
 
 public class BatchRetrieveOrdersResponse {
   @JsonProperty("orders")
