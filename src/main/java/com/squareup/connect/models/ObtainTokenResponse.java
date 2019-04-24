@@ -56,10 +56,10 @@ public class ObtainTokenResponse {
   }
 
    /**
-   * A valid OAuth access token. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.
+   * A valid OAuth access token. OAuth access tokens are 64 bytes long. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.
    * @return accessToken
   **/
-  @ApiModelProperty(value = "A valid OAuth access token. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.")
+  @ApiModelProperty(value = "A valid OAuth access token. OAuth access tokens are 64 bytes long. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.")
   public String getAccessToken() {
     return accessToken;
   }

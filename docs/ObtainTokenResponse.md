@@ -8,7 +8,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accessToken** | **String** | A valid OAuth access token. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information. |  [optional]
+**accessToken** | **String** | A valid OAuth access token. OAuth access tokens are 64 bytes long. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information. |  [optional]
 **tokenType** | **String** | This value is always _bearer_. |  [optional]
 **expiresAt** | **String** | The date when access_token expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format. |  [optional]
 **merchantId** | **String** | The ID of the authorizing merchant&#39;s business. |  [optional]

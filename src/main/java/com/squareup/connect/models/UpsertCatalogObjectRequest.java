@@ -57,10 +57,10 @@ public class UpsertCatalogObjectRequest {
   }
 
    /**
-   * A [CatalogObject](#type-catalogobject) to be created or updated. The object's `is_deleted` field must not be set to `true`. When creating a new object, the object's ID must either start with a `#` character or be left blank. In either case it will be replaced with a server-generated ID.
+   * A [CatalogObject](#type-catalogobject) to be created or updated. - For updates, the object must be active (the `is_deleted` field is not `true`). - For creates, the object ID must start with `#`. The provided ID is replaced with a server-generated ID.
    * @return object
   **/
-  @ApiModelProperty(required = true, value = "A [CatalogObject](#type-catalogobject) to be created or updated. The object's `is_deleted` field must not be set to `true`. When creating a new object, the object's ID must either start with a `#` character or be left blank. In either case it will be replaced with a server-generated ID.")
+  @ApiModelProperty(required = true, value = "A [CatalogObject](#type-catalogobject) to be created or updated. - For updates, the object must be active (the `is_deleted` field is not `true`). - For creates, the object ID must start with `#`. The provided ID is replaced with a server-generated ID.")
   public CatalogObject getObject() {
     return object;
   }

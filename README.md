@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190410.0</version>
+    <version>2.20190410.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190410.0"
+compile "com.squareup:connect:2.20190410.1"
 ```
 
 ### Option 3: Build and Install locally
@@ -70,7 +70,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190410.0.jar
+* target/connect-2.20190410.1.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -625,6 +625,7 @@ Class | Method | HTTP request | Description
  - [V1SettlementEntryType](docs/V1SettlementEntryType.md)
  - [V1SettlementStatus](docs/V1SettlementStatus.md)
  - [V1Tender](docs/V1Tender.md)
+ - [V1TenderCardBrand](docs/V1TenderCardBrand.md)
  - [V1TenderEntryMethod](docs/V1TenderEntryMethod.md)
  - [V1TenderType](docs/V1TenderType.md)
  - [V1Timecard](docs/V1Timecard.md)
