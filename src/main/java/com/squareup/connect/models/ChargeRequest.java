@@ -184,10 +184,10 @@ public class ChargeRequest {
   }
 
    /**
-   * 
+   * An optional note to associate with the transaction.  This value cannot exceed 60 characters.
    * @return note
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "An optional note to associate with the transaction.  This value cannot exceed 60 characters.")
   public String getNote() {
     return note;
   }

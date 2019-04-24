@@ -85,14 +85,14 @@ public class V1Tender {
   private String receiptUrl = null;
 
   /**
-   * The brand of credit card provided. See [CardBrand](#type-cardbrand) for possible values
+   * The brand of credit card provided. See [V1TenderCardBrand](#type-v1tendercardbrand) for possible values
    */
   public enum CardBrandEnum {
     OTHER_BRAND("OTHER_BRAND"),
     
     VISA("VISA"),
     
-    MASTERCARD("MASTERCARD"),
+    MASTER_CARD("MASTER_CARD"),
     
     AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
     
@@ -297,10 +297,10 @@ public class V1Tender {
   }
 
    /**
-   * The brand of credit card provided. See [CardBrand](#type-cardbrand) for possible values
+   * The brand of credit card provided. See [V1TenderCardBrand](#type-v1tendercardbrand) for possible values
    * @return cardBrand
   **/
-  @ApiModelProperty(value = "The brand of credit card provided. See [CardBrand](#type-cardbrand) for possible values")
+  @ApiModelProperty(value = "The brand of credit card provided. See [V1TenderCardBrand](#type-v1tendercardbrand) for possible values")
   public CardBrandEnum getCardBrand() {
     return cardBrand;
   }

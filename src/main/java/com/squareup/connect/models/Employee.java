@@ -37,6 +37,12 @@ public class Employee {
   @JsonProperty("last_name")
   private String lastName = null;
 
+  @JsonProperty("email")
+  private String email = null;
+
+  @JsonProperty("phone_number")
+  private String phoneNumber = null;
+
   @JsonProperty("location_ids")
   private List<String> locationIds = new ArrayList<String>();
 
@@ -133,6 +139,42 @@ public class Employee {
     this.lastName = lastName;
   }
 
+  public Employee email(String email) {
+    this.email = email;
+    return this;
+  }
+
+   /**
+   * Email of the employee
+   * @return email
+  **/
+  @ApiModelProperty(value = "Email of the employee")
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public Employee phoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+    return this;
+  }
+
+   /**
+   * Phone number of the employee in E.164 format, i.e. \"+12125554250\"
+   * @return phoneNumber
+  **/
+  @ApiModelProperty(value = "Phone number of the employee in E.164 format, i.e. \"+12125554250\"")
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
   public Employee locationIds(List<String> locationIds) {
     this.locationIds = locationIds;
     return this;
@@ -223,6 +265,8 @@ public class Employee {
     return Objects.equals(this.id, employee.id) &&
         Objects.equals(this.firstName, employee.firstName) &&
         Objects.equals(this.lastName, employee.lastName) &&
+        Objects.equals(this.email, employee.email) &&
+        Objects.equals(this.phoneNumber, employee.phoneNumber) &&
         Objects.equals(this.locationIds, employee.locationIds) &&
         Objects.equals(this.status, employee.status) &&
         Objects.equals(this.createdAt, employee.createdAt) &&
@@ -231,7 +275,7 @@ public class Employee {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName, locationIds, status, createdAt, updatedAt);
+    return Objects.hash(id, firstName, lastName, email, phoneNumber, locationIds, status, createdAt, updatedAt);
   }
 
 
@@ -243,6 +287,8 @@ public class Employee {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    locationIds: ").append(toIndentedString(locationIds)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
