@@ -220,10 +220,10 @@ public class ChargeRequest {
   }
 
    /**
-   * The buyer's billing address. This value is optional, but this transaction is ineligible for chargeback protection if neither this parameter nor `shipping_address` is provided.
+   * The buyer's billing address.
    * @return billingAddress
   **/
-  @ApiModelProperty(value = "The buyer's billing address. This value is optional, but this transaction is ineligible for chargeback protection if neither this parameter nor `shipping_address` is provided.")
+  @ApiModelProperty(value = "The buyer's billing address.")
   public Address getBillingAddress() {
     return billingAddress;
   }
@@ -238,10 +238,10 @@ public class ChargeRequest {
   }
 
    /**
-   * The buyer's shipping address, if available. This value is optional, but this transaction is ineligible for chargeback protection if neither this parameter nor `billing_address` is provided.
+   * The buyer's shipping address, if available.
    * @return shippingAddress
   **/
-  @ApiModelProperty(value = "The buyer's shipping address, if available. This value is optional, but this transaction is ineligible for chargeback protection if neither this parameter nor `billing_address` is provided.")
+  @ApiModelProperty(value = "The buyer's shipping address, if available.")
   public Address getShippingAddress() {
     return shippingAddress;
   }
@@ -256,10 +256,10 @@ public class ChargeRequest {
   }
 
    /**
-   * The buyer's email address, if available. This value is optional, but this transaction is ineligible for chargeback protection if it is not provided.
+   * The buyer's email address, if available.
    * @return buyerEmailAddress
   **/
-  @ApiModelProperty(value = "The buyer's email address, if available. This value is optional, but this transaction is ineligible for chargeback protection if it is not provided.")
+  @ApiModelProperty(value = "The buyer's email address, if available.")
   public String getBuyerEmailAddress() {
     return buyerEmailAddress;
   }

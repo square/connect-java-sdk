@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a discount that applies to one or more line items in an order.  Fixed-amount, order-level discounts are distributed across all non-zero line item totals. The amount distributed to each line item is relative to that item’s contribution to the order subtotal.")
 
 public class OrderLineItemDiscount {
+  @JsonProperty("uid")
+  private String uid = null;
+
   @JsonProperty("catalog_object_id")
   private String catalogObjectId = null;
 
@@ -116,6 +119,24 @@ public class OrderLineItemDiscount {
   @JsonProperty("scope")
   private ScopeEnum scope = null;
 
+  public OrderLineItemDiscount uid(String uid) {
+    this.uid = uid;
+    return this;
+  }
+
+   /**
+   * The discount's Unique identifier, unique only within this order. This field is read-only.
+   * @return uid
+  **/
+  @ApiModelProperty(value = "The discount's Unique identifier, unique only within this order. This field is read-only.")
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
+
   public OrderLineItemDiscount catalogObjectId(String catalogObjectId) {
     this.catalogObjectId = catalogObjectId;
     return this;
@@ -176,10 +197,10 @@ public class OrderLineItemDiscount {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  The percentage won't be set for an amount-based discount.
+   * The percentage of the discount, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  The percentage won't be set for an amount-based discount.
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  The percentage won't be set for an amount-based discount.")
+  @ApiModelProperty(value = "The percentage of the discount, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  The percentage won't be set for an amount-based discount.")
   public String getPercentage() {
     return percentage;
   }
@@ -252,7 +273,8 @@ public class OrderLineItemDiscount {
       return false;
     }
     OrderLineItemDiscount orderLineItemDiscount = (OrderLineItemDiscount) o;
-    return Objects.equals(this.catalogObjectId, orderLineItemDiscount.catalogObjectId) &&
+    return Objects.equals(this.uid, orderLineItemDiscount.uid) &&
+        Objects.equals(this.catalogObjectId, orderLineItemDiscount.catalogObjectId) &&
         Objects.equals(this.name, orderLineItemDiscount.name) &&
         Objects.equals(this.type, orderLineItemDiscount.type) &&
         Objects.equals(this.percentage, orderLineItemDiscount.percentage) &&
@@ -263,7 +285,7 @@ public class OrderLineItemDiscount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogObjectId, name, type, percentage, amountMoney, appliedMoney, scope);
+    return Objects.hash(uid, catalogObjectId, name, type, percentage, amountMoney, appliedMoney, scope);
   }
 
 
@@ -272,6 +294,7 @@ public class OrderLineItemDiscount {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLineItemDiscount {\n");
     
+    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

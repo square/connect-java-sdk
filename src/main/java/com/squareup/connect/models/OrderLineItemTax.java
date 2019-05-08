@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a tax that applies to one or more line items in an order.")
 
 public class OrderLineItemTax {
+  @JsonProperty("uid")
+  private String uid = null;
+
   @JsonProperty("catalog_object_id")
   private String catalogObjectId = null;
 
@@ -108,6 +111,24 @@ public class OrderLineItemTax {
 
   @JsonProperty("scope")
   private ScopeEnum scope = null;
+
+  public OrderLineItemTax uid(String uid) {
+    this.uid = uid;
+    return this;
+  }
+
+   /**
+   * The tax's Unique identifier, unique only within this order. This field is read-only.
+   * @return uid
+  **/
+  @ApiModelProperty(value = "The tax's Unique identifier, unique only within this order. This field is read-only.")
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
 
   public OrderLineItemTax catalogObjectId(String catalogObjectId) {
     this.catalogObjectId = catalogObjectId;
@@ -227,7 +248,8 @@ public class OrderLineItemTax {
       return false;
     }
     OrderLineItemTax orderLineItemTax = (OrderLineItemTax) o;
-    return Objects.equals(this.catalogObjectId, orderLineItemTax.catalogObjectId) &&
+    return Objects.equals(this.uid, orderLineItemTax.uid) &&
+        Objects.equals(this.catalogObjectId, orderLineItemTax.catalogObjectId) &&
         Objects.equals(this.name, orderLineItemTax.name) &&
         Objects.equals(this.type, orderLineItemTax.type) &&
         Objects.equals(this.percentage, orderLineItemTax.percentage) &&
@@ -237,7 +259,7 @@ public class OrderLineItemTax {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogObjectId, name, type, percentage, appliedMoney, scope);
+    return Objects.hash(uid, catalogObjectId, name, type, percentage, appliedMoney, scope);
   }
 
 
@@ -246,6 +268,7 @@ public class OrderLineItemTax {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLineItemTax {\n");
     
+    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
