@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190410.1</version>
+    <version>2.20190508.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190410.1"
+compile "com.squareup:connect:2.20190508.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -70,7 +70,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190410.1.jar
+* target/connect-2.20190508.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -170,6 +170,7 @@ Class | Method | HTTP request | Description
 *OAuthApi* | [**revokeToken**](docs/OAuthApi.md#revokeToken) | **POST** /oauth2/revoke | RevokeToken
 *OrdersApi* | [**batchRetrieveOrders**](docs/OrdersApi.md#batchRetrieveOrders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve | BatchRetrieveOrders
 *OrdersApi* | [**createOrder**](docs/OrdersApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
+*OrdersApi* | [**searchOrders**](docs/OrdersApi.md#searchOrders) | **POST** /v2/orders/search | SearchOrders
 *ReportingApi* | [**listAdditionalRecipientReceivableRefunds**](docs/ReportingApi.md#listAdditionalRecipientReceivableRefunds) | **GET** /v2/locations/{location_id}/additional-recipient-receivable-refunds | ListAdditionalRecipientReceivableRefunds
 *ReportingApi* | [**listAdditionalRecipientReceivables**](docs/ReportingApi.md#listAdditionalRecipientReceivables) | **GET** /v2/locations/{location_id}/additional-recipient-receivables | ListAdditionalRecipientReceivables
 *TransactionsApi* | [**captureTransaction**](docs/TransactionsApi.md#captureTransaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/capture | CaptureTransaction
@@ -271,6 +272,8 @@ Class | Method | HTTP request | Description
  - [BatchUpsertCatalogObjectsRequest](docs/BatchUpsertCatalogObjectsRequest.md)
  - [BatchUpsertCatalogObjectsResponse](docs/BatchUpsertCatalogObjectsResponse.md)
  - [BreakType](docs/BreakType.md)
+ - [BusinessHours](docs/BusinessHours.md)
+ - [BusinessHoursPeriod](docs/BusinessHoursPeriod.md)
  - [CaptureTransactionRequest](docs/CaptureTransactionRequest.md)
  - [CaptureTransactionResponse](docs/CaptureTransactionResponse.md)
  - [Card](docs/Card.md)
@@ -342,6 +345,7 @@ Class | Method | HTTP request | Description
  - [CustomerSort](docs/CustomerSort.md)
  - [CustomerSortField](docs/CustomerSortField.md)
  - [DateRange](docs/DateRange.md)
+ - [DayOfWeek](docs/DayOfWeek.md)
  - [DeleteBreakTypeRequest](docs/DeleteBreakTypeRequest.md)
  - [DeleteBreakTypeResponse](docs/DeleteBreakTypeResponse.md)
  - [DeleteCatalogObjectRequest](docs/DeleteCatalogObjectRequest.md)
@@ -400,11 +404,18 @@ Class | Method | HTTP request | Description
  - [LocationCapability](docs/LocationCapability.md)
  - [LocationStatus](docs/LocationStatus.md)
  - [LocationType](docs/LocationType.md)
+ - [MeasurementUnit](docs/MeasurementUnit.md)
+ - [MeasurementUnitArea](docs/MeasurementUnitArea.md)
+ - [MeasurementUnitCustom](docs/MeasurementUnitCustom.md)
+ - [MeasurementUnitLength](docs/MeasurementUnitLength.md)
+ - [MeasurementUnitVolume](docs/MeasurementUnitVolume.md)
+ - [MeasurementUnitWeight](docs/MeasurementUnitWeight.md)
  - [ModelBreak](docs/ModelBreak.md)
  - [Money](docs/Money.md)
  - [ObtainTokenRequest](docs/ObtainTokenRequest.md)
  - [ObtainTokenResponse](docs/ObtainTokenResponse.md)
  - [Order](docs/Order.md)
+ - [OrderEntry](docs/OrderEntry.md)
  - [OrderFulfillment](docs/OrderFulfillment.md)
  - [OrderFulfillmentPickupDetails](docs/OrderFulfillmentPickupDetails.md)
  - [OrderFulfillmentPickupDetailsScheduleType](docs/OrderFulfillmentPickupDetailsScheduleType.md)
@@ -419,7 +430,16 @@ Class | Method | HTTP request | Description
  - [OrderLineItemTax](docs/OrderLineItemTax.md)
  - [OrderLineItemTaxScope](docs/OrderLineItemTaxScope.md)
  - [OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
+ - [OrderMoneyAmounts](docs/OrderMoneyAmounts.md)
+ - [OrderQuantityUnit](docs/OrderQuantityUnit.md)
+ - [OrderReturn](docs/OrderReturn.md)
+ - [OrderReturnDiscount](docs/OrderReturnDiscount.md)
+ - [OrderReturnLineItem](docs/OrderReturnLineItem.md)
+ - [OrderReturnLineItemModifier](docs/OrderReturnLineItemModifier.md)
+ - [OrderReturnTax](docs/OrderReturnTax.md)
+ - [OrderRoundingAdjustment](docs/OrderRoundingAdjustment.md)
  - [OrderSource](docs/OrderSource.md)
+ - [OrderState](docs/OrderState.md)
  - [Product](docs/Product.md)
  - [Refund](docs/Refund.md)
  - [RefundStatus](docs/RefundStatus.md)
@@ -450,6 +470,17 @@ Class | Method | HTTP request | Description
  - [SearchCatalogObjectsResponse](docs/SearchCatalogObjectsResponse.md)
  - [SearchCustomersRequest](docs/SearchCustomersRequest.md)
  - [SearchCustomersResponse](docs/SearchCustomersResponse.md)
+ - [SearchOrdersCustomerFilter](docs/SearchOrdersCustomerFilter.md)
+ - [SearchOrdersDateTimeFilter](docs/SearchOrdersDateTimeFilter.md)
+ - [SearchOrdersFilter](docs/SearchOrdersFilter.md)
+ - [SearchOrdersFulfillmentFilter](docs/SearchOrdersFulfillmentFilter.md)
+ - [SearchOrdersQuery](docs/SearchOrdersQuery.md)
+ - [SearchOrdersRequest](docs/SearchOrdersRequest.md)
+ - [SearchOrdersResponse](docs/SearchOrdersResponse.md)
+ - [SearchOrdersSort](docs/SearchOrdersSort.md)
+ - [SearchOrdersSortField](docs/SearchOrdersSortField.md)
+ - [SearchOrdersSourceFilter](docs/SearchOrdersSourceFilter.md)
+ - [SearchOrdersStateFilter](docs/SearchOrdersStateFilter.md)
  - [SearchShiftsRequest](docs/SearchShiftsRequest.md)
  - [SearchShiftsResponse](docs/SearchShiftsResponse.md)
  - [Shift](docs/Shift.md)

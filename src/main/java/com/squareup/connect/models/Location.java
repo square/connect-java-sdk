@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Address;
+import com.squareup.connect.models.BusinessHours;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -1076,6 +1077,9 @@ public class Location {
   @JsonProperty("website_url")
   private String websiteUrl = null;
 
+  @JsonProperty("business_hours")
+  private BusinessHours businessHours = null;
+
   public Location id(String id) {
     this.id = id;
     return this;
@@ -1351,6 +1355,24 @@ public class Location {
     this.websiteUrl = websiteUrl;
   }
 
+  public Location businessHours(BusinessHours businessHours) {
+    this.businessHours = businessHours;
+    return this;
+  }
+
+   /**
+   *   The hours of operation for a business location.  Default: none; only exists if explicitly set.
+   * @return businessHours
+  **/
+  @ApiModelProperty(value = "  The hours of operation for a business location.  Default: none; only exists if explicitly set.")
+  public BusinessHours getBusinessHours() {
+    return businessHours;
+  }
+
+  public void setBusinessHours(BusinessHours businessHours) {
+    this.businessHours = businessHours;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1375,12 +1397,13 @@ public class Location {
         Objects.equals(this.phoneNumber, location.phoneNumber) &&
         Objects.equals(this.businessName, location.businessName) &&
         Objects.equals(this.type, location.type) &&
-        Objects.equals(this.websiteUrl, location.websiteUrl);
+        Objects.equals(this.websiteUrl, location.websiteUrl) &&
+        Objects.equals(this.businessHours, location.businessHours);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl);
+    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl, businessHours);
   }
 
 
@@ -1404,6 +1427,7 @@ public class Location {
     sb.append("    businessName: ").append(toIndentedString(businessName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    websiteUrl: ").append(toIndentedString(websiteUrl)).append("\n");
+    sb.append("    businessHours: ").append(toIndentedString(businessHours)).append("\n");
     sb.append("}");
     return sb.toString();
   }

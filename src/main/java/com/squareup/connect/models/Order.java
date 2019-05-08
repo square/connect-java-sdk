@@ -22,16 +22,21 @@ import com.squareup.connect.models.OrderFulfillment;
 import com.squareup.connect.models.OrderLineItem;
 import com.squareup.connect.models.OrderLineItemDiscount;
 import com.squareup.connect.models.OrderLineItemTax;
+import com.squareup.connect.models.OrderMoneyAmounts;
+import com.squareup.connect.models.OrderReturn;
+import com.squareup.connect.models.OrderRoundingAdjustment;
 import com.squareup.connect.models.OrderSource;
+import com.squareup.connect.models.Refund;
+import com.squareup.connect.models.Tender;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Contains all information related to a single order to process with Square, including line items that specify the products to purchase
+ * Contains all information related to a single order to process with Square, including line items that specify the products to purchase. Order objects also include information on any associated tenders, refunds, and returns.  All Connect V2 Transactions have all been converted to Orders including all associated itemization data.
  */
-@ApiModel(description = "Contains all information related to a single order to process with Square, including line items that specify the products to purchase")
+@ApiModel(description = "Contains all information related to a single order to process with Square, including line items that specify the products to purchase. Order objects also include information on any associated tenders, refunds, and returns.  All Connect V2 Transactions have all been converted to Orders including all associated itemization data.")
 
 public class Order {
   @JsonProperty("id")
@@ -46,6 +51,9 @@ public class Order {
   @JsonProperty("source")
   private OrderSource source = null;
 
+  @JsonProperty("customer_id")
+  private String customerId = null;
+
   @JsonProperty("line_items")
   private List<OrderLineItem> lineItems = new ArrayList<OrderLineItem>();
 
@@ -57,6 +65,68 @@ public class Order {
 
   @JsonProperty("fulfillments")
   private List<OrderFulfillment> fulfillments = new ArrayList<OrderFulfillment>();
+
+  @JsonProperty("returns")
+  private List<OrderReturn> returns = new ArrayList<OrderReturn>();
+
+  @JsonProperty("return_amounts")
+  private OrderMoneyAmounts returnAmounts = null;
+
+  @JsonProperty("net_amounts")
+  private OrderMoneyAmounts netAmounts = null;
+
+  @JsonProperty("rounding_adjustment")
+  private OrderRoundingAdjustment roundingAdjustment = null;
+
+  @JsonProperty("tenders")
+  private List<Tender> tenders = new ArrayList<Tender>();
+
+  @JsonProperty("refunds")
+  private List<Refund> refunds = new ArrayList<Refund>();
+
+  @JsonProperty("created_at")
+  private String createdAt = null;
+
+  @JsonProperty("updated_at")
+  private String updatedAt = null;
+
+  @JsonProperty("closed_at")
+  private String closedAt = null;
+
+  /**
+   * The current state of the order. `OPEN`,`COMPLETED`,`CANCELED` See [OrderState](#type-orderstate) for possible values
+   */
+  public enum StateEnum {
+    OPEN("OPEN"),
+    
+    COMPLETED("COMPLETED"),
+    
+    CANCELED("CANCELED");
+
+    private String value;
+
+    StateEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StateEnum fromValue(String text) {
+      for (StateEnum b : StateEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("state")
+  private StateEnum state = null;
 
   @JsonProperty("total_money")
   private Money totalMoney = null;
@@ -137,6 +207,24 @@ public class Order {
 
   public void setSource(OrderSource source) {
     this.source = source;
+  }
+
+  public Order customerId(String customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+   /**
+   * The [Customer](#type-customer) ID of the customer associated with the order.
+   * @return customerId
+  **/
+  @ApiModelProperty(value = "The [Customer](#type-customer) ID of the customer associated with the order.")
+  public String getCustomerId() {
+    return customerId;
+  }
+
+  public void setCustomerId(String customerId) {
+    this.customerId = customerId;
   }
 
   public Order lineItems(List<OrderLineItem> lineItems) {
@@ -231,6 +319,201 @@ public class Order {
     this.fulfillments = fulfillments;
   }
 
+  public Order returns(List<OrderReturn> returns) {
+    this.returns = returns;
+    return this;
+  }
+
+  public Order addReturnsItem(OrderReturn returnsItem) {
+    this.returns.add(returnsItem);
+    return this;
+  }
+
+   /**
+   * Collection of items from sale Orders being returned in this one. Normally part of an Itemized Return or Exchange.  There will be exactly one `Return` object per sale Order being referenced.
+   * @return returns
+  **/
+  @ApiModelProperty(value = "Collection of items from sale Orders being returned in this one. Normally part of an Itemized Return or Exchange.  There will be exactly one `Return` object per sale Order being referenced.")
+  public List<OrderReturn> getReturns() {
+    return returns;
+  }
+
+  public void setReturns(List<OrderReturn> returns) {
+    this.returns = returns;
+  }
+
+  public Order returnAmounts(OrderMoneyAmounts returnAmounts) {
+    this.returnAmounts = returnAmounts;
+    return this;
+  }
+
+   /**
+   * Rollup of returned money amounts.
+   * @return returnAmounts
+  **/
+  @ApiModelProperty(value = "Rollup of returned money amounts.")
+  public OrderMoneyAmounts getReturnAmounts() {
+    return returnAmounts;
+  }
+
+  public void setReturnAmounts(OrderMoneyAmounts returnAmounts) {
+    this.returnAmounts = returnAmounts;
+  }
+
+  public Order netAmounts(OrderMoneyAmounts netAmounts) {
+    this.netAmounts = netAmounts;
+    return this;
+  }
+
+   /**
+   * Net money amounts (sale money - return money).
+   * @return netAmounts
+  **/
+  @ApiModelProperty(value = "Net money amounts (sale money - return money).")
+  public OrderMoneyAmounts getNetAmounts() {
+    return netAmounts;
+  }
+
+  public void setNetAmounts(OrderMoneyAmounts netAmounts) {
+    this.netAmounts = netAmounts;
+  }
+
+  public Order roundingAdjustment(OrderRoundingAdjustment roundingAdjustment) {
+    this.roundingAdjustment = roundingAdjustment;
+    return this;
+  }
+
+   /**
+   * A positive or negative rounding adjustment to the total of the order, commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.
+   * @return roundingAdjustment
+  **/
+  @ApiModelProperty(value = "A positive or negative rounding adjustment to the total of the order, commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.")
+  public OrderRoundingAdjustment getRoundingAdjustment() {
+    return roundingAdjustment;
+  }
+
+  public void setRoundingAdjustment(OrderRoundingAdjustment roundingAdjustment) {
+    this.roundingAdjustment = roundingAdjustment;
+  }
+
+  public Order tenders(List<Tender> tenders) {
+    this.tenders = tenders;
+    return this;
+  }
+
+  public Order addTendersItem(Tender tendersItem) {
+    this.tenders.add(tendersItem);
+    return this;
+  }
+
+   /**
+   * The Tenders which were used to pay for the Order. This field is read-only.
+   * @return tenders
+  **/
+  @ApiModelProperty(value = "The Tenders which were used to pay for the Order. This field is read-only.")
+  public List<Tender> getTenders() {
+    return tenders;
+  }
+
+  public void setTenders(List<Tender> tenders) {
+    this.tenders = tenders;
+  }
+
+  public Order refunds(List<Refund> refunds) {
+    this.refunds = refunds;
+    return this;
+  }
+
+  public Order addRefundsItem(Refund refundsItem) {
+    this.refunds.add(refundsItem);
+    return this;
+  }
+
+   /**
+   * The Refunds that are part of this Order. This field is read-only.
+   * @return refunds
+  **/
+  @ApiModelProperty(value = "The Refunds that are part of this Order. This field is read-only.")
+  public List<Refund> getRefunds() {
+    return refunds;
+  }
+
+  public void setRefunds(List<Refund> refunds) {
+    this.refunds = refunds;
+  }
+
+  public Order createdAt(String createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * @return createdAt
+  **/
+  @ApiModelProperty(value = "Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public Order updatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * @return updatedAt
+  **/
+  @ApiModelProperty(value = "Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  public Order closedAt(String closedAt) {
+    this.closedAt = closedAt;
+    return this;
+  }
+
+   /**
+   * Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * @return closedAt
+  **/
+  @ApiModelProperty(value = "Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  public String getClosedAt() {
+    return closedAt;
+  }
+
+  public void setClosedAt(String closedAt) {
+    this.closedAt = closedAt;
+  }
+
+  public Order state(StateEnum state) {
+    this.state = state;
+    return this;
+  }
+
+   /**
+   * The current state of the order. `OPEN`,`COMPLETED`,`CANCELED` See [OrderState](#type-orderstate) for possible values
+   * @return state
+  **/
+  @ApiModelProperty(value = "The current state of the order. `OPEN`,`COMPLETED`,`CANCELED` See [OrderState](#type-orderstate) for possible values")
+  public StateEnum getState() {
+    return state;
+  }
+
+  public void setState(StateEnum state) {
+    this.state = state;
+  }
+
   public Order totalMoney(Money totalMoney) {
     this.totalMoney = totalMoney;
     return this;
@@ -299,10 +582,21 @@ public class Order {
         Objects.equals(this.locationId, order.locationId) &&
         Objects.equals(this.referenceId, order.referenceId) &&
         Objects.equals(this.source, order.source) &&
+        Objects.equals(this.customerId, order.customerId) &&
         Objects.equals(this.lineItems, order.lineItems) &&
         Objects.equals(this.taxes, order.taxes) &&
         Objects.equals(this.discounts, order.discounts) &&
         Objects.equals(this.fulfillments, order.fulfillments) &&
+        Objects.equals(this.returns, order.returns) &&
+        Objects.equals(this.returnAmounts, order.returnAmounts) &&
+        Objects.equals(this.netAmounts, order.netAmounts) &&
+        Objects.equals(this.roundingAdjustment, order.roundingAdjustment) &&
+        Objects.equals(this.tenders, order.tenders) &&
+        Objects.equals(this.refunds, order.refunds) &&
+        Objects.equals(this.createdAt, order.createdAt) &&
+        Objects.equals(this.updatedAt, order.updatedAt) &&
+        Objects.equals(this.closedAt, order.closedAt) &&
+        Objects.equals(this.state, order.state) &&
         Objects.equals(this.totalMoney, order.totalMoney) &&
         Objects.equals(this.totalTaxMoney, order.totalTaxMoney) &&
         Objects.equals(this.totalDiscountMoney, order.totalDiscountMoney);
@@ -310,7 +604,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, referenceId, source, lineItems, taxes, discounts, fulfillments, totalMoney, totalTaxMoney, totalDiscountMoney);
+    return Objects.hash(id, locationId, referenceId, source, customerId, lineItems, taxes, discounts, fulfillments, returns, returnAmounts, netAmounts, roundingAdjustment, tenders, refunds, createdAt, updatedAt, closedAt, state, totalMoney, totalTaxMoney, totalDiscountMoney);
   }
 
 
@@ -323,10 +617,21 @@ public class Order {
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("    fulfillments: ").append(toIndentedString(fulfillments)).append("\n");
+    sb.append("    returns: ").append(toIndentedString(returns)).append("\n");
+    sb.append("    returnAmounts: ").append(toIndentedString(returnAmounts)).append("\n");
+    sb.append("    netAmounts: ").append(toIndentedString(netAmounts)).append("\n");
+    sb.append("    roundingAdjustment: ").append(toIndentedString(roundingAdjustment)).append("\n");
+    sb.append("    tenders: ").append(toIndentedString(tenders)).append("\n");
+    sb.append("    refunds: ").append(toIndentedString(refunds)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    closedAt: ").append(toIndentedString(closedAt)).append("\n");
+    sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    totalMoney: ").append(toIndentedString(totalMoney)).append("\n");
     sb.append("    totalTaxMoney: ").append(toIndentedString(totalTaxMoney)).append("\n");
     sb.append("    totalDiscountMoney: ").append(toIndentedString(totalDiscountMoney)).append("\n");

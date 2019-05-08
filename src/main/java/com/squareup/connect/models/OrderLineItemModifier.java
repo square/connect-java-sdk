@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "A [CatalogModifier](#type-catalogmodifier).")
 
 public class OrderLineItemModifier {
+  @JsonProperty("uid")
+  private String uid = null;
+
   @JsonProperty("catalog_object_id")
   private String catalogObjectId = null;
 
@@ -38,6 +41,24 @@ public class OrderLineItemModifier {
 
   @JsonProperty("total_price_money")
   private Money totalPriceMoney = null;
+
+  public OrderLineItemModifier uid(String uid) {
+    this.uid = uid;
+    return this;
+  }
+
+   /**
+   * The modifier's Unique identifier, unique only within this order. This field is read-only.
+   * @return uid
+  **/
+  @ApiModelProperty(value = "The modifier's Unique identifier, unique only within this order. This field is read-only.")
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
 
   public OrderLineItemModifier catalogObjectId(String catalogObjectId) {
     this.catalogObjectId = catalogObjectId;
@@ -99,10 +120,10 @@ public class OrderLineItemModifier {
   }
 
    /**
-   * The total price of the item modifier for its line item. This is the modifier's base_price_money multiplied by the line item's quantity.
+   * The total price of the item modifier for its line item. This is the modifier's `base_price_money` multiplied by the line item's quantity.
    * @return totalPriceMoney
   **/
-  @ApiModelProperty(value = "The total price of the item modifier for its line item. This is the modifier's base_price_money multiplied by the line item's quantity.")
+  @ApiModelProperty(value = "The total price of the item modifier for its line item. This is the modifier's `base_price_money` multiplied by the line item's quantity.")
   public Money getTotalPriceMoney() {
     return totalPriceMoney;
   }
@@ -121,7 +142,8 @@ public class OrderLineItemModifier {
       return false;
     }
     OrderLineItemModifier orderLineItemModifier = (OrderLineItemModifier) o;
-    return Objects.equals(this.catalogObjectId, orderLineItemModifier.catalogObjectId) &&
+    return Objects.equals(this.uid, orderLineItemModifier.uid) &&
+        Objects.equals(this.catalogObjectId, orderLineItemModifier.catalogObjectId) &&
         Objects.equals(this.name, orderLineItemModifier.name) &&
         Objects.equals(this.basePriceMoney, orderLineItemModifier.basePriceMoney) &&
         Objects.equals(this.totalPriceMoney, orderLineItemModifier.totalPriceMoney);
@@ -129,7 +151,7 @@ public class OrderLineItemModifier {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogObjectId, name, basePriceMoney, totalPriceMoney);
+    return Objects.hash(uid, catalogObjectId, name, basePriceMoney, totalPriceMoney);
   }
 
 
@@ -138,6 +160,7 @@ public class OrderLineItemModifier {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLineItemModifier {\n");
     
+    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");

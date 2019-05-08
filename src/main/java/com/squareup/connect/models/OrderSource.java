@@ -35,10 +35,10 @@ public class OrderSource {
   }
 
    /**
-   * The name used to identify the place (physical or digital) that an order originates.  If unset, the name defaults to the name of the application that created the order.
+   * The name used to identify the place (physical or digital) that an order originates. If unset, the name defaults to the name of the application that created the order.
    * @return name
   **/
-  @ApiModelProperty(value = "The name used to identify the place (physical or digital) that an order originates.  If unset, the name defaults to the name of the application that created the order.")
+  @ApiModelProperty(value = "The name used to identify the place (physical or digital) that an order originates. If unset, the name defaults to the name of the application that created the order.")
   public String getName() {
     return name;
   }

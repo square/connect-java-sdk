@@ -21,6 +21,7 @@ import com.squareup.connect.models.Money;
 import com.squareup.connect.models.OrderLineItemDiscount;
 import com.squareup.connect.models.OrderLineItemModifier;
 import com.squareup.connect.models.OrderLineItemTax;
+import com.squareup.connect.models.OrderQuantityUnit;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -32,11 +33,17 @@ import java.util.List;
 @ApiModel(description = "Represents a line item in an order. Each line item describes a different product to purchase, with its own quantity and price details.")
 
 public class OrderLineItem {
+  @JsonProperty("uid")
+  private String uid = null;
+
   @JsonProperty("name")
   private String name = null;
 
   @JsonProperty("quantity")
   private String quantity = null;
+
+  @JsonProperty("quantity_unit")
+  private OrderQuantityUnit quantityUnit = null;
 
   @JsonProperty("note")
   private String note = null;
@@ -59,6 +66,9 @@ public class OrderLineItem {
   @JsonProperty("base_price_money")
   private Money basePriceMoney = null;
 
+  @JsonProperty("variation_total_price_money")
+  private Money variationTotalPriceMoney = null;
+
   @JsonProperty("gross_sales_money")
   private Money grossSalesMoney = null;
 
@@ -70,6 +80,24 @@ public class OrderLineItem {
 
   @JsonProperty("total_money")
   private Money totalMoney = null;
+
+  public OrderLineItem uid(String uid) {
+    this.uid = uid;
+    return this;
+  }
+
+   /**
+   * The line item's Unique identifier, unique only within this order. This field is read-only.
+   * @return uid
+  **/
+  @ApiModelProperty(value = "The line item's Unique identifier, unique only within this order. This field is read-only.")
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
 
   public OrderLineItem name(String name) {
     this.name = name;
@@ -95,16 +123,34 @@ public class OrderLineItem {
   }
 
    /**
-   * The quantity purchased, as a string representation of a number.  This string must have a positive integer value.
+   * The quantity purchased, formatted as a decimal number. For example: `\"3\"`.  Line items with a `quantity_unit` can have non-integer quantities. For example: `\"1.70000\"`.  Orders Hub and older versions of Connect do not support non-integer quantities. See [Decimal quantities with Orders hub and older versions of Connect](/more-apis/orders/overview#decimal-quantities).
    * @return quantity
   **/
-  @ApiModelProperty(required = true, value = "The quantity purchased, as a string representation of a number.  This string must have a positive integer value.")
+  @ApiModelProperty(required = true, value = "The quantity purchased, formatted as a decimal number. For example: `\"3\"`.  Line items with a `quantity_unit` can have non-integer quantities. For example: `\"1.70000\"`.  Orders Hub and older versions of Connect do not support non-integer quantities. See [Decimal quantities with Orders hub and older versions of Connect](/more-apis/orders/overview#decimal-quantities).")
   public String getQuantity() {
     return quantity;
   }
 
   public void setQuantity(String quantity) {
     this.quantity = quantity;
+  }
+
+  public OrderLineItem quantityUnit(OrderQuantityUnit quantityUnit) {
+    this.quantityUnit = quantityUnit;
+    return this;
+  }
+
+   /**
+   * The unit and precision that this line item's quantity is measured in.
+   * @return quantityUnit
+  **/
+  @ApiModelProperty(value = "The unit and precision that this line item's quantity is measured in.")
+  public OrderQuantityUnit getQuantityUnit() {
+    return quantityUnit;
+  }
+
+  public void setQuantityUnit(OrderQuantityUnit quantityUnit) {
+    this.quantityUnit = quantityUnit;
   }
 
   public OrderLineItem note(String note) {
@@ -248,16 +294,34 @@ public class OrderLineItem {
     this.basePriceMoney = basePriceMoney;
   }
 
+  public OrderLineItem variationTotalPriceMoney(Money variationTotalPriceMoney) {
+    this.variationTotalPriceMoney = variationTotalPriceMoney;
+    return this;
+  }
+
+   /**
+   * The total price of all item variations sold in this line item. Calculated as `base_price_money` multiplied by `quantity`. Does not include modifiers.
+   * @return variationTotalPriceMoney
+  **/
+  @ApiModelProperty(value = "The total price of all item variations sold in this line item. Calculated as `base_price_money` multiplied by `quantity`. Does not include modifiers.")
+  public Money getVariationTotalPriceMoney() {
+    return variationTotalPriceMoney;
+  }
+
+  public void setVariationTotalPriceMoney(Money variationTotalPriceMoney) {
+    this.variationTotalPriceMoney = variationTotalPriceMoney;
+  }
+
   public OrderLineItem grossSalesMoney(Money grossSalesMoney) {
     this.grossSalesMoney = grossSalesMoney;
     return this;
   }
 
    /**
-   * The gross sales amount of money calculated as (item base price + modifiers price) * quantity.
+   * The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.
    * @return grossSalesMoney
   **/
-  @ApiModelProperty(value = "The gross sales amount of money calculated as (item base price + modifiers price) * quantity.")
+  @ApiModelProperty(value = "The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.")
   public Money getGrossSalesMoney() {
     return grossSalesMoney;
   }
@@ -330,8 +394,10 @@ public class OrderLineItem {
       return false;
     }
     OrderLineItem orderLineItem = (OrderLineItem) o;
-    return Objects.equals(this.name, orderLineItem.name) &&
+    return Objects.equals(this.uid, orderLineItem.uid) &&
+        Objects.equals(this.name, orderLineItem.name) &&
         Objects.equals(this.quantity, orderLineItem.quantity) &&
+        Objects.equals(this.quantityUnit, orderLineItem.quantityUnit) &&
         Objects.equals(this.note, orderLineItem.note) &&
         Objects.equals(this.catalogObjectId, orderLineItem.catalogObjectId) &&
         Objects.equals(this.variationName, orderLineItem.variationName) &&
@@ -339,6 +405,7 @@ public class OrderLineItem {
         Objects.equals(this.taxes, orderLineItem.taxes) &&
         Objects.equals(this.discounts, orderLineItem.discounts) &&
         Objects.equals(this.basePriceMoney, orderLineItem.basePriceMoney) &&
+        Objects.equals(this.variationTotalPriceMoney, orderLineItem.variationTotalPriceMoney) &&
         Objects.equals(this.grossSalesMoney, orderLineItem.grossSalesMoney) &&
         Objects.equals(this.totalTaxMoney, orderLineItem.totalTaxMoney) &&
         Objects.equals(this.totalDiscountMoney, orderLineItem.totalDiscountMoney) &&
@@ -347,7 +414,7 @@ public class OrderLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, quantity, note, catalogObjectId, variationName, modifiers, taxes, discounts, basePriceMoney, grossSalesMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
+    return Objects.hash(uid, name, quantity, quantityUnit, note, catalogObjectId, variationName, modifiers, taxes, discounts, basePriceMoney, variationTotalPriceMoney, grossSalesMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
   }
 
 
@@ -356,8 +423,10 @@ public class OrderLineItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLineItem {\n");
     
+    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    quantityUnit: ").append(toIndentedString(quantityUnit)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    variationName: ").append(toIndentedString(variationName)).append("\n");
@@ -365,6 +434,7 @@ public class OrderLineItem {
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
+    sb.append("    variationTotalPriceMoney: ").append(toIndentedString(variationTotalPriceMoney)).append("\n");
     sb.append("    grossSalesMoney: ").append(toIndentedString(grossSalesMoney)).append("\n");
     sb.append("    totalTaxMoney: ").append(toIndentedString(totalTaxMoney)).append("\n");
     sb.append("    totalDiscountMoney: ").append(toIndentedString(totalDiscountMoney)).append("\n");

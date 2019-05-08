@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a verified (re)count of items in a given state at a specific location. For example, the quantity of items currently on hand at a physical store).
+ * Represents the quantity of an item variation that is physically present at a specific location, verified by a seller or a seller&#39;s employee. For example, a physical count might come from an employee counting the item variations on hand or from syncing with an external system.
  */
-@ApiModel(description = "Represents a verified (re)count of items in a given state at a specific location. For example, the quantity of items currently on hand at a physical store).")
+@ApiModel(description = "Represents the quantity of an item variation that is physically present at a specific location, verified by a seller or a seller's employee. For example, a physical count might come from an employee counting the item variations on hand or from syncing with an external system.")
 
 public class InventoryPhysicalCount {
   @JsonProperty("id")
@@ -224,10 +224,10 @@ public class InventoryPhysicalCount {
   }
 
    /**
-   * The number of items affected by the physical count as a decimal string. Fractional quantities are not supported.
+   * The number of items affected by the physical count as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`. Read [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.
    * @return quantity
   **/
-  @ApiModelProperty(value = "The number of items affected by the physical count as a decimal string. Fractional quantities are not supported.")
+  @ApiModelProperty(value = "The number of items affected by the physical count as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`. Read [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.")
   public String getQuantity() {
     return quantity;
   }

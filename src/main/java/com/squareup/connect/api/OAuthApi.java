@@ -62,7 +62,7 @@ public class OAuthApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-04-10");
+    localVarHeaderParams.put("Square-Version", "2019-05-08");
 
     
     
@@ -153,7 +153,7 @@ public class OAuthApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-04-10");
+    localVarHeaderParams.put("Square-Version", "2019-05-08");
 
     
     
@@ -244,7 +244,7 @@ public class OAuthApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-04-10");
+    localVarHeaderParams.put("Square-Version", "2019-05-08");
 
     
     
