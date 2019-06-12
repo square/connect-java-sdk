@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An item variation (i.e., product) in the Catalog object model.
+ * An item variation (i.e., product) in the Catalog object model. Each item may have a maximum of 250 item variations.
  */
-@ApiModel(description = "An item variation (i.e., product) in the Catalog object model.")
+@ApiModel(description = "An item variation (i.e., product) in the Catalog object model. Each item may have a maximum of 250 item variations.")
 
 public class CatalogItemVariation {
   @JsonProperty("item_id")
@@ -128,6 +128,12 @@ public class CatalogItemVariation {
 
   @JsonProperty("service_duration")
   private Long serviceDuration = null;
+
+  @JsonProperty("catalog_measurement_unit_id")
+  private String catalogMeasurementUnitId = null;
+
+  @JsonProperty("measurement_unit_id")
+  private String measurementUnitId = null;
 
   public CatalogItemVariation itemId(String itemId) {
     this.itemId = itemId;
@@ -368,6 +374,42 @@ public class CatalogItemVariation {
     this.serviceDuration = serviceDuration;
   }
 
+  public CatalogItemVariation catalogMeasurementUnitId(String catalogMeasurementUnitId) {
+    this.catalogMeasurementUnitId = catalogMeasurementUnitId;
+    return this;
+  }
+
+   /**
+   * Represents the unit used to measure a [CatalogItemVariation](#type-catalogitemvariation) and specifies the precision for decimal quantities.
+   * @return catalogMeasurementUnitId
+  **/
+  @ApiModelProperty(value = "Represents the unit used to measure a [CatalogItemVariation](#type-catalogitemvariation) and specifies the precision for decimal quantities.")
+  public String getCatalogMeasurementUnitId() {
+    return catalogMeasurementUnitId;
+  }
+
+  public void setCatalogMeasurementUnitId(String catalogMeasurementUnitId) {
+    this.catalogMeasurementUnitId = catalogMeasurementUnitId;
+  }
+
+  public CatalogItemVariation measurementUnitId(String measurementUnitId) {
+    this.measurementUnitId = measurementUnitId;
+    return this;
+  }
+
+   /**
+   * ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity sold of this item variation. If left unset, the item will be sold in whole quantities.
+   * @return measurementUnitId
+  **/
+  @ApiModelProperty(value = "ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity sold of this item variation. If left unset, the item will be sold in whole quantities.")
+  public String getMeasurementUnitId() {
+    return measurementUnitId;
+  }
+
+  public void setMeasurementUnitId(String measurementUnitId) {
+    this.measurementUnitId = measurementUnitId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -390,12 +432,14 @@ public class CatalogItemVariation {
         Objects.equals(this.inventoryAlertType, catalogItemVariation.inventoryAlertType) &&
         Objects.equals(this.inventoryAlertThreshold, catalogItemVariation.inventoryAlertThreshold) &&
         Objects.equals(this.userData, catalogItemVariation.userData) &&
-        Objects.equals(this.serviceDuration, catalogItemVariation.serviceDuration);
+        Objects.equals(this.serviceDuration, catalogItemVariation.serviceDuration) &&
+        Objects.equals(this.catalogMeasurementUnitId, catalogItemVariation.catalogMeasurementUnitId) &&
+        Objects.equals(this.measurementUnitId, catalogItemVariation.measurementUnitId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, name, sku, upc, ordinal, pricingType, priceMoney, locationOverrides, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, serviceDuration);
+    return Objects.hash(itemId, name, sku, upc, ordinal, pricingType, priceMoney, locationOverrides, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, serviceDuration, catalogMeasurementUnitId, measurementUnitId);
   }
 
 
@@ -417,6 +461,8 @@ public class CatalogItemVariation {
     sb.append("    inventoryAlertThreshold: ").append(toIndentedString(inventoryAlertThreshold)).append("\n");
     sb.append("    userData: ").append(toIndentedString(userData)).append("\n");
     sb.append("    serviceDuration: ").append(toIndentedString(serviceDuration)).append("\n");
+    sb.append("    catalogMeasurementUnitId: ").append(toIndentedString(catalogMeasurementUnitId)).append("\n");
+    sb.append("    measurementUnitId: ").append(toIndentedString(measurementUnitId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

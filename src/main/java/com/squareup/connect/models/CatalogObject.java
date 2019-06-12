@@ -22,6 +22,7 @@ import com.squareup.connect.models.CatalogDiscount;
 import com.squareup.connect.models.CatalogImage;
 import com.squareup.connect.models.CatalogItem;
 import com.squareup.connect.models.CatalogItemVariation;
+import com.squareup.connect.models.CatalogMeasurementUnit;
 import com.squareup.connect.models.CatalogModifier;
 import com.squareup.connect.models.CatalogModifierList;
 import com.squareup.connect.models.CatalogTax;
@@ -55,7 +56,13 @@ public class CatalogObject {
     
     MODIFIER_LIST("MODIFIER_LIST"),
     
-    MODIFIER("MODIFIER");
+    MODIFIER("MODIFIER"),
+    
+    PRICING_RULE("PRICING_RULE"),
+    
+    PRODUCT_SET("PRODUCT_SET"),
+    
+    TIME_PERIOD("TIME_PERIOD");
 
     private String value;
 
@@ -132,6 +139,9 @@ public class CatalogObject {
 
   @JsonProperty("image_data")
   private CatalogImage imageData = null;
+
+  @JsonProperty("measurement_unit_data")
+  private CatalogMeasurementUnit measurementUnitData = null;
 
   public CatalogObject type(TypeEnum type) {
     this.type = type;
@@ -472,6 +482,24 @@ public class CatalogObject {
     this.imageData = imageData;
   }
 
+  public CatalogObject measurementUnitData(CatalogMeasurementUnit measurementUnitData) {
+    this.measurementUnitData = measurementUnitData;
+    return this;
+  }
+
+   /**
+   * Structured data for a [CatalogMeasurementUnit](#type-catalogmeasurementunit), set for CatalogObjects of type `MEASUREMENT_UNIT`.
+   * @return measurementUnitData
+  **/
+  @ApiModelProperty(value = "Structured data for a [CatalogMeasurementUnit](#type-catalogmeasurementunit), set for CatalogObjects of type `MEASUREMENT_UNIT`.")
+  public CatalogMeasurementUnit getMeasurementUnitData() {
+    return measurementUnitData;
+  }
+
+  public void setMeasurementUnitData(CatalogMeasurementUnit measurementUnitData) {
+    this.measurementUnitData = measurementUnitData;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -499,12 +527,13 @@ public class CatalogObject {
         Objects.equals(this.discountData, catalogObject.discountData) &&
         Objects.equals(this.modifierListData, catalogObject.modifierListData) &&
         Objects.equals(this.modifierData, catalogObject.modifierData) &&
-        Objects.equals(this.imageData, catalogObject.imageData);
+        Objects.equals(this.imageData, catalogObject.imageData) &&
+        Objects.equals(this.measurementUnitData, catalogObject.measurementUnitData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, imageId, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, imageData);
+    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, imageId, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, imageData, measurementUnitData);
   }
 
 
@@ -531,6 +560,7 @@ public class CatalogObject {
     sb.append("    modifierListData: ").append(toIndentedString(modifierListData)).append("\n");
     sb.append("    modifierData: ").append(toIndentedString(modifierData)).append("\n");
     sb.append("    imageData: ").append(toIndentedString(imageData)).append("\n");
+    sb.append("    measurementUnitData: ").append(toIndentedString(measurementUnitData)).append("\n");
     sb.append("}");
     return sb.toString();
   }

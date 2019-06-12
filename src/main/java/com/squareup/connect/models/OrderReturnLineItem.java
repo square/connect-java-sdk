@@ -339,10 +339,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The gross return amount of money calculated as (item base price + modifiers price) * quantity.
+   * The gross return amount of money calculated as (item base price + modifiers price) * quantity.  This field is read-only.
    * @return grossReturnMoney
   **/
-  @ApiModelProperty(value = "The gross return amount of money calculated as (item base price + modifiers price) * quantity.")
+  @ApiModelProperty(value = "The gross return amount of money calculated as (item base price + modifiers price) * quantity.  This field is read-only.")
   public Money getGrossReturnMoney() {
     return grossReturnMoney;
   }
@@ -357,10 +357,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The total tax amount of money to return for the line item.
+   * The total tax amount of money to return for the line item.  This field is read-only.
    * @return totalTaxMoney
   **/
-  @ApiModelProperty(value = "The total tax amount of money to return for the line item.")
+  @ApiModelProperty(value = "The total tax amount of money to return for the line item.  This field is read-only.")
   public Money getTotalTaxMoney() {
     return totalTaxMoney;
   }
@@ -375,10 +375,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The total discount amount of money to return for the line item.
+   * The total discount amount of money to return for the line item.  This field is read-only.
    * @return totalDiscountMoney
   **/
-  @ApiModelProperty(value = "The total discount amount of money to return for the line item.")
+  @ApiModelProperty(value = "The total discount amount of money to return for the line item.  This field is read-only.")
   public Money getTotalDiscountMoney() {
     return totalDiscountMoney;
   }
@@ -393,10 +393,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The total amount of money to return for this line item.
+   * The total amount of money to return for this line item.  This field is read-only.
    * @return totalMoney
   **/
-  @ApiModelProperty(value = "The total amount of money to return for this line item.")
+  @ApiModelProperty(value = "The total amount of money to return for this line item.  This field is read-only.")
   public Money getTotalMoney() {
     return totalMoney;
   }

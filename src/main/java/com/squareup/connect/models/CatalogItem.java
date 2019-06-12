@@ -327,10 +327,10 @@ public class CatalogItem {
   }
 
    /**
-   * A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.
+   * A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.  Maximum: 250 item variations
    * @return variations
   **/
-  @ApiModelProperty(value = "A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.")
+  @ApiModelProperty(value = "A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.  Maximum: 250 item variations")
   public List<CatalogObject> getVariations() {
     return variations;
   }

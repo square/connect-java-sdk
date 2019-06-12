@@ -51,7 +51,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-05-08");
+    localVarHeaderParams.put("Square-Version", "2019-06-12");
 
     
     

@@ -87,10 +87,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The line item's Unique identifier, unique only within this order. This field is read-only.
+   * Unique ID that identifies the line item only within this order.  This field is read-only.
    * @return uid
   **/
-  @ApiModelProperty(value = "The line item's Unique identifier, unique only within this order. This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the line item only within this order.  This field is read-only.")
   public String getUid() {
     return uid;
   }
@@ -318,10 +318,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.
+   * The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.  This field is read-only.
    * @return grossSalesMoney
   **/
-  @ApiModelProperty(value = "The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.")
+  @ApiModelProperty(value = "The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.  This field is read-only.")
   public Money getGrossSalesMoney() {
     return grossSalesMoney;
   }
@@ -336,10 +336,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The total tax amount of money to collect for the line item.
+   * The total tax amount of money to collect for the line item.  This field is read-only.
    * @return totalTaxMoney
   **/
-  @ApiModelProperty(value = "The total tax amount of money to collect for the line item.")
+  @ApiModelProperty(value = "The total tax amount of money to collect for the line item.  This field is read-only.")
   public Money getTotalTaxMoney() {
     return totalTaxMoney;
   }
@@ -354,10 +354,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The total discount amount of money to collect for the line item.
+   * The total discount amount of money to collect for the line item.  This field is read-only.
    * @return totalDiscountMoney
   **/
-  @ApiModelProperty(value = "The total discount amount of money to collect for the line item.")
+  @ApiModelProperty(value = "The total discount amount of money to collect for the line item.  This field is read-only.")
   public Money getTotalDiscountMoney() {
     return totalDiscountMoney;
   }
@@ -372,10 +372,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The total amount of money to collect for this line item.
+   * The total amount of money to collect for this line item.  This field is read-only.
    * @return totalMoney
   **/
-  @ApiModelProperty(value = "The total amount of money to collect for this line item.")
+  @ApiModelProperty(value = "The total amount of money to collect for this line item.  This field is read-only.")
   public Money getTotalMoney() {
     return totalMoney;
   }

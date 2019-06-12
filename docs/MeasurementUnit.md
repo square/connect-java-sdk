@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **lengthUnit** | [**LengthUnitEnum**](#LengthUnitEnum) | Represents a standard length unit. See [MeasurementUnitLength](#type-measurementunitlength) for possible values |  [optional]
 **volumeUnit** | [**VolumeUnitEnum**](#VolumeUnitEnum) | Represents a standard volume unit. See [MeasurementUnitVolume](#type-measurementunitvolume) for possible values |  [optional]
 **weightUnit** | [**WeightUnitEnum**](#WeightUnitEnum) | Represents a standard unit of weight or mass. See [MeasurementUnitWeight](#type-measurementunitweight) for possible values |  [optional]
+**genericUnit** | [**GenericUnitEnum**](#GenericUnitEnum) | Reserved for API integrations that lack the ability to specify a real measurement unit See [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values |  [optional]
 
 
 <a name="AreaUnitEnum"></a>
@@ -70,6 +71,14 @@ IMPERIAL_STONE | &quot;IMPERIAL_STONE&quot;
 METRIC_MILLIGRAM | &quot;METRIC_MILLIGRAM&quot;
 METRIC_GRAM | &quot;METRIC_GRAM&quot;
 METRIC_KILOGRAM | &quot;METRIC_KILOGRAM&quot;
+
+
+<a name="GenericUnitEnum"></a>
+## Enum: GenericUnitEnum
+Name | Value
+---- | -----
+INVALID_GENERIC_UNIT | &quot;INVALID_GENERIC_UNIT&quot;
+UNIT | &quot;UNIT&quot;
 
 
 

@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Address;
 import com.squareup.connect.models.BusinessHours;
+import com.squareup.connect.models.Coordinates;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -1080,6 +1081,24 @@ public class Location {
   @JsonProperty("business_hours")
   private BusinessHours businessHours = null;
 
+  @JsonProperty("business_email")
+  private String businessEmail = null;
+
+  @JsonProperty("description")
+  private String description = null;
+
+  @JsonProperty("twitter_username")
+  private String twitterUsername = null;
+
+  @JsonProperty("instagram_username")
+  private String instagramUsername = null;
+
+  @JsonProperty("facebook_url")
+  private String facebookUrl = null;
+
+  @JsonProperty("coordinates")
+  private Coordinates coordinates = null;
+
   public Location id(String id) {
     this.id = id;
     return this;
@@ -1373,6 +1392,114 @@ public class Location {
     this.businessHours = businessHours;
   }
 
+  public Location businessEmail(String businessEmail) {
+    this.businessEmail = businessEmail;
+    return this;
+  }
+
+   /**
+   * The email of the location.
+   * @return businessEmail
+  **/
+  @ApiModelProperty(value = "The email of the location.")
+  public String getBusinessEmail() {
+    return businessEmail;
+  }
+
+  public void setBusinessEmail(String businessEmail) {
+    this.businessEmail = businessEmail;
+  }
+
+  public Location description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * The business description of the location.
+   * @return description
+  **/
+  @ApiModelProperty(value = "The business description of the location.")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public Location twitterUsername(String twitterUsername) {
+    this.twitterUsername = twitterUsername;
+    return this;
+  }
+
+   /**
+   * The Twitter username of the location without the '
+   * @return twitterUsername
+  **/
+  @ApiModelProperty(value = "The Twitter username of the location without the '")
+  public String getTwitterUsername() {
+    return twitterUsername;
+  }
+
+  public void setTwitterUsername(String twitterUsername) {
+    this.twitterUsername = twitterUsername;
+  }
+
+  public Location instagramUsername(String instagramUsername) {
+    this.instagramUsername = instagramUsername;
+    return this;
+  }
+
+   /**
+   * The Instagram username of the location without the '
+   * @return instagramUsername
+  **/
+  @ApiModelProperty(value = "The Instagram username of the location without the '")
+  public String getInstagramUsername() {
+    return instagramUsername;
+  }
+
+  public void setInstagramUsername(String instagramUsername) {
+    this.instagramUsername = instagramUsername;
+  }
+
+  public Location facebookUrl(String facebookUrl) {
+    this.facebookUrl = facebookUrl;
+    return this;
+  }
+
+   /**
+   * The Facebook profile URL of the location. The URL should begin with 'facebook.com/'.
+   * @return facebookUrl
+  **/
+  @ApiModelProperty(value = "The Facebook profile URL of the location. The URL should begin with 'facebook.com/'.")
+  public String getFacebookUrl() {
+    return facebookUrl;
+  }
+
+  public void setFacebookUrl(String facebookUrl) {
+    this.facebookUrl = facebookUrl;
+  }
+
+  public Location coordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+   /**
+   * The physical coordinates (latitude and longitude) of the location.
+   * @return coordinates
+  **/
+  @ApiModelProperty(value = "The physical coordinates (latitude and longitude) of the location.")
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1398,12 +1525,18 @@ public class Location {
         Objects.equals(this.businessName, location.businessName) &&
         Objects.equals(this.type, location.type) &&
         Objects.equals(this.websiteUrl, location.websiteUrl) &&
-        Objects.equals(this.businessHours, location.businessHours);
+        Objects.equals(this.businessHours, location.businessHours) &&
+        Objects.equals(this.businessEmail, location.businessEmail) &&
+        Objects.equals(this.description, location.description) &&
+        Objects.equals(this.twitterUsername, location.twitterUsername) &&
+        Objects.equals(this.instagramUsername, location.instagramUsername) &&
+        Objects.equals(this.facebookUrl, location.facebookUrl) &&
+        Objects.equals(this.coordinates, location.coordinates);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl, businessHours);
+    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl, businessHours, businessEmail, description, twitterUsername, instagramUsername, facebookUrl, coordinates);
   }
 
 
@@ -1428,6 +1561,12 @@ public class Location {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    websiteUrl: ").append(toIndentedString(websiteUrl)).append("\n");
     sb.append("    businessHours: ").append(toIndentedString(businessHours)).append("\n");
+    sb.append("    businessEmail: ").append(toIndentedString(businessEmail)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    twitterUsername: ").append(toIndentedString(twitterUsername)).append("\n");
+    sb.append("    instagramUsername: ").append(toIndentedString(instagramUsername)).append("\n");
+    sb.append("    facebookUrl: ").append(toIndentedString(facebookUrl)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("}");
     return sb.toString();
   }

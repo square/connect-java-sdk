@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.OrderMoneyAmounts;
 import com.squareup.connect.models.OrderReturnDiscount;
 import com.squareup.connect.models.OrderReturnLineItem;
+import com.squareup.connect.models.OrderReturnServiceCharge;
 import com.squareup.connect.models.OrderReturnTax;
 import com.squareup.connect.models.OrderRoundingAdjustment;
 import io.swagger.annotations.ApiModel;
@@ -42,6 +43,9 @@ public class OrderReturn {
   @JsonProperty("return_line_items")
   private List<OrderReturnLineItem> returnLineItems = new ArrayList<OrderReturnLineItem>();
 
+  @JsonProperty("return_service_charges")
+  private List<OrderReturnServiceCharge> returnServiceCharges = new ArrayList<OrderReturnServiceCharge>();
+
   @JsonProperty("return_taxes")
   private List<OrderReturnTax> returnTaxes = new ArrayList<OrderReturnTax>();
 
@@ -60,10 +64,10 @@ public class OrderReturn {
   }
 
    /**
-   * The return's Unique identifier, unique only within this order. This field is read-only.
+   * Unique ID that identifies the return only within this order.  This field is read-only.
    * @return uid
   **/
-  @ApiModelProperty(value = "The return's Unique identifier, unique only within this order. This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the return only within this order.  This field is read-only.")
   public String getUid() {
     return uid;
   }
@@ -111,6 +115,29 @@ public class OrderReturn {
 
   public void setReturnLineItems(List<OrderReturnLineItem> returnLineItems) {
     this.returnLineItems = returnLineItems;
+  }
+
+  public OrderReturn returnServiceCharges(List<OrderReturnServiceCharge> returnServiceCharges) {
+    this.returnServiceCharges = returnServiceCharges;
+    return this;
+  }
+
+  public OrderReturn addReturnServiceChargesItem(OrderReturnServiceCharge returnServiceChargesItem) {
+    this.returnServiceCharges.add(returnServiceChargesItem);
+    return this;
+  }
+
+   /**
+   * Collection of service charges which are being returned.  This field is read-only.
+   * @return returnServiceCharges
+  **/
+  @ApiModelProperty(value = "Collection of service charges which are being returned.  This field is read-only.")
+  public List<OrderReturnServiceCharge> getReturnServiceCharges() {
+    return returnServiceCharges;
+  }
+
+  public void setReturnServiceCharges(List<OrderReturnServiceCharge> returnServiceCharges) {
+    this.returnServiceCharges = returnServiceCharges;
   }
 
   public OrderReturn returnTaxes(List<OrderReturnTax> returnTaxes) {
@@ -208,6 +235,7 @@ public class OrderReturn {
     return Objects.equals(this.uid, orderReturn.uid) &&
         Objects.equals(this.sourceOrderId, orderReturn.sourceOrderId) &&
         Objects.equals(this.returnLineItems, orderReturn.returnLineItems) &&
+        Objects.equals(this.returnServiceCharges, orderReturn.returnServiceCharges) &&
         Objects.equals(this.returnTaxes, orderReturn.returnTaxes) &&
         Objects.equals(this.returnDiscounts, orderReturn.returnDiscounts) &&
         Objects.equals(this.roundingAdjustment, orderReturn.roundingAdjustment) &&
@@ -216,7 +244,7 @@ public class OrderReturn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(uid, sourceOrderId, returnLineItems, returnTaxes, returnDiscounts, roundingAdjustment, returnAmounts);
+    return Objects.hash(uid, sourceOrderId, returnLineItems, returnServiceCharges, returnTaxes, returnDiscounts, roundingAdjustment, returnAmounts);
   }
 
 
@@ -228,6 +256,7 @@ public class OrderReturn {
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    sourceOrderId: ").append(toIndentedString(sourceOrderId)).append("\n");
     sb.append("    returnLineItems: ").append(toIndentedString(returnLineItems)).append("\n");
+    sb.append("    returnServiceCharges: ").append(toIndentedString(returnServiceCharges)).append("\n");
     sb.append("    returnTaxes: ").append(toIndentedString(returnTaxes)).append("\n");
     sb.append("    returnDiscounts: ").append(toIndentedString(returnDiscounts)).append("\n");
     sb.append("    roundingAdjustment: ").append(toIndentedString(roundingAdjustment)).append("\n");

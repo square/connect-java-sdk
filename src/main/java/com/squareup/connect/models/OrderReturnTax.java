@@ -121,10 +121,10 @@ public class OrderReturnTax {
   }
 
    /**
-   * The return tax's Unique identifier, unique only within this order.
+   * Unique ID that identifies the return tax only within this order.  This field is read-only.
    * @return uid
   **/
-  @ApiModelProperty(value = "The return tax's Unique identifier, unique only within this order.")
+  @ApiModelProperty(value = "Unique ID that identifies the return tax only within this order.  This field is read-only.")
   public String getUid() {
     return uid;
   }

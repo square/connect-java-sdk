@@ -37,7 +37,13 @@ public enum CatalogObjectType {
   
   MODIFIER_LIST("MODIFIER_LIST"),
   
-  MODIFIER("MODIFIER");
+  MODIFIER("MODIFIER"),
+  
+  PRICING_RULE("PRICING_RULE"),
+  
+  PRODUCT_SET("PRODUCT_SET"),
+  
+  TIME_PERIOD("TIME_PERIOD");
 
   private String value;
 

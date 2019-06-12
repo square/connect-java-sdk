@@ -227,10 +227,10 @@ public class Card {
   }
 
    /**
-   * __Not currently set.__ Intended as a Square-assigned identifier, based on the card number, to identify the card across multiple locations within a single application.
+   * A unique, Square-assigned ID that identifies the card across multiple locations and applications for a single Square account.
    * @return fingerprint
   **/
-  @ApiModelProperty(value = "__Not currently set.__ Intended as a Square-assigned identifier, based on the card number, to identify the card across multiple locations within a single application.")
+  @ApiModelProperty(value = "A unique, Square-assigned ID that identifies the card across multiple locations and applications for a single Square account.")
   public String getFingerprint() {
     return fingerprint;
   }
