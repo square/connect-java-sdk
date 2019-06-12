@@ -212,6 +212,39 @@ public class MeasurementUnit {
   @JsonProperty("weight_unit")
   private WeightUnitEnum weightUnit = null;
 
+  /**
+   * Reserved for API integrations that lack the ability to specify a real measurement unit See [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values
+   */
+  public enum GenericUnitEnum {
+    INVALID_GENERIC_UNIT("INVALID_GENERIC_UNIT"),
+    
+    UNIT("UNIT");
+
+    private String value;
+
+    GenericUnitEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static GenericUnitEnum fromValue(String text) {
+      for (GenericUnitEnum b : GenericUnitEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("generic_unit")
+  private GenericUnitEnum genericUnit = null;
+
   public MeasurementUnit customUnit(MeasurementUnitCustom customUnit) {
     this.customUnit = customUnit;
     return this;
@@ -302,6 +335,24 @@ public class MeasurementUnit {
     this.weightUnit = weightUnit;
   }
 
+  public MeasurementUnit genericUnit(GenericUnitEnum genericUnit) {
+    this.genericUnit = genericUnit;
+    return this;
+  }
+
+   /**
+   * Reserved for API integrations that lack the ability to specify a real measurement unit See [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values
+   * @return genericUnit
+  **/
+  @ApiModelProperty(value = "Reserved for API integrations that lack the ability to specify a real measurement unit See [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values")
+  public GenericUnitEnum getGenericUnit() {
+    return genericUnit;
+  }
+
+  public void setGenericUnit(GenericUnitEnum genericUnit) {
+    this.genericUnit = genericUnit;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -316,12 +367,13 @@ public class MeasurementUnit {
         Objects.equals(this.areaUnit, measurementUnit.areaUnit) &&
         Objects.equals(this.lengthUnit, measurementUnit.lengthUnit) &&
         Objects.equals(this.volumeUnit, measurementUnit.volumeUnit) &&
-        Objects.equals(this.weightUnit, measurementUnit.weightUnit);
+        Objects.equals(this.weightUnit, measurementUnit.weightUnit) &&
+        Objects.equals(this.genericUnit, measurementUnit.genericUnit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customUnit, areaUnit, lengthUnit, volumeUnit, weightUnit);
+    return Objects.hash(customUnit, areaUnit, lengthUnit, volumeUnit, weightUnit, genericUnit);
   }
 
 
@@ -335,6 +387,7 @@ public class MeasurementUnit {
     sb.append("    lengthUnit: ").append(toIndentedString(lengthUnit)).append("\n");
     sb.append("    volumeUnit: ").append(toIndentedString(volumeUnit)).append("\n");
     sb.append("    weightUnit: ").append(toIndentedString(weightUnit)).append("\n");
+    sb.append("    genericUnit: ").append(toIndentedString(genericUnit)).append("\n");
     sb.append("}");
     return sb.toString();
   }

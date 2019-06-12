@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- *  Indicates the specific day  of the week.
+ * Indicates the specific day  of the week.
  */
 public enum DayOfWeek {
   

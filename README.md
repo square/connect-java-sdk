@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190508.1</version>
+    <version>2.20190612.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190508.1"
+compile "com.squareup:connect:2.20190612.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -70,7 +70,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190508.1.jar
+* target/connect-2.20190612.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -257,6 +257,7 @@ Class | Method | HTTP request | Description
  - [AdditionalRecipientReceivable](docs/AdditionalRecipientReceivable.md)
  - [AdditionalRecipientReceivableRefund](docs/AdditionalRecipientReceivableRefund.md)
  - [Address](docs/Address.md)
+ - [AggregationStrategy](docs/AggregationStrategy.md)
  - [BatchChangeInventoryRequest](docs/BatchChangeInventoryRequest.md)
  - [BatchChangeInventoryResponse](docs/BatchChangeInventoryResponse.md)
  - [BatchDeleteCatalogObjectsRequest](docs/BatchDeleteCatalogObjectsRequest.md)
@@ -290,6 +291,7 @@ Class | Method | HTTP request | Description
  - [CatalogItemModifierListInfo](docs/CatalogItemModifierListInfo.md)
  - [CatalogItemProductType](docs/CatalogItemProductType.md)
  - [CatalogItemVariation](docs/CatalogItemVariation.md)
+ - [CatalogMeasurementUnit](docs/CatalogMeasurementUnit.md)
  - [CatalogModifier](docs/CatalogModifier.md)
  - [CatalogModifierList](docs/CatalogModifierList.md)
  - [CatalogModifierListSelectionType](docs/CatalogModifierListSelectionType.md)
@@ -297,7 +299,9 @@ Class | Method | HTTP request | Description
  - [CatalogObject](docs/CatalogObject.md)
  - [CatalogObjectBatch](docs/CatalogObjectBatch.md)
  - [CatalogObjectType](docs/CatalogObjectType.md)
+ - [CatalogPricingRule](docs/CatalogPricingRule.md)
  - [CatalogPricingType](docs/CatalogPricingType.md)
+ - [CatalogProductSet](docs/CatalogProductSet.md)
  - [CatalogQuery](docs/CatalogQuery.md)
  - [CatalogQueryExact](docs/CatalogQueryExact.md)
  - [CatalogQueryItemsForModifierList](docs/CatalogQueryItemsForModifierList.md)
@@ -307,11 +311,13 @@ Class | Method | HTTP request | Description
  - [CatalogQuerySortedAttribute](docs/CatalogQuerySortedAttribute.md)
  - [CatalogQueryText](docs/CatalogQueryText.md)
  - [CatalogTax](docs/CatalogTax.md)
+ - [CatalogTimePeriod](docs/CatalogTimePeriod.md)
  - [CatalogV1Id](docs/CatalogV1Id.md)
  - [ChargeRequest](docs/ChargeRequest.md)
  - [ChargeRequestAdditionalRecipient](docs/ChargeRequestAdditionalRecipient.md)
  - [ChargeResponse](docs/ChargeResponse.md)
  - [Checkout](docs/Checkout.md)
+ - [Coordinates](docs/Coordinates.md)
  - [Country](docs/Country.md)
  - [CreateBreakTypeRequest](docs/CreateBreakTypeRequest.md)
  - [CreateBreakTypeResponse](docs/CreateBreakTypeResponse.md)
@@ -407,6 +413,7 @@ Class | Method | HTTP request | Description
  - [MeasurementUnit](docs/MeasurementUnit.md)
  - [MeasurementUnitArea](docs/MeasurementUnitArea.md)
  - [MeasurementUnitCustom](docs/MeasurementUnitCustom.md)
+ - [MeasurementUnitGeneric](docs/MeasurementUnitGeneric.md)
  - [MeasurementUnitLength](docs/MeasurementUnitLength.md)
  - [MeasurementUnitVolume](docs/MeasurementUnitVolume.md)
  - [MeasurementUnitWeight](docs/MeasurementUnitWeight.md)
@@ -436,8 +443,11 @@ Class | Method | HTTP request | Description
  - [OrderReturnDiscount](docs/OrderReturnDiscount.md)
  - [OrderReturnLineItem](docs/OrderReturnLineItem.md)
  - [OrderReturnLineItemModifier](docs/OrderReturnLineItemModifier.md)
+ - [OrderReturnServiceCharge](docs/OrderReturnServiceCharge.md)
  - [OrderReturnTax](docs/OrderReturnTax.md)
  - [OrderRoundingAdjustment](docs/OrderRoundingAdjustment.md)
+ - [OrderServiceCharge](docs/OrderServiceCharge.md)
+ - [OrderServiceChargeCalculationPhase](docs/OrderServiceChargeCalculationPhase.md)
  - [OrderSource](docs/OrderSource.md)
  - [OrderState](docs/OrderState.md)
  - [Product](docs/Product.md)
@@ -495,6 +505,8 @@ Class | Method | HTTP request | Description
  - [ShiftWorkdayMatcher](docs/ShiftWorkdayMatcher.md)
  - [SortOrder](docs/SortOrder.md)
  - [SourceApplication](docs/SourceApplication.md)
+ - [StandardUnitDescription](docs/StandardUnitDescription.md)
+ - [StandardUnitDescriptionGroup](docs/StandardUnitDescriptionGroup.md)
  - [TaxCalculationPhase](docs/TaxCalculationPhase.md)
  - [TaxInclusionType](docs/TaxInclusionType.md)
  - [Tender](docs/Tender.md)

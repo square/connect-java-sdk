@@ -25,6 +25,7 @@ import com.squareup.connect.models.OrderLineItemTax;
 import com.squareup.connect.models.OrderMoneyAmounts;
 import com.squareup.connect.models.OrderReturn;
 import com.squareup.connect.models.OrderRoundingAdjustment;
+import com.squareup.connect.models.OrderServiceCharge;
 import com.squareup.connect.models.OrderSource;
 import com.squareup.connect.models.Refund;
 import com.squareup.connect.models.Tender;
@@ -62,6 +63,9 @@ public class Order {
 
   @JsonProperty("discounts")
   private List<OrderLineItemDiscount> discounts = new ArrayList<OrderLineItemDiscount>();
+
+  @JsonProperty("service_charges")
+  private List<OrderServiceCharge> serviceCharges = new ArrayList<OrderServiceCharge>();
 
   @JsonProperty("fulfillments")
   private List<OrderFulfillment> fulfillments = new ArrayList<OrderFulfillment>();
@@ -137,16 +141,19 @@ public class Order {
   @JsonProperty("total_discount_money")
   private Money totalDiscountMoney = null;
 
+  @JsonProperty("total_service_charge_money")
+  private Money totalServiceChargeMoney = null;
+
   public Order id(String id) {
     this.id = id;
     return this;
   }
 
    /**
-   * The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-orders-createorder) endpoint.
+   * The order's unique ID.  This field is read-only.
    * @return id
   **/
-  @ApiModelProperty(value = "The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-orders-createorder) endpoint.")
+  @ApiModelProperty(value = "The order's unique ID.  This field is read-only.")
   public String getId() {
     return id;
   }
@@ -296,6 +303,29 @@ public class Order {
     this.discounts = discounts;
   }
 
+  public Order serviceCharges(List<OrderServiceCharge> serviceCharges) {
+    this.serviceCharges = serviceCharges;
+    return this;
+  }
+
+  public Order addServiceChargesItem(OrderServiceCharge serviceChargesItem) {
+    this.serviceCharges.add(serviceChargesItem);
+    return this;
+  }
+
+   /**
+   * A list of service charges applied to the order.
+   * @return serviceCharges
+  **/
+  @ApiModelProperty(value = "A list of service charges applied to the order.")
+  public List<OrderServiceCharge> getServiceCharges() {
+    return serviceCharges;
+  }
+
+  public void setServiceCharges(List<OrderServiceCharge> serviceCharges) {
+    this.serviceCharges = serviceCharges;
+  }
+
   public Order fulfillments(List<OrderFulfillment> fulfillments) {
     this.fulfillments = fulfillments;
     return this;
@@ -330,10 +360,10 @@ public class Order {
   }
 
    /**
-   * Collection of items from sale Orders being returned in this one. Normally part of an Itemized Return or Exchange.  There will be exactly one `Return` object per sale Order being referenced.
+   * Collection of items from sale Orders being returned in this one. Normally part of an Itemized Return or Exchange.  There will be exactly one `Return` object per sale Order being referenced.  This field is read-only.
    * @return returns
   **/
-  @ApiModelProperty(value = "Collection of items from sale Orders being returned in this one. Normally part of an Itemized Return or Exchange.  There will be exactly one `Return` object per sale Order being referenced.")
+  @ApiModelProperty(value = "Collection of items from sale Orders being returned in this one. Normally part of an Itemized Return or Exchange.  There will be exactly one `Return` object per sale Order being referenced.  This field is read-only.")
   public List<OrderReturn> getReturns() {
     return returns;
   }
@@ -348,10 +378,10 @@ public class Order {
   }
 
    /**
-   * Rollup of returned money amounts.
+   * Rollup of returned money amounts.  This field is read-only.
    * @return returnAmounts
   **/
-  @ApiModelProperty(value = "Rollup of returned money amounts.")
+  @ApiModelProperty(value = "Rollup of returned money amounts.  This field is read-only.")
   public OrderMoneyAmounts getReturnAmounts() {
     return returnAmounts;
   }
@@ -366,10 +396,10 @@ public class Order {
   }
 
    /**
-   * Net money amounts (sale money - return money).
+   * Net money amounts (sale money - return money).  This field is read-only.
    * @return netAmounts
   **/
-  @ApiModelProperty(value = "Net money amounts (sale money - return money).")
+  @ApiModelProperty(value = "Net money amounts (sale money - return money).  This field is read-only.")
   public OrderMoneyAmounts getNetAmounts() {
     return netAmounts;
   }
@@ -384,10 +414,10 @@ public class Order {
   }
 
    /**
-   * A positive or negative rounding adjustment to the total of the order, commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.
+   * A positive or negative rounding adjustment to the total of the order, commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.  This field is read-only.
    * @return roundingAdjustment
   **/
-  @ApiModelProperty(value = "A positive or negative rounding adjustment to the total of the order, commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.")
+  @ApiModelProperty(value = "A positive or negative rounding adjustment to the total of the order, commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.  This field is read-only.")
   public OrderRoundingAdjustment getRoundingAdjustment() {
     return roundingAdjustment;
   }
@@ -448,10 +478,10 @@ public class Order {
   }
 
    /**
-   * Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.
    * @return createdAt
   **/
-  @ApiModelProperty(value = "Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  @ApiModelProperty(value = "Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.")
   public String getCreatedAt() {
     return createdAt;
   }
@@ -466,10 +496,10 @@ public class Order {
   }
 
    /**
-   * Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.
    * @return updatedAt
   **/
-  @ApiModelProperty(value = "Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  @ApiModelProperty(value = "Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.")
   public String getUpdatedAt() {
     return updatedAt;
   }
@@ -484,10 +514,10 @@ public class Order {
   }
 
    /**
-   * Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.
    * @return closedAt
   **/
-  @ApiModelProperty(value = "Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  @ApiModelProperty(value = "Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.")
   public String getClosedAt() {
     return closedAt;
   }
@@ -520,10 +550,10 @@ public class Order {
   }
 
    /**
-   * The total amount of money to collect for the order.
+   * The total amount of money to collect for the order.  This field is read-only.
    * @return totalMoney
   **/
-  @ApiModelProperty(value = "The total amount of money to collect for the order.")
+  @ApiModelProperty(value = "The total amount of money to collect for the order.  This field is read-only.")
   public Money getTotalMoney() {
     return totalMoney;
   }
@@ -538,10 +568,10 @@ public class Order {
   }
 
    /**
-   * The total tax amount of money to collect for the order.
+   * The total tax amount of money to collect for the order.  This field is read-only.
    * @return totalTaxMoney
   **/
-  @ApiModelProperty(value = "The total tax amount of money to collect for the order.")
+  @ApiModelProperty(value = "The total tax amount of money to collect for the order.  This field is read-only.")
   public Money getTotalTaxMoney() {
     return totalTaxMoney;
   }
@@ -556,16 +586,34 @@ public class Order {
   }
 
    /**
-   * The total discount amount of money to collect for the order.
+   * The total discount amount of money to collect for the order.  This field is read-only.
    * @return totalDiscountMoney
   **/
-  @ApiModelProperty(value = "The total discount amount of money to collect for the order.")
+  @ApiModelProperty(value = "The total discount amount of money to collect for the order.  This field is read-only.")
   public Money getTotalDiscountMoney() {
     return totalDiscountMoney;
   }
 
   public void setTotalDiscountMoney(Money totalDiscountMoney) {
     this.totalDiscountMoney = totalDiscountMoney;
+  }
+
+  public Order totalServiceChargeMoney(Money totalServiceChargeMoney) {
+    this.totalServiceChargeMoney = totalServiceChargeMoney;
+    return this;
+  }
+
+   /**
+   * The total amount of money collected in service charges for the order.  Note: `total_service_charge_money` is the sum of `applied_money` fields for each individual service charge. Therefore, `total_service_charge_money` will only include inclusive tax amounts, not additive tax amounts.  This field is read-only.
+   * @return totalServiceChargeMoney
+  **/
+  @ApiModelProperty(value = "The total amount of money collected in service charges for the order.  Note: `total_service_charge_money` is the sum of `applied_money` fields for each individual service charge. Therefore, `total_service_charge_money` will only include inclusive tax amounts, not additive tax amounts.  This field is read-only.")
+  public Money getTotalServiceChargeMoney() {
+    return totalServiceChargeMoney;
+  }
+
+  public void setTotalServiceChargeMoney(Money totalServiceChargeMoney) {
+    this.totalServiceChargeMoney = totalServiceChargeMoney;
   }
 
 
@@ -586,6 +634,7 @@ public class Order {
         Objects.equals(this.lineItems, order.lineItems) &&
         Objects.equals(this.taxes, order.taxes) &&
         Objects.equals(this.discounts, order.discounts) &&
+        Objects.equals(this.serviceCharges, order.serviceCharges) &&
         Objects.equals(this.fulfillments, order.fulfillments) &&
         Objects.equals(this.returns, order.returns) &&
         Objects.equals(this.returnAmounts, order.returnAmounts) &&
@@ -599,12 +648,13 @@ public class Order {
         Objects.equals(this.state, order.state) &&
         Objects.equals(this.totalMoney, order.totalMoney) &&
         Objects.equals(this.totalTaxMoney, order.totalTaxMoney) &&
-        Objects.equals(this.totalDiscountMoney, order.totalDiscountMoney);
+        Objects.equals(this.totalDiscountMoney, order.totalDiscountMoney) &&
+        Objects.equals(this.totalServiceChargeMoney, order.totalServiceChargeMoney);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, referenceId, source, customerId, lineItems, taxes, discounts, fulfillments, returns, returnAmounts, netAmounts, roundingAdjustment, tenders, refunds, createdAt, updatedAt, closedAt, state, totalMoney, totalTaxMoney, totalDiscountMoney);
+    return Objects.hash(id, locationId, referenceId, source, customerId, lineItems, taxes, discounts, serviceCharges, fulfillments, returns, returnAmounts, netAmounts, roundingAdjustment, tenders, refunds, createdAt, updatedAt, closedAt, state, totalMoney, totalTaxMoney, totalDiscountMoney, totalServiceChargeMoney);
   }
 
 
@@ -621,6 +671,7 @@ public class Order {
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
+    sb.append("    serviceCharges: ").append(toIndentedString(serviceCharges)).append("\n");
     sb.append("    fulfillments: ").append(toIndentedString(fulfillments)).append("\n");
     sb.append("    returns: ").append(toIndentedString(returns)).append("\n");
     sb.append("    returnAmounts: ").append(toIndentedString(returnAmounts)).append("\n");
@@ -635,6 +686,7 @@ public class Order {
     sb.append("    totalMoney: ").append(toIndentedString(totalMoney)).append("\n");
     sb.append("    totalTaxMoney: ").append(toIndentedString(totalTaxMoney)).append("\n");
     sb.append("    totalDiscountMoney: ").append(toIndentedString(totalDiscountMoney)).append("\n");
+    sb.append("    totalServiceChargeMoney: ").append(toIndentedString(totalServiceChargeMoney)).append("\n");
     sb.append("}");
     return sb.toString();
   }

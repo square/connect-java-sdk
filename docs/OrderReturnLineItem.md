@@ -21,10 +21,10 @@ Name | Type | Description | Notes
 **returnDiscounts** | [**List&lt;OrderReturnDiscount&gt;**](OrderReturnDiscount.md) | A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any return-level discounts apportioned to this item. |  [optional]
 **basePriceMoney** | [**Money**](Money.md) | The base price for a single unit of the line item. |  [optional]
 **variationTotalPriceMoney** | [**Money**](Money.md) | The total price of all item variations returned in this line item. Calculated as &#x60;base_price_money&#x60; multiplied by &#x60;quantity&#x60;. Does not include modifiers. |  [optional]
-**grossReturnMoney** | [**Money**](Money.md) | The gross return amount of money calculated as (item base price + modifiers price) * quantity. |  [optional]
-**totalTaxMoney** | [**Money**](Money.md) | The total tax amount of money to return for the line item. |  [optional]
-**totalDiscountMoney** | [**Money**](Money.md) | The total discount amount of money to return for the line item. |  [optional]
-**totalMoney** | [**Money**](Money.md) | The total amount of money to return for this line item. |  [optional]
+**grossReturnMoney** | [**Money**](Money.md) | The gross return amount of money calculated as (item base price + modifiers price) * quantity.  This field is read-only. |  [optional]
+**totalTaxMoney** | [**Money**](Money.md) | The total tax amount of money to return for the line item.  This field is read-only. |  [optional]
+**totalDiscountMoney** | [**Money**](Money.md) | The total discount amount of money to return for the line item.  This field is read-only. |  [optional]
+**totalMoney** | [**Money**](Money.md) | The total amount of money to return for this line item.  This field is read-only. |  [optional]
 
 
 

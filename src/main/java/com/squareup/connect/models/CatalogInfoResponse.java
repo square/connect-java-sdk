@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.CatalogInfoResponseLimits;
 import com.squareup.connect.models.Error;
+import com.squareup.connect.models.StandardUnitDescriptionGroup;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -35,6 +36,9 @@ public class CatalogInfoResponse {
 
   @JsonProperty("limits")
   private CatalogInfoResponseLimits limits = null;
+
+  @JsonProperty("standard_unit_description_group")
+  private StandardUnitDescriptionGroup standardUnitDescriptionGroup = null;
 
   public CatalogInfoResponse errors(List<Error> errors) {
     this.errors = errors;
@@ -77,6 +81,24 @@ public class CatalogInfoResponse {
     this.limits = limits;
   }
 
+  public CatalogInfoResponse standardUnitDescriptionGroup(StandardUnitDescriptionGroup standardUnitDescriptionGroup) {
+    this.standardUnitDescriptionGroup = standardUnitDescriptionGroup;
+    return this;
+  }
+
+   /**
+   * Names and abbreviations for standard units.
+   * @return standardUnitDescriptionGroup
+  **/
+  @ApiModelProperty(value = "Names and abbreviations for standard units.")
+  public StandardUnitDescriptionGroup getStandardUnitDescriptionGroup() {
+    return standardUnitDescriptionGroup;
+  }
+
+  public void setStandardUnitDescriptionGroup(StandardUnitDescriptionGroup standardUnitDescriptionGroup) {
+    this.standardUnitDescriptionGroup = standardUnitDescriptionGroup;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -88,12 +110,13 @@ public class CatalogInfoResponse {
     }
     CatalogInfoResponse catalogInfoResponse = (CatalogInfoResponse) o;
     return Objects.equals(this.errors, catalogInfoResponse.errors) &&
-        Objects.equals(this.limits, catalogInfoResponse.limits);
+        Objects.equals(this.limits, catalogInfoResponse.limits) &&
+        Objects.equals(this.standardUnitDescriptionGroup, catalogInfoResponse.standardUnitDescriptionGroup);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, limits);
+    return Objects.hash(errors, limits, standardUnitDescriptionGroup);
   }
 
 
@@ -104,6 +127,7 @@ public class CatalogInfoResponse {
     
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    standardUnitDescriptionGroup: ").append(toIndentedString(standardUnitDescriptionGroup)).append("\n");
     sb.append("}");
     return sb.toString();
   }

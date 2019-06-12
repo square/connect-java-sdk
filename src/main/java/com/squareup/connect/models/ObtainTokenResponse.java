@@ -128,10 +128,10 @@ public class ObtainTokenResponse {
   }
 
    /**
-   * __Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
+   * __LEGACY FIELD__. The ID of a subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
    * @return subscriptionId
   **/
-  @ApiModelProperty(value = "__Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.")
+  @ApiModelProperty(value = "__LEGACY FIELD__. The ID of a subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.")
   public String getSubscriptionId() {
     return subscriptionId;
   }
@@ -146,10 +146,10 @@ public class ObtainTokenResponse {
   }
 
    /**
-   * The ID of the [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
+   * __LEGACY FIELD__. The ID of the subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
    * @return planId
   **/
-  @ApiModelProperty(value = "The ID of the [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.")
+  @ApiModelProperty(value = "__LEGACY FIELD__. The ID of the subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.")
   public String getPlanId() {
     return planId;
   }

@@ -1,5 +1,13 @@
 # Change Log
 
+## Version 2.20190612.0 (2019-06-12)
+
+* **BETA releases**:
+  * Orders API: supports service charges with a new field and datatype.
+  * Catalog API: supports measurement unites for item variation quantities with a new field and datatype.
+* **New functionality**: `Order` entities &mdash; now include a `source` field that contains details on where the order originated.
+* **Improved functionality**: ListLocations &mdash; Expanded business information available through the Locations API, including business hours, contact email, social media handles, and longitude/latitude for physical locations.
+
 ## Version 2.20190508.1 (2019-05-28)
 
 Bump Jackson dependency for Java SDK.

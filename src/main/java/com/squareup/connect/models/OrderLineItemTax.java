@@ -118,10 +118,10 @@ public class OrderLineItemTax {
   }
 
    /**
-   * The tax's Unique identifier, unique only within this order. This field is read-only.
+   * Unique ID that identifies the tax only within this order.  This field is read-only.
    * @return uid
   **/
-  @ApiModelProperty(value = "The tax's Unique identifier, unique only within this order. This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the tax only within this order.  This field is read-only.")
   public String getUid() {
     return uid;
   }
