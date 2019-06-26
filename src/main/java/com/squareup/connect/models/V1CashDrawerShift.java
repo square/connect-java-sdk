@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * V1CashDrawerShift
+ * Contains details for a single cash drawer shift.
  */
-@ApiModel(description = "V1CashDrawerShift")
+@ApiModel(description = "Contains details for a single cash drawer shift.")
 
 public class V1CashDrawerShift {
   @JsonProperty("id")
@@ -293,10 +293,10 @@ public class V1CashDrawerShift {
   }
 
    /**
-   * The time when the timecard was created, in ISO 8601 format.
+   * A description of the cash drawer shift.
    * @return description
   **/
-  @ApiModelProperty(value = "The time when the timecard was created, in ISO 8601 format.")
+  @ApiModelProperty(value = "A description of the cash drawer shift.")
   public String getDescription() {
     return description;
   }

@@ -91,7 +91,7 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CustomersApi apiInstance = new CustomersApi();
-String customerId = "customerId_example"; // String | The ID of the customer to link the card on file to.
+String customerId = "customerId_example"; // String | The Square ID of the customer profile the card is linked to.
 CreateCustomerCardRequest body = new CreateCustomerCardRequest(); // CreateCustomerCardRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
     CreateCustomerCardResponse result = apiInstance.createCustomerCard(customerId, body);
@@ -106,7 +106,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customerId** | **String**| The ID of the customer to link the card on file to. |
+ **customerId** | **String**| The Square ID of the customer profile the card is linked to. |
  **body** | [**CreateCustomerCardRequest**](CreateCustomerCardRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type

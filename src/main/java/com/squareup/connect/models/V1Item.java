@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.V1Category;
 import com.squareup.connect.models.V1Fee;
 import com.squareup.connect.models.V1ItemImage;
+import com.squareup.connect.models.V1ModifierList;
 import com.squareup.connect.models.V1Variation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -172,7 +173,7 @@ public class V1Item {
   private List<V1Variation> variations = new ArrayList<V1Variation>();
 
   @JsonProperty("modifier_lists")
-  private List<V1Variation> modifierLists = new ArrayList<V1Variation>();
+  private List<V1ModifierList> modifierLists = new ArrayList<V1ModifierList>();
 
   @JsonProperty("fees")
   private List<V1Fee> fees = new ArrayList<V1Fee>();
@@ -392,12 +393,12 @@ public class V1Item {
     this.variations = variations;
   }
 
-  public V1Item modifierLists(List<V1Variation> modifierLists) {
+  public V1Item modifierLists(List<V1ModifierList> modifierLists) {
     this.modifierLists = modifierLists;
     return this;
   }
 
-  public V1Item addModifierListsItem(V1Variation modifierListsItem) {
+  public V1Item addModifierListsItem(V1ModifierList modifierListsItem) {
     this.modifierLists.add(modifierListsItem);
     return this;
   }
@@ -407,11 +408,11 @@ public class V1Item {
    * @return modifierLists
   **/
   @ApiModelProperty(value = "The modifier lists that apply to the item, if any.")
-  public List<V1Variation> getModifierLists() {
+  public List<V1ModifierList> getModifierLists() {
     return modifierLists;
   }
 
-  public void setModifierLists(List<V1Variation> modifierLists) {
+  public void setModifierLists(List<V1ModifierList> modifierLists) {
     this.modifierLists = modifierLists;
   }
 
