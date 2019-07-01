@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ *
  */
 @ApiModel(description = "")
 
@@ -34,93 +34,11 @@ public class BatchRetrieveInventoryChangesRequest {
   @JsonProperty("location_ids")
   private List<String> locationIds = new ArrayList<String>();
 
-  /**
-   * Gets or Sets types
-   */
-  public enum TypesEnum {
-    PHYSICAL_COUNT("PHYSICAL_COUNT"),
-    
-    ADJUSTMENT("ADJUSTMENT"),
-    
-    TRANSFER("TRANSFER");
-
-    private String value;
-
-    TypesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypesEnum fromValue(String text) {
-      for (TypesEnum b : TypesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("types")
-  private List<TypesEnum> types = new ArrayList<TypesEnum>();
-
-  /**
-   * Gets or Sets states
-   */
-  public enum StatesEnum {
-    CUSTOM("CUSTOM"),
-    
-    IN_STOCK("IN_STOCK"),
-    
-    SOLD("SOLD"),
-    
-    RETURNED_BY_CUSTOMER("RETURNED_BY_CUSTOMER"),
-    
-    RESERVED_FOR_SALE("RESERVED_FOR_SALE"),
-    
-    SOLD_ONLINE("SOLD_ONLINE"),
-    
-    ORDERED_FROM_VENDOR("ORDERED_FROM_VENDOR"),
-    
-    RECEIVED_FROM_VENDOR("RECEIVED_FROM_VENDOR"),
-    
-    IN_TRANSIT_TO("IN_TRANSIT_TO"),
-    
-    NONE("NONE"),
-    
-    WASTE("WASTE"),
-    
-    UNLINKED_RETURN("UNLINKED_RETURN");
-
-    private String value;
-
-    StatesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatesEnum fromValue(String text) {
-      for (StatesEnum b : StatesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private List<String> types = new ArrayList<String>();
 
   @JsonProperty("states")
-  private List<StatesEnum> states = new ArrayList<StatesEnum>();
+  private List<String> states = new ArrayList<String>();
 
   @JsonProperty("updated_after")
   private String updatedAfter = null;
@@ -177,12 +95,12 @@ public class BatchRetrieveInventoryChangesRequest {
     this.locationIds = locationIds;
   }
 
-  public BatchRetrieveInventoryChangesRequest types(List<TypesEnum> types) {
+  public BatchRetrieveInventoryChangesRequest types(List<String> types) {
     this.types = types;
     return this;
   }
 
-  public BatchRetrieveInventoryChangesRequest addTypesItem(TypesEnum typesItem) {
+  public BatchRetrieveInventoryChangesRequest addTypesItem(String typesItem) {
     this.types.add(typesItem);
     return this;
   }
@@ -192,20 +110,20 @@ public class BatchRetrieveInventoryChangesRequest {
    * @return types
   **/
   @ApiModelProperty(value = "Filters results by [InventoryChangeType](#type-inventorychangetype). Default: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as a filter. See [InventoryChangeType](#type-inventorychangetype) for possible values")
-  public List<TypesEnum> getTypes() {
+  public List<String> getTypes() {
     return types;
   }
 
-  public void setTypes(List<TypesEnum> types) {
+  public void setTypes(List<String> types) {
     this.types = types;
   }
 
-  public BatchRetrieveInventoryChangesRequest states(List<StatesEnum> states) {
+  public BatchRetrieveInventoryChangesRequest states(List<String> states) {
     this.states = states;
     return this;
   }
 
-  public BatchRetrieveInventoryChangesRequest addStatesItem(StatesEnum statesItem) {
+  public BatchRetrieveInventoryChangesRequest addStatesItem(String statesItem) {
     this.states.add(statesItem);
     return this;
   }
@@ -215,11 +133,11 @@ public class BatchRetrieveInventoryChangesRequest {
    * @return states
   **/
   @ApiModelProperty(value = "Filters `ADJUSTMENT` query results by [InventoryState](#type-inventorystate). Only applied when set. Default: unset. See [InventoryState](#type-inventorystate) for possible values")
-  public List<StatesEnum> getStates() {
+  public List<String> getStates() {
     return states;
   }
 
-  public void setStates(List<StatesEnum> states) {
+  public void setStates(List<String> states) {
     this.states = states;
   }
 
@@ -306,7 +224,7 @@ public class BatchRetrieveInventoryChangesRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BatchRetrieveInventoryChangesRequest {\n");
-    
+
     sb.append("    catalogObjectIds: ").append(toIndentedString(catalogObjectIds)).append("\n");
     sb.append("    locationIds: ").append(toIndentedString(locationIds)).append("\n");
     sb.append("    types: ").append(toIndentedString(types)).append("\n");
@@ -328,6 +246,6 @@ public class BatchRetrieveInventoryChangesRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

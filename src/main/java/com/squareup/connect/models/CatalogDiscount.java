@@ -30,42 +30,8 @@ public class CatalogDiscount {
   @JsonProperty("name")
   private String name = null;
 
-  /**
-   * Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for possible values
-   */
-  public enum DiscountTypeEnum {
-    FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
-    
-    FIXED_AMOUNT("FIXED_AMOUNT"),
-    
-    VARIABLE_PERCENTAGE("VARIABLE_PERCENTAGE"),
-    
-    VARIABLE_AMOUNT("VARIABLE_AMOUNT");
-
-    private String value;
-
-    DiscountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DiscountTypeEnum fromValue(String text) {
-      for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("discount_type")
-  private DiscountTypeEnum discountType = null;
+  private String discountType = null;
 
   @JsonProperty("percentage")
   private String percentage = null;
@@ -97,7 +63,7 @@ public class CatalogDiscount {
     this.name = name;
   }
 
-  public CatalogDiscount discountType(DiscountTypeEnum discountType) {
+  public CatalogDiscount discountType(String discountType) {
     this.discountType = discountType;
     return this;
   }
@@ -107,11 +73,11 @@ public class CatalogDiscount {
    * @return discountType
   **/
   @ApiModelProperty(value = "Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for possible values")
-  public DiscountTypeEnum getDiscountType() {
+  public String getDiscountType() {
     return discountType;
   }
 
-  public void setDiscountType(DiscountTypeEnum discountType) {
+  public void setDiscountType(String discountType) {
     this.discountType = discountType;
   }
 
@@ -215,7 +181,7 @@ public class CatalogDiscount {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogDiscount {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
@@ -236,6 +202,6 @@ public class CatalogDiscount {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

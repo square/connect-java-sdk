@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * 
+ *
  */
 @ApiModel(description = "")
 
@@ -32,38 +32,8 @@ public class CatalogQuerySortedAttribute {
   @JsonProperty("initial_attribute_value")
   private String initialAttributeValue = null;
 
-  /**
-   * The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending). See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum SortOrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    SortOrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortOrderEnum fromValue(String text) {
-      for (SortOrderEnum b : SortOrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("sort_order")
-  private SortOrderEnum sortOrder = null;
+  private String sortOrder = null;
 
   public CatalogQuerySortedAttribute attributeName(String attributeName) {
     this.attributeName = attributeName;
@@ -101,7 +71,7 @@ public class CatalogQuerySortedAttribute {
     this.initialAttributeValue = initialAttributeValue;
   }
 
-  public CatalogQuerySortedAttribute sortOrder(SortOrderEnum sortOrder) {
+  public CatalogQuerySortedAttribute sortOrder(String sortOrder) {
     this.sortOrder = sortOrder;
     return this;
   }
@@ -111,11 +81,11 @@ public class CatalogQuerySortedAttribute {
    * @return sortOrder
   **/
   @ApiModelProperty(value = "The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending). See [SortOrder](#type-sortorder) for possible values")
-  public SortOrderEnum getSortOrder() {
+  public String getSortOrder() {
     return sortOrder;
   }
 
-  public void setSortOrder(SortOrderEnum sortOrder) {
+  public void setSortOrder(String sortOrder) {
     this.sortOrder = sortOrder;
   }
 
@@ -144,7 +114,7 @@ public class CatalogQuerySortedAttribute {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogQuerySortedAttribute {\n");
-    
+
     sb.append("    attributeName: ").append(toIndentedString(attributeName)).append("\n");
     sb.append("    initialAttributeValue: ").append(toIndentedString(initialAttributeValue)).append("\n");
     sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
@@ -162,6 +132,6 @@ public class CatalogQuerySortedAttribute {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -31,38 +31,8 @@ import java.util.List;
 @ApiModel(description = "V1Refund")
 
 public class V1Refund {
-  /**
-   * The type of refund See [V1RefundType](#type-v1refundtype) for possible values
-   */
-  public enum TypeEnum {
-    FULL("FULL"),
-    
-    PARTIAL("PARTIAL");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("reason")
   private String reason = null;
@@ -115,7 +85,7 @@ public class V1Refund {
   @JsonProperty("is_exchange")
   private Boolean isExchange = null;
 
-  public V1Refund type(TypeEnum type) {
+  public V1Refund type(String type) {
     this.type = type;
     return this;
   }
@@ -125,11 +95,11 @@ public class V1Refund {
    * @return type
   **/
   @ApiModelProperty(value = "The type of refund See [V1RefundType](#type-v1refundtype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -424,7 +394,7 @@ public class V1Refund {
   }
 
    /**
-   * 
+   *
    * @return merchantId
   **/
   @ApiModelProperty(value = "")
@@ -494,7 +464,7 @@ public class V1Refund {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1Refund {\n");
-    
+
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    refundedMoney: ").append(toIndentedString(refundedMoney)).append("\n");
@@ -527,6 +497,6 @@ public class V1Refund {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

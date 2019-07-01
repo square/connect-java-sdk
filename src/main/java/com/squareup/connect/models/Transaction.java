@@ -49,50 +49,8 @@ public class Transaction {
   @JsonProperty("reference_id")
   private String referenceId = null;
 
-  /**
-   * The Square product that processed the transaction. See [TransactionProduct](#type-transactionproduct) for possible values
-   */
-  public enum ProductEnum {
-    REGISTER("REGISTER"),
-    
-    EXTERNAL_API("EXTERNAL_API"),
-    
-    BILLING("BILLING"),
-    
-    APPOINTMENTS("APPOINTMENTS"),
-    
-    INVOICES("INVOICES"),
-    
-    ONLINE_STORE("ONLINE_STORE"),
-    
-    PAYROLL("PAYROLL"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    ProductEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ProductEnum fromValue(String text) {
-      for (ProductEnum b : ProductEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("product")
-  private ProductEnum product = null;
+  private String product = null;
 
   @JsonProperty("client_id")
   private String clientId = null;
@@ -221,7 +179,7 @@ public class Transaction {
     this.referenceId = referenceId;
   }
 
-  public Transaction product(ProductEnum product) {
+  public Transaction product(String product) {
     this.product = product;
     return this;
   }
@@ -231,11 +189,11 @@ public class Transaction {
    * @return product
   **/
   @ApiModelProperty(value = "The Square product that processed the transaction. See [TransactionProduct](#type-transactionproduct) for possible values")
-  public ProductEnum getProduct() {
+  public String getProduct() {
     return product;
   }
 
-  public void setProduct(ProductEnum product) {
+  public void setProduct(String product) {
     this.product = product;
   }
 
@@ -325,7 +283,7 @@ public class Transaction {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Transaction {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -350,6 +308,6 @@ public class Transaction {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -32,38 +32,8 @@ public class CatalogModifierList {
   @JsonProperty("name")
   private String name = null;
 
-  /**
-   * Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist) can be applied to a single [CatalogItem](#type-catalogitem). See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values
-   */
-  public enum SelectionTypeEnum {
-    SINGLE("SINGLE"),
-    
-    MULTIPLE("MULTIPLE");
-
-    private String value;
-
-    SelectionTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SelectionTypeEnum fromValue(String text) {
-      for (SelectionTypeEnum b : SelectionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("selection_type")
-  private SelectionTypeEnum selectionType = null;
+  private String selectionType = null;
 
   @JsonProperty("modifiers")
   private List<CatalogObject> modifiers = new ArrayList<CatalogObject>();
@@ -86,7 +56,7 @@ public class CatalogModifierList {
     this.name = name;
   }
 
-  public CatalogModifierList selectionType(SelectionTypeEnum selectionType) {
+  public CatalogModifierList selectionType(String selectionType) {
     this.selectionType = selectionType;
     return this;
   }
@@ -96,11 +66,11 @@ public class CatalogModifierList {
    * @return selectionType
   **/
   @ApiModelProperty(value = "Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist) can be applied to a single [CatalogItem](#type-catalogitem). See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values")
-  public SelectionTypeEnum getSelectionType() {
+  public String getSelectionType() {
     return selectionType;
   }
 
-  public void setSelectionType(SelectionTypeEnum selectionType) {
+  public void setSelectionType(String selectionType) {
     this.selectionType = selectionType;
   }
 
@@ -152,7 +122,7 @@ public class CatalogModifierList {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogModifierList {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    selectionType: ").append(toIndentedString(selectionType)).append("\n");
     sb.append("    modifiers: ").append(toIndentedString(modifiers)).append("\n");
@@ -170,6 +140,6 @@ public class CatalogModifierList {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

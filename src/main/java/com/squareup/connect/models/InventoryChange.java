@@ -29,40 +29,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents a single physical count, inventory, adjustment, or transfer that is part of the history of inventory changes for a particular [CatalogObject](#type-catalogobject).")
 
 public class InventoryChange {
-  /**
-   * Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for possible values
-   */
-  public enum TypeEnum {
-    PHYSICAL_COUNT("PHYSICAL_COUNT"),
-    
-    ADJUSTMENT("ADJUSTMENT"),
-    
-    TRANSFER("TRANSFER");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("physical_count")
   private InventoryPhysicalCount physicalCount = null;
@@ -73,7 +41,7 @@ public class InventoryChange {
   @JsonProperty("transfer")
   private InventoryTransfer transfer = null;
 
-  public InventoryChange type(TypeEnum type) {
+  public InventoryChange type(String type) {
     this.type = type;
     return this;
   }
@@ -83,11 +51,11 @@ public class InventoryChange {
    * @return type
   **/
   @ApiModelProperty(value = "Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -171,7 +139,7 @@ public class InventoryChange {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InventoryChange {\n");
-    
+
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    physicalCount: ").append(toIndentedString(physicalCount)).append("\n");
     sb.append("    adjustment: ").append(toIndentedString(adjustment)).append("\n");
@@ -190,6 +158,6 @@ public class InventoryChange {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

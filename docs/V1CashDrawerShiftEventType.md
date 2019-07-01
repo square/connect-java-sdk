@@ -1,14 +1,12 @@
 
 # V1CashDrawerShiftEventType
 
-## Enum
 
+* `"OPEN"`
 
-* `OPEN` (value: `"OPEN"`)
+* `"ENDED"`
 
-* `ENDED` (value: `"ENDED"`)
-
-* `CLOSED` (value: `"CLOSED"`)
+* `"CLOSED"`
 
 
 

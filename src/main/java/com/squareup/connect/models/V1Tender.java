@@ -30,50 +30,8 @@ public class V1Tender {
   @JsonProperty("id")
   private String id = null;
 
-  /**
-   * The type of tender. See [V1TenderType](#type-v1tendertype) for possible values
-   */
-  public enum TypeEnum {
-    CREDIT_CARD("CREDIT_CARD"),
-    
-    CASH("CASH"),
-    
-    THIRD_PARTY_CARD("THIRD_PARTY_CARD"),
-    
-    NO_SALE("NO_SALE"),
-    
-    SQUARE_WALLET("SQUARE_WALLET"),
-    
-    SQUARE_GIFT_CARD("SQUARE_GIFT_CARD"),
-    
-    UNKNOWN("UNKNOWN"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -84,98 +42,14 @@ public class V1Tender {
   @JsonProperty("receipt_url")
   private String receiptUrl = null;
 
-  /**
-   * The brand of credit card provided. See [V1TenderCardBrand](#type-v1tendercardbrand) for possible values
-   */
-  public enum CardBrandEnum {
-    OTHER_BRAND("OTHER_BRAND"),
-    
-    VISA("VISA"),
-    
-    MASTER_CARD("MASTER_CARD"),
-    
-    AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-    
-    DISCOVER("DISCOVER"),
-    
-    DISCOVER_DINERS("DISCOVER_DINERS"),
-    
-    JCB("JCB"),
-    
-    CHINA_UNIONPAY("CHINA_UNIONPAY"),
-    
-    SQUARE_GIFT_CARD("SQUARE_GIFT_CARD");
-
-    private String value;
-
-    CardBrandEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CardBrandEnum fromValue(String text) {
-      for (CardBrandEnum b : CardBrandEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("card_brand")
-  private CardBrandEnum cardBrand = null;
+  private String cardBrand = null;
 
   @JsonProperty("pan_suffix")
   private String panSuffix = null;
 
-  /**
-   * The tender's unique ID. See [V1TenderEntryMethod](#type-v1tenderentrymethod) for possible values
-   */
-  public enum EntryMethodEnum {
-    MANUAL("MANUAL"),
-    
-    SCANNED("SCANNED"),
-    
-    SQUARE_CASH("SQUARE_CASH"),
-    
-    SQUARE_WALLET("SQUARE_WALLET"),
-    
-    SWIPED("SWIPED"),
-    
-    WEB_FORM("WEB_FORM"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    EntryMethodEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EntryMethodEnum fromValue(String text) {
-      for (EntryMethodEnum b : EntryMethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("entry_method")
-  private EntryMethodEnum entryMethod = null;
+  private String entryMethod = null;
 
   @JsonProperty("payment_note")
   private String paymentNote = null;
@@ -219,7 +93,7 @@ public class V1Tender {
     this.id = id;
   }
 
-  public V1Tender type(TypeEnum type) {
+  public V1Tender type(String type) {
     this.type = type;
     return this;
   }
@@ -229,11 +103,11 @@ public class V1Tender {
    * @return type
   **/
   @ApiModelProperty(value = "The type of tender. See [V1TenderType](#type-v1tendertype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -291,7 +165,7 @@ public class V1Tender {
     this.receiptUrl = receiptUrl;
   }
 
-  public V1Tender cardBrand(CardBrandEnum cardBrand) {
+  public V1Tender cardBrand(String cardBrand) {
     this.cardBrand = cardBrand;
     return this;
   }
@@ -301,11 +175,11 @@ public class V1Tender {
    * @return cardBrand
   **/
   @ApiModelProperty(value = "The brand of credit card provided. See [V1TenderCardBrand](#type-v1tendercardbrand) for possible values")
-  public CardBrandEnum getCardBrand() {
+  public String getCardBrand() {
     return cardBrand;
   }
 
-  public void setCardBrand(CardBrandEnum cardBrand) {
+  public void setCardBrand(String cardBrand) {
     this.cardBrand = cardBrand;
   }
 
@@ -327,7 +201,7 @@ public class V1Tender {
     this.panSuffix = panSuffix;
   }
 
-  public V1Tender entryMethod(EntryMethodEnum entryMethod) {
+  public V1Tender entryMethod(String entryMethod) {
     this.entryMethod = entryMethod;
     return this;
   }
@@ -337,11 +211,11 @@ public class V1Tender {
    * @return entryMethod
   **/
   @ApiModelProperty(value = "The tender's unique ID. See [V1TenderEntryMethod](#type-v1tenderentrymethod) for possible values")
-  public EntryMethodEnum getEntryMethod() {
+  public String getEntryMethod() {
     return entryMethod;
   }
 
-  public void setEntryMethod(EntryMethodEnum entryMethod) {
+  public void setEntryMethod(String entryMethod) {
     this.entryMethod = entryMethod;
   }
 
@@ -527,7 +401,7 @@ public class V1Tender {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1Tender {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -558,6 +432,6 @@ public class V1Tender {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

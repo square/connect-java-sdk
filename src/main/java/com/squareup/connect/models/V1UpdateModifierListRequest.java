@@ -29,38 +29,8 @@ public class V1UpdateModifierListRequest {
   @JsonProperty("name")
   private String name = null;
 
-  /**
-   * Indicates whether multiple options from the modifier list can be applied to a single item. See [V1UpdateModifierListRequestSelectionType](#type-v1updatemodifierlistrequestselectiontype) for possible values
-   */
-  public enum SelectionTypeEnum {
-    SINGLE("SINGLE"),
-    
-    MULTIPLE("MULTIPLE");
-
-    private String value;
-
-    SelectionTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SelectionTypeEnum fromValue(String text) {
-      for (SelectionTypeEnum b : SelectionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("selection_type")
-  private SelectionTypeEnum selectionType = null;
+  private String selectionType = null;
 
   public V1UpdateModifierListRequest name(String name) {
     this.name = name;
@@ -80,7 +50,7 @@ public class V1UpdateModifierListRequest {
     this.name = name;
   }
 
-  public V1UpdateModifierListRequest selectionType(SelectionTypeEnum selectionType) {
+  public V1UpdateModifierListRequest selectionType(String selectionType) {
     this.selectionType = selectionType;
     return this;
   }
@@ -90,11 +60,11 @@ public class V1UpdateModifierListRequest {
    * @return selectionType
   **/
   @ApiModelProperty(value = "Indicates whether multiple options from the modifier list can be applied to a single item. See [V1UpdateModifierListRequestSelectionType](#type-v1updatemodifierlistrequestselectiontype) for possible values")
-  public SelectionTypeEnum getSelectionType() {
+  public String getSelectionType() {
     return selectionType;
   }
 
-  public void setSelectionType(SelectionTypeEnum selectionType) {
+  public void setSelectionType(String selectionType) {
     this.selectionType = selectionType;
   }
 
@@ -122,7 +92,7 @@ public class V1UpdateModifierListRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1UpdateModifierListRequest {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    selectionType: ").append(toIndentedString(selectionType)).append("\n");
     sb.append("}");
@@ -139,6 +109,6 @@ public class V1UpdateModifierListRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

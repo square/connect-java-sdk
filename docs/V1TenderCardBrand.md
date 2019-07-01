@@ -1,26 +1,24 @@
 
 # V1TenderCardBrand
 
-## Enum
 
+* `"OTHER_BRAND"`
 
-* `OTHER_BRAND` (value: `"OTHER_BRAND"`)
+* `"VISA"`
 
-* `VISA` (value: `"VISA"`)
+* `"MASTER_CARD"`
 
-* `MASTER_CARD` (value: `"MASTER_CARD"`)
+* `"AMERICAN_EXPRESS"`
 
-* `AMERICAN_EXPRESS` (value: `"AMERICAN_EXPRESS"`)
+* `"DISCOVER"`
 
-* `DISCOVER` (value: `"DISCOVER"`)
+* `"DISCOVER_DINERS"`
 
-* `DISCOVER_DINERS` (value: `"DISCOVER_DINERS"`)
+* `"JCB"`
 
-* `JCB` (value: `"JCB"`)
+* `"CHINA_UNIONPAY"`
 
-* `CHINA_UNIONPAY` (value: `"CHINA_UNIONPAY"`)
-
-* `SQUARE_GIFT_CARD` (value: `"SQUARE_GIFT_CARD"`)
+* `"SQUARE_GIFT_CARD"`
 
 
 

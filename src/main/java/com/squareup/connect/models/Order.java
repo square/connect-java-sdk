@@ -97,40 +97,8 @@ public class Order {
   @JsonProperty("closed_at")
   private String closedAt = null;
 
-  /**
-   * The current state of the order. `OPEN`,`COMPLETED`,`CANCELED` See [OrderState](#type-orderstate) for possible values
-   */
-  public enum StateEnum {
-    OPEN("OPEN"),
-    
-    COMPLETED("COMPLETED"),
-    
-    CANCELED("CANCELED");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String text) {
-      for (StateEnum b : StateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("state")
-  private StateEnum state = null;
+  private String state = null;
 
   @JsonProperty("total_money")
   private Money totalMoney = null;
@@ -526,7 +494,7 @@ public class Order {
     this.closedAt = closedAt;
   }
 
-  public Order state(StateEnum state) {
+  public Order state(String state) {
     this.state = state;
     return this;
   }
@@ -536,11 +504,11 @@ public class Order {
    * @return state
   **/
   @ApiModelProperty(value = "The current state of the order. `OPEN`,`COMPLETED`,`CANCELED` See [OrderState](#type-orderstate) for possible values")
-  public StateEnum getState() {
+  public String getState() {
     return state;
   }
 
-  public void setState(StateEnum state) {
+  public void setState(String state) {
     this.state = state;
   }
 
@@ -662,7 +630,7 @@ public class Order {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Order {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
@@ -701,6 +669,6 @@ public class Order {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

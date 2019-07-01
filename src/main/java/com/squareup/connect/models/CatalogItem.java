@@ -66,44 +66,8 @@ public class CatalogItem {
   @JsonProperty("variations")
   private List<CatalogObject> variations = new ArrayList<CatalogObject>();
 
-  /**
-   * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
-   */
-  public enum ProductTypeEnum {
-    REGULAR("REGULAR"),
-    
-    GIFT_CARD("GIFT_CARD"),
-    
-    APPOINTMENTS_SERVICE("APPOINTMENTS_SERVICE"),
-    
-    RETAIL_ITEM("RETAIL_ITEM"),
-    
-    RESTAURANT_ITEM("RESTAURANT_ITEM");
-
-    private String value;
-
-    ProductTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ProductTypeEnum fromValue(String text) {
-      for (ProductTypeEnum b : ProductTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("product_type")
-  private ProductTypeEnum productType = null;
+  private String productType = null;
 
   @JsonProperty("skip_modifier_screen")
   private Boolean skipModifierScreen = null;
@@ -339,7 +303,7 @@ public class CatalogItem {
     this.variations = variations;
   }
 
-  public CatalogItem productType(ProductTypeEnum productType) {
+  public CatalogItem productType(String productType) {
     this.productType = productType;
     return this;
   }
@@ -349,11 +313,11 @@ public class CatalogItem {
    * @return productType
   **/
   @ApiModelProperty(value = "The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values")
-  public ProductTypeEnum getProductType() {
+  public String getProductType() {
     return productType;
   }
 
-  public void setProductType(ProductTypeEnum productType) {
+  public void setProductType(String productType) {
     this.productType = productType;
   }
 
@@ -411,7 +375,7 @@ public class CatalogItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogItem {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    abbreviation: ").append(toIndentedString(abbreviation)).append("\n");
@@ -440,6 +404,6 @@ public class CatalogItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

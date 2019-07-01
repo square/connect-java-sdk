@@ -1,16 +1,14 @@
 
 # TenderCardDetailsStatus
 
-## Enum
 
+* `"AUTHORIZED"`
 
-* `AUTHORIZED` (value: `"AUTHORIZED"`)
+* `"CAPTURED"`
 
-* `CAPTURED` (value: `"CAPTURED"`)
+* `"VOIDED"`
 
-* `VOIDED` (value: `"VOIDED"`)
-
-* `FAILED` (value: `"FAILED"`)
+* `"FAILED"`
 
 
 

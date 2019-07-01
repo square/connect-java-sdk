@@ -54,38 +54,8 @@ public class Shift {
   @JsonProperty("breaks")
   private List<ModelBreak> breaks = new ArrayList<ModelBreak>();
 
-  /**
-   * Describes working state of the current `Shift`. See [ShiftStatus](#type-shiftstatus) for possible values
-   */
-  public enum StatusEnum {
-    OPEN("OPEN"),
-    
-    CLOSED("CLOSED");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("version")
   private Integer version = null;
@@ -245,7 +215,7 @@ public class Shift {
     this.breaks = breaks;
   }
 
-  public Shift status(StatusEnum status) {
+  public Shift status(String status) {
     this.status = status;
     return this;
   }
@@ -255,11 +225,11 @@ public class Shift {
    * @return status
   **/
   @ApiModelProperty(value = "Describes working state of the current `Shift`. See [ShiftStatus](#type-shiftstatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
@@ -351,7 +321,7 @@ public class Shift {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Shift {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    employeeId: ").append(toIndentedString(employeeId)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
@@ -378,6 +348,6 @@ public class Shift {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -1,46 +1,44 @@
 
 # CustomerCreationSource
 
-## Enum
 
+* `"OTHER"`
 
-* `OTHER` (value: `"OTHER"`)
+* `"APPOINTMENTS"`
 
-* `APPOINTMENTS` (value: `"APPOINTMENTS"`)
+* `"COUPON"`
 
-* `COUPON` (value: `"COUPON"`)
+* `"DELETION_RECOVERY"`
 
-* `DELETION_RECOVERY` (value: `"DELETION_RECOVERY"`)
+* `"DIRECTORY"`
 
-* `DIRECTORY` (value: `"DIRECTORY"`)
+* `"EGIFTING"`
 
-* `EGIFTING` (value: `"EGIFTING"`)
+* `"EMAIL_COLLECTION"`
 
-* `EMAIL_COLLECTION` (value: `"EMAIL_COLLECTION"`)
+* `"FEEDBACK"`
 
-* `FEEDBACK` (value: `"FEEDBACK"`)
+* `"IMPORT"`
 
-* `IMPORT` (value: `"IMPORT"`)
+* `"INVOICES"`
 
-* `INVOICES` (value: `"INVOICES"`)
+* `"LOYALTY"`
 
-* `LOYALTY` (value: `"LOYALTY"`)
+* `"MARKETING"`
 
-* `MARKETING` (value: `"MARKETING"`)
+* `"MERGE"`
 
-* `MERGE` (value: `"MERGE"`)
+* `"ONLINE_STORE"`
 
-* `ONLINE_STORE` (value: `"ONLINE_STORE"`)
+* `"INSTANT_PROFILE"`
 
-* `INSTANT_PROFILE` (value: `"INSTANT_PROFILE"`)
+* `"TERMINAL"`
 
-* `TERMINAL` (value: `"TERMINAL"`)
+* `"THIRD_PARTY"`
 
-* `THIRD_PARTY` (value: `"THIRD_PARTY"`)
+* `"THIRD_PARTY_IMPORT"`
 
-* `THIRD_PARTY_IMPORT` (value: `"THIRD_PARTY_IMPORT"`)
-
-* `UNMERGE_RECOVERY` (value: `"UNMERGE_RECOVERY"`)
+* `"UNMERGE_RECOVERY"`
 
 
 

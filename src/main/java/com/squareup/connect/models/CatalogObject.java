@@ -38,56 +38,8 @@ import java.util.List;
 @ApiModel(description = "The wrapper object for object types in the Catalog data model. The type of a particular `CatalogObject` is determined by the value of `type` and only the corresponding data field may be set.  - if type = `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object. - if type = `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object. - if type = `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object. - if type = `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object. - if type = `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object. - if type = `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object. - if type = `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object. - if type = `IMAGE`, only `image_data` will be populated and it will contain a valid [CatalogImage](#type-catalogimage) object.  For a more detailed discussion of the Catalog data model, please see the [Design a Catalog](/catalog-api/design-a-catalog) guide.")
 
 public class CatalogObject {
-  /**
-   * The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below. See [CatalogObjectType](#type-catalogobjecttype) for possible values
-   */
-  public enum TypeEnum {
-    ITEM("ITEM"),
-    
-    IMAGE("IMAGE"),
-    
-    CATEGORY("CATEGORY"),
-    
-    ITEM_VARIATION("ITEM_VARIATION"),
-    
-    TAX("TAX"),
-    
-    DISCOUNT("DISCOUNT"),
-    
-    MODIFIER_LIST("MODIFIER_LIST"),
-    
-    MODIFIER("MODIFIER"),
-    
-    PRICING_RULE("PRICING_RULE"),
-    
-    PRODUCT_SET("PRODUCT_SET"),
-    
-    TIME_PERIOD("TIME_PERIOD");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("id")
   private String id = null;
@@ -143,7 +95,7 @@ public class CatalogObject {
   @JsonProperty("measurement_unit_data")
   private CatalogMeasurementUnit measurementUnitData = null;
 
-  public CatalogObject type(TypeEnum type) {
+  public CatalogObject type(String type) {
     this.type = type;
     return this;
   }
@@ -153,11 +105,11 @@ public class CatalogObject {
    * @return type
   **/
   @ApiModelProperty(required = true, value = "The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below. See [CatalogObjectType](#type-catalogobjecttype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -541,7 +493,7 @@ public class CatalogObject {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogObject {\n");
-    
+
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -575,6 +527,6 @@ public class CatalogObject {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

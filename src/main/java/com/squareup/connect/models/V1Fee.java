@@ -35,71 +35,11 @@ public class V1Fee {
   @JsonProperty("rate")
   private String rate = null;
 
-  /**
-   * Forthcoming See [V1FeeCalculationPhase](#type-v1feecalculationphase) for possible values
-   */
-  public enum CalculationPhaseEnum {
-    FEE_SUBTOTAL_PHASE("FEE_SUBTOTAL_PHASE"),
-    
-    OTHER("OTHER"),
-    
-    FEE_TOTAL_PHASE("FEE_TOTAL_PHASE");
-
-    private String value;
-
-    CalculationPhaseEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CalculationPhaseEnum fromValue(String text) {
-      for (CalculationPhaseEnum b : CalculationPhaseEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("calculation_phase")
-  private CalculationPhaseEnum calculationPhase = null;
-
-  /**
-   * The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees. See [V1FeeAdjustmentType](#type-v1feeadjustmenttype) for possible values
-   */
-  public enum AdjustmentTypeEnum {
-    TAX("TAX");
-
-    private String value;
-
-    AdjustmentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AdjustmentTypeEnum fromValue(String text) {
-      for (AdjustmentTypeEnum b : AdjustmentTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String calculationPhase = null;
 
   @JsonProperty("adjustment_type")
-  private AdjustmentTypeEnum adjustmentType = null;
+  private String adjustmentType = null;
 
   @JsonProperty("applies_to_custom_amounts")
   private Boolean appliesToCustomAmounts = null;
@@ -107,83 +47,11 @@ public class V1Fee {
   @JsonProperty("enabled")
   private Boolean enabled = null;
 
-  /**
-   * Whether the fee is ADDITIVE or INCLUSIVE. See [V1FeeInclusionType](#type-v1feeinclusiontype) for possible values
-   */
-  public enum InclusionTypeEnum {
-    ADDITIVE("ADDITIVE"),
-    
-    INCLUSIVE("INCLUSIVE");
-
-    private String value;
-
-    InclusionTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static InclusionTypeEnum fromValue(String text) {
-      for (InclusionTypeEnum b : InclusionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("inclusion_type")
-  private InclusionTypeEnum inclusionType = null;
-
-  /**
-   * In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants. See [V1FeeType](#type-v1feetype) for possible values
-   */
-  public enum TypeEnum {
-    CA_GST("CA_GST"),
-    
-    CA_HST("CA_HST"),
-    
-    CA_PST("CA_PST"),
-    
-    CA_QST("CA_QST"),
-    
-    JP_CONSUMPTION_TAX("JP_CONSUMPTION_TAX"),
-    
-    CA_PEI_PST("CA_PEI_PST"),
-    
-    US_SALES_TAX("US_SALES_TAX"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String inclusionType = null;
 
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("v2_id")
   private String v2Id = null;
@@ -242,7 +110,7 @@ public class V1Fee {
     this.rate = rate;
   }
 
-  public V1Fee calculationPhase(CalculationPhaseEnum calculationPhase) {
+  public V1Fee calculationPhase(String calculationPhase) {
     this.calculationPhase = calculationPhase;
     return this;
   }
@@ -252,15 +120,15 @@ public class V1Fee {
    * @return calculationPhase
   **/
   @ApiModelProperty(value = "Forthcoming See [V1FeeCalculationPhase](#type-v1feecalculationphase) for possible values")
-  public CalculationPhaseEnum getCalculationPhase() {
+  public String getCalculationPhase() {
     return calculationPhase;
   }
 
-  public void setCalculationPhase(CalculationPhaseEnum calculationPhase) {
+  public void setCalculationPhase(String calculationPhase) {
     this.calculationPhase = calculationPhase;
   }
 
-  public V1Fee adjustmentType(AdjustmentTypeEnum adjustmentType) {
+  public V1Fee adjustmentType(String adjustmentType) {
     this.adjustmentType = adjustmentType;
     return this;
   }
@@ -270,11 +138,11 @@ public class V1Fee {
    * @return adjustmentType
   **/
   @ApiModelProperty(value = "The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees. See [V1FeeAdjustmentType](#type-v1feeadjustmenttype) for possible values")
-  public AdjustmentTypeEnum getAdjustmentType() {
+  public String getAdjustmentType() {
     return adjustmentType;
   }
 
-  public void setAdjustmentType(AdjustmentTypeEnum adjustmentType) {
+  public void setAdjustmentType(String adjustmentType) {
     this.adjustmentType = adjustmentType;
   }
 
@@ -314,7 +182,7 @@ public class V1Fee {
     this.enabled = enabled;
   }
 
-  public V1Fee inclusionType(InclusionTypeEnum inclusionType) {
+  public V1Fee inclusionType(String inclusionType) {
     this.inclusionType = inclusionType;
     return this;
   }
@@ -324,15 +192,15 @@ public class V1Fee {
    * @return inclusionType
   **/
   @ApiModelProperty(value = "Whether the fee is ADDITIVE or INCLUSIVE. See [V1FeeInclusionType](#type-v1feeinclusiontype) for possible values")
-  public InclusionTypeEnum getInclusionType() {
+  public String getInclusionType() {
     return inclusionType;
   }
 
-  public void setInclusionType(InclusionTypeEnum inclusionType) {
+  public void setInclusionType(String inclusionType) {
     this.inclusionType = inclusionType;
   }
 
-  public V1Fee type(TypeEnum type) {
+  public V1Fee type(String type) {
     this.type = type;
     return this;
   }
@@ -342,11 +210,11 @@ public class V1Fee {
    * @return type
   **/
   @ApiModelProperty(value = "In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants. See [V1FeeType](#type-v1feetype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -400,7 +268,7 @@ public class V1Fee {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1Fee {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
@@ -425,6 +293,6 @@ public class V1Fee {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

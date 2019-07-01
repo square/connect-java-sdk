@@ -49,46 +49,8 @@ public class V1Order {
   @JsonProperty("recipient_phone_number")
   private String recipientPhoneNumber = null;
 
-  /**
-   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1OrderState](#type-v1orderstate) for possible values
-   */
-  public enum StateEnum {
-    PENDING("PENDING"),
-    
-    OPEN("OPEN"),
-    
-    COMPLETED("COMPLETED"),
-    
-    CANCELED("CANCELED"),
-    
-    REFUNDED("REFUNDED"),
-    
-    REJECTED("REJECTED");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String text) {
-      for (StateEnum b : StateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("state")
-  private StateEnum state = null;
+  private String state = null;
 
   @JsonProperty("shipping_address")
   private Address shippingAddress = null;
@@ -242,7 +204,7 @@ public class V1Order {
     this.recipientPhoneNumber = recipientPhoneNumber;
   }
 
-  public V1Order state(StateEnum state) {
+  public V1Order state(String state) {
     this.state = state;
     return this;
   }
@@ -252,11 +214,11 @@ public class V1Order {
    * @return state
   **/
   @ApiModelProperty(value = "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1OrderState](#type-v1orderstate) for possible values")
-  public StateEnum getState() {
+  public String getState() {
     return state;
   }
 
-  public void setState(StateEnum state) {
+  public void setState(String state) {
     this.state = state;
   }
 
@@ -654,7 +616,7 @@ public class V1Order {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1Order {\n");
-    
+
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    buyerEmail: ").append(toIndentedString(buyerEmail)).append("\n");
@@ -694,6 +656,6 @@ public class V1Order {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

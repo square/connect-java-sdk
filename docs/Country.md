@@ -1,508 +1,506 @@
 
 # Country
 
-## Enum
 
+* `"ZZ"`
 
-* `ZZ` (value: `"ZZ"`)
+* `"AD"`
 
-* `AD` (value: `"AD"`)
+* `"AE"`
 
-* `AE` (value: `"AE"`)
+* `"AF"`
 
-* `AF` (value: `"AF"`)
+* `"AG"`
 
-* `AG` (value: `"AG"`)
+* `"AI"`
 
-* `AI` (value: `"AI"`)
+* `"AL"`
 
-* `AL` (value: `"AL"`)
+* `"AM"`
 
-* `AM` (value: `"AM"`)
+* `"AO"`
 
-* `AO` (value: `"AO"`)
+* `"AQ"`
 
-* `AQ` (value: `"AQ"`)
+* `"AR"`
 
-* `AR` (value: `"AR"`)
+* `"AS"`
 
-* `AS` (value: `"AS"`)
+* `"AT"`
 
-* `AT` (value: `"AT"`)
+* `"AU"`
 
-* `AU` (value: `"AU"`)
+* `"AW"`
 
-* `AW` (value: `"AW"`)
+* `"AX"`
 
-* `AX` (value: `"AX"`)
+* `"AZ"`
 
-* `AZ` (value: `"AZ"`)
+* `"BA"`
 
-* `BA` (value: `"BA"`)
+* `"BB"`
 
-* `BB` (value: `"BB"`)
+* `"BD"`
 
-* `BD` (value: `"BD"`)
+* `"BE"`
 
-* `BE` (value: `"BE"`)
+* `"BF"`
 
-* `BF` (value: `"BF"`)
+* `"BG"`
 
-* `BG` (value: `"BG"`)
+* `"BH"`
 
-* `BH` (value: `"BH"`)
+* `"BI"`
 
-* `BI` (value: `"BI"`)
+* `"BJ"`
 
-* `BJ` (value: `"BJ"`)
+* `"BL"`
 
-* `BL` (value: `"BL"`)
+* `"BM"`
 
-* `BM` (value: `"BM"`)
+* `"BN"`
 
-* `BN` (value: `"BN"`)
+* `"BO"`
 
-* `BO` (value: `"BO"`)
+* `"BQ"`
 
-* `BQ` (value: `"BQ"`)
+* `"BR"`
 
-* `BR` (value: `"BR"`)
+* `"BS"`
 
-* `BS` (value: `"BS"`)
+* `"BT"`
 
-* `BT` (value: `"BT"`)
+* `"BV"`
 
-* `BV` (value: `"BV"`)
+* `"BW"`
 
-* `BW` (value: `"BW"`)
+* `"BY"`
 
-* `BY` (value: `"BY"`)
+* `"BZ"`
 
-* `BZ` (value: `"BZ"`)
+* `"CA"`
 
-* `CA` (value: `"CA"`)
+* `"CC"`
 
-* `CC` (value: `"CC"`)
+* `"CD"`
 
-* `CD` (value: `"CD"`)
+* `"CF"`
 
-* `CF` (value: `"CF"`)
+* `"CG"`
 
-* `CG` (value: `"CG"`)
+* `"CH"`
 
-* `CH` (value: `"CH"`)
+* `"CI"`
 
-* `CI` (value: `"CI"`)
+* `"CK"`
 
-* `CK` (value: `"CK"`)
+* `"CL"`
 
-* `CL` (value: `"CL"`)
+* `"CM"`
 
-* `CM` (value: `"CM"`)
+* `"CN"`
 
-* `CN` (value: `"CN"`)
+* `"CO"`
 
-* `CO` (value: `"CO"`)
+* `"CR"`
 
-* `CR` (value: `"CR"`)
+* `"CU"`
 
-* `CU` (value: `"CU"`)
+* `"CV"`
 
-* `CV` (value: `"CV"`)
+* `"CW"`
 
-* `CW` (value: `"CW"`)
+* `"CX"`
 
-* `CX` (value: `"CX"`)
+* `"CY"`
 
-* `CY` (value: `"CY"`)
+* `"CZ"`
 
-* `CZ` (value: `"CZ"`)
+* `"DE"`
 
-* `DE` (value: `"DE"`)
+* `"DJ"`
 
-* `DJ` (value: `"DJ"`)
+* `"DK"`
 
-* `DK` (value: `"DK"`)
+* `"DM"`
 
-* `DM` (value: `"DM"`)
+* `"DO"`
 
-* `DO` (value: `"DO"`)
+* `"DZ"`
 
-* `DZ` (value: `"DZ"`)
+* `"EC"`
 
-* `EC` (value: `"EC"`)
+* `"EE"`
 
-* `EE` (value: `"EE"`)
+* `"EG"`
 
-* `EG` (value: `"EG"`)
+* `"EH"`
 
-* `EH` (value: `"EH"`)
+* `"ER"`
 
-* `ER` (value: `"ER"`)
+* `"ES"`
 
-* `ES` (value: `"ES"`)
+* `"ET"`
 
-* `ET` (value: `"ET"`)
+* `"FI"`
 
-* `FI` (value: `"FI"`)
+* `"FJ"`
 
-* `FJ` (value: `"FJ"`)
+* `"FK"`
 
-* `FK` (value: `"FK"`)
+* `"FM"`
 
-* `FM` (value: `"FM"`)
+* `"FO"`
 
-* `FO` (value: `"FO"`)
+* `"FR"`
 
-* `FR` (value: `"FR"`)
+* `"GA"`
 
-* `GA` (value: `"GA"`)
+* `"GB"`
 
-* `GB` (value: `"GB"`)
+* `"GD"`
 
-* `GD` (value: `"GD"`)
+* `"GE"`
 
-* `GE` (value: `"GE"`)
+* `"GF"`
 
-* `GF` (value: `"GF"`)
+* `"GG"`
 
-* `GG` (value: `"GG"`)
+* `"GH"`
 
-* `GH` (value: `"GH"`)
+* `"GI"`
 
-* `GI` (value: `"GI"`)
+* `"GL"`
 
-* `GL` (value: `"GL"`)
+* `"GM"`
 
-* `GM` (value: `"GM"`)
+* `"GN"`
 
-* `GN` (value: `"GN"`)
+* `"GP"`
 
-* `GP` (value: `"GP"`)
+* `"GQ"`
 
-* `GQ` (value: `"GQ"`)
+* `"GR"`
 
-* `GR` (value: `"GR"`)
+* `"GS"`
 
-* `GS` (value: `"GS"`)
+* `"GT"`
 
-* `GT` (value: `"GT"`)
+* `"GU"`
 
-* `GU` (value: `"GU"`)
+* `"GW"`
 
-* `GW` (value: `"GW"`)
+* `"GY"`
 
-* `GY` (value: `"GY"`)
+* `"HK"`
 
-* `HK` (value: `"HK"`)
+* `"HM"`
 
-* `HM` (value: `"HM"`)
+* `"HN"`
 
-* `HN` (value: `"HN"`)
+* `"HR"`
 
-* `HR` (value: `"HR"`)
+* `"HT"`
 
-* `HT` (value: `"HT"`)
+* `"HU"`
 
-* `HU` (value: `"HU"`)
+* `"ID"`
 
-* `ID` (value: `"ID"`)
+* `"IE"`
 
-* `IE` (value: `"IE"`)
+* `"IL"`
 
-* `IL` (value: `"IL"`)
+* `"IM"`
 
-* `IM` (value: `"IM"`)
+* `"IN"`
 
-* `IN` (value: `"IN"`)
+* `"IO"`
 
-* `IO` (value: `"IO"`)
+* `"IQ"`
 
-* `IQ` (value: `"IQ"`)
+* `"IR"`
 
-* `IR` (value: `"IR"`)
+* `"IS"`
 
-* `IS` (value: `"IS"`)
+* `"IT"`
 
-* `IT` (value: `"IT"`)
+* `"JE"`
 
-* `JE` (value: `"JE"`)
+* `"JM"`
 
-* `JM` (value: `"JM"`)
+* `"JO"`
 
-* `JO` (value: `"JO"`)
+* `"JP"`
 
-* `JP` (value: `"JP"`)
+* `"KE"`
 
-* `KE` (value: `"KE"`)
+* `"KG"`
 
-* `KG` (value: `"KG"`)
+* `"KH"`
 
-* `KH` (value: `"KH"`)
+* `"KI"`
 
-* `KI` (value: `"KI"`)
+* `"KM"`
 
-* `KM` (value: `"KM"`)
+* `"KN"`
 
-* `KN` (value: `"KN"`)
+* `"KP"`
 
-* `KP` (value: `"KP"`)
+* `"KR"`
 
-* `KR` (value: `"KR"`)
+* `"KW"`
 
-* `KW` (value: `"KW"`)
+* `"KY"`
 
-* `KY` (value: `"KY"`)
+* `"KZ"`
 
-* `KZ` (value: `"KZ"`)
+* `"LA"`
 
-* `LA` (value: `"LA"`)
+* `"LB"`
 
-* `LB` (value: `"LB"`)
+* `"LC"`
 
-* `LC` (value: `"LC"`)
+* `"LI"`
 
-* `LI` (value: `"LI"`)
+* `"LK"`
 
-* `LK` (value: `"LK"`)
+* `"LR"`
 
-* `LR` (value: `"LR"`)
+* `"LS"`
 
-* `LS` (value: `"LS"`)
+* `"LT"`
 
-* `LT` (value: `"LT"`)
+* `"LU"`
 
-* `LU` (value: `"LU"`)
+* `"LV"`
 
-* `LV` (value: `"LV"`)
+* `"LY"`
 
-* `LY` (value: `"LY"`)
+* `"MA"`
 
-* `MA` (value: `"MA"`)
+* `"MC"`
 
-* `MC` (value: `"MC"`)
+* `"MD"`
 
-* `MD` (value: `"MD"`)
+* `"ME"`
 
-* `ME` (value: `"ME"`)
+* `"MF"`
 
-* `MF` (value: `"MF"`)
+* `"MG"`
 
-* `MG` (value: `"MG"`)
+* `"MH"`
 
-* `MH` (value: `"MH"`)
+* `"MK"`
 
-* `MK` (value: `"MK"`)
+* `"ML"`
 
-* `ML` (value: `"ML"`)
+* `"MM"`
 
-* `MM` (value: `"MM"`)
+* `"MN"`
 
-* `MN` (value: `"MN"`)
+* `"MO"`
 
-* `MO` (value: `"MO"`)
+* `"MP"`
 
-* `MP` (value: `"MP"`)
+* `"MQ"`
 
-* `MQ` (value: `"MQ"`)
+* `"MR"`
 
-* `MR` (value: `"MR"`)
+* `"MS"`
 
-* `MS` (value: `"MS"`)
+* `"MT"`
 
-* `MT` (value: `"MT"`)
+* `"MU"`
 
-* `MU` (value: `"MU"`)
+* `"MV"`
 
-* `MV` (value: `"MV"`)
+* `"MW"`
 
-* `MW` (value: `"MW"`)
+* `"MX"`
 
-* `MX` (value: `"MX"`)
+* `"MY"`
 
-* `MY` (value: `"MY"`)
+* `"MZ"`
 
-* `MZ` (value: `"MZ"`)
+* `"NA"`
 
-* `NA` (value: `"NA"`)
+* `"NC"`
 
-* `NC` (value: `"NC"`)
+* `"NE"`
 
-* `NE` (value: `"NE"`)
+* `"NF"`
 
-* `NF` (value: `"NF"`)
+* `"NG"`
 
-* `NG` (value: `"NG"`)
+* `"NI"`
 
-* `NI` (value: `"NI"`)
+* `"NL"`
 
-* `NL` (value: `"NL"`)
+* `"NO"`
 
-* `NO` (value: `"NO"`)
+* `"NP"`
 
-* `NP` (value: `"NP"`)
+* `"NR"`
 
-* `NR` (value: `"NR"`)
+* `"NU"`
 
-* `NU` (value: `"NU"`)
+* `"NZ"`
 
-* `NZ` (value: `"NZ"`)
+* `"OM"`
 
-* `OM` (value: `"OM"`)
+* `"PA"`
 
-* `PA` (value: `"PA"`)
+* `"PE"`
 
-* `PE` (value: `"PE"`)
+* `"PF"`
 
-* `PF` (value: `"PF"`)
+* `"PG"`
 
-* `PG` (value: `"PG"`)
+* `"PH"`
 
-* `PH` (value: `"PH"`)
+* `"PK"`
 
-* `PK` (value: `"PK"`)
+* `"PL"`
 
-* `PL` (value: `"PL"`)
+* `"PM"`
 
-* `PM` (value: `"PM"`)
+* `"PN"`
 
-* `PN` (value: `"PN"`)
+* `"PR"`
 
-* `PR` (value: `"PR"`)
+* `"PS"`
 
-* `PS` (value: `"PS"`)
+* `"PT"`
 
-* `PT` (value: `"PT"`)
+* `"PW"`
 
-* `PW` (value: `"PW"`)
+* `"PY"`
 
-* `PY` (value: `"PY"`)
+* `"QA"`
 
-* `QA` (value: `"QA"`)
+* `"RE"`
 
-* `RE` (value: `"RE"`)
+* `"RO"`
 
-* `RO` (value: `"RO"`)
+* `"RS"`
 
-* `RS` (value: `"RS"`)
+* `"RU"`
 
-* `RU` (value: `"RU"`)
+* `"RW"`
 
-* `RW` (value: `"RW"`)
+* `"SA"`
 
-* `SA` (value: `"SA"`)
+* `"SB"`
 
-* `SB` (value: `"SB"`)
+* `"SC"`
 
-* `SC` (value: `"SC"`)
+* `"SD"`
 
-* `SD` (value: `"SD"`)
+* `"SE"`
 
-* `SE` (value: `"SE"`)
+* `"SG"`
 
-* `SG` (value: `"SG"`)
+* `"SH"`
 
-* `SH` (value: `"SH"`)
+* `"SI"`
 
-* `SI` (value: `"SI"`)
+* `"SJ"`
 
-* `SJ` (value: `"SJ"`)
+* `"SK"`
 
-* `SK` (value: `"SK"`)
+* `"SL"`
 
-* `SL` (value: `"SL"`)
+* `"SM"`
 
-* `SM` (value: `"SM"`)
+* `"SN"`
 
-* `SN` (value: `"SN"`)
+* `"SO"`
 
-* `SO` (value: `"SO"`)
+* `"SR"`
 
-* `SR` (value: `"SR"`)
+* `"SS"`
 
-* `SS` (value: `"SS"`)
+* `"ST"`
 
-* `ST` (value: `"ST"`)
+* `"SV"`
 
-* `SV` (value: `"SV"`)
+* `"SX"`
 
-* `SX` (value: `"SX"`)
+* `"SY"`
 
-* `SY` (value: `"SY"`)
+* `"SZ"`
 
-* `SZ` (value: `"SZ"`)
+* `"TC"`
 
-* `TC` (value: `"TC"`)
+* `"TD"`
 
-* `TD` (value: `"TD"`)
+* `"TF"`
 
-* `TF` (value: `"TF"`)
+* `"TG"`
 
-* `TG` (value: `"TG"`)
+* `"TH"`
 
-* `TH` (value: `"TH"`)
+* `"TJ"`
 
-* `TJ` (value: `"TJ"`)
+* `"TK"`
 
-* `TK` (value: `"TK"`)
+* `"TL"`
 
-* `TL` (value: `"TL"`)
+* `"TM"`
 
-* `TM` (value: `"TM"`)
+* `"TN"`
 
-* `TN` (value: `"TN"`)
+* `"TO"`
 
-* `TO` (value: `"TO"`)
+* `"TR"`
 
-* `TR` (value: `"TR"`)
+* `"TT"`
 
-* `TT` (value: `"TT"`)
+* `"TV"`
 
-* `TV` (value: `"TV"`)
+* `"TW"`
 
-* `TW` (value: `"TW"`)
+* `"TZ"`
 
-* `TZ` (value: `"TZ"`)
+* `"UA"`
 
-* `UA` (value: `"UA"`)
+* `"UG"`
 
-* `UG` (value: `"UG"`)
+* `"UM"`
 
-* `UM` (value: `"UM"`)
+* `"US"`
 
-* `US` (value: `"US"`)
+* `"UY"`
 
-* `UY` (value: `"UY"`)
+* `"UZ"`
 
-* `UZ` (value: `"UZ"`)
+* `"VA"`
 
-* `VA` (value: `"VA"`)
+* `"VC"`
 
-* `VC` (value: `"VC"`)
+* `"VE"`
 
-* `VE` (value: `"VE"`)
+* `"VG"`
 
-* `VG` (value: `"VG"`)
+* `"VI"`
 
-* `VI` (value: `"VI"`)
+* `"VN"`
 
-* `VN` (value: `"VN"`)
+* `"VU"`
 
-* `VU` (value: `"VU"`)
+* `"WF"`
 
-* `WF` (value: `"WF"`)
+* `"WS"`
 
-* `WS` (value: `"WS"`)
+* `"YE"`
 
-* `YE` (value: `"YE"`)
+* `"YT"`
 
-* `YT` (value: `"YT"`)
+* `"ZA"`
 
-* `ZA` (value: `"ZA"`)
+* `"ZM"`
 
-* `ZM` (value: `"ZM"`)
-
-* `ZW` (value: `"ZW"`)
+* `"ZW"`
 
 
 

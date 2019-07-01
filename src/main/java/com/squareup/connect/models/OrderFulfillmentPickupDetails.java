@@ -36,38 +36,8 @@ public class OrderFulfillmentPickupDetails {
   @JsonProperty("auto_complete_duration")
   private String autoCompleteDuration = null;
 
-  /**
-   * The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`. See [OrderFulfillmentPickupDetailsScheduleType](#type-orderfulfillmentpickupdetailsscheduletype) for possible values
-   */
-  public enum ScheduleTypeEnum {
-    SCHEDULED("SCHEDULED"),
-    
-    ASAP("ASAP");
-
-    private String value;
-
-    ScheduleTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ScheduleTypeEnum fromValue(String text) {
-      for (ScheduleTypeEnum b : ScheduleTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("schedule_type")
-  private ScheduleTypeEnum scheduleType = null;
+  private String scheduleType = null;
 
   @JsonProperty("pickup_at")
   private String pickupAt = null;
@@ -159,7 +129,7 @@ public class OrderFulfillmentPickupDetails {
     this.autoCompleteDuration = autoCompleteDuration;
   }
 
-  public OrderFulfillmentPickupDetails scheduleType(ScheduleTypeEnum scheduleType) {
+  public OrderFulfillmentPickupDetails scheduleType(String scheduleType) {
     this.scheduleType = scheduleType;
     return this;
   }
@@ -169,11 +139,11 @@ public class OrderFulfillmentPickupDetails {
    * @return scheduleType
   **/
   @ApiModelProperty(value = "The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`. See [OrderFulfillmentPickupDetailsScheduleType](#type-orderfulfillmentpickupdetailsscheduletype) for possible values")
-  public ScheduleTypeEnum getScheduleType() {
+  public String getScheduleType() {
     return scheduleType;
   }
 
-  public void setScheduleType(ScheduleTypeEnum scheduleType) {
+  public void setScheduleType(String scheduleType) {
     this.scheduleType = scheduleType;
   }
 
@@ -431,7 +401,7 @@ public class OrderFulfillmentPickupDetails {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderFulfillmentPickupDetails {\n");
-    
+
     sb.append("    recipient: ").append(toIndentedString(recipient)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    autoCompleteDuration: ").append(toIndentedString(autoCompleteDuration)).append("\n");
@@ -462,6 +432,6 @@ public class OrderFulfillmentPickupDetails {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

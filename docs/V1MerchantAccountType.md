@@ -1,12 +1,10 @@
 
 # V1MerchantAccountType
 
-## Enum
 
+* `"LOCATION"`
 
-* `LOCATION` (value: `"LOCATION"`)
-
-* `BUSINESS` (value: `"BUSINESS"`)
+* `"BUSINESS"`
 
 
 

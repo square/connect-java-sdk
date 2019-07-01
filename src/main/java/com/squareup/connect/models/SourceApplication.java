@@ -26,54 +26,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Provides information about the application used to generate an inventory change.")
 
 public class SourceApplication {
-  /**
-   * Read-only [Product](#type-product) type for the application. See [Product](#type-product) for possible values
-   */
-  public enum ProductEnum {
-    SQUARE_POS("SQUARE_POS"),
-    
-    EXTERNAL_API("EXTERNAL_API"),
-    
-    BILLING("BILLING"),
-    
-    APPOINTMENTS("APPOINTMENTS"),
-    
-    INVOICES("INVOICES"),
-    
-    ONLINE_STORE("ONLINE_STORE"),
-    
-    PAYROLL("PAYROLL"),
-    
-    DASHBOARD("DASHBOARD"),
-    
-    ITEM_LIBRARY_IMPORT("ITEM_LIBRARY_IMPORT"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    ProductEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ProductEnum fromValue(String text) {
-      for (ProductEnum b : ProductEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("product")
-  private ProductEnum product = null;
+  private String product = null;
 
   @JsonProperty("application_id")
   private String applicationId = null;
@@ -81,7 +35,7 @@ public class SourceApplication {
   @JsonProperty("name")
   private String name = null;
 
-  public SourceApplication product(ProductEnum product) {
+  public SourceApplication product(String product) {
     this.product = product;
     return this;
   }
@@ -91,11 +45,11 @@ public class SourceApplication {
    * @return product
   **/
   @ApiModelProperty(value = "Read-only [Product](#type-product) type for the application. See [Product](#type-product) for possible values")
-  public ProductEnum getProduct() {
+  public String getProduct() {
     return product;
   }
 
-  public void setProduct(ProductEnum product) {
+  public void setProduct(String product) {
     this.product = product;
   }
 
@@ -160,7 +114,7 @@ public class SourceApplication {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SourceApplication {\n");
-    
+
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -178,6 +132,6 @@ public class SourceApplication {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

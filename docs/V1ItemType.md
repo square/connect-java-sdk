@@ -1,14 +1,12 @@
 
 # V1ItemType
 
-## Enum
 
+* `"NORMAL"`
 
-* `NORMAL` (value: `"NORMAL"`)
+* `"GIFT_CARD"`
 
-* `GIFT_CARD` (value: `"GIFT_CARD"`)
-
-* `OTHER` (value: `"OTHER"`)
+* `"OTHER"`
 
 
 

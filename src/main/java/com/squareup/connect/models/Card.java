@@ -30,52 +30,8 @@ public class Card {
   @JsonProperty("id")
   private String id = null;
 
-  /**
-   * The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for possible values
-   */
-  public enum CardBrandEnum {
-    OTHER_BRAND("OTHER_BRAND"),
-    
-    VISA("VISA"),
-    
-    MASTERCARD("MASTERCARD"),
-    
-    AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-    
-    DISCOVER("DISCOVER"),
-    
-    DISCOVER_DINERS("DISCOVER_DINERS"),
-    
-    JCB("JCB"),
-    
-    CHINA_UNIONPAY("CHINA_UNIONPAY"),
-    
-    SQUARE_GIFT_CARD("SQUARE_GIFT_CARD");
-
-    private String value;
-
-    CardBrandEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CardBrandEnum fromValue(String text) {
-      for (CardBrandEnum b : CardBrandEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("card_brand")
-  private CardBrandEnum cardBrand = null;
+  private String cardBrand = null;
 
   @JsonProperty("last_4")
   private String last4 = null;
@@ -113,7 +69,7 @@ public class Card {
     this.id = id;
   }
 
-  public Card cardBrand(CardBrandEnum cardBrand) {
+  public Card cardBrand(String cardBrand) {
     this.cardBrand = cardBrand;
     return this;
   }
@@ -123,11 +79,11 @@ public class Card {
    * @return cardBrand
   **/
   @ApiModelProperty(value = "The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for possible values")
-  public CardBrandEnum getCardBrand() {
+  public String getCardBrand() {
     return cardBrand;
   }
 
-  public void setCardBrand(CardBrandEnum cardBrand) {
+  public void setCardBrand(String cardBrand) {
     this.cardBrand = cardBrand;
   }
 
@@ -269,7 +225,7 @@ public class Card {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Card {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    cardBrand: ").append(toIndentedString(cardBrand)).append("\n");
     sb.append("    last4: ").append(toIndentedString(last4)).append("\n");
@@ -292,6 +248,6 @@ public class Card {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -1,16 +1,14 @@
 
 # RefundStatus
 
-## Enum
 
+* `"PENDING"`
 
-* `PENDING` (value: `"PENDING"`)
+* `"APPROVED"`
 
-* `APPROVED` (value: `"APPROVED"`)
+* `"REJECTED"`
 
-* `REJECTED` (value: `"REJECTED"`)
-
-* `FAILED` (value: `"FAILED"`)
+* `"FAILED"`
 
 
 

@@ -1,16 +1,14 @@
 
 # AggregationStrategy
 
-## Enum
 
+* `"UNKNOWN"`
 
-* `UNKNOWN` (value: `"UNKNOWN"`)
+* `"BASE"`
 
-* `BASE` (value: `"BASE"`)
+* `"STACKABLE"`
 
-* `STACKABLE` (value: `"STACKABLE"`)
-
-* `EXCLUSIVE` (value: `"EXCLUSIVE"`)
+* `"EXCLUSIVE"`
 
 
 

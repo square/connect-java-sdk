@@ -1,14 +1,12 @@
 
 # V1AdjustInventoryRequestAdjustmentType
 
-## Enum
 
+* `"SALE"`
 
-* `SALE` (value: `"SALE"`)
+* `"RECEIVE_STOCK"`
 
-* `RECEIVE_STOCK` (value: `"RECEIVE_STOCK"`)
-
-* `MANUAL_ADJUST` (value: `"MANUAL_ADJUST"`)
+* `"MANUAL_ADJUST"`
 
 
 

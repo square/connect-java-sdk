@@ -32,38 +32,8 @@ public class ListRefundsRequest {
   @JsonProperty("end_time")
   private String endTime = null;
 
-  /**
-   * The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC` See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum SortOrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    SortOrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortOrderEnum fromValue(String text) {
-      for (SortOrderEnum b : SortOrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("sort_order")
-  private SortOrderEnum sortOrder = null;
+  private String sortOrder = null;
 
   @JsonProperty("cursor")
   private String cursor = null;
@@ -104,7 +74,7 @@ public class ListRefundsRequest {
     this.endTime = endTime;
   }
 
-  public ListRefundsRequest sortOrder(SortOrderEnum sortOrder) {
+  public ListRefundsRequest sortOrder(String sortOrder) {
     this.sortOrder = sortOrder;
     return this;
   }
@@ -114,11 +84,11 @@ public class ListRefundsRequest {
    * @return sortOrder
   **/
   @ApiModelProperty(value = "The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC` See [SortOrder](#type-sortorder) for possible values")
-  public SortOrderEnum getSortOrder() {
+  public String getSortOrder() {
     return sortOrder;
   }
 
-  public void setSortOrder(SortOrderEnum sortOrder) {
+  public void setSortOrder(String sortOrder) {
     this.sortOrder = sortOrder;
   }
 
@@ -166,7 +136,7 @@ public class ListRefundsRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListRefundsRequest {\n");
-    
+
     sb.append("    beginTime: ").append(toIndentedString(beginTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
@@ -185,6 +155,6 @@ public class ListRefundsRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

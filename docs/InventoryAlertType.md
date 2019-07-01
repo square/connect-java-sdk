@@ -1,12 +1,10 @@
 
 # InventoryAlertType
 
-## Enum
 
+* `"NONE"`
 
-* `NONE` (value: `"NONE"`)
-
-* `LOW_QUANTITY` (value: `"LOW_QUANTITY"`)
+* `"LOW_QUANTITY"`
 
 
 

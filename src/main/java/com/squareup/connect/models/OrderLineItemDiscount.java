@@ -36,44 +36,8 @@ public class OrderLineItemDiscount {
   @JsonProperty("name")
   private String name = null;
 
-  /**
-   * The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified. See [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values
-   */
-  public enum TypeEnum {
-    UNKNOWN_DISCOUNT("UNKNOWN_DISCOUNT"),
-    
-    FIXED_PERCENTAGE("FIXED_PERCENTAGE"),
-    
-    FIXED_AMOUNT("FIXED_AMOUNT"),
-    
-    VARIABLE_PERCENTAGE("VARIABLE_PERCENTAGE"),
-    
-    VARIABLE_AMOUNT("VARIABLE_AMOUNT");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("percentage")
   private String percentage = null;
@@ -84,40 +48,8 @@ public class OrderLineItemDiscount {
   @JsonProperty("applied_money")
   private Money appliedMoney = null;
 
-  /**
-   * Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values
-   */
-  public enum ScopeEnum {
-    OTHER_DISCOUNT_SCOPE("OTHER_DISCOUNT_SCOPE"),
-    
-    LINE_ITEM("LINE_ITEM"),
-    
-    ORDER("ORDER");
-
-    private String value;
-
-    ScopeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ScopeEnum fromValue(String text) {
-      for (ScopeEnum b : ScopeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("scope")
-  private ScopeEnum scope = null;
+  private String scope = null;
 
   public OrderLineItemDiscount uid(String uid) {
     this.uid = uid;
@@ -173,7 +105,7 @@ public class OrderLineItemDiscount {
     this.name = name;
   }
 
-  public OrderLineItemDiscount type(TypeEnum type) {
+  public OrderLineItemDiscount type(String type) {
     this.type = type;
     return this;
   }
@@ -183,11 +115,11 @@ public class OrderLineItemDiscount {
    * @return type
   **/
   @ApiModelProperty(value = "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified. See [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -245,7 +177,7 @@ public class OrderLineItemDiscount {
     this.appliedMoney = appliedMoney;
   }
 
-  public OrderLineItemDiscount scope(ScopeEnum scope) {
+  public OrderLineItemDiscount scope(String scope) {
     this.scope = scope;
     return this;
   }
@@ -255,11 +187,11 @@ public class OrderLineItemDiscount {
    * @return scope
   **/
   @ApiModelProperty(value = "Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values")
-  public ScopeEnum getScope() {
+  public String getScope() {
     return scope;
   }
 
-  public void setScope(ScopeEnum scope) {
+  public void setScope(String scope) {
     this.scope = scope;
   }
 
@@ -293,7 +225,7 @@ public class OrderLineItemDiscount {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderLineItemDiscount {\n");
-    
+
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -316,6 +248,6 @@ public class OrderLineItemDiscount {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -27,82 +27,16 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Contains details on how to fulfill this order.")
 
 public class OrderFulfillment {
-  /**
-   * The type of the fulfillment. See [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values
-   */
-  public enum TypeEnum {
-    PICKUP("PICKUP");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
-
-  /**
-   * The state of the fulfillment. See [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values
-   */
-  public enum StateEnum {
-    PROPOSED("PROPOSED"),
-    
-    RESERVED("RESERVED"),
-    
-    PREPARED("PREPARED"),
-    
-    COMPLETED("COMPLETED"),
-    
-    CANCELED("CANCELED"),
-    
-    FAILED("FAILED");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String text) {
-      for (StateEnum b : StateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String type = null;
 
   @JsonProperty("state")
-  private StateEnum state = null;
+  private String state = null;
 
   @JsonProperty("pickup_details")
   private OrderFulfillmentPickupDetails pickupDetails = null;
 
-  public OrderFulfillment type(TypeEnum type) {
+  public OrderFulfillment type(String type) {
     this.type = type;
     return this;
   }
@@ -112,15 +46,15 @@ public class OrderFulfillment {
    * @return type
   **/
   @ApiModelProperty(value = "The type of the fulfillment. See [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
-  public OrderFulfillment state(StateEnum state) {
+  public OrderFulfillment state(String state) {
     this.state = state;
     return this;
   }
@@ -130,11 +64,11 @@ public class OrderFulfillment {
    * @return state
   **/
   @ApiModelProperty(value = "The state of the fulfillment. See [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values")
-  public StateEnum getState() {
+  public String getState() {
     return state;
   }
 
-  public void setState(StateEnum state) {
+  public void setState(String state) {
     this.state = state;
   }
 
@@ -181,7 +115,7 @@ public class OrderFulfillment {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderFulfillment {\n");
-    
+
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    pickupDetails: ").append(toIndentedString(pickupDetails)).append("\n");
@@ -199,6 +133,6 @@ public class OrderFulfillment {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

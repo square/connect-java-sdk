@@ -32,38 +32,8 @@ public class RegisterDomainResponse {
   @JsonProperty("errors")
   private List<Error> errors = new ArrayList<Error>();
 
-  /**
-   * Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values
-   */
-  public enum StatusEnum {
-    PENDING("PENDING"),
-    
-    VERIFIED("VERIFIED");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   public RegisterDomainResponse errors(List<Error> errors) {
     this.errors = errors;
@@ -88,7 +58,7 @@ public class RegisterDomainResponse {
     this.errors = errors;
   }
 
-  public RegisterDomainResponse status(StatusEnum status) {
+  public RegisterDomainResponse status(String status) {
     this.status = status;
     return this;
   }
@@ -98,11 +68,11 @@ public class RegisterDomainResponse {
    * @return status
   **/
   @ApiModelProperty(value = "Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
@@ -130,7 +100,7 @@ public class RegisterDomainResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RegisterDomainResponse {\n");
-    
+
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
@@ -147,6 +117,6 @@ public class RegisterDomainResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

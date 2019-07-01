@@ -57,38 +57,8 @@ public class OrderReturnServiceCharge {
   @JsonProperty("total_tax_money")
   private Money totalTaxMoney = null;
 
-  /**
-   * The calculation phase after which to apply the service charge.  This field is read-only. See [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values
-   */
-  public enum CalculationPhaseEnum {
-    SUBTOTAL_PHASE("SUBTOTAL_PHASE"),
-    
-    TOTAL_PHASE("TOTAL_PHASE");
-
-    private String value;
-
-    CalculationPhaseEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CalculationPhaseEnum fromValue(String text) {
-      for (CalculationPhaseEnum b : CalculationPhaseEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("calculation_phase")
-  private CalculationPhaseEnum calculationPhase = null;
+  private String calculationPhase = null;
 
   @JsonProperty("taxable")
   private Boolean taxable = null;
@@ -258,7 +228,7 @@ public class OrderReturnServiceCharge {
     this.totalTaxMoney = totalTaxMoney;
   }
 
-  public OrderReturnServiceCharge calculationPhase(CalculationPhaseEnum calculationPhase) {
+  public OrderReturnServiceCharge calculationPhase(String calculationPhase) {
     this.calculationPhase = calculationPhase;
     return this;
   }
@@ -268,11 +238,11 @@ public class OrderReturnServiceCharge {
    * @return calculationPhase
   **/
   @ApiModelProperty(value = "The calculation phase after which to apply the service charge.  This field is read-only. See [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values")
-  public CalculationPhaseEnum getCalculationPhase() {
+  public String getCalculationPhase() {
     return calculationPhase;
   }
 
-  public void setCalculationPhase(CalculationPhaseEnum calculationPhase) {
+  public void setCalculationPhase(String calculationPhase) {
     this.calculationPhase = calculationPhase;
   }
 
@@ -351,7 +321,7 @@ public class OrderReturnServiceCharge {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderReturnServiceCharge {\n");
-    
+
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    sourceServiceChargeUid: ").append(toIndentedString(sourceServiceChargeUid)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -378,6 +348,6 @@ public class OrderReturnServiceCharge {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

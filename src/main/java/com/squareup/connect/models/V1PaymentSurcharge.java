@@ -42,40 +42,8 @@ public class V1PaymentSurcharge {
   @JsonProperty("amount_money")
   private V1Money amountMoney = null;
 
-  /**
-   * Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group. See [V1PaymentSurchargeType](#type-v1paymentsurchargetype) for possible values
-   */
-  public enum TypeEnum {
-    UNKNOWN("UNKNOWN"),
-    
-    AUTO_GRATUITY("AUTO_GRATUITY"),
-    
-    CUSTOM("CUSTOM");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("taxable")
   private Boolean taxable = null;
@@ -158,7 +126,7 @@ public class V1PaymentSurcharge {
     this.amountMoney = amountMoney;
   }
 
-  public V1PaymentSurcharge type(TypeEnum type) {
+  public V1PaymentSurcharge type(String type) {
     this.type = type;
     return this;
   }
@@ -168,11 +136,11 @@ public class V1PaymentSurcharge {
    * @return type
   **/
   @ApiModelProperty(value = "Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group. See [V1PaymentSurchargeType](#type-v1paymentsurchargetype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -265,7 +233,7 @@ public class V1PaymentSurcharge {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1PaymentSurcharge {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    appliedMoney: ").append(toIndentedString(appliedMoney)).append("\n");
     sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
@@ -288,6 +256,6 @@ public class V1PaymentSurcharge {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -30,220 +30,20 @@ public class MeasurementUnit {
   @JsonProperty("custom_unit")
   private MeasurementUnitCustom customUnit = null;
 
-  /**
-   * Represents a standard area unit. See [MeasurementUnitArea](#type-measurementunitarea) for possible values
-   */
-  public enum AreaUnitEnum {
-    IMPERIAL_ACRE("IMPERIAL_ACRE"),
-    
-    IMPERIAL_SQUARE_INCH("IMPERIAL_SQUARE_INCH"),
-    
-    IMPERIAL_SQUARE_FOOT("IMPERIAL_SQUARE_FOOT"),
-    
-    IMPERIAL_SQUARE_YARD("IMPERIAL_SQUARE_YARD"),
-    
-    IMPERIAL_SQUARE_MILE("IMPERIAL_SQUARE_MILE"),
-    
-    METRIC_SQUARE_CENTIMETER("METRIC_SQUARE_CENTIMETER"),
-    
-    METRIC_SQUARE_METER("METRIC_SQUARE_METER"),
-    
-    METRIC_SQUARE_KILOMETER("METRIC_SQUARE_KILOMETER");
-
-    private String value;
-
-    AreaUnitEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AreaUnitEnum fromValue(String text) {
-      for (AreaUnitEnum b : AreaUnitEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("area_unit")
-  private AreaUnitEnum areaUnit = null;
-
-  /**
-   * Represents a standard length unit. See [MeasurementUnitLength](#type-measurementunitlength) for possible values
-   */
-  public enum LengthUnitEnum {
-    IMPERIAL_INCH("IMPERIAL_INCH"),
-    
-    IMPERIAL_FOOT("IMPERIAL_FOOT"),
-    
-    IMPERIAL_YARD("IMPERIAL_YARD"),
-    
-    IMPERIAL_MILE("IMPERIAL_MILE"),
-    
-    METRIC_MILLIMETER("METRIC_MILLIMETER"),
-    
-    METRIC_CENTIMETER("METRIC_CENTIMETER"),
-    
-    METRIC_METER("METRIC_METER"),
-    
-    METRIC_KILOMETER("METRIC_KILOMETER");
-
-    private String value;
-
-    LengthUnitEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static LengthUnitEnum fromValue(String text) {
-      for (LengthUnitEnum b : LengthUnitEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String areaUnit = null;
 
   @JsonProperty("length_unit")
-  private LengthUnitEnum lengthUnit = null;
-
-  /**
-   * Represents a standard volume unit. See [MeasurementUnitVolume](#type-measurementunitvolume) for possible values
-   */
-  public enum VolumeUnitEnum {
-    GENERIC_FLUID_OUNCE("GENERIC_FLUID_OUNCE"),
-    
-    GENERIC_SHOT("GENERIC_SHOT"),
-    
-    GENERIC_CUP("GENERIC_CUP"),
-    
-    GENERIC_PINT("GENERIC_PINT"),
-    
-    GENERIC_QUART("GENERIC_QUART"),
-    
-    GENERIC_GALLON("GENERIC_GALLON"),
-    
-    IMPERIAL_CUBIC_INCH("IMPERIAL_CUBIC_INCH"),
-    
-    IMPERIAL_CUBIC_FOOT("IMPERIAL_CUBIC_FOOT"),
-    
-    IMPERIAL_CUBIC_YARD("IMPERIAL_CUBIC_YARD"),
-    
-    METRIC_MILLILITER("METRIC_MILLILITER"),
-    
-    METRIC_LITER("METRIC_LITER");
-
-    private String value;
-
-    VolumeUnitEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static VolumeUnitEnum fromValue(String text) {
-      for (VolumeUnitEnum b : VolumeUnitEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String lengthUnit = null;
 
   @JsonProperty("volume_unit")
-  private VolumeUnitEnum volumeUnit = null;
-
-  /**
-   * Represents a standard unit of weight or mass. See [MeasurementUnitWeight](#type-measurementunitweight) for possible values
-   */
-  public enum WeightUnitEnum {
-    IMPERIAL_WEIGHT_OUNCE("IMPERIAL_WEIGHT_OUNCE"),
-    
-    IMPERIAL_POUND("IMPERIAL_POUND"),
-    
-    IMPERIAL_STONE("IMPERIAL_STONE"),
-    
-    METRIC_MILLIGRAM("METRIC_MILLIGRAM"),
-    
-    METRIC_GRAM("METRIC_GRAM"),
-    
-    METRIC_KILOGRAM("METRIC_KILOGRAM");
-
-    private String value;
-
-    WeightUnitEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static WeightUnitEnum fromValue(String text) {
-      for (WeightUnitEnum b : WeightUnitEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String volumeUnit = null;
 
   @JsonProperty("weight_unit")
-  private WeightUnitEnum weightUnit = null;
-
-  /**
-   * Reserved for API integrations that lack the ability to specify a real measurement unit See [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values
-   */
-  public enum GenericUnitEnum {
-    INVALID_GENERIC_UNIT("INVALID_GENERIC_UNIT"),
-    
-    UNIT("UNIT");
-
-    private String value;
-
-    GenericUnitEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static GenericUnitEnum fromValue(String text) {
-      for (GenericUnitEnum b : GenericUnitEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String weightUnit = null;
 
   @JsonProperty("generic_unit")
-  private GenericUnitEnum genericUnit = null;
+  private String genericUnit = null;
 
   public MeasurementUnit customUnit(MeasurementUnitCustom customUnit) {
     this.customUnit = customUnit;
@@ -263,7 +63,7 @@ public class MeasurementUnit {
     this.customUnit = customUnit;
   }
 
-  public MeasurementUnit areaUnit(AreaUnitEnum areaUnit) {
+  public MeasurementUnit areaUnit(String areaUnit) {
     this.areaUnit = areaUnit;
     return this;
   }
@@ -273,15 +73,15 @@ public class MeasurementUnit {
    * @return areaUnit
   **/
   @ApiModelProperty(value = "Represents a standard area unit. See [MeasurementUnitArea](#type-measurementunitarea) for possible values")
-  public AreaUnitEnum getAreaUnit() {
+  public String getAreaUnit() {
     return areaUnit;
   }
 
-  public void setAreaUnit(AreaUnitEnum areaUnit) {
+  public void setAreaUnit(String areaUnit) {
     this.areaUnit = areaUnit;
   }
 
-  public MeasurementUnit lengthUnit(LengthUnitEnum lengthUnit) {
+  public MeasurementUnit lengthUnit(String lengthUnit) {
     this.lengthUnit = lengthUnit;
     return this;
   }
@@ -291,15 +91,15 @@ public class MeasurementUnit {
    * @return lengthUnit
   **/
   @ApiModelProperty(value = "Represents a standard length unit. See [MeasurementUnitLength](#type-measurementunitlength) for possible values")
-  public LengthUnitEnum getLengthUnit() {
+  public String getLengthUnit() {
     return lengthUnit;
   }
 
-  public void setLengthUnit(LengthUnitEnum lengthUnit) {
+  public void setLengthUnit(String lengthUnit) {
     this.lengthUnit = lengthUnit;
   }
 
-  public MeasurementUnit volumeUnit(VolumeUnitEnum volumeUnit) {
+  public MeasurementUnit volumeUnit(String volumeUnit) {
     this.volumeUnit = volumeUnit;
     return this;
   }
@@ -309,15 +109,15 @@ public class MeasurementUnit {
    * @return volumeUnit
   **/
   @ApiModelProperty(value = "Represents a standard volume unit. See [MeasurementUnitVolume](#type-measurementunitvolume) for possible values")
-  public VolumeUnitEnum getVolumeUnit() {
+  public String getVolumeUnit() {
     return volumeUnit;
   }
 
-  public void setVolumeUnit(VolumeUnitEnum volumeUnit) {
+  public void setVolumeUnit(String volumeUnit) {
     this.volumeUnit = volumeUnit;
   }
 
-  public MeasurementUnit weightUnit(WeightUnitEnum weightUnit) {
+  public MeasurementUnit weightUnit(String weightUnit) {
     this.weightUnit = weightUnit;
     return this;
   }
@@ -327,15 +127,15 @@ public class MeasurementUnit {
    * @return weightUnit
   **/
   @ApiModelProperty(value = "Represents a standard unit of weight or mass. See [MeasurementUnitWeight](#type-measurementunitweight) for possible values")
-  public WeightUnitEnum getWeightUnit() {
+  public String getWeightUnit() {
     return weightUnit;
   }
 
-  public void setWeightUnit(WeightUnitEnum weightUnit) {
+  public void setWeightUnit(String weightUnit) {
     this.weightUnit = weightUnit;
   }
 
-  public MeasurementUnit genericUnit(GenericUnitEnum genericUnit) {
+  public MeasurementUnit genericUnit(String genericUnit) {
     this.genericUnit = genericUnit;
     return this;
   }
@@ -345,11 +145,11 @@ public class MeasurementUnit {
    * @return genericUnit
   **/
   @ApiModelProperty(value = "Reserved for API integrations that lack the ability to specify a real measurement unit See [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values")
-  public GenericUnitEnum getGenericUnit() {
+  public String getGenericUnit() {
     return genericUnit;
   }
 
-  public void setGenericUnit(GenericUnitEnum genericUnit) {
+  public void setGenericUnit(String genericUnit) {
     this.genericUnit = genericUnit;
   }
 
@@ -381,7 +181,7 @@ public class MeasurementUnit {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MeasurementUnit {\n");
-    
+
     sb.append("    customUnit: ").append(toIndentedString(customUnit)).append("\n");
     sb.append("    areaUnit: ").append(toIndentedString(areaUnit)).append("\n");
     sb.append("    lengthUnit: ").append(toIndentedString(lengthUnit)).append("\n");
@@ -402,6 +202,6 @@ public class MeasurementUnit {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

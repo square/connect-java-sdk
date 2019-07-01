@@ -29,38 +29,8 @@ public class ListEmployeesRequest {
   @JsonProperty("location_id")
   private String locationId = null;
 
-  /**
-   * Specifies the EmployeeStatus to filter the employee by. See [EmployeeStatus](#type-employeestatus) for possible values
-   */
-  public enum StatusEnum {
-    ACTIVE("ACTIVE"),
-    
-    INACTIVE("INACTIVE");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("limit")
   private Integer limit = null;
@@ -86,7 +56,7 @@ public class ListEmployeesRequest {
     this.locationId = locationId;
   }
 
-  public ListEmployeesRequest status(StatusEnum status) {
+  public ListEmployeesRequest status(String status) {
     this.status = status;
     return this;
   }
@@ -96,11 +66,11 @@ public class ListEmployeesRequest {
    * @return status
   **/
   @ApiModelProperty(value = "Specifies the EmployeeStatus to filter the employee by. See [EmployeeStatus](#type-employeestatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
@@ -166,7 +136,7 @@ public class ListEmployeesRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListEmployeesRequest {\n");
-    
+
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
@@ -185,6 +155,6 @@ public class ListEmployeesRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

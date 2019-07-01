@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ *
  */
 @ApiModel(description = "")
 
@@ -32,56 +32,8 @@ public class SearchCatalogObjectsRequest {
   @JsonProperty("cursor")
   private String cursor = null;
 
-  /**
-   * Gets or Sets objectTypes
-   */
-  public enum ObjectTypesEnum {
-    ITEM("ITEM"),
-    
-    IMAGE("IMAGE"),
-    
-    CATEGORY("CATEGORY"),
-    
-    ITEM_VARIATION("ITEM_VARIATION"),
-    
-    TAX("TAX"),
-    
-    DISCOUNT("DISCOUNT"),
-    
-    MODIFIER_LIST("MODIFIER_LIST"),
-    
-    MODIFIER("MODIFIER"),
-    
-    PRICING_RULE("PRICING_RULE"),
-    
-    PRODUCT_SET("PRODUCT_SET"),
-    
-    TIME_PERIOD("TIME_PERIOD");
-
-    private String value;
-
-    ObjectTypesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ObjectTypesEnum fromValue(String text) {
-      for (ObjectTypesEnum b : ObjectTypesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("object_types")
-  private List<ObjectTypesEnum> objectTypes = new ArrayList<ObjectTypesEnum>();
+  private List<String> objectTypes = new ArrayList<String>();
 
   @JsonProperty("include_deleted_objects")
   private Boolean includeDeletedObjects = null;
@@ -116,12 +68,12 @@ public class SearchCatalogObjectsRequest {
     this.cursor = cursor;
   }
 
-  public SearchCatalogObjectsRequest objectTypes(List<ObjectTypesEnum> objectTypes) {
+  public SearchCatalogObjectsRequest objectTypes(List<String> objectTypes) {
     this.objectTypes = objectTypes;
     return this;
   }
 
-  public SearchCatalogObjectsRequest addObjectTypesItem(ObjectTypesEnum objectTypesItem) {
+  public SearchCatalogObjectsRequest addObjectTypesItem(String objectTypesItem) {
     this.objectTypes.add(objectTypesItem);
     return this;
   }
@@ -131,11 +83,11 @@ public class SearchCatalogObjectsRequest {
    * @return objectTypes
   **/
   @ApiModelProperty(value = "The desired set of object types to appear in the search results. The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`. See [CatalogObjectType](#type-catalogobjecttype) for possible values")
-  public List<ObjectTypesEnum> getObjectTypes() {
+  public List<String> getObjectTypes() {
     return objectTypes;
   }
 
-  public void setObjectTypes(List<ObjectTypesEnum> objectTypes) {
+  public void setObjectTypes(List<String> objectTypes) {
     this.objectTypes = objectTypes;
   }
 
@@ -258,7 +210,7 @@ public class SearchCatalogObjectsRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchCatalogObjectsRequest {\n");
-    
+
     sb.append("    cursor: ").append(toIndentedString(cursor)).append("\n");
     sb.append("    objectTypes: ").append(toIndentedString(objectTypes)).append("\n");
     sb.append("    includeDeletedObjects: ").append(toIndentedString(includeDeletedObjects)).append("\n");
@@ -280,6 +232,6 @@ public class SearchCatalogObjectsRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

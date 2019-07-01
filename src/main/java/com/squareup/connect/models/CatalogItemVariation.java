@@ -45,38 +45,8 @@ public class CatalogItemVariation {
   @JsonProperty("ordinal")
   private Integer ordinal = null;
 
-  /**
-   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for possible values
-   */
-  public enum PricingTypeEnum {
-    FIXED_PRICING("FIXED_PRICING"),
-    
-    VARIABLE_PRICING("VARIABLE_PRICING");
-
-    private String value;
-
-    PricingTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PricingTypeEnum fromValue(String text) {
-      for (PricingTypeEnum b : PricingTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("pricing_type")
-  private PricingTypeEnum pricingType = null;
+  private String pricingType = null;
 
   @JsonProperty("price_money")
   private Money priceMoney = null;
@@ -87,38 +57,8 @@ public class CatalogItemVariation {
   @JsonProperty("track_inventory")
   private Boolean trackInventory = null;
 
-  /**
-   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
-   */
-  public enum InventoryAlertTypeEnum {
-    NONE("NONE"),
-    
-    LOW_QUANTITY("LOW_QUANTITY");
-
-    private String value;
-
-    InventoryAlertTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static InventoryAlertTypeEnum fromValue(String text) {
-      for (InventoryAlertTypeEnum b : InventoryAlertTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("inventory_alert_type")
-  private InventoryAlertTypeEnum inventoryAlertType = null;
+  private String inventoryAlertType = null;
 
   @JsonProperty("inventory_alert_threshold")
   private Long inventoryAlertThreshold = null;
@@ -225,7 +165,7 @@ public class CatalogItemVariation {
     this.ordinal = ordinal;
   }
 
-  public CatalogItemVariation pricingType(PricingTypeEnum pricingType) {
+  public CatalogItemVariation pricingType(String pricingType) {
     this.pricingType = pricingType;
     return this;
   }
@@ -235,11 +175,11 @@ public class CatalogItemVariation {
    * @return pricingType
   **/
   @ApiModelProperty(value = "Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for possible values")
-  public PricingTypeEnum getPricingType() {
+  public String getPricingType() {
     return pricingType;
   }
 
-  public void setPricingType(PricingTypeEnum pricingType) {
+  public void setPricingType(String pricingType) {
     this.pricingType = pricingType;
   }
 
@@ -302,7 +242,7 @@ public class CatalogItemVariation {
     this.trackInventory = trackInventory;
   }
 
-  public CatalogItemVariation inventoryAlertType(InventoryAlertTypeEnum inventoryAlertType) {
+  public CatalogItemVariation inventoryAlertType(String inventoryAlertType) {
     this.inventoryAlertType = inventoryAlertType;
     return this;
   }
@@ -312,11 +252,11 @@ public class CatalogItemVariation {
    * @return inventoryAlertType
   **/
   @ApiModelProperty(value = "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values")
-  public InventoryAlertTypeEnum getInventoryAlertType() {
+  public String getInventoryAlertType() {
     return inventoryAlertType;
   }
 
-  public void setInventoryAlertType(InventoryAlertTypeEnum inventoryAlertType) {
+  public void setInventoryAlertType(String inventoryAlertType) {
     this.inventoryAlertType = inventoryAlertType;
   }
 
@@ -447,7 +387,7 @@ public class CatalogItemVariation {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogItemVariation {\n");
-    
+
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
@@ -477,6 +417,6 @@ public class CatalogItemVariation {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

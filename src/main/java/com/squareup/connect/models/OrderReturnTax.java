@@ -39,40 +39,8 @@ public class OrderReturnTax {
   @JsonProperty("name")
   private String name = null;
 
-  /**
-   * Indicates the calculation method used to apply the tax. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
-   */
-  public enum TypeEnum {
-    UNKNOWN_TAX("UNKNOWN_TAX"),
-    
-    ADDITIVE("ADDITIVE"),
-    
-    INCLUSIVE("INCLUSIVE");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("percentage")
   private String percentage = null;
@@ -80,40 +48,8 @@ public class OrderReturnTax {
   @JsonProperty("applied_money")
   private Money appliedMoney = null;
 
-  /**
-   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values
-   */
-  public enum ScopeEnum {
-    OTHER_TAX_SCOPE("OTHER_TAX_SCOPE"),
-    
-    LINE_ITEM("LINE_ITEM"),
-    
-    ORDER("ORDER");
-
-    private String value;
-
-    ScopeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ScopeEnum fromValue(String text) {
-      for (ScopeEnum b : ScopeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("scope")
-  private ScopeEnum scope = null;
+  private String scope = null;
 
   public OrderReturnTax uid(String uid) {
     this.uid = uid;
@@ -187,7 +123,7 @@ public class OrderReturnTax {
     this.name = name;
   }
 
-  public OrderReturnTax type(TypeEnum type) {
+  public OrderReturnTax type(String type) {
     this.type = type;
     return this;
   }
@@ -197,11 +133,11 @@ public class OrderReturnTax {
    * @return type
   **/
   @ApiModelProperty(value = "Indicates the calculation method used to apply the tax. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -241,7 +177,7 @@ public class OrderReturnTax {
     this.appliedMoney = appliedMoney;
   }
 
-  public OrderReturnTax scope(ScopeEnum scope) {
+  public OrderReturnTax scope(String scope) {
     this.scope = scope;
     return this;
   }
@@ -251,11 +187,11 @@ public class OrderReturnTax {
    * @return scope
   **/
   @ApiModelProperty(value = "Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values")
-  public ScopeEnum getScope() {
+  public String getScope() {
     return scope;
   }
 
-  public void setScope(ScopeEnum scope) {
+  public void setScope(String scope) {
     this.scope = scope;
   }
 
@@ -289,7 +225,7 @@ public class OrderReturnTax {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderReturnTax {\n");
-    
+
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    sourceTaxUid: ").append(toIndentedString(sourceTaxUid)).append("\n");
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
@@ -312,6 +248,6 @@ public class OrderReturnTax {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

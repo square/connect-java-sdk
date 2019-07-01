@@ -1,20 +1,18 @@
 
 # V1OrderState
 
-## Enum
 
+* `"PENDING"`
 
-* `PENDING` (value: `"PENDING"`)
+* `"OPEN"`
 
-* `OPEN` (value: `"OPEN"`)
+* `"COMPLETED"`
 
-* `COMPLETED` (value: `"COMPLETED"`)
+* `"CANCELED"`
 
-* `CANCELED` (value: `"CANCELED"`)
+* `"REFUNDED"`
 
-* `REFUNDED` (value: `"REFUNDED"`)
-
-* `REJECTED` (value: `"REJECTED"`)
+* `"REJECTED"`
 
 
 

@@ -1,18 +1,16 @@
 
 # TenderCardDetailsEntryMethod
 
-## Enum
 
+* `"SWIPED"`
 
-* `SWIPED` (value: `"SWIPED"`)
+* `"KEYED"`
 
-* `KEYED` (value: `"KEYED"`)
+* `"EMV"`
 
-* `EMV` (value: `"EMV"`)
+* `"ON_FILE"`
 
-* `ON_FILE` (value: `"ON_FILE"`)
-
-* `CONTACTLESS` (value: `"CONTACTLESS"`)
+* `"CONTACTLESS"`
 
 
 

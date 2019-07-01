@@ -1,20 +1,18 @@
 
 # V1PaymentItemizationItemizationType
 
-## Enum
 
+* `"ITEM"`
 
-* `ITEM` (value: `"ITEM"`)
+* `"CUSTOM_AMOUNT"`
 
-* `CUSTOM_AMOUNT` (value: `"CUSTOM_AMOUNT"`)
+* `"GIFT_CARD_ACTIVATION"`
 
-* `GIFT_CARD_ACTIVATION` (value: `"GIFT_CARD_ACTIVATION"`)
+* `"GIFT_CARD_RELOAD"`
 
-* `GIFT_CARD_RELOAD` (value: `"GIFT_CARD_RELOAD"`)
+* `"GIFT_CARD_UNKNOWN"`
 
-* `GIFT_CARD_UNKNOWN` (value: `"GIFT_CARD_UNKNOWN"`)
-
-* `OTHER` (value: `"OTHER"`)
+* `"OTHER"`
 
 
 

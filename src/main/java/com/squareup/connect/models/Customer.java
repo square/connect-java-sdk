@@ -80,72 +80,8 @@ public class Customer {
   @JsonProperty("groups")
   private List<CustomerGroupInfo> groups = new ArrayList<CustomerGroupInfo>();
 
-  /**
-   * A creation source represents the method used to create the customer profile. See [CustomerCreationSource](#type-customercreationsource) for possible values
-   */
-  public enum CreationSourceEnum {
-    OTHER("OTHER"),
-    
-    APPOINTMENTS("APPOINTMENTS"),
-    
-    COUPON("COUPON"),
-    
-    DELETION_RECOVERY("DELETION_RECOVERY"),
-    
-    DIRECTORY("DIRECTORY"),
-    
-    EGIFTING("EGIFTING"),
-    
-    EMAIL_COLLECTION("EMAIL_COLLECTION"),
-    
-    FEEDBACK("FEEDBACK"),
-    
-    IMPORT("IMPORT"),
-    
-    INVOICES("INVOICES"),
-    
-    LOYALTY("LOYALTY"),
-    
-    MARKETING("MARKETING"),
-    
-    MERGE("MERGE"),
-    
-    ONLINE_STORE("ONLINE_STORE"),
-    
-    INSTANT_PROFILE("INSTANT_PROFILE"),
-    
-    TERMINAL("TERMINAL"),
-    
-    THIRD_PARTY("THIRD_PARTY"),
-    
-    THIRD_PARTY_IMPORT("THIRD_PARTY_IMPORT"),
-    
-    UNMERGE_RECOVERY("UNMERGE_RECOVERY");
-
-    private String value;
-
-    CreationSourceEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CreationSourceEnum fromValue(String text) {
-      for (CreationSourceEnum b : CreationSourceEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("creation_source")
-  private CreationSourceEnum creationSource = null;
+  private String creationSource = null;
 
   public Customer id(String id) {
     this.id = id;
@@ -445,7 +381,7 @@ public class Customer {
     this.groups = groups;
   }
 
-  public Customer creationSource(CreationSourceEnum creationSource) {
+  public Customer creationSource(String creationSource) {
     this.creationSource = creationSource;
     return this;
   }
@@ -455,11 +391,11 @@ public class Customer {
    * @return creationSource
   **/
   @ApiModelProperty(value = "A creation source represents the method used to create the customer profile. See [CustomerCreationSource](#type-customercreationsource) for possible values")
-  public CreationSourceEnum getCreationSource() {
+  public String getCreationSource() {
     return creationSource;
   }
 
-  public void setCreationSource(CreationSourceEnum creationSource) {
+  public void setCreationSource(String creationSource) {
     this.creationSource = creationSource;
   }
 
@@ -502,7 +438,7 @@ public class Customer {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Customer {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -534,6 +470,6 @@ public class Customer {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -34,40 +34,8 @@ public class V1CashDrawerShift {
   @JsonProperty("id")
   private String id = null;
 
-  /**
-   * The shift's current state. See [V1CashDrawerShiftEventType](#type-v1cashdrawershifteventtype) for possible values
-   */
-  public enum EventTypeEnum {
-    OPEN("OPEN"),
-    
-    ENDED("ENDED"),
-    
-    CLOSED("CLOSED");
-
-    private String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String text) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("event_type")
-  private EventTypeEnum eventType = null;
+  private String eventType = null;
 
   @JsonProperty("opened_at")
   private String openedAt = null;
@@ -138,7 +106,7 @@ public class V1CashDrawerShift {
     this.id = id;
   }
 
-  public V1CashDrawerShift eventType(EventTypeEnum eventType) {
+  public V1CashDrawerShift eventType(String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -148,11 +116,11 @@ public class V1CashDrawerShift {
    * @return eventType
   **/
   @ApiModelProperty(value = "The shift's current state. See [V1CashDrawerShiftEventType](#type-v1cashdrawershifteventtype) for possible values")
-  public EventTypeEnum getEventType() {
+  public String getEventType() {
     return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
@@ -513,7 +481,7 @@ public class V1CashDrawerShift {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1CashDrawerShift {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    openedAt: ").append(toIndentedString(openedAt)).append("\n");
@@ -547,6 +515,6 @@ public class V1CashDrawerShift {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

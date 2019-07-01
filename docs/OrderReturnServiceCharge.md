@@ -17,17 +17,9 @@ Name | Type | Description | Notes
 **appliedMoney** | [**Money**](Money.md) | The amount of money applied to the order by the service charge, as calculated by the server.  For fixed-amount service charges, &#x60;applied_money&#x60; is equal to &#x60;amount_money&#x60;.  For percentage-based service charges, &#x60;applied_money&#x60; is the money calculated using the percentage. The &#x60;applied_money&#x60; field will include any inclusive tax amounts as well.  This field is read-only. |  [optional]
 **totalMoney** | [**Money**](Money.md) | The total amount of money to collect for the service charge.  Note that &#x60;total_money&#x60; does not equal &#x60;applied_money&#x60; plus &#x60;total_tax_money&#x60; if an inclusive tax is applied to the service charge since the inclusive tax amount will be included in both &#x60;applied_money&#x60; and &#x60;total_tax_money&#x60;.  This field is read-only. |  [optional]
 **totalTaxMoney** | [**Money**](Money.md) | The total amount of tax money to collect for the service charge.  This field is read-only. |  [optional]
-**calculationPhase** | [**CalculationPhaseEnum**](#CalculationPhaseEnum) | The calculation phase after which to apply the service charge.  This field is read-only. See [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values |  [optional]
+**calculationPhase** | **String** | The calculation phase after which to apply the service charge.  This field is read-only. See [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values |  [optional]
 **taxable** | **Boolean** | Indicates whether the surcharge can be taxed. Service charges calculated in the &#x60;TOTAL_PHASE&#x60; cannot be marked as taxable. |  [optional]
 **returnTaxes** | [**List&lt;OrderReturnTax&gt;**](OrderReturnTax.md) | The taxes which apply to the service charge. Return-level taxes apply by default to service charge calculated in the &#x60;SUBTOTAL_PHASE&#x60; if the service charge is marked as taxable. |  [optional]
-
-
-<a name="CalculationPhaseEnum"></a>
-## Enum: CalculationPhaseEnum
-Name | Value
----- | -----
-SUBTOTAL_PHASE | &quot;SUBTOTAL_PHASE&quot;
-TOTAL_PHASE | &quot;TOTAL_PHASE&quot;
 
 
 

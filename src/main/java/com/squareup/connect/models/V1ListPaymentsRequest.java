@@ -21,43 +21,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * 
+ *
  */
 @ApiModel(description = "")
 
 public class V1ListPaymentsRequest {
-  /**
-   * The order in which payments are listed in the response. See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum OrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    OrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OrderEnum fromValue(String text) {
-      for (OrderEnum b : OrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("order")
-  private OrderEnum order = null;
+  private String order = null;
 
   @JsonProperty("begin_time")
   private String beginTime = null;
@@ -74,7 +44,7 @@ public class V1ListPaymentsRequest {
   @JsonProperty("include_partial")
   private Boolean includePartial = null;
 
-  public V1ListPaymentsRequest order(OrderEnum order) {
+  public V1ListPaymentsRequest order(String order) {
     this.order = order;
     return this;
   }
@@ -84,11 +54,11 @@ public class V1ListPaymentsRequest {
    * @return order
   **/
   @ApiModelProperty(value = "The order in which payments are listed in the response. See [SortOrder](#type-sortorder) for possible values")
-  public OrderEnum getOrder() {
+  public String getOrder() {
     return order;
   }
 
-  public void setOrder(OrderEnum order) {
+  public void setOrder(String order) {
     this.order = order;
   }
 
@@ -210,7 +180,7 @@ public class V1ListPaymentsRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1ListPaymentsRequest {\n");
-    
+
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("    beginTime: ").append(toIndentedString(beginTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
@@ -231,6 +201,6 @@ public class V1ListPaymentsRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

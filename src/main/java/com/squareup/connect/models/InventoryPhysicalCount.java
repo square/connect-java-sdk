@@ -39,58 +39,8 @@ public class InventoryPhysicalCount {
   @JsonProperty("catalog_object_type")
   private String catalogObjectType = null;
 
-  /**
-   * The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values
-   */
-  public enum StateEnum {
-    CUSTOM("CUSTOM"),
-    
-    IN_STOCK("IN_STOCK"),
-    
-    SOLD("SOLD"),
-    
-    RETURNED_BY_CUSTOMER("RETURNED_BY_CUSTOMER"),
-    
-    RESERVED_FOR_SALE("RESERVED_FOR_SALE"),
-    
-    SOLD_ONLINE("SOLD_ONLINE"),
-    
-    ORDERED_FROM_VENDOR("ORDERED_FROM_VENDOR"),
-    
-    RECEIVED_FROM_VENDOR("RECEIVED_FROM_VENDOR"),
-    
-    IN_TRANSIT_TO("IN_TRANSIT_TO"),
-    
-    NONE("NONE"),
-    
-    WASTE("WASTE"),
-    
-    UNLINKED_RETURN("UNLINKED_RETURN");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String text) {
-      for (StateEnum b : StateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("state")
-  private StateEnum state = null;
+  private String state = null;
 
   @JsonProperty("location_id")
   private String locationId = null;
@@ -182,7 +132,7 @@ public class InventoryPhysicalCount {
     this.catalogObjectType = catalogObjectType;
   }
 
-  public InventoryPhysicalCount state(StateEnum state) {
+  public InventoryPhysicalCount state(String state) {
     this.state = state;
     return this;
   }
@@ -192,11 +142,11 @@ public class InventoryPhysicalCount {
    * @return state
   **/
   @ApiModelProperty(value = "The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values")
-  public StateEnum getState() {
+  public String getState() {
     return state;
   }
 
-  public void setState(StateEnum state) {
+  public void setState(String state) {
     this.state = state;
   }
 
@@ -341,7 +291,7 @@ public class InventoryPhysicalCount {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InventoryPhysicalCount {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    catalogObjectId: ").append(toIndentedString(catalogObjectId)).append("\n");
@@ -367,6 +317,6 @@ public class InventoryPhysicalCount {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

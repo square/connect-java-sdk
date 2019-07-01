@@ -1,370 +1,368 @@
 
 # Currency
 
-## Enum
 
+* `"UNKNOWN_CURRENCY"`
 
-* `UNKNOWN_CURRENCY` (value: `"UNKNOWN_CURRENCY"`)
+* `"AED"`
 
-* `AED` (value: `"AED"`)
+* `"AFN"`
 
-* `AFN` (value: `"AFN"`)
+* `"ALL"`
 
-* `ALL` (value: `"ALL"`)
+* `"AMD"`
 
-* `AMD` (value: `"AMD"`)
+* `"ANG"`
 
-* `ANG` (value: `"ANG"`)
+* `"AOA"`
 
-* `AOA` (value: `"AOA"`)
+* `"ARS"`
 
-* `ARS` (value: `"ARS"`)
+* `"AUD"`
 
-* `AUD` (value: `"AUD"`)
+* `"AWG"`
 
-* `AWG` (value: `"AWG"`)
+* `"AZN"`
 
-* `AZN` (value: `"AZN"`)
+* `"BAM"`
 
-* `BAM` (value: `"BAM"`)
+* `"BBD"`
 
-* `BBD` (value: `"BBD"`)
+* `"BDT"`
 
-* `BDT` (value: `"BDT"`)
+* `"BGN"`
 
-* `BGN` (value: `"BGN"`)
+* `"BHD"`
 
-* `BHD` (value: `"BHD"`)
+* `"BIF"`
 
-* `BIF` (value: `"BIF"`)
+* `"BMD"`
 
-* `BMD` (value: `"BMD"`)
+* `"BND"`
 
-* `BND` (value: `"BND"`)
+* `"BOB"`
 
-* `BOB` (value: `"BOB"`)
+* `"BOV"`
 
-* `BOV` (value: `"BOV"`)
+* `"BRL"`
 
-* `BRL` (value: `"BRL"`)
+* `"BSD"`
 
-* `BSD` (value: `"BSD"`)
+* `"BTN"`
 
-* `BTN` (value: `"BTN"`)
+* `"BWP"`
 
-* `BWP` (value: `"BWP"`)
+* `"BYR"`
 
-* `BYR` (value: `"BYR"`)
+* `"BZD"`
 
-* `BZD` (value: `"BZD"`)
+* `"CAD"`
 
-* `CAD` (value: `"CAD"`)
+* `"CDF"`
 
-* `CDF` (value: `"CDF"`)
+* `"CHE"`
 
-* `CHE` (value: `"CHE"`)
+* `"CHF"`
 
-* `CHF` (value: `"CHF"`)
+* `"CHW"`
 
-* `CHW` (value: `"CHW"`)
+* `"CLF"`
 
-* `CLF` (value: `"CLF"`)
+* `"CLP"`
 
-* `CLP` (value: `"CLP"`)
+* `"CNY"`
 
-* `CNY` (value: `"CNY"`)
+* `"COP"`
 
-* `COP` (value: `"COP"`)
+* `"COU"`
 
-* `COU` (value: `"COU"`)
+* `"CRC"`
 
-* `CRC` (value: `"CRC"`)
+* `"CUC"`
 
-* `CUC` (value: `"CUC"`)
+* `"CUP"`
 
-* `CUP` (value: `"CUP"`)
+* `"CVE"`
 
-* `CVE` (value: `"CVE"`)
+* `"CZK"`
 
-* `CZK` (value: `"CZK"`)
+* `"DJF"`
 
-* `DJF` (value: `"DJF"`)
+* `"DKK"`
 
-* `DKK` (value: `"DKK"`)
+* `"DOP"`
 
-* `DOP` (value: `"DOP"`)
+* `"DZD"`
 
-* `DZD` (value: `"DZD"`)
+* `"EGP"`
 
-* `EGP` (value: `"EGP"`)
+* `"ERN"`
 
-* `ERN` (value: `"ERN"`)
+* `"ETB"`
 
-* `ETB` (value: `"ETB"`)
+* `"EUR"`
 
-* `EUR` (value: `"EUR"`)
+* `"FJD"`
 
-* `FJD` (value: `"FJD"`)
+* `"FKP"`
 
-* `FKP` (value: `"FKP"`)
+* `"GBP"`
 
-* `GBP` (value: `"GBP"`)
+* `"GEL"`
 
-* `GEL` (value: `"GEL"`)
+* `"GHS"`
 
-* `GHS` (value: `"GHS"`)
+* `"GIP"`
 
-* `GIP` (value: `"GIP"`)
+* `"GMD"`
 
-* `GMD` (value: `"GMD"`)
+* `"GNF"`
 
-* `GNF` (value: `"GNF"`)
+* `"GTQ"`
 
-* `GTQ` (value: `"GTQ"`)
+* `"GYD"`
 
-* `GYD` (value: `"GYD"`)
+* `"HKD"`
 
-* `HKD` (value: `"HKD"`)
+* `"HNL"`
 
-* `HNL` (value: `"HNL"`)
+* `"HRK"`
 
-* `HRK` (value: `"HRK"`)
+* `"HTG"`
 
-* `HTG` (value: `"HTG"`)
+* `"HUF"`
 
-* `HUF` (value: `"HUF"`)
+* `"IDR"`
 
-* `IDR` (value: `"IDR"`)
+* `"ILS"`
 
-* `ILS` (value: `"ILS"`)
+* `"INR"`
 
-* `INR` (value: `"INR"`)
+* `"IQD"`
 
-* `IQD` (value: `"IQD"`)
+* `"IRR"`
 
-* `IRR` (value: `"IRR"`)
+* `"ISK"`
 
-* `ISK` (value: `"ISK"`)
+* `"JMD"`
 
-* `JMD` (value: `"JMD"`)
+* `"JOD"`
 
-* `JOD` (value: `"JOD"`)
+* `"JPY"`
 
-* `JPY` (value: `"JPY"`)
+* `"KES"`
 
-* `KES` (value: `"KES"`)
+* `"KGS"`
 
-* `KGS` (value: `"KGS"`)
+* `"KHR"`
 
-* `KHR` (value: `"KHR"`)
+* `"KMF"`
 
-* `KMF` (value: `"KMF"`)
+* `"KPW"`
 
-* `KPW` (value: `"KPW"`)
+* `"KRW"`
 
-* `KRW` (value: `"KRW"`)
+* `"KWD"`
 
-* `KWD` (value: `"KWD"`)
+* `"KYD"`
 
-* `KYD` (value: `"KYD"`)
+* `"KZT"`
 
-* `KZT` (value: `"KZT"`)
+* `"LAK"`
 
-* `LAK` (value: `"LAK"`)
+* `"LBP"`
 
-* `LBP` (value: `"LBP"`)
+* `"LKR"`
 
-* `LKR` (value: `"LKR"`)
+* `"LRD"`
 
-* `LRD` (value: `"LRD"`)
+* `"LSL"`
 
-* `LSL` (value: `"LSL"`)
+* `"LTL"`
 
-* `LTL` (value: `"LTL"`)
+* `"LVL"`
 
-* `LVL` (value: `"LVL"`)
+* `"LYD"`
 
-* `LYD` (value: `"LYD"`)
+* `"MAD"`
 
-* `MAD` (value: `"MAD"`)
+* `"MDL"`
 
-* `MDL` (value: `"MDL"`)
+* `"MGA"`
 
-* `MGA` (value: `"MGA"`)
+* `"MKD"`
 
-* `MKD` (value: `"MKD"`)
+* `"MMK"`
 
-* `MMK` (value: `"MMK"`)
+* `"MNT"`
 
-* `MNT` (value: `"MNT"`)
+* `"MOP"`
 
-* `MOP` (value: `"MOP"`)
+* `"MRO"`
 
-* `MRO` (value: `"MRO"`)
+* `"MUR"`
 
-* `MUR` (value: `"MUR"`)
+* `"MVR"`
 
-* `MVR` (value: `"MVR"`)
+* `"MWK"`
 
-* `MWK` (value: `"MWK"`)
+* `"MXN"`
 
-* `MXN` (value: `"MXN"`)
+* `"MXV"`
 
-* `MXV` (value: `"MXV"`)
+* `"MYR"`
 
-* `MYR` (value: `"MYR"`)
+* `"MZN"`
 
-* `MZN` (value: `"MZN"`)
+* `"NAD"`
 
-* `NAD` (value: `"NAD"`)
+* `"NGN"`
 
-* `NGN` (value: `"NGN"`)
+* `"NIO"`
 
-* `NIO` (value: `"NIO"`)
+* `"NOK"`
 
-* `NOK` (value: `"NOK"`)
+* `"NPR"`
 
-* `NPR` (value: `"NPR"`)
+* `"NZD"`
 
-* `NZD` (value: `"NZD"`)
+* `"OMR"`
 
-* `OMR` (value: `"OMR"`)
+* `"PAB"`
 
-* `PAB` (value: `"PAB"`)
+* `"PEN"`
 
-* `PEN` (value: `"PEN"`)
+* `"PGK"`
 
-* `PGK` (value: `"PGK"`)
+* `"PHP"`
 
-* `PHP` (value: `"PHP"`)
+* `"PKR"`
 
-* `PKR` (value: `"PKR"`)
+* `"PLN"`
 
-* `PLN` (value: `"PLN"`)
+* `"PYG"`
 
-* `PYG` (value: `"PYG"`)
+* `"QAR"`
 
-* `QAR` (value: `"QAR"`)
+* `"RON"`
 
-* `RON` (value: `"RON"`)
+* `"RSD"`
 
-* `RSD` (value: `"RSD"`)
+* `"RUB"`
 
-* `RUB` (value: `"RUB"`)
+* `"RWF"`
 
-* `RWF` (value: `"RWF"`)
+* `"SAR"`
 
-* `SAR` (value: `"SAR"`)
+* `"SBD"`
 
-* `SBD` (value: `"SBD"`)
+* `"SCR"`
 
-* `SCR` (value: `"SCR"`)
+* `"SDG"`
 
-* `SDG` (value: `"SDG"`)
+* `"SEK"`
 
-* `SEK` (value: `"SEK"`)
+* `"SGD"`
 
-* `SGD` (value: `"SGD"`)
+* `"SHP"`
 
-* `SHP` (value: `"SHP"`)
+* `"SLL"`
 
-* `SLL` (value: `"SLL"`)
+* `"SOS"`
 
-* `SOS` (value: `"SOS"`)
+* `"SRD"`
 
-* `SRD` (value: `"SRD"`)
+* `"SSP"`
 
-* `SSP` (value: `"SSP"`)
+* `"STD"`
 
-* `STD` (value: `"STD"`)
+* `"SVC"`
 
-* `SVC` (value: `"SVC"`)
+* `"SYP"`
 
-* `SYP` (value: `"SYP"`)
+* `"SZL"`
 
-* `SZL` (value: `"SZL"`)
+* `"THB"`
 
-* `THB` (value: `"THB"`)
+* `"TJS"`
 
-* `TJS` (value: `"TJS"`)
+* `"TMT"`
 
-* `TMT` (value: `"TMT"`)
+* `"TND"`
 
-* `TND` (value: `"TND"`)
+* `"TOP"`
 
-* `TOP` (value: `"TOP"`)
+* `"TRY"`
 
-* `TRY` (value: `"TRY"`)
+* `"TTD"`
 
-* `TTD` (value: `"TTD"`)
+* `"TWD"`
 
-* `TWD` (value: `"TWD"`)
+* `"TZS"`
 
-* `TZS` (value: `"TZS"`)
+* `"UAH"`
 
-* `UAH` (value: `"UAH"`)
+* `"UGX"`
 
-* `UGX` (value: `"UGX"`)
+* `"USD"`
 
-* `USD` (value: `"USD"`)
+* `"USN"`
 
-* `USN` (value: `"USN"`)
+* `"USS"`
 
-* `USS` (value: `"USS"`)
+* `"UYI"`
 
-* `UYI` (value: `"UYI"`)
+* `"UYU"`
 
-* `UYU` (value: `"UYU"`)
+* `"UZS"`
 
-* `UZS` (value: `"UZS"`)
+* `"VEF"`
 
-* `VEF` (value: `"VEF"`)
+* `"VND"`
 
-* `VND` (value: `"VND"`)
+* `"VUV"`
 
-* `VUV` (value: `"VUV"`)
+* `"WST"`
 
-* `WST` (value: `"WST"`)
+* `"XAF"`
 
-* `XAF` (value: `"XAF"`)
+* `"XAG"`
 
-* `XAG` (value: `"XAG"`)
+* `"XAU"`
 
-* `XAU` (value: `"XAU"`)
+* `"XBA"`
 
-* `XBA` (value: `"XBA"`)
+* `"XBB"`
 
-* `XBB` (value: `"XBB"`)
+* `"XBC"`
 
-* `XBC` (value: `"XBC"`)
+* `"XBD"`
 
-* `XBD` (value: `"XBD"`)
+* `"XCD"`
 
-* `XCD` (value: `"XCD"`)
+* `"XDR"`
 
-* `XDR` (value: `"XDR"`)
+* `"XOF"`
 
-* `XOF` (value: `"XOF"`)
+* `"XPD"`
 
-* `XPD` (value: `"XPD"`)
+* `"XPF"`
 
-* `XPF` (value: `"XPF"`)
+* `"XPT"`
 
-* `XPT` (value: `"XPT"`)
+* `"XTS"`
 
-* `XTS` (value: `"XTS"`)
+* `"XXX"`
 
-* `XXX` (value: `"XXX"`)
+* `"YER"`
 
-* `YER` (value: `"YER"`)
+* `"ZAR"`
 
-* `ZAR` (value: `"ZAR"`)
+* `"ZMK"`
 
-* `ZMK` (value: `"ZMK"`)
+* `"ZMW"`
 
-* `ZMW` (value: `"ZMW"`)
-
-* `BTC` (value: `"BTC"`)
+* `"BTC"`
 
 
 

@@ -1,12 +1,10 @@
 
 # TaxInclusionType
 
-## Enum
 
+* `"ADDITIVE"`
 
-* `ADDITIVE` (value: `"ADDITIVE"`)
-
-* `INCLUSIVE` (value: `"INCLUSIVE"`)
+* `"INCLUSIVE"`
 
 
 

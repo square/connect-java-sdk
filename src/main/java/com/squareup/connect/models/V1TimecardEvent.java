@@ -29,50 +29,8 @@ public class V1TimecardEvent {
   @JsonProperty("id")
   private String id = null;
 
-  /**
-   * The ID of the timecard to list events for. See [V1TimecardEventEventType](#type-v1timecardeventeventtype) for possible values
-   */
-  public enum EventTypeEnum {
-    API_CREATE("API_CREATE"),
-    
-    API_EDIT("API_EDIT"),
-    
-    API_DELETE("API_DELETE"),
-    
-    REGISTER_CLOCKIN("REGISTER_CLOCKIN"),
-    
-    REGISTER_CLOCKOUT("REGISTER_CLOCKOUT"),
-    
-    DASHBOARD_SUPERVISOR_CLOSE("DASHBOARD_SUPERVISOR_CLOSE"),
-    
-    DASHBOARD_EDIT("DASHBOARD_EDIT"),
-    
-    DASHBOARD_DELETE("DASHBOARD_DELETE");
-
-    private String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String text) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("event_type")
-  private EventTypeEnum eventType = null;
+  private String eventType = null;
 
   @JsonProperty("clockin_time")
   private String clockinTime = null;
@@ -101,7 +59,7 @@ public class V1TimecardEvent {
     this.id = id;
   }
 
-  public V1TimecardEvent eventType(EventTypeEnum eventType) {
+  public V1TimecardEvent eventType(String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -111,11 +69,11 @@ public class V1TimecardEvent {
    * @return eventType
   **/
   @ApiModelProperty(value = "The ID of the timecard to list events for. See [V1TimecardEventEventType](#type-v1timecardeventeventtype) for possible values")
-  public EventTypeEnum getEventType() {
+  public String getEventType() {
     return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
@@ -200,7 +158,7 @@ public class V1TimecardEvent {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1TimecardEvent {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    clockinTime: ").append(toIndentedString(clockinTime)).append("\n");
@@ -220,6 +178,6 @@ public class V1TimecardEvent {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

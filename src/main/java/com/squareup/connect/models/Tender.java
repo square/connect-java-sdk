@@ -59,46 +59,8 @@ public class Tender {
   @JsonProperty("customer_id")
   private String customerId = null;
 
-  /**
-   * The type of tender, such as `CARD` or `CASH`. See [TenderType](#type-tendertype) for possible values
-   */
-  public enum TypeEnum {
-    CARD("CARD"),
-    
-    CASH("CASH"),
-    
-    THIRD_PARTY_CARD("THIRD_PARTY_CARD"),
-    
-    SQUARE_GIFT_CARD("SQUARE_GIFT_CARD"),
-    
-    NO_SALE("NO_SALE"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("card_details")
   private TenderCardDetails cardDetails = null;
@@ -271,7 +233,7 @@ public class Tender {
     this.customerId = customerId;
   }
 
-  public Tender type(TypeEnum type) {
+  public Tender type(String type) {
     this.type = type;
     return this;
   }
@@ -281,11 +243,11 @@ public class Tender {
    * @return type
   **/
   @ApiModelProperty(required = true, value = "The type of tender, such as `CARD` or `CASH`. See [TenderType](#type-tendertype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -383,7 +345,7 @@ public class Tender {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Tender {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
@@ -411,6 +373,6 @@ public class Tender {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

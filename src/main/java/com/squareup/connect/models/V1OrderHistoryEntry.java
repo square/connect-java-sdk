@@ -26,53 +26,13 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "V1OrderHistoryEntry")
 
 public class V1OrderHistoryEntry {
-  /**
-   * The type of action performed on the order. See [V1OrderHistoryEntryAction](#type-v1orderhistoryentryaction) for possible values
-   */
-  public enum ActionEnum {
-    ORDER_PLACED("ORDER_PLACED"),
-    
-    DECLINED("DECLINED"),
-    
-    PAYMENT_RECEIVED("PAYMENT_RECEIVED"),
-    
-    CANCELED("CANCELED"),
-    
-    COMPLETED("COMPLETED"),
-    
-    REFUNDED("REFUNDED"),
-    
-    EXPIRED("EXPIRED");
-
-    private String value;
-
-    ActionEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ActionEnum fromValue(String text) {
-      for (ActionEnum b : ActionEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("action")
-  private ActionEnum action = null;
+  private String action = null;
 
   @JsonProperty("created_at")
   private String createdAt = null;
 
-  public V1OrderHistoryEntry action(ActionEnum action) {
+  public V1OrderHistoryEntry action(String action) {
     this.action = action;
     return this;
   }
@@ -82,11 +42,11 @@ public class V1OrderHistoryEntry {
    * @return action
   **/
   @ApiModelProperty(value = "The type of action performed on the order. See [V1OrderHistoryEntryAction](#type-v1orderhistoryentryaction) for possible values")
-  public ActionEnum getAction() {
+  public String getAction() {
     return action;
   }
 
-  public void setAction(ActionEnum action) {
+  public void setAction(String action) {
     this.action = action;
   }
 
@@ -132,7 +92,7 @@ public class V1OrderHistoryEntry {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1OrderHistoryEntry {\n");
-    
+
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
@@ -149,6 +109,6 @@ public class V1OrderHistoryEntry {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

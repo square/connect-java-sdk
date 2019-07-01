@@ -1,12 +1,10 @@
 
 # V1CreateRefundRequestType
 
-## Enum
 
+* `"FULL"`
 
-* `FULL` (value: `"FULL"`)
-
-* `PARTIAL` (value: `"PARTIAL"`)
+* `"PARTIAL"`
 
 
 

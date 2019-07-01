@@ -50,42 +50,8 @@ public class CatalogPricingRule {
   @JsonProperty("apply_products_id")
   private String applyProductsId = null;
 
-  /**
-   * Describes how the pricing rule can be combined with other pricing rules. See [Stackable](#type-stackable) for all possible values. See [AggregationStrategy](#type-aggregationstrategy) for possible values
-   */
-  public enum StackableEnum {
-    UNKNOWN("UNKNOWN"),
-    
-    BASE("BASE"),
-    
-    STACKABLE("STACKABLE"),
-    
-    EXCLUSIVE("EXCLUSIVE");
-
-    private String value;
-
-    StackableEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StackableEnum fromValue(String text) {
-      for (StackableEnum b : StackableEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("stackable")
-  private StackableEnum stackable = null;
+  private String stackable = null;
 
   @JsonProperty("exclude_products_id")
   private String excludeProductsId = null;
@@ -233,7 +199,7 @@ public class CatalogPricingRule {
     this.applyProductsId = applyProductsId;
   }
 
-  public CatalogPricingRule stackable(StackableEnum stackable) {
+  public CatalogPricingRule stackable(String stackable) {
     this.stackable = stackable;
     return this;
   }
@@ -243,11 +209,11 @@ public class CatalogPricingRule {
    * @return stackable
   **/
   @ApiModelProperty(value = "Describes how the pricing rule can be combined with other pricing rules. See [Stackable](#type-stackable) for all possible values. See [AggregationStrategy](#type-aggregationstrategy) for possible values")
-  public StackableEnum getStackable() {
+  public String getStackable() {
     return stackable;
   }
 
-  public void setStackable(StackableEnum stackable) {
+  public void setStackable(String stackable) {
     this.stackable = stackable;
   }
 
@@ -376,7 +342,7 @@ public class CatalogPricingRule {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogPricingRule {\n");
-    
+
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    timePeriodIds: ").append(toIndentedString(timePeriodIds)).append("\n");
     sb.append("    totalPriceMoney: ").append(toIndentedString(totalPriceMoney)).append("\n");
@@ -404,6 +370,6 @@ public class CatalogPricingRule {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -28,112 +28,18 @@ import java.util.List;
 @ApiModel(description = "Creation source filter.  If one or more creation sources are set, customer profiles are included in, or excluded from, the result if they match at least one of the filter criteria.")
 
 public class CustomerCreationSourceFilter {
-  /**
-   * Gets or Sets values
-   */
-  public enum ValuesEnum {
-    OTHER("OTHER"),
-    
-    APPOINTMENTS("APPOINTMENTS"),
-    
-    COUPON("COUPON"),
-    
-    DELETION_RECOVERY("DELETION_RECOVERY"),
-    
-    DIRECTORY("DIRECTORY"),
-    
-    EGIFTING("EGIFTING"),
-    
-    EMAIL_COLLECTION("EMAIL_COLLECTION"),
-    
-    FEEDBACK("FEEDBACK"),
-    
-    IMPORT("IMPORT"),
-    
-    INVOICES("INVOICES"),
-    
-    LOYALTY("LOYALTY"),
-    
-    MARKETING("MARKETING"),
-    
-    MERGE("MERGE"),
-    
-    ONLINE_STORE("ONLINE_STORE"),
-    
-    INSTANT_PROFILE("INSTANT_PROFILE"),
-    
-    TERMINAL("TERMINAL"),
-    
-    THIRD_PARTY("THIRD_PARTY"),
-    
-    THIRD_PARTY_IMPORT("THIRD_PARTY_IMPORT"),
-    
-    UNMERGE_RECOVERY("UNMERGE_RECOVERY");
-
-    private String value;
-
-    ValuesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ValuesEnum fromValue(String text) {
-      for (ValuesEnum b : ValuesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("values")
-  private List<ValuesEnum> values = new ArrayList<ValuesEnum>();
-
-  /**
-   * Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values
-   */
-  public enum RuleEnum {
-    INCLUDE("INCLUDE"),
-    
-    EXCLUDE("EXCLUDE");
-
-    private String value;
-
-    RuleEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static RuleEnum fromValue(String text) {
-      for (RuleEnum b : RuleEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private List<String> values = new ArrayList<String>();
 
   @JsonProperty("rule")
-  private RuleEnum rule = null;
+  private String rule = null;
 
-  public CustomerCreationSourceFilter values(List<ValuesEnum> values) {
+  public CustomerCreationSourceFilter values(List<String> values) {
     this.values = values;
     return this;
   }
 
-  public CustomerCreationSourceFilter addValuesItem(ValuesEnum valuesItem) {
+  public CustomerCreationSourceFilter addValuesItem(String valuesItem) {
     this.values.add(valuesItem);
     return this;
   }
@@ -143,15 +49,15 @@ public class CustomerCreationSourceFilter {
    * @return values
   **/
   @ApiModelProperty(value = "The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values")
-  public List<ValuesEnum> getValues() {
+  public List<String> getValues() {
     return values;
   }
 
-  public void setValues(List<ValuesEnum> values) {
+  public void setValues(List<String> values) {
     this.values = values;
   }
 
-  public CustomerCreationSourceFilter rule(RuleEnum rule) {
+  public CustomerCreationSourceFilter rule(String rule) {
     this.rule = rule;
     return this;
   }
@@ -161,11 +67,11 @@ public class CustomerCreationSourceFilter {
    * @return rule
   **/
   @ApiModelProperty(value = "Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values")
-  public RuleEnum getRule() {
+  public String getRule() {
     return rule;
   }
 
-  public void setRule(RuleEnum rule) {
+  public void setRule(String rule) {
     this.rule = rule;
   }
 
@@ -193,7 +99,7 @@ public class CustomerCreationSourceFilter {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerCreationSourceFilter {\n");
-    
+
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
     sb.append("}");
@@ -210,6 +116,6 @@ public class CustomerCreationSourceFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

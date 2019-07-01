@@ -1,20 +1,18 @@
 
 # V1BankAccountType
 
-## Enum
 
+* `"BUSINESS_CHECKING"`
 
-* `BUSINESS_CHECKING` (value: `"BUSINESS_CHECKING"`)
+* `"CHECKING"`
 
-* `CHECKING` (value: `"CHECKING"`)
+* `"INVESTMENT"`
 
-* `INVESTMENT` (value: `"INVESTMENT"`)
+* `"LOAN"`
 
-* `LOAN` (value: `"LOAN"`)
+* `"SAVINGS"`
 
-* `SAVINGS` (value: `"SAVINGS"`)
-
-* `OTHER` (value: `"OTHER"`)
+* `"OTHER"`
 
 
 

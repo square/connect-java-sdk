@@ -1,12 +1,10 @@
 
 # V1VariationPricingType
 
-## Enum
 
+* `"FIXED_PRICING"`
 
-* `FIXED_PRICING` (value: `"FIXED_PRICING"`)
-
-* `VARIABLE_PRICING` (value: `"VARIABLE_PRICING"`)
+* `"VARIABLE_PRICING"`
 
 
 

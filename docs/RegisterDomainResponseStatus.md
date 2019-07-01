@@ -1,12 +1,10 @@
 
 # RegisterDomainResponseStatus
 
-## Enum
 
+* `"PENDING"`
 
-* `PENDING` (value: `"PENDING"`)
-
-* `VERIFIED` (value: `"VERIFIED"`)
+* `"VERIFIED"`
 
 
 

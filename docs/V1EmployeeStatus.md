@@ -1,12 +1,10 @@
 
 # V1EmployeeStatus
 
-## Enum
 
+* `"ACTIVE"`
 
-* `ACTIVE` (value: `"ACTIVE"`)
-
-* `INACTIVE` (value: `"INACTIVE"`)
+* `"INACTIVE"`
 
 
 

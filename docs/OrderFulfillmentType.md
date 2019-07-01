@@ -1,10 +1,8 @@
 
 # OrderFulfillmentType
 
-## Enum
 
-
-* `PICKUP` (value: `"PICKUP"`)
+* `"PICKUP"`
 
 
 

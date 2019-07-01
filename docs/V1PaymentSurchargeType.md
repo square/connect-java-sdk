@@ -1,14 +1,12 @@
 
 # V1PaymentSurchargeType
 
-## Enum
 
+* `"UNKNOWN"`
 
-* `UNKNOWN` (value: `"UNKNOWN"`)
+* `"AUTO_GRATUITY"`
 
-* `AUTO_GRATUITY` (value: `"AUTO_GRATUITY"`)
-
-* `CUSTOM` (value: `"CUSTOM"`)
+* `"CUSTOM"`
 
 
 

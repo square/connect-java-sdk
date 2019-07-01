@@ -47,46 +47,8 @@ public class V1BankAccount {
   @JsonProperty("currency_code")
   private String currencyCode = null;
 
-  /**
-   * The bank account's type (for example, savings or checking). See [V1BankAccountType](#type-v1bankaccounttype) for possible values
-   */
-  public enum TypeEnum {
-    BUSINESS_CHECKING("BUSINESS_CHECKING"),
-    
-    CHECKING("CHECKING"),
-    
-    INVESTMENT("INVESTMENT"),
-    
-    LOAN("LOAN"),
-    
-    SAVINGS("SAVINGS"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   public V1BankAccount id(String id) {
     this.id = id;
@@ -214,7 +176,7 @@ public class V1BankAccount {
     this.currencyCode = currencyCode;
   }
 
-  public V1BankAccount type(TypeEnum type) {
+  public V1BankAccount type(String type) {
     this.type = type;
     return this;
   }
@@ -224,11 +186,11 @@ public class V1BankAccount {
    * @return type
   **/
   @ApiModelProperty(value = "The bank account's type (for example, savings or checking). See [V1BankAccountType](#type-v1bankaccounttype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -262,7 +224,7 @@ public class V1BankAccount {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1BankAccount {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    bankName: ").append(toIndentedString(bankName)).append("\n");
@@ -285,6 +247,6 @@ public class V1BankAccount {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -42,123 +42,17 @@ public class V1Item {
   @JsonProperty("description")
   private String description = null;
 
-  /**
-   * The item's type. This value is NORMAL for almost all items. See [V1ItemType](#type-v1itemtype) for possible values
-   */
-  public enum TypeEnum {
-    NORMAL("NORMAL"),
-    
-    GIFT_CARD("GIFT_CARD"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
-
-  /**
-   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values
-   */
-  public enum ColorEnum {
-    _9DA2A6("9da2a6"),
-    
-    _4AB200("4ab200"),
-    
-    _0B8000("0b8000"),
-    
-    _2952CC("2952cc"),
-    
-    A82EE5("a82ee5"),
-    
-    E5457A("e5457a"),
-    
-    B21212("b21212"),
-    
-    _593C00("593c00"),
-    
-    E5BF00("e5BF00");
-
-    private String value;
-
-    ColorEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ColorEnum fromValue(String text) {
-      for (ColorEnum b : ColorEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String type = null;
 
   @JsonProperty("color")
-  private ColorEnum color = null;
+  private String color = null;
 
   @JsonProperty("abbreviation")
   private String abbreviation = null;
 
-  /**
-   * Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE. See [V1ItemVisibility](#type-v1itemvisibility) for possible values
-   */
-  public enum VisibilityEnum {
-    PUBLIC("PUBLIC"),
-    
-    PRIVATE("PRIVATE");
-
-    private String value;
-
-    VisibilityEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static VisibilityEnum fromValue(String text) {
-      for (VisibilityEnum b : VisibilityEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("visibility")
-  private VisibilityEnum visibility = null;
+  private String visibility = null;
 
   @JsonProperty("available_online")
   private Boolean availableOnline = null;
@@ -244,7 +138,7 @@ public class V1Item {
     this.description = description;
   }
 
-  public V1Item type(TypeEnum type) {
+  public V1Item type(String type) {
     this.type = type;
     return this;
   }
@@ -254,15 +148,15 @@ public class V1Item {
    * @return type
   **/
   @ApiModelProperty(value = "The item's type. This value is NORMAL for almost all items. See [V1ItemType](#type-v1itemtype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
-  public V1Item color(ColorEnum color) {
+  public V1Item color(String color) {
     this.color = color;
     return this;
   }
@@ -272,11 +166,11 @@ public class V1Item {
    * @return color
   **/
   @ApiModelProperty(value = "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values")
-  public ColorEnum getColor() {
+  public String getColor() {
     return color;
   }
 
-  public void setColor(ColorEnum color) {
+  public void setColor(String color) {
     this.color = color;
   }
 
@@ -298,7 +192,7 @@ public class V1Item {
     this.abbreviation = abbreviation;
   }
 
-  public V1Item visibility(VisibilityEnum visibility) {
+  public V1Item visibility(String visibility) {
     this.visibility = visibility;
     return this;
   }
@@ -308,11 +202,11 @@ public class V1Item {
    * @return visibility
   **/
   @ApiModelProperty(value = "Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE. See [V1ItemVisibility](#type-v1itemvisibility) for possible values")
-  public VisibilityEnum getVisibility() {
+  public String getVisibility() {
     return visibility;
   }
 
-  public void setVisibility(VisibilityEnum visibility) {
+  public void setVisibility(String visibility) {
     this.visibility = visibility;
   }
 
@@ -550,7 +444,7 @@ public class V1Item {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1Item {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -582,6 +476,6 @@ public class V1Item {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

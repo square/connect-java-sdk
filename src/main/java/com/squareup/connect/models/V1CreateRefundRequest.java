@@ -30,38 +30,8 @@ public class V1CreateRefundRequest {
   @JsonProperty("payment_id")
   private String paymentId = null;
 
-  /**
-   * TThe type of refund (FULL or PARTIAL). See [V1CreateRefundRequestType](#type-v1createrefundrequesttype) for possible values
-   */
-  public enum TypeEnum {
-    FULL("FULL"),
-    
-    PARTIAL("PARTIAL");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("reason")
   private String reason = null;
@@ -90,7 +60,7 @@ public class V1CreateRefundRequest {
     this.paymentId = paymentId;
   }
 
-  public V1CreateRefundRequest type(TypeEnum type) {
+  public V1CreateRefundRequest type(String type) {
     this.type = type;
     return this;
   }
@@ -100,11 +70,11 @@ public class V1CreateRefundRequest {
    * @return type
   **/
   @ApiModelProperty(required = true, value = "TThe type of refund (FULL or PARTIAL). See [V1CreateRefundRequestType](#type-v1createrefundrequesttype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -189,7 +159,7 @@ public class V1CreateRefundRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V1CreateRefundRequest {\n");
-    
+
     sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
@@ -209,6 +179,6 @@ public class V1CreateRefundRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

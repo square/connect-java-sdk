@@ -33,58 +33,8 @@ public class InventoryTransfer {
   @JsonProperty("reference_id")
   private String referenceId = null;
 
-  /**
-   * The [InventoryState](#type-inventorystate) for the quantity of items being transfered. See [InventoryState](#type-inventorystate) for possible values
-   */
-  public enum StateEnum {
-    CUSTOM("CUSTOM"),
-    
-    IN_STOCK("IN_STOCK"),
-    
-    SOLD("SOLD"),
-    
-    RETURNED_BY_CUSTOMER("RETURNED_BY_CUSTOMER"),
-    
-    RESERVED_FOR_SALE("RESERVED_FOR_SALE"),
-    
-    SOLD_ONLINE("SOLD_ONLINE"),
-    
-    ORDERED_FROM_VENDOR("ORDERED_FROM_VENDOR"),
-    
-    RECEIVED_FROM_VENDOR("RECEIVED_FROM_VENDOR"),
-    
-    IN_TRANSIT_TO("IN_TRANSIT_TO"),
-    
-    NONE("NONE"),
-    
-    WASTE("WASTE"),
-    
-    UNLINKED_RETURN("UNLINKED_RETURN");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String text) {
-      for (StateEnum b : StateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("state")
-  private StateEnum state = null;
+  private String state = null;
 
   @JsonProperty("from_location_id")
   private String fromLocationId = null;
@@ -149,7 +99,7 @@ public class InventoryTransfer {
     this.referenceId = referenceId;
   }
 
-  public InventoryTransfer state(StateEnum state) {
+  public InventoryTransfer state(String state) {
     this.state = state;
     return this;
   }
@@ -159,11 +109,11 @@ public class InventoryTransfer {
    * @return state
   **/
   @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) for the quantity of items being transfered. See [InventoryState](#type-inventorystate) for possible values")
-  public StateEnum getState() {
+  public String getState() {
     return state;
   }
 
-  public void setState(StateEnum state) {
+  public void setState(String state) {
     this.state = state;
   }
 
@@ -363,7 +313,7 @@ public class InventoryTransfer {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InventoryTransfer {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
@@ -390,6 +340,6 @@ public class InventoryTransfer {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 
