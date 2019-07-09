@@ -36,38 +36,8 @@ public class ShiftFilter {
   @JsonProperty("employee_id")
   private List<String> employeeId = new ArrayList<String>();
 
-  /**
-   * Fetch a `Shift` instance by `Shift.status`. See [ShiftFilterStatus](#type-shiftfilterstatus) for possible values
-   */
-  public enum StatusEnum {
-    OPEN("OPEN"),
-    
-    CLOSED("CLOSED");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("start")
   private TimeRange start = null;
@@ -124,7 +94,7 @@ public class ShiftFilter {
     this.employeeId = employeeId;
   }
 
-  public ShiftFilter status(StatusEnum status) {
+  public ShiftFilter status(String status) {
     this.status = status;
     return this;
   }
@@ -134,11 +104,11 @@ public class ShiftFilter {
    * @return status
   **/
   @ApiModelProperty(value = "Fetch a `Shift` instance by `Shift.status`. See [ShiftFilterStatus](#type-shiftfilterstatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

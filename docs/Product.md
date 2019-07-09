@@ -1,28 +1,26 @@
 
 # Product
 
-## Enum
 
+* `"SQUARE_POS"`
 
-* `SQUARE_POS` (value: `"SQUARE_POS"`)
+* `"EXTERNAL_API"`
 
-* `EXTERNAL_API` (value: `"EXTERNAL_API"`)
+* `"BILLING"`
 
-* `BILLING` (value: `"BILLING"`)
+* `"APPOINTMENTS"`
 
-* `APPOINTMENTS` (value: `"APPOINTMENTS"`)
+* `"INVOICES"`
 
-* `INVOICES` (value: `"INVOICES"`)
+* `"ONLINE_STORE"`
 
-* `ONLINE_STORE` (value: `"ONLINE_STORE"`)
+* `"PAYROLL"`
 
-* `PAYROLL` (value: `"PAYROLL"`)
+* `"DASHBOARD"`
 
-* `DASHBOARD` (value: `"DASHBOARD"`)
+* `"ITEM_LIBRARY_IMPORT"`
 
-* `ITEM_LIBRARY_IMPORT` (value: `"ITEM_LIBRARY_IMPORT"`)
-
-* `OTHER` (value: `"OTHER"`)
+* `"OTHER"`
 
 
 

@@ -1,20 +1,18 @@
 
 # V1VariationInventoryAlertType
 
-## Enum
 
+* `"LOW_QUANTITY"`
 
-* `LOW_QUANTITY` (value: `"LOW_QUANTITY"`)
+* `"NONE"`
 
-* `NONE` (value: `"NONE"`)
+* `"INVESTMENT"`
 
-* `INVESTMENT` (value: `"INVESTMENT"`)
+* `"LOAN"`
 
-* `LOAN` (value: `"LOAN"`)
+* `"SAVINGS"`
 
-* `SAVINGS` (value: `"SAVINGS"`)
-
-* `OTHER` (value: `"OTHER"`)
+* `"OTHER"`
 
 
 

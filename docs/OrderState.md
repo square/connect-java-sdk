@@ -1,14 +1,12 @@
 
 # OrderState
 
-## Enum
 
+* `"OPEN"`
 
-* `OPEN` (value: `"OPEN"`)
+* `"COMPLETED"`
 
-* `COMPLETED` (value: `"COMPLETED"`)
-
-* `CANCELED` (value: `"CANCELED"`)
+* `"CANCELED"`
 
 
 

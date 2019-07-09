@@ -1,22 +1,20 @@
 
 # DayOfWeek
 
-## Enum
 
+* `"SUN"`
 
-* `SUN` (value: `"SUN"`)
+* `"MON"`
 
-* `MON` (value: `"MON"`)
+* `"TUE"`
 
-* `TUE` (value: `"TUE"`)
+* `"WED"`
 
-* `WED` (value: `"WED"`)
+* `"THU"`
 
-* `THU` (value: `"THU"`)
+* `"FRI"`
 
-* `FRI` (value: `"FRI"`)
-
-* `SAT` (value: `"SAT"`)
+* `"SAT"`
 
 
 

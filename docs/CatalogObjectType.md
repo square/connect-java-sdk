@@ -1,30 +1,28 @@
 
 # CatalogObjectType
 
-## Enum
 
+* `"ITEM"`
 
-* `ITEM` (value: `"ITEM"`)
+* `"IMAGE"`
 
-* `IMAGE` (value: `"IMAGE"`)
+* `"CATEGORY"`
 
-* `CATEGORY` (value: `"CATEGORY"`)
+* `"ITEM_VARIATION"`
 
-* `ITEM_VARIATION` (value: `"ITEM_VARIATION"`)
+* `"TAX"`
 
-* `TAX` (value: `"TAX"`)
+* `"DISCOUNT"`
 
-* `DISCOUNT` (value: `"DISCOUNT"`)
+* `"MODIFIER_LIST"`
 
-* `MODIFIER_LIST` (value: `"MODIFIER_LIST"`)
+* `"MODIFIER"`
 
-* `MODIFIER` (value: `"MODIFIER"`)
+* `"PRICING_RULE"`
 
-* `PRICING_RULE` (value: `"PRICING_RULE"`)
+* `"PRODUCT_SET"`
 
-* `PRODUCT_SET` (value: `"PRODUCT_SET"`)
-
-* `TIME_PERIOD` (value: `"TIME_PERIOD"`)
+* `"TIME_PERIOD"`
 
 
 

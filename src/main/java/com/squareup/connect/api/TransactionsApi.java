@@ -45,7 +45,7 @@ public class TransactionsApi {
 
   /**
    * CaptureTransaction
-   * Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/payments/transactions/overview#delayed-capture) for more information.
+   * Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
    * @param locationId  (required)
    * @param transactionId  (required)
    * @return CaptureTransactionResponse
@@ -96,7 +96,7 @@ public class TransactionsApi {
 
   /**
    * CaptureTransaction
-   * Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/payments/transactions/overview#delayed-capture) for more information.
+   * Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
    * @param locationId  (required)
    * @param transactionId  (required)
    * @return CompleteResponse<CaptureTransactionResponse>
@@ -659,7 +659,7 @@ public class TransactionsApi {
   }
   /**
    * VoidTransaction
-   * Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/payments/transactions/overview#delayed-capture) for more information.
+   * Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
    * @param locationId  (required)
    * @param transactionId  (required)
    * @return VoidTransactionResponse
@@ -710,7 +710,7 @@ public class TransactionsApi {
 
   /**
    * VoidTransaction
-   * Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/payments/transactions/overview#delayed-capture) for more information.
+   * Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
    * @param locationId  (required)
    * @param transactionId  (required)
    * @return CompleteResponse<VoidTransactionResponse>

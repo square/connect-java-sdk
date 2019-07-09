@@ -26,40 +26,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "V1UpdateOrderRequest")
 
 public class V1UpdateOrderRequest {
-  /**
-   * The action to perform on the order (COMPLETE, CANCEL, or REFUND). See [V1UpdateOrderRequestAction](#type-v1updateorderrequestaction) for possible values
-   */
-  public enum ActionEnum {
-    COMPLETE("COMPLETE"),
-    
-    CANCEL("CANCEL"),
-    
-    REFUND("REFUND");
-
-    private String value;
-
-    ActionEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ActionEnum fromValue(String text) {
-      for (ActionEnum b : ActionEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("action")
-  private ActionEnum action = null;
+  private String action = null;
 
   @JsonProperty("shipped_tracking_number")
   private String shippedTrackingNumber = null;
@@ -73,7 +41,7 @@ public class V1UpdateOrderRequest {
   @JsonProperty("canceled_note")
   private String canceledNote = null;
 
-  public V1UpdateOrderRequest action(ActionEnum action) {
+  public V1UpdateOrderRequest action(String action) {
     this.action = action;
     return this;
   }
@@ -83,11 +51,11 @@ public class V1UpdateOrderRequest {
    * @return action
   **/
   @ApiModelProperty(required = true, value = "The action to perform on the order (COMPLETE, CANCEL, or REFUND). See [V1UpdateOrderRequestAction](#type-v1updateorderrequestaction) for possible values")
-  public ActionEnum getAction() {
+  public String getAction() {
     return action;
   }
 
-  public void setAction(ActionEnum action) {
+  public void setAction(String action) {
     this.action = action;
   }
 

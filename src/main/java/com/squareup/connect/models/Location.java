@@ -43,69 +43,11 @@ public class Location {
   @JsonProperty("timezone")
   private String timezone = null;
 
-  /**
-   * Gets or Sets capabilities
-   */
-  public enum CapabilitiesEnum {
-    PROCESSING("CREDIT_CARD_PROCESSING");
-
-    private String value;
-
-    CapabilitiesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CapabilitiesEnum fromValue(String text) {
-      for (CapabilitiesEnum b : CapabilitiesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("capabilities")
-  private List<CapabilitiesEnum> capabilities = new ArrayList<CapabilitiesEnum>();
-
-  /**
-   * The location's status See [LocationStatus](#type-locationstatus) for possible values
-   */
-  public enum StatusEnum {
-    ACTIVE("ACTIVE"),
-    
-    INACTIVE("INACTIVE");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private List<String> capabilities = new ArrayList<String>();
 
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("created_at")
   private String createdAt = null;
@@ -113,928 +55,14 @@ public class Location {
   @JsonProperty("merchant_id")
   private String merchantId = null;
 
-  /**
-   * The location's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values
-   */
-  public enum CountryEnum {
-    ZZ("ZZ"),
-    
-    AD("AD"),
-    
-    AE("AE"),
-    
-    AF("AF"),
-    
-    AG("AG"),
-    
-    AI("AI"),
-    
-    AL("AL"),
-    
-    AM("AM"),
-    
-    AO("AO"),
-    
-    AQ("AQ"),
-    
-    AR("AR"),
-    
-    AS("AS"),
-    
-    AT("AT"),
-    
-    AU("AU"),
-    
-    AW("AW"),
-    
-    AX("AX"),
-    
-    AZ("AZ"),
-    
-    BA("BA"),
-    
-    BB("BB"),
-    
-    BD("BD"),
-    
-    BE("BE"),
-    
-    BF("BF"),
-    
-    BG("BG"),
-    
-    BH("BH"),
-    
-    BI("BI"),
-    
-    BJ("BJ"),
-    
-    BL("BL"),
-    
-    BM("BM"),
-    
-    BN("BN"),
-    
-    BO("BO"),
-    
-    BQ("BQ"),
-    
-    BR("BR"),
-    
-    BS("BS"),
-    
-    BT("BT"),
-    
-    BV("BV"),
-    
-    BW("BW"),
-    
-    BY("BY"),
-    
-    BZ("BZ"),
-    
-    CA("CA"),
-    
-    CC("CC"),
-    
-    CD("CD"),
-    
-    CF("CF"),
-    
-    CG("CG"),
-    
-    CH("CH"),
-    
-    CI("CI"),
-    
-    CK("CK"),
-    
-    CL("CL"),
-    
-    CM("CM"),
-    
-    CN("CN"),
-    
-    CO("CO"),
-    
-    CR("CR"),
-    
-    CU("CU"),
-    
-    CV("CV"),
-    
-    CW("CW"),
-    
-    CX("CX"),
-    
-    CY("CY"),
-    
-    CZ("CZ"),
-    
-    DE("DE"),
-    
-    DJ("DJ"),
-    
-    DK("DK"),
-    
-    DM("DM"),
-    
-    DO("DO"),
-    
-    DZ("DZ"),
-    
-    EC("EC"),
-    
-    EE("EE"),
-    
-    EG("EG"),
-    
-    EH("EH"),
-    
-    ER("ER"),
-    
-    ES("ES"),
-    
-    ET("ET"),
-    
-    FI("FI"),
-    
-    FJ("FJ"),
-    
-    FK("FK"),
-    
-    FM("FM"),
-    
-    FO("FO"),
-    
-    FR("FR"),
-    
-    GA("GA"),
-    
-    GB("GB"),
-    
-    GD("GD"),
-    
-    GE("GE"),
-    
-    GF("GF"),
-    
-    GG("GG"),
-    
-    GH("GH"),
-    
-    GI("GI"),
-    
-    GL("GL"),
-    
-    GM("GM"),
-    
-    GN("GN"),
-    
-    GP("GP"),
-    
-    GQ("GQ"),
-    
-    GR("GR"),
-    
-    GS("GS"),
-    
-    GT("GT"),
-    
-    GU("GU"),
-    
-    GW("GW"),
-    
-    GY("GY"),
-    
-    HK("HK"),
-    
-    HM("HM"),
-    
-    HN("HN"),
-    
-    HR("HR"),
-    
-    HT("HT"),
-    
-    HU("HU"),
-    
-    ID("ID"),
-    
-    IE("IE"),
-    
-    IL("IL"),
-    
-    IM("IM"),
-    
-    IN("IN"),
-    
-    IO("IO"),
-    
-    IQ("IQ"),
-    
-    IR("IR"),
-    
-    IS("IS"),
-    
-    IT("IT"),
-    
-    JE("JE"),
-    
-    JM("JM"),
-    
-    JO("JO"),
-    
-    JP("JP"),
-    
-    KE("KE"),
-    
-    KG("KG"),
-    
-    KH("KH"),
-    
-    KI("KI"),
-    
-    KM("KM"),
-    
-    KN("KN"),
-    
-    KP("KP"),
-    
-    KR("KR"),
-    
-    KW("KW"),
-    
-    KY("KY"),
-    
-    KZ("KZ"),
-    
-    LA("LA"),
-    
-    LB("LB"),
-    
-    LC("LC"),
-    
-    LI("LI"),
-    
-    LK("LK"),
-    
-    LR("LR"),
-    
-    LS("LS"),
-    
-    LT("LT"),
-    
-    LU("LU"),
-    
-    LV("LV"),
-    
-    LY("LY"),
-    
-    MA("MA"),
-    
-    MC("MC"),
-    
-    MD("MD"),
-    
-    ME("ME"),
-    
-    MF("MF"),
-    
-    MG("MG"),
-    
-    MH("MH"),
-    
-    MK("MK"),
-    
-    ML("ML"),
-    
-    MM("MM"),
-    
-    MN("MN"),
-    
-    MO("MO"),
-    
-    MP("MP"),
-    
-    MQ("MQ"),
-    
-    MR("MR"),
-    
-    MS("MS"),
-    
-    MT("MT"),
-    
-    MU("MU"),
-    
-    MV("MV"),
-    
-    MW("MW"),
-    
-    MX("MX"),
-    
-    MY("MY"),
-    
-    MZ("MZ"),
-    
-    NA("NA"),
-    
-    NC("NC"),
-    
-    NE("NE"),
-    
-    NF("NF"),
-    
-    NG("NG"),
-    
-    NI("NI"),
-    
-    NL("NL"),
-    
-    NO("NO"),
-    
-    NP("NP"),
-    
-    NR("NR"),
-    
-    NU("NU"),
-    
-    NZ("NZ"),
-    
-    OM("OM"),
-    
-    PA("PA"),
-    
-    PE("PE"),
-    
-    PF("PF"),
-    
-    PG("PG"),
-    
-    PH("PH"),
-    
-    PK("PK"),
-    
-    PL("PL"),
-    
-    PM("PM"),
-    
-    PN("PN"),
-    
-    PR("PR"),
-    
-    PS("PS"),
-    
-    PT("PT"),
-    
-    PW("PW"),
-    
-    PY("PY"),
-    
-    QA("QA"),
-    
-    RE("RE"),
-    
-    RO("RO"),
-    
-    RS("RS"),
-    
-    RU("RU"),
-    
-    RW("RW"),
-    
-    SA("SA"),
-    
-    SB("SB"),
-    
-    SC("SC"),
-    
-    SD("SD"),
-    
-    SE("SE"),
-    
-    SG("SG"),
-    
-    SH("SH"),
-    
-    SI("SI"),
-    
-    SJ("SJ"),
-    
-    SK("SK"),
-    
-    SL("SL"),
-    
-    SM("SM"),
-    
-    SN("SN"),
-    
-    SO("SO"),
-    
-    SR("SR"),
-    
-    SS("SS"),
-    
-    ST("ST"),
-    
-    SV("SV"),
-    
-    SX("SX"),
-    
-    SY("SY"),
-    
-    SZ("SZ"),
-    
-    TC("TC"),
-    
-    TD("TD"),
-    
-    TF("TF"),
-    
-    TG("TG"),
-    
-    TH("TH"),
-    
-    TJ("TJ"),
-    
-    TK("TK"),
-    
-    TL("TL"),
-    
-    TM("TM"),
-    
-    TN("TN"),
-    
-    TO("TO"),
-    
-    TR("TR"),
-    
-    TT("TT"),
-    
-    TV("TV"),
-    
-    TW("TW"),
-    
-    TZ("TZ"),
-    
-    UA("UA"),
-    
-    UG("UG"),
-    
-    UM("UM"),
-    
-    US("US"),
-    
-    UY("UY"),
-    
-    UZ("UZ"),
-    
-    VA("VA"),
-    
-    VC("VC"),
-    
-    VE("VE"),
-    
-    VG("VG"),
-    
-    VI("VI"),
-    
-    VN("VN"),
-    
-    VU("VU"),
-    
-    WF("WF"),
-    
-    WS("WS"),
-    
-    YE("YE"),
-    
-    YT("YT"),
-    
-    ZA("ZA"),
-    
-    ZM("ZM"),
-    
-    ZW("ZW");
-
-    private String value;
-
-    CountryEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CountryEnum fromValue(String text) {
-      for (CountryEnum b : CountryEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("country")
-  private CountryEnum country = null;
+  private String country = null;
 
   @JsonProperty("language_code")
   private String languageCode = null;
 
-  /**
-   * The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'. See [Currency](#type-currency) for possible values
-   */
-  public enum CurrencyEnum {
-    UNKNOWN_CURRENCY("UNKNOWN_CURRENCY"),
-    
-    AED("AED"),
-    
-    AFN("AFN"),
-    
-    ALL("ALL"),
-    
-    AMD("AMD"),
-    
-    ANG("ANG"),
-    
-    AOA("AOA"),
-    
-    ARS("ARS"),
-    
-    AUD("AUD"),
-    
-    AWG("AWG"),
-    
-    AZN("AZN"),
-    
-    BAM("BAM"),
-    
-    BBD("BBD"),
-    
-    BDT("BDT"),
-    
-    BGN("BGN"),
-    
-    BHD("BHD"),
-    
-    BIF("BIF"),
-    
-    BMD("BMD"),
-    
-    BND("BND"),
-    
-    BOB("BOB"),
-    
-    BOV("BOV"),
-    
-    BRL("BRL"),
-    
-    BSD("BSD"),
-    
-    BTN("BTN"),
-    
-    BWP("BWP"),
-    
-    BYR("BYR"),
-    
-    BZD("BZD"),
-    
-    CAD("CAD"),
-    
-    CDF("CDF"),
-    
-    CHE("CHE"),
-    
-    CHF("CHF"),
-    
-    CHW("CHW"),
-    
-    CLF("CLF"),
-    
-    CLP("CLP"),
-    
-    CNY("CNY"),
-    
-    COP("COP"),
-    
-    COU("COU"),
-    
-    CRC("CRC"),
-    
-    CUC("CUC"),
-    
-    CUP("CUP"),
-    
-    CVE("CVE"),
-    
-    CZK("CZK"),
-    
-    DJF("DJF"),
-    
-    DKK("DKK"),
-    
-    DOP("DOP"),
-    
-    DZD("DZD"),
-    
-    EGP("EGP"),
-    
-    ERN("ERN"),
-    
-    ETB("ETB"),
-    
-    EUR("EUR"),
-    
-    FJD("FJD"),
-    
-    FKP("FKP"),
-    
-    GBP("GBP"),
-    
-    GEL("GEL"),
-    
-    GHS("GHS"),
-    
-    GIP("GIP"),
-    
-    GMD("GMD"),
-    
-    GNF("GNF"),
-    
-    GTQ("GTQ"),
-    
-    GYD("GYD"),
-    
-    HKD("HKD"),
-    
-    HNL("HNL"),
-    
-    HRK("HRK"),
-    
-    HTG("HTG"),
-    
-    HUF("HUF"),
-    
-    IDR("IDR"),
-    
-    ILS("ILS"),
-    
-    INR("INR"),
-    
-    IQD("IQD"),
-    
-    IRR("IRR"),
-    
-    ISK("ISK"),
-    
-    JMD("JMD"),
-    
-    JOD("JOD"),
-    
-    JPY("JPY"),
-    
-    KES("KES"),
-    
-    KGS("KGS"),
-    
-    KHR("KHR"),
-    
-    KMF("KMF"),
-    
-    KPW("KPW"),
-    
-    KRW("KRW"),
-    
-    KWD("KWD"),
-    
-    KYD("KYD"),
-    
-    KZT("KZT"),
-    
-    LAK("LAK"),
-    
-    LBP("LBP"),
-    
-    LKR("LKR"),
-    
-    LRD("LRD"),
-    
-    LSL("LSL"),
-    
-    LTL("LTL"),
-    
-    LVL("LVL"),
-    
-    LYD("LYD"),
-    
-    MAD("MAD"),
-    
-    MDL("MDL"),
-    
-    MGA("MGA"),
-    
-    MKD("MKD"),
-    
-    MMK("MMK"),
-    
-    MNT("MNT"),
-    
-    MOP("MOP"),
-    
-    MRO("MRO"),
-    
-    MUR("MUR"),
-    
-    MVR("MVR"),
-    
-    MWK("MWK"),
-    
-    MXN("MXN"),
-    
-    MXV("MXV"),
-    
-    MYR("MYR"),
-    
-    MZN("MZN"),
-    
-    NAD("NAD"),
-    
-    NGN("NGN"),
-    
-    NIO("NIO"),
-    
-    NOK("NOK"),
-    
-    NPR("NPR"),
-    
-    NZD("NZD"),
-    
-    OMR("OMR"),
-    
-    PAB("PAB"),
-    
-    PEN("PEN"),
-    
-    PGK("PGK"),
-    
-    PHP("PHP"),
-    
-    PKR("PKR"),
-    
-    PLN("PLN"),
-    
-    PYG("PYG"),
-    
-    QAR("QAR"),
-    
-    RON("RON"),
-    
-    RSD("RSD"),
-    
-    RUB("RUB"),
-    
-    RWF("RWF"),
-    
-    SAR("SAR"),
-    
-    SBD("SBD"),
-    
-    SCR("SCR"),
-    
-    SDG("SDG"),
-    
-    SEK("SEK"),
-    
-    SGD("SGD"),
-    
-    SHP("SHP"),
-    
-    SLL("SLL"),
-    
-    SOS("SOS"),
-    
-    SRD("SRD"),
-    
-    SSP("SSP"),
-    
-    STD("STD"),
-    
-    SVC("SVC"),
-    
-    SYP("SYP"),
-    
-    SZL("SZL"),
-    
-    THB("THB"),
-    
-    TJS("TJS"),
-    
-    TMT("TMT"),
-    
-    TND("TND"),
-    
-    TOP("TOP"),
-    
-    TRY("TRY"),
-    
-    TTD("TTD"),
-    
-    TWD("TWD"),
-    
-    TZS("TZS"),
-    
-    UAH("UAH"),
-    
-    UGX("UGX"),
-    
-    USD("USD"),
-    
-    USN("USN"),
-    
-    USS("USS"),
-    
-    UYI("UYI"),
-    
-    UYU("UYU"),
-    
-    UZS("UZS"),
-    
-    VEF("VEF"),
-    
-    VND("VND"),
-    
-    VUV("VUV"),
-    
-    WST("WST"),
-    
-    XAF("XAF"),
-    
-    XAG("XAG"),
-    
-    XAU("XAU"),
-    
-    XBA("XBA"),
-    
-    XBB("XBB"),
-    
-    XBC("XBC"),
-    
-    XBD("XBD"),
-    
-    XCD("XCD"),
-    
-    XDR("XDR"),
-    
-    XOF("XOF"),
-    
-    XPD("XPD"),
-    
-    XPF("XPF"),
-    
-    XPT("XPT"),
-    
-    XTS("XTS"),
-    
-    XXX("XXX"),
-    
-    YER("YER"),
-    
-    ZAR("ZAR"),
-    
-    ZMK("ZMK"),
-    
-    ZMW("ZMW"),
-    
-    BTC("BTC");
-
-    private String value;
-
-    CurrencyEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CurrencyEnum fromValue(String text) {
-      for (CurrencyEnum b : CurrencyEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("currency")
-  private CurrencyEnum currency = null;
+  private String currency = null;
 
   @JsonProperty("phone_number")
   private String phoneNumber = null;
@@ -1042,38 +70,8 @@ public class Location {
   @JsonProperty("business_name")
   private String businessName = null;
 
-  /**
-   * The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space. See [LocationType](#type-locationtype) for possible values
-   */
-  public enum TypeEnum {
-    PHYSICAL("PHYSICAL"),
-    
-    MOBILE("MOBILE");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("website_url")
   private String websiteUrl = null;
@@ -1171,12 +169,12 @@ public class Location {
     this.timezone = timezone;
   }
 
-  public Location capabilities(List<CapabilitiesEnum> capabilities) {
+  public Location capabilities(List<String> capabilities) {
     this.capabilities = capabilities;
     return this;
   }
 
-  public Location addCapabilitiesItem(CapabilitiesEnum capabilitiesItem) {
+  public Location addCapabilitiesItem(String capabilitiesItem) {
     this.capabilities.add(capabilitiesItem);
     return this;
   }
@@ -1186,15 +184,15 @@ public class Location {
    * @return capabilities
   **/
   @ApiModelProperty(value = "Indicates which Square features are enabled for the location. See [LocationCapability](#type-locationcapability) for possible values")
-  public List<CapabilitiesEnum> getCapabilities() {
+  public List<String> getCapabilities() {
     return capabilities;
   }
 
-  public void setCapabilities(List<CapabilitiesEnum> capabilities) {
+  public void setCapabilities(List<String> capabilities) {
     this.capabilities = capabilities;
   }
 
-  public Location status(StatusEnum status) {
+  public Location status(String status) {
     this.status = status;
     return this;
   }
@@ -1204,11 +202,11 @@ public class Location {
    * @return status
   **/
   @ApiModelProperty(value = "The location's status See [LocationStatus](#type-locationstatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
@@ -1248,7 +246,7 @@ public class Location {
     this.merchantId = merchantId;
   }
 
-  public Location country(CountryEnum country) {
+  public Location country(String country) {
     this.country = country;
     return this;
   }
@@ -1258,11 +256,11 @@ public class Location {
    * @return country
   **/
   @ApiModelProperty(value = "The location's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values")
-  public CountryEnum getCountry() {
+  public String getCountry() {
     return country;
   }
 
-  public void setCountry(CountryEnum country) {
+  public void setCountry(String country) {
     this.country = country;
   }
 
@@ -1284,7 +282,7 @@ public class Location {
     this.languageCode = languageCode;
   }
 
-  public Location currency(CurrencyEnum currency) {
+  public Location currency(String currency) {
     this.currency = currency;
     return this;
   }
@@ -1294,11 +292,11 @@ public class Location {
    * @return currency
   **/
   @ApiModelProperty(value = "The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'. See [Currency](#type-currency) for possible values")
-  public CurrencyEnum getCurrency() {
+  public String getCurrency() {
     return currency;
   }
 
-  public void setCurrency(CurrencyEnum currency) {
+  public void setCurrency(String currency) {
     this.currency = currency;
   }
 
@@ -1338,7 +336,7 @@ public class Location {
     this.businessName = businessName;
   }
 
-  public Location type(TypeEnum type) {
+  public Location type(String type) {
     this.type = type;
     return this;
   }
@@ -1348,11 +346,11 @@ public class Location {
    * @return type
   **/
   @ApiModelProperty(value = "The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space. See [LocationType](#type-locationtype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 

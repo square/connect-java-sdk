@@ -33,52 +33,8 @@ public class V1CashDrawerEvent {
   @JsonProperty("employee_id")
   private String employeeId = null;
 
-  /**
-   * The type of event that occurred. See [V1CashDrawerEventEventType](#type-v1cashdrawereventeventtype) for possible values
-   */
-  public enum EventTypeEnum {
-    NO_SALE("NO_SALE"),
-    
-    CASH_TENDER_PAYMENT("CASH_TENDER_PAYMENT"),
-    
-    OTHER_TENDER_PAYMENT("OTHER_TENDER_PAYMENT"),
-    
-    CASH_TENDER_CANCELED_PAYMENT("CASH_TENDER_CANCELED_PAYMENT"),
-    
-    OTHER_TENDER_CANCELED_PAYMENT("OTHER_TENDER_CANCELED_PAYMENT"),
-    
-    CASH_TENDER_REFUND("CASH_TENDER_REFUND"),
-    
-    OTHER_TENDER_REFUND("OTHER_TENDER_REFUND"),
-    
-    PAID_IN("PAID_IN"),
-    
-    PAID_OUT("PAID_OUT");
-
-    private String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String text) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("event_type")
-  private EventTypeEnum eventType = null;
+  private String eventType = null;
 
   @JsonProperty("event_money")
   private V1Money eventMoney = null;
@@ -125,7 +81,7 @@ public class V1CashDrawerEvent {
     this.employeeId = employeeId;
   }
 
-  public V1CashDrawerEvent eventType(EventTypeEnum eventType) {
+  public V1CashDrawerEvent eventType(String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -135,11 +91,11 @@ public class V1CashDrawerEvent {
    * @return eventType
   **/
   @ApiModelProperty(value = "The type of event that occurred. See [V1CashDrawerEventEventType](#type-v1cashdrawereventeventtype) for possible values")
-  public EventTypeEnum getEventType() {
+  public String getEventType() {
     return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 

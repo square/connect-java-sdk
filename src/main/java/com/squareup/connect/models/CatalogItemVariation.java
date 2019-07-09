@@ -45,38 +45,8 @@ public class CatalogItemVariation {
   @JsonProperty("ordinal")
   private Integer ordinal = null;
 
-  /**
-   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for possible values
-   */
-  public enum PricingTypeEnum {
-    FIXED_PRICING("FIXED_PRICING"),
-    
-    VARIABLE_PRICING("VARIABLE_PRICING");
-
-    private String value;
-
-    PricingTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PricingTypeEnum fromValue(String text) {
-      for (PricingTypeEnum b : PricingTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("pricing_type")
-  private PricingTypeEnum pricingType = null;
+  private String pricingType = null;
 
   @JsonProperty("price_money")
   private Money priceMoney = null;
@@ -87,38 +57,8 @@ public class CatalogItemVariation {
   @JsonProperty("track_inventory")
   private Boolean trackInventory = null;
 
-  /**
-   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
-   */
-  public enum InventoryAlertTypeEnum {
-    NONE("NONE"),
-    
-    LOW_QUANTITY("LOW_QUANTITY");
-
-    private String value;
-
-    InventoryAlertTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static InventoryAlertTypeEnum fromValue(String text) {
-      for (InventoryAlertTypeEnum b : InventoryAlertTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("inventory_alert_type")
-  private InventoryAlertTypeEnum inventoryAlertType = null;
+  private String inventoryAlertType = null;
 
   @JsonProperty("inventory_alert_threshold")
   private Long inventoryAlertThreshold = null;
@@ -128,9 +68,6 @@ public class CatalogItemVariation {
 
   @JsonProperty("service_duration")
   private Long serviceDuration = null;
-
-  @JsonProperty("catalog_measurement_unit_id")
-  private String catalogMeasurementUnitId = null;
 
   @JsonProperty("measurement_unit_id")
   private String measurementUnitId = null;
@@ -225,7 +162,7 @@ public class CatalogItemVariation {
     this.ordinal = ordinal;
   }
 
-  public CatalogItemVariation pricingType(PricingTypeEnum pricingType) {
+  public CatalogItemVariation pricingType(String pricingType) {
     this.pricingType = pricingType;
     return this;
   }
@@ -235,11 +172,11 @@ public class CatalogItemVariation {
    * @return pricingType
   **/
   @ApiModelProperty(value = "Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for possible values")
-  public PricingTypeEnum getPricingType() {
+  public String getPricingType() {
     return pricingType;
   }
 
-  public void setPricingType(PricingTypeEnum pricingType) {
+  public void setPricingType(String pricingType) {
     this.pricingType = pricingType;
   }
 
@@ -302,7 +239,7 @@ public class CatalogItemVariation {
     this.trackInventory = trackInventory;
   }
 
-  public CatalogItemVariation inventoryAlertType(InventoryAlertTypeEnum inventoryAlertType) {
+  public CatalogItemVariation inventoryAlertType(String inventoryAlertType) {
     this.inventoryAlertType = inventoryAlertType;
     return this;
   }
@@ -312,11 +249,11 @@ public class CatalogItemVariation {
    * @return inventoryAlertType
   **/
   @ApiModelProperty(value = "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values")
-  public InventoryAlertTypeEnum getInventoryAlertType() {
+  public String getInventoryAlertType() {
     return inventoryAlertType;
   }
 
-  public void setInventoryAlertType(InventoryAlertTypeEnum inventoryAlertType) {
+  public void setInventoryAlertType(String inventoryAlertType) {
     this.inventoryAlertType = inventoryAlertType;
   }
 
@@ -374,24 +311,6 @@ public class CatalogItemVariation {
     this.serviceDuration = serviceDuration;
   }
 
-  public CatalogItemVariation catalogMeasurementUnitId(String catalogMeasurementUnitId) {
-    this.catalogMeasurementUnitId = catalogMeasurementUnitId;
-    return this;
-  }
-
-   /**
-   * Represents the unit used to measure a [CatalogItemVariation](#type-catalogitemvariation) and specifies the precision for decimal quantities.
-   * @return catalogMeasurementUnitId
-  **/
-  @ApiModelProperty(value = "Represents the unit used to measure a [CatalogItemVariation](#type-catalogitemvariation) and specifies the precision for decimal quantities.")
-  public String getCatalogMeasurementUnitId() {
-    return catalogMeasurementUnitId;
-  }
-
-  public void setCatalogMeasurementUnitId(String catalogMeasurementUnitId) {
-    this.catalogMeasurementUnitId = catalogMeasurementUnitId;
-  }
-
   public CatalogItemVariation measurementUnitId(String measurementUnitId) {
     this.measurementUnitId = measurementUnitId;
     return this;
@@ -433,13 +352,12 @@ public class CatalogItemVariation {
         Objects.equals(this.inventoryAlertThreshold, catalogItemVariation.inventoryAlertThreshold) &&
         Objects.equals(this.userData, catalogItemVariation.userData) &&
         Objects.equals(this.serviceDuration, catalogItemVariation.serviceDuration) &&
-        Objects.equals(this.catalogMeasurementUnitId, catalogItemVariation.catalogMeasurementUnitId) &&
         Objects.equals(this.measurementUnitId, catalogItemVariation.measurementUnitId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, name, sku, upc, ordinal, pricingType, priceMoney, locationOverrides, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, serviceDuration, catalogMeasurementUnitId, measurementUnitId);
+    return Objects.hash(itemId, name, sku, upc, ordinal, pricingType, priceMoney, locationOverrides, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, serviceDuration, measurementUnitId);
   }
 
 
@@ -461,7 +379,6 @@ public class CatalogItemVariation {
     sb.append("    inventoryAlertThreshold: ").append(toIndentedString(inventoryAlertThreshold)).append("\n");
     sb.append("    userData: ").append(toIndentedString(userData)).append("\n");
     sb.append("    serviceDuration: ").append(toIndentedString(serviceDuration)).append("\n");
-    sb.append("    catalogMeasurementUnitId: ").append(toIndentedString(catalogMeasurementUnitId)).append("\n");
     sb.append("    measurementUnitId: ").append(toIndentedString(measurementUnitId)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,12 +1,10 @@
 
 # V1RefundType
 
-## Enum
 
+* `"FULL"`
 
-* `FULL` (value: `"FULL"`)
-
-* `PARTIAL` (value: `"PARTIAL"`)
+* `"PARTIAL"`
 
 
 

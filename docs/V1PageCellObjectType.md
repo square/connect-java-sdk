@@ -1,16 +1,14 @@
 
 # V1PageCellObjectType
 
-## Enum
 
+* `"ITEM"`
 
-* `ITEM` (value: `"ITEM"`)
+* `"DISCOUNT"`
 
-* `DISCOUNT` (value: `"DISCOUNT"`)
+* `"CATEGORY"`
 
-* `CATEGORY` (value: `"CATEGORY"`)
-
-* `PLACEHOLDER` (value: `"PLACEHOLDER"`)
+* `"PLACEHOLDER"`
 
 
 

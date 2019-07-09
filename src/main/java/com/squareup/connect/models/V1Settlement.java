@@ -33,38 +33,8 @@ public class V1Settlement {
   @JsonProperty("id")
   private String id = null;
 
-  /**
-   * The settlement's current status. See [V1SettlementStatus](#type-v1settlementstatus) for possible values
-   */
-  public enum StatusEnum {
-    FAILED("FAILED"),
-    
-    SENT("SENT");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("total_money")
   private V1Money totalMoney = null;
@@ -96,7 +66,7 @@ public class V1Settlement {
     this.id = id;
   }
 
-  public V1Settlement status(StatusEnum status) {
+  public V1Settlement status(String status) {
     this.status = status;
     return this;
   }
@@ -106,11 +76,11 @@ public class V1Settlement {
    * @return status
   **/
   @ApiModelProperty(value = "The settlement's current status. See [V1SettlementStatus](#type-v1settlementstatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

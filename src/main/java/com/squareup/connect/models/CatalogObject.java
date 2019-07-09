@@ -25,7 +25,10 @@ import com.squareup.connect.models.CatalogItemVariation;
 import com.squareup.connect.models.CatalogMeasurementUnit;
 import com.squareup.connect.models.CatalogModifier;
 import com.squareup.connect.models.CatalogModifierList;
+import com.squareup.connect.models.CatalogPricingRule;
+import com.squareup.connect.models.CatalogProductSet;
 import com.squareup.connect.models.CatalogTax;
+import com.squareup.connect.models.CatalogTimePeriod;
 import com.squareup.connect.models.CatalogV1Id;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -38,56 +41,8 @@ import java.util.List;
 @ApiModel(description = "The wrapper object for object types in the Catalog data model. The type of a particular `CatalogObject` is determined by the value of `type` and only the corresponding data field may be set.  - if type = `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object. - if type = `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object. - if type = `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object. - if type = `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object. - if type = `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object. - if type = `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object. - if type = `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object. - if type = `IMAGE`, only `image_data` will be populated and it will contain a valid [CatalogImage](#type-catalogimage) object.  For a more detailed discussion of the Catalog data model, please see the [Design a Catalog](/catalog-api/design-a-catalog) guide.")
 
 public class CatalogObject {
-  /**
-   * The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below. See [CatalogObjectType](#type-catalogobjecttype) for possible values
-   */
-  public enum TypeEnum {
-    ITEM("ITEM"),
-    
-    IMAGE("IMAGE"),
-    
-    CATEGORY("CATEGORY"),
-    
-    ITEM_VARIATION("ITEM_VARIATION"),
-    
-    TAX("TAX"),
-    
-    DISCOUNT("DISCOUNT"),
-    
-    MODIFIER_LIST("MODIFIER_LIST"),
-    
-    MODIFIER("MODIFIER"),
-    
-    PRICING_RULE("PRICING_RULE"),
-    
-    PRODUCT_SET("PRODUCT_SET"),
-    
-    TIME_PERIOD("TIME_PERIOD");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("id")
   private String id = null;
@@ -137,13 +92,22 @@ public class CatalogObject {
   @JsonProperty("modifier_data")
   private CatalogModifier modifierData = null;
 
+  @JsonProperty("time_period_data")
+  private CatalogTimePeriod timePeriodData = null;
+
+  @JsonProperty("product_set_data")
+  private CatalogProductSet productSetData = null;
+
+  @JsonProperty("pricing_rule_data")
+  private CatalogPricingRule pricingRuleData = null;
+
   @JsonProperty("image_data")
   private CatalogImage imageData = null;
 
   @JsonProperty("measurement_unit_data")
   private CatalogMeasurementUnit measurementUnitData = null;
 
-  public CatalogObject type(TypeEnum type) {
+  public CatalogObject type(String type) {
     this.type = type;
     return this;
   }
@@ -153,11 +117,11 @@ public class CatalogObject {
    * @return type
   **/
   @ApiModelProperty(required = true, value = "The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below. See [CatalogObjectType](#type-catalogobjecttype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -464,6 +428,60 @@ public class CatalogObject {
     this.modifierData = modifierData;
   }
 
+  public CatalogObject timePeriodData(CatalogTimePeriod timePeriodData) {
+    this.timePeriodData = timePeriodData;
+    return this;
+  }
+
+   /**
+   * Structured data for a [CatalogTimePeriod](#type-catalogtimeperiod), set for CatalogObjects of type `TIME_PERIOD`.
+   * @return timePeriodData
+  **/
+  @ApiModelProperty(value = "Structured data for a [CatalogTimePeriod](#type-catalogtimeperiod), set for CatalogObjects of type `TIME_PERIOD`.")
+  public CatalogTimePeriod getTimePeriodData() {
+    return timePeriodData;
+  }
+
+  public void setTimePeriodData(CatalogTimePeriod timePeriodData) {
+    this.timePeriodData = timePeriodData;
+  }
+
+  public CatalogObject productSetData(CatalogProductSet productSetData) {
+    this.productSetData = productSetData;
+    return this;
+  }
+
+   /**
+   * Structured data for a [CatalogProductSet](#type-catalogproductset), set for CatalogObjects of type `PRODUCT_SET`.
+   * @return productSetData
+  **/
+  @ApiModelProperty(value = "Structured data for a [CatalogProductSet](#type-catalogproductset), set for CatalogObjects of type `PRODUCT_SET`.")
+  public CatalogProductSet getProductSetData() {
+    return productSetData;
+  }
+
+  public void setProductSetData(CatalogProductSet productSetData) {
+    this.productSetData = productSetData;
+  }
+
+  public CatalogObject pricingRuleData(CatalogPricingRule pricingRuleData) {
+    this.pricingRuleData = pricingRuleData;
+    return this;
+  }
+
+   /**
+   * Structured data for a [CatalogPricingRule](#type-catalogpricingrule), set for CatalogObjects of type `PRICING_RULE`.
+   * @return pricingRuleData
+  **/
+  @ApiModelProperty(value = "Structured data for a [CatalogPricingRule](#type-catalogpricingrule), set for CatalogObjects of type `PRICING_RULE`.")
+  public CatalogPricingRule getPricingRuleData() {
+    return pricingRuleData;
+  }
+
+  public void setPricingRuleData(CatalogPricingRule pricingRuleData) {
+    this.pricingRuleData = pricingRuleData;
+  }
+
   public CatalogObject imageData(CatalogImage imageData) {
     this.imageData = imageData;
     return this;
@@ -527,13 +545,16 @@ public class CatalogObject {
         Objects.equals(this.discountData, catalogObject.discountData) &&
         Objects.equals(this.modifierListData, catalogObject.modifierListData) &&
         Objects.equals(this.modifierData, catalogObject.modifierData) &&
+        Objects.equals(this.timePeriodData, catalogObject.timePeriodData) &&
+        Objects.equals(this.productSetData, catalogObject.productSetData) &&
+        Objects.equals(this.pricingRuleData, catalogObject.pricingRuleData) &&
         Objects.equals(this.imageData, catalogObject.imageData) &&
         Objects.equals(this.measurementUnitData, catalogObject.measurementUnitData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, imageId, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, imageData, measurementUnitData);
+    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, imageId, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, timePeriodData, productSetData, pricingRuleData, imageData, measurementUnitData);
   }
 
 
@@ -559,6 +580,9 @@ public class CatalogObject {
     sb.append("    discountData: ").append(toIndentedString(discountData)).append("\n");
     sb.append("    modifierListData: ").append(toIndentedString(modifierListData)).append("\n");
     sb.append("    modifierData: ").append(toIndentedString(modifierData)).append("\n");
+    sb.append("    timePeriodData: ").append(toIndentedString(timePeriodData)).append("\n");
+    sb.append("    productSetData: ").append(toIndentedString(productSetData)).append("\n");
+    sb.append("    pricingRuleData: ").append(toIndentedString(pricingRuleData)).append("\n");
     sb.append("    imageData: ").append(toIndentedString(imageData)).append("\n");
     sb.append("    measurementUnitData: ").append(toIndentedString(measurementUnitData)).append("\n");
     sb.append("}");

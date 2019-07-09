@@ -1,22 +1,20 @@
 
 # Weekday
 
-## Enum
 
+* `"MON"`
 
-* `MON` (value: `"MON"`)
+* `"TUE"`
 
-* `TUE` (value: `"TUE"`)
+* `"WED"`
 
-* `WED` (value: `"WED"`)
+* `"THU"`
 
-* `THU` (value: `"THU"`)
+* `"FRI"`
 
-* `FRI` (value: `"FRI"`)
+* `"SAT"`
 
-* `SAT` (value: `"SAT"`)
-
-* `SUN` (value: `"SUN"`)
+* `"SUN"`
 
 
 

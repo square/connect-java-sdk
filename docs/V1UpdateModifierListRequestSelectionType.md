@@ -1,12 +1,10 @@
 
 # V1UpdateModifierListRequestSelectionType
 
-## Enum
 
+* `"SINGLE"`
 
-* `SINGLE` (value: `"SINGLE"`)
-
-* `MULTIPLE` (value: `"MULTIPLE"`)
+* `"MULTIPLE"`
 
 
 

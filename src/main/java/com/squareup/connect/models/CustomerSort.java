@@ -26,73 +26,13 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Indicates the field to use for sorting customer profiles. For example, by total money spent with the merchant or the date of their first purchase.")
 
 public class CustomerSort {
-  /**
-   * The field to sort the results on. It could be the total money spent at the merchant, the date of the first visit (etc). See [CustomerSortField](#type-customersortfield) for possible values
-   */
-  public enum FieldEnum {
-    DEFAULT("DEFAULT"),
-    
-    CREATED_AT("CREATED_AT");
-
-    private String value;
-
-    FieldEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FieldEnum fromValue(String text) {
-      for (FieldEnum b : FieldEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("field")
-  private FieldEnum field = null;
-
-  /**
-   * Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum OrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    OrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OrderEnum fromValue(String text) {
-      for (OrderEnum b : OrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String field = null;
 
   @JsonProperty("order")
-  private OrderEnum order = null;
+  private String order = null;
 
-  public CustomerSort field(FieldEnum field) {
+  public CustomerSort field(String field) {
     this.field = field;
     return this;
   }
@@ -102,15 +42,15 @@ public class CustomerSort {
    * @return field
   **/
   @ApiModelProperty(value = "The field to sort the results on. It could be the total money spent at the merchant, the date of the first visit (etc). See [CustomerSortField](#type-customersortfield) for possible values")
-  public FieldEnum getField() {
+  public String getField() {
     return field;
   }
 
-  public void setField(FieldEnum field) {
+  public void setField(String field) {
     this.field = field;
   }
 
-  public CustomerSort order(OrderEnum order) {
+  public CustomerSort order(String order) {
     this.order = order;
     return this;
   }
@@ -120,11 +60,11 @@ public class CustomerSort {
    * @return order
   **/
   @ApiModelProperty(value = "Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. See [SortOrder](#type-sortorder) for possible values")
-  public OrderEnum getOrder() {
+  public String getOrder() {
     return order;
   }
 
-  public void setOrder(OrderEnum order) {
+  public void setOrder(String order) {
     this.order = order;
   }
 

@@ -34,48 +34,8 @@ public class V1EmployeeRole {
   @JsonProperty("name")
   private String name = null;
 
-  /**
-   * Gets or Sets permissions
-   */
-  public enum PermissionsEnum {
-    ACCESS_SALES_HISTORY("REGISTER_ACCESS_SALES_HISTORY"),
-    
-    APPLY_RESTRICTED_DISCOUNTS("REGISTER_APPLY_RESTRICTED_DISCOUNTS"),
-    
-    CHANGE_SETTINGS("REGISTER_CHANGE_SETTINGS"),
-    
-    EDIT_ITEM("REGISTER_EDIT_ITEM"),
-    
-    ISSUE_REFUNDS("REGISTER_ISSUE_REFUNDS"),
-    
-    OPEN_CASH_DRAWER_OUTSIDE_SALE("REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE"),
-    
-    VIEW_SUMMARY_REPORTS("REGISTER_VIEW_SUMMARY_REPORTS");
-
-    private String value;
-
-    PermissionsEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PermissionsEnum fromValue(String text) {
-      for (PermissionsEnum b : PermissionsEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("permissions")
-  private List<PermissionsEnum> permissions = new ArrayList<PermissionsEnum>();
+  private List<String> permissions = new ArrayList<String>();
 
   @JsonProperty("is_owner")
   private Boolean isOwner = null;
@@ -122,12 +82,12 @@ public class V1EmployeeRole {
     this.name = name;
   }
 
-  public V1EmployeeRole permissions(List<PermissionsEnum> permissions) {
+  public V1EmployeeRole permissions(List<String> permissions) {
     this.permissions = permissions;
     return this;
   }
 
-  public V1EmployeeRole addPermissionsItem(PermissionsEnum permissionsItem) {
+  public V1EmployeeRole addPermissionsItem(String permissionsItem) {
     this.permissions.add(permissionsItem);
     return this;
   }
@@ -137,11 +97,11 @@ public class V1EmployeeRole {
    * @return permissions
   **/
   @ApiModelProperty(required = true, value = "The role's permissions. See [V1EmployeeRolePermissions](#type-v1employeerolepermissions) for possible values")
-  public List<PermissionsEnum> getPermissions() {
+  public List<String> getPermissions() {
     return permissions;
   }
 
-  public void setPermissions(List<PermissionsEnum> permissions) {
+  public void setPermissions(List<String> permissions) {
     this.permissions = permissions;
   }
 

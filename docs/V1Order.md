@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **buyerEmail** | **String** | The email address of the order&#39;s buyer. |  [optional]
 **recipientName** | **String** | The name of the order&#39;s buyer. |  [optional]
 **recipientPhoneNumber** | **String** | The phone number to use for the order&#39;s delivery. |  [optional]
-**state** | [**StateEnum**](#StateEnum) | Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1OrderState](#type-v1orderstate) for possible values |  [optional]
+**state** | **String** | Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1OrderState](#type-v1orderstate) for possible values |  [optional]
 **shippingAddress** | [**Address**](Address.md) | The address to ship the order to. |  [optional]
 **subtotalMoney** | [**V1Money**](V1Money.md) | The amount of all items purchased in the order, before taxes and shipping. |  [optional]
 **totalShippingMoney** | [**V1Money**](V1Money.md) | The shipping cost for the order. |  [optional]
@@ -33,18 +33,6 @@ Name | Type | Description | Notes
 **promoCode** | **String** | The promo code provided by the buyer, if any. |  [optional]
 **btcReceiveAddress** | **String** | For Bitcoin transactions, the address that the buyer sent Bitcoin to. |  [optional]
 **btcPriceSatoshi** | [**BigDecimal**](BigDecimal.md) | For Bitcoin transactions, the price of the buyer&#39;s order in satoshi (100 million satoshi equals 1 BTC). |  [optional]
-
-
-<a name="StateEnum"></a>
-## Enum: StateEnum
-Name | Value
----- | -----
-PENDING | &quot;PENDING&quot;
-OPEN | &quot;OPEN&quot;
-COMPLETED | &quot;COMPLETED&quot;
-CANCELED | &quot;CANCELED&quot;
-REFUNDED | &quot;REFUNDED&quot;
-REJECTED | &quot;REJECTED&quot;
 
 
 

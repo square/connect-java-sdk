@@ -337,6 +337,7 @@ public class CatalogApiTest extends APITest {
         assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getMinSelectedModifiers());
         assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getMaxSelectedModifiers());
         assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getEnabled());
+        assertNull(actualCoffee.getItemData().getImageUrl());
 
         assertEquals(2, actualCoffee.getItemData().getVariations().size());
         assertEquals("Small", actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getName());

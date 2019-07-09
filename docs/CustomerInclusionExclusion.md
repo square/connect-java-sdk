@@ -1,12 +1,10 @@
 
 # CustomerInclusionExclusion
 
-## Enum
 
+* `"INCLUDE"`
 
-* `INCLUDE` (value: `"INCLUDE"`)
-
-* `EXCLUDE` (value: `"EXCLUDE"`)
+* `"EXCLUDE"`
 
 
 

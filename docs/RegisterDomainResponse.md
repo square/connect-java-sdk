@@ -9,15 +9,7 @@ Defines the fields that are included in the response body of a request to the Re
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **errors** | [**List&lt;Error&gt;**](Error.md) | Any errors that occurred during the request. |  [optional]
-**status** | [**StatusEnum**](#StatusEnum) | Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values |  [optional]
-
-
-<a name="StatusEnum"></a>
-## Enum: StatusEnum
-Name | Value
----- | -----
-PENDING | &quot;PENDING&quot;
-VERIFIED | &quot;VERIFIED&quot;
+**status** | **String** | Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values |  [optional]
 
 
 

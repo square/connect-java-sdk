@@ -28,47 +28,15 @@ import java.util.List;
 @ApiModel(description = "Filter by current Order `state`.")
 
 public class SearchOrdersStateFilter {
-  /**
-   * Gets or Sets states
-   */
-  public enum StatesEnum {
-    OPEN("OPEN"),
-    
-    COMPLETED("COMPLETED"),
-    
-    CANCELED("CANCELED");
-
-    private String value;
-
-    StatesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatesEnum fromValue(String text) {
-      for (StatesEnum b : StatesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("states")
-  private List<StatesEnum> states = new ArrayList<StatesEnum>();
+  private List<String> states = new ArrayList<String>();
 
-  public SearchOrdersStateFilter states(List<StatesEnum> states) {
+  public SearchOrdersStateFilter states(List<String> states) {
     this.states = states;
     return this;
   }
 
-  public SearchOrdersStateFilter addStatesItem(StatesEnum statesItem) {
+  public SearchOrdersStateFilter addStatesItem(String statesItem) {
     this.states.add(statesItem);
     return this;
   }
@@ -78,11 +46,11 @@ public class SearchOrdersStateFilter {
    * @return states
   **/
   @ApiModelProperty(required = true, value = "States to filter for. See [OrderState](#type-orderstate) for possible values")
-  public List<StatesEnum> getStates() {
+  public List<String> getStates() {
     return states;
   }
 
-  public void setStates(List<StatesEnum> states) {
+  public void setStates(List<String> states) {
     this.states = states;
   }
 

@@ -40,46 +40,8 @@ public class V1PaymentItemization {
   @JsonProperty("quantity")
   private BigDecimal quantity = null;
 
-  /**
-   * The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT See [V1PaymentItemizationItemizationType](#type-v1paymentitemizationitemizationtype) for possible values
-   */
-  public enum ItemizationTypeEnum {
-    ITEM("ITEM"),
-    
-    CUSTOM_AMOUNT("CUSTOM_AMOUNT"),
-    
-    GIFT_CARD_ACTIVATION("GIFT_CARD_ACTIVATION"),
-    
-    GIFT_CARD_RELOAD("GIFT_CARD_RELOAD"),
-    
-    GIFT_CARD_UNKNOWN("GIFT_CARD_UNKNOWN"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    ItemizationTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ItemizationTypeEnum fromValue(String text) {
-      for (ItemizationTypeEnum b : ItemizationTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("itemization_type")
-  private ItemizationTypeEnum itemizationType = null;
+  private String itemizationType = null;
 
   @JsonProperty("item_detail")
   private V1PaymentItemDetail itemDetail = null;
@@ -150,7 +112,7 @@ public class V1PaymentItemization {
     this.quantity = quantity;
   }
 
-  public V1PaymentItemization itemizationType(ItemizationTypeEnum itemizationType) {
+  public V1PaymentItemization itemizationType(String itemizationType) {
     this.itemizationType = itemizationType;
     return this;
   }
@@ -160,11 +122,11 @@ public class V1PaymentItemization {
    * @return itemizationType
   **/
   @ApiModelProperty(value = "The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT See [V1PaymentItemizationItemizationType](#type-v1paymentitemizationitemizationtype) for possible values")
-  public ItemizationTypeEnum getItemizationType() {
+  public String getItemizationType() {
     return itemizationType;
   }
 
-  public void setItemizationType(ItemizationTypeEnum itemizationType) {
+  public void setItemizationType(String itemizationType) {
     this.itemizationType = itemizationType;
   }
 

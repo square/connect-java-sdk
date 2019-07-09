@@ -32,40 +32,8 @@ public class CreateOrderRequestTax {
   @JsonProperty("name")
   private String name = null;
 
-  /**
-   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
-   */
-  public enum TypeEnum {
-    UNKNOWN_TAX("UNKNOWN_TAX"),
-    
-    ADDITIVE("ADDITIVE"),
-    
-    INCLUSIVE("INCLUSIVE");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("percentage")
   private String percentage = null;
@@ -106,7 +74,7 @@ public class CreateOrderRequestTax {
     this.name = name;
   }
 
-  public CreateOrderRequestTax type(TypeEnum type) {
+  public CreateOrderRequestTax type(String type) {
     this.type = type;
     return this;
   }
@@ -116,11 +84,11 @@ public class CreateOrderRequestTax {
    * @return type
   **/
   @ApiModelProperty(value = "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 

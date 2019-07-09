@@ -1,14 +1,12 @@
 
 # V1UpdateOrderRequestAction
 
-## Enum
 
+* `"COMPLETE"`
 
-* `COMPLETE` (value: `"COMPLETE"`)
+* `"CANCEL"`
 
-* `CANCEL` (value: `"CANCEL"`)
-
-* `REFUND` (value: `"REFUND"`)
+* `"REFUND"`
 
 
 

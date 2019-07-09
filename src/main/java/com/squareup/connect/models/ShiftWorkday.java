@@ -30,40 +30,8 @@ public class ShiftWorkday {
   @JsonProperty("date_range")
   private DateRange dateRange = null;
 
-  /**
-   * The strategy on which the dates are applied. See [ShiftWorkdayMatcher](#type-shiftworkdaymatcher) for possible values
-   */
-  public enum MatchShiftsByEnum {
-    START_AT("START_AT"),
-    
-    END_AT("END_AT"),
-    
-    INTERSECTION("INTERSECTION");
-
-    private String value;
-
-    MatchShiftsByEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static MatchShiftsByEnum fromValue(String text) {
-      for (MatchShiftsByEnum b : MatchShiftsByEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("match_shifts_by")
-  private MatchShiftsByEnum matchShiftsBy = null;
+  private String matchShiftsBy = null;
 
   @JsonProperty("default_timezone")
   private String defaultTimezone = null;
@@ -86,7 +54,7 @@ public class ShiftWorkday {
     this.dateRange = dateRange;
   }
 
-  public ShiftWorkday matchShiftsBy(MatchShiftsByEnum matchShiftsBy) {
+  public ShiftWorkday matchShiftsBy(String matchShiftsBy) {
     this.matchShiftsBy = matchShiftsBy;
     return this;
   }
@@ -96,11 +64,11 @@ public class ShiftWorkday {
    * @return matchShiftsBy
   **/
   @ApiModelProperty(value = "The strategy on which the dates are applied. See [ShiftWorkdayMatcher](#type-shiftworkdaymatcher) for possible values")
-  public MatchShiftsByEnum getMatchShiftsBy() {
+  public String getMatchShiftsBy() {
     return matchShiftsBy;
   }
 
-  public void setMatchShiftsBy(MatchShiftsByEnum matchShiftsBy) {
+  public void setMatchShiftsBy(String matchShiftsBy) {
     this.matchShiftsBy = matchShiftsBy;
   }
 

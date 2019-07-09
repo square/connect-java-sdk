@@ -17,7 +17,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -35,12 +34,6 @@ public class CatalogPricingRule {
   @JsonProperty("time_period_ids")
   private List<String> timePeriodIds = new ArrayList<String>();
 
-  @JsonProperty("total_price_money")
-  private Money totalPriceMoney = null;
-
-  @JsonProperty("item_price_money")
-  private Money itemPriceMoney = null;
-
   @JsonProperty("discount_id")
   private String discountId = null;
 
@@ -49,43 +42,6 @@ public class CatalogPricingRule {
 
   @JsonProperty("apply_products_id")
   private String applyProductsId = null;
-
-  /**
-   * Describes how the pricing rule can be combined with other pricing rules. See [Stackable](#type-stackable) for all possible values. See [AggregationStrategy](#type-aggregationstrategy) for possible values
-   */
-  public enum StackableEnum {
-    UNKNOWN("UNKNOWN"),
-    
-    BASE("BASE"),
-    
-    STACKABLE("STACKABLE"),
-    
-    EXCLUSIVE("EXCLUSIVE");
-
-    private String value;
-
-    StackableEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StackableEnum fromValue(String text) {
-      for (StackableEnum b : StackableEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("stackable")
-  private StackableEnum stackable = null;
 
   @JsonProperty("exclude_products_id")
   private String excludeProductsId = null;
@@ -143,42 +99,6 @@ public class CatalogPricingRule {
     this.timePeriodIds = timePeriodIds;
   }
 
-  public CatalogPricingRule totalPriceMoney(Money totalPriceMoney) {
-    this.totalPriceMoney = totalPriceMoney;
-    return this;
-  }
-
-   /**
-   * The total amount of money to charge for all matched items.  Only one of `total_price_money`, `item_price`, or `discount` can be supplied.
-   * @return totalPriceMoney
-  **/
-  @ApiModelProperty(value = "The total amount of money to charge for all matched items.  Only one of `total_price_money`, `item_price`, or `discount` can be supplied.")
-  public Money getTotalPriceMoney() {
-    return totalPriceMoney;
-  }
-
-  public void setTotalPriceMoney(Money totalPriceMoney) {
-    this.totalPriceMoney = totalPriceMoney;
-  }
-
-  public CatalogPricingRule itemPriceMoney(Money itemPriceMoney) {
-    this.itemPriceMoney = itemPriceMoney;
-    return this;
-  }
-
-   /**
-   * The amount of money to charge for each matched item.  Only one of `total_price_money`, `item_price`, or `discount` can be supplied.
-   * @return itemPriceMoney
-  **/
-  @ApiModelProperty(value = "The amount of money to charge for each matched item.  Only one of `total_price_money`, `item_price`, or `discount` can be supplied.")
-  public Money getItemPriceMoney() {
-    return itemPriceMoney;
-  }
-
-  public void setItemPriceMoney(Money itemPriceMoney) {
-    this.itemPriceMoney = itemPriceMoney;
-  }
-
   public CatalogPricingRule discountId(String discountId) {
     this.discountId = discountId;
     return this;
@@ -231,24 +151,6 @@ public class CatalogPricingRule {
 
   public void setApplyProductsId(String applyProductsId) {
     this.applyProductsId = applyProductsId;
-  }
-
-  public CatalogPricingRule stackable(StackableEnum stackable) {
-    this.stackable = stackable;
-    return this;
-  }
-
-   /**
-   * Describes how the pricing rule can be combined with other pricing rules. See [Stackable](#type-stackable) for all possible values. See [AggregationStrategy](#type-aggregationstrategy) for possible values
-   * @return stackable
-  **/
-  @ApiModelProperty(value = "Describes how the pricing rule can be combined with other pricing rules. See [Stackable](#type-stackable) for all possible values. See [AggregationStrategy](#type-aggregationstrategy) for possible values")
-  public StackableEnum getStackable() {
-    return stackable;
-  }
-
-  public void setStackable(StackableEnum stackable) {
-    this.stackable = stackable;
   }
 
   public CatalogPricingRule excludeProductsId(String excludeProductsId) {
@@ -353,12 +255,9 @@ public class CatalogPricingRule {
     CatalogPricingRule catalogPricingRule = (CatalogPricingRule) o;
     return Objects.equals(this.name, catalogPricingRule.name) &&
         Objects.equals(this.timePeriodIds, catalogPricingRule.timePeriodIds) &&
-        Objects.equals(this.totalPriceMoney, catalogPricingRule.totalPriceMoney) &&
-        Objects.equals(this.itemPriceMoney, catalogPricingRule.itemPriceMoney) &&
         Objects.equals(this.discountId, catalogPricingRule.discountId) &&
         Objects.equals(this.matchProductsId, catalogPricingRule.matchProductsId) &&
         Objects.equals(this.applyProductsId, catalogPricingRule.applyProductsId) &&
-        Objects.equals(this.stackable, catalogPricingRule.stackable) &&
         Objects.equals(this.excludeProductsId, catalogPricingRule.excludeProductsId) &&
         Objects.equals(this.validFromDate, catalogPricingRule.validFromDate) &&
         Objects.equals(this.validFromLocalTime, catalogPricingRule.validFromLocalTime) &&
@@ -368,7 +267,7 @@ public class CatalogPricingRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, timePeriodIds, totalPriceMoney, itemPriceMoney, discountId, matchProductsId, applyProductsId, stackable, excludeProductsId, validFromDate, validFromLocalTime, validUntilDate, validUntilLocalTime);
+    return Objects.hash(name, timePeriodIds, discountId, matchProductsId, applyProductsId, excludeProductsId, validFromDate, validFromLocalTime, validUntilDate, validUntilLocalTime);
   }
 
 
@@ -379,12 +278,9 @@ public class CatalogPricingRule {
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    timePeriodIds: ").append(toIndentedString(timePeriodIds)).append("\n");
-    sb.append("    totalPriceMoney: ").append(toIndentedString(totalPriceMoney)).append("\n");
-    sb.append("    itemPriceMoney: ").append(toIndentedString(itemPriceMoney)).append("\n");
     sb.append("    discountId: ").append(toIndentedString(discountId)).append("\n");
     sb.append("    matchProductsId: ").append(toIndentedString(matchProductsId)).append("\n");
     sb.append("    applyProductsId: ").append(toIndentedString(applyProductsId)).append("\n");
-    sb.append("    stackable: ").append(toIndentedString(stackable)).append("\n");
     sb.append("    excludeProductsId: ").append(toIndentedString(excludeProductsId)).append("\n");
     sb.append("    validFromDate: ").append(toIndentedString(validFromDate)).append("\n");
     sb.append("    validFromLocalTime: ").append(toIndentedString(validFromLocalTime)).append("\n");

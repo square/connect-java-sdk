@@ -33,74 +33,14 @@ public class ItemVariationLocationOverrides {
   @JsonProperty("price_money")
   private Money priceMoney = null;
 
-  /**
-   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for possible values
-   */
-  public enum PricingTypeEnum {
-    FIXED_PRICING("FIXED_PRICING"),
-    
-    VARIABLE_PRICING("VARIABLE_PRICING");
-
-    private String value;
-
-    PricingTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PricingTypeEnum fromValue(String text) {
-      for (PricingTypeEnum b : PricingTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("pricing_type")
-  private PricingTypeEnum pricingType = null;
+  private String pricingType = null;
 
   @JsonProperty("track_inventory")
   private Boolean trackInventory = null;
 
-  /**
-   * Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
-   */
-  public enum InventoryAlertTypeEnum {
-    NONE("NONE"),
-    
-    LOW_QUANTITY("LOW_QUANTITY");
-
-    private String value;
-
-    InventoryAlertTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static InventoryAlertTypeEnum fromValue(String text) {
-      for (InventoryAlertTypeEnum b : InventoryAlertTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("inventory_alert_type")
-  private InventoryAlertTypeEnum inventoryAlertType = null;
+  private String inventoryAlertType = null;
 
   @JsonProperty("inventory_alert_threshold")
   private Long inventoryAlertThreshold = null;
@@ -141,7 +81,7 @@ public class ItemVariationLocationOverrides {
     this.priceMoney = priceMoney;
   }
 
-  public ItemVariationLocationOverrides pricingType(PricingTypeEnum pricingType) {
+  public ItemVariationLocationOverrides pricingType(String pricingType) {
     this.pricingType = pricingType;
     return this;
   }
@@ -151,11 +91,11 @@ public class ItemVariationLocationOverrides {
    * @return pricingType
   **/
   @ApiModelProperty(value = "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for possible values")
-  public PricingTypeEnum getPricingType() {
+  public String getPricingType() {
     return pricingType;
   }
 
-  public void setPricingType(PricingTypeEnum pricingType) {
+  public void setPricingType(String pricingType) {
     this.pricingType = pricingType;
   }
 
@@ -177,7 +117,7 @@ public class ItemVariationLocationOverrides {
     this.trackInventory = trackInventory;
   }
 
-  public ItemVariationLocationOverrides inventoryAlertType(InventoryAlertTypeEnum inventoryAlertType) {
+  public ItemVariationLocationOverrides inventoryAlertType(String inventoryAlertType) {
     this.inventoryAlertType = inventoryAlertType;
     return this;
   }
@@ -187,11 +127,11 @@ public class ItemVariationLocationOverrides {
    * @return inventoryAlertType
   **/
   @ApiModelProperty(value = "Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values")
-  public InventoryAlertTypeEnum getInventoryAlertType() {
+  public String getInventoryAlertType() {
     return inventoryAlertType;
   }
 
-  public void setInventoryAlertType(InventoryAlertTypeEnum inventoryAlertType) {
+  public void setInventoryAlertType(String inventoryAlertType) {
     this.inventoryAlertType = inventoryAlertType;
   }
 

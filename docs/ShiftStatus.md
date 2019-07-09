@@ -1,12 +1,10 @@
 
 # ShiftStatus
 
-## Enum
 
+* `"OPEN"`
 
-* `OPEN` (value: `"OPEN"`)
-
-* `CLOSED` (value: `"CLOSED"`)
+* `"CLOSED"`
 
 
 

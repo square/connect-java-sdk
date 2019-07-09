@@ -39,38 +39,8 @@ public class V1Variation {
   @JsonProperty("ordinal")
   private Integer ordinal = null;
 
-  /**
-   * Indicates whether the item variation's price is fixed or determined at the time of sale. See [V1VariationPricingType](#type-v1variationpricingtype) for possible values
-   */
-  public enum PricingTypeEnum {
-    FIXED_PRICING("FIXED_PRICING"),
-    
-    VARIABLE_PRICING("VARIABLE_PRICING");
-
-    private String value;
-
-    PricingTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PricingTypeEnum fromValue(String text) {
-      for (PricingTypeEnum b : PricingTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("pricing_type")
-  private PricingTypeEnum pricingType = null;
+  private String pricingType = null;
 
   @JsonProperty("price_money")
   private V1Money priceMoney = null;
@@ -81,46 +51,8 @@ public class V1Variation {
   @JsonProperty("track_inventory")
   private Boolean trackInventory = null;
 
-  /**
-   * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold. See [V1VariationInventoryAlertType](#type-v1variationinventoryalerttype) for possible values
-   */
-  public enum InventoryAlertTypeEnum {
-    LOW_QUANTITY("LOW_QUANTITY"),
-    
-    NONE("NONE"),
-    
-    INVESTMENT("INVESTMENT"),
-    
-    LOAN("LOAN"),
-    
-    SAVINGS("SAVINGS"),
-    
-    OTHER("OTHER");
-
-    private String value;
-
-    InventoryAlertTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static InventoryAlertTypeEnum fromValue(String text) {
-      for (InventoryAlertTypeEnum b : InventoryAlertTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("inventory_alert_type")
-  private InventoryAlertTypeEnum inventoryAlertType = null;
+  private String inventoryAlertType = null;
 
   @JsonProperty("inventory_alert_threshold")
   private Integer inventoryAlertThreshold = null;
@@ -203,7 +135,7 @@ public class V1Variation {
     this.ordinal = ordinal;
   }
 
-  public V1Variation pricingType(PricingTypeEnum pricingType) {
+  public V1Variation pricingType(String pricingType) {
     this.pricingType = pricingType;
     return this;
   }
@@ -213,11 +145,11 @@ public class V1Variation {
    * @return pricingType
   **/
   @ApiModelProperty(value = "Indicates whether the item variation's price is fixed or determined at the time of sale. See [V1VariationPricingType](#type-v1variationpricingtype) for possible values")
-  public PricingTypeEnum getPricingType() {
+  public String getPricingType() {
     return pricingType;
   }
 
-  public void setPricingType(PricingTypeEnum pricingType) {
+  public void setPricingType(String pricingType) {
     this.pricingType = pricingType;
   }
 
@@ -275,7 +207,7 @@ public class V1Variation {
     this.trackInventory = trackInventory;
   }
 
-  public V1Variation inventoryAlertType(InventoryAlertTypeEnum inventoryAlertType) {
+  public V1Variation inventoryAlertType(String inventoryAlertType) {
     this.inventoryAlertType = inventoryAlertType;
     return this;
   }
@@ -285,11 +217,11 @@ public class V1Variation {
    * @return inventoryAlertType
   **/
   @ApiModelProperty(value = "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold. See [V1VariationInventoryAlertType](#type-v1variationinventoryalerttype) for possible values")
-  public InventoryAlertTypeEnum getInventoryAlertType() {
+  public String getInventoryAlertType() {
     return inventoryAlertType;
   }
 
-  public void setInventoryAlertType(InventoryAlertTypeEnum inventoryAlertType) {
+  public void setInventoryAlertType(String inventoryAlertType) {
     this.inventoryAlertType = inventoryAlertType;
   }
 

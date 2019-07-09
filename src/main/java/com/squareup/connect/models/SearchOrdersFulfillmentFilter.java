@@ -28,84 +28,18 @@ import java.util.List;
 @ApiModel(description = "Filter based on [Order Fulfillment](#type-orderfulfillment) information.")
 
 public class SearchOrdersFulfillmentFilter {
-  /**
-   * Gets or Sets fulfillmentTypes
-   */
-  public enum FulfillmentTypesEnum {
-    PICKUP("PICKUP");
-
-    private String value;
-
-    FulfillmentTypesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FulfillmentTypesEnum fromValue(String text) {
-      for (FulfillmentTypesEnum b : FulfillmentTypesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("fulfillment_types")
-  private List<FulfillmentTypesEnum> fulfillmentTypes = new ArrayList<FulfillmentTypesEnum>();
-
-  /**
-   * Gets or Sets fulfillmentStates
-   */
-  public enum FulfillmentStatesEnum {
-    PROPOSED("PROPOSED"),
-    
-    RESERVED("RESERVED"),
-    
-    PREPARED("PREPARED"),
-    
-    COMPLETED("COMPLETED"),
-    
-    CANCELED("CANCELED"),
-    
-    FAILED("FAILED");
-
-    private String value;
-
-    FulfillmentStatesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FulfillmentStatesEnum fromValue(String text) {
-      for (FulfillmentStatesEnum b : FulfillmentStatesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private List<String> fulfillmentTypes = new ArrayList<String>();
 
   @JsonProperty("fulfillment_states")
-  private List<FulfillmentStatesEnum> fulfillmentStates = new ArrayList<FulfillmentStatesEnum>();
+  private List<String> fulfillmentStates = new ArrayList<String>();
 
-  public SearchOrdersFulfillmentFilter fulfillmentTypes(List<FulfillmentTypesEnum> fulfillmentTypes) {
+  public SearchOrdersFulfillmentFilter fulfillmentTypes(List<String> fulfillmentTypes) {
     this.fulfillmentTypes = fulfillmentTypes;
     return this;
   }
 
-  public SearchOrdersFulfillmentFilter addFulfillmentTypesItem(FulfillmentTypesEnum fulfillmentTypesItem) {
+  public SearchOrdersFulfillmentFilter addFulfillmentTypesItem(String fulfillmentTypesItem) {
     this.fulfillmentTypes.add(fulfillmentTypesItem);
     return this;
   }
@@ -115,20 +49,20 @@ public class SearchOrdersFulfillmentFilter {
    * @return fulfillmentTypes
   **/
   @ApiModelProperty(required = true, value = "List of [fulfillment types](#type-orderfulfillmenttype) to filter for. Will return orders if any of its fulfillments match any of the fulfillment types listed in this field. See [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values")
-  public List<FulfillmentTypesEnum> getFulfillmentTypes() {
+  public List<String> getFulfillmentTypes() {
     return fulfillmentTypes;
   }
 
-  public void setFulfillmentTypes(List<FulfillmentTypesEnum> fulfillmentTypes) {
+  public void setFulfillmentTypes(List<String> fulfillmentTypes) {
     this.fulfillmentTypes = fulfillmentTypes;
   }
 
-  public SearchOrdersFulfillmentFilter fulfillmentStates(List<FulfillmentStatesEnum> fulfillmentStates) {
+  public SearchOrdersFulfillmentFilter fulfillmentStates(List<String> fulfillmentStates) {
     this.fulfillmentStates = fulfillmentStates;
     return this;
   }
 
-  public SearchOrdersFulfillmentFilter addFulfillmentStatesItem(FulfillmentStatesEnum fulfillmentStatesItem) {
+  public SearchOrdersFulfillmentFilter addFulfillmentStatesItem(String fulfillmentStatesItem) {
     this.fulfillmentStates.add(fulfillmentStatesItem);
     return this;
   }
@@ -138,11 +72,11 @@ public class SearchOrdersFulfillmentFilter {
    * @return fulfillmentStates
   **/
   @ApiModelProperty(value = "List of [fulfillment states](#type-orderfulfillmentstate) to filter for. Will return orders if any of its fulfillments match any of the fulfillment states listed in this field. See [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values")
-  public List<FulfillmentStatesEnum> getFulfillmentStates() {
+  public List<String> getFulfillmentStates() {
     return fulfillmentStates;
   }
 
-  public void setFulfillmentStates(List<FulfillmentStatesEnum> fulfillmentStates) {
+  public void setFulfillmentStates(List<String> fulfillmentStates) {
     this.fulfillmentStates = fulfillmentStates;
   }
 

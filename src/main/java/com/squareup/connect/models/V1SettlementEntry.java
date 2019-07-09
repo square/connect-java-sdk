@@ -30,76 +30,8 @@ public class V1SettlementEntry {
   @JsonProperty("payment_id")
   private String paymentId = null;
 
-  /**
-   * The settlement's current status. See [V1SettlementEntryType](#type-v1settlemententrytype) for possible values
-   */
-  public enum TypeEnum {
-    ADJUSTMENT("ADJUSTMENT"),
-    
-    BALANCE_CHARGE("BALANCE_CHARGE"),
-    
-    CHARGE("CHARGE"),
-    
-    FREE_PROCESSING("FREE_PROCESSING"),
-    
-    HOLD_ADJUSTMENT("HOLD_ADJUSTMENT"),
-    
-    PAID_SERVICE_FEE("PAID_SERVICE_FEE"),
-    
-    PAID_SERVICE_FEE_REFUND("PAID_SERVICE_FEE_REFUND"),
-    
-    REDEMPTION_CODE("REDEMPTION_CODE"),
-    
-    REFUND("REFUND"),
-    
-    RETURNED_PAYOUT("RETURNED_PAYOUT"),
-    
-    SQUARE_CAPITAL_ADVANCE("SQUARE_CAPITAL_ADVANCE"),
-    
-    SQUARE_CAPITAL_PAYMENT("SQUARE_CAPITAL_PAYMENT"),
-    
-    SQUARE_CAPITAL_REVERSED_PAYMENT("SQUARE_CAPITAL_REVERSED_PAYMENT"),
-    
-    SUBSCRIPTION_FEE("SUBSCRIPTION_FEE"),
-    
-    SUBSCRIPTION_FEE_REFUND("SUBSCRIPTION_FEE_REFUND"),
-    
-    OTHER("OTHER"),
-    
-    INCENTED_PAYMENT("INCENTED_PAYMENT"),
-    
-    RETURNED_ACH_ENTRY("RETURNED_ACH_ENTRY"),
-    
-    RETURNED_SQUARE_275("RETURNED_SQUARE_275"),
-    
-    SQUARE_275("SQUARE_275"),
-    
-    SQUARE_CARD("SQUARE_CARD");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("type")
-  private TypeEnum type = null;
+  private String type = null;
 
   @JsonProperty("amount_money")
   private V1Money amountMoney = null;
@@ -125,7 +57,7 @@ public class V1SettlementEntry {
     this.paymentId = paymentId;
   }
 
-  public V1SettlementEntry type(TypeEnum type) {
+  public V1SettlementEntry type(String type) {
     this.type = type;
     return this;
   }
@@ -135,11 +67,11 @@ public class V1SettlementEntry {
    * @return type
   **/
   @ApiModelProperty(value = "The settlement's current status. See [V1SettlementEntryType](#type-v1settlemententrytype) for possible values")
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 

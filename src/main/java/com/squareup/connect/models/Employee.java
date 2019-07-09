@@ -46,38 +46,8 @@ public class Employee {
   @JsonProperty("location_ids")
   private List<String> locationIds = new ArrayList<String>();
 
-  /**
-   * Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
-   */
-  public enum StatusEnum {
-    ACTIVE("ACTIVE"),
-    
-    INACTIVE("INACTIVE");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("created_at")
   private String createdAt = null;
@@ -198,7 +168,7 @@ public class Employee {
     this.locationIds = locationIds;
   }
 
-  public Employee status(StatusEnum status) {
+  public Employee status(String status) {
     this.status = status;
     return this;
   }
@@ -208,11 +178,11 @@ public class Employee {
    * @return status
   **/
   @ApiModelProperty(value = "Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

@@ -26,77 +26,13 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Sets the sort order of search results.")
 
 public class ShiftSort {
-  /**
-   * The field to sort on. See [ShiftSortField](#type-shiftsortfield) for possible values
-   */
-  public enum FieldEnum {
-    START_AT("START_AT"),
-    
-    END_AT("END_AT"),
-    
-    CREATED_AT("CREATED_AT"),
-    
-    UPDATED_AT("UPDATED_AT");
-
-    private String value;
-
-    FieldEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FieldEnum fromValue(String text) {
-      for (FieldEnum b : FieldEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("field")
-  private FieldEnum field = null;
-
-  /**
-   * The order in which results are returned. Defaults to DESC. See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum OrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    OrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OrderEnum fromValue(String text) {
-      for (OrderEnum b : OrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String field = null;
 
   @JsonProperty("order")
-  private OrderEnum order = null;
+  private String order = null;
 
-  public ShiftSort field(FieldEnum field) {
+  public ShiftSort field(String field) {
     this.field = field;
     return this;
   }
@@ -106,15 +42,15 @@ public class ShiftSort {
    * @return field
   **/
   @ApiModelProperty(value = "The field to sort on. See [ShiftSortField](#type-shiftsortfield) for possible values")
-  public FieldEnum getField() {
+  public String getField() {
     return field;
   }
 
-  public void setField(FieldEnum field) {
+  public void setField(String field) {
     this.field = field;
   }
 
-  public ShiftSort order(OrderEnum order) {
+  public ShiftSort order(String order) {
     this.order = order;
     return this;
   }
@@ -124,11 +60,11 @@ public class ShiftSort {
    * @return order
   **/
   @ApiModelProperty(value = "The order in which results are returned. Defaults to DESC. See [SortOrder](#type-sortorder) for possible values")
-  public OrderEnum getOrder() {
+  public String getOrder() {
     return order;
   }
 
-  public void setOrder(OrderEnum order) {
+  public void setOrder(String order) {
     this.order = order;
   }
 
