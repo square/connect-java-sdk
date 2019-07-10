@@ -42,38 +42,8 @@ public class V1PaymentTax {
   @JsonProperty("rate")
   private String rate = null;
 
-  /**
-   * Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1PaymentTaxInclusionType](#type-v1paymenttaxinclusiontype) for possible values
-   */
-  public enum InclusionTypeEnum {
-    ADDITIVE("ADDITIVE"),
-    
-    INCLUSIVE("INCLUSIVE");
-
-    private String value;
-
-    InclusionTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static InclusionTypeEnum fromValue(String text) {
-      for (InclusionTypeEnum b : InclusionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("inclusion_type")
-  private InclusionTypeEnum inclusionType = null;
+  private String inclusionType = null;
 
   @JsonProperty("fee_id")
   private String feeId = null;
@@ -155,7 +125,7 @@ public class V1PaymentTax {
     this.rate = rate;
   }
 
-  public V1PaymentTax inclusionType(InclusionTypeEnum inclusionType) {
+  public V1PaymentTax inclusionType(String inclusionType) {
     this.inclusionType = inclusionType;
     return this;
   }
@@ -165,11 +135,11 @@ public class V1PaymentTax {
    * @return inclusionType
   **/
   @ApiModelProperty(value = "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax. See [V1PaymentTaxInclusionType](#type-v1paymenttaxinclusiontype) for possible values")
-  public InclusionTypeEnum getInclusionType() {
+  public String getInclusionType() {
     return inclusionType;
   }
 
-  public void setInclusionType(InclusionTypeEnum inclusionType) {
+  public void setInclusionType(String inclusionType) {
     this.inclusionType = inclusionType;
   }
 

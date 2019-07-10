@@ -51,42 +51,8 @@ public class Refund {
   @JsonProperty("amount_money")
   private Money amountMoney = null;
 
-  /**
-   * The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`). See [RefundStatus](#type-refundstatus) for possible values
-   */
-  public enum StatusEnum {
-    PENDING("PENDING"),
-    
-    APPROVED("APPROVED"),
-    
-    REJECTED("REJECTED"),
-    
-    FAILED("FAILED");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("processing_fee_money")
   private Money processingFeeMoney = null;
@@ -220,7 +186,7 @@ public class Refund {
     this.amountMoney = amountMoney;
   }
 
-  public Refund status(StatusEnum status) {
+  public Refund status(String status) {
     this.status = status;
     return this;
   }
@@ -230,11 +196,11 @@ public class Refund {
    * @return status
   **/
   @ApiModelProperty(required = true, value = "The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`). See [RefundStatus](#type-refundstatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

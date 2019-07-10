@@ -27,86 +27,16 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`")
 
 public class TenderCardDetails {
-  /**
-   * The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values
-   */
-  public enum StatusEnum {
-    AUTHORIZED("AUTHORIZED"),
-    
-    CAPTURED("CAPTURED"),
-    
-    VOIDED("VOIDED"),
-    
-    FAILED("FAILED");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("card")
   private Card card = null;
 
-  /**
-   * The method used to enter the card's details for the transaction. See [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values
-   */
-  public enum EntryMethodEnum {
-    SWIPED("SWIPED"),
-    
-    KEYED("KEYED"),
-    
-    EMV("EMV"),
-    
-    ON_FILE("ON_FILE"),
-    
-    CONTACTLESS("CONTACTLESS");
-
-    private String value;
-
-    EntryMethodEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EntryMethodEnum fromValue(String text) {
-      for (EntryMethodEnum b : EntryMethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("entry_method")
-  private EntryMethodEnum entryMethod = null;
+  private String entryMethod = null;
 
-  public TenderCardDetails status(StatusEnum status) {
+  public TenderCardDetails status(String status) {
     this.status = status;
     return this;
   }
@@ -116,11 +46,11 @@ public class TenderCardDetails {
    * @return status
   **/
   @ApiModelProperty(value = "The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
@@ -142,7 +72,7 @@ public class TenderCardDetails {
     this.card = card;
   }
 
-  public TenderCardDetails entryMethod(EntryMethodEnum entryMethod) {
+  public TenderCardDetails entryMethod(String entryMethod) {
     this.entryMethod = entryMethod;
     return this;
   }
@@ -152,11 +82,11 @@ public class TenderCardDetails {
    * @return entryMethod
   **/
   @ApiModelProperty(value = "The method used to enter the card's details for the transaction. See [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values")
-  public EntryMethodEnum getEntryMethod() {
+  public String getEntryMethod() {
     return entryMethod;
   }
 
-  public void setEntryMethod(EntryMethodEnum entryMethod) {
+  public void setEntryMethod(String entryMethod) {
     this.entryMethod = entryMethod;
   }
 

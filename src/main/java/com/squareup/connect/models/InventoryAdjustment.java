@@ -34,111 +34,11 @@ public class InventoryAdjustment {
   @JsonProperty("reference_id")
   private String referenceId = null;
 
-  /**
-   * The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment. See [InventoryState](#type-inventorystate) for possible values
-   */
-  public enum FromStateEnum {
-    CUSTOM("CUSTOM"),
-    
-    IN_STOCK("IN_STOCK"),
-    
-    SOLD("SOLD"),
-    
-    RETURNED_BY_CUSTOMER("RETURNED_BY_CUSTOMER"),
-    
-    RESERVED_FOR_SALE("RESERVED_FOR_SALE"),
-    
-    SOLD_ONLINE("SOLD_ONLINE"),
-    
-    ORDERED_FROM_VENDOR("ORDERED_FROM_VENDOR"),
-    
-    RECEIVED_FROM_VENDOR("RECEIVED_FROM_VENDOR"),
-    
-    IN_TRANSIT_TO("IN_TRANSIT_TO"),
-    
-    NONE("NONE"),
-    
-    WASTE("WASTE"),
-    
-    UNLINKED_RETURN("UNLINKED_RETURN");
-
-    private String value;
-
-    FromStateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FromStateEnum fromValue(String text) {
-      for (FromStateEnum b : FromStateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("from_state")
-  private FromStateEnum fromState = null;
-
-  /**
-   * The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment. See [InventoryState](#type-inventorystate) for possible values
-   */
-  public enum ToStateEnum {
-    CUSTOM("CUSTOM"),
-    
-    IN_STOCK("IN_STOCK"),
-    
-    SOLD("SOLD"),
-    
-    RETURNED_BY_CUSTOMER("RETURNED_BY_CUSTOMER"),
-    
-    RESERVED_FOR_SALE("RESERVED_FOR_SALE"),
-    
-    SOLD_ONLINE("SOLD_ONLINE"),
-    
-    ORDERED_FROM_VENDOR("ORDERED_FROM_VENDOR"),
-    
-    RECEIVED_FROM_VENDOR("RECEIVED_FROM_VENDOR"),
-    
-    IN_TRANSIT_TO("IN_TRANSIT_TO"),
-    
-    NONE("NONE"),
-    
-    WASTE("WASTE"),
-    
-    UNLINKED_RETURN("UNLINKED_RETURN");
-
-    private String value;
-
-    ToStateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ToStateEnum fromValue(String text) {
-      for (ToStateEnum b : ToStateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String fromState = null;
 
   @JsonProperty("to_state")
-  private ToStateEnum toState = null;
+  private String toState = null;
 
   @JsonProperty("location_id")
   private String locationId = null;
@@ -215,7 +115,7 @@ public class InventoryAdjustment {
     this.referenceId = referenceId;
   }
 
-  public InventoryAdjustment fromState(FromStateEnum fromState) {
+  public InventoryAdjustment fromState(String fromState) {
     this.fromState = fromState;
     return this;
   }
@@ -225,15 +125,15 @@ public class InventoryAdjustment {
    * @return fromState
   **/
   @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment. See [InventoryState](#type-inventorystate) for possible values")
-  public FromStateEnum getFromState() {
+  public String getFromState() {
     return fromState;
   }
 
-  public void setFromState(FromStateEnum fromState) {
+  public void setFromState(String fromState) {
     this.fromState = fromState;
   }
 
-  public InventoryAdjustment toState(ToStateEnum toState) {
+  public InventoryAdjustment toState(String toState) {
     this.toState = toState;
     return this;
   }
@@ -243,11 +143,11 @@ public class InventoryAdjustment {
    * @return toState
   **/
   @ApiModelProperty(value = "The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment. See [InventoryState](#type-inventorystate) for possible values")
-  public ToStateEnum getToState() {
+  public String getToState() {
     return toState;
   }
 
-  public void setToState(ToStateEnum toState) {
+  public void setToState(String toState) {
     this.toState = toState;
   }
 
@@ -311,10 +211,10 @@ public class InventoryAdjustment {
   }
 
    /**
-   * The number of items affected by the adjustment as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`. Read [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.
+   * The number of items affected by the adjustment as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`.  Read [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities) for more information.
    * @return quantity
   **/
-  @ApiModelProperty(value = "The number of items affected by the adjustment as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`. Read [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.")
+  @ApiModelProperty(value = "The number of items affected by the adjustment as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`.  Read [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities) for more information.")
   public String getQuantity() {
     return quantity;
   }

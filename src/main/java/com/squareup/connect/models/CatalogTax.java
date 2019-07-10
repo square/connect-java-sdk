@@ -29,71 +29,11 @@ public class CatalogTax {
   @JsonProperty("name")
   private String name = null;
 
-  /**
-   * Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for possible values
-   */
-  public enum CalculationPhaseEnum {
-    SUBTOTAL_PHASE("TAX_SUBTOTAL_PHASE"),
-    
-    TOTAL_PHASE("TAX_TOTAL_PHASE");
-
-    private String value;
-
-    CalculationPhaseEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CalculationPhaseEnum fromValue(String text) {
-      for (CalculationPhaseEnum b : CalculationPhaseEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("calculation_phase")
-  private CalculationPhaseEnum calculationPhase = null;
-
-  /**
-   * Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for possible values
-   */
-  public enum InclusionTypeEnum {
-    ADDITIVE("ADDITIVE"),
-    
-    INCLUSIVE("INCLUSIVE");
-
-    private String value;
-
-    InclusionTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static InclusionTypeEnum fromValue(String text) {
-      for (InclusionTypeEnum b : InclusionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String calculationPhase = null;
 
   @JsonProperty("inclusion_type")
-  private InclusionTypeEnum inclusionType = null;
+  private String inclusionType = null;
 
   @JsonProperty("percentage")
   private String percentage = null;
@@ -122,7 +62,7 @@ public class CatalogTax {
     this.name = name;
   }
 
-  public CatalogTax calculationPhase(CalculationPhaseEnum calculationPhase) {
+  public CatalogTax calculationPhase(String calculationPhase) {
     this.calculationPhase = calculationPhase;
     return this;
   }
@@ -132,15 +72,15 @@ public class CatalogTax {
    * @return calculationPhase
   **/
   @ApiModelProperty(value = "Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for possible values")
-  public CalculationPhaseEnum getCalculationPhase() {
+  public String getCalculationPhase() {
     return calculationPhase;
   }
 
-  public void setCalculationPhase(CalculationPhaseEnum calculationPhase) {
+  public void setCalculationPhase(String calculationPhase) {
     this.calculationPhase = calculationPhase;
   }
 
-  public CatalogTax inclusionType(InclusionTypeEnum inclusionType) {
+  public CatalogTax inclusionType(String inclusionType) {
     this.inclusionType = inclusionType;
     return this;
   }
@@ -150,11 +90,11 @@ public class CatalogTax {
    * @return inclusionType
   **/
   @ApiModelProperty(value = "Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for possible values")
-  public InclusionTypeEnum getInclusionType() {
+  public String getInclusionType() {
     return inclusionType;
   }
 
-  public void setInclusionType(InclusionTypeEnum inclusionType) {
+  public void setInclusionType(String inclusionType) {
     this.inclusionType = inclusionType;
   }
 

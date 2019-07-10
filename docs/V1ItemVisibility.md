@@ -1,12 +1,10 @@
 
 # V1ItemVisibility
 
-## Enum
 
+* `"PUBLIC"`
 
-* `PUBLIC` (value: `"PUBLIC"`)
-
-* `PRIVATE` (value: `"PRIVATE"`)
+* `"PRIVATE"`
 
 
 

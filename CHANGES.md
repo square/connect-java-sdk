@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 2.20190710.0 (2019-07-10)
+
+* **Breaking change** &mdash; As of 2019-07-10 Java Connect SDK does not support explicit `ENUM` types. Instead, the SDKs pass `ENUM` values as static `Strings`. Developer code can now choose to ignore unexpected `String` values when Square APIs return new values instead of being forced to throw runtime errors due to unexpected types. Additional information, including migration help, is available in the README.
+
+* **Retired functionality** &mdash; The `CatalogItem.image_url` field (deprecated under `Square-Version` YYYYMMDD) is retired and no longer included in Connect SDKs.
+
 ## Version 2.20190612.1 (2019-06-26)
 
 * **Bug fix**: `Transaction.Charge` and `Customers.CreateCustomerCard` request objects &mdash; now include the `verification_token` required for [Strong Customer Authentication](https://developer.squareup.com/docs/sca-overview).

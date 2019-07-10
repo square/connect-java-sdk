@@ -1,22 +1,20 @@
 
 # V1TenderEntryMethod
 
-## Enum
 
+* `"MANUAL"`
 
-* `MANUAL` (value: `"MANUAL"`)
+* `"SCANNED"`
 
-* `SCANNED` (value: `"SCANNED"`)
+* `"SQUARE_CASH"`
 
-* `SQUARE_CASH` (value: `"SQUARE_CASH"`)
+* `"SQUARE_WALLET"`
 
-* `SQUARE_WALLET` (value: `"SQUARE_WALLET"`)
+* `"SWIPED"`
 
-* `SWIPED` (value: `"SWIPED"`)
+* `"WEB_FORM"`
 
-* `WEB_FORM` (value: `"WEB_FORM"`)
-
-* `OTHER` (value: `"OTHER"`)
+* `"OTHER"`
 
 
 

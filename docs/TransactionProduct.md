@@ -1,24 +1,22 @@
 
 # TransactionProduct
 
-## Enum
 
+* `"REGISTER"`
 
-* `REGISTER` (value: `"REGISTER"`)
+* `"EXTERNAL_API"`
 
-* `EXTERNAL_API` (value: `"EXTERNAL_API"`)
+* `"BILLING"`
 
-* `BILLING` (value: `"BILLING"`)
+* `"APPOINTMENTS"`
 
-* `APPOINTMENTS` (value: `"APPOINTMENTS"`)
+* `"INVOICES"`
 
-* `INVOICES` (value: `"INVOICES"`)
+* `"ONLINE_STORE"`
 
-* `ONLINE_STORE` (value: `"ONLINE_STORE"`)
+* `"PAYROLL"`
 
-* `PAYROLL` (value: `"PAYROLL"`)
-
-* `OTHER` (value: `"OTHER"`)
+* `"OTHER"`
 
 
 

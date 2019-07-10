@@ -26,38 +26,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class V1ListCashDrawerShiftsRequest {
-  /**
-   * The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum OrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    OrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OrderEnum fromValue(String text) {
-      for (OrderEnum b : OrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("order")
-  private OrderEnum order = null;
+  private String order = null;
 
   @JsonProperty("begin_time")
   private String beginTime = null;
@@ -65,7 +35,7 @@ public class V1ListCashDrawerShiftsRequest {
   @JsonProperty("end_time")
   private String endTime = null;
 
-  public V1ListCashDrawerShiftsRequest order(OrderEnum order) {
+  public V1ListCashDrawerShiftsRequest order(String order) {
     this.order = order;
     return this;
   }
@@ -75,11 +45,11 @@ public class V1ListCashDrawerShiftsRequest {
    * @return order
   **/
   @ApiModelProperty(value = "The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC See [SortOrder](#type-sortorder) for possible values")
-  public OrderEnum getOrder() {
+  public String getOrder() {
     return order;
   }
 
-  public void setOrder(OrderEnum order) {
+  public void setOrder(String order) {
     this.order = order;
   }
 

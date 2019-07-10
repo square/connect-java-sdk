@@ -1,12 +1,10 @@
 
 # CustomerSortField
 
-## Enum
 
+* `"DEFAULT"`
 
-* `DEFAULT` (value: `"DEFAULT"`)
-
-* `CREATED_AT` (value: `"CREATED_AT"`)
+* `"CREATED_AT"`
 
 
 

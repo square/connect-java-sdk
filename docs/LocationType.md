@@ -1,12 +1,10 @@
 
 # LocationType
 
-## Enum
 
+* `"PHYSICAL"`
 
-* `PHYSICAL` (value: `"PHYSICAL"`)
-
-* `MOBILE` (value: `"MOBILE"`)
+* `"MOBILE"`
 
 
 

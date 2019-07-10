@@ -1,12 +1,10 @@
 
 # V1PaymentTaxInclusionType
 
-## Enum
 
+* `"ADDITIVE"`
 
-* `ADDITIVE` (value: `"ADDITIVE"`)
-
-* `INCLUSIVE` (value: `"INCLUSIVE"`)
+* `"INCLUSIVE"`
 
 
 

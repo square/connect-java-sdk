@@ -1,12 +1,10 @@
 
 # V1ListSettlementsRequestStatus
 
-## Enum
 
+* `"SENT"`
 
-* `SENT` (value: `"SENT"`)
-
-* `FAILED` (value: `"FAILED"`)
+* `"FAILED"`
 
 
 

@@ -29,48 +29,8 @@ public class WorkweekConfig {
   @JsonProperty("id")
   private String id = null;
 
-  /**
-   * The day of the week on which a business week cuts over for compensation purposes. See [Weekday](#type-weekday) for possible values
-   */
-  public enum StartOfWeekEnum {
-    MON("MON"),
-    
-    TUE("TUE"),
-    
-    WED("WED"),
-    
-    THU("THU"),
-    
-    FRI("FRI"),
-    
-    SAT("SAT"),
-    
-    SUN("SUN");
-
-    private String value;
-
-    StartOfWeekEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StartOfWeekEnum fromValue(String text) {
-      for (StartOfWeekEnum b : StartOfWeekEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("start_of_week")
-  private StartOfWeekEnum startOfWeek = null;
+  private String startOfWeek = null;
 
   @JsonProperty("start_of_day_local_time")
   private String startOfDayLocalTime = null;
@@ -102,7 +62,7 @@ public class WorkweekConfig {
     this.id = id;
   }
 
-  public WorkweekConfig startOfWeek(StartOfWeekEnum startOfWeek) {
+  public WorkweekConfig startOfWeek(String startOfWeek) {
     this.startOfWeek = startOfWeek;
     return this;
   }
@@ -112,11 +72,11 @@ public class WorkweekConfig {
    * @return startOfWeek
   **/
   @ApiModelProperty(required = true, value = "The day of the week on which a business week cuts over for compensation purposes. See [Weekday](#type-weekday) for possible values")
-  public StartOfWeekEnum getStartOfWeek() {
+  public String getStartOfWeek() {
     return startOfWeek;
   }
 
-  public void setStartOfWeek(StartOfWeekEnum startOfWeek) {
+  public void setStartOfWeek(String startOfWeek) {
     this.startOfWeek = startOfWeek;
   }
 

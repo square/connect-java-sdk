@@ -1,20 +1,18 @@
 
 # OrderFulfillmentState
 
-## Enum
 
+* `"PROPOSED"`
 
-* `PROPOSED` (value: `"PROPOSED"`)
+* `"RESERVED"`
 
-* `RESERVED` (value: `"RESERVED"`)
+* `"PREPARED"`
 
-* `PREPARED` (value: `"PREPARED"`)
+* `"COMPLETED"`
 
-* `COMPLETED` (value: `"COMPLETED"`)
+* `"CANCELED"`
 
-* `CANCELED` (value: `"CANCELED"`)
-
-* `FAILED` (value: `"FAILED"`)
+* `"FAILED"`
 
 
 

@@ -26,75 +26,13 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Sorting options for a query. Returned Orders will always be sorted on a timestamp.")
 
 public class SearchOrdersSort {
-  /**
-   * The field to sort by.  __Important:__ When using a [DateTimeFilter](#type-searchordersfilter), `sort_field` must match the set time range field. If this field does not match the time range field in `DateTimeFilter`, SearchOrder will return an error.  Default: `CREATED_AT`. See [SearchOrdersSortField](#type-searchorderssortfield) for possible values
-   */
-  public enum SortFieldEnum {
-    CREATED_AT("CREATED_AT"),
-    
-    UPDATED_AT("UPDATED_AT"),
-    
-    CLOSED_AT("CLOSED_AT");
-
-    private String value;
-
-    SortFieldEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortFieldEnum fromValue(String text) {
-      for (SortFieldEnum b : SortFieldEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("sort_field")
-  private SortFieldEnum sortField = null;
-
-  /**
-   * The order in which results are returned. Defaults to `DESC`. See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum SortOrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    SortOrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortOrderEnum fromValue(String text) {
-      for (SortOrderEnum b : SortOrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String sortField = null;
 
   @JsonProperty("sort_order")
-  private SortOrderEnum sortOrder = null;
+  private String sortOrder = null;
 
-  public SearchOrdersSort sortField(SortFieldEnum sortField) {
+  public SearchOrdersSort sortField(String sortField) {
     this.sortField = sortField;
     return this;
   }
@@ -104,15 +42,15 @@ public class SearchOrdersSort {
    * @return sortField
   **/
   @ApiModelProperty(required = true, value = "The field to sort by.  __Important:__ When using a [DateTimeFilter](#type-searchordersfilter), `sort_field` must match the set time range field. If this field does not match the time range field in `DateTimeFilter`, SearchOrder will return an error.  Default: `CREATED_AT`. See [SearchOrdersSortField](#type-searchorderssortfield) for possible values")
-  public SortFieldEnum getSortField() {
+  public String getSortField() {
     return sortField;
   }
 
-  public void setSortField(SortFieldEnum sortField) {
+  public void setSortField(String sortField) {
     this.sortField = sortField;
   }
 
-  public SearchOrdersSort sortOrder(SortOrderEnum sortOrder) {
+  public SearchOrdersSort sortOrder(String sortOrder) {
     this.sortOrder = sortOrder;
     return this;
   }
@@ -122,11 +60,11 @@ public class SearchOrdersSort {
    * @return sortOrder
   **/
   @ApiModelProperty(value = "The order in which results are returned. Defaults to `DESC`. See [SortOrder](#type-sortorder) for possible values")
-  public SortOrderEnum getSortOrder() {
+  public String getSortOrder() {
     return sortOrder;
   }
 
-  public void setSortOrder(SortOrderEnum sortOrder) {
+  public void setSortOrder(String sortOrder) {
     this.sortOrder = sortOrder;
   }
 

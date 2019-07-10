@@ -26,38 +26,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class V1ListSettlementsRequest {
-  /**
-   * TThe order in which payments are listed in the response. See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum OrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    OrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OrderEnum fromValue(String text) {
-      for (OrderEnum b : OrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("order")
-  private OrderEnum order = null;
+  private String order = null;
 
   @JsonProperty("begin_time")
   private String beginTime = null;
@@ -68,43 +38,13 @@ public class V1ListSettlementsRequest {
   @JsonProperty("limit")
   private Integer limit = null;
 
-  /**
-   * Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). See [V1ListSettlementsRequestStatus](#type-v1listsettlementsrequeststatus) for possible values
-   */
-  public enum StatusEnum {
-    SENT("SENT"),
-    
-    FAILED("FAILED");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("batch_token")
   private String batchToken = null;
 
-  public V1ListSettlementsRequest order(OrderEnum order) {
+  public V1ListSettlementsRequest order(String order) {
     this.order = order;
     return this;
   }
@@ -114,11 +54,11 @@ public class V1ListSettlementsRequest {
    * @return order
   **/
   @ApiModelProperty(value = "TThe order in which payments are listed in the response. See [SortOrder](#type-sortorder) for possible values")
-  public OrderEnum getOrder() {
+  public String getOrder() {
     return order;
   }
 
-  public void setOrder(OrderEnum order) {
+  public void setOrder(String order) {
     this.order = order;
   }
 
@@ -176,7 +116,7 @@ public class V1ListSettlementsRequest {
     this.limit = limit;
   }
 
-  public V1ListSettlementsRequest status(StatusEnum status) {
+  public V1ListSettlementsRequest status(String status) {
     this.status = status;
     return this;
   }
@@ -186,11 +126,11 @@ public class V1ListSettlementsRequest {
    * @return status
   **/
   @ApiModelProperty(value = "Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). See [V1ListSettlementsRequestStatus](#type-v1listsettlementsrequeststatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

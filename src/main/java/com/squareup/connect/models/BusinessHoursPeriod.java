@@ -26,48 +26,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = " Represents a period of time during which a business location is open.")
 
 public class BusinessHoursPeriod {
-  /**
-   * The day of week for this time period. See [DayOfWeek](#type-dayofweek) for possible values
-   */
-  public enum DayOfWeekEnum {
-    SUN("SUN"),
-    
-    MON("MON"),
-    
-    TUE("TUE"),
-    
-    WED("WED"),
-    
-    THU("THU"),
-    
-    FRI("FRI"),
-    
-    SAT("SAT");
-
-    private String value;
-
-    DayOfWeekEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DayOfWeekEnum fromValue(String text) {
-      for (DayOfWeekEnum b : DayOfWeekEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("day_of_week")
-  private DayOfWeekEnum dayOfWeek = null;
+  private String dayOfWeek = null;
 
   @JsonProperty("start_local_time")
   private String startLocalTime = null;
@@ -75,7 +35,7 @@ public class BusinessHoursPeriod {
   @JsonProperty("end_local_time")
   private String endLocalTime = null;
 
-  public BusinessHoursPeriod dayOfWeek(DayOfWeekEnum dayOfWeek) {
+  public BusinessHoursPeriod dayOfWeek(String dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
     return this;
   }
@@ -85,11 +45,11 @@ public class BusinessHoursPeriod {
    * @return dayOfWeek
   **/
   @ApiModelProperty(value = "The day of week for this time period. See [DayOfWeek](#type-dayofweek) for possible values")
-  public DayOfWeekEnum getDayOfWeek() {
+  public String getDayOfWeek() {
     return dayOfWeek;
   }
 
-  public void setDayOfWeek(DayOfWeekEnum dayOfWeek) {
+  public void setDayOfWeek(String dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
   }
 

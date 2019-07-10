@@ -97,7 +97,7 @@ public class CustomersApiTest extends APITest {
                 .locality("New York")
                 .administrativeDistrictLevel1("NY")
                 .postalCode("20003")
-                .country(Address.CountryEnum.US)
+                .country("US")
             )
             .phoneNumber("1-555-555-0122")
             .referenceId("YOUR_REFERENCE_ID")
@@ -134,7 +134,7 @@ public class CustomersApiTest extends APITest {
                 .locality("New York")
                 .administrativeDistrictLevel1("NY")
                 .postalCode("94103")
-                .country(Address.CountryEnum.US))
+                .country("US"))
             .cardholderName("Amelia Earhart");
 
         CreateCustomerCardResponse response = api.createCustomerCard(customer.getId(), body);
@@ -188,7 +188,7 @@ public class CustomersApiTest extends APITest {
                 .locality("New York")
                 .administrativeDistrictLevel1("NY")
                 .postalCode("94103")
-                .country(Address.CountryEnum.US))
+                .country("US"))
             .cardholderName("Amelia Earhart");
 
         Card card =

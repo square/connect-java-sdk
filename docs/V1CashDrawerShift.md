@@ -9,7 +9,7 @@ Contains details for a single cash drawer shift.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The shift&#39;s unique ID. |  [optional]
-**eventType** | [**EventTypeEnum**](#EventTypeEnum) | The shift&#39;s current state. See [V1CashDrawerShiftEventType](#type-v1cashdrawershifteventtype) for possible values |  [optional]
+**eventType** | **String** | The shift&#39;s current state. See [V1CashDrawerShiftEventType](#type-v1cashdrawershifteventtype) for possible values |  [optional]
 **openedAt** | **String** | The time when the shift began, in ISO 8601 format. |  [optional]
 **endedAt** | **String** | The time when the shift ended, in ISO 8601 format. |  [optional]
 **closedAt** | **String** | The time when the shift was closed, in ISO 8601 format. |  [optional]
@@ -27,15 +27,6 @@ Name | Type | Description | Notes
 **closedCashMoney** | [**V1Money**](V1Money.md) | The amount of money found in the cash drawer at the end of the shift by an auditing employee. |  [optional]
 **device** | [**Device**](Device.md) | The device running Square Register that was connected to the cash drawer. |  [optional]
 **events** | [**List&lt;V1CashDrawerEvent&gt;**](V1CashDrawerEvent.md) | All of the events (payments, refunds, and so on) that involved the cash drawer during the shift. |  [optional]
-
-
-<a name="EventTypeEnum"></a>
-## Enum: EventTypeEnum
-Name | Value
----- | -----
-OPEN | &quot;OPEN&quot;
-ENDED | &quot;ENDED&quot;
-CLOSED | &quot;CLOSED&quot;
 
 
 

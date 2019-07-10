@@ -1,32 +1,30 @@
 
 # InventoryState
 
-## Enum
 
+* `"CUSTOM"`
 
-* `CUSTOM` (value: `"CUSTOM"`)
+* `"IN_STOCK"`
 
-* `IN_STOCK` (value: `"IN_STOCK"`)
+* `"SOLD"`
 
-* `SOLD` (value: `"SOLD"`)
+* `"RETURNED_BY_CUSTOMER"`
 
-* `RETURNED_BY_CUSTOMER` (value: `"RETURNED_BY_CUSTOMER"`)
+* `"RESERVED_FOR_SALE"`
 
-* `RESERVED_FOR_SALE` (value: `"RESERVED_FOR_SALE"`)
+* `"SOLD_ONLINE"`
 
-* `SOLD_ONLINE` (value: `"SOLD_ONLINE"`)
+* `"ORDERED_FROM_VENDOR"`
 
-* `ORDERED_FROM_VENDOR` (value: `"ORDERED_FROM_VENDOR"`)
+* `"RECEIVED_FROM_VENDOR"`
 
-* `RECEIVED_FROM_VENDOR` (value: `"RECEIVED_FROM_VENDOR"`)
+* `"IN_TRANSIT_TO"`
 
-* `IN_TRANSIT_TO` (value: `"IN_TRANSIT_TO"`)
+* `"NONE"`
 
-* `NONE` (value: `"NONE"`)
+* `"WASTE"`
 
-* `WASTE` (value: `"WASTE"`)
-
-* `UNLINKED_RETURN` (value: `"UNLINKED_RETURN"`)
+* `"UNLINKED_RETURN"`
 
 
 

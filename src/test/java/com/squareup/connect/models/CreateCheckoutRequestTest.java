@@ -17,7 +17,7 @@ public class CreateCheckoutRequestTest {
     recipient.setDescription("description");
     Money money = new Money();
     money.setAmount(1L);
-    money.setCurrency(Money.CurrencyEnum.USD);
+    money.setCurrency("USD");
     recipient.setAmountMoney(money);
     new CreateCheckoutRequest().setAdditionalRecipients(new ArrayList<>(
         Arrays.asList(recipient)

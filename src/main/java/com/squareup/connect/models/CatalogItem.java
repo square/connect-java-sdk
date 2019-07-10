@@ -60,50 +60,11 @@ public class CatalogItem {
   @JsonProperty("modifier_list_info")
   private List<CatalogItemModifierListInfo> modifierListInfo = new ArrayList<CatalogItemModifierListInfo>();
 
-  @JsonProperty("image_url")
-  private String imageUrl = null;
-
   @JsonProperty("variations")
   private List<CatalogObject> variations = new ArrayList<CatalogObject>();
 
-  /**
-   * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
-   */
-  public enum ProductTypeEnum {
-    REGULAR("REGULAR"),
-    
-    GIFT_CARD("GIFT_CARD"),
-    
-    APPOINTMENTS_SERVICE("APPOINTMENTS_SERVICE"),
-    
-    RETAIL_ITEM("RETAIL_ITEM"),
-    
-    RESTAURANT_ITEM("RESTAURANT_ITEM");
-
-    private String value;
-
-    ProductTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ProductTypeEnum fromValue(String text) {
-      for (ProductTypeEnum b : ProductTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("product_type")
-  private ProductTypeEnum productType = null;
+  private String productType = null;
 
   @JsonProperty("skip_modifier_screen")
   private Boolean skipModifierScreen = null;
@@ -298,24 +259,6 @@ public class CatalogItem {
     this.modifierListInfo = modifierListInfo;
   }
 
-  public CatalogItem imageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-    return this;
-  }
-
-   /**
-   * __Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_id` in [`CatalogObject`](#type-catalogobject).
-   * @return imageUrl
-  **/
-  @ApiModelProperty(value = "__Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_id` in [`CatalogObject`](#type-catalogobject).")
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-  }
-
   public CatalogItem variations(List<CatalogObject> variations) {
     this.variations = variations;
     return this;
@@ -339,7 +282,7 @@ public class CatalogItem {
     this.variations = variations;
   }
 
-  public CatalogItem productType(ProductTypeEnum productType) {
+  public CatalogItem productType(String productType) {
     this.productType = productType;
     return this;
   }
@@ -349,11 +292,11 @@ public class CatalogItem {
    * @return productType
   **/
   @ApiModelProperty(value = "The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values")
-  public ProductTypeEnum getProductType() {
+  public String getProductType() {
     return productType;
   }
 
-  public void setProductType(ProductTypeEnum productType) {
+  public void setProductType(String productType) {
     this.productType = productType;
   }
 
@@ -395,7 +338,6 @@ public class CatalogItem {
         Objects.equals(this.categoryId, catalogItem.categoryId) &&
         Objects.equals(this.taxIds, catalogItem.taxIds) &&
         Objects.equals(this.modifierListInfo, catalogItem.modifierListInfo) &&
-        Objects.equals(this.imageUrl, catalogItem.imageUrl) &&
         Objects.equals(this.variations, catalogItem.variations) &&
         Objects.equals(this.productType, catalogItem.productType) &&
         Objects.equals(this.skipModifierScreen, catalogItem.skipModifierScreen);
@@ -403,7 +345,7 @@ public class CatalogItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, abbreviation, labelColor, availableOnline, availableForPickup, availableElectronically, categoryId, taxIds, modifierListInfo, imageUrl, variations, productType, skipModifierScreen);
+    return Objects.hash(name, description, abbreviation, labelColor, availableOnline, availableForPickup, availableElectronically, categoryId, taxIds, modifierListInfo, variations, productType, skipModifierScreen);
   }
 
 
@@ -422,7 +364,6 @@ public class CatalogItem {
     sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
     sb.append("    taxIds: ").append(toIndentedString(taxIds)).append("\n");
     sb.append("    modifierListInfo: ").append(toIndentedString(modifierListInfo)).append("\n");
-    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    variations: ").append(toIndentedString(variations)).append("\n");
     sb.append("    productType: ").append(toIndentedString(productType)).append("\n");
     sb.append("    skipModifierScreen: ").append(toIndentedString(skipModifierScreen)).append("\n");

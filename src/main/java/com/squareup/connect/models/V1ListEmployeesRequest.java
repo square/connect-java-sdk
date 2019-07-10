@@ -26,38 +26,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "")
 
 public class V1ListEmployeesRequest {
-  /**
-   * The order in which employees are listed in the response, based on their created_at field.      Default value: ASC See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum OrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    OrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OrderEnum fromValue(String text) {
-      for (OrderEnum b : OrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("order")
-  private OrderEnum order = null;
+  private String order = null;
 
   @JsonProperty("begin_updated_at")
   private String beginUpdatedAt = null;
@@ -71,38 +41,8 @@ public class V1ListEmployeesRequest {
   @JsonProperty("end_created_at")
   private String endCreatedAt = null;
 
-  /**
-   * If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). See [V1ListEmployeesRequestStatus](#type-v1listemployeesrequeststatus) for possible values
-   */
-  public enum StatusEnum {
-    ACTIVE("ACTIVE"),
-    
-    INACTIVE("INACTIVE");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("external_id")
   private String externalId = null;
@@ -113,7 +53,7 @@ public class V1ListEmployeesRequest {
   @JsonProperty("batch_token")
   private String batchToken = null;
 
-  public V1ListEmployeesRequest order(OrderEnum order) {
+  public V1ListEmployeesRequest order(String order) {
     this.order = order;
     return this;
   }
@@ -123,11 +63,11 @@ public class V1ListEmployeesRequest {
    * @return order
   **/
   @ApiModelProperty(value = "The order in which employees are listed in the response, based on their created_at field.      Default value: ASC See [SortOrder](#type-sortorder) for possible values")
-  public OrderEnum getOrder() {
+  public String getOrder() {
     return order;
   }
 
-  public void setOrder(OrderEnum order) {
+  public void setOrder(String order) {
     this.order = order;
   }
 
@@ -203,7 +143,7 @@ public class V1ListEmployeesRequest {
     this.endCreatedAt = endCreatedAt;
   }
 
-  public V1ListEmployeesRequest status(StatusEnum status) {
+  public V1ListEmployeesRequest status(String status) {
     this.status = status;
     return this;
   }
@@ -213,11 +153,11 @@ public class V1ListEmployeesRequest {
    * @return status
   **/
   @ApiModelProperty(value = "If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). See [V1ListEmployeesRequestStatus](#type-v1listemployeesrequeststatus) for possible values")
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

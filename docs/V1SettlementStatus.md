@@ -1,12 +1,10 @@
 
 # V1SettlementStatus
 
-## Enum
 
+* `"FAILED"`
 
-* `FAILED` (value: `"FAILED"`)
-
-* `SENT` (value: `"SENT"`)
+* `"SENT"`
 
 
 

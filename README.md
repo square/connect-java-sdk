@@ -2,6 +2,27 @@
 
 **If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://squ.re/2GB8GHk)**
 
+## ENUM to String Migration
+The Java SDK no longer treats enums as explicit types. Instead, all enums are handled as static strings. 
+Previously, you would use an enum constant to represent the related string value. For example:
+```java
+Money money = new Money();
+money.setCurrency(Money.CurrencyEnum.USD);
+```
+
+As of version 2.20190710.0, you would work with the static string value directly. For example:
+```java
+Money money = new Money();
+money.setCurrency("USD");
+```
+
+But, as a best practice, we recommend representing enum strings as constants for easier reuse. For example:
+```java
+String MONEY_USD = "USD";
+Money money = new Money();
+money.setCurrency(MONEY_USD);
+```
+
 ## Requirements
 
 Java 8
@@ -18,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190612.1</version>
+    <version>2.20190710.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -28,7 +49,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190612.1"
+compile "com.squareup:connect:2.20190710.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -70,7 +91,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190612.1.jar
+* target/connect-2.20190710.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -84,7 +105,6 @@ import com.squareup.connect.Configuration;
 import com.squareup.connect.api.LocationsApi;
 import com.squareup.connect.auth.OAuth;
 import com.squareup.connect.models.Location;
-import com.squareup.connect.models.Location.CapabilitiesEnum;
 
 import java.io.File;
 import java.util.*;
@@ -257,7 +277,6 @@ Class | Method | HTTP request | Description
  - [AdditionalRecipientReceivable](docs/AdditionalRecipientReceivable.md)
  - [AdditionalRecipientReceivableRefund](docs/AdditionalRecipientReceivableRefund.md)
  - [Address](docs/Address.md)
- - [AggregationStrategy](docs/AggregationStrategy.md)
  - [BatchChangeInventoryRequest](docs/BatchChangeInventoryRequest.md)
  - [BatchChangeInventoryResponse](docs/BatchChangeInventoryResponse.md)
  - [BatchDeleteCatalogObjectsRequest](docs/BatchDeleteCatalogObjectsRequest.md)

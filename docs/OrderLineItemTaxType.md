@@ -1,14 +1,12 @@
 
 # OrderLineItemTaxType
 
-## Enum
 
+* `"UNKNOWN_TAX"`
 
-* `UNKNOWN_TAX` (value: `"UNKNOWN_TAX"`)
+* `"ADDITIVE"`
 
-* `ADDITIVE` (value: `"ADDITIVE"`)
-
-* `INCLUSIVE` (value: `"INCLUSIVE"`)
+* `"INCLUSIVE"`
 
 
 

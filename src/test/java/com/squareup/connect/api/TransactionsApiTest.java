@@ -74,7 +74,7 @@ public class TransactionsApiTest extends APITest {
             .delayCapture(true)
             .amountMoney(new Money()
                 .amount(200L)
-                .currency(Money.CurrencyEnum.USD))
+                .currency("USD"))
             .cardNonce(cardNonce)).getTransaction();
 
         CaptureTransactionResponse response = api.captureTransaction(locationId, transaction.getId());
@@ -99,21 +99,21 @@ public class TransactionsApiTest extends APITest {
             .idempotencyKey(idempotencyKey)
             .amountMoney(new Money()
                 .amount(200L)
-                .currency(Money.CurrencyEnum.USD))
+                .currency("USD"))
             .cardNonce(cardNonce)
             .shippingAddress(new Address()
                 .addressLine1("123 Main St")
                 .locality("San Francisco")
                 .administrativeDistrictLevel1("CA")
                 .postalCode("94114")
-                .country(Address.CountryEnum.US))
+                .country("US"))
             .billingAddress(new Address()
                 .addressLine1("500 Electric Ave")
                 .addressLine2("Suite 600")
                 .administrativeDistrictLevel1("NY")
                 .locality("New York")
                 .postalCode("10003")
-                .country(Address.CountryEnum.US))
+                .country("US"))
             .referenceId("optional reference #112358")
             .note("optional note");
 
@@ -137,7 +137,7 @@ public class TransactionsApiTest extends APITest {
             .idempotencyKey(UUID.randomUUID().toString())
             .amountMoney(new Money()
                 .amount(200L)
-                .currency(Money.CurrencyEnum.USD))
+                .currency("USD"))
             .cardNonce(cardNonce)).getTransaction();
 
 
@@ -147,7 +147,7 @@ public class TransactionsApiTest extends APITest {
             .tenderId(transaction.getTenders().get(0).getId())
             .amountMoney(new Money()
                 .amount(100L)
-                .currency(Money.CurrencyEnum.USD))
+                .currency("USD"))
             .reason("Cancelled order");
         CreateRefundResponse response = api.createRefund(locationId, transaction.getId(), body);
 
@@ -208,7 +208,7 @@ public class TransactionsApiTest extends APITest {
             .idempotencyKey(UUID.randomUUID().toString())
             .amountMoney(new Money()
                 .amount(200L)
-                .currency(Money.CurrencyEnum.USD))
+                .currency("USD"))
             .cardNonce(cardNonce)).getTransaction();
 
         RetrieveTransactionResponse response = api.retrieveTransaction(locationId, transaction.getId());
@@ -232,7 +232,7 @@ public class TransactionsApiTest extends APITest {
             .delayCapture(true)
             .amountMoney(new Money()
                 .amount(200L)
-                .currency(Money.CurrencyEnum.USD))
+                .currency("USD"))
             .cardNonce(cardNonce)).getTransaction();
 
         VoidTransactionResponse response = api.voidTransaction(locationId, transaction.getId());

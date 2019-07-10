@@ -1,12 +1,10 @@
 
 # V1ModifierListSelectionType
 
-## Enum
 
+* `"SINGLE"`
 
-* `SINGLE` (value: `"SINGLE"`)
-
-* `MULTIPLE` (value: `"MULTIPLE"`)
+* `"MULTIPLE"`
 
 
 

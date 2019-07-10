@@ -29,71 +29,11 @@ public class ListCustomersRequest {
   @JsonProperty("cursor")
   private String cursor = null;
 
-  /**
-   * Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values
-   */
-  public enum SortFieldEnum {
-    DEFAULT("DEFAULT"),
-    
-    CREATED_AT("CREATED_AT");
-
-    private String value;
-
-    SortFieldEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortFieldEnum fromValue(String text) {
-      for (SortFieldEnum b : SortFieldEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("sort_field")
-  private SortFieldEnum sortField = null;
-
-  /**
-   * Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values
-   */
-  public enum SortOrderEnum {
-    DESC("DESC"),
-    
-    ASC("ASC");
-
-    private String value;
-
-    SortOrderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortOrderEnum fromValue(String text) {
-      for (SortOrderEnum b : SortOrderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  private String sortField = null;
 
   @JsonProperty("sort_order")
-  private SortOrderEnum sortOrder = null;
+  private String sortOrder = null;
 
   public ListCustomersRequest cursor(String cursor) {
     this.cursor = cursor;
@@ -113,7 +53,7 @@ public class ListCustomersRequest {
     this.cursor = cursor;
   }
 
-  public ListCustomersRequest sortField(SortFieldEnum sortField) {
+  public ListCustomersRequest sortField(String sortField) {
     this.sortField = sortField;
     return this;
   }
@@ -123,15 +63,15 @@ public class ListCustomersRequest {
    * @return sortField
   **/
   @ApiModelProperty(value = "Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values")
-  public SortFieldEnum getSortField() {
+  public String getSortField() {
     return sortField;
   }
 
-  public void setSortField(SortFieldEnum sortField) {
+  public void setSortField(String sortField) {
     this.sortField = sortField;
   }
 
-  public ListCustomersRequest sortOrder(SortOrderEnum sortOrder) {
+  public ListCustomersRequest sortOrder(String sortOrder) {
     this.sortOrder = sortOrder;
     return this;
   }
@@ -141,11 +81,11 @@ public class ListCustomersRequest {
    * @return sortOrder
   **/
   @ApiModelProperty(value = "Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values")
-  public SortOrderEnum getSortOrder() {
+  public String getSortOrder() {
     return sortOrder;
   }
 
-  public void setSortOrder(SortOrderEnum sortOrder) {
+  public void setSortOrder(String sortOrder) {
     this.sortOrder = sortOrder;
   }
 

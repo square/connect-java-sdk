@@ -1,12 +1,10 @@
 
 # OrderFulfillmentPickupDetailsScheduleType
 
-## Enum
 
+* `"SCHEDULED"`
 
-* `SCHEDULED` (value: `"SCHEDULED"`)
-
-* `ASAP` (value: `"ASAP"`)
+* `"ASAP"`
 
 
 

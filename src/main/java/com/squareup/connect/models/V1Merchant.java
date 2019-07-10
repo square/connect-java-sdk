@@ -40,38 +40,8 @@ public class V1Merchant {
   @JsonProperty("email")
   private String email = null;
 
-  /**
-   * Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION. See [V1MerchantAccountType](#type-v1merchantaccounttype) for possible values
-   */
-  public enum AccountTypeEnum {
-    LOCATION("LOCATION"),
-    
-    BUSINESS("BUSINESS");
-
-    private String value;
-
-    AccountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AccountTypeEnum fromValue(String text) {
-      for (AccountTypeEnum b : AccountTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("account_type")
-  private AccountTypeEnum accountType = null;
+  private String accountType = null;
 
   @JsonProperty("account_capabilities")
   private List<String> accountCapabilities = new ArrayList<String>();
@@ -94,134 +64,8 @@ public class V1Merchant {
   @JsonProperty("business_phone")
   private V1PhoneNumber businessPhone = null;
 
-  /**
-   * The type of business operated by the merchant. See [V1MerchantBusinessType](#type-v1merchantbusinesstype) for possible values
-   */
-  public enum BusinessTypeEnum {
-    ACCOUNTING("ACCOUNTING"),
-    
-    APPAREL_AND_ACCESSORY_SHOPS("APPAREL_AND_ACCESSORY_SHOPS"),
-    
-    ART_DEALERS_GALLERIES("ART_DEALERS_GALLERIES"),
-    
-    ART_DESIGN_AND_PHOTOGRAPHY("ART_DESIGN_AND_PHOTOGRAPHY"),
-    
-    BAR_CLUB_LOUNGE("BAR_CLUB_LOUNGE"),
-    
-    BEAUTY_AND_BARBER_SHOPS("BEAUTY_AND_BARBER_SHOPS"),
-    
-    BOOK_STORES("BOOK_STORES"),
-    
-    BUSINESS_SERVICES("BUSINESS_SERVICES"),
-    
-    CATERING("CATERING"),
-    
-    CHARITABLE_SOCIAL_SERVICE_ORGANIZATIONS("CHARITABLE_SOCIAL_SERVICE_ORGANIZATIONS"),
-    
-    CHARITIBLE_ORGS("CHARITIBLE_ORGS"),
-    
-    CLEANING_SERVICES("CLEANING_SERVICES"),
-    
-    COMPUTER_EQUIPMENT_SOFTWARE_MAINTENANCE_REPAIR_SERVICES("COMPUTER_EQUIPMENT_SOFTWARE_MAINTENANCE_REPAIR_SERVICES"),
-    
-    CONSULTANT("CONSULTANT"),
-    
-    CONTRACTORS("CONTRACTORS"),
-    
-    DELIVERY_SERVICES("DELIVERY_SERVICES"),
-    
-    DENTISTRY("DENTISTRY"),
-    
-    EDUCATION("EDUCATION"),
-    
-    FOOD_STORES_CONVENIENCE_STORES_AND_SPECIALTY_MARKETS("FOOD_STORES_CONVENIENCE_STORES_AND_SPECIALTY_MARKETS"),
-    
-    FOOD_TRUCK_CART("FOOD_TRUCK_CART"),
-    
-    FURNITURE_HOME_AND_OFFICE_EQUIPMENT("FURNITURE_HOME_AND_OFFICE_EQUIPMENT"),
-    
-    FURNITURE_HOME_GOODS("FURNITURE_HOME_GOODS"),
-    
-    HOTELS_AND_LODGING("HOTELS_AND_LODGING"),
-    
-    INDIVIDUAL_USE("INDIVIDUAL_USE"),
-    
-    JEWELRY_AND_WATCHES("JEWELRY_AND_WATCHES"),
-    
-    LANDSCAPING_AND_HORTICULTURAL_SERVICES("LANDSCAPING_AND_HORTICULTURAL_SERVICES"),
-    
-    LANGUAGE_SCHOOLS("LANGUAGE_SCHOOLS"),
-    
-    LEGAL_SERVICES("LEGAL_SERVICES"),
-    
-    MEDICAL_PRACTITIONERS("MEDICAL_PRACTITIONERS"),
-    
-    MEDICAL_SERVICES_AND_HEALTH_PRACTITIONERS("MEDICAL_SERVICES_AND_HEALTH_PRACTITIONERS"),
-    
-    MEMBERSHIP_ORGANIZATIONS("MEMBERSHIP_ORGANIZATIONS"),
-    
-    MUSIC_AND_ENTERTAINMENT("MUSIC_AND_ENTERTAINMENT"),
-    
-    OTHER("OTHER"),
-    
-    OUTDOOR_MARKETS("OUTDOOR_MARKETS"),
-    
-    PERSONAL_SERVICES("PERSONAL_SERVICES"),
-    
-    POLITICAL_ORGANIZATIONS("POLITICAL_ORGANIZATIONS"),
-    
-    PROFESSIONAL_SERVICES("PROFESSIONAL_SERVICES"),
-    
-    REAL_ESTATE("REAL_ESTATE"),
-    
-    RECREATION_SERVICES("RECREATION_SERVICES"),
-    
-    REPAIR_SHOPS_AND_RELATED_SERVICES("REPAIR_SHOPS_AND_RELATED_SERVICES"),
-    
-    RESTAURANTS("RESTAURANTS"),
-    
-    RETAIL_SHOPS("RETAIL_SHOPS"),
-    
-    SCHOOLS_AND_EDUCATIONAL_SERVICES("SCHOOLS_AND_EDUCATIONAL_SERVICES"),
-    
-    SPORTING_GOODS("SPORTING_GOODS"),
-    
-    TAXICABS_AND_LIMOUSINES("TAXICABS_AND_LIMOUSINES"),
-    
-    TICKET_SALES("TICKET_SALES"),
-    
-    TOURISM("TOURISM"),
-    
-    TRAVEL_TOURISM("TRAVEL_TOURISM"),
-    
-    VETERINARY_SERVICES("VETERINARY_SERVICES"),
-    
-    WEB_DEV_DESIGN("WEB_DEV_DESIGN");
-
-    private String value;
-
-    BusinessTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BusinessTypeEnum fromValue(String text) {
-      for (BusinessTypeEnum b : BusinessTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("business_type")
-  private BusinessTypeEnum businessType = null;
+  private String businessType = null;
 
   @JsonProperty("shipping_address")
   private Address shippingAddress = null;
@@ -286,7 +130,7 @@ public class V1Merchant {
     this.email = email;
   }
 
-  public V1Merchant accountType(AccountTypeEnum accountType) {
+  public V1Merchant accountType(String accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -296,11 +140,11 @@ public class V1Merchant {
    * @return accountType
   **/
   @ApiModelProperty(value = "Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION. See [V1MerchantAccountType](#type-v1merchantaccounttype) for possible values")
-  public AccountTypeEnum getAccountType() {
+  public String getAccountType() {
     return accountType;
   }
 
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(String accountType) {
     this.accountType = accountType;
   }
 
@@ -435,7 +279,7 @@ public class V1Merchant {
     this.businessPhone = businessPhone;
   }
 
-  public V1Merchant businessType(BusinessTypeEnum businessType) {
+  public V1Merchant businessType(String businessType) {
     this.businessType = businessType;
     return this;
   }
@@ -445,11 +289,11 @@ public class V1Merchant {
    * @return businessType
   **/
   @ApiModelProperty(value = "The type of business operated by the merchant. See [V1MerchantBusinessType](#type-v1merchantbusinesstype) for possible values")
-  public BusinessTypeEnum getBusinessType() {
+  public String getBusinessType() {
     return businessType;
   }
 
-  public void setBusinessType(BusinessTypeEnum businessType) {
+  public void setBusinessType(String businessType) {
     this.businessType = businessType;
   }
 

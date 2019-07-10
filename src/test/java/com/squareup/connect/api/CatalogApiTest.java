@@ -80,56 +80,56 @@ public class CatalogApiTest extends APITest {
     private final CatalogApi api = new CatalogApi();
 
     private static final CatalogObject beverages = new CatalogObject()
-        .type(CatalogObject.TypeEnum.CATEGORY)
+        .type("CATEGORY")
         .id("#Beverages")
         .categoryData(new CatalogCategory()
             .name("Beverages"));
 
     private static final CatalogObject milks = new CatalogObject()
-        .type(CatalogObject.TypeEnum.MODIFIER_LIST)
+        .type("MODIFIER_LIST")
         .id("#Milks")
         .modifierListData(new CatalogModifierList()
             .name("Milks")
             .modifiers(asList(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
+                    .type("MODIFIER")
                     .id("#WholeMilk")
                     .modifierData(new CatalogModifier()
                         .name("Whole Milk")),
                 new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
+                    .type("MODIFIER")
                     .id("#SkimMilk")
                     .modifierData(new CatalogModifier()
                         .name("Skim Milk")),
                 new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
+                    .type("MODIFIER")
                     .id("#SoyMilk")
                     .modifierData(new CatalogModifier()
                         .name("SoyMilk")
-                        .priceMoney(new Money().amount(50L).currency(Money.CurrencyEnum.USD))))));
+                        .priceMoney(new Money().amount(50L).currency("USD"))))));
 
     private static final CatalogObject syrups = new CatalogObject()
-        .type(CatalogObject.TypeEnum.MODIFIER_LIST)
+        .type("MODIFIER_LIST")
         .id("#Syrups")
         .modifierListData(new CatalogModifierList()
             .name("Syrups")
             .modifiers(asList(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
+                    .type("MODIFIER")
                     .id("#Hazelnut")
                     .modifierData(new CatalogModifier()
                         .name("Hazelnut")),
                 new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
+                    .type("MODIFIER")
                     .id("#Vanilla")
                     .modifierData(new CatalogModifier()
                         .name("Vanilla")),
                 new CatalogObject()
-                    .type(CatalogObject.TypeEnum.MODIFIER)
+                    .type("MODIFIER")
                     .id("#Chocolate")
                     .modifierData(new CatalogModifier()
                         .name("Chocolate")))));
 
     private static final CatalogObject coffee = new CatalogObject()
-        .type(CatalogObject.TypeEnum.ITEM)
+        .type("ITEM")
         .id("#Coffee")
         .presentAtAllLocations(true)
         .itemData(new CatalogItem()
@@ -140,27 +140,27 @@ public class CatalogApiTest extends APITest {
             .modifierListInfo(singletonList(new CatalogItemModifierListInfo().modifierListId("#Milks")))
             .taxIds(singletonList("#SalesTax"))
             .variations(asList(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM_VARIATION)
+                    .type("ITEM_VARIATION")
                     .id("#SmallCoffee")
                     .presentAtAllLocations(true)
                     .itemVariationData(new CatalogItemVariation()
                         .itemId("#Coffee")
                         .name("Small")
-                        .pricingType(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING)
-                        .priceMoney(new Money().amount(195L).currency(Money.CurrencyEnum.USD))),
+                        .pricingType("FIXED_PRICING")
+                        .priceMoney(new Money().amount(195L).currency("USD"))),
                 new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM_VARIATION)
+                    .type("ITEM_VARIATION")
                     .id("#LargeCoffee")
                     .presentAtAllLocations(true)
                     .itemVariationData(new CatalogItemVariation()
                         .itemId("#Coffee")
                         .name("Large")
-                        .pricingType(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING)
-                        .priceMoney(new Money().amount(250L).currency(Money.CurrencyEnum.USD)))))
+                        .pricingType("FIXED_PRICING")
+                        .priceMoney(new Money().amount(250L).currency("USD")))))
         );
 
     private static final CatalogObject tea = new CatalogObject()
-        .type(CatalogObject.TypeEnum.ITEM)
+        .type("ITEM")
         .id("#Tea")
         .presentAtAllLocations(true)
         .itemData(new CatalogItem()
@@ -171,33 +171,33 @@ public class CatalogApiTest extends APITest {
             .modifierListInfo(singletonList(new CatalogItemModifierListInfo().modifierListId("#Milks")))
             .taxIds(singletonList("#SalesTax"))
             .variations(asList(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM_VARIATION)
+                    .type("ITEM_VARIATION")
                     .id("#SmallTea")
                     .presentAtAllLocations(true)
                     .itemVariationData(new CatalogItemVariation()
                         .itemId("#Tea")
                         .name("Small")
-                        .pricingType(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING)
-                        .priceMoney(new Money().amount(150L).currency(Money.CurrencyEnum.USD))),
+                        .pricingType("FIXED_PRICING")
+                        .priceMoney(new Money().amount(150L).currency("USD"))),
                 new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM_VARIATION)
+                    .type("ITEM_VARIATION")
                     .id("#LargeTea")
                     .presentAtAllLocations(true)
                     .itemVariationData(new CatalogItemVariation()
                         .itemId("#Tea")
                         .name("Large")
-                        .pricingType(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING)
-                        .priceMoney(new Money().amount(200L).currency(Money.CurrencyEnum.USD)))))
+                        .pricingType("FIXED_PRICING")
+                        .priceMoney(new Money().amount(200L).currency("USD")))))
         );
 
     private static final CatalogObject salesTax = new CatalogObject()
-        .type(CatalogObject.TypeEnum.TAX)
+        .type("TAX")
         .id("#SalesTax")
         .presentAtAllLocations(true)
         .taxData(new CatalogTax()
             .name("Sales Tax")
-            .calculationPhase(CatalogTax.CalculationPhaseEnum.SUBTOTAL_PHASE)
-            .inclusionType(CatalogTax.InclusionTypeEnum.ADDITIVE)
+            .calculationPhase("TAX_SUBTOTAL_PHASE")
+            .inclusionType("ADDITIVE")
             .percentage("5.0")
             .appliesToCustomAmounts(true)
             .enabled(true));
@@ -311,7 +311,7 @@ public class CatalogApiTest extends APITest {
         assertEquals(2, response.getObjects().size());
 
         CatalogObject actualCoffee = response.getObjects().get(0);
-        assertEquals(CatalogObject.TypeEnum.ITEM, actualCoffee.getType());
+        assertEquals("ITEM", actualCoffee.getType());
         assertEquals(coffeeId, actualCoffee.getId());
         assertFalse(actualCoffee.getUpdatedAt().isEmpty());
         assertTrue(actualCoffee.getVersion() != 0);
@@ -337,18 +337,17 @@ public class CatalogApiTest extends APITest {
         assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getMinSelectedModifiers());
         assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getMaxSelectedModifiers());
         assertNull(actualCoffee.getItemData().getModifierListInfo().get(0).getEnabled());
-        assertNull(actualCoffee.getItemData().getImageUrl());
 
         assertEquals(2, actualCoffee.getItemData().getVariations().size());
         assertEquals("Small", actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getName());
-        assertEquals(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING, actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getPricingType());
+        assertEquals("FIXED_PRICING", actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getPricingType());
         assertEquals(Long.valueOf(195), actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getPriceMoney().getAmount());
-        assertEquals(Money.CurrencyEnum.USD, actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getPriceMoney().getCurrency());
+        assertEquals("USD", actualCoffee.getItemData().getVariations().get(0).getItemVariationData().getPriceMoney().getCurrency());
 
         assertEquals("Large", actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getName());
-        assertEquals(CatalogItemVariation.PricingTypeEnum.FIXED_PRICING, actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getPricingType());
+        assertEquals("FIXED_PRICING", actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getPricingType());
         assertEquals(Long.valueOf(250), actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getPriceMoney().getAmount());
-        assertEquals(Money.CurrencyEnum.USD, actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getPriceMoney().getCurrency());
+        assertEquals("USD", actualCoffee.getItemData().getVariations().get(1).getItemVariationData().getPriceMoney().getCurrency());
 
         assertNull(actualCoffee.getCategoryData());
         assertNull(actualCoffee.getItemVariationData());
@@ -358,7 +357,7 @@ public class CatalogApiTest extends APITest {
         assertNull(actualCoffee.getModifierData());
 
         CatalogObject actualSalesTax = response.getObjects().get(1);
-        assertEquals(CatalogObject.TypeEnum.TAX, actualSalesTax.getType());
+        assertEquals("TAX", actualSalesTax.getType());
         assertEquals(salesTaxId, actualSalesTax.getId());
         assertEquals("Sales Tax", actualSalesTax.getTaxData().getName());
     }
@@ -384,17 +383,17 @@ public class CatalogApiTest extends APITest {
                 String variationId = "#ItemVariation-" + batchNum + "-" + i;
 
                 batch.addObjectsItem(new CatalogObject()
-                    .type(CatalogObject.TypeEnum.ITEM)
+                    .type("ITEM")
                     .id(itemId)
                     .itemData(new CatalogItem()
                         .name("Item-" + batchNum + "-" + i)
                         .addVariationsItem(new CatalogObject()
-                            .type(CatalogObject.TypeEnum.ITEM_VARIATION)
+                            .type("ITEM_VARIATION")
                             .id(variationId)
                             .itemVariationData(new CatalogItemVariation()
                                 .itemId(itemId)
                                 .name("Regular")
-                                .pricingType(CatalogItemVariation.PricingTypeEnum.VARIABLE_PRICING)))));
+                                .pricingType("VARIABLE_PRICING")))));
                 numObjects++;
             }
         }
@@ -496,13 +495,13 @@ public class CatalogApiTest extends APITest {
         boolean gotSalesTax = false;
         boolean gotBeverages = false;
         for (CatalogObject relatedObject : response.getRelatedObjects()) {
-            if (relatedObject.getType() == CatalogObject.TypeEnum.MODIFIER_LIST && relatedObject.getModifierListData().getName().equals("Milks")) {
+            if (relatedObject.getType().equals("MODIFIER_LIST") && relatedObject.getModifierListData().getName().equals("Milks")) {
                 gotMilks = true;
             }
-            if (relatedObject.getType() == CatalogObject.TypeEnum.TAX && relatedObject.getTaxData().getName().equals("Sales Tax")) {
+            if (relatedObject.getType().equals("TAX") && relatedObject.getTaxData().getName().equals("Sales Tax")) {
                 gotSalesTax = true;
             }
-            if (relatedObject.getType() == CatalogObject.TypeEnum.CATEGORY && relatedObject.getCategoryData().getName().equals("Beverages")) {
+            if (relatedObject.getType().equals("CATEGORY") && relatedObject.getCategoryData().getName().equals("Beverages")) {
                 gotBeverages = true;
             }
         }
@@ -528,9 +527,9 @@ public class CatalogApiTest extends APITest {
         SearchCatalogObjectsResponse response = api.searchCatalogObjects(query1);
         assertEquals(2, response.getObjects().size());
 
-        assertEquals(CatalogObject.TypeEnum.ITEM_VARIATION, response.getObjects().get(0).getType());
+        assertEquals("ITEM_VARIATION", response.getObjects().get(0).getType());
         assertEquals("Small", response.getObjects().get(0).getItemVariationData().getName());
-        assertEquals(CatalogObject.TypeEnum.ITEM_VARIATION, response.getObjects().get(1).getType());
+        assertEquals("ITEM_VARIATION", response.getObjects().get(1).getType());
         assertEquals("Small", response.getObjects().get(1).getItemVariationData().getName());
 
         SearchCatalogObjectsRequest query2 = new SearchCatalogObjectsRequest()
@@ -540,8 +539,8 @@ public class CatalogApiTest extends APITest {
             .includeRelatedObjects(false);
         SearchCatalogObjectsResponse response2 = api.searchCatalogObjects(query2);
         assertEquals(2, response2.getObjects().size());
-        assertEquals(CatalogObject.TypeEnum.ITEM, response2.getObjects().get(0).getType());
-        assertEquals(CatalogObject.TypeEnum.ITEM, response2.getObjects().get(1).getType());
+        assertEquals("ITEM", response2.getObjects().get(0).getType());
+        assertEquals("ITEM", response2.getObjects().get(1).getType());
 
         boolean gotCoffee = false;
         boolean gotTea = false;
@@ -621,7 +620,7 @@ public class CatalogApiTest extends APITest {
         UpsertCatalogObjectRequest body = new UpsertCatalogObjectRequest()
             .idempotencyKey(UUID.randomUUID().toString())
             .object(new CatalogObject()
-                .type(CatalogObject.TypeEnum.DISCOUNT)
+                .type("DISCOUNT")
                 .id("#Discount")
                 .discountData(new CatalogDiscount()
                     .name("Half off")

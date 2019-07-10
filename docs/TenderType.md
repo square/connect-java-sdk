@@ -1,20 +1,18 @@
 
 # TenderType
 
-## Enum
 
+* `"CARD"`
 
-* `CARD` (value: `"CARD"`)
+* `"CASH"`
 
-* `CASH` (value: `"CASH"`)
+* `"THIRD_PARTY_CARD"`
 
-* `THIRD_PARTY_CARD` (value: `"THIRD_PARTY_CARD"`)
+* `"SQUARE_GIFT_CARD"`
 
-* `SQUARE_GIFT_CARD` (value: `"SQUARE_GIFT_CARD"`)
+* `"NO_SALE"`
 
-* `NO_SALE` (value: `"NO_SALE"`)
-
-* `OTHER` (value: `"OTHER"`)
+* `"OTHER"`
 
 
 

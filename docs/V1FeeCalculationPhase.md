@@ -1,14 +1,12 @@
 
 # V1FeeCalculationPhase
 
-## Enum
 
+* `"FEE_SUBTOTAL_PHASE"`
 
-* `FEE_SUBTOTAL_PHASE` (value: `"FEE_SUBTOTAL_PHASE"`)
+* `"OTHER"`
 
-* `OTHER` (value: `"OTHER"`)
-
-* `FEE_TOTAL_PHASE` (value: `"FEE_TOTAL_PHASE"`)
+* `"FEE_TOTAL_PHASE"`
 
 
 

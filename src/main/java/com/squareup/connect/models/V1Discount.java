@@ -39,90 +39,14 @@ public class V1Discount {
   @JsonProperty("amount_money")
   private V1Money amountMoney = null;
 
-  /**
-   * Indicates whether the discount is a FIXED value or entered at the time of sale. See [V1DiscountDiscountType](#type-v1discountdiscounttype) for possible values
-   */
-  public enum DiscountTypeEnum {
-    FIXED("FIXED"),
-    
-    VARIABLE_PERCENTAGE("VARIABLE_PERCENTAGE"),
-    
-    VARIABLE_AMOUNT("VARIABLE_AMOUNT");
-
-    private String value;
-
-    DiscountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DiscountTypeEnum fromValue(String text) {
-      for (DiscountTypeEnum b : DiscountTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("discount_type")
-  private DiscountTypeEnum discountType = null;
+  private String discountType = null;
 
   @JsonProperty("pin_required")
   private Boolean pinRequired = null;
 
-  /**
-   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values
-   */
-  public enum ColorEnum {
-    _9DA2A6("9da2a6"),
-    
-    _4AB200("4ab200"),
-    
-    _0B8000("0b8000"),
-    
-    _2952CC("2952cc"),
-    
-    A82EE5("a82ee5"),
-    
-    E5457A("e5457a"),
-    
-    B21212("b21212"),
-    
-    _593C00("593c00"),
-    
-    E5BF00("e5BF00");
-
-    private String value;
-
-    ColorEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ColorEnum fromValue(String text) {
-      for (ColorEnum b : ColorEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("color")
-  private ColorEnum color = null;
+  private String color = null;
 
   @JsonProperty("v2_id")
   private String v2Id = null;
@@ -199,7 +123,7 @@ public class V1Discount {
     this.amountMoney = amountMoney;
   }
 
-  public V1Discount discountType(DiscountTypeEnum discountType) {
+  public V1Discount discountType(String discountType) {
     this.discountType = discountType;
     return this;
   }
@@ -209,11 +133,11 @@ public class V1Discount {
    * @return discountType
   **/
   @ApiModelProperty(value = "Indicates whether the discount is a FIXED value or entered at the time of sale. See [V1DiscountDiscountType](#type-v1discountdiscounttype) for possible values")
-  public DiscountTypeEnum getDiscountType() {
+  public String getDiscountType() {
     return discountType;
   }
 
-  public void setDiscountType(DiscountTypeEnum discountType) {
+  public void setDiscountType(String discountType) {
     this.discountType = discountType;
   }
 
@@ -235,7 +159,7 @@ public class V1Discount {
     this.pinRequired = pinRequired;
   }
 
-  public V1Discount color(ColorEnum color) {
+  public V1Discount color(String color) {
     this.color = color;
     return this;
   }
@@ -245,11 +169,11 @@ public class V1Discount {
    * @return color
   **/
   @ApiModelProperty(value = "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values")
-  public ColorEnum getColor() {
+  public String getColor() {
     return color;
   }
 
-  public void setColor(ColorEnum color) {
+  public void setColor(String color) {
     this.color = color;
   }
 

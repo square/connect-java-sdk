@@ -1,12 +1,10 @@
 
 # SortOrder
 
-## Enum
 
+* `"DESC"`
 
-* `DESC` (value: `"DESC"`)
-
-* `ASC` (value: `"ASC"`)
+* `"ASC"`
 
 
 

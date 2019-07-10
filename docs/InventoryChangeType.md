@@ -1,14 +1,12 @@
 
 # InventoryChangeType
 
-## Enum
 
+* `"PHYSICAL_COUNT"`
 
-* `PHYSICAL_COUNT` (value: `"PHYSICAL_COUNT"`)
+* `"ADJUSTMENT"`
 
-* `ADJUSTMENT` (value: `"ADJUSTMENT"`)
-
-* `TRANSFER` (value: `"TRANSFER"`)
+* `"TRANSFER"`
 
 
 

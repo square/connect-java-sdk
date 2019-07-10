@@ -35,80 +35,14 @@ public class V1PageCell {
   @JsonProperty("column")
   private Integer column = null;
 
-  /**
-   * The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER). See [V1PageCellObjectType](#type-v1pagecellobjecttype) for possible values
-   */
-  public enum ObjectTypeEnum {
-    ITEM("ITEM"),
-    
-    DISCOUNT("DISCOUNT"),
-    
-    CATEGORY("CATEGORY"),
-    
-    PLACEHOLDER("PLACEHOLDER");
-
-    private String value;
-
-    ObjectTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ObjectTypeEnum fromValue(String text) {
-      for (ObjectTypeEnum b : ObjectTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("object_type")
-  private ObjectTypeEnum objectType = null;
+  private String objectType = null;
 
   @JsonProperty("object_id")
   private String objectId = null;
 
-  /**
-   * For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior. See [V1PageCellPlaceholderType](#type-v1pagecellplaceholdertype) for possible values
-   */
-  public enum PlaceholderTypeEnum {
-    ALL_ITEMS("ALL_ITEMS"),
-    
-    DISCOUNTS_CATEGORY("DISCOUNTS_CATEGORY"),
-    
-    REWARDS_FINDER("REWARDS_FINDER");
-
-    private String value;
-
-    PlaceholderTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PlaceholderTypeEnum fromValue(String text) {
-      for (PlaceholderTypeEnum b : PlaceholderTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("placeholder_type")
-  private PlaceholderTypeEnum placeholderType = null;
+  private String placeholderType = null;
 
   public V1PageCell pageId(String pageId) {
     this.pageId = pageId;
@@ -164,7 +98,7 @@ public class V1PageCell {
     this.column = column;
   }
 
-  public V1PageCell objectType(ObjectTypeEnum objectType) {
+  public V1PageCell objectType(String objectType) {
     this.objectType = objectType;
     return this;
   }
@@ -174,11 +108,11 @@ public class V1PageCell {
    * @return objectType
   **/
   @ApiModelProperty(value = "The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER). See [V1PageCellObjectType](#type-v1pagecellobjecttype) for possible values")
-  public ObjectTypeEnum getObjectType() {
+  public String getObjectType() {
     return objectType;
   }
 
-  public void setObjectType(ObjectTypeEnum objectType) {
+  public void setObjectType(String objectType) {
     this.objectType = objectType;
   }
 
@@ -200,7 +134,7 @@ public class V1PageCell {
     this.objectId = objectId;
   }
 
-  public V1PageCell placeholderType(PlaceholderTypeEnum placeholderType) {
+  public V1PageCell placeholderType(String placeholderType) {
     this.placeholderType = placeholderType;
     return this;
   }
@@ -210,11 +144,11 @@ public class V1PageCell {
    * @return placeholderType
   **/
   @ApiModelProperty(value = "For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior. See [V1PageCellPlaceholderType](#type-v1pagecellplaceholdertype) for possible values")
-  public PlaceholderTypeEnum getPlaceholderType() {
+  public String getPlaceholderType() {
     return placeholderType;
   }
 
-  public void setPlaceholderType(PlaceholderTypeEnum placeholderType) {
+  public void setPlaceholderType(String placeholderType) {
     this.placeholderType = placeholderType;
   }
 

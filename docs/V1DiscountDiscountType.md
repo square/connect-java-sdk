@@ -1,14 +1,12 @@
 
 # V1DiscountDiscountType
 
-## Enum
 
+* `"FIXED"`
 
-* `FIXED` (value: `"FIXED"`)
+* `"VARIABLE_PERCENTAGE"`
 
-* `VARIABLE_PERCENTAGE` (value: `"VARIABLE_PERCENTAGE"`)
-
-* `VARIABLE_AMOUNT` (value: `"VARIABLE_AMOUNT"`)
+* `"VARIABLE_AMOUNT"`
 
 
 

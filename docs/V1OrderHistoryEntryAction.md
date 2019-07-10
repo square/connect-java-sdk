@@ -1,22 +1,20 @@
 
 # V1OrderHistoryEntryAction
 
-## Enum
 
+* `"ORDER_PLACED"`
 
-* `ORDER_PLACED` (value: `"ORDER_PLACED"`)
+* `"DECLINED"`
 
-* `DECLINED` (value: `"DECLINED"`)
+* `"PAYMENT_RECEIVED"`
 
-* `PAYMENT_RECEIVED` (value: `"PAYMENT_RECEIVED"`)
+* `"CANCELED"`
 
-* `CANCELED` (value: `"CANCELED"`)
+* `"COMPLETED"`
 
-* `COMPLETED` (value: `"COMPLETED"`)
+* `"REFUNDED"`
 
-* `REFUNDED` (value: `"REFUNDED"`)
-
-* `EXPIRED` (value: `"EXPIRED"`)
+* `"EXPIRED"`
 
 
 
