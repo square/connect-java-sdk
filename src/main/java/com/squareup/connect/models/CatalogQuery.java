@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.CatalogQueryExact;
+import com.squareup.connect.models.CatalogQueryItemVariationsForItemOptionValues;
+import com.squareup.connect.models.CatalogQueryItemsForItemOptions;
 import com.squareup.connect.models.CatalogQueryItemsForModifierList;
 import com.squareup.connect.models.CatalogQueryItemsForTax;
 import com.squareup.connect.models.CatalogQueryPrefix;
@@ -53,6 +55,12 @@ public class CatalogQuery {
 
   @JsonProperty("items_for_modifier_list_query")
   private CatalogQueryItemsForModifierList itemsForModifierListQuery = null;
+
+  @JsonProperty("items_for_item_options_query")
+  private CatalogQueryItemsForItemOptions itemsForItemOptionsQuery = null;
+
+  @JsonProperty("item_variations_for_item_option_values_query")
+  private CatalogQueryItemVariationsForItemOptionValues itemVariationsForItemOptionValuesQuery = null;
 
   public CatalogQuery sortedAttributeQuery(CatalogQuerySortedAttribute sortedAttributeQuery) {
     this.sortedAttributeQuery = sortedAttributeQuery;
@@ -180,6 +188,42 @@ public class CatalogQuery {
     this.itemsForModifierListQuery = itemsForModifierListQuery;
   }
 
+  public CatalogQuery itemsForItemOptionsQuery(CatalogQueryItemsForItemOptions itemsForItemOptionsQuery) {
+    this.itemsForItemOptionsQuery = itemsForItemOptionsQuery;
+    return this;
+  }
+
+   /**
+   * A query that returns all [CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption](#type-catalogitemoption)s.
+   * @return itemsForItemOptionsQuery
+  **/
+  @ApiModelProperty(value = "A query that returns all [CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption](#type-catalogitemoption)s.")
+  public CatalogQueryItemsForItemOptions getItemsForItemOptionsQuery() {
+    return itemsForItemOptionsQuery;
+  }
+
+  public void setItemsForItemOptionsQuery(CatalogQueryItemsForItemOptions itemsForItemOptionsQuery) {
+    this.itemsForItemOptionsQuery = itemsForItemOptionsQuery;
+  }
+
+  public CatalogQuery itemVariationsForItemOptionValuesQuery(CatalogQueryItemVariationsForItemOptionValues itemVariationsForItemOptionValuesQuery) {
+    this.itemVariationsForItemOptionValuesQuery = itemVariationsForItemOptionValuesQuery;
+    return this;
+  }
+
+   /**
+   * A query that returns all [CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption](#type-catalogitemoption) values.
+   * @return itemVariationsForItemOptionValuesQuery
+  **/
+  @ApiModelProperty(value = "A query that returns all [CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption](#type-catalogitemoption) values.")
+  public CatalogQueryItemVariationsForItemOptionValues getItemVariationsForItemOptionValuesQuery() {
+    return itemVariationsForItemOptionValuesQuery;
+  }
+
+  public void setItemVariationsForItemOptionValuesQuery(CatalogQueryItemVariationsForItemOptionValues itemVariationsForItemOptionValuesQuery) {
+    this.itemVariationsForItemOptionValuesQuery = itemVariationsForItemOptionValuesQuery;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -196,12 +240,14 @@ public class CatalogQuery {
         Objects.equals(this.rangeQuery, catalogQuery.rangeQuery) &&
         Objects.equals(this.textQuery, catalogQuery.textQuery) &&
         Objects.equals(this.itemsForTaxQuery, catalogQuery.itemsForTaxQuery) &&
-        Objects.equals(this.itemsForModifierListQuery, catalogQuery.itemsForModifierListQuery);
+        Objects.equals(this.itemsForModifierListQuery, catalogQuery.itemsForModifierListQuery) &&
+        Objects.equals(this.itemsForItemOptionsQuery, catalogQuery.itemsForItemOptionsQuery) &&
+        Objects.equals(this.itemVariationsForItemOptionValuesQuery, catalogQuery.itemVariationsForItemOptionValuesQuery);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sortedAttributeQuery, exactQuery, prefixQuery, rangeQuery, textQuery, itemsForTaxQuery, itemsForModifierListQuery);
+    return Objects.hash(sortedAttributeQuery, exactQuery, prefixQuery, rangeQuery, textQuery, itemsForTaxQuery, itemsForModifierListQuery, itemsForItemOptionsQuery, itemVariationsForItemOptionValuesQuery);
   }
 
 
@@ -217,6 +263,8 @@ public class CatalogQuery {
     sb.append("    textQuery: ").append(toIndentedString(textQuery)).append("\n");
     sb.append("    itemsForTaxQuery: ").append(toIndentedString(itemsForTaxQuery)).append("\n");
     sb.append("    itemsForModifierListQuery: ").append(toIndentedString(itemsForModifierListQuery)).append("\n");
+    sb.append("    itemsForItemOptionsQuery: ").append(toIndentedString(itemsForItemOptionsQuery)).append("\n");
+    sb.append("    itemVariationsForItemOptionValuesQuery: ").append(toIndentedString(itemVariationsForItemOptionValuesQuery)).append("\n");
     sb.append("}");
     return sb.toString();
   }

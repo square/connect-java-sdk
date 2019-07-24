@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.CatalogItemModifierListInfo;
+import com.squareup.connect.models.CatalogItemOptionForItem;
 import com.squareup.connect.models.CatalogObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -68,6 +69,9 @@ public class CatalogItem {
 
   @JsonProperty("skip_modifier_screen")
   private Boolean skipModifierScreen = null;
+
+  @JsonProperty("item_options")
+  private List<CatalogItemOptionForItem> itemOptions = new ArrayList<CatalogItemOptionForItem>();
 
   public CatalogItem name(String name) {
     this.name = name;
@@ -288,10 +292,10 @@ public class CatalogItem {
   }
 
    /**
-   * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
+   * The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` or `APPOINTMENTS_SERVICE` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
    * @return productType
   **/
-  @ApiModelProperty(value = "The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values")
+  @ApiModelProperty(value = "The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` or `APPOINTMENTS_SERVICE` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values")
   public String getProductType() {
     return productType;
   }
@@ -318,6 +322,29 @@ public class CatalogItem {
     this.skipModifierScreen = skipModifierScreen;
   }
 
+  public CatalogItem itemOptions(List<CatalogItemOptionForItem> itemOptions) {
+    this.itemOptions = itemOptions;
+    return this;
+  }
+
+  public CatalogItem addItemOptionsItem(CatalogItemOptionForItem itemOptionsItem) {
+    this.itemOptions.add(itemOptionsItem);
+    return this;
+  }
+
+   /**
+   * List of item options IDs for this item. Used to manage and group item variations in a specified order.  Maximum: 6 item options.
+   * @return itemOptions
+  **/
+  @ApiModelProperty(value = "List of item options IDs for this item. Used to manage and group item variations in a specified order.  Maximum: 6 item options.")
+  public List<CatalogItemOptionForItem> getItemOptions() {
+    return itemOptions;
+  }
+
+  public void setItemOptions(List<CatalogItemOptionForItem> itemOptions) {
+    this.itemOptions = itemOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -340,12 +367,13 @@ public class CatalogItem {
         Objects.equals(this.modifierListInfo, catalogItem.modifierListInfo) &&
         Objects.equals(this.variations, catalogItem.variations) &&
         Objects.equals(this.productType, catalogItem.productType) &&
-        Objects.equals(this.skipModifierScreen, catalogItem.skipModifierScreen);
+        Objects.equals(this.skipModifierScreen, catalogItem.skipModifierScreen) &&
+        Objects.equals(this.itemOptions, catalogItem.itemOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, abbreviation, labelColor, availableOnline, availableForPickup, availableElectronically, categoryId, taxIds, modifierListInfo, variations, productType, skipModifierScreen);
+    return Objects.hash(name, description, abbreviation, labelColor, availableOnline, availableForPickup, availableElectronically, categoryId, taxIds, modifierListInfo, variations, productType, skipModifierScreen, itemOptions);
   }
 
 
@@ -367,6 +395,7 @@ public class CatalogItem {
     sb.append("    variations: ").append(toIndentedString(variations)).append("\n");
     sb.append("    productType: ").append(toIndentedString(productType)).append("\n");
     sb.append("    skipModifierScreen: ").append(toIndentedString(skipModifierScreen)).append("\n");
+    sb.append("    itemOptions: ").append(toIndentedString(itemOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

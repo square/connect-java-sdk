@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 2.20190724.0 (2019-07-24)
+
+* **BETA releases**:
+  * Catalog API: supports item options with datatypes and enums for item options and item option values.
+
 ## Version 2.20190710.0 (2019-07-10)
 
 * **Breaking change** &mdash; As of 2019-07-10 Java Connect SDK does not support explicit `ENUM` types. Instead, the SDKs pass `ENUM` values as static `Strings`. Developer code can now choose to ignore unexpected `String` values when Square APIs return new values instead of being forced to throw runtime errors due to unexpected types. Additional information, including migration help, is available in the README.
