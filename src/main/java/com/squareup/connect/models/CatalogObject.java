@@ -21,6 +21,8 @@ import com.squareup.connect.models.CatalogCategory;
 import com.squareup.connect.models.CatalogDiscount;
 import com.squareup.connect.models.CatalogImage;
 import com.squareup.connect.models.CatalogItem;
+import com.squareup.connect.models.CatalogItemOption;
+import com.squareup.connect.models.CatalogItemOptionValue;
 import com.squareup.connect.models.CatalogItemVariation;
 import com.squareup.connect.models.CatalogMeasurementUnit;
 import com.squareup.connect.models.CatalogModifier;
@@ -106,6 +108,12 @@ public class CatalogObject {
 
   @JsonProperty("measurement_unit_data")
   private CatalogMeasurementUnit measurementUnitData = null;
+
+  @JsonProperty("item_option_data")
+  private CatalogItemOption itemOptionData = null;
+
+  @JsonProperty("item_option_value_data")
+  private CatalogItemOptionValue itemOptionValueData = null;
 
   public CatalogObject type(String type) {
     this.type = type;
@@ -518,6 +526,42 @@ public class CatalogObject {
     this.measurementUnitData = measurementUnitData;
   }
 
+  public CatalogObject itemOptionData(CatalogItemOption itemOptionData) {
+    this.itemOptionData = itemOptionData;
+    return this;
+  }
+
+   /**
+   * Structured data for a [CatalogItemOption](#type-catalogitemoption), set for CatalogObjects of type `ITEM_OPTION`.
+   * @return itemOptionData
+  **/
+  @ApiModelProperty(value = "Structured data for a [CatalogItemOption](#type-catalogitemoption), set for CatalogObjects of type `ITEM_OPTION`.")
+  public CatalogItemOption getItemOptionData() {
+    return itemOptionData;
+  }
+
+  public void setItemOptionData(CatalogItemOption itemOptionData) {
+    this.itemOptionData = itemOptionData;
+  }
+
+  public CatalogObject itemOptionValueData(CatalogItemOptionValue itemOptionValueData) {
+    this.itemOptionValueData = itemOptionValueData;
+    return this;
+  }
+
+   /**
+   * Structured data for a [CatalogItemOptionValue](#type-catalogitemoptionvalue), set for CatalogObjects of type `ITEM_OPTION_VAL`.
+   * @return itemOptionValueData
+  **/
+  @ApiModelProperty(value = "Structured data for a [CatalogItemOptionValue](#type-catalogitemoptionvalue), set for CatalogObjects of type `ITEM_OPTION_VAL`.")
+  public CatalogItemOptionValue getItemOptionValueData() {
+    return itemOptionValueData;
+  }
+
+  public void setItemOptionValueData(CatalogItemOptionValue itemOptionValueData) {
+    this.itemOptionValueData = itemOptionValueData;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -549,12 +593,14 @@ public class CatalogObject {
         Objects.equals(this.productSetData, catalogObject.productSetData) &&
         Objects.equals(this.pricingRuleData, catalogObject.pricingRuleData) &&
         Objects.equals(this.imageData, catalogObject.imageData) &&
-        Objects.equals(this.measurementUnitData, catalogObject.measurementUnitData);
+        Objects.equals(this.measurementUnitData, catalogObject.measurementUnitData) &&
+        Objects.equals(this.itemOptionData, catalogObject.itemOptionData) &&
+        Objects.equals(this.itemOptionValueData, catalogObject.itemOptionValueData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, imageId, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, timePeriodData, productSetData, pricingRuleData, imageData, measurementUnitData);
+    return Objects.hash(type, id, updatedAt, version, isDeleted, catalogV1Ids, presentAtAllLocations, presentAtLocationIds, absentAtLocationIds, imageId, itemData, categoryData, itemVariationData, taxData, discountData, modifierListData, modifierData, timePeriodData, productSetData, pricingRuleData, imageData, measurementUnitData, itemOptionData, itemOptionValueData);
   }
 
 
@@ -585,6 +631,8 @@ public class CatalogObject {
     sb.append("    pricingRuleData: ").append(toIndentedString(pricingRuleData)).append("\n");
     sb.append("    imageData: ").append(toIndentedString(imageData)).append("\n");
     sb.append("    measurementUnitData: ").append(toIndentedString(measurementUnitData)).append("\n");
+    sb.append("    itemOptionData: ").append(toIndentedString(itemOptionData)).append("\n");
+    sb.append("    itemOptionValueData: ").append(toIndentedString(itemOptionValueData)).append("\n");
     sb.append("}");
     return sb.toString();
   }

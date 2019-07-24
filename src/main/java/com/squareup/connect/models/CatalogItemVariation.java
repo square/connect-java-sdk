@@ -17,6 +17,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.squareup.connect.models.CatalogItemOptionValueForItemVariation;
 import com.squareup.connect.models.ItemVariationLocationOverrides;
 import com.squareup.connect.models.Money;
 import io.swagger.annotations.ApiModel;
@@ -68,6 +69,9 @@ public class CatalogItemVariation {
 
   @JsonProperty("service_duration")
   private Long serviceDuration = null;
+
+  @JsonProperty("item_option_values")
+  private List<CatalogItemOptionValueForItemVariation> itemOptionValues = new ArrayList<CatalogItemOptionValueForItemVariation>();
 
   @JsonProperty("measurement_unit_id")
   private String measurementUnitId = null;
@@ -311,6 +315,29 @@ public class CatalogItemVariation {
     this.serviceDuration = serviceDuration;
   }
 
+  public CatalogItemVariation itemOptionValues(List<CatalogItemOptionValueForItemVariation> itemOptionValues) {
+    this.itemOptionValues = itemOptionValues;
+    return this;
+  }
+
+  public CatalogItemVariation addItemOptionValuesItem(CatalogItemOptionValueForItemVariation itemOptionValuesItem) {
+    this.itemOptionValues.add(itemOptionValuesItem);
+    return this;
+  }
+
+   /**
+   * List of item option values associated with this item variation. Listed in the same order as the item options of the parent item.
+   * @return itemOptionValues
+  **/
+  @ApiModelProperty(value = "List of item option values associated with this item variation. Listed in the same order as the item options of the parent item.")
+  public List<CatalogItemOptionValueForItemVariation> getItemOptionValues() {
+    return itemOptionValues;
+  }
+
+  public void setItemOptionValues(List<CatalogItemOptionValueForItemVariation> itemOptionValues) {
+    this.itemOptionValues = itemOptionValues;
+  }
+
   public CatalogItemVariation measurementUnitId(String measurementUnitId) {
     this.measurementUnitId = measurementUnitId;
     return this;
@@ -352,12 +379,13 @@ public class CatalogItemVariation {
         Objects.equals(this.inventoryAlertThreshold, catalogItemVariation.inventoryAlertThreshold) &&
         Objects.equals(this.userData, catalogItemVariation.userData) &&
         Objects.equals(this.serviceDuration, catalogItemVariation.serviceDuration) &&
+        Objects.equals(this.itemOptionValues, catalogItemVariation.itemOptionValues) &&
         Objects.equals(this.measurementUnitId, catalogItemVariation.measurementUnitId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, name, sku, upc, ordinal, pricingType, priceMoney, locationOverrides, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, serviceDuration, measurementUnitId);
+    return Objects.hash(itemId, name, sku, upc, ordinal, pricingType, priceMoney, locationOverrides, trackInventory, inventoryAlertType, inventoryAlertThreshold, userData, serviceDuration, itemOptionValues, measurementUnitId);
   }
 
 
@@ -379,6 +407,7 @@ public class CatalogItemVariation {
     sb.append("    inventoryAlertThreshold: ").append(toIndentedString(inventoryAlertThreshold)).append("\n");
     sb.append("    userData: ").append(toIndentedString(userData)).append("\n");
     sb.append("    serviceDuration: ").append(toIndentedString(serviceDuration)).append("\n");
+    sb.append("    itemOptionValues: ").append(toIndentedString(itemOptionValues)).append("\n");
     sb.append("    measurementUnitId: ").append(toIndentedString(measurementUnitId)).append("\n");
     sb.append("}");
     return sb.toString();
