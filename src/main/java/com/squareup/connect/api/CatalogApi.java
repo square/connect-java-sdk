@@ -58,8 +58,7 @@ public class CatalogApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchDeleteCatalogObjectsResponse
    * @throws ApiException if fails to make API call
-   */
-  public BatchDeleteCatalogObjectsResponse batchDeleteCatalogObjects(BatchDeleteCatalogObjectsRequest body) throws ApiException {
+   */  public BatchDeleteCatalogObjectsResponse batchDeleteCatalogObjects(BatchDeleteCatalogObjectsRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -74,7 +73,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -142,8 +141,7 @@ public class CatalogApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchRetrieveCatalogObjectsResponse
    * @throws ApiException if fails to make API call
-   */
-  public BatchRetrieveCatalogObjectsResponse batchRetrieveCatalogObjects(BatchRetrieveCatalogObjectsRequest body) throws ApiException {
+   */  public BatchRetrieveCatalogObjectsResponse batchRetrieveCatalogObjects(BatchRetrieveCatalogObjectsRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -158,7 +156,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -226,8 +224,7 @@ public class CatalogApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchUpsertCatalogObjectsResponse
    * @throws ApiException if fails to make API call
-   */
-  public BatchUpsertCatalogObjectsResponse batchUpsertCatalogObjects(BatchUpsertCatalogObjectsRequest body) throws ApiException {
+   */  public BatchUpsertCatalogObjectsResponse batchUpsertCatalogObjects(BatchUpsertCatalogObjectsRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -242,7 +239,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -309,8 +306,7 @@ public class CatalogApi {
    * Returns information about the Square Catalog API, such as batch size limits for &#x60;BatchUpsertCatalogObjects&#x60;.
    * @return CatalogInfoResponse
    * @throws ApiException if fails to make API call
-   */
-  public CatalogInfoResponse catalogInfo() throws ApiException {
+   */  public CatalogInfoResponse catalogInfo() throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -320,7 +316,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -382,8 +378,7 @@ public class CatalogApi {
    * @param objectId The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s). (required)
    * @return DeleteCatalogObjectResponse
    * @throws ApiException if fails to make API call
-   */
-  public DeleteCatalogObjectResponse deleteCatalogObject(String objectId) throws ApiException {
+   */  public DeleteCatalogObjectResponse deleteCatalogObject(String objectId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'objectId' is set
@@ -399,7 +394,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -469,8 +464,7 @@ public class CatalogApi {
    * @param types An optional case-insensitive, comma-separated list of object types to retrieve, for example &#x60;ITEM,ITEM_VARIATION,CATEGORY,IMAGE&#x60;.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely &#x60;ITEM&#x60;, &#x60;ITEM_VARIATION&#x60;, &#x60;CATEGORY&#x60;, &#x60;DISCOUNT&#x60;, &#x60;TAX&#x60;, &#x60;MODIFIER&#x60;, &#x60;MODIFIER_LIST&#x60;, or &#x60;IMAGE&#x60;. (optional)
    * @return ListCatalogResponse
    * @throws ApiException if fails to make API call
-   */
-  public ListCatalogResponse listCatalog(String cursor, String types) throws ApiException {
+   */  public ListCatalogResponse listCatalog(String cursor, String types) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -480,7 +474,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "types", types));
 
@@ -549,8 +543,7 @@ public class CatalogApi {
    * @param includeRelatedObjects If &#x60;true&#x60;, the response will include additional objects that are related to the requested object, as follows:  If the &#x60;object&#x60; field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, [CatalogImage](#type-catalogimage)s and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the &#x60;related_objects&#x60; field of the response. If the &#x60;object&#x60; field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the &#x60;related_objects&#x60; field of  the response.  Default value: &#x60;false&#x60; (optional)
    * @return RetrieveCatalogObjectResponse
    * @throws ApiException if fails to make API call
-   */
-  public RetrieveCatalogObjectResponse retrieveCatalogObject(String objectId, Boolean includeRelatedObjects) throws ApiException {
+   */  public RetrieveCatalogObjectResponse retrieveCatalogObject(String objectId, Boolean includeRelatedObjects) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'objectId' is set
@@ -566,7 +559,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_related_objects", includeRelatedObjects));
 
     
@@ -638,8 +631,7 @@ public class CatalogApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return SearchCatalogObjectsResponse
    * @throws ApiException if fails to make API call
-   */
-  public SearchCatalogObjectsResponse searchCatalogObjects(SearchCatalogObjectsRequest body) throws ApiException {
+   */  public SearchCatalogObjectsResponse searchCatalogObjects(SearchCatalogObjectsRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -654,7 +646,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -722,8 +714,7 @@ public class CatalogApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateItemModifierListsResponse
    * @throws ApiException if fails to make API call
-   */
-  public UpdateItemModifierListsResponse updateItemModifierLists(UpdateItemModifierListsRequest body) throws ApiException {
+   */  public UpdateItemModifierListsResponse updateItemModifierLists(UpdateItemModifierListsRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -738,7 +729,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -806,8 +797,7 @@ public class CatalogApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateItemTaxesResponse
    * @throws ApiException if fails to make API call
-   */
-  public UpdateItemTaxesResponse updateItemTaxes(UpdateItemTaxesRequest body) throws ApiException {
+   */  public UpdateItemTaxesResponse updateItemTaxes(UpdateItemTaxesRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -822,7 +812,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -890,8 +880,7 @@ public class CatalogApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpsertCatalogObjectResponse
    * @throws ApiException if fails to make API call
-   */
-  public UpsertCatalogObjectResponse upsertCatalogObject(UpsertCatalogObjectRequest body) throws ApiException {
+   */  public UpsertCatalogObjectResponse upsertCatalogObject(UpsertCatalogObjectRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -906,7 +895,7 @@ public class CatalogApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     

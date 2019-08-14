@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * The line item discount being returned.
+ * Represents a discount being returned that applies to one or more return line items in an order.  Fixed-amount, order-scoped discounts are distributed across all non-zero return line item totals. The amount distributed to each return line item is relative to that item’s contribution to the order subtotal.
  */
-@ApiModel(description = "The line item discount being returned.")
+@ApiModel(description = "Represents a discount being returned that applies to one or more return line items in an order.  Fixed-amount, order-scoped discounts are distributed across all non-zero return line item totals. The amount distributed to each return line item is relative to that item’s contribution to the order subtotal.")
 
 public class OrderReturnDiscount {
   @JsonProperty("uid")
@@ -60,10 +60,10 @@ public class OrderReturnDiscount {
   }
 
    /**
-   * Unique ID that identifies the return discount only within this order.  This field is read-only.
+   * Unique ID that identifies the return discount only within this order.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique ID that identifies the return discount only within this order.  This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the return discount only within this order.")
   public String getUid() {
     return uid;
   }
@@ -168,10 +168,10 @@ public class OrderReturnDiscount {
   }
 
    /**
-   * The total monetary amount of the applicable discount. If it is at order level, it is the value of the order level discount. If it is at line item level, it is the value of the line item level discount.  The amount_money won't be set for a percentage-based discount.
+   * The total declared monetary amount of the discount. The amount_money won't be set for a percentage-based discount.
    * @return amountMoney
   **/
-  @ApiModelProperty(value = "The total monetary amount of the applicable discount. If it is at order level, it is the value of the order level discount. If it is at line item level, it is the value of the line item level discount.  The amount_money won't be set for a percentage-based discount.")
+  @ApiModelProperty(value = "The total declared monetary amount of the discount. The amount_money won't be set for a percentage-based discount.")
   public Money getAmountMoney() {
     return amountMoney;
   }
@@ -204,10 +204,10 @@ public class OrderReturnDiscount {
   }
 
    /**
-   * Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values
+   * Indicates the level at which the `OrderReturnDiscount` applies. For `ORDER` scoped discounts, the server will generate references in `applied_discounts` on all `OrderReturnLineItem`s. For `LINE_ITEM` scoped discounts, the discount will only apply to `OrderReturnLineItem`s with references in their `applied_discounts` field. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values
    * @return scope
   **/
-  @ApiModelProperty(value = "Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values")
+  @ApiModelProperty(value = "Indicates the level at which the `OrderReturnDiscount` applies. For `ORDER` scoped discounts, the server will generate references in `applied_discounts` on all `OrderReturnLineItem`s. For `LINE_ITEM` scoped discounts, the discount will only apply to `OrderReturnLineItem`s with references in their `applied_discounts` field. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values")
   public String getScope() {
     return scope;
   }

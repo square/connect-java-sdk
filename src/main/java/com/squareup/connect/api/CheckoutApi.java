@@ -43,8 +43,7 @@ public class CheckoutApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateCheckoutResponse
    * @throws ApiException if fails to make API call
-   */
-  public CreateCheckoutResponse createCheckout(String locationId, CreateCheckoutRequest body) throws ApiException {
+   */  public CreateCheckoutResponse createCheckout(String locationId, CreateCheckoutRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -65,7 +64,7 @@ public class CheckoutApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     

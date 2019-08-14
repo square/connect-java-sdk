@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * The line item tax being returned.
+ * Represents a tax being returned that applies to one or more return line items in an order.  Fixed-amount, order-scoped taxes are distributed across all non-zero return line item totals. The amount distributed to each return line item is relative to that item’s contribution to the order subtotal.
  */
-@ApiModel(description = "The line item tax being returned.")
+@ApiModel(description = "Represents a tax being returned that applies to one or more return line items in an order.  Fixed-amount, order-scoped taxes are distributed across all non-zero return line item totals. The amount distributed to each return line item is relative to that item’s contribution to the order subtotal.")
 
 public class OrderReturnTax {
   @JsonProperty("uid")
@@ -57,10 +57,10 @@ public class OrderReturnTax {
   }
 
    /**
-   * Unique ID that identifies the return tax only within this order.  This field is read-only.
+   * Unique ID that identifies the return tax only within this order.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique ID that identifies the return tax only within this order.  This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the return tax only within this order.")
   public String getUid() {
     return uid;
   }
@@ -147,10 +147,10 @@ public class OrderReturnTax {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.
+   * The percentage of the tax, as a string representation of a decimal number. For example, a value of `\"7.25\"` corresponds to a percentage of 7.25%.
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.")
+  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. For example, a value of `\"7.25\"` corresponds to a percentage of 7.25%.")
   public String getPercentage() {
     return percentage;
   }
@@ -183,10 +183,10 @@ public class OrderReturnTax {
   }
 
    /**
-   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values
+   * Indicates the level at which the `OrderReturnTax` applies. For `ORDER` scoped taxes, Square generates references in `applied_taxes` on all `OrderReturnLineItem`s. For `LINE_ITEM` scoped taxes, the tax will only apply to `OrderReturnLineItem`s with references in their `applied_discounts` field. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values
    * @return scope
   **/
-  @ApiModelProperty(value = "Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values")
+  @ApiModelProperty(value = "Indicates the level at which the `OrderReturnTax` applies. For `ORDER` scoped taxes, Square generates references in `applied_taxes` on all `OrderReturnLineItem`s. For `LINE_ITEM` scoped taxes, the tax will only apply to `OrderReturnLineItem`s with references in their `applied_discounts` field. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values")
   public String getScope() {
     return scope;
   }

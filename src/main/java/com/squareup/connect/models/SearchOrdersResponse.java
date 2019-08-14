@@ -43,9 +43,6 @@ public class SearchOrdersResponse {
   @JsonProperty("errors")
   private List<Error> errors = new ArrayList<Error>();
 
-  @JsonProperty("unconvertible_transaction_ids")
-  private List<String> unconvertibleTransactionIds = new ArrayList<String>();
-
   public SearchOrdersResponse orderEntries(List<OrderEntry> orderEntries) {
     this.orderEntries = orderEntries;
     return this;
@@ -57,10 +54,10 @@ public class SearchOrdersResponse {
   }
 
    /**
-   * List of [OrderEntries](#type-orderentry) that fit the query conditions.  Populated only if `order_entries` was set to `true` in the request.
+   * List of [OrderEntries](#type-orderentry) that fit the query conditions. Populated only if `return_entries` was set to `true` in the request.
    * @return orderEntries
   **/
-  @ApiModelProperty(value = "List of [OrderEntries](#type-orderentry) that fit the query conditions.  Populated only if `order_entries` was set to `true` in the request.")
+  @ApiModelProperty(value = "List of [OrderEntries](#type-orderentry) that fit the query conditions. Populated only if `return_entries` was set to `true` in the request.")
   public List<OrderEntry> getOrderEntries() {
     return orderEntries;
   }
@@ -80,10 +77,10 @@ public class SearchOrdersResponse {
   }
 
    /**
-   * List of [Orders](#type-order) that match query conditions. Populated only if `return_entries` in the request is set to `false`.
+   * List of [Order](#type-order) objects that match query conditions. Populated only if `return_entries` in the request is set to `false`.
    * @return orders
   **/
-  @ApiModelProperty(value = "List of [Orders](#type-order) that match query conditions. Populated only if `return_entries` in the request is set to `false`.")
+  @ApiModelProperty(value = "List of [Order](#type-order) objects that match query conditions. Populated only if `return_entries` in the request is set to `false`.")
   public List<Order> getOrders() {
     return orders;
   }
@@ -133,29 +130,6 @@ public class SearchOrdersResponse {
     this.errors = errors;
   }
 
-  public SearchOrdersResponse unconvertibleTransactionIds(List<String> unconvertibleTransactionIds) {
-    this.unconvertibleTransactionIds = unconvertibleTransactionIds;
-    return this;
-  }
-
-  public SearchOrdersResponse addUnconvertibleTransactionIdsItem(String unconvertibleTransactionIdsItem) {
-    this.unconvertibleTransactionIds.add(unconvertibleTransactionIdsItem);
-    return this;
-  }
-
-   /**
-   * List of transaction IDs identifying transactions that could not be converted to an `Order`. Empty if `return_entries` is true, however, attempts to retrieve those orders may encounter subsequent `unconvertible_transcation_ids` Note that this field will not be present after SearchOrders moves from BETA to GA.
-   * @return unconvertibleTransactionIds
-  **/
-  @ApiModelProperty(value = "List of transaction IDs identifying transactions that could not be converted to an `Order`. Empty if `return_entries` is true, however, attempts to retrieve those orders may encounter subsequent `unconvertible_transcation_ids` Note that this field will not be present after SearchOrders moves from BETA to GA.")
-  public List<String> getUnconvertibleTransactionIds() {
-    return unconvertibleTransactionIds;
-  }
-
-  public void setUnconvertibleTransactionIds(List<String> unconvertibleTransactionIds) {
-    this.unconvertibleTransactionIds = unconvertibleTransactionIds;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -169,13 +143,12 @@ public class SearchOrdersResponse {
     return Objects.equals(this.orderEntries, searchOrdersResponse.orderEntries) &&
         Objects.equals(this.orders, searchOrdersResponse.orders) &&
         Objects.equals(this.cursor, searchOrdersResponse.cursor) &&
-        Objects.equals(this.errors, searchOrdersResponse.errors) &&
-        Objects.equals(this.unconvertibleTransactionIds, searchOrdersResponse.unconvertibleTransactionIds);
+        Objects.equals(this.errors, searchOrdersResponse.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderEntries, orders, cursor, errors, unconvertibleTransactionIds);
+    return Objects.hash(orderEntries, orders, cursor, errors);
   }
 
 
@@ -188,7 +161,6 @@ public class SearchOrdersResponse {
     sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
     sb.append("    cursor: ").append(toIndentedString(cursor)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    unconvertibleTransactionIds: ").append(toIndentedString(unconvertibleTransactionIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

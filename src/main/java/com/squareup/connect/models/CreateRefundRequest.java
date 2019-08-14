@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the body parameters that can be included in a request to the CreateRefund endpoint.
+ * Defines the body parameters that can be included in a request to the [CreateRefund](#endpoint-createrefund) endpoint.  Deprecated - recommend using [RefundPayment](#endpoint-refunds-refundpayment)
  */
-@ApiModel(description = "Defines the body parameters that can be included in a request to the CreateRefund endpoint.")
+@ApiModel(description = "Defines the body parameters that can be included in a request to the [CreateRefund](#endpoint-createrefund) endpoint.  Deprecated - recommend using [RefundPayment](#endpoint-refunds-refundpayment)")
 
 public class CreateRefundRequest {
   @JsonProperty("idempotency_key")

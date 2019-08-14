@@ -97,6 +97,12 @@ public class Location {
   @JsonProperty("coordinates")
   private Coordinates coordinates = null;
 
+  @JsonProperty("logo_url")
+  private String logoUrl = null;
+
+  @JsonProperty("pos_background_url")
+  private String posBackgroundUrl = null;
+
   public Location id(String id) {
     this.id = id;
     return this;
@@ -498,6 +504,42 @@ public class Location {
     this.coordinates = coordinates;
   }
 
+  public Location logoUrl(String logoUrl) {
+    this.logoUrl = logoUrl;
+    return this;
+  }
+
+   /**
+   * The logo image URL of the location.
+   * @return logoUrl
+  **/
+  @ApiModelProperty(value = "The logo image URL of the location.")
+  public String getLogoUrl() {
+    return logoUrl;
+  }
+
+  public void setLogoUrl(String logoUrl) {
+    this.logoUrl = logoUrl;
+  }
+
+  public Location posBackgroundUrl(String posBackgroundUrl) {
+    this.posBackgroundUrl = posBackgroundUrl;
+    return this;
+  }
+
+   /**
+   * The Point of Sale background image URL of the location.
+   * @return posBackgroundUrl
+  **/
+  @ApiModelProperty(value = "The Point of Sale background image URL of the location.")
+  public String getPosBackgroundUrl() {
+    return posBackgroundUrl;
+  }
+
+  public void setPosBackgroundUrl(String posBackgroundUrl) {
+    this.posBackgroundUrl = posBackgroundUrl;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -529,12 +571,14 @@ public class Location {
         Objects.equals(this.twitterUsername, location.twitterUsername) &&
         Objects.equals(this.instagramUsername, location.instagramUsername) &&
         Objects.equals(this.facebookUrl, location.facebookUrl) &&
-        Objects.equals(this.coordinates, location.coordinates);
+        Objects.equals(this.coordinates, location.coordinates) &&
+        Objects.equals(this.logoUrl, location.logoUrl) &&
+        Objects.equals(this.posBackgroundUrl, location.posBackgroundUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl, businessHours, businessEmail, description, twitterUsername, instagramUsername, facebookUrl, coordinates);
+    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl, businessHours, businessEmail, description, twitterUsername, instagramUsername, facebookUrl, coordinates, logoUrl, posBackgroundUrl);
   }
 
 
@@ -565,6 +609,8 @@ public class Location {
     sb.append("    instagramUsername: ").append(toIndentedString(instagramUsername)).append("\n");
     sb.append("    facebookUrl: ").append(toIndentedString(facebookUrl)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
+    sb.append("    logoUrl: ").append(toIndentedString(logoUrl)).append("\n");
+    sb.append("    posBackgroundUrl: ").append(toIndentedString(posBackgroundUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

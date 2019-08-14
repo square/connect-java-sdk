@@ -55,10 +55,10 @@ public class SearchOrdersRequest {
   }
 
    /**
-   * The location IDs for the orders to query. The caller must have access to all provided locations.  Min: 1 `location_ids`. Max: 10 `location_ids`.
+   * The location IDs for the orders to query. All locations must belong to the same merchant.  Min: 1 location IDs.  Max: 10 location IDs.
    * @return locationIds
   **/
-  @ApiModelProperty(value = "The location IDs for the orders to query. The caller must have access to all provided locations.  Min: 1 `location_ids`. Max: 10 `location_ids`.")
+  @ApiModelProperty(value = "The location IDs for the orders to query. All locations must belong to the same merchant.  Min: 1 location IDs.  Max: 10 location IDs.")
   public List<String> getLocationIds() {
     return locationIds;
   }
@@ -91,10 +91,10 @@ public class SearchOrdersRequest {
   }
 
    /**
-   * Query conditions used to filter or sort the results. Note that when fetching additional pages using a `cursor`, the `query` must be equal to the `query` used to fetch the first page of results.
+   * Query conditions used to filter or sort the results. Note that when fetching additional pages using a cursor, the query must be equal to the query used to fetch the first page of results.
    * @return query
   **/
-  @ApiModelProperty(value = "Query conditions used to filter or sort the results. Note that when fetching additional pages using a `cursor`, the `query` must be equal to the `query` used to fetch the first page of results.")
+  @ApiModelProperty(value = "Query conditions used to filter or sort the results. Note that when fetching additional pages using a cursor, the query must be equal to the query used to fetch the first page of results.")
   public SearchOrdersQuery getQuery() {
     return query;
   }
@@ -109,11 +109,11 @@ public class SearchOrdersRequest {
   }
 
    /**
-   * Number of results to be returned in a single page. SearchOrders may use a smaller limit than specified depending on server load. If the response includes a `cursor` field, you can use it to retrieve the next set of results. Default: `500`
+   * Maximum number of results to be returned in a single page. It is possible to receive fewer results than the specified limit on a given page.  Default: `500`
    * minimum: 1
    * @return limit
   **/
-  @ApiModelProperty(value = "Number of results to be returned in a single page. SearchOrders may use a smaller limit than specified depending on server load. If the response includes a `cursor` field, you can use it to retrieve the next set of results. Default: `500`")
+  @ApiModelProperty(value = "Maximum number of results to be returned in a single page. It is possible to receive fewer results than the specified limit on a given page.  Default: `500`")
   public Integer getLimit() {
     return limit;
   }
@@ -128,10 +128,10 @@ public class SearchOrdersRequest {
   }
 
    /**
-   *  If set to `true`, SearchOrders will return [`OrderEntry`](#type-orderentry) objects instead of `Order` objects. `OrderEntry` objects are lightweight descriptions of orders that include `order_id`s.  Default: `false`.
+   * Boolean that controls the format of the search results. If `true`, SearchOrders will return [`OrderEntry`](#type-orderentry) objects. If `false`, SearchOrders will return complete Order objects.  Default: `false`.
    * @return returnEntries
   **/
-  @ApiModelProperty(value = " If set to `true`, SearchOrders will return [`OrderEntry`](#type-orderentry) objects instead of `Order` objects. `OrderEntry` objects are lightweight descriptions of orders that include `order_id`s.  Default: `false`.")
+  @ApiModelProperty(value = "Boolean that controls the format of the search results. If `true`, SearchOrders will return [`OrderEntry`](#type-orderentry) objects. If `false`, SearchOrders will return complete Order objects.  Default: `false`.")
   public Boolean getReturnEntries() {
     return returnEntries;
   }

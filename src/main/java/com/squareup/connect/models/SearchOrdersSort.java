@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Sorting options for a query. Returned Orders will always be sorted on a timestamp.
+ * Sorting criteria for a SearchOrders request. Results can only be sorted by a timestamp field.
  */
-@ApiModel(description = "Sorting options for a query. Returned Orders will always be sorted on a timestamp.")
+@ApiModel(description = "Sorting criteria for a SearchOrders request. Results can only be sorted by a timestamp field.")
 
 public class SearchOrdersSort {
   @JsonProperty("sort_field")
@@ -38,10 +38,10 @@ public class SearchOrdersSort {
   }
 
    /**
-   * The field to sort by.  __Important:__ When using a [DateTimeFilter](#type-searchordersfilter), `sort_field` must match the set time range field. If this field does not match the time range field in `DateTimeFilter`, SearchOrder will return an error.  Default: `CREATED_AT`. See [SearchOrdersSortField](#type-searchorderssortfield) for possible values
+   * The field to sort by.  __Important:__ When using a [DateTimeFilter](#type-searchordersfilter), `sort_field` must match the timestamp field that the DateTimeFilter uses to filter. For example, If you set your `sort_field` to `CLOSED_AT` and you use a DateTimeFilter, your DateTimeFilter must filter for orders by their `CLOSED_AT` date. If this field does not match the timestamp field in `DateTimeFilter`, SearchOrders will return an error.  Default: `CREATED_AT`. See [SearchOrdersSortField](#type-searchorderssortfield) for possible values
    * @return sortField
   **/
-  @ApiModelProperty(required = true, value = "The field to sort by.  __Important:__ When using a [DateTimeFilter](#type-searchordersfilter), `sort_field` must match the set time range field. If this field does not match the time range field in `DateTimeFilter`, SearchOrder will return an error.  Default: `CREATED_AT`. See [SearchOrdersSortField](#type-searchorderssortfield) for possible values")
+  @ApiModelProperty(required = true, value = "The field to sort by.  __Important:__ When using a [DateTimeFilter](#type-searchordersfilter), `sort_field` must match the timestamp field that the DateTimeFilter uses to filter. For example, If you set your `sort_field` to `CLOSED_AT` and you use a DateTimeFilter, your DateTimeFilter must filter for orders by their `CLOSED_AT` date. If this field does not match the timestamp field in `DateTimeFilter`, SearchOrders will return an error.  Default: `CREATED_AT`. See [SearchOrdersSortField](#type-searchorderssortfield) for possible values")
   public String getSortField() {
     return sortField;
   }
@@ -56,10 +56,10 @@ public class SearchOrdersSort {
   }
 
    /**
-   * The order in which results are returned. Defaults to `DESC`. See [SortOrder](#type-sortorder) for possible values
+   * The chronological order in which results are returned. Defaults to `DESC`. See [SortOrder](#type-sortorder) for possible values
    * @return sortOrder
   **/
-  @ApiModelProperty(value = "The order in which results are returned. Defaults to `DESC`. See [SortOrder](#type-sortorder) for possible values")
+  @ApiModelProperty(value = "The chronological order in which results are returned. Defaults to `DESC`. See [SortOrder](#type-sortorder) for possible values")
   public String getSortOrder() {
     return sortOrder;
   }

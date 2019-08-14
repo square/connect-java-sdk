@@ -44,10 +44,10 @@ public class Error {
   }
 
    /**
-   * The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values
+   * The high-level category for the error. See [ErrorCategory](#type-errorcategory) See [ErrorCategory](#type-errorcategory) for possible values
    * @return category
   **/
-  @ApiModelProperty(required = true, value = "The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values")
+  @ApiModelProperty(required = true, value = "The high-level category for the error. See [ErrorCategory](#type-errorcategory) See [ErrorCategory](#type-errorcategory) for possible values")
   public String getCategory() {
     return category;
   }
@@ -62,10 +62,10 @@ public class Error {
   }
 
    /**
-   * The error's specific code. See [ErrorCode](#type-errorcode) for possible values
+   * The specific code of the error. See [ErrorCode](#type-errorcode) for possible See [ErrorCode](#type-errorcode) for possible values
    * @return code
   **/
-  @ApiModelProperty(required = true, value = "The error's specific code. See [ErrorCode](#type-errorcode) for possible values")
+  @ApiModelProperty(required = true, value = "The specific code of the error. See [ErrorCode](#type-errorcode) for possible See [ErrorCode](#type-errorcode) for possible values")
   public String getCode() {
     return code;
   }
@@ -98,10 +98,10 @@ public class Error {
   }
 
    /**
-   * The name of the field provided in the original request that the error pertains to, if any.
+   * The name of the field provided in the original request (if any) that the error pertains to.
    * @return field
   **/
-  @ApiModelProperty(value = "The name of the field provided in the original request that the error pertains to, if any.")
+  @ApiModelProperty(value = "The name of the field provided in the original request (if any) that the error pertains to.")
   public String getField() {
     return field;
   }

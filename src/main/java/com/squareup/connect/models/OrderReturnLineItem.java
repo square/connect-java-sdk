@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Money;
+import com.squareup.connect.models.OrderLineItemAppliedDiscount;
+import com.squareup.connect.models.OrderLineItemAppliedTax;
 import com.squareup.connect.models.OrderQuantityUnit;
 import com.squareup.connect.models.OrderReturnDiscount;
 import com.squareup.connect.models.OrderReturnLineItemModifier;
@@ -66,6 +68,12 @@ public class OrderReturnLineItem {
   @JsonProperty("return_discounts")
   private List<OrderReturnDiscount> returnDiscounts = new ArrayList<OrderReturnDiscount>();
 
+  @JsonProperty("applied_taxes")
+  private List<OrderLineItemAppliedTax> appliedTaxes = new ArrayList<OrderLineItemAppliedTax>();
+
+  @JsonProperty("applied_discounts")
+  private List<OrderLineItemAppliedDiscount> appliedDiscounts = new ArrayList<OrderLineItemAppliedDiscount>();
+
   @JsonProperty("base_price_money")
   private Money basePriceMoney = null;
 
@@ -90,10 +98,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * Unique identifier for this return line item entry. This is a read-only field.
+   * Unique identifier for this return line item entry.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique identifier for this return line item entry. This is a read-only field.")
+  @ApiModelProperty(value = "Unique identifier for this return line item entry.")
   public String getUid() {
     return uid;
   }
@@ -262,10 +270,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.
+   * A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.  This field has been deprecated in favour of `applied_taxes`.
    * @return returnTaxes
   **/
-  @ApiModelProperty(value = "A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.")
+  @ApiModelProperty(value = "A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.  This field has been deprecated in favour of `applied_taxes`.")
   public List<OrderReturnTax> getReturnTaxes() {
     return returnTaxes;
   }
@@ -285,16 +293,62 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any return-level discounts apportioned to this item.
+   * A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any return-level discounts apportioned to this item.  This field has been deprecated in favour of `applied_discounts`.
    * @return returnDiscounts
   **/
-  @ApiModelProperty(value = "A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any return-level discounts apportioned to this item.")
+  @ApiModelProperty(value = "A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any return-level discounts apportioned to this item.  This field has been deprecated in favour of `applied_discounts`.")
   public List<OrderReturnDiscount> getReturnDiscounts() {
     return returnDiscounts;
   }
 
   public void setReturnDiscounts(List<OrderReturnDiscount> returnDiscounts) {
     this.returnDiscounts = returnDiscounts;
+  }
+
+  public OrderReturnLineItem appliedTaxes(List<OrderLineItemAppliedTax> appliedTaxes) {
+    this.appliedTaxes = appliedTaxes;
+    return this;
+  }
+
+  public OrderReturnLineItem addAppliedTaxesItem(OrderLineItemAppliedTax appliedTaxesItem) {
+    this.appliedTaxes.add(appliedTaxesItem);
+    return this;
+  }
+
+   /**
+   * The list of references to `OrderReturnTax` entities applied to the returned line item. Each `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level `OrderReturnTax` applied to the returned line item. On reads, the amount applied is populated.
+   * @return appliedTaxes
+  **/
+  @ApiModelProperty(value = "The list of references to `OrderReturnTax` entities applied to the returned line item. Each `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level `OrderReturnTax` applied to the returned line item. On reads, the amount applied is populated.")
+  public List<OrderLineItemAppliedTax> getAppliedTaxes() {
+    return appliedTaxes;
+  }
+
+  public void setAppliedTaxes(List<OrderLineItemAppliedTax> appliedTaxes) {
+    this.appliedTaxes = appliedTaxes;
+  }
+
+  public OrderReturnLineItem appliedDiscounts(List<OrderLineItemAppliedDiscount> appliedDiscounts) {
+    this.appliedDiscounts = appliedDiscounts;
+    return this;
+  }
+
+  public OrderReturnLineItem addAppliedDiscountsItem(OrderLineItemAppliedDiscount appliedDiscountsItem) {
+    this.appliedDiscounts.add(appliedDiscountsItem);
+    return this;
+  }
+
+   /**
+   * The list of references to `OrderReturnDiscount` entities applied to the returned line item. Each `OrderLineItemAppliedDiscount` has a `discount_uid` that references the `uid` of a top-level `OrderReturnDiscount` applied to the returned line item. On reads, the amount applied is populated.
+   * @return appliedDiscounts
+  **/
+  @ApiModelProperty(value = "The list of references to `OrderReturnDiscount` entities applied to the returned line item. Each `OrderLineItemAppliedDiscount` has a `discount_uid` that references the `uid` of a top-level `OrderReturnDiscount` applied to the returned line item. On reads, the amount applied is populated.")
+  public List<OrderLineItemAppliedDiscount> getAppliedDiscounts() {
+    return appliedDiscounts;
+  }
+
+  public void setAppliedDiscounts(List<OrderLineItemAppliedDiscount> appliedDiscounts) {
+    this.appliedDiscounts = appliedDiscounts;
   }
 
   public OrderReturnLineItem basePriceMoney(Money basePriceMoney) {
@@ -339,10 +393,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The gross return amount of money calculated as (item base price + modifiers price) * quantity.  This field is read-only.
+   * The gross return amount of money calculated as (item base price + modifiers price) * quantity.
    * @return grossReturnMoney
   **/
-  @ApiModelProperty(value = "The gross return amount of money calculated as (item base price + modifiers price) * quantity.  This field is read-only.")
+  @ApiModelProperty(value = "The gross return amount of money calculated as (item base price + modifiers price) * quantity.")
   public Money getGrossReturnMoney() {
     return grossReturnMoney;
   }
@@ -357,10 +411,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The total tax amount of money to return for the line item.  This field is read-only.
+   * The total tax amount of money to return for the line item.
    * @return totalTaxMoney
   **/
-  @ApiModelProperty(value = "The total tax amount of money to return for the line item.  This field is read-only.")
+  @ApiModelProperty(value = "The total tax amount of money to return for the line item.")
   public Money getTotalTaxMoney() {
     return totalTaxMoney;
   }
@@ -375,10 +429,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The total discount amount of money to return for the line item.  This field is read-only.
+   * The total discount amount of money to return for the line item.
    * @return totalDiscountMoney
   **/
-  @ApiModelProperty(value = "The total discount amount of money to return for the line item.  This field is read-only.")
+  @ApiModelProperty(value = "The total discount amount of money to return for the line item.")
   public Money getTotalDiscountMoney() {
     return totalDiscountMoney;
   }
@@ -393,10 +447,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The total amount of money to return for this line item.  This field is read-only.
+   * The total amount of money to return for this line item.
    * @return totalMoney
   **/
-  @ApiModelProperty(value = "The total amount of money to return for this line item.  This field is read-only.")
+  @ApiModelProperty(value = "The total amount of money to return for this line item.")
   public Money getTotalMoney() {
     return totalMoney;
   }
@@ -426,6 +480,8 @@ public class OrderReturnLineItem {
         Objects.equals(this.returnModifiers, orderReturnLineItem.returnModifiers) &&
         Objects.equals(this.returnTaxes, orderReturnLineItem.returnTaxes) &&
         Objects.equals(this.returnDiscounts, orderReturnLineItem.returnDiscounts) &&
+        Objects.equals(this.appliedTaxes, orderReturnLineItem.appliedTaxes) &&
+        Objects.equals(this.appliedDiscounts, orderReturnLineItem.appliedDiscounts) &&
         Objects.equals(this.basePriceMoney, orderReturnLineItem.basePriceMoney) &&
         Objects.equals(this.variationTotalPriceMoney, orderReturnLineItem.variationTotalPriceMoney) &&
         Objects.equals(this.grossReturnMoney, orderReturnLineItem.grossReturnMoney) &&
@@ -436,7 +492,7 @@ public class OrderReturnLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(uid, sourceLineItemUid, name, quantity, quantityUnit, note, catalogObjectId, variationName, returnModifiers, returnTaxes, returnDiscounts, basePriceMoney, variationTotalPriceMoney, grossReturnMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
+    return Objects.hash(uid, sourceLineItemUid, name, quantity, quantityUnit, note, catalogObjectId, variationName, returnModifiers, returnTaxes, returnDiscounts, appliedTaxes, appliedDiscounts, basePriceMoney, variationTotalPriceMoney, grossReturnMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
   }
 
 
@@ -456,6 +512,8 @@ public class OrderReturnLineItem {
     sb.append("    returnModifiers: ").append(toIndentedString(returnModifiers)).append("\n");
     sb.append("    returnTaxes: ").append(toIndentedString(returnTaxes)).append("\n");
     sb.append("    returnDiscounts: ").append(toIndentedString(returnDiscounts)).append("\n");
+    sb.append("    appliedTaxes: ").append(toIndentedString(appliedTaxes)).append("\n");
+    sb.append("    appliedDiscounts: ").append(toIndentedString(appliedDiscounts)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
     sb.append("    variationTotalPriceMoney: ").append(toIndentedString(variationTotalPriceMoney)).append("\n");
     sb.append("    grossReturnMoney: ").append(toIndentedString(grossReturnMoney)).append("\n");

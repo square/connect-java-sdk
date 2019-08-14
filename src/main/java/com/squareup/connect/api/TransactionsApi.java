@@ -51,6 +51,7 @@ public class TransactionsApi {
    * @return CaptureTransactionResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public CaptureTransactionResponse captureTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
     
@@ -73,7 +74,7 @@ public class TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -145,12 +146,13 @@ public class TransactionsApi {
   }
   /**
    * Charge
-   * Charges a card represented by a card nonce or a customer&#39;s card on file.  Your request to this endpoint must include _either_:  - A value for the &#x60;card_nonce&#x60; parameter (to charge a card nonce generated with the &#x60;SqPaymentForm&#x60;) - Values for the &#x60;customer_card_id&#x60; and &#x60;customer_id&#x60; parameters (to charge a customer&#39;s card on file)  When this response is returned, the amount of Square&#39;s processing fee might not yet be calculated. To obtain the processing fee, wait about ten seconds and call [RetrieveTransaction](#endpoint-transactions-retrievetransaction). See the &#x60;processing_fee_money&#x60; field of each [Tender included](#type-tender) in the transaction.
+   * Charges a card represented by a card nonce or a customer&#39;s card on file.  Deprecated - recommend using [CreatePayment](#endpoint-payments-createpayment)  Your request to this endpoint must include _either_:  - A value for the &#x60;card_nonce&#x60; parameter (to charge a card nonce generated with the &#x60;SqPaymentForm&#x60;) - Values for the &#x60;customer_card_id&#x60; and &#x60;customer_id&#x60; parameters (to charge a customer&#39;s card on file)  When this response is returned, the amount of Square&#39;s processing fee might not yet be calculated. To obtain the processing fee, wait about ten seconds and call [RetrieveTransaction](#endpoint-transactions-retrievetransaction). See the &#x60;processing_fee_money&#x60; field of each [Tender included](#type-tender) in the transaction.
    * @param locationId The ID of the location to associate the created transaction with. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return ChargeResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public ChargeResponse charge(String locationId, ChargeRequest body) throws ApiException {
     Object localVarPostBody = body;
     
@@ -172,7 +174,7 @@ public class TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -195,7 +197,7 @@ public class TransactionsApi {
 
   /**
    * Charge
-   * Charges a card represented by a card nonce or a customer&#39;s card on file.  Your request to this endpoint must include _either_:  - A value for the &#x60;card_nonce&#x60; parameter (to charge a card nonce generated with the &#x60;SqPaymentForm&#x60;) - Values for the &#x60;customer_card_id&#x60; and &#x60;customer_id&#x60; parameters (to charge a customer&#39;s card on file)  When this response is returned, the amount of Square&#39;s processing fee might not yet be calculated. To obtain the processing fee, wait about ten seconds and call [RetrieveTransaction](#endpoint-transactions-retrievetransaction). See the &#x60;processing_fee_money&#x60; field of each [Tender included](#type-tender) in the transaction.
+   * Charges a card represented by a card nonce or a customer&#39;s card on file.  Deprecated - recommend using [CreatePayment](#endpoint-payments-createpayment)  Your request to this endpoint must include _either_:  - A value for the &#x60;card_nonce&#x60; parameter (to charge a card nonce generated with the &#x60;SqPaymentForm&#x60;) - Values for the &#x60;customer_card_id&#x60; and &#x60;customer_id&#x60; parameters (to charge a customer&#39;s card on file)  When this response is returned, the amount of Square&#39;s processing fee might not yet be calculated. To obtain the processing fee, wait about ten seconds and call [RetrieveTransaction](#endpoint-transactions-retrievetransaction). See the &#x60;processing_fee_money&#x60; field of each [Tender included](#type-tender) in the transaction.
    * @param locationId The ID of the location to associate the created transaction with. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<ChargeResponse>
@@ -243,13 +245,14 @@ public class TransactionsApi {
   }
   /**
    * CreateRefund
-   * Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See [this article](https://squareup.com/help/us/en/article/5060) for more information on refund behavior.  NOTE: Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**. Interac transactions must refunded in-person (e.g., dipping the card using POS app).
+   * Initiates a refund for a previously charged tender.  Deprecated - recommend using [RefundPayment](#endpoint-refunds-refundpayment)  You must issue a refund within 120 days of the associated payment. See [this article](https://squareup.com/help/us/en/article/5060) for more information on refund behavior.  NOTE: Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**. Interac transactions must refunded in-person (e.g., dipping the card using POS app).
    * @param locationId The ID of the original transaction&#39;s associated location. (required)
    * @param transactionId The ID of the original transaction that includes the tender to refund. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateRefundResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public CreateRefundResponse createRefund(String locationId, String transactionId, CreateRefundRequest body) throws ApiException {
     Object localVarPostBody = body;
     
@@ -277,7 +280,7 @@ public class TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -300,7 +303,7 @@ public class TransactionsApi {
 
   /**
    * CreateRefund
-   * Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See [this article](https://squareup.com/help/us/en/article/5060) for more information on refund behavior.  NOTE: Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**. Interac transactions must refunded in-person (e.g., dipping the card using POS app).
+   * Initiates a refund for a previously charged tender.  Deprecated - recommend using [RefundPayment](#endpoint-refunds-refundpayment)  You must issue a refund within 120 days of the associated payment. See [this article](https://squareup.com/help/us/en/article/5060) for more information on refund behavior.  NOTE: Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**. Interac transactions must refunded in-person (e.g., dipping the card using POS app).
    * @param locationId The ID of the original transaction&#39;s associated location. (required)
    * @param transactionId The ID of the original transaction that includes the tender to refund. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -355,7 +358,7 @@ public class TransactionsApi {
   }
   /**
    * ListRefunds
-   * Lists refunds for one of a business&#39;s locations.  In addition to full or partial tender refunds processed through Square APIs, refunds may result from itemized returns or exchanges through Square&#39;s Point of Sale applications.  Refunds with a &#x60;status&#x60; of &#x60;PENDING&#x60; are not currently included in this endpoint&#39;s response.  Max results per [page](#paginatingresults): 50
+   * Lists refunds for one of a business&#39;s locations.  Deprecated - recommend using [SearchOrders](#endpoint-orders-searchorders)  In addition to full or partial tender refunds processed through Square APIs, refunds may result from itemized returns or exchanges through Square&#39;s Point of Sale applications.  Refunds with a &#x60;status&#x60; of &#x60;PENDING&#x60; are not currently included in this endpoint&#39;s response.  Max results per [page](#paginatingresults): 50
    * @param locationId The ID of the location to list refunds for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -364,6 +367,7 @@ public class TransactionsApi {
    * @return ListRefundsResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public ListRefundsResponse listRefunds(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
@@ -380,7 +384,7 @@ public class TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -407,7 +411,7 @@ public class TransactionsApi {
 
   /**
    * ListRefunds
-   * Lists refunds for one of a business&#39;s locations.  In addition to full or partial tender refunds processed through Square APIs, refunds may result from itemized returns or exchanges through Square&#39;s Point of Sale applications.  Refunds with a &#x60;status&#x60; of &#x60;PENDING&#x60; are not currently included in this endpoint&#39;s response.  Max results per [page](#paginatingresults): 50
+   * Lists refunds for one of a business&#39;s locations.  Deprecated - recommend using [SearchOrders](#endpoint-orders-searchorders)  In addition to full or partial tender refunds processed through Square APIs, refunds may result from itemized returns or exchanges through Square&#39;s Point of Sale applications.  Refunds with a &#x60;status&#x60; of &#x60;PENDING&#x60; are not currently included in this endpoint&#39;s response.  Max results per [page](#paginatingresults): 50
    * @param locationId The ID of the location to list refunds for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -457,7 +461,7 @@ public class TransactionsApi {
   }
   /**
    * ListTransactions
-   * Lists transactions for a particular location.  Transactions include payment information from sales and exchanges and refund information from returns and exchanges.  Max results per [page](#paginatingresults): 50
+   * Lists transactions for a particular location.  Deprecated - recommend using [SearchOrders](#endpoint-orders-searchorders)  Transactions include payment information from sales and exchanges and refund information from returns and exchanges.  Max results per [page](#paginatingresults): 50
    * @param locationId The ID of the location to list transactions for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -466,6 +470,7 @@ public class TransactionsApi {
    * @return ListTransactionsResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public ListTransactionsResponse listTransactions(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
@@ -482,7 +487,7 @@ public class TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -509,7 +514,7 @@ public class TransactionsApi {
 
   /**
    * ListTransactions
-   * Lists transactions for a particular location.  Transactions include payment information from sales and exchanges and refund information from returns and exchanges.  Max results per [page](#paginatingresults): 50
+   * Lists transactions for a particular location.  Deprecated - recommend using [SearchOrders](#endpoint-orders-searchorders)  Transactions include payment information from sales and exchanges and refund information from returns and exchanges.  Max results per [page](#paginatingresults): 50
    * @param locationId The ID of the location to list transactions for. (required)
    * @param beginTime The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. (optional)
    * @param endTime The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. (optional)
@@ -559,12 +564,13 @@ public class TransactionsApi {
   }
   /**
    * RetrieveTransaction
-   * Retrieves details for a single transaction.
+   * Retrieves details for a single transaction.  Deprecated - recommend using [BatchRetrieveOrders](#endpoint-batchretrieveorders)
    * @param locationId The ID of the transaction&#39;s associated location. (required)
    * @param transactionId The ID of the transaction to retrieve. (required)
    * @return RetrieveTransactionResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public RetrieveTransactionResponse retrieveTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
     
@@ -587,7 +593,7 @@ public class TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -610,7 +616,7 @@ public class TransactionsApi {
 
   /**
    * RetrieveTransaction
-   * Retrieves details for a single transaction.
+   * Retrieves details for a single transaction.  Deprecated - recommend using [BatchRetrieveOrders](#endpoint-batchretrieveorders)
    * @param locationId The ID of the transaction&#39;s associated location. (required)
    * @param transactionId The ID of the transaction to retrieve. (required)
    * @return CompleteResponse<RetrieveTransactionResponse>
@@ -665,6 +671,7 @@ public class TransactionsApi {
    * @return VoidTransactionResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public VoidTransactionResponse voidTransaction(String locationId, String transactionId) throws ApiException {
     Object localVarPostBody = null;
     
@@ -687,7 +694,7 @@ public class TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     

@@ -64,10 +64,10 @@ public class OrderReturn {
   }
 
    /**
-   * Unique ID that identifies the return only within this order.  This field is read-only.
+   * Unique ID that identifies the return only within this order.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique ID that identifies the return only within this order.  This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the return only within this order.")
   public String getUid() {
     return uid;
   }
@@ -128,10 +128,10 @@ public class OrderReturn {
   }
 
    /**
-   * Collection of service charges which are being returned.  This field is read-only.
+   * Collection of service charges which are being returned.
    * @return returnServiceCharges
   **/
-  @ApiModelProperty(value = "Collection of service charges which are being returned.  This field is read-only.")
+  @ApiModelProperty(value = "Collection of service charges which are being returned.")
   public List<OrderReturnServiceCharge> getReturnServiceCharges() {
     return returnServiceCharges;
   }
@@ -151,10 +151,10 @@ public class OrderReturn {
   }
 
    /**
-   * Collection of taxes which are being returned.
+   * Collection of references to taxes being returned for an order, including the total applied tax amount to be returned. The taxes must reference a top-level tax ID from the source order.
    * @return returnTaxes
   **/
-  @ApiModelProperty(value = "Collection of taxes which are being returned.")
+  @ApiModelProperty(value = "Collection of references to taxes being returned for an order, including the total applied tax amount to be returned. The taxes must reference a top-level tax ID from the source order.")
   public List<OrderReturnTax> getReturnTaxes() {
     return returnTaxes;
   }
@@ -174,10 +174,10 @@ public class OrderReturn {
   }
 
    /**
-   * Collection of discounts which are being returned.
+   * Collection of references to discounts being returned for an order, including the total applied discount amount to be returned. The discounts must reference a top-level discount ID from the source order.
    * @return returnDiscounts
   **/
-  @ApiModelProperty(value = "Collection of discounts which are being returned.")
+  @ApiModelProperty(value = "Collection of references to discounts being returned for an order, including the total applied discount amount to be returned. The discounts must reference a top-level discount ID from the source order.")
   public List<OrderReturnDiscount> getReturnDiscounts() {
     return returnDiscounts;
   }

@@ -17,13 +17,14 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.squareup.connect.models.Address;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * The recipient of a fulfillment.
+ * Contains information on the recipient of a fulfillment.
  */
-@ApiModel(description = "The recipient of a fulfillment.")
+@ApiModel(description = "Contains information on the recipient of a fulfillment.")
 
 public class OrderFulfillmentRecipient {
   @JsonProperty("customer_id")
@@ -38,16 +39,19 @@ public class OrderFulfillmentRecipient {
   @JsonProperty("phone_number")
   private String phoneNumber = null;
 
+  @JsonProperty("address")
+  private Address address = null;
+
   public OrderFulfillmentRecipient customerId(String customerId) {
     this.customerId = customerId;
     return this;
   }
 
    /**
-   * The Customer ID of the customer associated with the fulfillment.  If customer_id is provided, the corresponding recipient information fields (`display_name`, `email_address`, and `phone_number`) are automatically populated from the relevant customer profile. If the targeted profile information does not contain the necessary required information, the request will result in an error.
+   * The Customer ID of the customer associated with the fulfillment.  If `customer_id` is provided, the fulfillment recipient's `display_name`, `email_address`, and `phone_number` are automatically populated from the targeted customer profile. If these fields are set in the request, the request values will override the information from the customer profile. If the targeted customer profile does not contain the necessary information and these fields are left unset, the request will result in an error.
    * @return customerId
   **/
-  @ApiModelProperty(value = "The Customer ID of the customer associated with the fulfillment.  If customer_id is provided, the corresponding recipient information fields (`display_name`, `email_address`, and `phone_number`) are automatically populated from the relevant customer profile. If the targeted profile information does not contain the necessary required information, the request will result in an error.")
+  @ApiModelProperty(value = "The Customer ID of the customer associated with the fulfillment.  If `customer_id` is provided, the fulfillment recipient's `display_name`, `email_address`, and `phone_number` are automatically populated from the targeted customer profile. If these fields are set in the request, the request values will override the information from the customer profile. If the targeted customer profile does not contain the necessary information and these fields are left unset, the request will result in an error.")
   public String getCustomerId() {
     return customerId;
   }
@@ -62,10 +66,10 @@ public class OrderFulfillmentRecipient {
   }
 
    /**
-   * The display name of the fulfillment recipient.  If provided, overrides the value from customer profile indicated by customer_id.
+   * The display name of the fulfillment recipient.  If provided, overrides the value pulled from the customer profile indicated by `customer_id`.
    * @return displayName
   **/
-  @ApiModelProperty(value = "The display name of the fulfillment recipient.  If provided, overrides the value from customer profile indicated by customer_id.")
+  @ApiModelProperty(value = "The display name of the fulfillment recipient.  If provided, overrides the value pulled from the customer profile indicated by `customer_id`.")
   public String getDisplayName() {
     return displayName;
   }
@@ -80,10 +84,10 @@ public class OrderFulfillmentRecipient {
   }
 
    /**
-   * The email address of the fulfillment recipient.  If provided, overrides the value from customer profile indicated by customer_id.
+   * The email address of the fulfillment recipient.  If provided, overrides the value pulled from the customer profile indicated by `customer_id`.
    * @return emailAddress
   **/
-  @ApiModelProperty(value = "The email address of the fulfillment recipient.  If provided, overrides the value from customer profile indicated by customer_id.")
+  @ApiModelProperty(value = "The email address of the fulfillment recipient.  If provided, overrides the value pulled from the customer profile indicated by `customer_id`.")
   public String getEmailAddress() {
     return emailAddress;
   }
@@ -98,16 +102,34 @@ public class OrderFulfillmentRecipient {
   }
 
    /**
-   * The phone number of the fulfillment recipient.  If provided, overrides the value from customer profile indicated by customer_id.
+   * The phone number of the fulfillment recipient.  If provided, overrides the value pulled from the customer profile indicated by `customer_id`.
    * @return phoneNumber
   **/
-  @ApiModelProperty(value = "The phone number of the fulfillment recipient.  If provided, overrides the value from customer profile indicated by customer_id.")
+  @ApiModelProperty(value = "The phone number of the fulfillment recipient.  If provided, overrides the value pulled from the customer profile indicated by `customer_id`.")
   public String getPhoneNumber() {
     return phoneNumber;
   }
 
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  public OrderFulfillmentRecipient address(Address address) {
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * The address of the fulfillment recipient.  If provided, overrides the value pulled from the customer profile indicated by `customer_id`.
+   * @return address
+  **/
+  @ApiModelProperty(value = "The address of the fulfillment recipient.  If provided, overrides the value pulled from the customer profile indicated by `customer_id`.")
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
   }
 
 
@@ -123,12 +145,13 @@ public class OrderFulfillmentRecipient {
     return Objects.equals(this.customerId, orderFulfillmentRecipient.customerId) &&
         Objects.equals(this.displayName, orderFulfillmentRecipient.displayName) &&
         Objects.equals(this.emailAddress, orderFulfillmentRecipient.emailAddress) &&
-        Objects.equals(this.phoneNumber, orderFulfillmentRecipient.phoneNumber);
+        Objects.equals(this.phoneNumber, orderFulfillmentRecipient.phoneNumber) &&
+        Objects.equals(this.address, orderFulfillmentRecipient.address);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerId, displayName, emailAddress, phoneNumber);
+    return Objects.hash(customerId, displayName, emailAddress, phoneNumber, address);
   }
 
 
@@ -141,6 +164,7 @@ public class OrderFulfillmentRecipient {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    emailAddress: ").append(toIndentedString(emailAddress)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("}");
     return sb.toString();
   }

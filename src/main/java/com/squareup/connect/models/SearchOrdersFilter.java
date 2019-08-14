@@ -26,9 +26,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Filter options to use for a query. Multiple filters will be ANDed together.
+ * Filtering criteria to use for a SearchOrders request. Multiple filters will be ANDed together.
  */
-@ApiModel(description = "Filter options to use for a query. Multiple filters will be ANDed together.")
+@ApiModel(description = "Filtering criteria to use for a SearchOrders request. Multiple filters will be ANDed together.")
 
 public class SearchOrdersFilter {
   @JsonProperty("state_filter")
@@ -70,10 +70,10 @@ public class SearchOrdersFilter {
   }
 
    /**
-   * Filter for results within a time range.
+   * Filter for results within a time range.  __Important:__ If you filter for orders by time range, you must set SearchOrdersSort to sort by the same field. [Learn more about filtering orders by time range](/orders-api/manage-orders#important-note-on-filtering-orders-by-time-range)
    * @return dateTimeFilter
   **/
-  @ApiModelProperty(value = "Filter for results within a time range.")
+  @ApiModelProperty(value = "Filter for results within a time range.  __Important:__ If you filter for orders by time range, you must set SearchOrdersSort to sort by the same field. [Learn more about filtering orders by time range](/orders-api/manage-orders#important-note-on-filtering-orders-by-time-range)")
   public SearchOrdersDateTimeFilter getDateTimeFilter() {
     return dateTimeFilter;
   }

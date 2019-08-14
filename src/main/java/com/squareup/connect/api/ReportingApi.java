@@ -46,8 +46,7 @@ public class ReportingApi {
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
    * @return ListAdditionalRecipientReceivableRefundsResponse
    * @throws ApiException if fails to make API call
-   */
-  public ListAdditionalRecipientReceivableRefundsResponse listAdditionalRecipientReceivableRefunds(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
+   */  public ListAdditionalRecipientReceivableRefundsResponse listAdditionalRecipientReceivableRefunds(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -63,7 +62,7 @@ public class ReportingApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -148,8 +147,7 @@ public class ReportingApi {
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
    * @return ListAdditionalRecipientReceivablesResponse
    * @throws ApiException if fails to make API call
-   */
-  public ListAdditionalRecipientReceivablesResponse listAdditionalRecipientReceivables(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
+   */  public ListAdditionalRecipientReceivablesResponse listAdditionalRecipientReceivables(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -165,7 +163,7 @@ public class ReportingApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));

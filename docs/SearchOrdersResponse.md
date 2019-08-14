@@ -8,11 +8,10 @@ Only one of `order_entries` or `orders` fields will be set, depending on whether
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderEntries** | [**List&lt;OrderEntry&gt;**](OrderEntry.md) | List of [OrderEntries](#type-orderentry) that fit the query conditions.  Populated only if &#x60;order_entries&#x60; was set to &#x60;true&#x60; in the request. |  [optional]
-**orders** | [**List&lt;Order&gt;**](Order.md) | List of [Orders](#type-order) that match query conditions. Populated only if &#x60;return_entries&#x60; in the request is set to &#x60;false&#x60;. |  [optional]
+**orderEntries** | [**List&lt;OrderEntry&gt;**](OrderEntry.md) | List of [OrderEntries](#type-orderentry) that fit the query conditions. Populated only if &#x60;return_entries&#x60; was set to &#x60;true&#x60; in the request. |  [optional]
+**orders** | [**List&lt;Order&gt;**](Order.md) | List of [Order](#type-order) objects that match query conditions. Populated only if &#x60;return_entries&#x60; in the request is set to &#x60;false&#x60;. |  [optional]
 **cursor** | **String** | The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](/basics/api101/pagination) for more information. |  [optional]
 **errors** | [**List&lt;Error&gt;**](Error.md) | [Errors](#type-error) encountered during the search. |  [optional]
-**unconvertibleTransactionIds** | **List&lt;String&gt;** | List of transaction IDs identifying transactions that could not be converted to an &#x60;Order&#x60;. Empty if &#x60;return_entries&#x60; is true, however, attempts to retrieve those orders may encounter subsequent &#x60;unconvertible_transcation_ids&#x60; Note that this field will not be present after SearchOrders moves from BETA to GA. |  [optional]
 
 
 

@@ -1,9 +1,17 @@
-# Square Connect Java SDK [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect)
+![Square logo]
+
+# Square Connect Java SDK
+
+---
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect)
+[![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+==================
 
 **If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://squ.re/2GB8GHk)**
 
 ## ENUM to String Migration
-The Java SDK no longer treats enums as explicit types. Instead, all enums are handled as static strings. 
+The Java SDK no longer treats enums as explicit types. Instead, all enums are handled as static strings.
 Previously, you would use an enum constant to represent the related string value. For example:
 ```java
 Money money = new Money();
@@ -39,7 +47,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190724.0</version>
+    <version>2.20190814.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -49,7 +57,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190724.0"
+compile "com.squareup:connect:2.20190814.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -91,7 +99,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190724.0.jar
+* target/connect-2.20190814.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -129,6 +137,36 @@ public class Example {
             System.err.println("Exception when calling API");
             e.printStackTrace();
         }
+    }
+}
+```
+
+### How to configure sandbox environment
+```java
+
+import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.api.LocationsApi;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Location;
+
+import java.io.File;
+import java.util.*;
+
+public class Example {
+
+    public static void main(String[] args) {
+        ApiClient apiClient = Configuration.getDefaultApiClient();
+        // Set sandbox url
+        apiClient.setBasePath('https://connect.squareupsandbox.com');
+
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) apiClient.getAuthentication("oauth2");
+        // Set your sandbox token
+        oauth2.setAccessToken("YOUR_SANDBOX_ACCESS_TOKEN");
+
+        LocationsApi locationsApi = new LocationsApi();
     }
 }
 ```
@@ -190,7 +228,18 @@ Class | Method | HTTP request | Description
 *OAuthApi* | [**revokeToken**](docs/OAuthApi.md#revokeToken) | **POST** /oauth2/revoke | RevokeToken
 *OrdersApi* | [**batchRetrieveOrders**](docs/OrdersApi.md#batchRetrieveOrders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve | BatchRetrieveOrders
 *OrdersApi* | [**createOrder**](docs/OrdersApi.md#createOrder) | **POST** /v2/locations/{location_id}/orders | CreateOrder
+*OrdersApi* | [**payOrder**](docs/OrdersApi.md#payOrder) | **POST** /v2/orders/{order_id}/pay | PayOrder
 *OrdersApi* | [**searchOrders**](docs/OrdersApi.md#searchOrders) | **POST** /v2/orders/search | SearchOrders
+*OrdersApi* | [**updateOrder**](docs/OrdersApi.md#updateOrder) | **PUT** /v2/locations/{location_id}/orders/{order_id} | UpdateOrder
+*PaymentsApi* | [**cancelPayment**](docs/PaymentsApi.md#cancelPayment) | **POST** /v2/payments/{payment_id}/cancel | CancelPayment
+*PaymentsApi* | [**cancelPaymentByIdempotencyKey**](docs/PaymentsApi.md#cancelPaymentByIdempotencyKey) | **POST** /v2/payments/cancel | CancelPaymentByIdempotencyKey
+*PaymentsApi* | [**completePayment**](docs/PaymentsApi.md#completePayment) | **POST** /v2/payments/{payment_id}/complete | CompletePayment
+*PaymentsApi* | [**createPayment**](docs/PaymentsApi.md#createPayment) | **POST** /v2/payments | CreatePayment
+*PaymentsApi* | [**getPayment**](docs/PaymentsApi.md#getPayment) | **GET** /v2/payments/{payment_id} | GetPayment
+*PaymentsApi* | [**listPayments**](docs/PaymentsApi.md#listPayments) | **GET** /v2/payments | ListPayments
+*RefundsApi* | [**getPaymentRefund**](docs/RefundsApi.md#getPaymentRefund) | **GET** /v2/refunds/{refund_id} | GetPaymentRefund
+*RefundsApi* | [**listPaymentRefunds**](docs/RefundsApi.md#listPaymentRefunds) | **GET** /v2/refunds | ListPaymentRefunds
+*RefundsApi* | [**refundPayment**](docs/RefundsApi.md#refundPayment) | **POST** /v2/refunds | RefundPayment
 *ReportingApi* | [**listAdditionalRecipientReceivableRefunds**](docs/ReportingApi.md#listAdditionalRecipientReceivableRefunds) | **GET** /v2/locations/{location_id}/additional-recipient-receivable-refunds | ListAdditionalRecipientReceivableRefunds
 *ReportingApi* | [**listAdditionalRecipientReceivables**](docs/ReportingApi.md#listAdditionalRecipientReceivables) | **GET** /v2/locations/{location_id}/additional-recipient-receivables | ListAdditionalRecipientReceivables
 *TransactionsApi* | [**captureTransaction**](docs/TransactionsApi.md#captureTransaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/capture | CaptureTransaction
@@ -277,6 +326,7 @@ Class | Method | HTTP request | Description
  - [AdditionalRecipientReceivable](docs/AdditionalRecipientReceivable.md)
  - [AdditionalRecipientReceivableRefund](docs/AdditionalRecipientReceivableRefund.md)
  - [Address](docs/Address.md)
+ - [BalancePaymentDetails](docs/BalancePaymentDetails.md)
  - [BatchChangeInventoryRequest](docs/BatchChangeInventoryRequest.md)
  - [BatchChangeInventoryResponse](docs/BatchChangeInventoryResponse.md)
  - [BatchDeleteCatalogObjectsRequest](docs/BatchDeleteCatalogObjectsRequest.md)
@@ -294,10 +344,15 @@ Class | Method | HTTP request | Description
  - [BreakType](docs/BreakType.md)
  - [BusinessHours](docs/BusinessHours.md)
  - [BusinessHoursPeriod](docs/BusinessHoursPeriod.md)
+ - [CancelPaymentByIdempotencyKeyRequest](docs/CancelPaymentByIdempotencyKeyRequest.md)
+ - [CancelPaymentByIdempotencyKeyResponse](docs/CancelPaymentByIdempotencyKeyResponse.md)
+ - [CancelPaymentRequest](docs/CancelPaymentRequest.md)
+ - [CancelPaymentResponse](docs/CancelPaymentResponse.md)
  - [CaptureTransactionRequest](docs/CaptureTransactionRequest.md)
  - [CaptureTransactionResponse](docs/CaptureTransactionResponse.md)
  - [Card](docs/Card.md)
  - [CardBrand](docs/CardBrand.md)
+ - [CardPaymentDetails](docs/CardPaymentDetails.md)
  - [CatalogCategory](docs/CatalogCategory.md)
  - [CatalogDiscount](docs/CatalogDiscount.md)
  - [CatalogDiscountType](docs/CatalogDiscountType.md)
@@ -342,6 +397,8 @@ Class | Method | HTTP request | Description
  - [ChargeRequestAdditionalRecipient](docs/ChargeRequestAdditionalRecipient.md)
  - [ChargeResponse](docs/ChargeResponse.md)
  - [Checkout](docs/Checkout.md)
+ - [CompletePaymentRequest](docs/CompletePaymentRequest.md)
+ - [CompletePaymentResponse](docs/CompletePaymentResponse.md)
  - [Coordinates](docs/Coordinates.md)
  - [Country](docs/Country.md)
  - [CreateBreakTypeRequest](docs/CreateBreakTypeRequest.md)
@@ -360,6 +417,8 @@ Class | Method | HTTP request | Description
  - [CreateOrderRequestModifier](docs/CreateOrderRequestModifier.md)
  - [CreateOrderRequestTax](docs/CreateOrderRequestTax.md)
  - [CreateOrderResponse](docs/CreateOrderResponse.md)
+ - [CreatePaymentRequest](docs/CreatePaymentRequest.md)
+ - [CreatePaymentResponse](docs/CreatePaymentResponse.md)
  - [CreateRefundRequest](docs/CreateRefundRequest.md)
  - [CreateRefundResponse](docs/CreateRefundResponse.md)
  - [CreateShiftRequest](docs/CreateShiftRequest.md)
@@ -398,6 +457,10 @@ Class | Method | HTTP request | Description
  - [GetBreakTypeResponse](docs/GetBreakTypeResponse.md)
  - [GetEmployeeWageRequest](docs/GetEmployeeWageRequest.md)
  - [GetEmployeeWageResponse](docs/GetEmployeeWageResponse.md)
+ - [GetPaymentRefundRequest](docs/GetPaymentRefundRequest.md)
+ - [GetPaymentRefundResponse](docs/GetPaymentRefundResponse.md)
+ - [GetPaymentRequest](docs/GetPaymentRequest.md)
+ - [GetPaymentResponse](docs/GetPaymentResponse.md)
  - [GetShiftRequest](docs/GetShiftRequest.md)
  - [GetShiftResponse](docs/GetShiftResponse.md)
  - [InventoryAdjustment](docs/InventoryAdjustment.md)
@@ -425,6 +488,10 @@ Class | Method | HTTP request | Description
  - [ListEmployeesResponse](docs/ListEmployeesResponse.md)
  - [ListLocationsRequest](docs/ListLocationsRequest.md)
  - [ListLocationsResponse](docs/ListLocationsResponse.md)
+ - [ListPaymentRefundsRequest](docs/ListPaymentRefundsRequest.md)
+ - [ListPaymentRefundsResponse](docs/ListPaymentRefundsResponse.md)
+ - [ListPaymentsRequest](docs/ListPaymentsRequest.md)
+ - [ListPaymentsResponse](docs/ListPaymentsResponse.md)
  - [ListRefundsRequest](docs/ListRefundsRequest.md)
  - [ListRefundsResponse](docs/ListRefundsResponse.md)
  - [ListTransactionsRequest](docs/ListTransactionsRequest.md)
@@ -440,6 +507,8 @@ Class | Method | HTTP request | Description
  - [MeasurementUnitCustom](docs/MeasurementUnitCustom.md)
  - [MeasurementUnitGeneric](docs/MeasurementUnitGeneric.md)
  - [MeasurementUnitLength](docs/MeasurementUnitLength.md)
+ - [MeasurementUnitTime](docs/MeasurementUnitTime.md)
+ - [MeasurementUnitUnitType](docs/MeasurementUnitUnitType.md)
  - [MeasurementUnitVolume](docs/MeasurementUnitVolume.md)
  - [MeasurementUnitWeight](docs/MeasurementUnitWeight.md)
  - [ModelBreak](docs/ModelBreak.md)
@@ -452,9 +521,12 @@ Class | Method | HTTP request | Description
  - [OrderFulfillmentPickupDetails](docs/OrderFulfillmentPickupDetails.md)
  - [OrderFulfillmentPickupDetailsScheduleType](docs/OrderFulfillmentPickupDetailsScheduleType.md)
  - [OrderFulfillmentRecipient](docs/OrderFulfillmentRecipient.md)
+ - [OrderFulfillmentShipmentDetails](docs/OrderFulfillmentShipmentDetails.md)
  - [OrderFulfillmentState](docs/OrderFulfillmentState.md)
  - [OrderFulfillmentType](docs/OrderFulfillmentType.md)
  - [OrderLineItem](docs/OrderLineItem.md)
+ - [OrderLineItemAppliedDiscount](docs/OrderLineItemAppliedDiscount.md)
+ - [OrderLineItemAppliedTax](docs/OrderLineItemAppliedTax.md)
  - [OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
  - [OrderLineItemDiscountScope](docs/OrderLineItemDiscountScope.md)
  - [OrderLineItemDiscountType](docs/OrderLineItemDiscountType.md)
@@ -475,8 +547,15 @@ Class | Method | HTTP request | Description
  - [OrderServiceChargeCalculationPhase](docs/OrderServiceChargeCalculationPhase.md)
  - [OrderSource](docs/OrderSource.md)
  - [OrderState](docs/OrderState.md)
+ - [PayOrderRequest](docs/PayOrderRequest.md)
+ - [PayOrderResponse](docs/PayOrderResponse.md)
+ - [Payment](docs/Payment.md)
+ - [PaymentRefund](docs/PaymentRefund.md)
+ - [ProcessingFee](docs/ProcessingFee.md)
  - [Product](docs/Product.md)
  - [Refund](docs/Refund.md)
+ - [RefundPaymentRequest](docs/RefundPaymentRequest.md)
+ - [RefundPaymentResponse](docs/RefundPaymentResponse.md)
  - [RefundStatus](docs/RefundStatus.md)
  - [RegisterDomainRequest](docs/RegisterDomainRequest.md)
  - [RegisterDomainResponse](docs/RegisterDomainResponse.md)
@@ -497,6 +576,8 @@ Class | Method | HTTP request | Description
  - [RetrieveInventoryCountResponse](docs/RetrieveInventoryCountResponse.md)
  - [RetrieveInventoryPhysicalCountRequest](docs/RetrieveInventoryPhysicalCountRequest.md)
  - [RetrieveInventoryPhysicalCountResponse](docs/RetrieveInventoryPhysicalCountResponse.md)
+ - [RetrieveLocationRequest](docs/RetrieveLocationRequest.md)
+ - [RetrieveLocationResponse](docs/RetrieveLocationResponse.md)
  - [RetrieveTransactionRequest](docs/RetrieveTransactionRequest.md)
  - [RetrieveTransactionResponse](docs/RetrieveTransactionResponse.md)
  - [RevokeTokenRequest](docs/RevokeTokenRequest.md)
@@ -551,6 +632,8 @@ Class | Method | HTTP request | Description
  - [UpdateItemModifierListsResponse](docs/UpdateItemModifierListsResponse.md)
  - [UpdateItemTaxesRequest](docs/UpdateItemTaxesRequest.md)
  - [UpdateItemTaxesResponse](docs/UpdateItemTaxesResponse.md)
+ - [UpdateOrderRequest](docs/UpdateOrderRequest.md)
+ - [UpdateOrderResponse](docs/UpdateOrderResponse.md)
  - [UpdateShiftRequest](docs/UpdateShiftRequest.md)
  - [UpdateShiftResponse](docs/UpdateShiftResponse.md)
  - [UpdateWorkweekConfigRequest](docs/UpdateWorkweekConfigRequest.md)
@@ -819,3 +902,8 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 developers@squareup.com
 
+
+
+
+[//]: # "Link anchor definitions"
+[Square Logo]: https://docs.connect.squareup.com/images/github/github-square-logo.svg
