@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the ListTransactions endpoint.  One of &#x60;errors&#x60; or &#x60;transactions&#x60; is present in a given response (never both).
+ * Defines the fields that are included in the response body of a request to the [ListTransactions](#endpoint-listtransactions) endpoint.  One of &#x60;errors&#x60; or &#x60;transactions&#x60; is present in a given response (never both).
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the ListTransactions endpoint.  One of `errors` or `transactions` is present in a given response (never both).")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the [ListTransactions](#endpoint-listtransactions) endpoint.  One of `errors` or `transactions` is present in a given response (never both).")
 
 public class ListTransactionsResponse {
   @JsonProperty("errors")

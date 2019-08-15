@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.OrderFulfillmentPickupDetails;
+import com.squareup.connect.models.OrderFulfillmentShipmentDetails;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -27,6 +28,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Contains details on how to fulfill this order.")
 
 public class OrderFulfillment {
+  @JsonProperty("uid")
+  private String uid = null;
+
   @JsonProperty("type")
   private String type = null;
 
@@ -35,6 +39,27 @@ public class OrderFulfillment {
 
   @JsonProperty("pickup_details")
   private OrderFulfillmentPickupDetails pickupDetails = null;
+
+  @JsonProperty("shipment_details")
+  private OrderFulfillmentShipmentDetails shipmentDetails = null;
+
+  public OrderFulfillment uid(String uid) {
+    this.uid = uid;
+    return this;
+  }
+
+   /**
+   * Unique ID that identifies the fulfillment only within this order.
+   * @return uid
+  **/
+  @ApiModelProperty(value = "Unique ID that identifies the fulfillment only within this order.")
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
 
   public OrderFulfillment type(String type) {
     this.type = type;
@@ -78,16 +103,34 @@ public class OrderFulfillment {
   }
 
    /**
-   * Contains pickup-specific details. Required when fulfillment type is `PICKUP`.
+   * Contains details for a pickup fulfillment. Required when fulfillment type is `PICKUP`.
    * @return pickupDetails
   **/
-  @ApiModelProperty(value = "Contains pickup-specific details. Required when fulfillment type is `PICKUP`.")
+  @ApiModelProperty(value = "Contains details for a pickup fulfillment. Required when fulfillment type is `PICKUP`.")
   public OrderFulfillmentPickupDetails getPickupDetails() {
     return pickupDetails;
   }
 
   public void setPickupDetails(OrderFulfillmentPickupDetails pickupDetails) {
     this.pickupDetails = pickupDetails;
+  }
+
+  public OrderFulfillment shipmentDetails(OrderFulfillmentShipmentDetails shipmentDetails) {
+    this.shipmentDetails = shipmentDetails;
+    return this;
+  }
+
+   /**
+   * Contains details for a shipment fulfillment. Required when fulfillment type is `SHIPMENT`.  A shipment fulfillment's relationship to fulfillment `state`: `PROPOSED`: A shipment is requested. `RESERVED`: Fulfillment accepted. Shipment processing. `PREPARED`: Shipment packaged. Shipping label created. `COMPLETED`: Package has been shipped. `CANCELED`: Shipment has been canceled. `FAILED`: Shipment has failed.
+   * @return shipmentDetails
+  **/
+  @ApiModelProperty(value = "Contains details for a shipment fulfillment. Required when fulfillment type is `SHIPMENT`.  A shipment fulfillment's relationship to fulfillment `state`: `PROPOSED`: A shipment is requested. `RESERVED`: Fulfillment accepted. Shipment processing. `PREPARED`: Shipment packaged. Shipping label created. `COMPLETED`: Package has been shipped. `CANCELED`: Shipment has been canceled. `FAILED`: Shipment has failed.")
+  public OrderFulfillmentShipmentDetails getShipmentDetails() {
+    return shipmentDetails;
+  }
+
+  public void setShipmentDetails(OrderFulfillmentShipmentDetails shipmentDetails) {
+    this.shipmentDetails = shipmentDetails;
   }
 
 
@@ -100,14 +143,16 @@ public class OrderFulfillment {
       return false;
     }
     OrderFulfillment orderFulfillment = (OrderFulfillment) o;
-    return Objects.equals(this.type, orderFulfillment.type) &&
+    return Objects.equals(this.uid, orderFulfillment.uid) &&
+        Objects.equals(this.type, orderFulfillment.type) &&
         Objects.equals(this.state, orderFulfillment.state) &&
-        Objects.equals(this.pickupDetails, orderFulfillment.pickupDetails);
+        Objects.equals(this.pickupDetails, orderFulfillment.pickupDetails) &&
+        Objects.equals(this.shipmentDetails, orderFulfillment.shipmentDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, state, pickupDetails);
+    return Objects.hash(uid, type, state, pickupDetails, shipmentDetails);
   }
 
 
@@ -116,9 +161,11 @@ public class OrderFulfillment {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderFulfillment {\n");
     
+    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    pickupDetails: ").append(toIndentedString(pickupDetails)).append("\n");
+    sb.append("    shipmentDetails: ").append(toIndentedString(shipmentDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }

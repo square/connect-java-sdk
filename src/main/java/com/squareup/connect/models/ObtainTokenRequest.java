@@ -56,7 +56,7 @@ public class ObtainTokenRequest {
    * The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).
    * @return clientId
   **/
-  @ApiModelProperty(required = true, value = "The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).")
+  @ApiModelProperty(value = "The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).")
   public String getClientId() {
     return clientId;
   }
@@ -74,7 +74,7 @@ public class ObtainTokenRequest {
    * The Square-issued application secret for your application, available from the [application dashboard](https://connect.squareup.com/apps).
    * @return clientSecret
   **/
-  @ApiModelProperty(required = true, value = "The Square-issued application secret for your application, available from the [application dashboard](https://connect.squareup.com/apps).")
+  @ApiModelProperty(value = "The Square-issued application secret for your application, available from the [application dashboard](https://connect.squareup.com/apps).")
   public String getClientSecret() {
     return clientSecret;
   }
@@ -128,7 +128,7 @@ public class ObtainTokenRequest {
    * Specifies the method to request an OAuth access token. Valid values are: `authorization_code`, `refresh_token`, and `migration_token`
    * @return grantType
   **/
-  @ApiModelProperty(required = true, value = "Specifies the method to request an OAuth access token. Valid values are: `authorization_code`, `refresh_token`, and `migration_token`")
+  @ApiModelProperty(value = "Specifies the method to request an OAuth access token. Valid values are: `authorization_code`, `refresh_token`, and `migration_token`")
   public String getGrantType() {
     return grantType;
   }

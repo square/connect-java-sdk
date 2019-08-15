@@ -40,8 +40,7 @@ public class V1LocationsApi {
    * Provides details for a business&#39;s locations, including their IDs.
    * @return List&lt;V1Merchant&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1Merchant> listLocations() throws ApiException {
+   */  public List<V1Merchant> listLocations() throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -51,7 +50,7 @@ public class V1LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -112,8 +111,7 @@ public class V1LocationsApi {
    * Get a business&#39;s information.
    * @return V1Merchant
    * @throws ApiException if fails to make API call
-   */
-  public V1Merchant retrieveBusiness() throws ApiException {
+   */  public V1Merchant retrieveBusiness() throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -123,7 +121,7 @@ public class V1LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     

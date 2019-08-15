@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Money;
+import com.squareup.connect.models.OrderLineItemAppliedTax;
 import com.squareup.connect.models.OrderReturnTax;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The service charge applied to the original order.
+ * Represents the service charge applied to the original order.
  */
-@ApiModel(description = "The service charge applied to the original order.")
+@ApiModel(description = "Represents the service charge applied to the original order.")
 
 public class OrderReturnServiceCharge {
   @JsonProperty("uid")
@@ -66,16 +67,19 @@ public class OrderReturnServiceCharge {
   @JsonProperty("return_taxes")
   private List<OrderReturnTax> returnTaxes = new ArrayList<OrderReturnTax>();
 
+  @JsonProperty("applied_taxes")
+  private List<OrderLineItemAppliedTax> appliedTaxes = new ArrayList<OrderLineItemAppliedTax>();
+
   public OrderReturnServiceCharge uid(String uid) {
     this.uid = uid;
     return this;
   }
 
    /**
-   * Unique ID that identifies the return service charge only within this order.  This field is read-only.
+   * Unique ID that identifies the return service charge only within this order.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique ID that identifies the return service charge only within this order.  This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the return service charge only within this order.")
   public String getUid() {
     return uid;
   }
@@ -90,10 +94,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * `uid` of the Service Charge from the Order which contains the original charge of this service charge, null for unlinked returns.
+   * `uid` of the Service Charge from the Order containing the original charge of the service charge. `source_service_charge_uid` is `null` for unlinked returns.
    * @return sourceServiceChargeUid
   **/
-  @ApiModelProperty(value = "`uid` of the Service Charge from the Order which contains the original charge of this service charge, null for unlinked returns.")
+  @ApiModelProperty(value = "`uid` of the Service Charge from the Order containing the original charge of the service charge. `source_service_charge_uid` is `null` for unlinked returns.")
   public String getSourceServiceChargeUid() {
     return sourceServiceChargeUid;
   }
@@ -126,10 +130,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The ID referencing the service charge [CatalogObject](#type-catalogobject)
+   * The catalog object ID of the associated [CatalogServiceCharge](#type-catalogservicecharge).
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "The ID referencing the service charge [CatalogObject](#type-catalogobject)")
+  @ApiModelProperty(value = "The catalog object ID of the associated [CatalogServiceCharge](#type-catalogservicecharge).")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
@@ -144,10 +148,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The percentage of the service charge, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.  Exactly one of percentage or amount_money should be set.
+   * The percentage of the service charge, as a string representation of a decimal number. For example, a value of `\"7.25\"` corresponds to a percentage of 7.25%.  Exactly one of `percentage` or `amount_money` should be set.
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the service charge, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.  Exactly one of percentage or amount_money should be set.")
+  @ApiModelProperty(value = "The percentage of the service charge, as a string representation of a decimal number. For example, a value of `\"7.25\"` corresponds to a percentage of 7.25%.  Exactly one of `percentage` or `amount_money` should be set.")
   public String getPercentage() {
     return percentage;
   }
@@ -162,10 +166,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The amount of a non-percentage based service charge.  Exactly one of percentage or amount_money should be set.
+   * The amount of a non-percentage based service charge.  Exactly one of `percentage` or `amount_money` should be set.
    * @return amountMoney
   **/
-  @ApiModelProperty(value = "The amount of a non-percentage based service charge.  Exactly one of percentage or amount_money should be set.")
+  @ApiModelProperty(value = "The amount of a non-percentage based service charge.  Exactly one of `percentage` or `amount_money` should be set.")
   public Money getAmountMoney() {
     return amountMoney;
   }
@@ -180,10 +184,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The amount of money applied to the order by the service charge, as calculated by the server.  For fixed-amount service charges, `applied_money` is equal to `amount_money`.  For percentage-based service charges, `applied_money` is the money calculated using the percentage. The `applied_money` field will include any inclusive tax amounts as well.  This field is read-only.
+   * The amount of money applied to the order by the service charge, including any inclusive tax amounts, as calculated by Square.  - For fixed-amount service charges, `applied_money` is equal to `amount_money`. - For percentage-based service charges, `applied_money` is the money calculated using the percentage.
    * @return appliedMoney
   **/
-  @ApiModelProperty(value = "The amount of money applied to the order by the service charge, as calculated by the server.  For fixed-amount service charges, `applied_money` is equal to `amount_money`.  For percentage-based service charges, `applied_money` is the money calculated using the percentage. The `applied_money` field will include any inclusive tax amounts as well.  This field is read-only.")
+  @ApiModelProperty(value = "The amount of money applied to the order by the service charge, including any inclusive tax amounts, as calculated by Square.  - For fixed-amount service charges, `applied_money` is equal to `amount_money`. - For percentage-based service charges, `applied_money` is the money calculated using the percentage.")
   public Money getAppliedMoney() {
     return appliedMoney;
   }
@@ -198,10 +202,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The total amount of money to collect for the service charge.  Note that `total_money` does not equal `applied_money` plus `total_tax_money` if an inclusive tax is applied to the service charge since the inclusive tax amount will be included in both `applied_money` and `total_tax_money`.  This field is read-only.
+   * The total amount of money to collect for the service charge.  __NOTE__: if an inclusive tax is applied to the service charge, `total_money` does not equal `applied_money` plus `total_tax_money` since the inclusive tax amount will already be included in both `applied_money` and `total_tax_money`.
    * @return totalMoney
   **/
-  @ApiModelProperty(value = "The total amount of money to collect for the service charge.  Note that `total_money` does not equal `applied_money` plus `total_tax_money` if an inclusive tax is applied to the service charge since the inclusive tax amount will be included in both `applied_money` and `total_tax_money`.  This field is read-only.")
+  @ApiModelProperty(value = "The total amount of money to collect for the service charge.  __NOTE__: if an inclusive tax is applied to the service charge, `total_money` does not equal `applied_money` plus `total_tax_money` since the inclusive tax amount will already be included in both `applied_money` and `total_tax_money`.")
   public Money getTotalMoney() {
     return totalMoney;
   }
@@ -216,10 +220,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The total amount of tax money to collect for the service charge.  This field is read-only.
+   * The total amount of tax money to collect for the service charge.
    * @return totalTaxMoney
   **/
-  @ApiModelProperty(value = "The total amount of tax money to collect for the service charge.  This field is read-only.")
+  @ApiModelProperty(value = "The total amount of tax money to collect for the service charge.")
   public Money getTotalTaxMoney() {
     return totalTaxMoney;
   }
@@ -234,10 +238,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The calculation phase after which to apply the service charge.  This field is read-only. See [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values
+   * The calculation phase after which to apply the service charge. See [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values
    * @return calculationPhase
   **/
-  @ApiModelProperty(value = "The calculation phase after which to apply the service charge.  This field is read-only. See [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values")
+  @ApiModelProperty(value = "The calculation phase after which to apply the service charge. See [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values")
   public String getCalculationPhase() {
     return calculationPhase;
   }
@@ -275,16 +279,39 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The taxes which apply to the service charge. Return-level taxes apply by default to service charge calculated in the `SUBTOTAL_PHASE` if the service charge is marked as taxable.
+   * Taxes applied to the `OrderReturnServiceCharge`. By default, return-level taxes apply to `OrderReturnServiceCharge`s calculated in the `SUBTOTAL_PHASE` if `taxable` is set to `true`.  On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.  This field has been deprecated in favour of `applied_taxes`.
    * @return returnTaxes
   **/
-  @ApiModelProperty(value = "The taxes which apply to the service charge. Return-level taxes apply by default to service charge calculated in the `SUBTOTAL_PHASE` if the service charge is marked as taxable.")
+  @ApiModelProperty(value = "Taxes applied to the `OrderReturnServiceCharge`. By default, return-level taxes apply to `OrderReturnServiceCharge`s calculated in the `SUBTOTAL_PHASE` if `taxable` is set to `true`.  On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.  This field has been deprecated in favour of `applied_taxes`.")
   public List<OrderReturnTax> getReturnTaxes() {
     return returnTaxes;
   }
 
   public void setReturnTaxes(List<OrderReturnTax> returnTaxes) {
     this.returnTaxes = returnTaxes;
+  }
+
+  public OrderReturnServiceCharge appliedTaxes(List<OrderLineItemAppliedTax> appliedTaxes) {
+    this.appliedTaxes = appliedTaxes;
+    return this;
+  }
+
+  public OrderReturnServiceCharge addAppliedTaxesItem(OrderLineItemAppliedTax appliedTaxesItem) {
+    this.appliedTaxes.add(appliedTaxesItem);
+    return this;
+  }
+
+   /**
+   * The list of references to `OrderReturnTax` entities applied to the `OrderReturnServiceCharge`. Each `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level `OrderReturnTax` that is being applied to the `OrderReturnServiceCharge`. On reads, the amount applied is populated.
+   * @return appliedTaxes
+  **/
+  @ApiModelProperty(value = "The list of references to `OrderReturnTax` entities applied to the `OrderReturnServiceCharge`. Each `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level `OrderReturnTax` that is being applied to the `OrderReturnServiceCharge`. On reads, the amount applied is populated.")
+  public List<OrderLineItemAppliedTax> getAppliedTaxes() {
+    return appliedTaxes;
+  }
+
+  public void setAppliedTaxes(List<OrderLineItemAppliedTax> appliedTaxes) {
+    this.appliedTaxes = appliedTaxes;
   }
 
 
@@ -308,12 +335,13 @@ public class OrderReturnServiceCharge {
         Objects.equals(this.totalTaxMoney, orderReturnServiceCharge.totalTaxMoney) &&
         Objects.equals(this.calculationPhase, orderReturnServiceCharge.calculationPhase) &&
         Objects.equals(this.taxable, orderReturnServiceCharge.taxable) &&
-        Objects.equals(this.returnTaxes, orderReturnServiceCharge.returnTaxes);
+        Objects.equals(this.returnTaxes, orderReturnServiceCharge.returnTaxes) &&
+        Objects.equals(this.appliedTaxes, orderReturnServiceCharge.appliedTaxes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uid, sourceServiceChargeUid, name, catalogObjectId, percentage, amountMoney, appliedMoney, totalMoney, totalTaxMoney, calculationPhase, taxable, returnTaxes);
+    return Objects.hash(uid, sourceServiceChargeUid, name, catalogObjectId, percentage, amountMoney, appliedMoney, totalMoney, totalTaxMoney, calculationPhase, taxable, returnTaxes, appliedTaxes);
   }
 
 
@@ -334,6 +362,7 @@ public class OrderReturnServiceCharge {
     sb.append("    calculationPhase: ").append(toIndentedString(calculationPhase)).append("\n");
     sb.append("    taxable: ").append(toIndentedString(taxable)).append("\n");
     sb.append("    returnTaxes: ").append(toIndentedString(returnTaxes)).append("\n");
+    sb.append("    appliedTaxes: ").append(toIndentedString(appliedTaxes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -45,8 +45,7 @@ public class V1EmployeesApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Employee
    * @throws ApiException if fails to make API call
-   */
-  public V1Employee createEmployee(V1Employee body) throws ApiException {
+   */  public V1Employee createEmployee(V1Employee body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -61,7 +60,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -129,8 +128,7 @@ public class V1EmployeesApi {
    * @param employeeRole An EmployeeRole object with a name and permissions, and an optional owner flag. (required)
    * @return V1EmployeeRole
    * @throws ApiException if fails to make API call
-   */
-  public V1EmployeeRole createEmployeeRole(V1EmployeeRole employeeRole) throws ApiException {
+   */  public V1EmployeeRole createEmployeeRole(V1EmployeeRole employeeRole) throws ApiException {
     Object localVarPostBody = employeeRole;
     
     // verify the required parameter 'employeeRole' is set
@@ -145,7 +143,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -213,8 +211,7 @@ public class V1EmployeesApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Timecard
    * @throws ApiException if fails to make API call
-   */
-  public V1Timecard createTimecard(V1Timecard body) throws ApiException {
+   */  public V1Timecard createTimecard(V1Timecard body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -229,7 +226,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -297,8 +294,7 @@ public class V1EmployeesApi {
    * @param timecardId The ID of the timecard to delete. (required)
    * @return Object
    * @throws ApiException if fails to make API call
-   */
-  public Object deleteTimecard(String timecardId) throws ApiException {
+   */  public Object deleteTimecard(String timecardId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'timecardId' is set
@@ -314,7 +310,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -386,8 +382,7 @@ public class V1EmployeesApi {
    * @param endTime The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time. (optional)
    * @return List&lt;V1CashDrawerShift&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1CashDrawerShift> listCashDrawerShifts(String locationId, String order, String beginTime, String endTime) throws ApiException {
+   */  public List<V1CashDrawerShift> listCashDrawerShifts(String locationId, String order, String beginTime, String endTime) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -403,7 +398,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
@@ -483,8 +478,7 @@ public class V1EmployeesApi {
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1EmployeeRole&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1EmployeeRole> listEmployeeRoles(String order, Integer limit, String batchToken) throws ApiException {
+   */  public List<V1EmployeeRole> listEmployeeRoles(String order, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -494,7 +488,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
@@ -573,8 +567,7 @@ public class V1EmployeesApi {
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Employee&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1Employee> listEmployees(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit, String batchToken) throws ApiException {
+   */  public List<V1Employee> listEmployees(String order, String beginUpdatedAt, String endUpdatedAt, String beginCreatedAt, String endCreatedAt, String status, String externalId, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -584,7 +577,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_updated_at", beginUpdatedAt));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_updated_at", endUpdatedAt));
@@ -673,8 +666,7 @@ public class V1EmployeesApi {
    * @param timecardId The ID of the timecard to list events for. (required)
    * @return List&lt;V1TimecardEvent&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1TimecardEvent> listTimecardEvents(String timecardId) throws ApiException {
+   */  public List<V1TimecardEvent> listTimecardEvents(String timecardId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'timecardId' is set
@@ -690,7 +682,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -769,8 +761,7 @@ public class V1EmployeesApi {
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Timecard&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1Timecard> listTimecards(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String batchToken) throws ApiException {
+   */  public List<V1Timecard> listTimecards(String order, String employeeId, String beginClockinTime, String endClockinTime, String beginClockoutTime, String endClockoutTime, String beginUpdatedAt, String endUpdatedAt, Boolean deleted, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -780,7 +771,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "employee_id", employeeId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_clockin_time", beginClockinTime));
@@ -876,8 +867,7 @@ public class V1EmployeesApi {
    * @param shiftId The shift&#39;s ID. (required)
    * @return V1CashDrawerShift
    * @throws ApiException if fails to make API call
-   */
-  public V1CashDrawerShift retrieveCashDrawerShift(String locationId, String shiftId) throws ApiException {
+   */  public V1CashDrawerShift retrieveCashDrawerShift(String locationId, String shiftId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -899,7 +889,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -975,8 +965,7 @@ public class V1EmployeesApi {
    * @param employeeId The employee&#39;s ID. (required)
    * @return V1Employee
    * @throws ApiException if fails to make API call
-   */
-  public V1Employee retrieveEmployee(String employeeId) throws ApiException {
+   */  public V1Employee retrieveEmployee(String employeeId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'employeeId' is set
@@ -992,7 +981,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -1061,8 +1050,7 @@ public class V1EmployeesApi {
    * @param roleId The role&#39;s ID. (required)
    * @return V1EmployeeRole
    * @throws ApiException if fails to make API call
-   */
-  public V1EmployeeRole retrieveEmployeeRole(String roleId) throws ApiException {
+   */  public V1EmployeeRole retrieveEmployeeRole(String roleId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'roleId' is set
@@ -1078,7 +1066,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -1147,8 +1135,7 @@ public class V1EmployeesApi {
    * @param timecardId The timecard&#39;s ID. (required)
    * @return V1Timecard
    * @throws ApiException if fails to make API call
-   */
-  public V1Timecard retrieveTimecard(String timecardId) throws ApiException {
+   */  public V1Timecard retrieveTimecard(String timecardId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'timecardId' is set
@@ -1164,7 +1151,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -1234,8 +1221,7 @@ public class V1EmployeesApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Employee
    * @throws ApiException if fails to make API call
-   */
-  public V1Employee updateEmployee(String employeeId, V1Employee body) throws ApiException {
+   */  public V1Employee updateEmployee(String employeeId, V1Employee body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'employeeId' is set
@@ -1256,7 +1242,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -1332,8 +1318,7 @@ public class V1EmployeesApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1EmployeeRole
    * @throws ApiException if fails to make API call
-   */
-  public V1EmployeeRole updateEmployeeRole(String roleId, V1EmployeeRole body) throws ApiException {
+   */  public V1EmployeeRole updateEmployeeRole(String roleId, V1EmployeeRole body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'roleId' is set
@@ -1354,7 +1339,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -1430,8 +1415,7 @@ public class V1EmployeesApi {
    * @param body An object containing the fields to POST for the request. See the corresponding object definition for field details. (required)
    * @return V1Timecard
    * @throws ApiException if fails to make API call
-   */
-  public V1Timecard updateTimecard(String timecardId, V1Timecard body) throws ApiException {
+   */  public V1Timecard updateTimecard(String timecardId, V1Timecard body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'timecardId' is set
@@ -1452,7 +1436,7 @@ public class V1EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     

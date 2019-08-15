@@ -50,8 +50,7 @@ public class InventoryApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchChangeInventoryResponse
    * @throws ApiException if fails to make API call
-   */
-  public BatchChangeInventoryResponse batchChangeInventory(BatchChangeInventoryRequest body) throws ApiException {
+   */  public BatchChangeInventoryResponse batchChangeInventory(BatchChangeInventoryRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -66,7 +65,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -134,8 +133,7 @@ public class InventoryApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchRetrieveInventoryChangesResponse
    * @throws ApiException if fails to make API call
-   */
-  public BatchRetrieveInventoryChangesResponse batchRetrieveInventoryChanges(BatchRetrieveInventoryChangesRequest body) throws ApiException {
+   */  public BatchRetrieveInventoryChangesResponse batchRetrieveInventoryChanges(BatchRetrieveInventoryChangesRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -150,7 +148,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -218,8 +216,7 @@ public class InventoryApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchRetrieveInventoryCountsResponse
    * @throws ApiException if fails to make API call
-   */
-  public BatchRetrieveInventoryCountsResponse batchRetrieveInventoryCounts(BatchRetrieveInventoryCountsRequest body) throws ApiException {
+   */  public BatchRetrieveInventoryCountsResponse batchRetrieveInventoryCounts(BatchRetrieveInventoryCountsRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -234,7 +231,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -302,8 +299,7 @@ public class InventoryApi {
    * @param adjustmentId ID of the [InventoryAdjustment](#type-inventoryadjustment) to retrieve. (required)
    * @return RetrieveInventoryAdjustmentResponse
    * @throws ApiException if fails to make API call
-   */
-  public RetrieveInventoryAdjustmentResponse retrieveInventoryAdjustment(String adjustmentId) throws ApiException {
+   */  public RetrieveInventoryAdjustmentResponse retrieveInventoryAdjustment(String adjustmentId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'adjustmentId' is set
@@ -319,7 +315,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -390,8 +386,7 @@ public class InventoryApi {
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
    * @return RetrieveInventoryChangesResponse
    * @throws ApiException if fails to make API call
-   */
-  public RetrieveInventoryChangesResponse retrieveInventoryChanges(String catalogObjectId, String locationIds, String cursor) throws ApiException {
+   */  public RetrieveInventoryChangesResponse retrieveInventoryChanges(String catalogObjectId, String locationIds, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'catalogObjectId' is set
@@ -407,7 +402,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_ids", locationIds));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -484,8 +479,7 @@ public class InventoryApi {
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
    * @return RetrieveInventoryCountResponse
    * @throws ApiException if fails to make API call
-   */
-  public RetrieveInventoryCountResponse retrieveInventoryCount(String catalogObjectId, String locationIds, String cursor) throws ApiException {
+   */  public RetrieveInventoryCountResponse retrieveInventoryCount(String catalogObjectId, String locationIds, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'catalogObjectId' is set
@@ -501,7 +495,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_ids", locationIds));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -576,8 +570,7 @@ public class InventoryApi {
    * @param physicalCountId ID of the [InventoryPhysicalCount](#type-inventoryphysicalcount) to retrieve. (required)
    * @return RetrieveInventoryPhysicalCountResponse
    * @throws ApiException if fails to make API call
-   */
-  public RetrieveInventoryPhysicalCountResponse retrieveInventoryPhysicalCount(String physicalCountId) throws ApiException {
+   */  public RetrieveInventoryPhysicalCountResponse retrieveInventoryPhysicalCount(String physicalCountId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'physicalCountId' is set
@@ -593,7 +586,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     

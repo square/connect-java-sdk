@@ -71,6 +71,9 @@ public class Tender {
   @JsonProperty("additional_recipients")
   private List<AdditionalRecipient> additionalRecipients = new ArrayList<AdditionalRecipient>();
 
+  @JsonProperty("payment_id")
+  private String paymentId = null;
+
   public Tender id(String id) {
     this.id = id;
     return this;
@@ -167,10 +170,10 @@ public class Tender {
   }
 
    /**
-   * The amount of the tender.
+   * The total amount of the tender, including `tip_money`. If the tender has a `payment_id`, the `total_money` of the corresponding [Payment](#type-payment) will be equal to the `amount_money` of the tender.
    * @return amountMoney
   **/
-  @ApiModelProperty(value = "The amount of the tender.")
+  @ApiModelProperty(value = "The total amount of the tender, including `tip_money`. If the tender has a `payment_id`, the `total_money` of the corresponding [Payment](#type-payment) will be equal to the `amount_money` of the tender.")
   public Money getAmountMoney() {
     return amountMoney;
   }
@@ -310,6 +313,24 @@ public class Tender {
     this.additionalRecipients = additionalRecipients;
   }
 
+  public Tender paymentId(String paymentId) {
+    this.paymentId = paymentId;
+    return this;
+  }
+
+   /**
+   * The ID of the [Payment](#type-payment) that corresponds to this tender. This value is only present for payments created with the v2 Payments API.
+   * @return paymentId
+  **/
+  @ApiModelProperty(value = "The ID of the [Payment](#type-payment) that corresponds to this tender. This value is only present for payments created with the v2 Payments API.")
+  public String getPaymentId() {
+    return paymentId;
+  }
+
+  public void setPaymentId(String paymentId) {
+    this.paymentId = paymentId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -332,12 +353,13 @@ public class Tender {
         Objects.equals(this.type, tender.type) &&
         Objects.equals(this.cardDetails, tender.cardDetails) &&
         Objects.equals(this.cashDetails, tender.cashDetails) &&
-        Objects.equals(this.additionalRecipients, tender.additionalRecipients);
+        Objects.equals(this.additionalRecipients, tender.additionalRecipients) &&
+        Objects.equals(this.paymentId, tender.paymentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationId, transactionId, createdAt, note, amountMoney, tipMoney, processingFeeMoney, customerId, type, cardDetails, cashDetails, additionalRecipients);
+    return Objects.hash(id, locationId, transactionId, createdAt, note, amountMoney, tipMoney, processingFeeMoney, customerId, type, cardDetails, cashDetails, additionalRecipients, paymentId);
   }
 
 
@@ -359,6 +381,7 @@ public class Tender {
     sb.append("    cardDetails: ").append(toIndentedString(cardDetails)).append("\n");
     sb.append("    cashDetails: ").append(toIndentedString(cashDetails)).append("\n");
     sb.append("    additionalRecipients: ").append(toIndentedString(additionalRecipients)).append("\n");
+    sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

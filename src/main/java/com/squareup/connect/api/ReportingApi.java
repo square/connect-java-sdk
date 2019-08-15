@@ -47,6 +47,7 @@ public class ReportingApi {
    * @return ListAdditionalRecipientReceivableRefundsResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public ListAdditionalRecipientReceivableRefundsResponse listAdditionalRecipientReceivableRefunds(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
@@ -63,7 +64,7 @@ public class ReportingApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -149,6 +150,7 @@ public class ReportingApi {
    * @return ListAdditionalRecipientReceivablesResponse
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public ListAdditionalRecipientReceivablesResponse listAdditionalRecipientReceivables(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
@@ -165,7 +167,7 @@ public class ReportingApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));

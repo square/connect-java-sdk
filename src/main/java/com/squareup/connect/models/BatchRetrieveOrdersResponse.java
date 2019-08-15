@@ -36,9 +36,6 @@ public class BatchRetrieveOrdersResponse {
   @JsonProperty("errors")
   private List<Error> errors = new ArrayList<Error>();
 
-  @JsonProperty("unconvertible_transaction_ids")
-  private List<String> unconvertibleTransactionIds = new ArrayList<String>();
-
   public BatchRetrieveOrdersResponse orders(List<Order> orders) {
     this.orders = orders;
     return this;
@@ -85,29 +82,6 @@ public class BatchRetrieveOrdersResponse {
     this.errors = errors;
   }
 
-  public BatchRetrieveOrdersResponse unconvertibleTransactionIds(List<String> unconvertibleTransactionIds) {
-    this.unconvertibleTransactionIds = unconvertibleTransactionIds;
-    return this;
-  }
-
-  public BatchRetrieveOrdersResponse addUnconvertibleTransactionIdsItem(String unconvertibleTransactionIdsItem) {
-    this.unconvertibleTransactionIds.add(unconvertibleTransactionIdsItem);
-    return this;
-  }
-
-   /**
-   * List of transaction ids within the requested set of ids that encountered transformation issues when being converted to an Order.
-   * @return unconvertibleTransactionIds
-  **/
-  @ApiModelProperty(value = "List of transaction ids within the requested set of ids that encountered transformation issues when being converted to an Order.")
-  public List<String> getUnconvertibleTransactionIds() {
-    return unconvertibleTransactionIds;
-  }
-
-  public void setUnconvertibleTransactionIds(List<String> unconvertibleTransactionIds) {
-    this.unconvertibleTransactionIds = unconvertibleTransactionIds;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -119,13 +93,12 @@ public class BatchRetrieveOrdersResponse {
     }
     BatchRetrieveOrdersResponse batchRetrieveOrdersResponse = (BatchRetrieveOrdersResponse) o;
     return Objects.equals(this.orders, batchRetrieveOrdersResponse.orders) &&
-        Objects.equals(this.errors, batchRetrieveOrdersResponse.errors) &&
-        Objects.equals(this.unconvertibleTransactionIds, batchRetrieveOrdersResponse.unconvertibleTransactionIds);
+        Objects.equals(this.errors, batchRetrieveOrdersResponse.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orders, errors, unconvertibleTransactionIds);
+    return Objects.hash(orders, errors);
   }
 
 
@@ -136,7 +109,6 @@ public class BatchRetrieveOrdersResponse {
     
     sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    unconvertibleTransactionIds: ").append(toIndentedString(unconvertibleTransactionIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

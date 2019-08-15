@@ -48,10 +48,10 @@ public class OrderLineItemModifier {
   }
 
    /**
-   * Unique ID that identifies the modifier only within this order.  This field is read-only.
+   * Unique ID that identifies the modifier only within this order.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique ID that identifies the modifier only within this order.  This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the modifier only within this order.")
   public String getUid() {
     return uid;
   }

@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.squareup.connect.models.Money;
+import com.squareup.connect.models.OrderLineItemAppliedDiscount;
+import com.squareup.connect.models.OrderLineItemAppliedTax;
 import com.squareup.connect.models.OrderLineItemDiscount;
 import com.squareup.connect.models.OrderLineItemModifier;
 import com.squareup.connect.models.OrderLineItemTax;
@@ -63,6 +65,12 @@ public class OrderLineItem {
   @JsonProperty("discounts")
   private List<OrderLineItemDiscount> discounts = new ArrayList<OrderLineItemDiscount>();
 
+  @JsonProperty("applied_taxes")
+  private List<OrderLineItemAppliedTax> appliedTaxes = new ArrayList<OrderLineItemAppliedTax>();
+
+  @JsonProperty("applied_discounts")
+  private List<OrderLineItemAppliedDiscount> appliedDiscounts = new ArrayList<OrderLineItemAppliedDiscount>();
+
   @JsonProperty("base_price_money")
   private Money basePriceMoney = null;
 
@@ -87,10 +95,10 @@ public class OrderLineItem {
   }
 
    /**
-   * Unique ID that identifies the line item only within this order.  This field is read-only.
+   * Unique ID that identifies the line item only within this order.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique ID that identifies the line item only within this order.  This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the line item only within this order.")
   public String getUid() {
     return uid;
   }
@@ -241,10 +249,10 @@ public class OrderLineItem {
   }
 
    /**
-   * A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any order-level taxes apportioned to this item. When creating an Order, set your item-level taxes in this list.
+   * A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any order-level taxes apportioned to this item. When creating an Order, set your item-level taxes in this list.  This field has been deprecated in favour of `applied_taxes`. Usage of both this field and `applied_taxes` when creating an order will result in an error. Usage of this field when sending requests to the UpdateOrder endpoint will result in an error.
    * @return taxes
   **/
-  @ApiModelProperty(value = "A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any order-level taxes apportioned to this item. When creating an Order, set your item-level taxes in this list.")
+  @ApiModelProperty(value = "A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any order-level taxes apportioned to this item. When creating an Order, set your item-level taxes in this list.  This field has been deprecated in favour of `applied_taxes`. Usage of both this field and `applied_taxes` when creating an order will result in an error. Usage of this field when sending requests to the UpdateOrder endpoint will result in an error.")
   public List<OrderLineItemTax> getTaxes() {
     return taxes;
   }
@@ -264,16 +272,62 @@ public class OrderLineItem {
   }
 
    /**
-   * A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any order-level discounts apportioned to this item. When creating an Order, set your item-level discounts in this list.
+   * A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any order-level discounts apportioned to this item. When creating an Order, set your item-level discounts in this list.  This field has been deprecated in favour of `applied_discounts`. Usage of both this field and `applied_discounts` when creating an order will result in an error. Usage of this field when sending requests to the UpdateOrder endpoint will result in an error.
    * @return discounts
   **/
-  @ApiModelProperty(value = "A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any order-level discounts apportioned to this item. When creating an Order, set your item-level discounts in this list.")
+  @ApiModelProperty(value = "A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any order-level discounts apportioned to this item. When creating an Order, set your item-level discounts in this list.  This field has been deprecated in favour of `applied_discounts`. Usage of both this field and `applied_discounts` when creating an order will result in an error. Usage of this field when sending requests to the UpdateOrder endpoint will result in an error.")
   public List<OrderLineItemDiscount> getDiscounts() {
     return discounts;
   }
 
   public void setDiscounts(List<OrderLineItemDiscount> discounts) {
     this.discounts = discounts;
+  }
+
+  public OrderLineItem appliedTaxes(List<OrderLineItemAppliedTax> appliedTaxes) {
+    this.appliedTaxes = appliedTaxes;
+    return this;
+  }
+
+  public OrderLineItem addAppliedTaxesItem(OrderLineItemAppliedTax appliedTaxesItem) {
+    this.appliedTaxes.add(appliedTaxesItem);
+    return this;
+  }
+
+   /**
+   * The list of references to taxes applied to this line item. Each `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level `OrderLineItemTax` applied to the line item. On reads, the amount applied is populated.  An `OrderLineItemAppliedTax` will be automatically created on every line item for all `ORDER` scoped taxes added to the order. `OrderLineItemAppliedTax` records for `LINE_ITEM` scoped taxes must be added in requests for the tax to apply to any line items.  To change the amount of a tax, modify the referenced top-level tax.
+   * @return appliedTaxes
+  **/
+  @ApiModelProperty(value = "The list of references to taxes applied to this line item. Each `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level `OrderLineItemTax` applied to the line item. On reads, the amount applied is populated.  An `OrderLineItemAppliedTax` will be automatically created on every line item for all `ORDER` scoped taxes added to the order. `OrderLineItemAppliedTax` records for `LINE_ITEM` scoped taxes must be added in requests for the tax to apply to any line items.  To change the amount of a tax, modify the referenced top-level tax.")
+  public List<OrderLineItemAppliedTax> getAppliedTaxes() {
+    return appliedTaxes;
+  }
+
+  public void setAppliedTaxes(List<OrderLineItemAppliedTax> appliedTaxes) {
+    this.appliedTaxes = appliedTaxes;
+  }
+
+  public OrderLineItem appliedDiscounts(List<OrderLineItemAppliedDiscount> appliedDiscounts) {
+    this.appliedDiscounts = appliedDiscounts;
+    return this;
+  }
+
+  public OrderLineItem addAppliedDiscountsItem(OrderLineItemAppliedDiscount appliedDiscountsItem) {
+    this.appliedDiscounts.add(appliedDiscountsItem);
+    return this;
+  }
+
+   /**
+   * The list of references to discounts applied to this line item. Each `OrderLineItemAppliedDiscount` has a `discount_uid` that references the `uid` of a top-level `OrderLineItemDiscounts` applied to the line item. On reads, the amount applied is populated.  An `OrderLineItemAppliedDiscount` will be automatically created on every line item for all `ORDER` scoped discounts that are added to the order. `OrderLineItemAppliedDiscount` records for `LINE_ITEM` scoped discounts must be added in requests for the discount to apply to any line items.  To change the amount of a discount, modify the referenced top-level discount.
+   * @return appliedDiscounts
+  **/
+  @ApiModelProperty(value = "The list of references to discounts applied to this line item. Each `OrderLineItemAppliedDiscount` has a `discount_uid` that references the `uid` of a top-level `OrderLineItemDiscounts` applied to the line item. On reads, the amount applied is populated.  An `OrderLineItemAppliedDiscount` will be automatically created on every line item for all `ORDER` scoped discounts that are added to the order. `OrderLineItemAppliedDiscount` records for `LINE_ITEM` scoped discounts must be added in requests for the discount to apply to any line items.  To change the amount of a discount, modify the referenced top-level discount.")
+  public List<OrderLineItemAppliedDiscount> getAppliedDiscounts() {
+    return appliedDiscounts;
+  }
+
+  public void setAppliedDiscounts(List<OrderLineItemAppliedDiscount> appliedDiscounts) {
+    this.appliedDiscounts = appliedDiscounts;
   }
 
   public OrderLineItem basePriceMoney(Money basePriceMoney) {
@@ -318,10 +372,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.  This field is read-only.
+   * The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.
    * @return grossSalesMoney
   **/
-  @ApiModelProperty(value = "The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.  This field is read-only.")
+  @ApiModelProperty(value = "The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.")
   public Money getGrossSalesMoney() {
     return grossSalesMoney;
   }
@@ -336,10 +390,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The total tax amount of money to collect for the line item.  This field is read-only.
+   * The total tax amount of money to collect for the line item.
    * @return totalTaxMoney
   **/
-  @ApiModelProperty(value = "The total tax amount of money to collect for the line item.  This field is read-only.")
+  @ApiModelProperty(value = "The total tax amount of money to collect for the line item.")
   public Money getTotalTaxMoney() {
     return totalTaxMoney;
   }
@@ -354,10 +408,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The total discount amount of money to collect for the line item.  This field is read-only.
+   * The total discount amount of money to collect for the line item.
    * @return totalDiscountMoney
   **/
-  @ApiModelProperty(value = "The total discount amount of money to collect for the line item.  This field is read-only.")
+  @ApiModelProperty(value = "The total discount amount of money to collect for the line item.")
   public Money getTotalDiscountMoney() {
     return totalDiscountMoney;
   }
@@ -372,10 +426,10 @@ public class OrderLineItem {
   }
 
    /**
-   * The total amount of money to collect for this line item.  This field is read-only.
+   * The total amount of money to collect for this line item.
    * @return totalMoney
   **/
-  @ApiModelProperty(value = "The total amount of money to collect for this line item.  This field is read-only.")
+  @ApiModelProperty(value = "The total amount of money to collect for this line item.")
   public Money getTotalMoney() {
     return totalMoney;
   }
@@ -404,6 +458,8 @@ public class OrderLineItem {
         Objects.equals(this.modifiers, orderLineItem.modifiers) &&
         Objects.equals(this.taxes, orderLineItem.taxes) &&
         Objects.equals(this.discounts, orderLineItem.discounts) &&
+        Objects.equals(this.appliedTaxes, orderLineItem.appliedTaxes) &&
+        Objects.equals(this.appliedDiscounts, orderLineItem.appliedDiscounts) &&
         Objects.equals(this.basePriceMoney, orderLineItem.basePriceMoney) &&
         Objects.equals(this.variationTotalPriceMoney, orderLineItem.variationTotalPriceMoney) &&
         Objects.equals(this.grossSalesMoney, orderLineItem.grossSalesMoney) &&
@@ -414,7 +470,7 @@ public class OrderLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(uid, name, quantity, quantityUnit, note, catalogObjectId, variationName, modifiers, taxes, discounts, basePriceMoney, variationTotalPriceMoney, grossSalesMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
+    return Objects.hash(uid, name, quantity, quantityUnit, note, catalogObjectId, variationName, modifiers, taxes, discounts, appliedTaxes, appliedDiscounts, basePriceMoney, variationTotalPriceMoney, grossSalesMoney, totalTaxMoney, totalDiscountMoney, totalMoney);
   }
 
 
@@ -433,6 +489,8 @@ public class OrderLineItem {
     sb.append("    modifiers: ").append(toIndentedString(modifiers)).append("\n");
     sb.append("    taxes: ").append(toIndentedString(taxes)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
+    sb.append("    appliedTaxes: ").append(toIndentedString(appliedTaxes)).append("\n");
+    sb.append("    appliedDiscounts: ").append(toIndentedString(appliedDiscounts)).append("\n");
     sb.append("    basePriceMoney: ").append(toIndentedString(basePriceMoney)).append("\n");
     sb.append("    variationTotalPriceMoney: ").append(toIndentedString(variationTotalPriceMoney)).append("\n");
     sb.append("    grossSalesMoney: ").append(toIndentedString(grossSalesMoney)).append("\n");

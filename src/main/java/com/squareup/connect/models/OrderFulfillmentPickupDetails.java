@@ -81,10 +81,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The recipient of this pickup fulfillment.
+   * Information on the person meant to pick up this fulfillment from a physical location.
    * @return recipient
   **/
-  @ApiModelProperty(value = "The recipient of this pickup fulfillment.")
+  @ApiModelProperty(value = "Information on the person meant to pick up this fulfillment from a physical location.")
   public OrderFulfillmentRecipient getRecipient() {
     return recipient;
   }
@@ -99,10 +99,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The expiry [timestamp](#workingwithdates) in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\". This timestamp indicates when the pickup fulfillment will expire if it is not accepted by the merchant. Expiration time can only be set up to 7 days in the future. If not set, this pickup fulfillment will be automatically accepted when placed.
+   * The [timestamp](#workingwithdates) indicating when this fulfillment will expire if it is not accepted. Must be in RFC 3339 format e.g., \"2016-09-04T23:59:33.123Z\". Expiration time can only be set up to 7 days in the future. If `expires_at` is not set, this pickup fulfillment will be automatically accepted when placed.
    * @return expiresAt
   **/
-  @ApiModelProperty(value = "The expiry [timestamp](#workingwithdates) in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\". This timestamp indicates when the pickup fulfillment will expire if it is not accepted by the merchant. Expiration time can only be set up to 7 days in the future. If not set, this pickup fulfillment will be automatically accepted when placed.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) indicating when this fulfillment will expire if it is not accepted. Must be in RFC 3339 format e.g., \"2016-09-04T23:59:33.123Z\". Expiration time can only be set up to 7 days in the future. If `expires_at` is not set, this pickup fulfillment will be automatically accepted when placed.")
   public String getExpiresAt() {
     return expiresAt;
   }
@@ -117,10 +117,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The auto completion duration in RFC3339 duration format, e.g., \"P1W3D\". If set, an open and accepted pickup fulfillment will automatically move to the `COMPLETED` state after this period of time. If not set, this pickup fulfillment will remain accepted until it is canceled or completed.
+   * The duration of time after which an open and accepted pickup fulfillment will automatically move to the `COMPLETED` state. Must be in RFC3339 duration format e.g., \"P1W3D\".  If not set, this pickup fulfillment will remain accepted until it is canceled or completed.
    * @return autoCompleteDuration
   **/
-  @ApiModelProperty(value = "The auto completion duration in RFC3339 duration format, e.g., \"P1W3D\". If set, an open and accepted pickup fulfillment will automatically move to the `COMPLETED` state after this period of time. If not set, this pickup fulfillment will remain accepted until it is canceled or completed.")
+  @ApiModelProperty(value = "The duration of time after which an open and accepted pickup fulfillment will automatically move to the `COMPLETED` state. Must be in RFC3339 duration format e.g., \"P1W3D\".  If not set, this pickup fulfillment will remain accepted until it is canceled or completed.")
   public String getAutoCompleteDuration() {
     return autoCompleteDuration;
   }
@@ -153,10 +153,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The pickup [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\". For fulfillments with the schedule type `ASAP`, this is automatically set to the current time plus the expected duration to prepare the fulfillment. This represents the start of the pickup window.
+   * The [timestamp](#workingwithdates) that represents the start of the pickup window. Must be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\". For fulfillments with the schedule type `ASAP`, this is automatically set to the current time plus the expected duration to prepare the fulfillment.
    * @return pickupAt
   **/
-  @ApiModelProperty(value = "The pickup [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\". For fulfillments with the schedule type `ASAP`, this is automatically set to the current time plus the expected duration to prepare the fulfillment. This represents the start of the pickup window.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) that represents the start of the pickup window. Must be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\". For fulfillments with the schedule type `ASAP`, this is automatically set to the current time plus the expected duration to prepare the fulfillment.")
   public String getPickupAt() {
     return pickupAt;
   }
@@ -171,10 +171,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The pickup window duration in RFC3339 duration format, e.g., \"P1W3D\". This duration represents the window of time for which the order should be picked up after the `pickup_at` time. Can be used as an informational guideline for merchants.
+   * The window of time in which the order should be picked up after the `pickup_at` timestamp. Must be in RFC3339 duration format, e.g., \"P1W3D\". Can be used as an informational guideline for merchants.
    * @return pickupWindowDuration
   **/
-  @ApiModelProperty(value = "The pickup window duration in RFC3339 duration format, e.g., \"P1W3D\". This duration represents the window of time for which the order should be picked up after the `pickup_at` time. Can be used as an informational guideline for merchants.")
+  @ApiModelProperty(value = "The window of time in which the order should be picked up after the `pickup_at` timestamp. Must be in RFC3339 duration format, e.g., \"P1W3D\". Can be used as an informational guideline for merchants.")
   public String getPickupWindowDuration() {
     return pickupWindowDuration;
   }
@@ -189,10 +189,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The preparation time duration in RFC3339 duration format, e.g., \"P1W3D\". This duration indicates how long it takes the merchant to prepare this fulfillment.
+   * The duration of time it takes to prepare this fulfillment. Must be in RFC3339 duration format, e.g., \"P1W3D\".
    * @return prepTimeDuration
   **/
-  @ApiModelProperty(value = "The preparation time duration in RFC3339 duration format, e.g., \"P1W3D\". This duration indicates how long it takes the merchant to prepare this fulfillment.")
+  @ApiModelProperty(value = "The duration of time it takes to prepare this fulfillment. Must be in RFC3339 duration format, e.g., \"P1W3D\".")
   public String getPrepTimeDuration() {
     return prepTimeDuration;
   }
@@ -207,10 +207,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * A general note about the pickup fulfillment.  Notes are useful for providing additional instructions and are displayed in Square apps.
+   * A note meant to provide additional instructions about the pickup fulfillment displayed in the Square Point of Sale and set by the API.
    * @return note
   **/
-  @ApiModelProperty(value = "A general note about the pickup fulfillment.  Notes are useful for providing additional instructions and are displayed in Square apps.")
+  @ApiModelProperty(value = "A note meant to provide additional instructions about the pickup fulfillment displayed in the Square Point of Sale and set by the API.")
   public String getNote() {
     return note;
   }
@@ -225,10 +225,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was placed.
+   * The [timestamp](#workingwithdates) indicating when the fulfillment was placed. Must be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
    * @return placedAt
   **/
-  @ApiModelProperty(value = "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was placed.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) indicating when the fulfillment was placed. Must be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".")
   public String getPlacedAt() {
     return placedAt;
   }
@@ -243,10 +243,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was accepted by the merchant.
+   * The [timestamp](#workingwithdates) indicating when the fulfillment was accepted. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
    * @return acceptedAt
   **/
-  @ApiModelProperty(value = "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was accepted by the merchant.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) indicating when the fulfillment was accepted. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".")
   public String getAcceptedAt() {
     return acceptedAt;
   }
@@ -261,10 +261,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was rejected.
+   * The [timestamp](#workingwithdates) indicating when the fulfillment was rejected. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
    * @return rejectedAt
   **/
-  @ApiModelProperty(value = "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was rejected.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) indicating when the fulfillment was rejected. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".")
   public String getRejectedAt() {
     return rejectedAt;
   }
@@ -279,10 +279,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the merchant set the fulfillment as ready for pickup.
+   * The [timestamp](#workingwithdates) indicating when the fulfillment is marked as ready for pickup. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
    * @return readyAt
   **/
-  @ApiModelProperty(value = "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the merchant set the fulfillment as ready for pickup.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) indicating when the fulfillment is marked as ready for pickup. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".")
   public String getReadyAt() {
     return readyAt;
   }
@@ -297,10 +297,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment expired.
+   * The [timestamp](#workingwithdates) indicating when the fulfillment expired. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
    * @return expiredAt
   **/
-  @ApiModelProperty(value = "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment expired.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) indicating when the fulfillment expired. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".")
   public String getExpiredAt() {
     return expiredAt;
   }
@@ -315,10 +315,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was picked up by the recipient.
+   * The [timestamp](#workingwithdates) indicating when the fulfillment was picked up by the recipient. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
    * @return pickedUpAt
   **/
-  @ApiModelProperty(value = "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was picked up by the recipient.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) indicating when the fulfillment was picked up by the recipient. In RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".")
   public String getPickedUpAt() {
     return pickedUpAt;
   }
@@ -333,10 +333,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was canceled by the merchant or buyer.
+   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was canceled.
    * @return canceledAt
   **/
-  @ApiModelProperty(value = "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was canceled by the merchant or buyer.")
+  @ApiModelProperty(value = "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\", indicating when the fulfillment was canceled.")
   public String getCanceledAt() {
     return canceledAt;
   }
@@ -351,10 +351,10 @@ public class OrderFulfillmentPickupDetails {
   }
 
    /**
-   * A description of why the pickup was canceled. Max length is 100 characters.
+   * A description of why the pickup was canceled. Max length: 100 characters.
    * @return cancelReason
   **/
-  @ApiModelProperty(value = "A description of why the pickup was canceled. Max length is 100 characters.")
+  @ApiModelProperty(value = "A description of why the pickup was canceled. Max length: 100 characters.")
   public String getCancelReason() {
     return cancelReason;
   }

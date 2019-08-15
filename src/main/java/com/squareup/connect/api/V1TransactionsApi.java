@@ -48,8 +48,7 @@ public class V1TransactionsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Refund
    * @throws ApiException if fails to make API call
-   */
-  public V1Refund createRefund(String locationId, V1CreateRefundRequest body) throws ApiException {
+   */  public V1Refund createRefund(String locationId, V1CreateRefundRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -70,7 +69,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -145,8 +144,7 @@ public class V1TransactionsApi {
    * @param locationId The ID of the location to list bank accounts for. (required)
    * @return List&lt;V1BankAccount&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1BankAccount> listBankAccounts(String locationId) throws ApiException {
+   */  public List<V1BankAccount> listBankAccounts(String locationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -162,7 +160,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -234,8 +232,7 @@ public class V1TransactionsApi {
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Order&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1Order> listOrders(String locationId, String order, Integer limit, String batchToken) throws ApiException {
+   */  public List<V1Order> listOrders(String locationId, String order, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -251,7 +248,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
@@ -335,8 +332,7 @@ public class V1TransactionsApi {
    * @param includePartial Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed. (optional)
    * @return List&lt;V1Payment&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken, Boolean includePartial) throws ApiException {
+   */  public List<V1Payment> listPayments(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken, Boolean includePartial) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -352,7 +348,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
@@ -444,8 +440,7 @@ public class V1TransactionsApi {
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Refund&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1Refund> listRefunds(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken) throws ApiException {
+   */  public List<V1Refund> listRefunds(String locationId, String order, String beginTime, String endTime, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -461,7 +456,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
@@ -551,8 +546,7 @@ public class V1TransactionsApi {
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Settlement&gt;
    * @throws ApiException if fails to make API call
-   */
-  public List<V1Settlement> listSettlements(String locationId, String order, String beginTime, String endTime, Integer limit, String status, String batchToken) throws ApiException {
+   */  public List<V1Settlement> listSettlements(String locationId, String order, String beginTime, String endTime, Integer limit, String status, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -568,7 +562,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "order", order));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
@@ -656,8 +650,7 @@ public class V1TransactionsApi {
    * @param bankAccountId The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned. (required)
    * @return V1BankAccount
    * @throws ApiException if fails to make API call
-   */
-  public V1BankAccount retrieveBankAccount(String locationId, String bankAccountId) throws ApiException {
+   */  public V1BankAccount retrieveBankAccount(String locationId, String bankAccountId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -679,7 +672,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -756,8 +749,7 @@ public class V1TransactionsApi {
    * @param orderId The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint (required)
    * @return V1Order
    * @throws ApiException if fails to make API call
-   */
-  public V1Order retrieveOrder(String locationId, String orderId) throws ApiException {
+   */  public V1Order retrieveOrder(String locationId, String orderId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -779,7 +771,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -856,8 +848,7 @@ public class V1TransactionsApi {
    * @param paymentId The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint. (required)
    * @return V1Payment
    * @throws ApiException if fails to make API call
-   */
-  public V1Payment retrievePayment(String locationId, String paymentId) throws ApiException {
+   */  public V1Payment retrievePayment(String locationId, String paymentId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -879,7 +870,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -956,8 +947,7 @@ public class V1TransactionsApi {
    * @param settlementId The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint. (required)
    * @return V1Settlement
    * @throws ApiException if fails to make API call
-   */
-  public V1Settlement retrieveSettlement(String locationId, String settlementId) throws ApiException {
+   */  public V1Settlement retrieveSettlement(String locationId, String settlementId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -979,7 +969,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     
@@ -1057,8 +1047,7 @@ public class V1TransactionsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Order
    * @throws ApiException if fails to make API call
-   */
-  public V1Order updateOrder(String locationId, String orderId, V1UpdateOrderRequest body) throws ApiException {
+   */  public V1Order updateOrder(String locationId, String orderId, V1UpdateOrderRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -1085,7 +1074,7 @@ public class V1TransactionsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     

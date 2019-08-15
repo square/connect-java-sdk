@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Filter based on Order &#x60;source&#x60; information.
+ * Filter based on order &#x60;source&#x60; information.
  */
-@ApiModel(description = "Filter based on Order `source` information.")
+@ApiModel(description = "Filter based on order `source` information.")
 
 public class SearchOrdersSourceFilter {
   @JsonProperty("source_names")
@@ -42,10 +42,10 @@ public class SearchOrdersSourceFilter {
   }
 
    /**
-   * Filters by [Source](#type-ordersource) `name`. Will return any orders with with `source.name`s that match any of the listed source names.  Max: 10 `source_names`.
+   * Filters by [Source](#type-ordersource) `name`. Will return any orders with with a `source.name` that matches any of the listed source names.  Max: 10 source names.
    * @return sourceNames
   **/
-  @ApiModelProperty(value = "Filters by [Source](#type-ordersource) `name`. Will return any orders with with `source.name`s that match any of the listed source names.  Max: 10 `source_names`.")
+  @ApiModelProperty(value = "Filters by [Source](#type-ordersource) `name`. Will return any orders with with a `source.name` that matches any of the listed source names.  Max: 10 source names.")
   public List<String> getSourceNames() {
     return sourceNames;
   }

@@ -29,6 +29,9 @@ public class OrderEntry {
   @JsonProperty("order_id")
   private String orderId = null;
 
+  @JsonProperty("version")
+  private Integer version = null;
+
   @JsonProperty("location_id")
   private String locationId = null;
 
@@ -48,6 +51,24 @@ public class OrderEntry {
 
   public void setOrderId(String orderId) {
     this.orderId = orderId;
+  }
+
+  public OrderEntry version(Integer version) {
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Version number which is incremented each time an update is committed to the order. Orders that were not created through the API will not include a version and thus cannot be updated.  [Read more about working with versions](/orders-api/manage-orders#update-orders).
+   * @return version
+  **/
+  @ApiModelProperty(value = "Version number which is incremented each time an update is committed to the order. Orders that were not created through the API will not include a version and thus cannot be updated.  [Read more about working with versions](/orders-api/manage-orders#update-orders).")
+  public Integer getVersion() {
+    return version;
+  }
+
+  public void setVersion(Integer version) {
+    this.version = version;
   }
 
   public OrderEntry locationId(String locationId) {
@@ -79,12 +100,13 @@ public class OrderEntry {
     }
     OrderEntry orderEntry = (OrderEntry) o;
     return Objects.equals(this.orderId, orderEntry.orderId) &&
+        Objects.equals(this.version, orderEntry.version) &&
         Objects.equals(this.locationId, orderEntry.locationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, locationId);
+    return Objects.hash(orderId, version, locationId);
   }
 
 
@@ -94,6 +116,7 @@ public class OrderEntry {
     sb.append("class OrderEntry {\n");
     
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("}");
     return sb.toString();

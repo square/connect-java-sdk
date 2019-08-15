@@ -42,8 +42,7 @@ public class ApplePayApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return RegisterDomainResponse
    * @throws ApiException if fails to make API call
-   */
-  public RegisterDomainResponse registerDomain(RegisterDomainRequest body) throws ApiException {
+   */  public RegisterDomainResponse registerDomain(RegisterDomainRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -58,7 +57,7 @@ public class ApplePayApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-06-12");
+    localVarHeaderParams.put("Square-Version", "2019-08-14");
 
     
     

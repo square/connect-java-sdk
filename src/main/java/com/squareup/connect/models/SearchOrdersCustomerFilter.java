@@ -42,10 +42,10 @@ public class SearchOrdersCustomerFilter {
   }
 
    /**
-   * Filter by orders with any of the listed `customer_id`s.  Max: 10 `customer_id`s.
+   * List of customer IDs to filter by.  Max: 10 customer IDs.
    * @return customerIds
   **/
-  @ApiModelProperty(value = "Filter by orders with any of the listed `customer_id`s.  Max: 10 `customer_id`s.")
+  @ApiModelProperty(value = "List of customer IDs to filter by.  Max: 10 customer IDs.")
   public List<String> getCustomerIds() {
     return customerIds;
   }

@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a tax that applies to one or more line items in an order.
+ * Represents a tax that applies to one or more line item in the order.  Fixed-amount, order-scoped taxes are distributed across all non-zero line item totals. The amount distributed to each line item is relative to the amount the item contributes to the order subtotal.
  */
-@ApiModel(description = "Represents a tax that applies to one or more line items in an order.")
+@ApiModel(description = "Represents a tax that applies to one or more line item in the order.  Fixed-amount, order-scoped taxes are distributed across all non-zero line item totals. The amount distributed to each line item is relative to the amount the item contributes to the order subtotal.")
 
 public class OrderLineItemTax {
   @JsonProperty("uid")
@@ -54,10 +54,10 @@ public class OrderLineItemTax {
   }
 
    /**
-   * Unique ID that identifies the tax only within this order.  This field is read-only.
+   * Unique ID that identifies the tax only within this order.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique ID that identifies the tax only within this order.  This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the tax only within this order.")
   public String getUid() {
     return uid;
   }
@@ -126,10 +126,10 @@ public class OrderLineItemTax {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.
+   * The percentage of the tax, as a string representation of a decimal number. For example, a value of `\"7.25\"` corresponds to a percentage of 7.25%.
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.")
+  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. For example, a value of `\"7.25\"` corresponds to a percentage of 7.25%.")
   public String getPercentage() {
     return percentage;
   }
@@ -144,10 +144,10 @@ public class OrderLineItemTax {
   }
 
    /**
-   * The amount of the money applied by the tax in an order.
+   * The amount of the money applied by the tax in the order.
    * @return appliedMoney
   **/
-  @ApiModelProperty(value = "The amount of the money applied by the tax in an order.")
+  @ApiModelProperty(value = "The amount of the money applied by the tax in the order.")
   public Money getAppliedMoney() {
     return appliedMoney;
   }
@@ -162,10 +162,10 @@ public class OrderLineItemTax {
   }
 
    /**
-   * Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values
+   * Indicates the level at which the tax applies. For `ORDER` scoped taxes, Square generates references in `applied_taxes` on all order line items that do not have them. For `LINE_ITEM` scoped taxes, the tax will only apply to line items with references in their `applied_taxes` field.  This field is immutable. To change the scope, you must delete the tax and re-add it as a new tax. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values
    * @return scope
   **/
-  @ApiModelProperty(value = "Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values")
+  @ApiModelProperty(value = "Indicates the level at which the tax applies. For `ORDER` scoped taxes, Square generates references in `applied_taxes` on all order line items that do not have them. For `LINE_ITEM` scoped taxes, the tax will only apply to line items with references in their `applied_taxes` field.  This field is immutable. To change the scope, you must delete the tax and re-add it as a new tax. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values")
   public String getScope() {
     return scope;
   }

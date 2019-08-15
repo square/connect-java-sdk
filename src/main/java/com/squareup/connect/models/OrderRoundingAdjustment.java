@@ -42,10 +42,10 @@ public class OrderRoundingAdjustment {
   }
 
    /**
-   * Unique ID that identifies the rounding adjustment only within this order.  This field is read-only.
+   * Unique ID that identifies the rounding adjustment only within this order.
    * @return uid
   **/
-  @ApiModelProperty(value = "Unique ID that identifies the rounding adjustment only within this order.  This field is read-only.")
+  @ApiModelProperty(value = "Unique ID that identifies the rounding adjustment only within this order.")
   public String getUid() {
     return uid;
   }
