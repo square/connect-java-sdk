@@ -56,6 +56,7 @@ No authorization required
 
 <a name="renewToken"></a>
 # **renewToken**
+**Note: This endpoint is deprecated.**
 > RenewTokenResponse renewToken(clientId, body)
 
 RenewToken
