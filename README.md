@@ -10,27 +10,6 @@
 
 **If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://squ.re/2GB8GHk)**
 
-## ENUM to String Migration
-The Java SDK no longer treats enums as explicit types. Instead, all enums are handled as static strings.
-Previously, you would use an enum constant to represent the related string value. For example:
-```java
-Money money = new Money();
-money.setCurrency(Money.CurrencyEnum.USD);
-```
-
-As of version 2.20190710.0, you would work with the static string value directly. For example:
-```java
-Money money = new Money();
-money.setCurrency("USD");
-```
-
-But, as a best practice, we recommend representing enum strings as constants for easier reuse. For example:
-```java
-String MONEY_USD = "USD";
-Money money = new Money();
-money.setCurrency(MONEY_USD);
-```
-
 ## Requirements
 
 Java 8

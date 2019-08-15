@@ -15,6 +15,7 @@ Method | HTTP request | Description
 
 <a name="captureTransaction"></a>
 # **captureTransaction**
+**Note: This endpoint is deprecated.**
 > CaptureTransactionResponse captureTransaction(locationId, transactionId)
 
 CaptureTransaction
@@ -70,6 +71,7 @@ Name | Type | Description  | Notes
 
 <a name="charge"></a>
 # **charge**
+**Note: This endpoint is deprecated.**
 > ChargeResponse charge(locationId, body)
 
 Charge
@@ -125,6 +127,7 @@ Name | Type | Description  | Notes
 
 <a name="createRefund"></a>
 # **createRefund**
+**Note: This endpoint is deprecated.**
 > CreateRefundResponse createRefund(locationId, transactionId, body)
 
 CreateRefund
@@ -182,6 +185,7 @@ Name | Type | Description  | Notes
 
 <a name="listRefunds"></a>
 # **listRefunds**
+**Note: This endpoint is deprecated.**
 > ListRefundsResponse listRefunds(locationId, beginTime, endTime, sortOrder, cursor)
 
 ListRefunds
@@ -243,6 +247,7 @@ Name | Type | Description  | Notes
 
 <a name="listTransactions"></a>
 # **listTransactions**
+**Note: This endpoint is deprecated.**
 > ListTransactionsResponse listTransactions(locationId, beginTime, endTime, sortOrder, cursor)
 
 ListTransactions
@@ -304,6 +309,7 @@ Name | Type | Description  | Notes
 
 <a name="retrieveTransaction"></a>
 # **retrieveTransaction**
+**Note: This endpoint is deprecated.**
 > RetrieveTransactionResponse retrieveTransaction(locationId, transactionId)
 
 RetrieveTransaction
@@ -359,6 +365,7 @@ Name | Type | Description  | Notes
 
 <a name="voidTransaction"></a>
 # **voidTransaction**
+**Note: This endpoint is deprecated.**
 > VoidTransactionResponse voidTransaction(locationId, transactionId)
 
 VoidTransaction
