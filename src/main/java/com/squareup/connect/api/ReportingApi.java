@@ -46,7 +46,9 @@ public class ReportingApi {
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
    * @return ListAdditionalRecipientReceivableRefundsResponse
    * @throws ApiException if fails to make API call
-   */  public ListAdditionalRecipientReceivableRefundsResponse listAdditionalRecipientReceivableRefunds(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
+   */
+  @Deprecated
+  public ListAdditionalRecipientReceivableRefundsResponse listAdditionalRecipientReceivableRefunds(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -147,7 +149,9 @@ public class ReportingApi {
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
    * @return ListAdditionalRecipientReceivablesResponse
    * @throws ApiException if fails to make API call
-   */  public ListAdditionalRecipientReceivablesResponse listAdditionalRecipientReceivables(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
+   */
+  @Deprecated
+  public ListAdditionalRecipientReceivablesResponse listAdditionalRecipientReceivables(String locationId, String beginTime, String endTime, String sortOrder, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set

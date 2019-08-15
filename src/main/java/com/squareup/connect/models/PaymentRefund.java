@@ -51,6 +51,9 @@ public class PaymentRefund {
   @JsonProperty("payment_id")
   private String paymentId = null;
 
+  @JsonProperty("order_id")
+  private String orderId = null;
+
   @JsonProperty("reason")
   private String reason = null;
 
@@ -191,6 +194,24 @@ public class PaymentRefund {
     this.paymentId = paymentId;
   }
 
+  public PaymentRefund orderId(String orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * The ID of the order associated with the refund.
+   * @return orderId
+  **/
+  @ApiModelProperty(value = "The ID of the order associated with the refund.")
+  public String getOrderId() {
+    return orderId;
+  }
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
+  }
+
   public PaymentRefund reason(String reason) {
     this.reason = reason;
     return this;
@@ -262,6 +283,7 @@ public class PaymentRefund {
         Objects.equals(this.appFeeMoney, paymentRefund.appFeeMoney) &&
         Objects.equals(this.processingFee, paymentRefund.processingFee) &&
         Objects.equals(this.paymentId, paymentRefund.paymentId) &&
+        Objects.equals(this.orderId, paymentRefund.orderId) &&
         Objects.equals(this.reason, paymentRefund.reason) &&
         Objects.equals(this.createdAt, paymentRefund.createdAt) &&
         Objects.equals(this.updatedAt, paymentRefund.updatedAt);
@@ -269,7 +291,7 @@ public class PaymentRefund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, locationId, amountMoney, appFeeMoney, processingFee, paymentId, reason, createdAt, updatedAt);
+    return Objects.hash(id, status, locationId, amountMoney, appFeeMoney, processingFee, paymentId, orderId, reason, createdAt, updatedAt);
   }
 
 
@@ -285,6 +307,7 @@ public class PaymentRefund {
     sb.append("    appFeeMoney: ").append(toIndentedString(appFeeMoney)).append("\n");
     sb.append("    processingFee: ").append(toIndentedString(processingFee)).append("\n");
     sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
