@@ -12,8 +12,6 @@
 
 * `"TYPE_WEIGHT"`
 
-* `"TYPE_TIME"`
-
 * `"TYPE_GENERIC"`
 
 

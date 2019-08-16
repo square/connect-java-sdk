@@ -45,9 +45,6 @@ public class MeasurementUnit {
   @JsonProperty("generic_unit")
   private String genericUnit = null;
 
-  @JsonProperty("time_unit")
-  private String timeUnit = null;
-
   @JsonProperty("type")
   private String type = null;
 
@@ -159,24 +156,6 @@ public class MeasurementUnit {
     this.genericUnit = genericUnit;
   }
 
-  public MeasurementUnit timeUnit(String timeUnit) {
-    this.timeUnit = timeUnit;
-    return this;
-  }
-
-   /**
-   * Represents a standard unit of time. See [MeasurementUnitTime](#type-measurementunittime) for possible values
-   * @return timeUnit
-  **/
-  @ApiModelProperty(value = "Represents a standard unit of time. See [MeasurementUnitTime](#type-measurementunittime) for possible values")
-  public String getTimeUnit() {
-    return timeUnit;
-  }
-
-  public void setTimeUnit(String timeUnit) {
-    this.timeUnit = timeUnit;
-  }
-
   public MeasurementUnit type(String type) {
     this.type = type;
     return this;
@@ -211,13 +190,12 @@ public class MeasurementUnit {
         Objects.equals(this.volumeUnit, measurementUnit.volumeUnit) &&
         Objects.equals(this.weightUnit, measurementUnit.weightUnit) &&
         Objects.equals(this.genericUnit, measurementUnit.genericUnit) &&
-        Objects.equals(this.timeUnit, measurementUnit.timeUnit) &&
         Objects.equals(this.type, measurementUnit.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customUnit, areaUnit, lengthUnit, volumeUnit, weightUnit, genericUnit, timeUnit, type);
+    return Objects.hash(customUnit, areaUnit, lengthUnit, volumeUnit, weightUnit, genericUnit, type);
   }
 
 
@@ -232,7 +210,6 @@ public class MeasurementUnit {
     sb.append("    volumeUnit: ").append(toIndentedString(volumeUnit)).append("\n");
     sb.append("    weightUnit: ").append(toIndentedString(weightUnit)).append("\n");
     sb.append("    genericUnit: ").append(toIndentedString(genericUnit)).append("\n");
-    sb.append("    timeUnit: ").append(toIndentedString(timeUnit)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
