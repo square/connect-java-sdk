@@ -47,10 +47,10 @@ public class BatchRetrieveOrdersResponse {
   }
 
    /**
-   * The requested orders. This will omit any requested orders that do not exist or are not charged.
+   * The requested orders. This will omit any requested orders that do not exist.
    * @return orders
   **/
-  @ApiModelProperty(value = "The requested orders. This will omit any requested orders that do not exist or are not charged.")
+  @ApiModelProperty(value = "The requested orders. This will omit any requested orders that do not exist.")
   public List<Order> getOrders() {
     return orders;
   }

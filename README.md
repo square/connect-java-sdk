@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190814.0</version>
+    <version>2.20190814.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -36,7 +36,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190814.0"
+compile "com.squareup:connect:2.20190814.1"
 ```
 
 ### Option 3: Build and Install locally
@@ -78,7 +78,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190814.0.jar
+* target/connect-2.20190814.1.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -486,7 +486,6 @@ Class | Method | HTTP request | Description
  - [MeasurementUnitCustom](docs/MeasurementUnitCustom.md)
  - [MeasurementUnitGeneric](docs/MeasurementUnitGeneric.md)
  - [MeasurementUnitLength](docs/MeasurementUnitLength.md)
- - [MeasurementUnitTime](docs/MeasurementUnitTime.md)
  - [MeasurementUnitUnitType](docs/MeasurementUnitUnitType.md)
  - [MeasurementUnitVolume](docs/MeasurementUnitVolume.md)
  - [MeasurementUnitWeight](docs/MeasurementUnitWeight.md)
