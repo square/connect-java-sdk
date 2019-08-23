@@ -421,11 +421,23 @@ public class OrdersApi {
   /**
    * UpdateOrder
    * Updates an open [Order](#type-order) by adding, replacing, or deleting fields. Orders with a &#x60;COMPLETED&#x60; or &#x60;CANCELED&#x60; state cannot be updated.  An UpdateOrder request requires the following:  - The &#x60;order_id&#x60; in the endpoint path, identifying the order to update. - The latest &#x60;version&#x60; of the order to update. - The [sparse order](/orders-api/manage-orders#sparse-order-objects) containing only the fields to update and the version the update is being applied to. - If deleting fields, the [dot notation paths](/orders-api/manage-orders#on-dot-notation) identifying fields to clear.  To pay for an order, please refer to the [Pay for Orders](/orders-api/pay-for-orders) guide.  To learn more about the Orders API, see the [Orders API Overview](/orders-api/what-it-does).
+   * @param locationId The ID of the order&#39;s associated location. (required)
+   * @param orderId The ID of the order to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateOrderResponse
    * @throws ApiException if fails to make API call
-   */  public UpdateOrderResponse updateOrder(UpdateOrderRequest body) throws ApiException {
+   */  public UpdateOrderResponse updateOrder(String locationId, String orderId, UpdateOrderRequest body) throws ApiException {
     Object localVarPostBody = body;
+    
+    // verify the required parameter 'locationId' is set
+    if (locationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateOrder");
+    }
+    
+    // verify the required parameter 'orderId' is set
+    if (orderId == null) {
+      throw new ApiException(400, "Missing the required parameter 'orderId' when calling updateOrder");
+    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -433,7 +445,9 @@ public class OrdersApi {
     }
     
     // create path and map variables
-    String localVarPath = "/v2/locations/{location_id}/orders/{order_id}";
+    String localVarPath = "/v2/locations/{location_id}/orders/{order_id}"
+      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+      .replaceAll("\\{" + "order_id" + "\\}", apiClient.escapeString(orderId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -463,12 +477,24 @@ public class OrdersApi {
   /**
    * UpdateOrder
    * Updates an open [Order](#type-order) by adding, replacing, or deleting fields. Orders with a &#x60;COMPLETED&#x60; or &#x60;CANCELED&#x60; state cannot be updated.  An UpdateOrder request requires the following:  - The &#x60;order_id&#x60; in the endpoint path, identifying the order to update. - The latest &#x60;version&#x60; of the order to update. - The [sparse order](/orders-api/manage-orders#sparse-order-objects) containing only the fields to update and the version the update is being applied to. - If deleting fields, the [dot notation paths](/orders-api/manage-orders#on-dot-notation) identifying fields to clear.  To pay for an order, please refer to the [Pay for Orders](/orders-api/pay-for-orders) guide.  To learn more about the Orders API, see the [Orders API Overview](/orders-api/what-it-does).
+   * @param locationId The ID of the order&#39;s associated location. (required)
+   * @param orderId The ID of the order to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<UpdateOrderResponse>
    * @throws ApiException if fails to make API call
    */
-  public CompleteResponse<UpdateOrderResponse>updateOrderWithHttpInfo(UpdateOrderRequest body) throws ApiException {
+  public CompleteResponse<UpdateOrderResponse>updateOrderWithHttpInfo(String locationId, String orderId, UpdateOrderRequest body) throws ApiException {
     Object localVarPostBody = body;
+    
+    // verify the required parameter 'locationId' is set
+    if (locationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateOrder");
+    }
+    
+    // verify the required parameter 'orderId' is set
+    if (orderId == null) {
+      throw new ApiException(400, "Missing the required parameter 'orderId' when calling updateOrder");
+    }
     
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -476,7 +502,9 @@ public class OrdersApi {
     }
     
     // create path and map variables
-    String localVarPath = "/v2/locations/{location_id}/orders/{order_id}";
+    String localVarPath = "/v2/locations/{location_id}/orders/{order_id}"
+      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()))
+      .replaceAll("\\{" + "order_id" + "\\}", apiClient.escapeString(orderId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();

@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 <a name="updateOrder"></a>
 # **updateOrder**
-> UpdateOrderResponse updateOrder(body)
+> UpdateOrderResponse updateOrder(locationId, orderId, body)
 
 UpdateOrder
 
@@ -253,9 +253,11 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 OrdersApi apiInstance = new OrdersApi();
+String locationId = "locationId_example"; // String | The ID of the order's associated location.
+String orderId = "orderId_example"; // String | The ID of the order to update.
 UpdateOrderRequest body = new UpdateOrderRequest(); // UpdateOrderRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 try {
-    UpdateOrderResponse result = apiInstance.updateOrder(body);
+    UpdateOrderResponse result = apiInstance.updateOrder(locationId, orderId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OrdersApi#updateOrder");
@@ -267,6 +269,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **locationId** | **String**| The ID of the order&#39;s associated location. |
+ **orderId** | **String**| The ID of the order to update. |
  **body** | [**UpdateOrderRequest**](UpdateOrderRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type
