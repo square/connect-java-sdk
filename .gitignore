@@ -21,3 +21,4 @@ build.sbt
 AndroidManifest.xml
 
 travis-ci/accounts.json
+.vscode
