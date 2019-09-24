@@ -50,10 +50,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * The ID of the [CatalogModifierList](#type-catalogmodifierlist) controlled by this [CatalogModifierListInfo](#type-catalogmodifierlistinfo).
+   * The ID of the `CatalogModifierList](#type-catalogmodifierlist) controlled by this [CatalogModifierListInfo`.
    * @return modifierListId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the [CatalogModifierList](#type-catalogmodifierlist) controlled by this [CatalogModifierListInfo](#type-catalogmodifierlistinfo).")
+  @ApiModelProperty(required = true, value = "The ID of the `CatalogModifierList](#type-catalogmodifierlist) controlled by this [CatalogModifierListInfo`.")
   public String getModifierListId() {
     return modifierListId;
   }
@@ -73,10 +73,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * A set of [CatalogModifierOverride](#type-catalogmodifieroverride) objects that override whether a given [CatalogModifier](#type-catalogmodifier) is enabled by default.
+   * A set of `CatalogModifierOverride](#type-catalogmodifieroverride) objects that override whether a given [CatalogModifier` is enabled by default.
    * @return modifierOverrides
   **/
-  @ApiModelProperty(value = "A set of [CatalogModifierOverride](#type-catalogmodifieroverride) objects that override whether a given [CatalogModifier](#type-catalogmodifier) is enabled by default.")
+  @ApiModelProperty(value = "A set of `CatalogModifierOverride](#type-catalogmodifieroverride) objects that override whether a given [CatalogModifier` is enabled by default.")
   public List<CatalogModifierOverride> getModifierOverrides() {
     return modifierOverrides;
   }
@@ -91,10 +91,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * If zero or larger, the smallest number of [CatalogModifier](#type-catalogmodifier)s that must be selected from this [CatalogModifierList](#type-catalogmodifierlist).
+   * If zero or larger, the smallest number of `CatalogModifier](#type-catalogmodifier)s that must be selected from this [CatalogModifierList`.
    * @return minSelectedModifiers
   **/
-  @ApiModelProperty(value = "If zero or larger, the smallest number of [CatalogModifier](#type-catalogmodifier)s that must be selected from this [CatalogModifierList](#type-catalogmodifierlist).")
+  @ApiModelProperty(value = "If zero or larger, the smallest number of `CatalogModifier](#type-catalogmodifier)s that must be selected from this [CatalogModifierList`.")
   public Integer getMinSelectedModifiers() {
     return minSelectedModifiers;
   }
@@ -109,10 +109,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * If zero or larger, the largest number of [CatalogModifier](#type-catalogmodifier)s that can be selected from this [CatalogModifierList](#type-catalogmodifierlist).
+   * If zero or larger, the largest number of `CatalogModifier](#type-catalogmodifier)s that can be selected from this [CatalogModifierList`.
    * @return maxSelectedModifiers
   **/
-  @ApiModelProperty(value = "If zero or larger, the largest number of [CatalogModifier](#type-catalogmodifier)s that can be selected from this [CatalogModifierList](#type-catalogmodifierlist).")
+  @ApiModelProperty(value = "If zero or larger, the largest number of `CatalogModifier](#type-catalogmodifier)s that can be selected from this [CatalogModifierList`.")
   public Integer getMaxSelectedModifiers() {
     return maxSelectedModifiers;
   }
@@ -127,10 +127,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * If `true`, enable this [CatalogModifierList](#type-catalogmodifierlist).
+   * If `true`, enable this `CatalogModifierList`.
    * @return enabled
   **/
-  @ApiModelProperty(value = "If `true`, enable this [CatalogModifierList](#type-catalogmodifierlist).")
+  @ApiModelProperty(value = "If `true`, enable this `CatalogModifierList`.")
   public Boolean getEnabled() {
     return enabled;
   }

@@ -9,6 +9,9 @@ import com.squareup.connect.CompleteResponse;
 import javax.ws.rs.core.GenericType;
 
 import com.squareup.connect.models.ListLocationsResponse;
+import com.squareup.connect.models.RetrieveLocationResponse;
+import com.squareup.connect.models.UpdateLocationRequest;
+import com.squareup.connect.models.UpdateLocationResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,7 +53,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -105,5 +108,187 @@ public class LocationsApi {
 
     GenericType<ListLocationsResponse> localVarReturnType = new GenericType<ListLocationsResponse>() {};
     return (CompleteResponse<ListLocationsResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+  }
+  /**
+   * RetrieveLocation
+   * Retrieves details of a location.
+   * @param locationId The ID of the location to retrieve. (required)
+   * @return RetrieveLocationResponse
+   * @throws ApiException if fails to make API call
+   */  public RetrieveLocationResponse retrieveLocation(String locationId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'locationId' is set
+    if (locationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveLocation");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/locations/{location_id}"
+      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<RetrieveLocationResponse> localVarReturnType = new GenericType<RetrieveLocationResponse>() {};
+    CompleteResponse<RetrieveLocationResponse> completeResponse = (CompleteResponse<RetrieveLocationResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    return completeResponse.getData();
+      }
+
+  /**
+   * RetrieveLocation
+   * Retrieves details of a location.
+   * @param locationId The ID of the location to retrieve. (required)
+   * @return CompleteResponse<RetrieveLocationResponse>
+   * @throws ApiException if fails to make API call
+   */
+  public CompleteResponse<RetrieveLocationResponse>retrieveLocationWithHttpInfo(String locationId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'locationId' is set
+    if (locationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'locationId' when calling retrieveLocation");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/locations/{location_id}"
+      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<RetrieveLocationResponse> localVarReturnType = new GenericType<RetrieveLocationResponse>() {};
+    return (CompleteResponse<RetrieveLocationResponse>)apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+  }
+  /**
+   * UpdateLocation
+   * Updates the &#x60;Location&#x60; specified by the given ID.
+   * @param locationId The ID of the location to update. (required)
+   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @return UpdateLocationResponse
+   * @throws ApiException if fails to make API call
+   */  public UpdateLocationResponse updateLocation(String locationId, UpdateLocationRequest body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'locationId' is set
+    if (locationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateLocation");
+    }
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling updateLocation");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/locations/{location_id}"
+      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<UpdateLocationResponse> localVarReturnType = new GenericType<UpdateLocationResponse>() {};
+    CompleteResponse<UpdateLocationResponse> completeResponse = (CompleteResponse<UpdateLocationResponse>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    return completeResponse.getData();
+      }
+
+  /**
+   * UpdateLocation
+   * Updates the &#x60;Location&#x60; specified by the given ID.
+   * @param locationId The ID of the location to update. (required)
+   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @return CompleteResponse<UpdateLocationResponse>
+   * @throws ApiException if fails to make API call
+   */
+  public CompleteResponse<UpdateLocationResponse>updateLocationWithHttpInfo(String locationId, UpdateLocationRequest body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'locationId' is set
+    if (locationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'locationId' when calling updateLocation");
+    }
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling updateLocation");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/locations/{location_id}"
+      .replaceAll("\\{" + "location_id" + "\\}", apiClient.escapeString(locationId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<UpdateLocationResponse> localVarReturnType = new GenericType<UpdateLocationResponse>() {};
+    return (CompleteResponse<UpdateLocationResponse>)apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
   }
 }

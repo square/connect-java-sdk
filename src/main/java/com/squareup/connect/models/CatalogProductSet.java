@@ -78,10 +78,10 @@ public class CatalogProductSet {
   }
 
    /**
-   * Unique IDs for any [CatalogObjects](#type-catalogobject)s to include in this product set. Any number of these catalog objects can be in an order for a pricing rule to apply.  This can be used with `product_ids_all` in a parent [CatalogProductSet](#type-catalogproductset) to match groups of products for a bulk discount, such as a discount for an entree and side combo.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.
+   * Unique IDs for any `CatalogObjects`s to include in this product set. Any number of these catalog objects can be in an order for a pricing rule to apply.  This can be used with `product_ids_all` in a parent `CatalogProductSet` to match groups of products for a bulk discount, such as a discount for an entree and side combo.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.
    * @return productIdsAny
   **/
-  @ApiModelProperty(value = "Unique IDs for any [CatalogObjects](#type-catalogobject)s to include in this product set. Any number of these catalog objects can be in an order for a pricing rule to apply.  This can be used with `product_ids_all` in a parent [CatalogProductSet](#type-catalogproductset) to match groups of products for a bulk discount, such as a discount for an entree and side combo.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.")
+  @ApiModelProperty(value = "Unique IDs for any `CatalogObjects`s to include in this product set. Any number of these catalog objects can be in an order for a pricing rule to apply.  This can be used with `product_ids_all` in a parent `CatalogProductSet` to match groups of products for a bulk discount, such as a discount for an entree and side combo.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.")
   public List<String> getProductIdsAny() {
     return productIdsAny;
   }
@@ -101,10 +101,10 @@ public class CatalogProductSet {
   }
 
    /**
-   * Unique IDs for [CatalogObjects](#type-catalogobject) to include in this product set. All objects in this set must be included in an order for a pricing rule to apply.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.
+   * Unique IDs for `CatalogObjects` to include in this product set. All objects in this set must be included in an order for a pricing rule to apply.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.
    * @return productIdsAll
   **/
-  @ApiModelProperty(value = "Unique IDs for [CatalogObjects](#type-catalogobject) to include in this product set. All objects in this set must be included in an order for a pricing rule to apply.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.")
+  @ApiModelProperty(value = "Unique IDs for `CatalogObjects` to include in this product set. All objects in this set must be included in an order for a pricing rule to apply.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.")
   public List<String> getProductIdsAll() {
     return productIdsAll;
   }

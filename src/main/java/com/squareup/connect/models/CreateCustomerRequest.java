@@ -66,10 +66,10 @@ public class CreateCustomerRequest {
   }
 
    /**
-   * The idempotency key for the request. See the [Idempotency](/basics/api101/idempotency) guide for more information.
+   * The idempotency key for the request. See the [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency) guide for more information.
    * @return idempotencyKey
   **/
-  @ApiModelProperty(value = "The idempotency key for the request. See the [Idempotency](/basics/api101/idempotency) guide for more information.")
+  @ApiModelProperty(value = "The idempotency key for the request. See the [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency) guide for more information.")
   public String getIdempotencyKey() {
     return idempotencyKey;
   }

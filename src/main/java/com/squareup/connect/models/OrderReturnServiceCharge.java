@@ -130,10 +130,10 @@ public class OrderReturnServiceCharge {
   }
 
    /**
-   * The catalog object ID of the associated [CatalogServiceCharge](#type-catalogservicecharge).
+   * The catalog object ID of the associated `CatalogServiceCharge`.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "The catalog object ID of the associated [CatalogServiceCharge](#type-catalogservicecharge).")
+  @ApiModelProperty(value = "The catalog object ID of the associated `CatalogServiceCharge`.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }

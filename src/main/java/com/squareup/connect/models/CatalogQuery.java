@@ -140,10 +140,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns only objects whose searchable attributes contain all of the given keywords as prefixes. For example, if a [CatalogItem](#type-catalogitem) contains attributes `{\"name\": \"t-shirt\"}` and `{\"description\": \"Small, Purple\"}`, it will be matched by the query `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`.
+   * A query that returns only objects whose searchable attributes contain all of the given keywords as prefixes. For example, if a `CatalogItem` contains attributes `{\"name\": \"t-shirt\"}` and `{\"description\": \"Small, Purple\"}`, it will be matched by the query `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`.
    * @return textQuery
   **/
-  @ApiModelProperty(value = "A query that returns only objects whose searchable attributes contain all of the given keywords as prefixes. For example, if a [CatalogItem](#type-catalogitem) contains attributes `{\"name\": \"t-shirt\"}` and `{\"description\": \"Small, Purple\"}`, it will be matched by the query `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`.")
+  @ApiModelProperty(value = "A query that returns only objects whose searchable attributes contain all of the given keywords as prefixes. For example, if a `CatalogItem` contains attributes `{\"name\": \"t-shirt\"}` and `{\"description\": \"Small, Purple\"}`, it will be matched by the query `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`.")
   public CatalogQueryText getTextQuery() {
     return textQuery;
   }
@@ -158,10 +158,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogTax](#type-catalogtax)es enabled.
+   * A query that returns all `CatalogItem](#type-catalogitem)s that have any of the given [CatalogTax`es enabled.
    * @return itemsForTaxQuery
   **/
-  @ApiModelProperty(value = "A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogTax](#type-catalogtax)es enabled.")
+  @ApiModelProperty(value = "A query that returns all `CatalogItem](#type-catalogitem)s that have any of the given [CatalogTax`es enabled.")
   public CatalogQueryItemsForTax getItemsForTaxQuery() {
     return itemsForTaxQuery;
   }
@@ -176,10 +176,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList](#type-catalogmodifierlist)s enabled.
+   * A query that returns all `CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList`s enabled.
    * @return itemsForModifierListQuery
   **/
-  @ApiModelProperty(value = "A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList](#type-catalogmodifierlist)s enabled.")
+  @ApiModelProperty(value = "A query that returns all `CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList`s enabled.")
   public CatalogQueryItemsForModifierList getItemsForModifierListQuery() {
     return itemsForModifierListQuery;
   }
@@ -194,10 +194,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns all [CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption](#type-catalogitemoption)s.
+   * A query that returns all `CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption`s.
    * @return itemsForItemOptionsQuery
   **/
-  @ApiModelProperty(value = "A query that returns all [CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption](#type-catalogitemoption)s.")
+  @ApiModelProperty(value = "A query that returns all `CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption`s.")
   public CatalogQueryItemsForItemOptions getItemsForItemOptionsQuery() {
     return itemsForItemOptionsQuery;
   }
@@ -212,10 +212,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns all [CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption](#type-catalogitemoption) values.
+   * A query that returns all `CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption` values.
    * @return itemVariationsForItemOptionValuesQuery
   **/
-  @ApiModelProperty(value = "A query that returns all [CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption](#type-catalogitemoption) values.")
+  @ApiModelProperty(value = "A query that returns all `CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption` values.")
   public CatalogQueryItemVariationsForItemOptionValues getItemVariationsForItemOptionValuesQuery() {
     return itemVariationsForItemOptionValuesQuery;
   }

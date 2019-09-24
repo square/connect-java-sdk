@@ -1,0 +1,10 @@
+
+# MerchantStatus
+
+
+* `"ACTIVE"`
+
+* `"INACTIVE"`
+
+
+

@@ -216,10 +216,10 @@ public class CatalogObject {
   }
 
    /**
-   * The Connect V1 IDs for this object at each [location](#type-location) where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
+   * The Connect V1 IDs for this object at each `location` where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
    * @return catalogV1Ids
   **/
-  @ApiModelProperty(value = "The Connect V1 IDs for this object at each [location](#type-location) where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.")
+  @ApiModelProperty(value = "The Connect V1 IDs for this object at each `location` where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.")
   public List<CatalogV1Id> getCatalogV1Ids() {
     return catalogV1Ids;
   }
@@ -316,10 +316,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogItem](#type-catalogitem), set for CatalogObjects of type `ITEM`.
+   * Structured data for a `CatalogItem`, set for CatalogObjects of type `ITEM`.
    * @return itemData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogItem](#type-catalogitem), set for CatalogObjects of type `ITEM`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogItem`, set for CatalogObjects of type `ITEM`.")
   public CatalogItem getItemData() {
     return itemData;
   }
@@ -334,10 +334,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogCategory](#type-catalogcategory), set for CatalogObjects of type `CATEGORY`.
+   * Structured data for a `CatalogCategory`, set for CatalogObjects of type `CATEGORY`.
    * @return categoryData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogCategory](#type-catalogcategory), set for CatalogObjects of type `CATEGORY`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogCategory`, set for CatalogObjects of type `CATEGORY`.")
   public CatalogCategory getCategoryData() {
     return categoryData;
   }
@@ -352,10 +352,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogItemVariation](#type-catalogitemvariation), set for CatalogObjects of type `ITEM_VARIATION`.
+   * Structured data for a `CatalogItemVariation`, set for CatalogObjects of type `ITEM_VARIATION`.
    * @return itemVariationData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogItemVariation](#type-catalogitemvariation), set for CatalogObjects of type `ITEM_VARIATION`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogItemVariation`, set for CatalogObjects of type `ITEM_VARIATION`.")
   public CatalogItemVariation getItemVariationData() {
     return itemVariationData;
   }
@@ -370,10 +370,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogTax](#type-catalogtax), set for CatalogObjects of type `TAX`.
+   * Structured data for a `CatalogTax`, set for CatalogObjects of type `TAX`.
    * @return taxData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogTax](#type-catalogtax), set for CatalogObjects of type `TAX`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogTax`, set for CatalogObjects of type `TAX`.")
   public CatalogTax getTaxData() {
     return taxData;
   }
@@ -388,10 +388,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogDiscount](#type-catalogdiscount), set for CatalogObjects of type `DISCOUNT`.
+   * Structured data for a `CatalogDiscount`, set for CatalogObjects of type `DISCOUNT`.
    * @return discountData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogDiscount](#type-catalogdiscount), set for CatalogObjects of type `DISCOUNT`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogDiscount`, set for CatalogObjects of type `DISCOUNT`.")
   public CatalogDiscount getDiscountData() {
     return discountData;
   }
@@ -406,10 +406,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogModifierList](#type-catalogmodifierlist), set for CatalogObjects of type `MODIFIER_LIST`.
+   * Structured data for a `CatalogModifierList`, set for CatalogObjects of type `MODIFIER_LIST`.
    * @return modifierListData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogModifierList](#type-catalogmodifierlist), set for CatalogObjects of type `MODIFIER_LIST`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogModifierList`, set for CatalogObjects of type `MODIFIER_LIST`.")
   public CatalogModifierList getModifierListData() {
     return modifierListData;
   }
@@ -424,10 +424,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogModifier](#type-catalogmodifier), set for CatalogObjects of type `MODIFIER`.
+   * Structured data for a `CatalogModifier`, set for CatalogObjects of type `MODIFIER`.
    * @return modifierData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogModifier](#type-catalogmodifier), set for CatalogObjects of type `MODIFIER`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogModifier`, set for CatalogObjects of type `MODIFIER`.")
   public CatalogModifier getModifierData() {
     return modifierData;
   }
@@ -442,10 +442,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogTimePeriod](#type-catalogtimeperiod), set for CatalogObjects of type `TIME_PERIOD`.
+   * Structured data for a `CatalogTimePeriod`, set for CatalogObjects of type `TIME_PERIOD`.
    * @return timePeriodData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogTimePeriod](#type-catalogtimeperiod), set for CatalogObjects of type `TIME_PERIOD`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogTimePeriod`, set for CatalogObjects of type `TIME_PERIOD`.")
   public CatalogTimePeriod getTimePeriodData() {
     return timePeriodData;
   }
@@ -460,10 +460,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogProductSet](#type-catalogproductset), set for CatalogObjects of type `PRODUCT_SET`.
+   * Structured data for a `CatalogProductSet`, set for CatalogObjects of type `PRODUCT_SET`.
    * @return productSetData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogProductSet](#type-catalogproductset), set for CatalogObjects of type `PRODUCT_SET`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogProductSet`, set for CatalogObjects of type `PRODUCT_SET`.")
   public CatalogProductSet getProductSetData() {
     return productSetData;
   }
@@ -478,10 +478,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogPricingRule](#type-catalogpricingrule), set for CatalogObjects of type `PRICING_RULE`.
+   * Structured data for a `CatalogPricingRule`, set for CatalogObjects of type `PRICING_RULE`.
    * @return pricingRuleData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogPricingRule](#type-catalogpricingrule), set for CatalogObjects of type `PRICING_RULE`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogPricingRule`, set for CatalogObjects of type `PRICING_RULE`.")
   public CatalogPricingRule getPricingRuleData() {
     return pricingRuleData;
   }
@@ -496,10 +496,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`.
+   * Structured data for a `CatalogImage`, set for CatalogObjects of type `IMAGE`.
    * @return imageData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogImage`, set for CatalogObjects of type `IMAGE`.")
   public CatalogImage getImageData() {
     return imageData;
   }
@@ -514,10 +514,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogMeasurementUnit](#type-catalogmeasurementunit), set for CatalogObjects of type `MEASUREMENT_UNIT`.
+   * Structured data for a `CatalogMeasurementUnit`, set for CatalogObjects of type `MEASUREMENT_UNIT`.
    * @return measurementUnitData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogMeasurementUnit](#type-catalogmeasurementunit), set for CatalogObjects of type `MEASUREMENT_UNIT`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogMeasurementUnit`, set for CatalogObjects of type `MEASUREMENT_UNIT`.")
   public CatalogMeasurementUnit getMeasurementUnitData() {
     return measurementUnitData;
   }
@@ -532,10 +532,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogItemOption](#type-catalogitemoption), set for CatalogObjects of type `ITEM_OPTION`.
+   * Structured data for a `CatalogItemOption`, set for CatalogObjects of type `ITEM_OPTION`.
    * @return itemOptionData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogItemOption](#type-catalogitemoption), set for CatalogObjects of type `ITEM_OPTION`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogItemOption`, set for CatalogObjects of type `ITEM_OPTION`.")
   public CatalogItemOption getItemOptionData() {
     return itemOptionData;
   }
@@ -550,10 +550,10 @@ public class CatalogObject {
   }
 
    /**
-   * Structured data for a [CatalogItemOptionValue](#type-catalogitemoptionvalue), set for CatalogObjects of type `ITEM_OPTION_VAL`.
+   * Structured data for a `CatalogItemOptionValue`, set for CatalogObjects of type `ITEM_OPTION_VAL`.
    * @return itemOptionValueData
   **/
-  @ApiModelProperty(value = "Structured data for a [CatalogItemOptionValue](#type-catalogitemoptionvalue), set for CatalogObjects of type `ITEM_OPTION_VAL`.")
+  @ApiModelProperty(value = "Structured data for a `CatalogItemOptionValue`, set for CatalogObjects of type `ITEM_OPTION_VAL`.")
   public CatalogItemOptionValue getItemOptionValueData() {
     return itemOptionValueData;
   }

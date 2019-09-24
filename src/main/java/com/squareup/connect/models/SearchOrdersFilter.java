@@ -52,10 +52,10 @@ public class SearchOrdersFilter {
   }
 
    /**
-   * Filter by [`OrderState`](#type-orderstate).
+   * Filter by ``OrderState``.
    * @return stateFilter
   **/
-  @ApiModelProperty(value = "Filter by [`OrderState`](#type-orderstate).")
+  @ApiModelProperty(value = "Filter by ``OrderState``.")
   public SearchOrdersStateFilter getStateFilter() {
     return stateFilter;
   }
@@ -70,10 +70,10 @@ public class SearchOrdersFilter {
   }
 
    /**
-   * Filter for results within a time range.  __Important:__ If you filter for orders by time range, you must set SearchOrdersSort to sort by the same field. [Learn more about filtering orders by time range](/orders-api/manage-orders#important-note-on-filtering-orders-by-time-range)
+   * Filter for results within a time range.  __Important:__ If you filter for orders by time range, you must set SearchOrdersSort to sort by the same field. [Learn more about filtering orders by time range](https://developer.squareup.com/docs/orders-api/manage-orders#important-note-on-filtering-orders-by-time-range)
    * @return dateTimeFilter
   **/
-  @ApiModelProperty(value = "Filter for results within a time range.  __Important:__ If you filter for orders by time range, you must set SearchOrdersSort to sort by the same field. [Learn more about filtering orders by time range](/orders-api/manage-orders#important-note-on-filtering-orders-by-time-range)")
+  @ApiModelProperty(value = "Filter for results within a time range.  __Important:__ If you filter for orders by time range, you must set SearchOrdersSort to sort by the same field. [Learn more about filtering orders by time range](https://developer.squareup.com/docs/orders-api/manage-orders#important-note-on-filtering-orders-by-time-range)")
   public SearchOrdersDateTimeFilter getDateTimeFilter() {
     return dateTimeFilter;
   }

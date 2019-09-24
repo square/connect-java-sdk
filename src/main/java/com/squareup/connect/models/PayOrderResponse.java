@@ -65,10 +65,10 @@ public class PayOrderResponse {
   }
 
    /**
-   * The paid, updated [order](#type-order).
+   * The paid, updated `order`.
    * @return order
   **/
-  @ApiModelProperty(value = "The paid, updated [order](#type-order).")
+  @ApiModelProperty(value = "The paid, updated `order`.")
   public Order getOrder() {
     return order;
   }

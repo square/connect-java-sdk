@@ -38,10 +38,10 @@ public class CatalogIdMapping {
   }
 
    /**
-   * The client-supplied, temporary `#`-prefixed ID for a new [CatalogObject](#type-catalogobject).
+   * The client-supplied, temporary `#`-prefixed ID for a new `CatalogObject`.
    * @return clientObjectId
   **/
-  @ApiModelProperty(value = "The client-supplied, temporary `#`-prefixed ID for a new [CatalogObject](#type-catalogobject).")
+  @ApiModelProperty(value = "The client-supplied, temporary `#`-prefixed ID for a new `CatalogObject`.")
   public String getClientObjectId() {
     return clientObjectId;
   }
@@ -56,10 +56,10 @@ public class CatalogIdMapping {
   }
 
    /**
-   * The permanent ID for the [CatalogObject](#type-catalogobject) created by the server.
+   * The permanent ID for the `CatalogObject` created by the server.
    * @return objectId
   **/
-  @ApiModelProperty(value = "The permanent ID for the [CatalogObject](#type-catalogobject) created by the server.")
+  @ApiModelProperty(value = "The permanent ID for the `CatalogObject` created by the server.")
   public String getObjectId() {
     return objectId;
   }

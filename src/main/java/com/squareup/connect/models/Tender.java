@@ -170,10 +170,10 @@ public class Tender {
   }
 
    /**
-   * The total amount of the tender, including `tip_money`. If the tender has a `payment_id`, the `total_money` of the corresponding [Payment](#type-payment) will be equal to the `amount_money` of the tender.
+   * The total amount of the tender, including `tip_money`. If the tender has a `payment_id`, the `total_money` of the corresponding `Payment` will be equal to the `amount_money` of the tender.
    * @return amountMoney
   **/
-  @ApiModelProperty(value = "The total amount of the tender, including `tip_money`. If the tender has a `payment_id`, the `total_money` of the corresponding [Payment](#type-payment) will be equal to the `amount_money` of the tender.")
+  @ApiModelProperty(value = "The total amount of the tender, including `tip_money`. If the tender has a `payment_id`, the `total_money` of the corresponding `Payment` will be equal to the `amount_money` of the tender.")
   public Money getAmountMoney() {
     return amountMoney;
   }
@@ -319,10 +319,10 @@ public class Tender {
   }
 
    /**
-   * The ID of the [Payment](#type-payment) that corresponds to this tender. This value is only present for payments created with the v2 Payments API.
+   * The ID of the `Payment` that corresponds to this tender. This value is only present for payments created with the v2 Payments API.
    * @return paymentId
   **/
-  @ApiModelProperty(value = "The ID of the [Payment](#type-payment) that corresponds to this tender. This value is only present for payments created with the v2 Payments API.")
+  @ApiModelProperty(value = "The ID of the `Payment` that corresponds to this tender. This value is only present for payments created with the v2 Payments API.")
   public String getPaymentId() {
     return paymentId;
   }

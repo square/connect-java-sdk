@@ -74,10 +74,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency](/basics/api101/idempotency) for more information.
+   * A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
    * @return idempotencyKey
   **/
-  @ApiModelProperty(value = "A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency](/basics/api101/idempotency) for more information.")
+  @ApiModelProperty(value = "A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.")
   public String getIdempotencyKey() {
     return idempotencyKey;
   }
@@ -92,10 +92,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * __Deprecated__: Please set the reference_id on the nested [order](#type-order) field instead.  An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.
+   * __Deprecated__: Please set the reference_id on the nested `order` field instead.  An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.
    * @return referenceId
   **/
-  @ApiModelProperty(value = "__Deprecated__: Please set the reference_id on the nested [order](#type-order) field instead.  An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.")
+  @ApiModelProperty(value = "__Deprecated__: Please set the reference_id on the nested `order` field instead.  An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.")
   public String getReferenceId() {
     return referenceId;
   }
@@ -115,10 +115,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * __Deprecated__: Please set the line_items on the nested [order](#type-order) field instead.  The line items to associate with this order.  Each line item represents a different product to include in a purchase.
+   * __Deprecated__: Please set the line_items on the nested `order` field instead.  The line items to associate with this order.  Each line item represents a different product to include in a purchase.
    * @return lineItems
   **/
-  @ApiModelProperty(value = "__Deprecated__: Please set the line_items on the nested [order](#type-order) field instead.  The line items to associate with this order.  Each line item represents a different product to include in a purchase.")
+  @ApiModelProperty(value = "__Deprecated__: Please set the line_items on the nested `order` field instead.  The line items to associate with this order.  Each line item represents a different product to include in a purchase.")
   public List<CreateOrderRequestLineItem> getLineItems() {
     return lineItems;
   }
@@ -138,10 +138,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * __Deprecated__: Please set the taxes on the nested [order](#type-order) field instead.  The taxes to include on the order.
+   * __Deprecated__: Please set the taxes on the nested `order` field instead.  The taxes to include on the order.
    * @return taxes
   **/
-  @ApiModelProperty(value = "__Deprecated__: Please set the taxes on the nested [order](#type-order) field instead.  The taxes to include on the order.")
+  @ApiModelProperty(value = "__Deprecated__: Please set the taxes on the nested `order` field instead.  The taxes to include on the order.")
   public List<CreateOrderRequestTax> getTaxes() {
     return taxes;
   }
@@ -161,10 +161,10 @@ public class CreateOrderRequest {
   }
 
    /**
-   * __Deprecated__: Please set the discounts on the nested [order](#type-order) field instead.  The discounts to include on the order.
+   * __Deprecated__: Please set the discounts on the nested `order` field instead.  The discounts to include on the order.
    * @return discounts
   **/
-  @ApiModelProperty(value = "__Deprecated__: Please set the discounts on the nested [order](#type-order) field instead.  The discounts to include on the order.")
+  @ApiModelProperty(value = "__Deprecated__: Please set the discounts on the nested `order` field instead.  The discounts to include on the order.")
   public List<CreateOrderRequestDiscount> getDiscounts() {
     return discounts;
   }

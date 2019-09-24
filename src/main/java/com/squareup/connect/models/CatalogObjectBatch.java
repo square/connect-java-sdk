@@ -43,10 +43,10 @@ public class CatalogObjectBatch {
   }
 
    /**
-   * A list of [CatalogObject](#type-catalogobject)s belonging to this batch.
+   * A list of `CatalogObject`s belonging to this batch.
    * @return objects
   **/
-  @ApiModelProperty(value = "A list of [CatalogObject](#type-catalogobject)s belonging to this batch.")
+  @ApiModelProperty(value = "A list of `CatalogObject`s belonging to this batch.")
   public List<CatalogObject> getObjects() {
     return objects;
   }

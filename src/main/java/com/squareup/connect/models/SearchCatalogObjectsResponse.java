@@ -42,6 +42,9 @@ public class SearchCatalogObjectsResponse {
   @JsonProperty("related_objects")
   private List<CatalogObject> relatedObjects = new ArrayList<CatalogObject>();
 
+  @JsonProperty("latest_time")
+  private String latestTime = null;
+
   public SearchCatalogObjectsResponse errors(List<Error> errors) {
     this.errors = errors;
     return this;
@@ -53,10 +56,10 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   * The set of [Error](#type-error)s encountered.
+   * The set of `Error`s encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of [Error](#type-error)s encountered.")
+  @ApiModelProperty(value = "The set of `Error`s encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -71,10 +74,10 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   * The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](/basics/api101/pagination) for more information.
+   * The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }
@@ -94,10 +97,10 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   * The [CatalogObject](#type-catalogobject)s returned.
+   * The `CatalogObject`s returned.
    * @return objects
   **/
-  @ApiModelProperty(value = "The [CatalogObject](#type-catalogobject)s returned.")
+  @ApiModelProperty(value = "The `CatalogObject`s returned.")
   public List<CatalogObject> getObjects() {
     return objects;
   }
@@ -117,16 +120,34 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   * A list of [CatalogObject](#type-catalogobject)s referenced by the objects in the `objects` field.
+   * A list of `CatalogObject`s referenced by the objects in the `objects` field.
    * @return relatedObjects
   **/
-  @ApiModelProperty(value = "A list of [CatalogObject](#type-catalogobject)s referenced by the objects in the `objects` field.")
+  @ApiModelProperty(value = "A list of `CatalogObject`s referenced by the objects in the `objects` field.")
   public List<CatalogObject> getRelatedObjects() {
     return relatedObjects;
   }
 
   public void setRelatedObjects(List<CatalogObject> relatedObjects) {
     this.relatedObjects = relatedObjects;
+  }
+
+  public SearchCatalogObjectsResponse latestTime(String latestTime) {
+    this.latestTime = latestTime;
+    return this;
+  }
+
+   /**
+   *  When this merchant's catalog was last updated. Will match the value for `end_time` or `cursor` if either field is included in the `SearchCatalog` request.
+   * @return latestTime
+  **/
+  @ApiModelProperty(value = " When this merchant's catalog was last updated. Will match the value for `end_time` or `cursor` if either field is included in the `SearchCatalog` request.")
+  public String getLatestTime() {
+    return latestTime;
+  }
+
+  public void setLatestTime(String latestTime) {
+    this.latestTime = latestTime;
   }
 
 
@@ -142,12 +163,13 @@ public class SearchCatalogObjectsResponse {
     return Objects.equals(this.errors, searchCatalogObjectsResponse.errors) &&
         Objects.equals(this.cursor, searchCatalogObjectsResponse.cursor) &&
         Objects.equals(this.objects, searchCatalogObjectsResponse.objects) &&
-        Objects.equals(this.relatedObjects, searchCatalogObjectsResponse.relatedObjects);
+        Objects.equals(this.relatedObjects, searchCatalogObjectsResponse.relatedObjects) &&
+        Objects.equals(this.latestTime, searchCatalogObjectsResponse.latestTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, cursor, objects, relatedObjects);
+    return Objects.hash(errors, cursor, objects, relatedObjects, latestTime);
   }
 
 
@@ -160,6 +182,7 @@ public class SearchCatalogObjectsResponse {
     sb.append("    cursor: ").append(toIndentedString(cursor)).append("\n");
     sb.append("    objects: ").append(toIndentedString(objects)).append("\n");
     sb.append("    relatedObjects: ").append(toIndentedString(relatedObjects)).append("\n");
+    sb.append("    latestTime: ").append(toIndentedString(latestTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

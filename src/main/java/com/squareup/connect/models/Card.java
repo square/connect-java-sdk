@@ -51,6 +51,9 @@ public class Card {
   @JsonProperty("fingerprint")
   private String fingerprint = null;
 
+  @JsonProperty("bin")
+  private String bin = null;
+
   public Card id(String id) {
     this.id = id;
     return this;
@@ -195,6 +198,24 @@ public class Card {
     this.fingerprint = fingerprint;
   }
 
+  public Card bin(String bin) {
+    this.bin = bin;
+    return this;
+  }
+
+   /**
+   * The first six digits of the card number, known as the Bank Identification Number (BIN). Only the Payments API returns this field.
+   * @return bin
+  **/
+  @ApiModelProperty(value = "The first six digits of the card number, known as the Bank Identification Number (BIN). Only the Payments API returns this field.")
+  public String getBin() {
+    return bin;
+  }
+
+  public void setBin(String bin) {
+    this.bin = bin;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -212,12 +233,13 @@ public class Card {
         Objects.equals(this.expYear, card.expYear) &&
         Objects.equals(this.cardholderName, card.cardholderName) &&
         Objects.equals(this.billingAddress, card.billingAddress) &&
-        Objects.equals(this.fingerprint, card.fingerprint);
+        Objects.equals(this.fingerprint, card.fingerprint) &&
+        Objects.equals(this.bin, card.bin);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cardBrand, last4, expMonth, expYear, cardholderName, billingAddress, fingerprint);
+    return Objects.hash(id, cardBrand, last4, expMonth, expYear, cardholderName, billingAddress, fingerprint, bin);
   }
 
 
@@ -234,6 +256,7 @@ public class Card {
     sb.append("    cardholderName: ").append(toIndentedString(cardholderName)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    fingerprint: ").append(toIndentedString(fingerprint)).append("\n");
+    sb.append("    bin: ").append(toIndentedString(bin)).append("\n");
     sb.append("}");
     return sb.toString();
   }

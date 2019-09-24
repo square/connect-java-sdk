@@ -60,7 +60,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -129,9 +129,9 @@ public class RefundsApi {
    * @param beginTime Timestamp for the beginning of the requested reporting period, in RFC 3339 format.  Default: The current time minus one year. (optional)
    * @param endTime Timestamp for the end of the requested reporting period, in RFC 3339 format.  Default: The current time. (optional)
    * @param sortOrder The order in which results are listed. - &#x60;ASC&#x60; - oldest to newest - &#x60;DESC&#x60; - newest to oldest (default). (optional)
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. (optional)
    * @param locationId ID of location associated with payment. (optional)
-   * @param status If provided, only refunds with the given status are returned.  For a list of refund status values, see [PaymentRefund](#type-paymentrefund).  Default: If omitted refunds are returned regardless of status. (optional)
+   * @param status If provided, only refunds with the given status are returned.  For a list of refund status values, see &#x60;PaymentRefund&#x60;.  Default: If omitted refunds are returned regardless of status. (optional)
    * @param sourceType If provided, only refunds with the given source type are returned.  - &#x60;CARD&#x60; - List refunds only for payments where card was specified as payment  source.  Default: If omitted refunds are returned regardless of source type. (optional)
    * @return ListPaymentRefundsResponse
    * @throws ApiException if fails to make API call
@@ -145,7 +145,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -179,9 +179,9 @@ public class RefundsApi {
    * @param beginTime Timestamp for the beginning of the requested reporting period, in RFC 3339 format.  Default: The current time minus one year. (optional)
    * @param endTime Timestamp for the end of the requested reporting period, in RFC 3339 format.  Default: The current time. (optional)
    * @param sortOrder The order in which results are listed. - &#x60;ASC&#x60; - oldest to newest - &#x60;DESC&#x60; - newest to oldest (default). (optional)
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. (optional)
    * @param locationId ID of location associated with payment. (optional)
-   * @param status If provided, only refunds with the given status are returned.  For a list of refund status values, see [PaymentRefund](#type-paymentrefund).  Default: If omitted refunds are returned regardless of status. (optional)
+   * @param status If provided, only refunds with the given status are returned.  For a list of refund status values, see &#x60;PaymentRefund&#x60;.  Default: If omitted refunds are returned regardless of status. (optional)
    * @param sourceType If provided, only refunds with the given source type are returned.  - &#x60;CARD&#x60; - List refunds only for payments where card was specified as payment  source.  Default: If omitted refunds are returned regardless of source type. (optional)
    * @return CompleteResponse<ListPaymentRefundsResponse>
    * @throws ApiException if fails to make API call
@@ -243,7 +243,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     

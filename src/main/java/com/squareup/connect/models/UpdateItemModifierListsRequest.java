@@ -48,10 +48,10 @@ public class UpdateItemModifierListsRequest {
   }
 
    /**
-   * The [CatalogItem](#type-catalogitem)s whose [CatalogModifierList](#type-catalogmodifierlist)s are being updated.
+   * The `CatalogItem](#type-catalogitem)s whose [CatalogModifierList`s are being updated.
    * @return itemIds
   **/
-  @ApiModelProperty(required = true, value = "The [CatalogItem](#type-catalogitem)s whose [CatalogModifierList](#type-catalogmodifierlist)s are being updated.")
+  @ApiModelProperty(required = true, value = "The `CatalogItem](#type-catalogitem)s whose [CatalogModifierList`s are being updated.")
   public List<String> getItemIds() {
     return itemIds;
   }
@@ -71,10 +71,10 @@ public class UpdateItemModifierListsRequest {
   }
 
    /**
-   * The set of [CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to enable for the [CatalogItem](#type-catalogitem).
+   * The set of `CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to enable for the [CatalogItem`.
    * @return modifierListsToEnable
   **/
-  @ApiModelProperty(value = "The set of [CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to enable for the [CatalogItem](#type-catalogitem).")
+  @ApiModelProperty(value = "The set of `CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to enable for the [CatalogItem`.")
   public List<String> getModifierListsToEnable() {
     return modifierListsToEnable;
   }
@@ -94,10 +94,10 @@ public class UpdateItemModifierListsRequest {
   }
 
    /**
-   * The set of [CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to disable for the [CatalogItem](#type-catalogitem).
+   * The set of `CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to disable for the [CatalogItem`.
    * @return modifierListsToDisable
   **/
-  @ApiModelProperty(value = "The set of [CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to disable for the [CatalogItem](#type-catalogitem).")
+  @ApiModelProperty(value = "The set of `CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to disable for the [CatalogItem`.")
   public List<String> getModifierListsToDisable() {
     return modifierListsToDisable;
   }

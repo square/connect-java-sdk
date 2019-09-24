@@ -65,10 +65,10 @@ public class RetrieveInventoryPhysicalCountResponse {
   }
 
    /**
-   * The requested [InventoryPhysicalCount](#type-inventoryphysicalcount).
+   * The requested `InventoryPhysicalCount`.
    * @return count
   **/
-  @ApiModelProperty(value = "The requested [InventoryPhysicalCount](#type-inventoryphysicalcount).")
+  @ApiModelProperty(value = "The requested `InventoryPhysicalCount`.")
   public InventoryPhysicalCount getCount() {
     return count;
   }

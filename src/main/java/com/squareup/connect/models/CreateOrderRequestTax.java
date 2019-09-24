@@ -44,10 +44,10 @@ public class CreateOrderRequestTax {
   }
 
    /**
-   * Only used for catalog taxes. The catalog object ID of an existing [CatalogTax](#type-catalogtax).  Do not provide a value for this field if you provide values in other fields for an ad hoc tax.
+   * Only used for catalog taxes. The catalog object ID of an existing `CatalogTax`.  Do not provide a value for this field if you provide values in other fields for an ad hoc tax.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "Only used for catalog taxes. The catalog object ID of an existing [CatalogTax](#type-catalogtax).  Do not provide a value for this field if you provide values in other fields for an ad hoc tax.")
+  @ApiModelProperty(value = "Only used for catalog taxes. The catalog object ID of an existing `CatalogTax`.  Do not provide a value for this field if you provide values in other fields for an ad hoc tax.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
@@ -80,10 +80,10 @@ public class CreateOrderRequestTax {
   }
 
    /**
-   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
+   * Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See `OrderLineItemTaxType` for possible values. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values")
+  @ApiModelProperty(value = "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See `OrderLineItemTaxType` for possible values. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values")
   public String getType() {
     return type;
   }

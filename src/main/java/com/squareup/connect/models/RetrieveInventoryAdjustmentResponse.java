@@ -65,10 +65,10 @@ public class RetrieveInventoryAdjustmentResponse {
   }
 
    /**
-   * The requested [InventoryAdjustment](#type-inventoryadjustment).
+   * The requested `InventoryAdjustment`.
    * @return adjustment
   **/
-  @ApiModelProperty(value = "The requested [InventoryAdjustment](#type-inventoryadjustment).")
+  @ApiModelProperty(value = "The requested `InventoryAdjustment`.")
   public InventoryAdjustment getAdjustment() {
     return adjustment;
   }

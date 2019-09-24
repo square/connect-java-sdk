@@ -49,10 +49,10 @@ public class BatchDeleteCatalogObjectsResponse {
   }
 
    /**
-   * The set of [Error](#type-error)s encountered.
+   * The set of `Error`s encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of [Error](#type-error)s encountered.")
+  @ApiModelProperty(value = "The set of `Error`s encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -72,10 +72,10 @@ public class BatchDeleteCatalogObjectsResponse {
   }
 
    /**
-   * The IDs of all [CatalogObject](#type-catalogobject)s deleted by this request.
+   * The IDs of all `CatalogObject`s deleted by this request.
    * @return deletedObjectIds
   **/
-  @ApiModelProperty(value = "The IDs of all [CatalogObject](#type-catalogobject)s deleted by this request.")
+  @ApiModelProperty(value = "The IDs of all `CatalogObject`s deleted by this request.")
   public List<String> getDeletedObjectIds() {
     return deletedObjectIds;
   }

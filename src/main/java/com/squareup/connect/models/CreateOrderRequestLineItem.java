@@ -101,10 +101,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * The base price for a single unit of the line item.  `base_price_money` is required for ad hoc line items and variable priced [CatalogItemVariation](#type-catalogitemvariation)s. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation's price.
+   * The base price for a single unit of the line item.  `base_price_money` is required for ad hoc line items and variable priced `CatalogItemVariation`s. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation's price.
    * @return basePriceMoney
   **/
-  @ApiModelProperty(value = "The base price for a single unit of the line item.  `base_price_money` is required for ad hoc line items and variable priced [CatalogItemVariation](#type-catalogitemvariation)s. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation's price.")
+  @ApiModelProperty(value = "The base price for a single unit of the line item.  `base_price_money` is required for ad hoc line items and variable priced `CatalogItemVariation`s. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation's price.")
   public Money getBasePriceMoney() {
     return basePriceMoney;
   }
@@ -155,10 +155,10 @@ public class CreateOrderRequestLineItem {
   }
 
    /**
-   * Only used for Catalog line items. The catalog object ID for an existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.
+   * Only used for Catalog line items. The catalog object ID for an existing `CatalogItemVariation`.  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "Only used for Catalog line items. The catalog object ID for an existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.")
+  @ApiModelProperty(value = "Only used for Catalog line items. The catalog object ID for an existing `CatalogItemVariation`.  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }

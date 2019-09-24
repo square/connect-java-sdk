@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * Completes a payment.  By default, payments are set to autocomplete immediately after they are created. To complete payments manually, set &#x60;autocomplete&#x60; to false.
+ * Completes (captures) a payment.  By default, payments are set to autocomplete immediately after they are created. To complete payments manually, set &#x60;autocomplete&#x60; to false.
  */
-@ApiModel(description = "Completes a payment.  By default, payments are set to autocomplete immediately after they are created. To complete payments manually, set `autocomplete` to false.")
+@ApiModel(description = "Completes (captures) a payment.  By default, payments are set to autocomplete immediately after they are created. To complete payments manually, set `autocomplete` to false.")
 
 public class CompletePaymentRequest {
 
