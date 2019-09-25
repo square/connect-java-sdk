@@ -50,10 +50,10 @@ public class ListCatalogResponse {
   }
 
    /**
-   * The set of [Error](#type-error)s encountered.
+   * The set of `Error`s encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of [Error](#type-error)s encountered.")
+  @ApiModelProperty(value = "The set of `Error`s encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -68,10 +68,10 @@ public class ListCatalogResponse {
   }
 
    /**
-   * The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](/basics/api101/pagination) for more information.
+   * The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }
@@ -91,10 +91,10 @@ public class ListCatalogResponse {
   }
 
    /**
-   * The [CatalogObject](#type-catalogobject)s returned.
+   * The `CatalogObject`s returned.
    * @return objects
   **/
-  @ApiModelProperty(value = "The [CatalogObject](#type-catalogobject)s returned.")
+  @ApiModelProperty(value = "The `CatalogObject`s returned.")
   public List<CatalogObject> getObjects() {
     return objects;
   }

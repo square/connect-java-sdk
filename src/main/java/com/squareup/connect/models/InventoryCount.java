@@ -50,10 +50,10 @@ public class InventoryCount {
   }
 
    /**
-   * The Square generated ID of the [CatalogObject](#type-catalogobject) being tracked.
+   * The Square generated ID of the `CatalogObject` being tracked.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "The Square generated ID of the [CatalogObject](#type-catalogobject) being tracked.")
+  @ApiModelProperty(value = "The Square generated ID of the `CatalogObject` being tracked.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
@@ -68,10 +68,10 @@ public class InventoryCount {
   }
 
    /**
-   * The [CatalogObjectType](#type-catalogobjecttype) of the [CatalogObject](#type-catalogobject) being tracked. Tracking is only supported for the `ITEM_VARIATION` type.
+   * The `CatalogObjectType` of the `CatalogObject` being tracked. Tracking is only supported for the `ITEM_VARIATION` type.
    * @return catalogObjectType
   **/
-  @ApiModelProperty(value = "The [CatalogObjectType](#type-catalogobjecttype) of the [CatalogObject](#type-catalogobject) being tracked. Tracking is only supported for the `ITEM_VARIATION` type.")
+  @ApiModelProperty(value = "The `CatalogObjectType` of the `CatalogObject` being tracked. Tracking is only supported for the `ITEM_VARIATION` type.")
   public String getCatalogObjectType() {
     return catalogObjectType;
   }
@@ -86,10 +86,10 @@ public class InventoryCount {
   }
 
    /**
-   * The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values
+   * The current `InventoryState` for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values
    * @return state
   **/
-  @ApiModelProperty(value = "The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values")
+  @ApiModelProperty(value = "The current `InventoryState` for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values")
   public String getState() {
     return state;
   }
@@ -104,10 +104,10 @@ public class InventoryCount {
   }
 
    /**
-   * The Square ID of the [Location](#type-location) where the related quantity of items are being tracked.
+   * The Square ID of the `Location` where the related quantity of items are being tracked.
    * @return locationId
   **/
-  @ApiModelProperty(value = "The Square ID of the [Location](#type-location) where the related quantity of items are being tracked.")
+  @ApiModelProperty(value = "The Square ID of the `Location` where the related quantity of items are being tracked.")
   public String getLocationId() {
     return locationId;
   }
@@ -122,10 +122,10 @@ public class InventoryCount {
   }
 
    /**
-   * The number of items in the count as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`.  Read [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities) for more information.
+   * The number of items in the count as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`.  Read [Decimal Quantities (BETA)](https://developer.squareup.com/docs/orders-api/what-it-does#decimal-quantities) for more information.
    * @return quantity
   **/
-  @ApiModelProperty(value = "The number of items in the count as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`.  Read [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities) for more information.")
+  @ApiModelProperty(value = "The number of items in the count as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`.  Read [Decimal Quantities (BETA)](https://developer.squareup.com/docs/orders-api/what-it-does#decimal-quantities) for more information.")
   public String getQuantity() {
     return quantity;
   }

@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the [RetrieveLocation](#endpoint-retrievelocation) endpoint.  One of &#x60;errors&#x60; or &#x60;location&#x60; is present in a given response (never both).
+ * Defines the fields that the  [RetrieveLocation](#endpoint-retrievelocation) endpoint returns  in a response.
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the [RetrieveLocation](#endpoint-retrievelocation) endpoint.  One of `errors` or `location` is present in a given response (never both).")
+@ApiModel(description = "Defines the fields that the  [RetrieveLocation](#endpoint-retrievelocation) endpoint returns  in a response.")
 
 public class RetrieveLocationResponse {
   @JsonProperty("errors")
@@ -47,10 +47,10 @@ public class RetrieveLocationResponse {
   }
 
    /**
-   * Any errors that occurred during the request.
+   * Information on errors encountered during the request.
    * @return errors
   **/
-  @ApiModelProperty(value = "Any errors that occurred during the request.")
+  @ApiModelProperty(value = "Information on errors encountered during the request.")
   public List<Error> getErrors() {
     return errors;
   }

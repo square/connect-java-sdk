@@ -206,10 +206,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The [CatalogItemVariation](#type-catalogitemvariation) id applied to this returned line item.
+   * The `CatalogItemVariation` id applied to this returned line item.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "The [CatalogItemVariation](#type-catalogitemvariation) id applied to this returned line item.")
+  @ApiModelProperty(value = "The `CatalogItemVariation` id applied to this returned line item.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
@@ -247,10 +247,10 @@ public class OrderReturnLineItem {
   }
 
    /**
-   * The [CatalogModifier](#type-catalogmodifier)s applied to this line item.
+   * The `CatalogModifier`s applied to this line item.
    * @return returnModifiers
   **/
-  @ApiModelProperty(value = "The [CatalogModifier](#type-catalogmodifier)s applied to this line item.")
+  @ApiModelProperty(value = "The `CatalogModifier`s applied to this line item.")
   public List<OrderReturnLineItemModifier> getReturnModifiers() {
     return returnModifiers;
   }

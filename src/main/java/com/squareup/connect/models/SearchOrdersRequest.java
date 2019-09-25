@@ -73,10 +73,10 @@ public class SearchOrdersRequest {
   }
 
    /**
-   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query. See [Pagination](/basics/api101/pagination) for more information.
+   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query. See [Pagination](/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }
@@ -128,10 +128,10 @@ public class SearchOrdersRequest {
   }
 
    /**
-   * Boolean that controls the format of the search results. If `true`, SearchOrders will return [`OrderEntry`](#type-orderentry) objects. If `false`, SearchOrders will return complete Order objects.  Default: `false`.
+   * Boolean that controls the format of the search results. If `true`, SearchOrders will return ``OrderEntry`` objects. If `false`, SearchOrders will return complete Order objects.  Default: `false`.
    * @return returnEntries
   **/
-  @ApiModelProperty(value = "Boolean that controls the format of the search results. If `true`, SearchOrders will return [`OrderEntry`](#type-orderentry) objects. If `false`, SearchOrders will return complete Order objects.  Default: `false`.")
+  @ApiModelProperty(value = "Boolean that controls the format of the search results. If `true`, SearchOrders will return ``OrderEntry`` objects. If `false`, SearchOrders will return complete Order objects.  Default: `false`.")
   public Boolean getReturnEntries() {
     return returnEntries;
   }

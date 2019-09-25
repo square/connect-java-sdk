@@ -56,10 +56,10 @@ public class CatalogV1Id {
   }
 
    /**
-   * The ID of the [location](#type-location) this Connect V1 ID is associated with.
+   * The ID of the `location` this Connect V1 ID is associated with.
    * @return locationId
   **/
-  @ApiModelProperty(value = "The ID of the [location](#type-location) this Connect V1 ID is associated with.")
+  @ApiModelProperty(value = "The ID of the `location` this Connect V1 ID is associated with.")
   public String getLocationId() {
     return locationId;
   }

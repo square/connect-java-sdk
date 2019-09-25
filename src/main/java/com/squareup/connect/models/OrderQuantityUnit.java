@@ -39,10 +39,10 @@ public class OrderQuantityUnit {
   }
 
    /**
-   * A [MeasurementUnit](#type-measurementunit) that represents the unit of measure for the quantity.
+   * A `MeasurementUnit` that represents the unit of measure for the quantity.
    * @return measurementUnit
   **/
-  @ApiModelProperty(value = "A [MeasurementUnit](#type-measurementunit) that represents the unit of measure for the quantity.")
+  @ApiModelProperty(value = "A `MeasurementUnit` that represents the unit of measure for the quantity.")
   public MeasurementUnit getMeasurementUnit() {
     return measurementUnit;
   }

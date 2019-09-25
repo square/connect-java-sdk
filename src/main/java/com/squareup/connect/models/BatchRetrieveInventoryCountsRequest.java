@@ -51,10 +51,10 @@ public class BatchRetrieveInventoryCountsRequest {
   }
 
    /**
-   * Filters results by [CatalogObject](#type-catalogobject) ID. Only applied when set. Default: unset.
+   * Filters results by `CatalogObject` ID. Only applied when set. Default: unset.
    * @return catalogObjectIds
   **/
-  @ApiModelProperty(value = "Filters results by [CatalogObject](#type-catalogobject) ID. Only applied when set. Default: unset.")
+  @ApiModelProperty(value = "Filters results by `CatalogObject` ID. Only applied when set. Default: unset.")
   public List<String> getCatalogObjectIds() {
     return catalogObjectIds;
   }
@@ -74,10 +74,10 @@ public class BatchRetrieveInventoryCountsRequest {
   }
 
    /**
-   * Filters results by [Location](#type-location) ID. Only applied when set. Default: unset.
+   * Filters results by `Location` ID. Only applied when set. Default: unset.
    * @return locationIds
   **/
-  @ApiModelProperty(value = "Filters results by [Location](#type-location) ID. Only applied when set. Default: unset.")
+  @ApiModelProperty(value = "Filters results by `Location` ID. Only applied when set. Default: unset.")
   public List<String> getLocationIds() {
     return locationIds;
   }
@@ -110,10 +110,10 @@ public class BatchRetrieveInventoryCountsRequest {
   }
 
    /**
-   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
+   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }

@@ -49,10 +49,10 @@ public class DeleteCatalogObjectResponse {
   }
 
    /**
-   * The set of [Error](#type-error)s encountered.
+   * The set of `Error`s encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of [Error](#type-error)s encountered.")
+  @ApiModelProperty(value = "The set of `Error`s encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -72,10 +72,10 @@ public class DeleteCatalogObjectResponse {
   }
 
    /**
-   * The IDs of all [CatalogObject](#type-catalogobject)s deleted by this request. Multiple IDs may be returned when associated objects are also deleted, for example a [CatalogItemVariation](#type-catalogitemvariation) will be deleted (and its ID included in this field) when its parent [CatalogItem](#type-catalogitem) is deleted.
+   * The IDs of all `CatalogObject`s deleted by this request. Multiple IDs may be returned when associated objects are also deleted, for example a `CatalogItemVariation` when its parent `CatalogItem` is deleted.
    * @return deletedObjectIds
   **/
-  @ApiModelProperty(value = "The IDs of all [CatalogObject](#type-catalogobject)s deleted by this request. Multiple IDs may be returned when associated objects are also deleted, for example a [CatalogItemVariation](#type-catalogitemvariation) will be deleted (and its ID included in this field) when its parent [CatalogItem](#type-catalogitem) is deleted.")
+  @ApiModelProperty(value = "The IDs of all `CatalogObject`s deleted by this request. Multiple IDs may be returned when associated objects are also deleted, for example a `CatalogItemVariation` when its parent `CatalogItem` is deleted.")
   public List<String> getDeletedObjectIds() {
     return deletedObjectIds;
   }

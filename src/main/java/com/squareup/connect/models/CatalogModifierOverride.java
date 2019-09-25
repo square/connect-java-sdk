@@ -38,10 +38,10 @@ public class CatalogModifierOverride {
   }
 
    /**
-   * The ID of the [CatalogModifier](#type-catalogmodifier) whose default behavior is being overridden.
+   * The ID of the `CatalogModifier` whose default behavior is being overridden.
    * @return modifierId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the [CatalogModifier](#type-catalogmodifier) whose default behavior is being overridden.")
+  @ApiModelProperty(required = true, value = "The ID of the `CatalogModifier` whose default behavior is being overridden.")
   public String getModifierId() {
     return modifierId;
   }
@@ -56,10 +56,10 @@ public class CatalogModifierOverride {
   }
 
    /**
-   * If `true`, this [CatalogModifier](#type-catalogmodifier) should be selected by default for this [CatalogItem](#type-catalogitem).
+   * If `true`, this `CatalogModifier](#type-catalogmodifier) should be selected by default for this [CatalogItem`.
    * @return onByDefault
   **/
-  @ApiModelProperty(value = "If `true`, this [CatalogModifier](#type-catalogmodifier) should be selected by default for this [CatalogItem](#type-catalogitem).")
+  @ApiModelProperty(value = "If `true`, this `CatalogModifier](#type-catalogmodifier) should be selected by default for this [CatalogItem`.")
   public Boolean getOnByDefault() {
     return onByDefault;
   }

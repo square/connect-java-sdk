@@ -82,10 +82,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * The ID of the [CatalogItem](#type-catalogitem) associated with this item variation. Searchable.
+   * The ID of the `CatalogItem` associated with this item variation. Searchable.
    * @return itemId
   **/
-  @ApiModelProperty(value = "The ID of the [CatalogItem](#type-catalogitem) associated with this item variation. Searchable.")
+  @ApiModelProperty(value = "The ID of the `CatalogItem` associated with this item variation. Searchable.")
   public String getItemId() {
     return itemId;
   }
@@ -154,10 +154,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent [CatalogItem](#type-catalogitem) is set according to the item variations's position. On reads, the value is not guaranteed to be sequential or unique.
+   * The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent `CatalogItem` is set according to the item variations's position. On reads, the value is not guaranteed to be sequential or unique.
    * @return ordinal
   **/
-  @ApiModelProperty(value = "The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent [CatalogItem](#type-catalogitem) is set according to the item variations's position. On reads, the value is not guaranteed to be sequential or unique.")
+  @ApiModelProperty(value = "The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent `CatalogItem` is set according to the item variations's position. On reads, the value is not guaranteed to be sequential or unique.")
   public Integer getOrdinal() {
     return ordinal;
   }
@@ -213,10 +213,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * Per-[location](#type-location) price and inventory overrides.
+   * Per-`location` price and inventory overrides.
    * @return locationOverrides
   **/
-  @ApiModelProperty(value = "Per-[location](#type-location) price and inventory overrides.")
+  @ApiModelProperty(value = "Per-`location` price and inventory overrides.")
   public List<ItemVariationLocationOverrides> getLocationOverrides() {
     return locationOverrides;
   }
@@ -303,10 +303,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * If the [CatalogItem](#type-catalogitem) that owns this item variation is of type `APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For example, a 30 minute appointment would have the value `1800000`, which is equal to 30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second).
+   * If the `CatalogItem` that owns this item variation is of type `APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For example, a 30 minute appointment would have the value `1800000`, which is equal to 30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second).
    * @return serviceDuration
   **/
-  @ApiModelProperty(value = "If the [CatalogItem](#type-catalogitem) that owns this item variation is of type `APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For example, a 30 minute appointment would have the value `1800000`, which is equal to 30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second).")
+  @ApiModelProperty(value = "If the `CatalogItem` that owns this item variation is of type `APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For example, a 30 minute appointment would have the value `1800000`, which is equal to 30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second).")
   public Long getServiceDuration() {
     return serviceDuration;
   }

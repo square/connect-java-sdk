@@ -50,10 +50,10 @@ public class BatchRetrieveCatalogObjectsResponse {
   }
 
    /**
-   * The set of [Error](#type-error)s encountered.
+   * The set of `Error`s encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of [Error](#type-error)s encountered.")
+  @ApiModelProperty(value = "The set of `Error`s encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -73,10 +73,10 @@ public class BatchRetrieveCatalogObjectsResponse {
   }
 
    /**
-   * A list of [CatalogObject](#type-catalogobject)s returned.
+   * A list of `CatalogObject`s returned.
    * @return objects
   **/
-  @ApiModelProperty(value = "A list of [CatalogObject](#type-catalogobject)s returned.")
+  @ApiModelProperty(value = "A list of `CatalogObject`s returned.")
   public List<CatalogObject> getObjects() {
     return objects;
   }
@@ -96,10 +96,10 @@ public class BatchRetrieveCatalogObjectsResponse {
   }
 
    /**
-   * A list of [CatalogObject](#type-catalogobject)s referenced by the object in the `objects` field.
+   * A list of `CatalogObject`s referenced by the object in the `objects` field.
    * @return relatedObjects
   **/
-  @ApiModelProperty(value = "A list of [CatalogObject](#type-catalogobject)s referenced by the object in the `objects` field.")
+  @ApiModelProperty(value = "A list of `CatalogObject`s referenced by the object in the `objects` field.")
   public List<CatalogObject> getRelatedObjects() {
     return relatedObjects;
   }

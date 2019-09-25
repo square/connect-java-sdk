@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * Cancels a payment before it has been completed. Note: only payments created with &#x60;autocomplete&#x60; set to false can be canceled.
+ * Cancels (voids) a payment before it has been completed. Note: only payments created with &#x60;autocomplete&#x60; set to false can be canceled.
  */
-@ApiModel(description = "Cancels a payment before it has been completed. Note: only payments created with `autocomplete` set to false can be canceled.")
+@ApiModel(description = "Cancels (voids) a payment before it has been completed. Note: only payments created with `autocomplete` set to false can be canceled.")
 
 public class CancelPaymentRequest {
 

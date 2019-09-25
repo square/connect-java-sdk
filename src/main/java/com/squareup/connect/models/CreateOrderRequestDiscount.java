@@ -45,10 +45,10 @@ public class CreateOrderRequestDiscount {
   }
 
    /**
-   * Only used for catalog discounts. The catalog object ID for an existing [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.
+   * Only used for catalog discounts. The catalog object ID for an existing `CatalogDiscount`.  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "Only used for catalog discounts. The catalog object ID for an existing [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.")
+  @ApiModelProperty(value = "Only used for catalog discounts. The catalog object ID for an existing `CatalogDiscount`.  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }

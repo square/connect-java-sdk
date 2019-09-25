@@ -99,10 +99,10 @@ public class AdditionalRecipient {
   }
 
    /**
-   * The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server.
+   * The unique ID for this `AdditionalRecipientReceivable`, assigned by the server.
    * @return receivableId
   **/
-  @ApiModelProperty(value = "The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server.")
+  @ApiModelProperty(value = "The unique ID for this `AdditionalRecipientReceivable`, assigned by the server.")
   public String getReceivableId() {
     return receivableId;
   }

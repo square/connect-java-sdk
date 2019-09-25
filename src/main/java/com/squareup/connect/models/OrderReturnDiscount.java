@@ -96,10 +96,10 @@ public class OrderReturnDiscount {
   }
 
    /**
-   * The catalog object id referencing [CatalogDiscount](#type-catalogdiscount).
+   * The catalog object id referencing `CatalogDiscount`.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "The catalog object id referencing [CatalogDiscount](#type-catalogdiscount).")
+  @ApiModelProperty(value = "The catalog object id referencing `CatalogDiscount`.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
@@ -132,10 +132,10 @@ public class OrderReturnDiscount {
   }
 
    /**
-   * The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified. See [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values
+   * The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.  Discounts that don't reference a catalog object ID must have a type of `FIXED_PERCENTAGE` or `FIXED_AMOUNT`. See [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified. See [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values")
+  @ApiModelProperty(value = "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.  Discounts that don't reference a catalog object ID must have a type of `FIXED_PERCENTAGE` or `FIXED_AMOUNT`. See [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values")
   public String getType() {
     return type;
   }
@@ -150,10 +150,10 @@ public class OrderReturnDiscount {
   }
 
    /**
-   * The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  The percentage won't be set for an amount-based discount.
+   * The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  `percentage` is not set for amount-based discounts.
    * @return percentage
   **/
-  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  The percentage won't be set for an amount-based discount.")
+  @ApiModelProperty(value = "The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  `percentage` is not set for amount-based discounts.")
   public String getPercentage() {
     return percentage;
   }
@@ -168,10 +168,10 @@ public class OrderReturnDiscount {
   }
 
    /**
-   * The total declared monetary amount of the discount. The amount_money won't be set for a percentage-based discount.
+   * The total declared monetary amount of the discount.  `amount_money` is not set for percentage-based discounts.
    * @return amountMoney
   **/
-  @ApiModelProperty(value = "The total declared monetary amount of the discount. The amount_money won't be set for a percentage-based discount.")
+  @ApiModelProperty(value = "The total declared monetary amount of the discount.  `amount_money` is not set for percentage-based discounts.")
   public Money getAmountMoney() {
     return amountMoney;
   }

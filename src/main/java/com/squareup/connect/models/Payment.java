@@ -80,6 +80,9 @@ public class Payment {
   @JsonProperty("customer_id")
   private String customerId = null;
 
+  @JsonProperty("employee_id")
+  private String employeeId = null;
+
   @JsonProperty("refund_ids")
   private List<String> refundIds = new ArrayList<String>();
 
@@ -104,7 +107,7 @@ public class Payment {
    * Unique ID for the payment.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique ID for the payment.")
+  @ApiModelProperty(value = "Unique ID for the payment.")
   public String getId() {
     return id;
   }
@@ -155,10 +158,10 @@ public class Payment {
   }
 
    /**
-   * The amount of money processed for this payment, not including `tip_money`. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](/build-basics/working-with-monetary-amounts).
+   * The amount of money processed for this payment, not including `tip_money`. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).
    * @return amountMoney
   **/
-  @ApiModelProperty(required = true, value = "The amount of money processed for this payment, not including `tip_money`. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](/build-basics/working-with-monetary-amounts).")
+  @ApiModelProperty(value = "The amount of money processed for this payment, not including `tip_money`. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).")
   public Money getAmountMoney() {
     return amountMoney;
   }
@@ -209,10 +212,10 @@ public class Payment {
   }
 
    /**
-   * The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.  For more information, see [Take Payments and Collect Fees](/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the `total_money` value.
+   * The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.  For more information, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the `total_money` value.
    * @return appFeeMoney
   **/
-  @ApiModelProperty(value = "The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.  For more information, see [Take Payments and Collect Fees](/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the `total_money` value.")
+  @ApiModelProperty(value = "The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.  For more information, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the `total_money` value.")
   public Money getAppFeeMoney() {
     return appFeeMoney;
   }
@@ -286,10 +289,10 @@ public class Payment {
   }
 
    /**
-   * The source type for this payment
+   * The source type for this payment  Current values include: `CARD`
    * @return sourceType
   **/
-  @ApiModelProperty(value = "The source type for this payment")
+  @ApiModelProperty(value = "The source type for this payment  Current values include: `CARD`")
   public String getSourceType() {
     return sourceType;
   }
@@ -386,6 +389,24 @@ public class Payment {
 
   public void setCustomerId(String customerId) {
     this.customerId = customerId;
+  }
+
+  public Payment employeeId(String employeeId) {
+    this.employeeId = employeeId;
+    return this;
+  }
+
+   /**
+   * An optional ID of the employee associated with taking this payment.
+   * @return employeeId
+  **/
+  @ApiModelProperty(value = "An optional ID of the employee associated with taking this payment.")
+  public String getEmployeeId() {
+    return employeeId;
+  }
+
+  public void setEmployeeId(String employeeId) {
+    this.employeeId = employeeId;
   }
 
   public Payment refundIds(List<String> refundIds) {
@@ -509,6 +530,7 @@ public class Payment {
         Objects.equals(this.orderId, payment.orderId) &&
         Objects.equals(this.referenceId, payment.referenceId) &&
         Objects.equals(this.customerId, payment.customerId) &&
+        Objects.equals(this.employeeId, payment.employeeId) &&
         Objects.equals(this.refundIds, payment.refundIds) &&
         Objects.equals(this.buyerEmailAddress, payment.buyerEmailAddress) &&
         Objects.equals(this.billingAddress, payment.billingAddress) &&
@@ -518,7 +540,7 @@ public class Payment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, amountMoney, tipMoney, totalMoney, appFeeMoney, processingFee, refundedMoney, status, sourceType, cardDetails, locationId, orderId, referenceId, customerId, refundIds, buyerEmailAddress, billingAddress, shippingAddress, note);
+    return Objects.hash(id, createdAt, updatedAt, amountMoney, tipMoney, totalMoney, appFeeMoney, processingFee, refundedMoney, status, sourceType, cardDetails, locationId, orderId, referenceId, customerId, employeeId, refundIds, buyerEmailAddress, billingAddress, shippingAddress, note);
   }
 
 
@@ -543,6 +565,7 @@ public class Payment {
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    employeeId: ").append(toIndentedString(employeeId)).append("\n");
     sb.append("    refundIds: ").append(toIndentedString(refundIds)).append("\n");
     sb.append("    buyerEmailAddress: ").append(toIndentedString(buyerEmailAddress)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");

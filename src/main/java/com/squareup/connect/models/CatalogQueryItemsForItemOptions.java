@@ -42,10 +42,10 @@ public class CatalogQueryItemsForItemOptions {
   }
 
    /**
-   * A set of [CatalogItemOption](#type-catalogitemoption) IDs to be used to find associated [CatalogItem](#type-catalogitem)s. All Items that contain all of the given Item Options (in any order) will be returned.
+   * A set of `CatalogItemOption` IDs to be used to find associated `CatalogItem` will be returned.
    * @return itemOptionIds
   **/
-  @ApiModelProperty(value = "A set of [CatalogItemOption](#type-catalogitemoption) IDs to be used to find associated [CatalogItem](#type-catalogitem)s. All Items that contain all of the given Item Options (in any order) will be returned.")
+  @ApiModelProperty(value = "A set of `CatalogItemOption` IDs to be used to find associated `CatalogItem` will be returned.")
   public List<String> getItemOptionIds() {
     return itemOptionIds;
   }

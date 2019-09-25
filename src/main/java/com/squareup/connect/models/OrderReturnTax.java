@@ -93,10 +93,10 @@ public class OrderReturnTax {
   }
 
    /**
-   * The catalog object id referencing [CatalogTax](#type-catalogtax).
+   * The catalog object id referencing `CatalogTax`.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "The catalog object id referencing [CatalogTax](#type-catalogtax).")
+  @ApiModelProperty(value = "The catalog object id referencing `CatalogTax`.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }

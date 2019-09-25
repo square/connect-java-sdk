@@ -44,10 +44,10 @@ public class CatalogModifierList {
   }
 
    /**
-   * The [CatalogModifierList](#type-catalogmodifierlist)'s name. Searchable. This field has max length of 255 Unicode code points.
+   * The `CatalogModifierList`'s name. Searchable. This field has max length of 255 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The [CatalogModifierList](#type-catalogmodifierlist)'s name. Searchable. This field has max length of 255 Unicode code points.")
+  @ApiModelProperty(value = "The `CatalogModifierList`'s name. Searchable. This field has max length of 255 Unicode code points.")
   public String getName() {
     return name;
   }
@@ -62,10 +62,10 @@ public class CatalogModifierList {
   }
 
    /**
-   * Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist) can be applied to a single [CatalogItem](#type-catalogitem). See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values
+   * Indicates whether multiple options from the `CatalogModifierList` can be applied to a single `CatalogItem`. See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values
    * @return selectionType
   **/
-  @ApiModelProperty(value = "Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist) can be applied to a single [CatalogItem](#type-catalogitem). See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values")
+  @ApiModelProperty(value = "Indicates whether multiple options from the `CatalogModifierList` can be applied to a single `CatalogItem`. See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values")
   public String getSelectionType() {
     return selectionType;
   }
@@ -85,10 +85,10 @@ public class CatalogModifierList {
   }
 
    /**
-   * The options included in the [CatalogModifierList](#type-catalogmodifierlist). You must include at least one [CatalogModifier](#type-catalogmodifier). Each [CatalogObject](#type-catalogobject) must have type `MODIFIER` and contain [CatalogModifier](#type-catalogmodifier) data.
+   * The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each `CatalogObject` must have type `MODIFIER` and contain `CatalogModifier` data.
    * @return modifiers
   **/
-  @ApiModelProperty(value = "The options included in the [CatalogModifierList](#type-catalogmodifierlist). You must include at least one [CatalogModifier](#type-catalogmodifier). Each [CatalogObject](#type-catalogobject) must have type `MODIFIER` and contain [CatalogModifier](#type-catalogmodifier) data.")
+  @ApiModelProperty(value = "The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each `CatalogObject` must have type `MODIFIER` and contain `CatalogModifier` data.")
   public List<CatalogObject> getModifiers() {
     return modifiers;
   }

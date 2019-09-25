@@ -75,7 +75,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -158,7 +158,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -242,7 +242,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -327,7 +327,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -412,7 +412,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -497,7 +497,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -582,7 +582,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -663,7 +663,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_id", locationId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
@@ -746,7 +746,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "employee_id", employeeId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
@@ -828,7 +828,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -911,7 +911,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -1001,7 +1001,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -1098,7 +1098,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -1195,7 +1195,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     

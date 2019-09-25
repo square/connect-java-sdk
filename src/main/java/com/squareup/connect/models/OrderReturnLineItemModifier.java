@@ -87,10 +87,10 @@ public class OrderReturnLineItemModifier {
   }
 
    /**
-   * The catalog object id referencing [CatalogModifier](#type-catalogmodifier).
+   * The catalog object id referencing `CatalogModifier`.
    * @return catalogObjectId
   **/
-  @ApiModelProperty(value = "The catalog object id referencing [CatalogModifier](#type-catalogmodifier).")
+  @ApiModelProperty(value = "The catalog object id referencing `CatalogModifier`.")
   public String getCatalogObjectId() {
     return catalogObjectId;
   }
@@ -123,10 +123,10 @@ public class OrderReturnLineItemModifier {
   }
 
    /**
-   * The base price for the modifier.  `base_price_money` is required for ad hoc modifiers. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined [CatalogModifier](#type-catalogmodifier) price.
+   * The base price for the modifier.  `base_price_money` is required for ad hoc modifiers. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined `CatalogModifier` price.
    * @return basePriceMoney
   **/
-  @ApiModelProperty(value = "The base price for the modifier.  `base_price_money` is required for ad hoc modifiers. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined [CatalogModifier](#type-catalogmodifier) price.")
+  @ApiModelProperty(value = "The base price for the modifier.  `base_price_money` is required for ad hoc modifiers. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined `CatalogModifier` price.")
   public Money getBasePriceMoney() {
     return basePriceMoney;
   }

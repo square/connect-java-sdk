@@ -107,10 +107,10 @@ public class ListPaymentRefundsRequest {
   }
 
    /**
-   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
+   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }
@@ -143,10 +143,10 @@ public class ListPaymentRefundsRequest {
   }
 
    /**
-   * If provided, only refunds with the given status are returned.  For a list of refund status values, see [PaymentRefund](#type-paymentrefund).  Default: If omitted refunds are returned regardless of status.
+   * If provided, only refunds with the given status are returned.  For a list of refund status values, see `PaymentRefund`.  Default: If omitted refunds are returned regardless of status.
    * @return status
   **/
-  @ApiModelProperty(value = "If provided, only refunds with the given status are returned.  For a list of refund status values, see [PaymentRefund](#type-paymentrefund).  Default: If omitted refunds are returned regardless of status.")
+  @ApiModelProperty(value = "If provided, only refunds with the given status are returned.  For a list of refund status values, see `PaymentRefund`.  Default: If omitted refunds are returned regardless of status.")
   public String getStatus() {
     return status;
   }

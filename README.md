@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190814.2</version>
+    <version>2.20190925.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -36,7 +36,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190814.2"
+compile "com.squareup:connect:2.20190925.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -78,7 +78,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190814.2.jar
+* target/connect-2.20190925.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -201,6 +201,9 @@ Class | Method | HTTP request | Description
 *LaborApi* | [**updateShift**](docs/LaborApi.md#updateShift) | **PUT** /v2/labor/shifts/{id} | UpdateShift
 *LaborApi* | [**updateWorkweekConfig**](docs/LaborApi.md#updateWorkweekConfig) | **PUT** /v2/labor/workweek-configs/{id} | UpdateWorkweekConfig
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
+*LocationsApi* | [**retrieveLocation**](docs/LocationsApi.md#retrieveLocation) | **GET** /v2/locations/{location_id} | RetrieveLocation
+*LocationsApi* | [**updateLocation**](docs/LocationsApi.md#updateLocation) | **PUT** /v2/locations/{location_id} | UpdateLocation
+*MerchantsApi* | [**retrieveMerchant**](docs/MerchantsApi.md#retrieveMerchant) | **GET** /v2/merchants/{merchant_id} | RetrieveMerchant
 *MobileAuthorizationApi* | [**createMobileAuthorizationCode**](docs/MobileAuthorizationApi.md#createMobileAuthorizationCode) | **POST** /mobile/authorization-code | CreateMobileAuthorizationCode
 *OAuthApi* | [**obtainToken**](docs/OAuthApi.md#obtainToken) | **POST** /oauth2/token | ObtainToken
 *OAuthApi* | [**renewToken**](docs/OAuthApi.md#renewToken) | **POST** /oauth2/clients/{client_id}/access-token/renew | RenewToken
@@ -486,9 +489,12 @@ Class | Method | HTTP request | Description
  - [MeasurementUnitCustom](docs/MeasurementUnitCustom.md)
  - [MeasurementUnitGeneric](docs/MeasurementUnitGeneric.md)
  - [MeasurementUnitLength](docs/MeasurementUnitLength.md)
+ - [MeasurementUnitTime](docs/MeasurementUnitTime.md)
  - [MeasurementUnitUnitType](docs/MeasurementUnitUnitType.md)
  - [MeasurementUnitVolume](docs/MeasurementUnitVolume.md)
  - [MeasurementUnitWeight](docs/MeasurementUnitWeight.md)
+ - [Merchant](docs/Merchant.md)
+ - [MerchantStatus](docs/MerchantStatus.md)
  - [ModelBreak](docs/ModelBreak.md)
  - [Money](docs/Money.md)
  - [ObtainTokenRequest](docs/ObtainTokenRequest.md)
@@ -556,6 +562,8 @@ Class | Method | HTTP request | Description
  - [RetrieveInventoryPhysicalCountResponse](docs/RetrieveInventoryPhysicalCountResponse.md)
  - [RetrieveLocationRequest](docs/RetrieveLocationRequest.md)
  - [RetrieveLocationResponse](docs/RetrieveLocationResponse.md)
+ - [RetrieveMerchantRequest](docs/RetrieveMerchantRequest.md)
+ - [RetrieveMerchantResponse](docs/RetrieveMerchantResponse.md)
  - [RetrieveTransactionRequest](docs/RetrieveTransactionRequest.md)
  - [RetrieveTransactionResponse](docs/RetrieveTransactionResponse.md)
  - [RevokeTokenRequest](docs/RevokeTokenRequest.md)
@@ -610,6 +618,8 @@ Class | Method | HTTP request | Description
  - [UpdateItemModifierListsResponse](docs/UpdateItemModifierListsResponse.md)
  - [UpdateItemTaxesRequest](docs/UpdateItemTaxesRequest.md)
  - [UpdateItemTaxesResponse](docs/UpdateItemTaxesResponse.md)
+ - [UpdateLocationRequest](docs/UpdateLocationRequest.md)
+ - [UpdateLocationResponse](docs/UpdateLocationResponse.md)
  - [UpdateOrderRequest](docs/UpdateOrderRequest.md)
  - [UpdateOrderResponse](docs/UpdateOrderResponse.md)
  - [UpdateShiftRequest](docs/UpdateShiftRequest.md)

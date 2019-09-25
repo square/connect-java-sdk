@@ -26,12 +26,13 @@ Name | Type | Description | Notes
 **businessHours** | [**BusinessHours**](BusinessHours.md) |   The hours of operation for a business location.  Default: none; only exists if explicitly set. |  [optional]
 **businessEmail** | **String** | The email of the location. |  [optional]
 **description** | **String** | The business description of the location. |  [optional]
-**twitterUsername** | **String** | The Twitter username of the location without the &#39; |  [optional]
-**instagramUsername** | **String** | The Instagram username of the location without the &#39; |  [optional]
+**twitterUsername** | **String** | The Twitter username of the location without the &#39;&amp;#64;&#39; symbol. |  [optional]
+**instagramUsername** | **String** | The Instagram username of the location without the &#39;&amp;#64;&#39; symbol. |  [optional]
 **facebookUrl** | **String** | The Facebook profile URL of the location. The URL should begin with &#39;facebook.com/&#39;. |  [optional]
 **coordinates** | [**Coordinates**](Coordinates.md) | The physical coordinates (latitude and longitude) of the location. |  [optional]
 **logoUrl** | **String** | The logo image URL of the location. |  [optional]
 **posBackgroundUrl** | **String** | The Point of Sale background image URL of the location. |  [optional]
+**mcc** | **String** | The merchant category code (MCC) of the location, as standardized by ISO 18245. The MCC describes the kind of goods or services sold at the location. |  [optional]
 
 
 

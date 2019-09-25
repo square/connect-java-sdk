@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a unit of measurement to use with a quantity, such as ounces or inches. Exactly one of the following fields are required: &#x60;custom_unit&#x60;, &#x60;area_unit&#x60;, &#x60;length_unit&#x60;, &#x60;volume_unit&#x60;, and &#x60;weight_unit&#x60;.  The &#x60;family&#x60; field describes the type of measurement. For example, ounces are in the weight family.
+ * Represents a unit of measurement to use with a quantity, such as ounces or inches. Exactly one of the following fields are required: &#x60;custom_unit&#x60;, &#x60;area_unit&#x60;, &#x60;length_unit&#x60;, &#x60;volume_unit&#x60;, and &#x60;weight_unit&#x60;.
  */
-@ApiModel(description = "Represents a unit of measurement to use with a quantity, such as ounces or inches. Exactly one of the following fields are required: `custom_unit`, `area_unit`, `length_unit`, `volume_unit`, and `weight_unit`.  The `family` field describes the type of measurement. For example, ounces are in the weight family.")
+@ApiModel(description = "Represents a unit of measurement to use with a quantity, such as ounces or inches. Exactly one of the following fields are required: `custom_unit`, `area_unit`, `length_unit`, `volume_unit`, and `weight_unit`.")
 
 public class MeasurementUnit {
   @JsonProperty("custom_unit")
@@ -44,6 +44,9 @@ public class MeasurementUnit {
 
   @JsonProperty("generic_unit")
   private String genericUnit = null;
+
+  @JsonProperty("time_unit")
+  private String timeUnit = null;
 
   @JsonProperty("type")
   private String type = null;
@@ -156,6 +159,24 @@ public class MeasurementUnit {
     this.genericUnit = genericUnit;
   }
 
+  public MeasurementUnit timeUnit(String timeUnit) {
+    this.timeUnit = timeUnit;
+    return this;
+  }
+
+   /**
+   * Represents a standard unit of time. See [MeasurementUnitTime](#type-measurementunittime) for possible values
+   * @return timeUnit
+  **/
+  @ApiModelProperty(value = "Represents a standard unit of time. See [MeasurementUnitTime](#type-measurementunittime) for possible values")
+  public String getTimeUnit() {
+    return timeUnit;
+  }
+
+  public void setTimeUnit(String timeUnit) {
+    this.timeUnit = timeUnit;
+  }
+
   public MeasurementUnit type(String type) {
     this.type = type;
     return this;
@@ -190,12 +211,13 @@ public class MeasurementUnit {
         Objects.equals(this.volumeUnit, measurementUnit.volumeUnit) &&
         Objects.equals(this.weightUnit, measurementUnit.weightUnit) &&
         Objects.equals(this.genericUnit, measurementUnit.genericUnit) &&
+        Objects.equals(this.timeUnit, measurementUnit.timeUnit) &&
         Objects.equals(this.type, measurementUnit.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customUnit, areaUnit, lengthUnit, volumeUnit, weightUnit, genericUnit, type);
+    return Objects.hash(customUnit, areaUnit, lengthUnit, volumeUnit, weightUnit, genericUnit, timeUnit, type);
   }
 
 
@@ -210,6 +232,7 @@ public class MeasurementUnit {
     sb.append("    volumeUnit: ").append(toIndentedString(volumeUnit)).append("\n");
     sb.append("    weightUnit: ").append(toIndentedString(weightUnit)).append("\n");
     sb.append("    genericUnit: ").append(toIndentedString(genericUnit)).append("\n");
+    sb.append("    timeUnit: ").append(toIndentedString(timeUnit)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();

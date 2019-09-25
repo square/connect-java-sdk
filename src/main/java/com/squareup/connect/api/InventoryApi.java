@@ -65,7 +65,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -148,7 +148,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -231,7 +231,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -296,7 +296,7 @@ public class InventoryApi {
   /**
    * RetrieveInventoryAdjustment
    * Returns the [InventoryAdjustment](#type-inventoryadjustment) object with the provided &#x60;adjustment_id&#x60;.
-   * @param adjustmentId ID of the [InventoryAdjustment](#type-inventoryadjustment) to retrieve. (required)
+   * @param adjustmentId ID of the &#x60;InventoryAdjustment&#x60; to retrieve. (required)
    * @return RetrieveInventoryAdjustmentResponse
    * @throws ApiException if fails to make API call
    */  public RetrieveInventoryAdjustmentResponse retrieveInventoryAdjustment(String adjustmentId) throws ApiException {
@@ -315,7 +315,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -339,7 +339,7 @@ public class InventoryApi {
   /**
    * RetrieveInventoryAdjustment
    * Returns the [InventoryAdjustment](#type-inventoryadjustment) object with the provided &#x60;adjustment_id&#x60;.
-   * @param adjustmentId ID of the [InventoryAdjustment](#type-inventoryadjustment) to retrieve. (required)
+   * @param adjustmentId ID of the &#x60;InventoryAdjustment&#x60; to retrieve. (required)
    * @return CompleteResponse<RetrieveInventoryAdjustmentResponse>
    * @throws ApiException if fails to make API call
    */
@@ -381,9 +381,9 @@ public class InventoryApi {
   /**
    * RetrieveInventoryChanges
    * Returns a set of physical counts and inventory adjustments for the provided [CatalogObject](#type-catalogobject) at the requested [Location](#type-location)s.  Results are paginated and sorted in descending order according to their &#x60;occurred_at&#x60; timestamp (newest first).  There are no limits on how far back the caller can page. This endpoint is useful when displaying recent changes for a specific item. For more sophisticated queries, use a batch endpoint.
-   * @param catalogObjectId ID of the [CatalogObject](#type-catalogobject) to retrieve. (required)
-   * @param locationIds The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations. (optional)
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
+   * @param catalogObjectId ID of the &#x60;CatalogObject&#x60; to retrieve. (required)
+   * @param locationIds The &#x60;Location&#x60; IDs to look up as a comma-separated list. An empty list queries all locations. (optional)
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. (optional)
    * @return RetrieveInventoryChangesResponse
    * @throws ApiException if fails to make API call
    */  public RetrieveInventoryChangesResponse retrieveInventoryChanges(String catalogObjectId, String locationIds, String cursor) throws ApiException {
@@ -402,7 +402,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_ids", locationIds));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -428,9 +428,9 @@ public class InventoryApi {
   /**
    * RetrieveInventoryChanges
    * Returns a set of physical counts and inventory adjustments for the provided [CatalogObject](#type-catalogobject) at the requested [Location](#type-location)s.  Results are paginated and sorted in descending order according to their &#x60;occurred_at&#x60; timestamp (newest first).  There are no limits on how far back the caller can page. This endpoint is useful when displaying recent changes for a specific item. For more sophisticated queries, use a batch endpoint.
-   * @param catalogObjectId ID of the [CatalogObject](#type-catalogobject) to retrieve. (required)
-   * @param locationIds The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations. (optional)
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
+   * @param catalogObjectId ID of the &#x60;CatalogObject&#x60; to retrieve. (required)
+   * @param locationIds The &#x60;Location&#x60; IDs to look up as a comma-separated list. An empty list queries all locations. (optional)
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. (optional)
    * @return CompleteResponse<RetrieveInventoryChangesResponse>
    * @throws ApiException if fails to make API call
    */
@@ -474,9 +474,9 @@ public class InventoryApi {
   /**
    * RetrieveInventoryCount
    * Retrieves the current calculated stock count for a given [CatalogObject](#type-catalogobject) at a given set of [Location](#type-location)s. Responses are paginated and unsorted. For more sophisticated queries, use a batch endpoint.
-   * @param catalogObjectId ID of the [CatalogObject](#type-catalogobject) to retrieve. (required)
-   * @param locationIds The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations. (optional)
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
+   * @param catalogObjectId ID of the &#x60;CatalogObject&#x60; to retrieve. (required)
+   * @param locationIds The &#x60;Location&#x60; IDs to look up as a comma-separated list. An empty list queries all locations. (optional)
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. (optional)
    * @return RetrieveInventoryCountResponse
    * @throws ApiException if fails to make API call
    */  public RetrieveInventoryCountResponse retrieveInventoryCount(String catalogObjectId, String locationIds, String cursor) throws ApiException {
@@ -495,7 +495,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_ids", locationIds));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -521,9 +521,9 @@ public class InventoryApi {
   /**
    * RetrieveInventoryCount
    * Retrieves the current calculated stock count for a given [CatalogObject](#type-catalogobject) at a given set of [Location](#type-location)s. Responses are paginated and unsorted. For more sophisticated queries, use a batch endpoint.
-   * @param catalogObjectId ID of the [CatalogObject](#type-catalogobject) to retrieve. (required)
-   * @param locationIds The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations. (optional)
-   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. (optional)
+   * @param catalogObjectId ID of the &#x60;CatalogObject&#x60; to retrieve. (required)
+   * @param locationIds The &#x60;Location&#x60; IDs to look up as a comma-separated list. An empty list queries all locations. (optional)
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. (optional)
    * @return CompleteResponse<RetrieveInventoryCountResponse>
    * @throws ApiException if fails to make API call
    */
@@ -567,7 +567,7 @@ public class InventoryApi {
   /**
    * RetrieveInventoryPhysicalCount
    * Returns the [InventoryPhysicalCount](#type-inventoryphysicalcount) object with the provided &#x60;physical_count_id&#x60;.
-   * @param physicalCountId ID of the [InventoryPhysicalCount](#type-inventoryphysicalcount) to retrieve. (required)
+   * @param physicalCountId ID of the &#x60;InventoryPhysicalCount&#x60; to retrieve. (required)
    * @return RetrieveInventoryPhysicalCountResponse
    * @throws ApiException if fails to make API call
    */  public RetrieveInventoryPhysicalCountResponse retrieveInventoryPhysicalCount(String physicalCountId) throws ApiException {
@@ -586,7 +586,7 @@ public class InventoryApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-08-14");
+    localVarHeaderParams.put("Square-Version", "2019-09-25");
 
     
     
@@ -610,7 +610,7 @@ public class InventoryApi {
   /**
    * RetrieveInventoryPhysicalCount
    * Returns the [InventoryPhysicalCount](#type-inventoryphysicalcount) object with the provided &#x60;physical_count_id&#x60;.
-   * @param physicalCountId ID of the [InventoryPhysicalCount](#type-inventoryphysicalcount) to retrieve. (required)
+   * @param physicalCountId ID of the &#x60;InventoryPhysicalCount&#x60; to retrieve. (required)
    * @return CompleteResponse<RetrieveInventoryPhysicalCountResponse>
    * @throws ApiException if fails to make API call
    */

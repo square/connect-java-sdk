@@ -130,10 +130,10 @@ public class CatalogItemOption {
   }
 
    /**
-   * A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemOptionValue](#type-catalogitemoptionvalue)s for this item.
+   * A list of `CatalogObject`s containing the `CatalogItemOptionValue`s for this item.
    * @return values
   **/
-  @ApiModelProperty(value = "A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemOptionValue](#type-catalogitemoptionvalue)s for this item.")
+  @ApiModelProperty(value = "A list of `CatalogObject`s containing the `CatalogItemOptionValue`s for this item.")
   public List<CatalogObject> getValues() {
     return values;
   }
@@ -148,10 +148,10 @@ public class CatalogItemOption {
   }
 
    /**
-   * The number of [CatalogItem](#type-catalogitem)s currently associated with this item option. Present only if the `include_counts` was specified in the request. Any count over 100 will be returned as `100`.
+   * The number of `CatalogItem`s currently associated with this item option. Present only if the `include_counts` was specified in the request. Any count over 100 will be returned as `100`.
    * @return itemCount
   **/
-  @ApiModelProperty(value = "The number of [CatalogItem](#type-catalogitem)s currently associated with this item option. Present only if the `include_counts` was specified in the request. Any count over 100 will be returned as `100`.")
+  @ApiModelProperty(value = "The number of `CatalogItem`s currently associated with this item option. Present only if the `include_counts` was specified in the request. Any count over 100 will be returned as `100`.")
   public Long getItemCount() {
     return itemCount;
   }

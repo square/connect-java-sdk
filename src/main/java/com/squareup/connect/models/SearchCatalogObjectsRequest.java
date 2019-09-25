@@ -56,10 +56,10 @@ public class SearchCatalogObjectsRequest {
   }
 
    /**
-   * The pagination cursor returned in the previous response. Leave unset for an initial request. See [Pagination](/basics/api101/pagination) for more information.
+   * The pagination cursor returned in the previous response. Leave unset for an initial request. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "The pagination cursor returned in the previous response. Leave unset for an initial request. See [Pagination](/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "The pagination cursor returned in the previous response. Leave unset for an initial request. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }
@@ -79,10 +79,10 @@ public class SearchCatalogObjectsRequest {
   }
 
    /**
-   * The desired set of object types to appear in the search results. The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`. See [CatalogObjectType](#type-catalogobjecttype) for possible values
+   * The desired set of object types to appear in the search results. The legal values are taken from the `CatalogObjectType` enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`. See [CatalogObjectType](#type-catalogobjecttype) for possible values
    * @return objectTypes
   **/
-  @ApiModelProperty(value = "The desired set of object types to appear in the search results. The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`. See [CatalogObjectType](#type-catalogobjecttype) for possible values")
+  @ApiModelProperty(value = "The desired set of object types to appear in the search results. The legal values are taken from the `CatalogObjectType` enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`. See [CatalogObjectType](#type-catalogobjecttype) for possible values")
   public List<String> getObjectTypes() {
     return objectTypes;
   }
@@ -115,10 +115,10 @@ public class SearchCatalogObjectsRequest {
   }
 
    /**
-   * If `true`, the response will include additional objects that are related to the requested object, as follows:  If a [CatalogItem](#type-catalogitem) is returned in the object field of the response, its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, [CatalogImage](#type-catalogimage)s and [CatalogModifierList](#type-catalogmodifierlist)s will be included in the `related_objects` field of the response.  If a [CatalogItemVariation](#type-catalogitemvariation) is returned in the object field of the response, its parent [CatalogItem](#type-catalogitem) will be included in the `related_objects` field of the response.
+   * If `true`, the response will include additional objects that are related to the requested object, as follows:  If a `CatalogItem` is returned in the object field of the response, its associated `CatalogCategory](#type-catalogcategory), [CatalogTax`es, `CatalogImage](#type-catalogimage)s and [CatalogModifierList`s will be included in the `related_objects` field of the response.  If a `CatalogItemVariation` is returned in the object field of the response, its parent `CatalogItem` will be included in the `related_objects` field of the response.
    * @return includeRelatedObjects
   **/
-  @ApiModelProperty(value = "If `true`, the response will include additional objects that are related to the requested object, as follows:  If a [CatalogItem](#type-catalogitem) is returned in the object field of the response, its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, [CatalogImage](#type-catalogimage)s and [CatalogModifierList](#type-catalogmodifierlist)s will be included in the `related_objects` field of the response.  If a [CatalogItemVariation](#type-catalogitemvariation) is returned in the object field of the response, its parent [CatalogItem](#type-catalogitem) will be included in the `related_objects` field of the response.")
+  @ApiModelProperty(value = "If `true`, the response will include additional objects that are related to the requested object, as follows:  If a `CatalogItem` is returned in the object field of the response, its associated `CatalogCategory](#type-catalogcategory), [CatalogTax`es, `CatalogImage](#type-catalogimage)s and [CatalogModifierList`s will be included in the `related_objects` field of the response.  If a `CatalogItemVariation` is returned in the object field of the response, its parent `CatalogItem` will be included in the `related_objects` field of the response.")
   public Boolean getIncludeRelatedObjects() {
     return includeRelatedObjects;
   }

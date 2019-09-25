@@ -42,10 +42,10 @@ public class CatalogQueryItemVariationsForItemOptionValues {
   }
 
    /**
-   * A set of [CatalogItemOptionValue](#type-catalogitemoptionvalue) IDs to be used to find associated [CatalogItemVariation](#type-catalogitemvariation)s. All ItemVariations that contain all of the given Item Option Values (in any order) will be returned.
+   * A set of `CatalogItemOptionValue` IDs to be used to find associated `CatalogItemVariation`s. All ItemVariations that contain all of the given Item Option Values (in any order) will be returned.
    * @return itemOptionValueIds
   **/
-  @ApiModelProperty(value = "A set of [CatalogItemOptionValue](#type-catalogitemoptionvalue) IDs to be used to find associated [CatalogItemVariation](#type-catalogitemvariation)s. All ItemVariations that contain all of the given Item Option Values (in any order) will be returned.")
+  @ApiModelProperty(value = "A set of `CatalogItemOptionValue` IDs to be used to find associated `CatalogItemVariation`s. All ItemVariations that contain all of the given Item Option Values (in any order) will be returned.")
   public List<String> getItemOptionValueIds() {
     return itemOptionValueIds;
   }

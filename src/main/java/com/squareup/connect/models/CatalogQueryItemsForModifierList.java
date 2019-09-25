@@ -42,10 +42,10 @@ public class CatalogQueryItemsForModifierList {
   }
 
    /**
-   * A set of [CatalogModifierList](#type-catalogmodifierlist) IDs to be used to find associated [CatalogItem](#type-catalogitem)s.
+   * A set of `CatalogModifierList](#type-catalogmodifierlist) IDs to be used to find associated [CatalogItem`s.
    * @return modifierListIds
   **/
-  @ApiModelProperty(required = true, value = "A set of [CatalogModifierList](#type-catalogmodifierlist) IDs to be used to find associated [CatalogItem](#type-catalogitem)s.")
+  @ApiModelProperty(required = true, value = "A set of `CatalogModifierList](#type-catalogmodifierlist) IDs to be used to find associated [CatalogItem`s.")
   public List<String> getModifierListIds() {
     return modifierListIds;
   }

@@ -56,10 +56,10 @@ public class Money {
   }
 
    /**
-   * The type of currency, in __ISO 4217 format__. For example, the currency code for US dollars is `USD`.  See [Currency](#type-currency) for possible values. See [Currency](#type-currency) for possible values
+   * The type of currency, in __ISO 4217 format__. For example, the currency code for US dollars is `USD`.  See `Currency` for possible values. See [Currency](#type-currency) for possible values
    * @return currency
   **/
-  @ApiModelProperty(value = "The type of currency, in __ISO 4217 format__. For example, the currency code for US dollars is `USD`.  See [Currency](#type-currency) for possible values. See [Currency](#type-currency) for possible values")
+  @ApiModelProperty(value = "The type of currency, in __ISO 4217 format__. For example, the currency code for US dollars is `USD`.  See `Currency` for possible values. See [Currency](#type-currency) for possible values")
   public String getCurrency() {
     return currency;
   }

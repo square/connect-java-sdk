@@ -103,6 +103,9 @@ public class Location {
   @JsonProperty("pos_background_url")
   private String posBackgroundUrl = null;
 
+  @JsonProperty("mcc")
+  private String mcc = null;
+
   public Location id(String id) {
     this.id = id;
     return this;
@@ -438,10 +441,10 @@ public class Location {
   }
 
    /**
-   * The Twitter username of the location without the '
+   * The Twitter username of the location without the '&#64;' symbol.
    * @return twitterUsername
   **/
-  @ApiModelProperty(value = "The Twitter username of the location without the '")
+  @ApiModelProperty(value = "The Twitter username of the location without the '&#64;' symbol.")
   public String getTwitterUsername() {
     return twitterUsername;
   }
@@ -456,10 +459,10 @@ public class Location {
   }
 
    /**
-   * The Instagram username of the location without the '
+   * The Instagram username of the location without the '&#64;' symbol.
    * @return instagramUsername
   **/
-  @ApiModelProperty(value = "The Instagram username of the location without the '")
+  @ApiModelProperty(value = "The Instagram username of the location without the '&#64;' symbol.")
   public String getInstagramUsername() {
     return instagramUsername;
   }
@@ -540,6 +543,24 @@ public class Location {
     this.posBackgroundUrl = posBackgroundUrl;
   }
 
+  public Location mcc(String mcc) {
+    this.mcc = mcc;
+    return this;
+  }
+
+   /**
+   * The merchant category code (MCC) of the location, as standardized by ISO 18245. The MCC describes the kind of goods or services sold at the location.
+   * @return mcc
+  **/
+  @ApiModelProperty(value = "The merchant category code (MCC) of the location, as standardized by ISO 18245. The MCC describes the kind of goods or services sold at the location.")
+  public String getMcc() {
+    return mcc;
+  }
+
+  public void setMcc(String mcc) {
+    this.mcc = mcc;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -573,12 +594,13 @@ public class Location {
         Objects.equals(this.facebookUrl, location.facebookUrl) &&
         Objects.equals(this.coordinates, location.coordinates) &&
         Objects.equals(this.logoUrl, location.logoUrl) &&
-        Objects.equals(this.posBackgroundUrl, location.posBackgroundUrl);
+        Objects.equals(this.posBackgroundUrl, location.posBackgroundUrl) &&
+        Objects.equals(this.mcc, location.mcc);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl, businessHours, businessEmail, description, twitterUsername, instagramUsername, facebookUrl, coordinates, logoUrl, posBackgroundUrl);
+    return Objects.hash(id, name, address, timezone, capabilities, status, createdAt, merchantId, country, languageCode, currency, phoneNumber, businessName, type, websiteUrl, businessHours, businessEmail, description, twitterUsername, instagramUsername, facebookUrl, coordinates, logoUrl, posBackgroundUrl, mcc);
   }
 
 
@@ -611,6 +633,7 @@ public class Location {
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    logoUrl: ").append(toIndentedString(logoUrl)).append("\n");
     sb.append("    posBackgroundUrl: ").append(toIndentedString(posBackgroundUrl)).append("\n");
+    sb.append("    mcc: ").append(toIndentedString(mcc)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -57,6 +57,15 @@ public class CardPaymentDetails {
   @JsonProperty("application_cryptogram")
   private String applicationCryptogram = null;
 
+  @JsonProperty("verification_method")
+  private String verificationMethod = null;
+
+  @JsonProperty("verification_results")
+  private String verificationResults = null;
+
+  @JsonProperty("statement_description")
+  private String statementDescription = null;
+
   @JsonProperty("errors")
   private List<Error> errors = new ArrayList<Error>();
 
@@ -120,10 +129,10 @@ public class CardPaymentDetails {
   }
 
    /**
-   * Status code returned from the Card Verification Value (CVV) check.
+   * Status code returned from the Card Verification Value (CVV) check. Can be `CVV_ACCEPTED`, `CVV_REJECTED`, `CVV_NOT_CHECKED`.
    * @return cvvStatus
   **/
-  @ApiModelProperty(value = "Status code returned from the Card Verification Value (CVV) check.")
+  @ApiModelProperty(value = "Status code returned from the Card Verification Value (CVV) check. Can be `CVV_ACCEPTED`, `CVV_REJECTED`, `CVV_NOT_CHECKED`.")
   public String getCvvStatus() {
     return cvvStatus;
   }
@@ -138,10 +147,10 @@ public class CardPaymentDetails {
   }
 
    /**
-   * Status code returned from the Address Verification System (AVS) check.
+   * Status code returned from the Address Verification System (AVS) check. Can be `AVS_ACCEPTED`, `AVS_REJECTED`, `AVS_NOT_CHECKED`.
    * @return avsStatus
   **/
-  @ApiModelProperty(value = "Status code returned from the Address Verification System (AVS) check.")
+  @ApiModelProperty(value = "Status code returned from the Address Verification System (AVS) check. Can be `AVS_ACCEPTED`, `AVS_REJECTED`, `AVS_NOT_CHECKED`.")
   public String getAvsStatus() {
     return avsStatus;
   }
@@ -174,10 +183,10 @@ public class CardPaymentDetails {
   }
 
    /**
-   * For EMV payments, identifies the EMV application used for the payment
+   * For EMV payments, identifies the EMV application used for the payment.
    * @return applicationIdentifier
   **/
-  @ApiModelProperty(value = "For EMV payments, identifies the EMV application used for the payment")
+  @ApiModelProperty(value = "For EMV payments, identifies the EMV application used for the payment.")
   public String getApplicationIdentifier() {
     return applicationIdentifier;
   }
@@ -222,6 +231,60 @@ public class CardPaymentDetails {
     this.applicationCryptogram = applicationCryptogram;
   }
 
+  public CardPaymentDetails verificationMethod(String verificationMethod) {
+    this.verificationMethod = verificationMethod;
+    return this;
+  }
+
+   /**
+   * For EMV payments, method used to verify the cardholder's identity.  Can be one of `PIN`, `SIGNATURE`, `PIN_AND_SIGNATURE`, `ON_DEVICE`, or `NONE`.
+   * @return verificationMethod
+  **/
+  @ApiModelProperty(value = "For EMV payments, method used to verify the cardholder's identity.  Can be one of `PIN`, `SIGNATURE`, `PIN_AND_SIGNATURE`, `ON_DEVICE`, or `NONE`.")
+  public String getVerificationMethod() {
+    return verificationMethod;
+  }
+
+  public void setVerificationMethod(String verificationMethod) {
+    this.verificationMethod = verificationMethod;
+  }
+
+  public CardPaymentDetails verificationResults(String verificationResults) {
+    this.verificationResults = verificationResults;
+    return this;
+  }
+
+   /**
+   * For EMV payments, the results of the cardholder verification.  Can be one of `SUCCESS`, `FAILURE`, or `UNKNOWN`.
+   * @return verificationResults
+  **/
+  @ApiModelProperty(value = "For EMV payments, the results of the cardholder verification.  Can be one of `SUCCESS`, `FAILURE`, or `UNKNOWN`.")
+  public String getVerificationResults() {
+    return verificationResults;
+  }
+
+  public void setVerificationResults(String verificationResults) {
+    this.verificationResults = verificationResults;
+  }
+
+  public CardPaymentDetails statementDescription(String statementDescription) {
+    this.statementDescription = statementDescription;
+    return this;
+  }
+
+   /**
+   * The statement description sent to the card networks.  Note: The actual statement description will vary and is likely to be truncated and appended with additional information on a per issuer basis.
+   * @return statementDescription
+  **/
+  @ApiModelProperty(value = "The statement description sent to the card networks.  Note: The actual statement description will vary and is likely to be truncated and appended with additional information on a per issuer basis.")
+  public String getStatementDescription() {
+    return statementDescription;
+  }
+
+  public void setStatementDescription(String statementDescription) {
+    this.statementDescription = statementDescription;
+  }
+
   public CardPaymentDetails errors(List<Error> errors) {
     this.errors = errors;
     return this;
@@ -264,12 +327,15 @@ public class CardPaymentDetails {
         Objects.equals(this.applicationIdentifier, cardPaymentDetails.applicationIdentifier) &&
         Objects.equals(this.applicationName, cardPaymentDetails.applicationName) &&
         Objects.equals(this.applicationCryptogram, cardPaymentDetails.applicationCryptogram) &&
+        Objects.equals(this.verificationMethod, cardPaymentDetails.verificationMethod) &&
+        Objects.equals(this.verificationResults, cardPaymentDetails.verificationResults) &&
+        Objects.equals(this.statementDescription, cardPaymentDetails.statementDescription) &&
         Objects.equals(this.errors, cardPaymentDetails.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, card, entryMethod, cvvStatus, avsStatus, authResultCode, applicationIdentifier, applicationName, applicationCryptogram, errors);
+    return Objects.hash(status, card, entryMethod, cvvStatus, avsStatus, authResultCode, applicationIdentifier, applicationName, applicationCryptogram, verificationMethod, verificationResults, statementDescription, errors);
   }
 
 
@@ -287,6 +353,9 @@ public class CardPaymentDetails {
     sb.append("    applicationIdentifier: ").append(toIndentedString(applicationIdentifier)).append("\n");
     sb.append("    applicationName: ").append(toIndentedString(applicationName)).append("\n");
     sb.append("    applicationCryptogram: ").append(toIndentedString(applicationCryptogram)).append("\n");
+    sb.append("    verificationMethod: ").append(toIndentedString(verificationMethod)).append("\n");
+    sb.append("    verificationResults: ").append(toIndentedString(verificationResults)).append("\n");
+    sb.append("    statementDescription: ").append(toIndentedString(statementDescription)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -54,10 +54,10 @@ public class BatchUpsertCatalogObjectsResponse {
   }
 
    /**
-   * The set of [Error](#type-error)s encountered.
+   * The set of `Error`s encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of [Error](#type-error)s encountered.")
+  @ApiModelProperty(value = "The set of `Error`s encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -77,10 +77,10 @@ public class BatchUpsertCatalogObjectsResponse {
   }
 
    /**
-   * The created [CatalogObject](#type-catalogobject)s
+   * The created `CatalogObject`s
    * @return objects
   **/
-  @ApiModelProperty(value = "The created [CatalogObject](#type-catalogobject)s")
+  @ApiModelProperty(value = "The created `CatalogObject`s")
   public List<CatalogObject> getObjects() {
     return objects;
   }

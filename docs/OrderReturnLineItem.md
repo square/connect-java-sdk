@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **quantity** | **String** | The quantity returned, formatted as a decimal number. For example: &#x60;\&quot;3\&quot;&#x60;.  Line items with a &#x60;quantity_unit&#x60; can have non-integer quantities. For example: &#x60;\&quot;1.70000\&quot;&#x60;. | 
 **quantityUnit** | [**OrderQuantityUnit**](OrderQuantityUnit.md) | The unit and precision that this return line item&#39;s quantity is measured in. |  [optional]
 **note** | **String** | The note of the returned line item. |  [optional]
-**catalogObjectId** | **String** | The [CatalogItemVariation](#type-catalogitemvariation) id applied to this returned line item. |  [optional]
+**catalogObjectId** | **String** | The &#x60;CatalogItemVariation&#x60; id applied to this returned line item. |  [optional]
 **variationName** | **String** | The name of the variation applied to this returned line item. |  [optional]
-**returnModifiers** | [**List&lt;OrderReturnLineItemModifier&gt;**](OrderReturnLineItemModifier.md) | The [CatalogModifier](#type-catalogmodifier)s applied to this line item. |  [optional]
+**returnModifiers** | [**List&lt;OrderReturnLineItemModifier&gt;**](OrderReturnLineItemModifier.md) | The &#x60;CatalogModifier&#x60;s applied to this line item. |  [optional]
 **returnTaxes** | [**List&lt;OrderReturnTax&gt;**](OrderReturnTax.md) | A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.  This field has been deprecated in favour of &#x60;applied_taxes&#x60;. |  [optional]
 **returnDiscounts** | [**List&lt;OrderReturnDiscount&gt;**](OrderReturnDiscount.md) | A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any return-level discounts apportioned to this item.  This field has been deprecated in favour of &#x60;applied_discounts&#x60;. |  [optional]
 **appliedTaxes** | [**List&lt;OrderLineItemAppliedTax&gt;**](OrderLineItemAppliedTax.md) | The list of references to &#x60;OrderReturnTax&#x60; entities applied to the returned line item. Each &#x60;OrderLineItemAppliedTax&#x60; has a &#x60;tax_uid&#x60; that references the &#x60;uid&#x60; of a top-level &#x60;OrderReturnTax&#x60; applied to the returned line item. On reads, the amount applied is populated. |  [optional]

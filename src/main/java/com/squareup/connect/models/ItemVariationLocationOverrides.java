@@ -51,10 +51,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The ID of the [location](#type-location).
+   * The ID of the `location`.
    * @return locationId
   **/
-  @ApiModelProperty(value = "The ID of the [location](#type-location).")
+  @ApiModelProperty(value = "The ID of the `location`.")
   public String getLocationId() {
     return locationId;
   }
@@ -69,10 +69,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location), or blank for variable pricing.
+   * The price of the `CatalogItemVariation](#type-catalogitemvariation) at the given [location`, or blank for variable pricing.
    * @return priceMoney
   **/
-  @ApiModelProperty(value = "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location), or blank for variable pricing.")
+  @ApiModelProperty(value = "The price of the `CatalogItemVariation](#type-catalogitemvariation) at the given [location`, or blank for variable pricing.")
   public Money getPriceMoney() {
     return priceMoney;
   }
@@ -87,10 +87,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for possible values
+   * The pricing type (fixed or variable) for the `CatalogItemVariation](#type-catalogitemvariation) at the given [location`. See [CatalogPricingType](#type-catalogpricingtype) for possible values
    * @return pricingType
   **/
-  @ApiModelProperty(value = "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location). See [CatalogPricingType](#type-catalogpricingtype) for possible values")
+  @ApiModelProperty(value = "The pricing type (fixed or variable) for the `CatalogItemVariation](#type-catalogitemvariation) at the given [location`. See [CatalogPricingType](#type-catalogpricingtype) for possible values")
   public String getPricingType() {
     return pricingType;
   }
@@ -105,10 +105,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location](#type-location).
+   * If `true`, inventory tracking is active for the `CatalogItemVariation](#type-catalogitemvariation) at this [location`.
    * @return trackInventory
   **/
-  @ApiModelProperty(value = "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location](#type-location).")
+  @ApiModelProperty(value = "If `true`, inventory tracking is active for the `CatalogItemVariation](#type-catalogitemvariation) at this [location`.")
   public Boolean getTrackInventory() {
     return trackInventory;
   }
@@ -123,10 +123,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
+   * Indicates whether the `CatalogItemVariation` displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values
    * @return inventoryAlertType
   **/
-  @ApiModelProperty(value = "Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values")
+  @ApiModelProperty(value = "Indicates whether the `CatalogItemVariation` displays an alert when its inventory quantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for possible values")
   public String getInventoryAlertType() {
     return inventoryAlertType;
   }

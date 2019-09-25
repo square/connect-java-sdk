@@ -42,10 +42,10 @@ public class SearchOrdersSourceFilter {
   }
 
    /**
-   * Filters by [Source](#type-ordersource) `name`. Will return any orders with with a `source.name` that matches any of the listed source names.  Max: 10 source names.
+   * Filters by `Source` `name`. Will return any orders with with a `source.name` that matches any of the listed source names.  Max: 10 source names.
    * @return sourceNames
   **/
-  @ApiModelProperty(value = "Filters by [Source](#type-ordersource) `name`. Will return any orders with with a `source.name` that matches any of the listed source names.  Max: 10 source names.")
+  @ApiModelProperty(value = "Filters by `Source` `name`. Will return any orders with with a `source.name` that matches any of the listed source names.  Max: 10 source names.")
   public List<String> getSourceNames() {
     return sourceNames;
   }

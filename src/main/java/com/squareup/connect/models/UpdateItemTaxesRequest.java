@@ -48,10 +48,10 @@ public class UpdateItemTaxesRequest {
   }
 
    /**
-   * The [CatalogItem](#type-catalogitem)s whose enabled/disabled [CatalogTax](#type-catalogtax)es are being updated.
+   * The `CatalogItem](#type-catalogitem)s whose enabled/disabled [CatalogTax`es are being updated.
    * @return itemIds
   **/
-  @ApiModelProperty(required = true, value = "The [CatalogItem](#type-catalogitem)s whose enabled/disabled [CatalogTax](#type-catalogtax)es are being updated.")
+  @ApiModelProperty(required = true, value = "The `CatalogItem](#type-catalogitem)s whose enabled/disabled [CatalogTax`es are being updated.")
   public List<String> getItemIds() {
     return itemIds;
   }
@@ -71,10 +71,10 @@ public class UpdateItemTaxesRequest {
   }
 
    /**
-   * The set of [CatalogTax](#type-catalogtax)es (referenced by ID) to enable for the [CatalogItem](#type-catalogitem).
+   * The set of `CatalogTax](#type-catalogtax)es (referenced by ID) to enable for the [CatalogItem`.
    * @return taxesToEnable
   **/
-  @ApiModelProperty(value = "The set of [CatalogTax](#type-catalogtax)es (referenced by ID) to enable for the [CatalogItem](#type-catalogitem).")
+  @ApiModelProperty(value = "The set of `CatalogTax](#type-catalogtax)es (referenced by ID) to enable for the [CatalogItem`.")
   public List<String> getTaxesToEnable() {
     return taxesToEnable;
   }
@@ -94,10 +94,10 @@ public class UpdateItemTaxesRequest {
   }
 
    /**
-   * The set of [CatalogTax](#type-catalogtax)es (referenced by ID) to disable for the [CatalogItem](#type-catalogitem).
+   * The set of `CatalogTax](#type-catalogtax)es (referenced by ID) to disable for the [CatalogItem`.
    * @return taxesToDisable
   **/
-  @ApiModelProperty(value = "The set of [CatalogTax](#type-catalogtax)es (referenced by ID) to disable for the [CatalogItem](#type-catalogitem).")
+  @ApiModelProperty(value = "The set of `CatalogTax](#type-catalogtax)es (referenced by ID) to disable for the [CatalogItem`.")
   public List<String> getTaxesToDisable() {
     return taxesToDisable;
   }

@@ -41,10 +41,10 @@ public class SourceApplication {
   }
 
    /**
-   * Read-only [Product](#type-product) type for the application. See [Product](#type-product) for possible values
+   * Read-only `Product` type for the application. See [Product](#type-product) for possible values
    * @return product
   **/
-  @ApiModelProperty(value = "Read-only [Product](#type-product) type for the application. See [Product](#type-product) for possible values")
+  @ApiModelProperty(value = "Read-only `Product` type for the application. See [Product](#type-product) for possible values")
   public String getProduct() {
     return product;
   }
@@ -59,10 +59,10 @@ public class SourceApplication {
   }
 
    /**
-   * Read-only Square ID assigned to the application. Only used for [Product](#type-product) type `EXTERNAL_API`.
+   * Read-only Square ID assigned to the application. Only used for `Product` type `EXTERNAL_API`.
    * @return applicationId
   **/
-  @ApiModelProperty(value = "Read-only Square ID assigned to the application. Only used for [Product](#type-product) type `EXTERNAL_API`.")
+  @ApiModelProperty(value = "Read-only Square ID assigned to the application. Only used for `Product` type `EXTERNAL_API`.")
   public String getApplicationId() {
     return applicationId;
   }

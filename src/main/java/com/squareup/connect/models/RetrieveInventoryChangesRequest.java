@@ -38,10 +38,10 @@ public class RetrieveInventoryChangesRequest {
   }
 
    /**
-   * The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.
+   * The `Location` IDs to look up as a comma-separated list. An empty list queries all locations.
    * @return locationIds
   **/
-  @ApiModelProperty(value = "The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.")
+  @ApiModelProperty(value = "The `Location` IDs to look up as a comma-separated list. An empty list queries all locations.")
   public String getLocationIds() {
     return locationIds;
   }
@@ -56,10 +56,10 @@ public class RetrieveInventoryChangesRequest {
   }
 
    /**
-   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
+   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }

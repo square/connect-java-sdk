@@ -122,10 +122,10 @@ public class CatalogTax {
   }
 
    /**
-   * If `true`, the fee applies to custom amounts entered into the Square Point of Sale app that are not associated with a particular [CatalogItem](#type-catalogitem).
+   * If `true`, the fee applies to custom amounts entered into the Square Point of Sale app that are not associated with a particular `CatalogItem`.
    * @return appliesToCustomAmounts
   **/
-  @ApiModelProperty(value = "If `true`, the fee applies to custom amounts entered into the Square Point of Sale app that are not associated with a particular [CatalogItem](#type-catalogitem).")
+  @ApiModelProperty(value = "If `true`, the fee applies to custom amounts entered into the Square Point of Sale app that are not associated with a particular `CatalogItem`.")
   public Boolean getAppliesToCustomAmounts() {
     return appliesToCustomAmounts;
   }
