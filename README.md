@@ -472,6 +472,8 @@ Class | Method | HTTP request | Description
  - [ListEmployeesResponse](docs/ListEmployeesResponse.md)
  - [ListLocationsRequest](docs/ListLocationsRequest.md)
  - [ListLocationsResponse](docs/ListLocationsResponse.md)
+ - [ListMerchantsRequest](docs/ListMerchantsRequest.md)
+ - [ListMerchantsResponse](docs/ListMerchantsResponse.md)
  - [ListPaymentRefundsRequest](docs/ListPaymentRefundsRequest.md)
  - [ListPaymentRefundsResponse](docs/ListPaymentRefundsResponse.md)
  - [ListPaymentsRequest](docs/ListPaymentsRequest.md)
