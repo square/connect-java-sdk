@@ -44,7 +44,8 @@ public class RefundsApi {
    * @param refundId Unique ID for the desired &#x60;PaymentRefund&#x60;. (required)
    * @return GetPaymentRefundResponse
    * @throws ApiException if fails to make API call
-   */  public GetPaymentRefundResponse getPaymentRefund(String refundId) throws ApiException {
+   */
+  public GetPaymentRefundResponse getPaymentRefund(String refundId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'refundId' is set
@@ -60,7 +61,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -104,7 +105,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -135,7 +136,8 @@ public class RefundsApi {
    * @param sourceType If provided, only refunds with the given source type are returned.  - &#x60;CARD&#x60; - List refunds only for payments where card was specified as payment  source.  Default: If omitted refunds are returned regardless of source type. (optional)
    * @return ListPaymentRefundsResponse
    * @throws ApiException if fails to make API call
-   */  public ListPaymentRefundsResponse listPaymentRefunds(String beginTime, String endTime, String sortOrder, String cursor, String locationId, String status, String sourceType) throws ApiException {
+   */
+  public ListPaymentRefundsResponse listPaymentRefunds(String beginTime, String endTime, String sortOrder, String cursor, String locationId, String status, String sourceType) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -145,7 +147,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -196,7 +198,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -228,7 +230,8 @@ public class RefundsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return RefundPaymentResponse
    * @throws ApiException if fails to make API call
-   */  public RefundPaymentResponse refundPayment(RefundPaymentRequest body) throws ApiException {
+   */
+  public RefundPaymentResponse refundPayment(RefundPaymentRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -243,7 +246,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -286,7 +289,7 @@ public class RefundsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     

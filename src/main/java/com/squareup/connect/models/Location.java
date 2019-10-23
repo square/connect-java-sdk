@@ -112,10 +112,10 @@ public class Location {
   }
 
    /**
-   * The location's unique ID.
+   * The Square-issued ID of the location.
    * @return id
   **/
-  @ApiModelProperty(value = "The location's unique ID.")
+  @ApiModelProperty(value = "The Square-issued ID of the location.")
   public String getId() {
     return id;
   }
@@ -189,10 +189,10 @@ public class Location {
   }
 
    /**
-   * Indicates which Square features are enabled for the location. See [LocationCapability](#type-locationcapability) for possible values
+   * The Square features that are enabled for the location. See `LocationCapability` for possible values. See [LocationCapability](#type-locationcapability) for possible values
    * @return capabilities
   **/
-  @ApiModelProperty(value = "Indicates which Square features are enabled for the location. See [LocationCapability](#type-locationcapability) for possible values")
+  @ApiModelProperty(value = "The Square features that are enabled for the location. See `LocationCapability` for possible values. See [LocationCapability](#type-locationcapability) for possible values")
   public List<String> getCapabilities() {
     return capabilities;
   }
@@ -243,10 +243,10 @@ public class Location {
   }
 
    /**
-   * The identifier of the merchant that owns the location.
+   * The ID of the merchant that owns the location.
    * @return merchantId
   **/
-  @ApiModelProperty(value = "The identifier of the merchant that owns the location.")
+  @ApiModelProperty(value = "The ID of the merchant that owns the location.")
   public String getMerchantId() {
     return merchantId;
   }
@@ -261,10 +261,10 @@ public class Location {
   }
 
    /**
-   * The location's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values
+   * The country of the location, in ISO 3166-1-alpha-2 format.  See `Country` for possible values. See [Country](#type-country) for possible values
    * @return country
   **/
-  @ApiModelProperty(value = "The location's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values")
+  @ApiModelProperty(value = "The country of the location, in ISO 3166-1-alpha-2 format.  See `Country` for possible values. See [Country](#type-country) for possible values")
   public String getCountry() {
     return country;
   }
@@ -297,10 +297,10 @@ public class Location {
   }
 
    /**
-   * The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'. See [Currency](#type-currency) for possible values
+   * The currency used for all transactions at this location, in ISO 4217 format.  See `Currency` for possible values. See [Currency](#type-currency) for possible values
    * @return currency
   **/
-  @ApiModelProperty(value = "The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'. See [Currency](#type-currency) for possible values")
+  @ApiModelProperty(value = "The currency used for all transactions at this location, in ISO 4217 format.  See `Currency` for possible values. See [Currency](#type-currency) for possible values")
   public String getCurrency() {
     return currency;
   }
@@ -550,6 +550,7 @@ public class Location {
 
    /**
    * The merchant category code (MCC) of the location, as standardized by ISO 18245. The MCC describes the kind of goods or services sold at the location.
+   * Note: This model is in beta.
    * @return mcc
   **/
   @ApiModelProperty(value = "The merchant category code (MCC) of the location, as standardized by ISO 18245. The MCC describes the kind of goods or services sold at the location.")

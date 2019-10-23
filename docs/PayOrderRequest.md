@@ -4,6 +4,7 @@
 ### Description
 
 Defines the fields that are included in requests to the [PayOrder](#endpoint-payorder) endpoint.
+**Note: This model is in beta.**
 
 ## Properties
 Name | Type | Description | Notes

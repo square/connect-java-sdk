@@ -334,6 +334,7 @@ public class CatalogItem {
 
    /**
    * List of item options IDs for this item. Used to manage and group item variations in a specified order.  Maximum: 6 item options.
+   * Note: This model is in beta.
    * @return itemOptions
   **/
   @ApiModelProperty(value = "List of item options IDs for this item. Used to manage and group item variations in a specified order.  Maximum: 6 item options.")

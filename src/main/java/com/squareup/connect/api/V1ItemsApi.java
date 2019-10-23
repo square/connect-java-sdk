@@ -54,7 +54,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1InventoryEntry
    * @throws ApiException if fails to make API call
-   */  public V1InventoryEntry adjustInventory(String locationId, String variationId, V1AdjustInventoryRequest body) throws ApiException {
+   */
+  public V1InventoryEntry adjustInventory(String locationId, String variationId, V1AdjustInventoryRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -81,7 +82,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -138,7 +139,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -165,7 +166,8 @@ public class V1ItemsApi {
    * @param feeId The ID of the fee to apply. (required)
    * @return V1Item
    * @throws ApiException if fails to make API call
-   */  public V1Item applyFee(String locationId, String itemId, String feeId) throws ApiException {
+   */
+  public V1Item applyFee(String locationId, String itemId, String feeId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -193,7 +195,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -251,7 +253,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -278,7 +280,8 @@ public class V1ItemsApi {
    * @param itemId The ID of the item to add the modifier list to. (required)
    * @return V1Item
    * @throws ApiException if fails to make API call
-   */  public V1Item applyModifierList(String locationId, String modifierListId, String itemId) throws ApiException {
+   */
+  public V1Item applyModifierList(String locationId, String modifierListId, String itemId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -306,7 +309,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -364,7 +367,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -390,7 +393,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Category
    * @throws ApiException if fails to make API call
-   */  public V1Category createCategory(String locationId, V1Category body) throws ApiException {
+   */
+  public V1Category createCategory(String locationId, V1Category body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -411,7 +415,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -461,7 +465,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -487,7 +491,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Discount
    * @throws ApiException if fails to make API call
-   */  public V1Discount createDiscount(String locationId, V1Discount body) throws ApiException {
+   */
+  public V1Discount createDiscount(String locationId, V1Discount body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -508,7 +513,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -558,7 +563,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -584,7 +589,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Fee
    * @throws ApiException if fails to make API call
-   */  public V1Fee createFee(String locationId, V1Fee body) throws ApiException {
+   */
+  public V1Fee createFee(String locationId, V1Fee body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -605,7 +611,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -655,7 +661,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -681,7 +687,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Item
    * @throws ApiException if fails to make API call
-   */  public V1Item createItem(String locationId, V1Item body) throws ApiException {
+   */
+  public V1Item createItem(String locationId, V1Item body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -702,7 +709,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -752,7 +759,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -778,7 +785,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1ModifierList
    * @throws ApiException if fails to make API call
-   */  public V1ModifierList createModifierList(String locationId, V1ModifierList body) throws ApiException {
+   */
+  public V1ModifierList createModifierList(String locationId, V1ModifierList body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -799,7 +807,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -849,7 +857,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -876,7 +884,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1ModifierOption
    * @throws ApiException if fails to make API call
-   */  public V1ModifierOption createModifierOption(String locationId, String modifierListId, V1ModifierOption body) throws ApiException {
+   */
+  public V1ModifierOption createModifierOption(String locationId, String modifierListId, V1ModifierOption body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -903,7 +912,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -960,7 +969,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -986,7 +995,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Page
    * @throws ApiException if fails to make API call
-   */  public V1Page createPage(String locationId, V1Page body) throws ApiException {
+   */
+  public V1Page createPage(String locationId, V1Page body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -1007,7 +1017,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1057,7 +1067,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1084,7 +1094,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Variation
    * @throws ApiException if fails to make API call
-   */  public V1Variation createVariation(String locationId, String itemId, V1Variation body) throws ApiException {
+   */
+  public V1Variation createVariation(String locationId, String itemId, V1Variation body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -1111,7 +1122,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1168,7 +1179,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1194,7 +1205,8 @@ public class V1ItemsApi {
    * @param categoryId The ID of the category to delete. (required)
    * @return V1Category
    * @throws ApiException if fails to make API call
-   */  public V1Category deleteCategory(String locationId, String categoryId) throws ApiException {
+   */
+  public V1Category deleteCategory(String locationId, String categoryId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1216,7 +1228,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1267,7 +1279,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1293,7 +1305,8 @@ public class V1ItemsApi {
    * @param discountId The ID of the discount to delete. (required)
    * @return V1Discount
    * @throws ApiException if fails to make API call
-   */  public V1Discount deleteDiscount(String locationId, String discountId) throws ApiException {
+   */
+  public V1Discount deleteDiscount(String locationId, String discountId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1315,7 +1328,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1366,7 +1379,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1392,7 +1405,8 @@ public class V1ItemsApi {
    * @param feeId The ID of the fee to delete. (required)
    * @return V1Fee
    * @throws ApiException if fails to make API call
-   */  public V1Fee deleteFee(String locationId, String feeId) throws ApiException {
+   */
+  public V1Fee deleteFee(String locationId, String feeId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1414,7 +1428,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1465,7 +1479,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1491,7 +1505,8 @@ public class V1ItemsApi {
    * @param itemId The ID of the item to modify. (required)
    * @return V1Item
    * @throws ApiException if fails to make API call
-   */  public V1Item deleteItem(String locationId, String itemId) throws ApiException {
+   */
+  public V1Item deleteItem(String locationId, String itemId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1513,7 +1528,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1564,7 +1579,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1590,7 +1605,8 @@ public class V1ItemsApi {
    * @param modifierListId The ID of the modifier list to delete. (required)
    * @return V1ModifierList
    * @throws ApiException if fails to make API call
-   */  public V1ModifierList deleteModifierList(String locationId, String modifierListId) throws ApiException {
+   */
+  public V1ModifierList deleteModifierList(String locationId, String modifierListId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1612,7 +1628,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1663,7 +1679,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1690,7 +1706,8 @@ public class V1ItemsApi {
    * @param modifierOptionId The ID of the modifier list to edit. (required)
    * @return V1ModifierOption
    * @throws ApiException if fails to make API call
-   */  public V1ModifierOption deleteModifierOption(String locationId, String modifierListId, String modifierOptionId) throws ApiException {
+   */
+  public V1ModifierOption deleteModifierOption(String locationId, String modifierListId, String modifierOptionId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1718,7 +1735,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1776,7 +1793,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1802,7 +1819,8 @@ public class V1ItemsApi {
    * @param pageId The ID of the page to delete. (required)
    * @return V1Page
    * @throws ApiException if fails to make API call
-   */  public V1Page deletePage(String locationId, String pageId) throws ApiException {
+   */
+  public V1Page deletePage(String locationId, String pageId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1824,7 +1842,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1875,7 +1893,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1903,7 +1921,8 @@ public class V1ItemsApi {
    * @param column The column of the cell to clear. Always an integer between 0 and 4, inclusive. Column 0 is the leftmost column. (optional)
    * @return V1Page
    * @throws ApiException if fails to make API call
-   */  public V1Page deletePageCell(String locationId, String pageId, String row, String column) throws ApiException {
+   */
+  public V1Page deletePageCell(String locationId, String pageId, String row, String column) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -1925,7 +1944,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "row", row));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "column", column));
 
@@ -1980,7 +1999,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "row", row));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "column", column));
 
@@ -2009,7 +2028,8 @@ public class V1ItemsApi {
    * @param variationId The ID of the variation to delete. (required)
    * @return V1Variation
    * @throws ApiException if fails to make API call
-   */  public V1Variation deleteVariation(String locationId, String itemId, String variationId) throws ApiException {
+   */
+  public V1Variation deleteVariation(String locationId, String itemId, String variationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2037,7 +2057,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2095,7 +2115,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2120,7 +2140,8 @@ public class V1ItemsApi {
    * @param locationId The ID of the location to list categories for. (required)
    * @return List&lt;V1Category&gt;
    * @throws ApiException if fails to make API call
-   */  public List<V1Category> listCategories(String locationId) throws ApiException {
+   */
+  public List<V1Category> listCategories(String locationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2136,7 +2157,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2180,7 +2201,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2205,7 +2226,8 @@ public class V1ItemsApi {
    * @param locationId The ID of the location to list categories for. (required)
    * @return List&lt;V1Discount&gt;
    * @throws ApiException if fails to make API call
-   */  public List<V1Discount> listDiscounts(String locationId) throws ApiException {
+   */
+  public List<V1Discount> listDiscounts(String locationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2221,7 +2243,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2265,7 +2287,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2290,7 +2312,8 @@ public class V1ItemsApi {
    * @param locationId The ID of the location to list fees for. (required)
    * @return List&lt;V1Fee&gt;
    * @throws ApiException if fails to make API call
-   */  public List<V1Fee> listFees(String locationId) throws ApiException {
+   */
+  public List<V1Fee> listFees(String locationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2306,7 +2329,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2350,7 +2373,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2377,7 +2400,8 @@ public class V1ItemsApi {
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1InventoryEntry&gt;
    * @throws ApiException if fails to make API call
-   */  public List<V1InventoryEntry> listInventory(String locationId, Integer limit, String batchToken) throws ApiException {
+   */
+  public List<V1InventoryEntry> listInventory(String locationId, Integer limit, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2393,7 +2417,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
@@ -2441,7 +2465,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
@@ -2469,7 +2493,8 @@ public class V1ItemsApi {
    * @param batchToken A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
    * @return List&lt;V1Item&gt;
    * @throws ApiException if fails to make API call
-   */  public List<V1Item> listItems(String locationId, String batchToken) throws ApiException {
+   */
+  public List<V1Item> listItems(String locationId, String batchToken) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2485,7 +2510,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
@@ -2531,7 +2556,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "batch_token", batchToken));
 
     
@@ -2557,7 +2582,8 @@ public class V1ItemsApi {
    * @param locationId The ID of the location to list modifier lists for. (required)
    * @return List&lt;V1ModifierList&gt;
    * @throws ApiException if fails to make API call
-   */  public List<V1ModifierList> listModifierLists(String locationId) throws ApiException {
+   */
+  public List<V1ModifierList> listModifierLists(String locationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2573,7 +2599,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2617,7 +2643,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2642,7 +2668,8 @@ public class V1ItemsApi {
    * @param locationId The ID of the location to list Favorites pages for. (required)
    * @return List&lt;V1Page&gt;
    * @throws ApiException if fails to make API call
-   */  public List<V1Page> listPages(String locationId) throws ApiException {
+   */
+  public List<V1Page> listPages(String locationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2658,7 +2685,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2702,7 +2729,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2729,7 +2756,8 @@ public class V1ItemsApi {
    * @param feeId The ID of the fee to apply. (required)
    * @return V1Item
    * @throws ApiException if fails to make API call
-   */  public V1Item removeFee(String locationId, String itemId, String feeId) throws ApiException {
+   */
+  public V1Item removeFee(String locationId, String itemId, String feeId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2757,7 +2785,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2815,7 +2843,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2842,7 +2870,8 @@ public class V1ItemsApi {
    * @param itemId The ID of the item to remove the modifier list from. (required)
    * @return V1Item
    * @throws ApiException if fails to make API call
-   */  public V1Item removeModifierList(String locationId, String modifierListId, String itemId) throws ApiException {
+   */
+  public V1Item removeModifierList(String locationId, String modifierListId, String itemId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2870,7 +2899,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2928,7 +2957,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -2954,7 +2983,8 @@ public class V1ItemsApi {
    * @param itemId The item&#39;s ID. (required)
    * @return V1Item
    * @throws ApiException if fails to make API call
-   */  public V1Item retrieveItem(String locationId, String itemId) throws ApiException {
+   */
+  public V1Item retrieveItem(String locationId, String itemId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -2976,7 +3006,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3027,7 +3057,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3053,7 +3083,8 @@ public class V1ItemsApi {
    * @param modifierListId The modifier list&#39;s ID. (required)
    * @return V1ModifierList
    * @throws ApiException if fails to make API call
-   */  public V1ModifierList retrieveModifierList(String locationId, String modifierListId) throws ApiException {
+   */
+  public V1ModifierList retrieveModifierList(String locationId, String modifierListId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -3075,7 +3106,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3126,7 +3157,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3153,7 +3184,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Category
    * @throws ApiException if fails to make API call
-   */  public V1Category updateCategory(String locationId, String categoryId, V1Category body) throws ApiException {
+   */
+  public V1Category updateCategory(String locationId, String categoryId, V1Category body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -3180,7 +3212,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3237,7 +3269,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3264,7 +3296,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Discount
    * @throws ApiException if fails to make API call
-   */  public V1Discount updateDiscount(String locationId, String discountId, V1Discount body) throws ApiException {
+   */
+  public V1Discount updateDiscount(String locationId, String discountId, V1Discount body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -3291,7 +3324,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3348,7 +3381,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3375,7 +3408,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Fee
    * @throws ApiException if fails to make API call
-   */  public V1Fee updateFee(String locationId, String feeId, V1Fee body) throws ApiException {
+   */
+  public V1Fee updateFee(String locationId, String feeId, V1Fee body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -3402,7 +3436,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3459,7 +3493,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3486,7 +3520,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Item
    * @throws ApiException if fails to make API call
-   */  public V1Item updateItem(String locationId, String itemId, V1Item body) throws ApiException {
+   */
+  public V1Item updateItem(String locationId, String itemId, V1Item body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -3513,7 +3548,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3570,7 +3605,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3597,7 +3632,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1ModifierList
    * @throws ApiException if fails to make API call
-   */  public V1ModifierList updateModifierList(String locationId, String modifierListId, V1UpdateModifierListRequest body) throws ApiException {
+   */
+  public V1ModifierList updateModifierList(String locationId, String modifierListId, V1UpdateModifierListRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -3624,7 +3660,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3681,7 +3717,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3709,7 +3745,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1ModifierOption
    * @throws ApiException if fails to make API call
-   */  public V1ModifierOption updateModifierOption(String locationId, String modifierListId, String modifierOptionId, V1ModifierOption body) throws ApiException {
+   */
+  public V1ModifierOption updateModifierOption(String locationId, String modifierListId, String modifierOptionId, V1ModifierOption body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -3742,7 +3779,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3806,7 +3843,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3833,7 +3870,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Page
    * @throws ApiException if fails to make API call
-   */  public V1Page updatePage(String locationId, String pageId, V1Page body) throws ApiException {
+   */
+  public V1Page updatePage(String locationId, String pageId, V1Page body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -3860,7 +3898,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3917,7 +3955,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -3944,7 +3982,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Page
    * @throws ApiException if fails to make API call
-   */  public V1Page updatePageCell(String locationId, String pageId, V1PageCell body) throws ApiException {
+   */
+  public V1Page updatePageCell(String locationId, String pageId, V1PageCell body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -3971,7 +4010,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -4028,7 +4067,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -4056,7 +4095,8 @@ public class V1ItemsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return V1Variation
    * @throws ApiException if fails to make API call
-   */  public V1Variation updateVariation(String locationId, String itemId, String variationId, V1Variation body) throws ApiException {
+   */
+  public V1Variation updateVariation(String locationId, String itemId, String variationId, V1Variation body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -4089,7 +4129,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -4153,7 +4193,7 @@ public class V1ItemsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     

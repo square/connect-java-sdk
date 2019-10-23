@@ -4,6 +4,7 @@
 ### Description
 
 Contains details necessary to fulfill a shipment order.
+**Note: This model is in beta.**
 
 ## Properties
 Name | Type | Description | Notes

@@ -45,7 +45,8 @@ public class EmployeesApi {
    * @param cursor The token required to retrieve the specified page of results. (optional)
    * @return ListEmployeesResponse
    * @throws ApiException if fails to make API call
-   */  public ListEmployeesResponse listEmployees(String locationId, String status, Integer limit, String cursor) throws ApiException {
+   */
+  public ListEmployeesResponse listEmployees(String locationId, String status, Integer limit, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -55,7 +56,7 @@ public class EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_id", locationId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
@@ -100,7 +101,7 @@ public class EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_id", locationId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
@@ -129,7 +130,8 @@ public class EmployeesApi {
    * @param id UUID for the employee that was requested. (required)
    * @return RetrieveEmployeeResponse
    * @throws ApiException if fails to make API call
-   */  public RetrieveEmployeeResponse retrieveEmployee(String id) throws ApiException {
+   */
+  public RetrieveEmployeeResponse retrieveEmployee(String id) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
@@ -145,7 +147,7 @@ public class EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -189,7 +191,7 @@ public class EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     

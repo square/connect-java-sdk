@@ -48,7 +48,8 @@ public class PaymentsApi {
    * @param paymentId &#x60;payment_id&#x60; identifying the payment to be canceled. (required)
    * @return CancelPaymentResponse
    * @throws ApiException if fails to make API call
-   */  public CancelPaymentResponse cancelPayment(String paymentId) throws ApiException {
+   */
+  public CancelPaymentResponse cancelPayment(String paymentId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'paymentId' is set
@@ -64,7 +65,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -108,7 +109,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -133,7 +134,8 @@ public class PaymentsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CancelPaymentByIdempotencyKeyResponse
    * @throws ApiException if fails to make API call
-   */  public CancelPaymentByIdempotencyKeyResponse cancelPaymentByIdempotencyKey(CancelPaymentByIdempotencyKeyRequest body) throws ApiException {
+   */
+  public CancelPaymentByIdempotencyKeyResponse cancelPaymentByIdempotencyKey(CancelPaymentByIdempotencyKeyRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -148,7 +150,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -191,7 +193,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -216,7 +218,8 @@ public class PaymentsApi {
    * @param paymentId Unique ID identifying the payment to be completed. (required)
    * @return CompletePaymentResponse
    * @throws ApiException if fails to make API call
-   */  public CompletePaymentResponse completePayment(String paymentId) throws ApiException {
+   */
+  public CompletePaymentResponse completePayment(String paymentId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'paymentId' is set
@@ -232,7 +235,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -276,7 +279,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -301,7 +304,8 @@ public class PaymentsApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreatePaymentResponse
    * @throws ApiException if fails to make API call
-   */  public CreatePaymentResponse createPayment(CreatePaymentRequest body) throws ApiException {
+   */
+  public CreatePaymentResponse createPayment(CreatePaymentRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -316,7 +320,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -359,7 +363,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -384,7 +388,8 @@ public class PaymentsApi {
    * @param paymentId Unique ID for the desired &#x60;Payment&#x60;. (required)
    * @return GetPaymentResponse
    * @throws ApiException if fails to make API call
-   */  public GetPaymentResponse getPayment(String paymentId) throws ApiException {
+   */
+  public GetPaymentResponse getPayment(String paymentId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'paymentId' is set
@@ -400,7 +405,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -444,7 +449,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -476,7 +481,8 @@ public class PaymentsApi {
    * @param cardBrand The brand of &#x60;Payment&#x60; card. For example, &#x60;VISA&#x60; (optional)
    * @return ListPaymentsResponse
    * @throws ApiException if fails to make API call
-   */  public ListPaymentsResponse listPayments(String beginTime, String endTime, String sortOrder, String cursor, String locationId, Long total, String last4, String cardBrand) throws ApiException {
+   */
+  public ListPaymentsResponse listPayments(String beginTime, String endTime, String sortOrder, String cursor, String locationId, Long total, String last4, String cardBrand) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -486,7 +492,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -539,7 +545,7 @@ public class PaymentsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "begin_time", beginTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_time", endTime));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));

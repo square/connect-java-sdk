@@ -51,7 +51,8 @@ public class OrdersApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return BatchRetrieveOrdersResponse
    * @throws ApiException if fails to make API call
-   */  public BatchRetrieveOrdersResponse batchRetrieveOrders(String locationId, BatchRetrieveOrdersRequest body) throws ApiException {
+   */
+  public BatchRetrieveOrdersResponse batchRetrieveOrders(String locationId, BatchRetrieveOrdersRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -72,7 +73,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -122,7 +123,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -148,7 +149,8 @@ public class OrdersApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateOrderResponse
    * @throws ApiException if fails to make API call
-   */  public CreateOrderResponse createOrder(String locationId, CreateOrderRequest body) throws ApiException {
+   */
+  public CreateOrderResponse createOrder(String locationId, CreateOrderRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -169,7 +171,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -219,7 +221,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -241,11 +243,13 @@ public class OrdersApi {
   /**
    * PayOrder
    * Pay for an [order](#type-order) using one or more approved [payments](#type-payment), or settle an order with a total of &#x60;0&#x60;.  The total of the &#x60;payment_ids&#x60; listed in the request must be equal to the order total. Orders with a total amount of &#x60;0&#x60; can be marked as paid by specifying an empty array of &#x60;payment_ids&#x60; in the request.  To be used with PayOrder, a payment must:  - Reference the order by specifying the &#x60;order_id&#x60; when [creating the payment](#endpoint-payments-createpayment). Any approved payments that reference the same &#x60;order_id&#x60; not specified in the &#x60;payment_ids&#x60; will be canceled. - Be approved with [delayed capture](/payments-api/take-payments#delayed-capture). Using a delayed capture payment with PayOrder will complete the approved payment.  Learn how to [pay for orders with a single payment using the Payments API](/orders-api/pay-for-orders).
+   * Note: This endpoint is in beta.
    * @param orderId The ID of the order being paid. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return PayOrderResponse
    * @throws ApiException if fails to make API call
-   */  public PayOrderResponse payOrder(String orderId, PayOrderRequest body) throws ApiException {
+   */
+  public PayOrderResponse payOrder(String orderId, PayOrderRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'orderId' is set
@@ -266,7 +270,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -316,7 +320,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -341,7 +345,8 @@ public class OrdersApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return SearchOrdersResponse
    * @throws ApiException if fails to make API call
-   */  public SearchOrdersResponse searchOrders(SearchOrdersRequest body) throws ApiException {
+   */
+  public SearchOrdersResponse searchOrders(SearchOrdersRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -356,7 +361,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -399,7 +404,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -421,12 +426,14 @@ public class OrdersApi {
   /**
    * UpdateOrder
    * Updates an open [Order](#type-order) by adding, replacing, or deleting fields. Orders with a &#x60;COMPLETED&#x60; or &#x60;CANCELED&#x60; state cannot be updated.  An UpdateOrder request requires the following:  - The &#x60;order_id&#x60; in the endpoint path, identifying the order to update. - The latest &#x60;version&#x60; of the order to update. - The [sparse order](/orders-api/manage-orders#sparse-order-objects) containing only the fields to update and the version the update is being applied to. - If deleting fields, the [dot notation paths](/orders-api/manage-orders#on-dot-notation) identifying fields to clear.  To pay for an order, please refer to the [Pay for Orders](/orders-api/pay-for-orders) guide.  To learn more about the Orders API, see the [Orders API Overview](/orders-api/what-it-does).
+   * Note: This endpoint is in beta.
    * @param locationId The ID of the order&#39;s associated location. (required)
    * @param orderId The ID of the order to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateOrderResponse
    * @throws ApiException if fails to make API call
-   */  public UpdateOrderResponse updateOrder(String locationId, String orderId, UpdateOrderRequest body) throws ApiException {
+   */
+  public UpdateOrderResponse updateOrder(String locationId, String orderId, UpdateOrderRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -453,7 +460,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -510,7 +517,7 @@ public class OrdersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     

@@ -43,7 +43,8 @@ public class LocationsApi {
    * Provides the details for all of a business&#39;s locations.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
    * @return ListLocationsResponse
    * @throws ApiException if fails to make API call
-   */  public ListLocationsResponse listLocations() throws ApiException {
+   */
+  public ListLocationsResponse listLocations() throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -53,7 +54,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -90,7 +91,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -112,10 +113,12 @@ public class LocationsApi {
   /**
    * RetrieveLocation
    * Retrieves details of a location.
+   * Note: This endpoint is in beta.
    * @param locationId The ID of the location to retrieve. (required)
    * @return RetrieveLocationResponse
    * @throws ApiException if fails to make API call
-   */  public RetrieveLocationResponse retrieveLocation(String locationId) throws ApiException {
+   */
+  public RetrieveLocationResponse retrieveLocation(String locationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'locationId' is set
@@ -131,7 +134,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -175,7 +178,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -197,11 +200,13 @@ public class LocationsApi {
   /**
    * UpdateLocation
    * Updates the &#x60;Location&#x60; specified by the given ID.
+   * Note: This endpoint is in beta.
    * @param locationId The ID of the location to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateLocationResponse
    * @throws ApiException if fails to make API call
-   */  public UpdateLocationResponse updateLocation(String locationId, UpdateLocationRequest body) throws ApiException {
+   */
+  public UpdateLocationResponse updateLocation(String locationId, UpdateLocationRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'locationId' is set
@@ -222,7 +227,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -272,7 +277,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     

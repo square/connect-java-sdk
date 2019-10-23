@@ -60,6 +60,7 @@ This endpoint does not need any parameter.
 
 <a name="retrieveLocation"></a>
 # **retrieveLocation**
+**Note: This endpoint is in beta.**
 > RetrieveLocationResponse retrieveLocation(locationId)
 
 RetrieveLocation
@@ -113,6 +114,7 @@ Name | Type | Description  | Notes
 
 <a name="updateLocation"></a>
 # **updateLocation**
+**Note: This endpoint is in beta.**
 > UpdateLocationResponse updateLocation(locationId, body)
 
 UpdateLocation

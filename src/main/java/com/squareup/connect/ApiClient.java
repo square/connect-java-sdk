@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.TreeMap;
 
 import java.net.URLEncoder;
 
@@ -73,7 +74,7 @@ public class ApiClient {
     this.dateFormat = new RFC3339DateFormat();
 
     // Set default User-Agent.
-    setUserAgent("Square-Connect-Java/2.20190925.0");
+    setUserAgent("Square-Connect-Java/2.20191023.0");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
@@ -729,7 +730,11 @@ public class ApiClient {
   }
 
   private Map<String, List<String>> buildResponseHeaders(Response response) {
-    Map<String, List<String>> responseHeaders = new HashMap<String, List<String>>();
+    /**
+     * HTTP/2 requires that all headers be lowercase.  To preserve functionality in case of future
+     * API changes, response header case should be ignored.
+     * */
+    Map<String, List<String>> responseHeaders = new TreeMap<String, List<String>>(String.CASE_INSENSITIVE_ORDER);
     for (Entry<String, List<Object>> entry: response.getHeaders().entrySet()) {
       List<Object> values = entry.getValue();
       List<String> headers = new ArrayList<String>();

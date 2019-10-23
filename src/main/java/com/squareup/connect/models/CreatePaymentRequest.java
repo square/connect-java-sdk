@@ -281,6 +281,7 @@ public class CreatePaymentRequest {
 
    /**
    * If set to true and charging a Square Gift Card, a payment may be returned with amount_money equal to less than what was requested.  Example, a request for $20 when charging a Square Gift Card with balance of $5 wil result in an APPROVED payment of $5.  You may choose to prompt the buyer for an additional payment to cover the remainder, or cancel the gift card payment.  Cannot be `true` when `autocomplete = true  For more information, see [Partial amount with Square gift cards](https://developer.squareup.com/docs/payments-api/take-payments#partial-payment-gift-card).  Default: false
+   * Note: This model is in beta.
    * @return acceptPartialAuthorization
   **/
   @ApiModelProperty(value = "If set to true and charging a Square Gift Card, a payment may be returned with amount_money equal to less than what was requested.  Example, a request for $20 when charging a Square Gift Card with balance of $5 wil result in an APPROVED payment of $5.  You may choose to prompt the buyer for an additional payment to cover the remainder, or cancel the gift card payment.  Cannot be `true` when `autocomplete = true  For more information, see [Partial amount with Square gift cards](https://developer.squareup.com/docs/payments-api/take-payments#partial-payment-gift-card).  Default: false")

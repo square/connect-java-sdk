@@ -77,6 +77,7 @@ public class OrderReturnServiceCharge {
 
    /**
    * Unique ID that identifies the return service charge only within this order.
+   * Note: This model is in beta.
    * @return uid
   **/
   @ApiModelProperty(value = "Unique ID that identifies the return service charge only within this order.")
@@ -283,6 +284,8 @@ public class OrderReturnServiceCharge {
    * @return returnTaxes
   **/
   @ApiModelProperty(value = "Taxes applied to the `OrderReturnServiceCharge`. By default, return-level taxes apply to `OrderReturnServiceCharge`s calculated in the `SUBTOTAL_PHASE` if `taxable` is set to `true`.  On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.  This field has been deprecated in favour of `applied_taxes`.")
+
+  @Deprecated
   public List<OrderReturnTax> getReturnTaxes() {
     return returnTaxes;
   }
@@ -303,6 +306,7 @@ public class OrderReturnServiceCharge {
 
    /**
    * The list of references to `OrderReturnTax` entities applied to the `OrderReturnServiceCharge`. Each `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level `OrderReturnTax` that is being applied to the `OrderReturnServiceCharge`. On reads, the amount applied is populated.
+   * Note: This model is in beta.
    * @return appliedTaxes
   **/
   @ApiModelProperty(value = "The list of references to `OrderReturnTax` entities applied to the `OrderReturnServiceCharge`. Each `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level `OrderReturnTax` that is being applied to the `OrderReturnServiceCharge`. On reads, the amount applied is populated.")
