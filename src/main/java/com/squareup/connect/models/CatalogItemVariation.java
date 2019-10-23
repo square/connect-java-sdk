@@ -327,6 +327,7 @@ public class CatalogItemVariation {
 
    /**
    * List of item option values associated with this item variation. Listed in the same order as the item options of the parent item.
+   * Note: This model is in beta.
    * @return itemOptionValues
   **/
   @ApiModelProperty(value = "List of item option values associated with this item variation. Listed in the same order as the item options of the parent item.")
@@ -345,6 +346,7 @@ public class CatalogItemVariation {
 
    /**
    * ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity sold of this item variation. If left unset, the item will be sold in whole quantities.
+   * Note: This model is in beta.
    * @return measurementUnitId
   **/
   @ApiModelProperty(value = "ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity sold of this item variation. If left unset, the item will be sold in whole quantities.")

@@ -4,6 +4,7 @@
 ### Description
 
 The set of line items, service charges, taxes, discounts, tips, etc. being returned in an Order.
+**Note: This model is in beta.**
 
 ## Properties
 Name | Type | Description | Notes

@@ -52,7 +52,8 @@ public class CustomersApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateCustomerResponse
    * @throws ApiException if fails to make API call
-   */  public CreateCustomerResponse createCustomer(CreateCustomerRequest body) throws ApiException {
+   */
+  public CreateCustomerResponse createCustomer(CreateCustomerRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -67,7 +68,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -110,7 +111,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -136,7 +137,8 @@ public class CustomersApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateCustomerCardResponse
    * @throws ApiException if fails to make API call
-   */  public CreateCustomerCardResponse createCustomerCard(String customerId, CreateCustomerCardRequest body) throws ApiException {
+   */
+  public CreateCustomerCardResponse createCustomerCard(String customerId, CreateCustomerCardRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'customerId' is set
@@ -157,7 +159,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -207,7 +209,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -232,7 +234,8 @@ public class CustomersApi {
    * @param customerId The ID of the customer to delete. (required)
    * @return DeleteCustomerResponse
    * @throws ApiException if fails to make API call
-   */  public DeleteCustomerResponse deleteCustomer(String customerId) throws ApiException {
+   */
+  public DeleteCustomerResponse deleteCustomer(String customerId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'customerId' is set
@@ -248,7 +251,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -292,7 +295,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -318,7 +321,8 @@ public class CustomersApi {
    * @param cardId The ID of the card on file to delete. (required)
    * @return DeleteCustomerCardResponse
    * @throws ApiException if fails to make API call
-   */  public DeleteCustomerCardResponse deleteCustomerCard(String customerId, String cardId) throws ApiException {
+   */
+  public DeleteCustomerCardResponse deleteCustomerCard(String customerId, String cardId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'customerId' is set
@@ -340,7 +344,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -391,7 +395,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -418,7 +422,8 @@ public class CustomersApi {
    * @param sortOrder Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. (optional)
    * @return ListCustomersResponse
    * @throws ApiException if fails to make API call
-   */  public ListCustomersResponse listCustomers(String cursor, String sortField, String sortOrder) throws ApiException {
+   */
+  public ListCustomersResponse listCustomers(String cursor, String sortField, String sortOrder) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -428,7 +433,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_field", sortField));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -471,7 +476,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_field", sortField));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort_order", sortOrder));
@@ -499,7 +504,8 @@ public class CustomersApi {
    * @param customerId The ID of the customer to retrieve. (required)
    * @return RetrieveCustomerResponse
    * @throws ApiException if fails to make API call
-   */  public RetrieveCustomerResponse retrieveCustomer(String customerId) throws ApiException {
+   */
+  public RetrieveCustomerResponse retrieveCustomer(String customerId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'customerId' is set
@@ -515,7 +521,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -559,7 +565,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -584,7 +590,8 @@ public class CustomersApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return SearchCustomersResponse
    * @throws ApiException if fails to make API call
-   */  public SearchCustomersResponse searchCustomers(SearchCustomersRequest body) throws ApiException {
+   */
+  public SearchCustomersResponse searchCustomers(SearchCustomersRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -599,7 +606,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -642,7 +649,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -668,7 +675,8 @@ public class CustomersApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateCustomerResponse
    * @throws ApiException if fails to make API call
-   */  public UpdateCustomerResponse updateCustomer(String customerId, UpdateCustomerRequest body) throws ApiException {
+   */
+  public UpdateCustomerResponse updateCustomer(String customerId, UpdateCustomerRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'customerId' is set
@@ -689,7 +697,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -739,7 +747,7 @@ public class CustomersApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     

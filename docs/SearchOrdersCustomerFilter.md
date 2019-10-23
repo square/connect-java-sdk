@@ -4,6 +4,7 @@
 ### Description
 
 Filter based on Order `customer_id` and any Tender `customer_id` associated with the Order. Does not filter based on the [FulfillmentRecipient](#type-orderfulfillmentrecipient) `customer_id`.
+**Note: This model is in beta.**
 
 ## Properties
 Name | Type | Description | Notes

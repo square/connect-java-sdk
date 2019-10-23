@@ -274,6 +274,8 @@ public class OrderReturnLineItem {
    * @return returnTaxes
   **/
   @ApiModelProperty(value = "A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any return-level taxes apportioned to this item.  This field has been deprecated in favour of `applied_taxes`.")
+
+  @Deprecated
   public List<OrderReturnTax> getReturnTaxes() {
     return returnTaxes;
   }
@@ -297,6 +299,8 @@ public class OrderReturnLineItem {
    * @return returnDiscounts
   **/
   @ApiModelProperty(value = "A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any return-level discounts apportioned to this item.  This field has been deprecated in favour of `applied_discounts`.")
+
+  @Deprecated
   public List<OrderReturnDiscount> getReturnDiscounts() {
     return returnDiscounts;
   }

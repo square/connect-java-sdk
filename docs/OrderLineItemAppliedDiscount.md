@@ -4,6 +4,7 @@
 ### Description
 
 Represents an applied portion of a discount to a line item in an order.  Order scoped discounts will automatically have applied discounts present for each line item. Line item scoped discounts must have applied discounts added manually for any applicable line items. The corresponding applied money will automatically be computed based on participating line items.
+**Note: This model is in beta.**
 
 ## Properties
 Name | Type | Description | Notes

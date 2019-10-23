@@ -104,10 +104,10 @@ public class CatalogItemOptionValue {
   }
 
    /**
-   * The HTML color for this value in the format #FFRRGGBB or #RRGGBB (e.g., \"#ff8d4e85\"). Only displayed if parent Item Option's `show_colors` flag is enabled. value.
+   * The HTML-supported hex color for the item option (e.g., \"#ff8d4e85\"). Only displayed if `show_colors` is enabled on the parent `ItemOption`. When left unset, `color` defaults to white (\"#ffffff\") when `show_colors` is enabled on the parent `ItemOption`.
    * @return color
   **/
-  @ApiModelProperty(value = "The HTML color for this value in the format #FFRRGGBB or #RRGGBB (e.g., \"#ff8d4e85\"). Only displayed if parent Item Option's `show_colors` flag is enabled. value.")
+  @ApiModelProperty(value = "The HTML-supported hex color for the item option (e.g., \"#ff8d4e85\"). Only displayed if `show_colors` is enabled on the parent `ItemOption`. When left unset, `color` defaults to white (\"#ffffff\") when `show_colors` is enabled on the parent `ItemOption`.")
   public String getColor() {
     return color;
   }

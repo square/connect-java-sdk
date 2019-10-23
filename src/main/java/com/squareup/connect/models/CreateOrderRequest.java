@@ -96,6 +96,8 @@ public class CreateOrderRequest {
    * @return referenceId
   **/
   @ApiModelProperty(value = "__Deprecated__: Please set the reference_id on the nested `order` field instead.  An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.")
+
+  @Deprecated
   public String getReferenceId() {
     return referenceId;
   }
@@ -119,6 +121,8 @@ public class CreateOrderRequest {
    * @return lineItems
   **/
   @ApiModelProperty(value = "__Deprecated__: Please set the line_items on the nested `order` field instead.  The line items to associate with this order.  Each line item represents a different product to include in a purchase.")
+
+  @Deprecated
   public List<CreateOrderRequestLineItem> getLineItems() {
     return lineItems;
   }
@@ -142,6 +146,8 @@ public class CreateOrderRequest {
    * @return taxes
   **/
   @ApiModelProperty(value = "__Deprecated__: Please set the taxes on the nested `order` field instead.  The taxes to include on the order.")
+
+  @Deprecated
   public List<CreateOrderRequestTax> getTaxes() {
     return taxes;
   }
@@ -165,6 +171,8 @@ public class CreateOrderRequest {
    * @return discounts
   **/
   @ApiModelProperty(value = "__Deprecated__: Please set the discounts on the nested `order` field instead.  The discounts to include on the order.")
+
+  @Deprecated
   public List<CreateOrderRequestDiscount> getDiscounts() {
     return discounts;
   }

@@ -4,6 +4,7 @@
 ### Description
 
 A rounding adjustment of the money being returned. Commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.
+**Note: This model is in beta.**
 
 ## Properties
 Name | Type | Description | Notes

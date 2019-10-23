@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20190925.0</version>
+    <version>2.20191023.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -36,7 +36,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20190925.0"
+compile "com.squareup:connect:2.20191023.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -78,7 +78,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20190925.0.jar
+* target/connect-2.20191023.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
 *LocationsApi* | [**retrieveLocation**](docs/LocationsApi.md#retrieveLocation) | **GET** /v2/locations/{location_id} | RetrieveLocation
 *LocationsApi* | [**updateLocation**](docs/LocationsApi.md#updateLocation) | **PUT** /v2/locations/{location_id} | UpdateLocation
+*MerchantsApi* | [**listMerchants**](docs/MerchantsApi.md#listMerchants) | **GET** /v2/merchants | ListMerchants
 *MerchantsApi* | [**retrieveMerchant**](docs/MerchantsApi.md#retrieveMerchant) | **GET** /v2/merchants/{merchant_id} | RetrieveMerchant
 *MobileAuthorizationApi* | [**createMobileAuthorizationCode**](docs/MobileAuthorizationApi.md#createMobileAuthorizationCode) | **POST** /mobile/authorization-code | CreateMobileAuthorizationCode
 *OAuthApi* | [**obtainToken**](docs/OAuthApi.md#obtainToken) | **POST** /oauth2/token | ObtainToken
@@ -435,6 +436,7 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [ErrorCategory](docs/ErrorCategory.md)
  - [ErrorCode](docs/ErrorCode.md)
+ - [ExcludeStrategy](docs/ExcludeStrategy.md)
  - [GetBreakTypeRequest](docs/GetBreakTypeRequest.md)
  - [GetBreakTypeResponse](docs/GetBreakTypeResponse.md)
  - [GetEmployeeWageRequest](docs/GetEmployeeWageRequest.md)

@@ -4,6 +4,7 @@
 ### Description
 
 Defines the fields that are included in the response body of a request to the [VoidTransaction](#endpoint-voidtransaction) endpoint.
+**Note: This model is deprecated.**
 
 ## Properties
 Name | Type | Description | Notes

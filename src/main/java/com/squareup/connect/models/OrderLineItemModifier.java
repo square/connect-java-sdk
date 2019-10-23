@@ -49,6 +49,7 @@ public class OrderLineItemModifier {
 
    /**
    * Unique ID that identifies the modifier only within this order.
+   * Note: This model is in beta.
    * @return uid
   **/
   @ApiModelProperty(value = "Unique ID that identifies the modifier only within this order.")

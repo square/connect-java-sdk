@@ -60,7 +60,8 @@ public class LaborApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateBreakTypeResponse
    * @throws ApiException if fails to make API call
-   */  public CreateBreakTypeResponse createBreakType(CreateBreakTypeRequest body) throws ApiException {
+   */
+  public CreateBreakTypeResponse createBreakType(CreateBreakTypeRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -75,7 +76,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -118,7 +119,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -143,7 +144,8 @@ public class LaborApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CreateShiftResponse
    * @throws ApiException if fails to make API call
-   */  public CreateShiftResponse createShift(CreateShiftRequest body) throws ApiException {
+   */
+  public CreateShiftResponse createShift(CreateShiftRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -158,7 +160,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -201,7 +203,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -226,7 +228,8 @@ public class LaborApi {
    * @param id UUID for the &#x60;BreakType&#x60; being deleted. (required)
    * @return DeleteBreakTypeResponse
    * @throws ApiException if fails to make API call
-   */  public DeleteBreakTypeResponse deleteBreakType(String id) throws ApiException {
+   */
+  public DeleteBreakTypeResponse deleteBreakType(String id) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
@@ -242,7 +245,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -286,7 +289,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -311,7 +314,8 @@ public class LaborApi {
    * @param id UUID for the &#x60;Shift&#x60; being deleted. (required)
    * @return DeleteShiftResponse
    * @throws ApiException if fails to make API call
-   */  public DeleteShiftResponse deleteShift(String id) throws ApiException {
+   */
+  public DeleteShiftResponse deleteShift(String id) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
@@ -327,7 +331,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -371,7 +375,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -396,7 +400,8 @@ public class LaborApi {
    * @param id UUID for the &#x60;BreakType&#x60; being retrieved. (required)
    * @return GetBreakTypeResponse
    * @throws ApiException if fails to make API call
-   */  public GetBreakTypeResponse getBreakType(String id) throws ApiException {
+   */
+  public GetBreakTypeResponse getBreakType(String id) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
@@ -412,7 +417,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -456,7 +461,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -481,7 +486,8 @@ public class LaborApi {
    * @param id UUID for the &#x60;EmployeeWage&#x60; being retrieved. (required)
    * @return GetEmployeeWageResponse
    * @throws ApiException if fails to make API call
-   */  public GetEmployeeWageResponse getEmployeeWage(String id) throws ApiException {
+   */
+  public GetEmployeeWageResponse getEmployeeWage(String id) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
@@ -497,7 +503,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -541,7 +547,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -566,7 +572,8 @@ public class LaborApi {
    * @param id UUID for the &#x60;Shift&#x60; being retrieved. (required)
    * @return GetShiftResponse
    * @throws ApiException if fails to make API call
-   */  public GetShiftResponse getShift(String id) throws ApiException {
+   */
+  public GetShiftResponse getShift(String id) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
@@ -582,7 +589,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -626,7 +633,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -653,7 +660,8 @@ public class LaborApi {
    * @param cursor Pointer to the next page of Break Type results to fetch. (optional)
    * @return ListBreakTypesResponse
    * @throws ApiException if fails to make API call
-   */  public ListBreakTypesResponse listBreakTypes(String locationId, Integer limit, String cursor) throws ApiException {
+   */
+  public ListBreakTypesResponse listBreakTypes(String locationId, Integer limit, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -663,7 +671,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_id", locationId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
@@ -706,7 +714,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_id", locationId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
@@ -736,7 +744,8 @@ public class LaborApi {
    * @param cursor Pointer to the next page of Employee Wage results to fetch. (optional)
    * @return ListEmployeeWagesResponse
    * @throws ApiException if fails to make API call
-   */  public ListEmployeeWagesResponse listEmployeeWages(String employeeId, Integer limit, String cursor) throws ApiException {
+   */
+  public ListEmployeeWagesResponse listEmployeeWages(String employeeId, Integer limit, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -746,7 +755,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "employee_id", employeeId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
@@ -789,7 +798,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "employee_id", employeeId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
@@ -818,7 +827,8 @@ public class LaborApi {
    * @param cursor Pointer to the next page of Workweek Config results to fetch. (optional)
    * @return ListWorkweekConfigsResponse
    * @throws ApiException if fails to make API call
-   */  public ListWorkweekConfigsResponse listWorkweekConfigs(Integer limit, String cursor) throws ApiException {
+   */
+  public ListWorkweekConfigsResponse listWorkweekConfigs(Integer limit, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -828,7 +838,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -869,7 +879,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
@@ -896,7 +906,8 @@ public class LaborApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return SearchShiftsResponse
    * @throws ApiException if fails to make API call
-   */  public SearchShiftsResponse searchShifts(SearchShiftsRequest body) throws ApiException {
+   */
+  public SearchShiftsResponse searchShifts(SearchShiftsRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
@@ -911,7 +922,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -954,7 +965,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -980,7 +991,8 @@ public class LaborApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateBreakTypeResponse
    * @throws ApiException if fails to make API call
-   */  public UpdateBreakTypeResponse updateBreakType(String id, UpdateBreakTypeRequest body) throws ApiException {
+   */
+  public UpdateBreakTypeResponse updateBreakType(String id, UpdateBreakTypeRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'id' is set
@@ -1001,7 +1013,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1051,7 +1063,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1077,7 +1089,8 @@ public class LaborApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateShiftResponse
    * @throws ApiException if fails to make API call
-   */  public UpdateShiftResponse updateShift(String id, UpdateShiftRequest body) throws ApiException {
+   */
+  public UpdateShiftResponse updateShift(String id, UpdateShiftRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'id' is set
@@ -1098,7 +1111,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1148,7 +1161,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1174,7 +1187,8 @@ public class LaborApi {
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return UpdateWorkweekConfigResponse
    * @throws ApiException if fails to make API call
-   */  public UpdateWorkweekConfigResponse updateWorkweekConfig(String id, UpdateWorkweekConfigRequest body) throws ApiException {
+   */
+  public UpdateWorkweekConfigResponse updateWorkweekConfig(String id, UpdateWorkweekConfigRequest body) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'id' is set
@@ -1195,7 +1209,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-09-25");
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     
@@ -1245,7 +1259,7 @@ public class LaborApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
+    localVarHeaderParams.put("Square-Version", "2019-10-23");
 
     
     

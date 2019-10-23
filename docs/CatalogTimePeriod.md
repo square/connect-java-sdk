@@ -4,6 +4,7 @@
 ### Description
 
 Represents a time period - either a single period or a repeating period.
+**Note: This model is in beta.**
 
 ## Properties
 Name | Type | Description | Notes

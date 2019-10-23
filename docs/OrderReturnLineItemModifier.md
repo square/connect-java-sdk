@@ -4,6 +4,7 @@
 ### Description
 
 A line item modifier being returned.
+**Note: This model is in beta.**
 
 ## Properties
 Name | Type | Description | Notes
