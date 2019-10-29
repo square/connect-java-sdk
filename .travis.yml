@@ -23,3 +23,14 @@ env:
 after_success:
 - "./maven/before_deploy.sh"
 - "./maven/deploy.sh"
+notifications:
+  slack:
+    secure: d6ZXvcPqUlI7csUq9QM5fU73xwIBWKe1/79yxVO98/OKafp9Z69ksD2yy+/0uUfpziNQT5Dta2OTe9RNLt23cYN4Im1Rl7/NNsrR0bjmoJ0ruai/dLq+4yYclzs4q6NWBn//IVP1YFBEJBIm2ZFxgVuN8kcO2GZN6nfh7Rn8Mgsy4StC3ced8lPqNquCtoAlWsQE98jQC5ppnVcp81K+cmsG10gn0Y4VxNTywq2dXwtcwjxegANYDXEwDtVtQabZplpvbKlx7Zv5V5gSJtHpxdpzI4BOP3hOpR1rcY0bqlwR17inhF7iJbl0Ov55K8LRxGtMjdoe2cJ7h8DPUs3SDD4EXA5kTstOVM9gVfhCx0gcXR/6RIK0vMPpPBGJm7W5G9XF0WLZCQNZ9VjzPanSGzy6yzhfLKQrloqa9FNpyt6X2bVxtvdKp9aLCkAs/EziHHCh1T83TFL+x7QySJYgNzi5kjGldzfVS5AMy/LoDC9MbuatDDTsL1FhwduAOXqX1TuSLNQY2XCt32eplgHUXk2KfQTY1w5bSCUtpiaucReyyE8K3H/L9twAwR4UXrX/ZALO3fbotuezCdeKkXFzT2D2CZrfAbIZDBG/r06tvyuuqmiPIC2JTIFCcp2CAHYGbsOgYZSYbrHKXNtz0kc3EqTZF024u5+FAvuqI+Cy7+s=
+    on_success: change
+    template:
+      - "@oncall"
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} in PR <%{pull_request_url}|#%{pull_request_number}> by %{author} %{result} in %{duration}"
+  email:
+    recipients:
+      - dexteam-external@squareup.com
+    on_success: change
