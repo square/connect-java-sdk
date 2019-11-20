@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents an error encountered during a request to the Connect API.
+ * Represents an error encountered during a request to the Connect API.  See [Handling errors](#handlingerrors) for more information.
  */
-@ApiModel(description = "Represents an error encountered during a request to the Connect API.")
+@ApiModel(description = "Represents an error encountered during a request to the Connect API.  See [Handling errors](#handlingerrors) for more information.")
 
 public class Error {
   @JsonProperty("category")
@@ -44,10 +44,10 @@ public class Error {
   }
 
    /**
-   * The high-level category for the error. See [ErrorCategory](#type-errorcategory) for possible values
+   * The high-level category for the error. See `ErrorCategory` for possible values. See [ErrorCategory](#type-errorcategory) for possible values
    * @return category
   **/
-  @ApiModelProperty(required = true, value = "The high-level category for the error. See [ErrorCategory](#type-errorcategory) for possible values")
+  @ApiModelProperty(required = true, value = "The high-level category for the error. See `ErrorCategory` for possible values. See [ErrorCategory](#type-errorcategory) for possible values")
   public String getCategory() {
     return category;
   }
@@ -62,10 +62,10 @@ public class Error {
   }
 
    /**
-   * The specific code of the error. See [ErrorCode](#type-errorcode) for possible values
+   * The specific code of the error. See `ErrorCode` for possible values See [ErrorCode](#type-errorcode) for possible values
    * @return code
   **/
-  @ApiModelProperty(required = true, value = "The specific code of the error. See [ErrorCode](#type-errorcode) for possible values")
+  @ApiModelProperty(required = true, value = "The specific code of the error. See `ErrorCode` for possible values See [ErrorCode](#type-errorcode) for possible values")
   public String getCode() {
     return code;
   }

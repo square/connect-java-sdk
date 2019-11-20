@@ -56,10 +56,10 @@ public class CatalogModifierOverride {
   }
 
    /**
-   * If `true`, this `CatalogModifier](#type-catalogmodifier) should be selected by default for this [CatalogItem`.
+   * If `true`, this `CatalogModifier` should be selected by default for this `CatalogItem`.
    * @return onByDefault
   **/
-  @ApiModelProperty(value = "If `true`, this `CatalogModifier](#type-catalogmodifier) should be selected by default for this [CatalogItem`.")
+  @ApiModelProperty(value = "If `true`, this `CatalogModifier` should be selected by default for this `CatalogItem`.")
   public Boolean getOnByDefault() {
     return onByDefault;
   }

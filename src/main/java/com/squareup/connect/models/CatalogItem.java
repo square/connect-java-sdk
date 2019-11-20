@@ -228,10 +228,10 @@ public class CatalogItem {
   }
 
    /**
-   * A set of IDs indicating the `CatalogTax`es that are enabled for this item. When updating an item, any taxes listed here will be added to the item. `CatalogTax`es may also be added to or deleted from an item using `UpdateItemTaxes`.
+   * A set of IDs indicating the taxes enabled for this item. When updating an item, any taxes listed here will be added to the item. Taxes may also be added to or deleted from an item using `UpdateItemTaxes`.
    * @return taxIds
   **/
-  @ApiModelProperty(value = "A set of IDs indicating the `CatalogTax`es that are enabled for this item. When updating an item, any taxes listed here will be added to the item. `CatalogTax`es may also be added to or deleted from an item using `UpdateItemTaxes`.")
+  @ApiModelProperty(value = "A set of IDs indicating the taxes enabled for this item. When updating an item, any taxes listed here will be added to the item. Taxes may also be added to or deleted from an item using `UpdateItemTaxes`.")
   public List<String> getTaxIds() {
     return taxIds;
   }
@@ -251,10 +251,10 @@ public class CatalogItem {
   }
 
    /**
-   * A set of `CatalogItemModifierListInfo` objects representing the modifier lists that apply to this item, along with the overrides and min and max limits that are specific to this item. `CatalogModifierList`s may also be added to or deleted from an item using `UpdateItemModifierLists`.
+   * A set of `CatalogItemModifierListInfo` objects representing the modifier lists that apply to this item, along with the overrides and min and max limits that are specific to this item. Modifier lists may also be added to or deleted from an item using `UpdateItemModifierLists`.
    * @return modifierListInfo
   **/
-  @ApiModelProperty(value = "A set of `CatalogItemModifierListInfo` objects representing the modifier lists that apply to this item, along with the overrides and min and max limits that are specific to this item. `CatalogModifierList`s may also be added to or deleted from an item using `UpdateItemModifierLists`.")
+  @ApiModelProperty(value = "A set of `CatalogItemModifierListInfo` objects representing the modifier lists that apply to this item, along with the overrides and min and max limits that are specific to this item. Modifier lists may also be added to or deleted from an item using `UpdateItemModifierLists`.")
   public List<CatalogItemModifierListInfo> getModifierListInfo() {
     return modifierListInfo;
   }
@@ -274,10 +274,10 @@ public class CatalogItem {
   }
 
    /**
-   * A list of `CatalogObject`s containing the `CatalogItemVariation`s for this item.  Maximum: 250 item variations
+   * A list of CatalogObjects containing the `CatalogItemVariation`s for this item.
    * @return variations
   **/
-  @ApiModelProperty(value = "A list of `CatalogObject`s containing the `CatalogItemVariation`s for this item.  Maximum: 250 item variations")
+  @ApiModelProperty(value = "A list of CatalogObjects containing the `CatalogItemVariation`s for this item.")
   public List<CatalogObject> getVariations() {
     return variations;
   }

@@ -49,10 +49,10 @@ public class BatchDeleteCatalogObjectsResponse {
   }
 
    /**
-   * The set of `Error`s encountered.
+   * The set of Errors encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of `Error`s encountered.")
+  @ApiModelProperty(value = "The set of Errors encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -72,10 +72,10 @@ public class BatchDeleteCatalogObjectsResponse {
   }
 
    /**
-   * The IDs of all `CatalogObject`s deleted by this request.
+   * The IDs of all CatalogObjects deleted by this request.
    * @return deletedObjectIds
   **/
-  @ApiModelProperty(value = "The IDs of all `CatalogObject`s deleted by this request.")
+  @ApiModelProperty(value = "The IDs of all CatalogObjects deleted by this request.")
   public List<String> getDeletedObjectIds() {
     return deletedObjectIds;
   }
@@ -90,10 +90,10 @@ public class BatchDeleteCatalogObjectsResponse {
   }
 
    /**
-   * The database [timestamp](#workingwithdates) of this deletion in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * The database [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) of this deletion in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
    * @return deletedAt
   **/
-  @ApiModelProperty(value = "The database [timestamp](#workingwithdates) of this deletion in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  @ApiModelProperty(value = "The database [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) of this deletion in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
   public String getDeletedAt() {
     return deletedAt;
   }

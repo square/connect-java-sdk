@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **errors** | [**List&lt;Error&gt;**](Error.md) | Any errors that occurred during the request. |  [optional]
 **changes** | [**List&lt;InventoryChange&gt;**](InventoryChange.md) | The set of inventory changes for the requested object and locations. |  [optional]
-**cursor** | **String** | The pagination cursor to be used in a subsequent request. If unset, this is the final response.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |  [optional]
+**cursor** | **String** | The pagination cursor to be used in a subsequent request. If unset, this is the final response.  See the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information. |  [optional]
 
 
 

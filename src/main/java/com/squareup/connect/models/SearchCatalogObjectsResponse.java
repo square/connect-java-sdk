@@ -56,10 +56,10 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   * The set of `Error`s encountered.
+   * Information on any errors encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of `Error`s encountered.")
+  @ApiModelProperty(value = "Information on any errors encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -97,10 +97,10 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   * The `CatalogObject`s returned.
+   * The CatalogObjects returned.
    * @return objects
   **/
-  @ApiModelProperty(value = "The `CatalogObject`s returned.")
+  @ApiModelProperty(value = "The CatalogObjects returned.")
   public List<CatalogObject> getObjects() {
     return objects;
   }
@@ -120,10 +120,10 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   * A list of `CatalogObject`s referenced by the objects in the `objects` field.
+   * A list of CatalogObjects referenced by the objects in the `objects` field.
    * @return relatedObjects
   **/
-  @ApiModelProperty(value = "A list of `CatalogObject`s referenced by the objects in the `objects` field.")
+  @ApiModelProperty(value = "A list of CatalogObjects referenced by the objects in the `objects` field.")
   public List<CatalogObject> getRelatedObjects() {
     return relatedObjects;
   }
@@ -138,11 +138,11 @@ public class SearchCatalogObjectsResponse {
   }
 
    /**
-   *  When the associated product catalog was last updated. Will match the value for `end_time` or `cursor` if either field is included in the `SearchCatalog` request.
+   * When the associated product catalog was last updated. Will match the value for `end_time` or `cursor` if either field is included in the `SearchCatalog` request.
    * Note: This model is in beta.
    * @return latestTime
   **/
-  @ApiModelProperty(value = " When the associated product catalog was last updated. Will match the value for `end_time` or `cursor` if either field is included in the `SearchCatalog` request.")
+  @ApiModelProperty(value = "When the associated product catalog was last updated. Will match the value for `end_time` or `cursor` if either field is included in the `SearchCatalog` request.")
   public String getLatestTime() {
     return latestTime;
   }

@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a collection of catalog objects for the purpose of applying a [PricingRule](#type-pricingrule). Including a catalog object will include all of its subtypes. For example, including a category in a product set will include all of its items and associated item variations in the product set. Including an item in a product set will also include its item variations.
+ * Represents a collection of catalog objects for the purpose of applying a &#x60;PricingRule&#x60;. Including a catalog object will include all of its subtypes. For example, including a category in a product set will include all of its items and associated item variations in the product set. Including an item in a product set will also include its item variations.
  */
-@ApiModel(description = "Represents a collection of catalog objects for the purpose of applying a [PricingRule](#type-pricingrule). Including a catalog object will include all of its subtypes. For example, including a category in a product set will include all of its items and associated item variations in the product set. Including an item in a product set will also include its item variations.")
+@ApiModel(description = "Represents a collection of catalog objects for the purpose of applying a `PricingRule`. Including a catalog object will include all of its subtypes. For example, including a category in a product set will include all of its items and associated item variations in the product set. Including an item in a product set will also include its item variations.")
 
 public class CatalogProductSet {
   @JsonProperty("name")
@@ -55,10 +55,10 @@ public class CatalogProductSet {
   }
 
    /**
-   *  User-defined name for the product set. For example, \"Clearance Items\" or \"Winter Sale Items\".
+   * User-defined name for the product set. For example, \"Clearance Items\" or \"Winter Sale Items\".
    * @return name
   **/
-  @ApiModelProperty(value = " User-defined name for the product set. For example, \"Clearance Items\" or \"Winter Sale Items\".")
+  @ApiModelProperty(value = "User-defined name for the product set. For example, \"Clearance Items\" or \"Winter Sale Items\".")
   public String getName() {
     return name;
   }
@@ -78,10 +78,10 @@ public class CatalogProductSet {
   }
 
    /**
-   * Unique IDs for any `CatalogObjects`s to include in this product set. Any number of these catalog objects can be in an order for a pricing rule to apply.  This can be used with `product_ids_all` in a parent `CatalogProductSet` to match groups of products for a bulk discount, such as a discount for an entree and side combo.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.
+   *  Unique IDs for any `CatalogObject` included in this product set. Any number of these catalog objects can be in an order for a pricing rule to apply.  This can be used with `product_ids_all` in a parent `CatalogProductSet` to match groups of products for a bulk discount, such as a discount for an entree and side combo.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.
    * @return productIdsAny
   **/
-  @ApiModelProperty(value = "Unique IDs for any `CatalogObjects`s to include in this product set. Any number of these catalog objects can be in an order for a pricing rule to apply.  This can be used with `product_ids_all` in a parent `CatalogProductSet` to match groups of products for a bulk discount, such as a discount for an entree and side combo.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.")
+  @ApiModelProperty(value = " Unique IDs for any `CatalogObject` included in this product set. Any number of these catalog objects can be in an order for a pricing rule to apply.  This can be used with `product_ids_all` in a parent `CatalogProductSet` to match groups of products for a bulk discount, such as a discount for an entree and side combo.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.")
   public List<String> getProductIdsAny() {
     return productIdsAny;
   }
@@ -101,10 +101,10 @@ public class CatalogProductSet {
   }
 
    /**
-   * Unique IDs for `CatalogObjects` to include in this product set. All objects in this set must be included in an order for a pricing rule to apply.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.
+   * Unique IDs for any `CatalogObject` included in this product set. All objects in this set must be included in an order for a pricing rule to apply.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.
    * @return productIdsAll
   **/
-  @ApiModelProperty(value = "Unique IDs for `CatalogObjects` to include in this product set. All objects in this set must be included in an order for a pricing rule to apply.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.")
+  @ApiModelProperty(value = "Unique IDs for any `CatalogObject` included in this product set. All objects in this set must be included in an order for a pricing rule to apply.  Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.  Max: 500 catalog object IDs.")
   public List<String> getProductIdsAll() {
     return productIdsAll;
   }

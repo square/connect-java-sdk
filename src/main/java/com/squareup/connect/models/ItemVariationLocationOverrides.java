@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location](#type-location).
+ * Price and inventory alerting overrides for a &#x60;CatalogItemVariation&#x60; at a specific &#x60;Location&#x60;.
  */
-@ApiModel(description = "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location](#type-location).")
+@ApiModel(description = "Price and inventory alerting overrides for a `CatalogItemVariation` at a specific `Location`.")
 
 public class ItemVariationLocationOverrides {
   @JsonProperty("location_id")
@@ -51,10 +51,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The ID of the `location`.
+   * The ID of the `Location`.
    * @return locationId
   **/
-  @ApiModelProperty(value = "The ID of the `location`.")
+  @ApiModelProperty(value = "The ID of the `Location`.")
   public String getLocationId() {
     return locationId;
   }
@@ -69,10 +69,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The price of the `CatalogItemVariation](#type-catalogitemvariation) at the given [location`, or blank for variable pricing.
+   * The price of the `CatalogItemVariation` at the given `Location`, or blank for variable pricing.
    * @return priceMoney
   **/
-  @ApiModelProperty(value = "The price of the `CatalogItemVariation](#type-catalogitemvariation) at the given [location`, or blank for variable pricing.")
+  @ApiModelProperty(value = "The price of the `CatalogItemVariation` at the given `Location`, or blank for variable pricing.")
   public Money getPriceMoney() {
     return priceMoney;
   }
@@ -87,10 +87,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * The pricing type (fixed or variable) for the `CatalogItemVariation](#type-catalogitemvariation) at the given [location`. See [CatalogPricingType](#type-catalogpricingtype) for possible values
+   * The pricing type (fixed or variable) for the `CatalogItemVariation` at the given `Location`. See [CatalogPricingType](#type-catalogpricingtype) for possible values
    * @return pricingType
   **/
-  @ApiModelProperty(value = "The pricing type (fixed or variable) for the `CatalogItemVariation](#type-catalogitemvariation) at the given [location`. See [CatalogPricingType](#type-catalogpricingtype) for possible values")
+  @ApiModelProperty(value = "The pricing type (fixed or variable) for the `CatalogItemVariation` at the given `Location`. See [CatalogPricingType](#type-catalogpricingtype) for possible values")
   public String getPricingType() {
     return pricingType;
   }
@@ -105,10 +105,10 @@ public class ItemVariationLocationOverrides {
   }
 
    /**
-   * If `true`, inventory tracking is active for the `CatalogItemVariation](#type-catalogitemvariation) at this [location`.
+   * If `true`, inventory tracking is active for the `CatalogItemVariation` at this `Location`.
    * @return trackInventory
   **/
-  @ApiModelProperty(value = "If `true`, inventory tracking is active for the `CatalogItemVariation](#type-catalogitemvariation) at this [location`.")
+  @ApiModelProperty(value = "If `true`, inventory tracking is active for the `CatalogItemVariation` at this `Location`.")
   public Boolean getTrackInventory() {
     return trackInventory;
   }

@@ -165,10 +165,10 @@ public class V1Discount {
   }
 
    /**
-   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values
+   * The color of the discount's display label in Square Point of Sale, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values
    * @return color
   **/
-  @ApiModelProperty(value = "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values")
+  @ApiModelProperty(value = "The color of the discount's display label in Square Point of Sale, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values")
   public String getColor() {
     return color;
   }

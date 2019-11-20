@@ -49,10 +49,10 @@ public class DeleteCatalogObjectResponse {
   }
 
    /**
-   * The set of `Error`s encountered.
+   * Information on any errors encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of `Error`s encountered.")
+  @ApiModelProperty(value = "Information on any errors encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -72,10 +72,10 @@ public class DeleteCatalogObjectResponse {
   }
 
    /**
-   * The IDs of all `CatalogObject`s deleted by this request. Multiple IDs may be returned when associated objects are also deleted, for example a `CatalogItemVariation` when its parent `CatalogItem` is deleted.
+   * The IDs of all catalog objects deleted by this request. Multiple IDs may be returned when associated objects are also deleted, for example a catalog item variation will be deleted (and its ID included in this field) when its parent catalog item is deleted.
    * @return deletedObjectIds
   **/
-  @ApiModelProperty(value = "The IDs of all `CatalogObject`s deleted by this request. Multiple IDs may be returned when associated objects are also deleted, for example a `CatalogItemVariation` when its parent `CatalogItem` is deleted.")
+  @ApiModelProperty(value = "The IDs of all catalog objects deleted by this request. Multiple IDs may be returned when associated objects are also deleted, for example a catalog item variation will be deleted (and its ID included in this field) when its parent catalog item is deleted.")
   public List<String> getDeletedObjectIds() {
     return deletedObjectIds;
   }
@@ -90,10 +90,10 @@ public class DeleteCatalogObjectResponse {
   }
 
    /**
-   * The database [timestamp](#workingwithdates) of this deletion in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * The database [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) of this deletion in RFC 3339 format, e.g., `2016-09-04T23:59:33.123Z`.
    * @return deletedAt
   **/
-  @ApiModelProperty(value = "The database [timestamp](#workingwithdates) of this deletion in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  @ApiModelProperty(value = "The database [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) of this deletion in RFC 3339 format, e.g., `2016-09-04T23:59:33.123Z`.")
   public String getDeletedAt() {
     return deletedAt;
   }

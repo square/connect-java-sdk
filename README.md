@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.squareup</groupId>
     <artifactId>connect</artifactId>
-    <version>2.20191023.0</version>
+    <version>2.20191120.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -36,7 +36,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.squareup:connect:2.20191023.0"
+compile "com.squareup:connect:2.20191120.0"
 ```
 
 ### Option 3: Build and Install locally
@@ -78,7 +78,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/connect-2.20191023.0.jar
+* target/connect-2.20191120.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -200,6 +200,7 @@ Class | Method | HTTP request | Description
 *LaborApi* | [**updateBreakType**](docs/LaborApi.md#updateBreakType) | **PUT** /v2/labor/break-types/{id} | UpdateBreakType
 *LaborApi* | [**updateShift**](docs/LaborApi.md#updateShift) | **PUT** /v2/labor/shifts/{id} | UpdateShift
 *LaborApi* | [**updateWorkweekConfig**](docs/LaborApi.md#updateWorkweekConfig) | **PUT** /v2/labor/workweek-configs/{id} | UpdateWorkweekConfig
+*LocationsApi* | [**createLocation**](docs/LocationsApi.md#createLocation) | **POST** /v2/locations | CreateLocation
 *LocationsApi* | [**listLocations**](docs/LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
 *LocationsApi* | [**retrieveLocation**](docs/LocationsApi.md#retrieveLocation) | **GET** /v2/locations/{location_id} | RetrieveLocation
 *LocationsApi* | [**updateLocation**](docs/LocationsApi.md#updateLocation) | **PUT** /v2/locations/{location_id} | UpdateLocation
@@ -336,8 +337,10 @@ Class | Method | HTTP request | Description
  - [Card](docs/Card.md)
  - [CardBrand](docs/CardBrand.md)
  - [CardPaymentDetails](docs/CardPaymentDetails.md)
+ - [CashPaymentDetails](docs/CashPaymentDetails.md)
  - [CatalogCategory](docs/CatalogCategory.md)
  - [CatalogDiscount](docs/CatalogDiscount.md)
+ - [CatalogDiscountModifyTaxBasis](docs/CatalogDiscountModifyTaxBasis.md)
  - [CatalogDiscountType](docs/CatalogDiscountType.md)
  - [CatalogIdMapping](docs/CatalogIdMapping.md)
  - [CatalogImage](docs/CatalogImage.md)
@@ -364,7 +367,13 @@ Class | Method | HTTP request | Description
  - [CatalogPricingType](docs/CatalogPricingType.md)
  - [CatalogProductSet](docs/CatalogProductSet.md)
  - [CatalogQuery](docs/CatalogQuery.md)
+ - [CatalogQueryCustomAttributeUsage](docs/CatalogQueryCustomAttributeUsage.md)
  - [CatalogQueryExact](docs/CatalogQueryExact.md)
+ - [CatalogQueryFilteredItems](docs/CatalogQueryFilteredItems.md)
+ - [CatalogQueryFilteredItemsCustomAttributeFilter](docs/CatalogQueryFilteredItemsCustomAttributeFilter.md)
+ - [CatalogQueryFilteredItemsCustomAttributeFilterFilterType](docs/CatalogQueryFilteredItemsCustomAttributeFilterFilterType.md)
+ - [CatalogQueryFilteredItemsNullableAttribute](docs/CatalogQueryFilteredItemsNullableAttribute.md)
+ - [CatalogQueryFilteredItemsStockLevel](docs/CatalogQueryFilteredItemsStockLevel.md)
  - [CatalogQueryItemVariationsForItemOptionValues](docs/CatalogQueryItemVariationsForItemOptionValues.md)
  - [CatalogQueryItemsForItemOptions](docs/CatalogQueryItemsForItemOptions.md)
  - [CatalogQueryItemsForModifierList](docs/CatalogQueryItemsForModifierList.md)
@@ -386,12 +395,16 @@ Class | Method | HTTP request | Description
  - [Country](docs/Country.md)
  - [CreateBreakTypeRequest](docs/CreateBreakTypeRequest.md)
  - [CreateBreakTypeResponse](docs/CreateBreakTypeResponse.md)
+ - [CreateCatalogImageRequest](docs/CreateCatalogImageRequest.md)
+ - [CreateCatalogImageResponse](docs/CreateCatalogImageResponse.md)
  - [CreateCheckoutRequest](docs/CreateCheckoutRequest.md)
  - [CreateCheckoutResponse](docs/CreateCheckoutResponse.md)
  - [CreateCustomerCardRequest](docs/CreateCustomerCardRequest.md)
  - [CreateCustomerCardResponse](docs/CreateCustomerCardResponse.md)
  - [CreateCustomerRequest](docs/CreateCustomerRequest.md)
  - [CreateCustomerResponse](docs/CreateCustomerResponse.md)
+ - [CreateLocationRequest](docs/CreateLocationRequest.md)
+ - [CreateLocationResponse](docs/CreateLocationResponse.md)
  - [CreateMobileAuthorizationCodeRequest](docs/CreateMobileAuthorizationCodeRequest.md)
  - [CreateMobileAuthorizationCodeResponse](docs/CreateMobileAuthorizationCodeResponse.md)
  - [CreateOrderRequest](docs/CreateOrderRequest.md)
@@ -437,6 +450,7 @@ Class | Method | HTTP request | Description
  - [ErrorCategory](docs/ErrorCategory.md)
  - [ErrorCode](docs/ErrorCode.md)
  - [ExcludeStrategy](docs/ExcludeStrategy.md)
+ - [ExternalPaymentDetails](docs/ExternalPaymentDetails.md)
  - [GetBreakTypeRequest](docs/GetBreakTypeRequest.md)
  - [GetBreakTypeResponse](docs/GetBreakTypeResponse.md)
  - [GetEmployeeWageRequest](docs/GetEmployeeWageRequest.md)
@@ -794,7 +808,6 @@ Class | Method | HTTP request | Description
  - [V1VariationPricingType](docs/V1VariationPricingType.md)
  - [VoidTransactionRequest](docs/VoidTransactionRequest.md)
  - [VoidTransactionResponse](docs/VoidTransactionResponse.md)
- - [WebhookEvents](docs/WebhookEvents.md)
  - [Weekday](docs/Weekday.md)
  - [WorkweekConfig](docs/WorkweekConfig.md)
 
@@ -815,18 +828,18 @@ Authentication schemes defined for the API:
   - EMPLOYEES_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to employee profile information. For example, to create and modify employee profiles.
   - INVENTORY_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to inventory information. For example, to call the RetrieveInventoryCount endpoint.
   - INVENTORY_WRITE: __HTTP Method__:  &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to inventory information. For example, to call the BatchChangeInventory endpoint.
-  - ITEMS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to product catalog information. For example, to get an  item or a list of items.
+  - ITEMS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to business and location information. For example, to obtain a location ID for subsequent activity.
   - ITEMS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to product catalog information. For example, to modify or add to a product catalog.
   - MERCHANT_PROFILE_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to business and location information. For example, to obtain a location ID for subsequent activity.
   - ORDERS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to order information. For example, to call the BatchRetrieveOrders endpoint.
   - ORDERS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to order information. For example, to call the CreateCheckout endpoint.
   - PAYMENTS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to transaction and refund information. For example, to call the RetrieveTransaction endpoint.
-  - PAYMENTS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to transaction and refunds information. For example, to process payments with the Transactions or Checkout API.
-  - PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Allow third party applications to deduct a portion of each transaction amount. __Required__ to use multiparty transaction functionality with the Transactions API.
-  - PAYMENTS_WRITE_IN_PERSON: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to transaction and refunds information. For example, to process in-person payments.
+  - PAYMENTS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to transaction and refunds information. For example, to process payments with the Payments or Checkout API.
+  - PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Allow third party applications to deduct a portion of each transaction amount. __Required__ to use multiparty transaction functionality with the Payments API.
+  - PAYMENTS_WRITE_IN_PERSON: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to payments and refunds information. For example, to process in-person payments.
   - SETTLEMENTS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to settlement (deposit) information. For example, to call the Connect v1 ListSettlements endpoint.
-  - TIMECARDS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to employee timecard information. For example, to call the Connect v1 ListTimecards endpoint.
-  - TIMECARDS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to employee timecard information. For example, to create and modify timecards.
+  - TIMECARDS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to employee timecard information. For example, to call the Connect v2 SearchShifts endpoint.
+  - TIMECARDS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to employee shift information. For example, to create and modify employee shifts.
   - TIMECARDS_SETTINGS_READ: __HTTP Method__: &#x60;GET&#x60;  Grants read access to employee timecard settings information. For example, to call the GetBreakType endpoint.
   - TIMECARDS_SETTINGS_WRITE: __HTTP Method__: &#x60;POST&#x60;, &#x60;PUT&#x60;, &#x60;DELETE&#x60;  Grants write access to employee timecard settings information. For example, to call the UpdateBreakType endpoint.
 

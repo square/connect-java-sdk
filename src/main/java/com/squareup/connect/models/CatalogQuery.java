@@ -30,9 +30,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest). Only one query field may be present.  Where an attribute name is required, it should be specified as the name of any field marked \&quot;searchable\&quot; from the structured data types for the desired result object type(s) ([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation), [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax), [CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist), [CatalogModifier](#type-catalogmodifier)).  For example, a query that should return Items may specify attribute names from any of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely &#x60;\&quot;name\&quot;&#x60;, &#x60;\&quot;description\&quot;&#x60;, and &#x60;\&quot;abbreviation\&quot;&#x60;.
+ * A query to be applied to a &#x60;SearchCatalogObjectsRequest&#x60;. Only one query field may be present.  Where an attribute name is required, it should be specified as the name of any field marked \&quot;searchable\&quot; from the structured data types for the desired result object type(s) (&#x60;CatalogItem&#x60;, &#x60;CatalogItemVariation&#x60;, &#x60;CatalogCategory&#x60;, &#x60;CatalogTax&#x60;, &#x60;CatalogDiscount&#x60;, &#x60;CatalogModifierList&#x60;, &#x60;CatalogModifier&#x60;).  For example, a query that should return Items may specify attribute names from any of the searchable fields of the &#x60;CatalogItem&#x60; data type, namely &#x60;\&quot;name\&quot;&#x60;, &#x60;\&quot;description\&quot;&#x60;, and &#x60;\&quot;abbreviation\&quot;&#x60;.
  */
-@ApiModel(description = "A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest). Only one query field may be present.  Where an attribute name is required, it should be specified as the name of any field marked \"searchable\" from the structured data types for the desired result object type(s) ([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation), [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax), [CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist), [CatalogModifier](#type-catalogmodifier)).  For example, a query that should return Items may specify attribute names from any of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely `\"name\"`, `\"description\"`, and `\"abbreviation\"`.")
+@ApiModel(description = "A query to be applied to a `SearchCatalogObjectsRequest`. Only one query field may be present.  Where an attribute name is required, it should be specified as the name of any field marked \"searchable\" from the structured data types for the desired result object type(s) (`CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`, `CatalogDiscount`, `CatalogModifierList`, `CatalogModifier`).  For example, a query that should return Items may specify attribute names from any of the searchable fields of the `CatalogItem` data type, namely `\"name\"`, `\"description\"`, and `\"abbreviation\"`.")
 
 public class CatalogQuery {
   @JsonProperty("sorted_attribute_query")
@@ -158,10 +158,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns all `CatalogItem](#type-catalogitem)s that have any of the given [CatalogTax`es enabled.
+   * A query that returns all `CatalogItem`s that have any of the given `CatalogTax`es enabled.
    * @return itemsForTaxQuery
   **/
-  @ApiModelProperty(value = "A query that returns all `CatalogItem](#type-catalogitem)s that have any of the given [CatalogTax`es enabled.")
+  @ApiModelProperty(value = "A query that returns all `CatalogItem`s that have any of the given `CatalogTax`es enabled.")
   public CatalogQueryItemsForTax getItemsForTaxQuery() {
     return itemsForTaxQuery;
   }
@@ -176,10 +176,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns all `CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList`s enabled.
+   * A query that returns all `CatalogItem`s that have any of the given `CatalogModifierList`s enabled.
    * @return itemsForModifierListQuery
   **/
-  @ApiModelProperty(value = "A query that returns all `CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList`s enabled.")
+  @ApiModelProperty(value = "A query that returns all `CatalogItem`s that have any of the given `CatalogModifierList`s enabled.")
   public CatalogQueryItemsForModifierList getItemsForModifierListQuery() {
     return itemsForModifierListQuery;
   }
@@ -194,10 +194,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns all `CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption`s.
+   * A query that returns all `CatalogItem`s that have all of the given `CatalogItemOption`s.
    * @return itemsForItemOptionsQuery
   **/
-  @ApiModelProperty(value = "A query that returns all `CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption`s.")
+  @ApiModelProperty(value = "A query that returns all `CatalogItem`s that have all of the given `CatalogItemOption`s.")
   public CatalogQueryItemsForItemOptions getItemsForItemOptionsQuery() {
     return itemsForItemOptionsQuery;
   }
@@ -212,10 +212,10 @@ public class CatalogQuery {
   }
 
    /**
-   * A query that returns all `CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption` values.
+   * A query that returns all `CatalogItemVariation`s that have all of the given `CatalogItemOption` values.
    * @return itemVariationsForItemOptionValuesQuery
   **/
-  @ApiModelProperty(value = "A query that returns all `CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption` values.")
+  @ApiModelProperty(value = "A query that returns all `CatalogItemVariation`s that have all of the given `CatalogItemOption` values.")
   public CatalogQueryItemVariationsForItemOptionValues getItemVariationsForItemOptionValuesQuery() {
     return itemVariationsForItemOptionValuesQuery;
   }

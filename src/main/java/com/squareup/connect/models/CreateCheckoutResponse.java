@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the CreateCheckout endpoint.
+ * Defines the fields that are included in the response body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the CreateCheckout endpoint.")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the [CreateCheckout](#endpoint-createcheckout) endpoint.")
 
 public class CreateCheckoutResponse {
   @JsonProperty("checkout")

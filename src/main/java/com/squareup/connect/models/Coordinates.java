@@ -39,10 +39,10 @@ public class Coordinates {
   }
 
    /**
-   * The coordinate's latitude expressed in degrees.
+   * The latitude of the coordinate expressed in degrees.
    * @return latitude
   **/
-  @ApiModelProperty(value = "The coordinate's latitude expressed in degrees.")
+  @ApiModelProperty(value = "The latitude of the coordinate expressed in degrees.")
   public BigDecimal getLatitude() {
     return latitude;
   }
@@ -57,10 +57,10 @@ public class Coordinates {
   }
 
    /**
-   * The coordinate's longitude expressed in degrees.
+   * The longitude of the coordinate expressed in degrees.
    * @return longitude
   **/
-  @ApiModelProperty(value = "The coordinate's longitude expressed in degrees.")
+  @ApiModelProperty(value = "The longitude of the coordinate expressed in degrees.")
   public BigDecimal getLongitude() {
     return longitude;
   }

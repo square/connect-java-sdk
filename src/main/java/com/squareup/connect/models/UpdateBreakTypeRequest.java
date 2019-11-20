@@ -39,7 +39,7 @@ public class UpdateBreakTypeRequest {
    * The updated `BreakType`.
    * @return breakType
   **/
-  @ApiModelProperty(value = "The updated `BreakType`.")
+  @ApiModelProperty(required = true, value = "The updated `BreakType`.")
   public BreakType getBreakType() {
     return breakType;
   }

@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the ListAdditionalRecipientReceivableRefunds endpoint.  One of &#x60;errors&#x60; or &#x60;additional_recipient_receivable_refunds&#x60; is present in a given response (never both).
+ * Defines the fields that are included in the response body of a request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.  One of &#x60;errors&#x60; or &#x60;additional_recipient_receivable_refunds&#x60; is present in a given response (never both).
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the ListAdditionalRecipientReceivableRefunds endpoint.  One of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).")
+@ApiModel(description = "Defines the fields that are included in the response body of a request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.  One of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).")
 
 public class ListAdditionalRecipientReceivableRefundsResponse {
   @JsonProperty("errors")
@@ -91,10 +91,10 @@ public class ListAdditionalRecipientReceivableRefundsResponse {
   }
 
    /**
-   * A pagination cursor for retrieving the next set of results, if any remain. Provide this value as the `cursor` parameter in a subsequent request to this endpoint.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
+   * A pagination cursor for retrieving the next set of results, if any remain. Provide this value as the `cursor` parameter in a subsequent request to this endpoint.  See [Paginating results](#paginatingresults) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "A pagination cursor for retrieving the next set of results, if any remain. Provide this value as the `cursor` parameter in a subsequent request to this endpoint.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "A pagination cursor for retrieving the next set of results, if any remain. Provide this value as the `cursor` parameter in a subsequent request to this endpoint.  See [Paginating results](#paginatingresults) for more information.")
   public String getCursor() {
     return cursor;
   }

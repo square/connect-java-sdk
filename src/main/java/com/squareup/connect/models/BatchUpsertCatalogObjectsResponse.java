@@ -54,10 +54,10 @@ public class BatchUpsertCatalogObjectsResponse {
   }
 
    /**
-   * The set of `Error`s encountered.
+   * Information on any errors that encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of `Error`s encountered.")
+  @ApiModelProperty(value = "Information on any errors that encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -77,10 +77,10 @@ public class BatchUpsertCatalogObjectsResponse {
   }
 
    /**
-   * The created `CatalogObject`s
+   * The created successfully created CatalogObjects.
    * @return objects
   **/
-  @ApiModelProperty(value = "The created `CatalogObject`s")
+  @ApiModelProperty(value = "The created successfully created CatalogObjects.")
   public List<CatalogObject> getObjects() {
     return objects;
   }
@@ -95,10 +95,10 @@ public class BatchUpsertCatalogObjectsResponse {
   }
 
    /**
-   * The database [timestamp](#workingwithdates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+   * The database [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
    * @return updatedAt
   **/
-  @ApiModelProperty(value = "The database [timestamp](#workingwithdates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
+  @ApiModelProperty(value = "The database [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".")
   public String getUpdatedAt() {
     return updatedAt;
   }
@@ -118,10 +118,10 @@ public class BatchUpsertCatalogObjectsResponse {
   }
 
    /**
-   * The mapping between client and server IDs for this Upsert.
+   * The mapping between client and server IDs for this upsert.
    * @return idMappings
   **/
-  @ApiModelProperty(value = "The mapping between client and server IDs for this Upsert.")
+  @ApiModelProperty(value = "The mapping between client and server IDs for this upsert.")
   public List<CatalogIdMapping> getIdMappings() {
     return idMappings;
   }

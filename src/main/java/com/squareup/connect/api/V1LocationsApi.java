@@ -37,10 +37,11 @@ public class V1LocationsApi {
 
   /**
    * ListLocations
-   * Provides details for a business&#39;s locations, including their IDs.
+   * Provides details for all business locations associated with a Square account, including the Square-assigned object ID for the location.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-locations)  ---
    * @return List&lt;V1Merchant&gt;
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public List<V1Merchant> listLocations() throws ApiException {
     Object localVarPostBody = null;
     
@@ -51,7 +52,7 @@ public class V1LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -74,7 +75,7 @@ public class V1LocationsApi {
 
   /**
    * ListLocations
-   * Provides details for a business&#39;s locations, including their IDs.
+   * Provides details for all business locations associated with a Square account, including the Square-assigned object ID for the location.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-locations)  ---
    * @return CompleteResponse<List<V1Merchant>>
    * @throws ApiException if fails to make API call
    */
@@ -88,7 +89,7 @@ public class V1LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -109,10 +110,11 @@ public class V1LocationsApi {
   }
   /**
    * RetrieveBusiness
-   * Get a business&#39;s information.
+   * Get the general information for a business.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-locations)  ---
    * @return V1Merchant
    * @throws ApiException if fails to make API call
    */
+  @Deprecated
   public V1Merchant retrieveBusiness() throws ApiException {
     Object localVarPostBody = null;
     
@@ -123,7 +125,7 @@ public class V1LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -146,7 +148,7 @@ public class V1LocationsApi {
 
   /**
    * RetrieveBusiness
-   * Get a business&#39;s information.
+   * Get the general information for a business.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-locations)  ---
    * @return CompleteResponse<V1Merchant>
    * @throws ApiException if fails to make API call
    */
@@ -160,7 +162,7 @@ public class V1LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     

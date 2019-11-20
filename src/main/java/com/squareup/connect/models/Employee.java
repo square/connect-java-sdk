@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An employee created in the **Square Dashboard** account of a business.  Used by the Labor API.
+ * An employee object that is used by the external API.
  */
-@ApiModel(description = "An employee created in the **Square Dashboard** account of a business.  Used by the Labor API.")
+@ApiModel(description = "An employee object that is used by the external API.")
 
 public class Employee {
   @JsonProperty("id")
@@ -61,10 +61,10 @@ public class Employee {
   }
 
    /**
-   * UUID for this `Employee`.
+   * UUID for this object.
    * @return id
   **/
-  @ApiModelProperty(value = "UUID for this `Employee`.")
+  @ApiModelProperty(value = "UUID for this object.")
   public String getId() {
     return id;
   }
@@ -79,10 +79,10 @@ public class Employee {
   }
 
    /**
-   * Given (first) name of the employee.
+   * The employee's first name.
    * @return firstName
   **/
-  @ApiModelProperty(value = "Given (first) name of the employee.")
+  @ApiModelProperty(value = "The employee's first name.")
   public String getFirstName() {
     return firstName;
   }
@@ -97,10 +97,10 @@ public class Employee {
   }
 
    /**
-   * Family (last) name of the employee
+   * The employee's last name.
    * @return lastName
   **/
-  @ApiModelProperty(value = "Family (last) name of the employee")
+  @ApiModelProperty(value = "The employee's last name.")
   public String getLastName() {
     return lastName;
   }
@@ -115,10 +115,10 @@ public class Employee {
   }
 
    /**
-   * Email of the employee
+   * The employee's email address
    * @return email
   **/
-  @ApiModelProperty(value = "Email of the employee")
+  @ApiModelProperty(value = "The employee's email address")
   public String getEmail() {
     return email;
   }
@@ -133,10 +133,10 @@ public class Employee {
   }
 
    /**
-   * Phone number of the employee in E.164 format, i.e. \"+12125554250\"
+   * The employee's phone number in E.164 format, i.e. \"+12125554250\"
    * @return phoneNumber
   **/
-  @ApiModelProperty(value = "Phone number of the employee in E.164 format, i.e. \"+12125554250\"")
+  @ApiModelProperty(value = "The employee's phone number in E.164 format, i.e. \"+12125554250\"")
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -156,10 +156,10 @@ public class Employee {
   }
 
    /**
-   * A list of location IDs where this employee has access.
+   * A list of location IDs where this employee has access to.
    * @return locationIds
   **/
-  @ApiModelProperty(value = "A list of location IDs where this employee has access.")
+  @ApiModelProperty(value = "A list of location IDs where this employee has access to.")
   public List<String> getLocationIds() {
     return locationIds;
   }
@@ -174,10 +174,10 @@ public class Employee {
   }
 
    /**
-   * Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
+   * Specifies the status of the employees being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values")
+  @ApiModelProperty(value = "Specifies the status of the employees being fetched. See [EmployeeStatus](#type-employeestatus) for possible values")
   public String getStatus() {
     return status;
   }

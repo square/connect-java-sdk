@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the parameters that can be included in the body of a request to the RegisterDomain endpoint.
+ * Defines the parameters that can be included in the body of a request to the __RegisterDomain__ endpoint.
  */
-@ApiModel(description = "Defines the parameters that can be included in the body of a request to the RegisterDomain endpoint.")
+@ApiModel(description = "Defines the parameters that can be included in the body of a request to the __RegisterDomain__ endpoint.")
 
 public class RegisterDomainRequest {
   @JsonProperty("domain_name")

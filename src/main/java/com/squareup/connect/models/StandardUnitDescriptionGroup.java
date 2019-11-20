@@ -46,10 +46,10 @@ public class StandardUnitDescriptionGroup {
   }
 
    /**
-   * List of measurement units in this description group.
+   * List of standard (non-custom) measurement units in this description group.
    * @return standardUnitDescriptions
   **/
-  @ApiModelProperty(value = "List of measurement units in this description group.")
+  @ApiModelProperty(value = "List of standard (non-custom) measurement units in this description group.")
   public List<StandardUnitDescription> getStandardUnitDescriptions() {
     return standardUnitDescriptions;
   }

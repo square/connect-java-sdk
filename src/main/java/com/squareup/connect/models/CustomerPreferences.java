@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a particular customer&#39;s preferences.
+ * Represents communication preferences for the customer profile.
  */
-@ApiModel(description = "Represents a particular customer's preferences.")
+@ApiModel(description = "Represents communication preferences for the customer profile.")
 
 public class CustomerPreferences {
   @JsonProperty("email_unsubscribed")

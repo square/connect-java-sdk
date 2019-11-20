@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents one of a business&#39;s locations.
+ * 
  */
-@ApiModel(description = "Represents one of a business's locations.")
+@ApiModel(description = "")
 
 public class Location {
   @JsonProperty("id")
@@ -130,10 +130,10 @@ public class Location {
   }
 
    /**
-   * The location's name. Location names are set by the account owner and displayed in the dashboard as the location's nickname
+   * The name of the location. This information appears in the dashboard as the nickname.
    * @return name
   **/
-  @ApiModelProperty(value = "The location's name. Location names are set by the account owner and displayed in the dashboard as the location's nickname")
+  @ApiModelProperty(value = "The name of the location. This information appears in the dashboard as the nickname.")
   public String getName() {
     return name;
   }
@@ -148,10 +148,10 @@ public class Location {
   }
 
    /**
-   * The location's physical address.
+   * The physical address of the location.
    * @return address
   **/
-  @ApiModelProperty(value = "The location's physical address.")
+  @ApiModelProperty(value = "The physical address of the location.")
   public Address getAddress() {
     return address;
   }
@@ -166,10 +166,10 @@ public class Location {
   }
 
    /**
-   * The [IANA Timezone Database](https://www.iana.org/time-zones) identifier for the location's timezone.
+   * The [IANA Timezone](https://www.iana.org/time-zones) identifier for the timezone of the location.
    * @return timezone
   **/
-  @ApiModelProperty(value = "The [IANA Timezone Database](https://www.iana.org/time-zones) identifier for the location's timezone.")
+  @ApiModelProperty(value = "The [IANA Timezone](https://www.iana.org/time-zones) identifier for the timezone of the location.")
   public String getTimezone() {
     return timezone;
   }
@@ -207,10 +207,10 @@ public class Location {
   }
 
    /**
-   * The location's status See [LocationStatus](#type-locationstatus) for possible values
+   * The status of the location, either active or inactive. See [LocationStatus](#type-locationstatus) for possible values
    * @return status
   **/
-  @ApiModelProperty(value = "The location's status See [LocationStatus](#type-locationstatus) for possible values")
+  @ApiModelProperty(value = "The status of the location, either active or inactive. See [LocationStatus](#type-locationstatus) for possible values")
   public String getStatus() {
     return status;
   }
@@ -279,10 +279,10 @@ public class Location {
   }
 
    /**
-   * The language associated with the location in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).
+   * The language associated with the location, in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).
    * @return languageCode
   **/
-  @ApiModelProperty(value = "The language associated with the location in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).")
+  @ApiModelProperty(value = "The language associated with the location, in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).")
   public String getLanguageCode() {
     return languageCode;
   }
@@ -297,10 +297,10 @@ public class Location {
   }
 
    /**
-   * The currency used for all transactions at this location, in ISO 4217 format.  See `Currency` for possible values. See [Currency](#type-currency) for possible values
+   * The currency used for all transactions at this location, in ISO 4217 format. See `Currency` for possible values. See [Currency](#type-currency) for possible values
    * @return currency
   **/
-  @ApiModelProperty(value = "The currency used for all transactions at this location, in ISO 4217 format.  See `Currency` for possible values. See [Currency](#type-currency) for possible values")
+  @ApiModelProperty(value = "The currency used for all transactions at this location, in ISO 4217 format. See `Currency` for possible values. See [Currency](#type-currency) for possible values")
   public String getCurrency() {
     return currency;
   }
@@ -315,10 +315,10 @@ public class Location {
   }
 
    /**
-   * The location's phone_number.
+   * The phone number of the location in human readable format.
    * @return phoneNumber
   **/
-  @ApiModelProperty(value = "The location's phone_number.")
+  @ApiModelProperty(value = "The phone number of the location in human readable format.")
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -333,10 +333,10 @@ public class Location {
   }
 
    /**
-   * The location's business_name which is shown to its customers. For example, this is the name printed on its customer's receipts.
+   * The business name of the location This is the name visible to the customers of the location. For example, this name appears on customer receipts.
    * @return businessName
   **/
-  @ApiModelProperty(value = "The location's business_name which is shown to its customers. For example, this is the name printed on its customer's receipts.")
+  @ApiModelProperty(value = "The business name of the location This is the name visible to the customers of the location. For example, this name appears on customer receipts.")
   public String getBusinessName() {
     return businessName;
   }
@@ -351,10 +351,10 @@ public class Location {
   }
 
    /**
-   * The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space. See [LocationType](#type-locationtype) for possible values
+   * The type of the location, either physical or mobile. See [LocationType](#type-locationtype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space. See [LocationType](#type-locationtype) for possible values")
+  @ApiModelProperty(value = "The type of the location, either physical or mobile. See [LocationType](#type-locationtype) for possible values")
   public String getType() {
     return type;
   }
@@ -369,10 +369,10 @@ public class Location {
   }
 
    /**
-   * The location's website, as set by the account owner in the Square dashboard.  Default: none; only exists if explicitly set.
+   * The website URL of the location.
    * @return websiteUrl
   **/
-  @ApiModelProperty(value = "The location's website, as set by the account owner in the Square dashboard.  Default: none; only exists if explicitly set.")
+  @ApiModelProperty(value = "The website URL of the location.")
   public String getWebsiteUrl() {
     return websiteUrl;
   }
@@ -387,10 +387,10 @@ public class Location {
   }
 
    /**
-   *   The hours of operation for a business location.  Default: none; only exists if explicitly set.
+   *  Represents the hours of operation for the location.
    * @return businessHours
   **/
-  @ApiModelProperty(value = "  The hours of operation for a business location.  Default: none; only exists if explicitly set.")
+  @ApiModelProperty(value = " Represents the hours of operation for the location.")
   public BusinessHours getBusinessHours() {
     return businessHours;
   }
@@ -405,10 +405,10 @@ public class Location {
   }
 
    /**
-   * The email of the location.
+   * The email of the location. This email is visible to the customers of the location. For example, the email appears on customer receipts.
    * @return businessEmail
   **/
-  @ApiModelProperty(value = "The email of the location.")
+  @ApiModelProperty(value = "The email of the location. This email is visible to the customers of the location. For example, the email appears on customer receipts.")
   public String getBusinessEmail() {
     return businessEmail;
   }
@@ -423,10 +423,10 @@ public class Location {
   }
 
    /**
-   * The business description of the location.
+   * The description of the location.
    * @return description
   **/
-  @ApiModelProperty(value = "The business description of the location.")
+  @ApiModelProperty(value = "The description of the location.")
   public String getDescription() {
     return description;
   }
@@ -513,10 +513,10 @@ public class Location {
   }
 
    /**
-   * The logo image URL of the location.
+   * The URL of the logo image for the location.
    * @return logoUrl
   **/
-  @ApiModelProperty(value = "The logo image URL of the location.")
+  @ApiModelProperty(value = "The URL of the logo image for the location.")
   public String getLogoUrl() {
     return logoUrl;
   }
@@ -531,10 +531,10 @@ public class Location {
   }
 
    /**
-   * The Point of Sale background image URL of the location.
+   * The URL of the Point of Sale background image for the location.
    * @return posBackgroundUrl
   **/
-  @ApiModelProperty(value = "The Point of Sale background image URL of the location.")
+  @ApiModelProperty(value = "The URL of the Point of Sale background image for the location.")
   public String getPosBackgroundUrl() {
     return posBackgroundUrl;
   }

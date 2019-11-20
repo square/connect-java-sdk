@@ -60,10 +60,10 @@ public class StandardUnitDescription {
   }
 
    /**
-   * Display name of the measurement unit. For example, 'Pound'.
+   * UI display name of the measurement unit. For example, 'Pound'.
    * @return name
   **/
-  @ApiModelProperty(value = "Display name of the measurement unit. For example, 'Pound'.")
+  @ApiModelProperty(value = "UI display name of the measurement unit. For example, 'Pound'.")
   public String getName() {
     return name;
   }
@@ -78,10 +78,10 @@ public class StandardUnitDescription {
   }
 
    /**
-   * Abbreviation for the measurement unit. For example, 'lb'.
+   * UI display abbreviation for the measurement unit. For example, 'lb'.
    * @return abbreviation
   **/
-  @ApiModelProperty(value = "Abbreviation for the measurement unit. For example, 'lb'.")
+  @ApiModelProperty(value = "UI display abbreviation for the measurement unit. For example, 'lb'.")
   public String getAbbreviation() {
     return abbreviation;
   }

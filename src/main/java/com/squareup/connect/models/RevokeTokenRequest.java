@@ -41,10 +41,10 @@ public class RevokeTokenRequest {
   }
 
    /**
-   * Your application's ID, available from the [application dashboard](https://connect.squareup.com/apps).
+   * The Square issued ID for your application, available from the [application dashboard](https://connect.squareup.com/apps).
    * @return clientId
   **/
-  @ApiModelProperty(value = "Your application's ID, available from the [application dashboard](https://connect.squareup.com/apps).")
+  @ApiModelProperty(value = "The Square issued ID for your application, available from the [application dashboard](https://connect.squareup.com/apps).")
   public String getClientId() {
     return clientId;
   }

@@ -48,11 +48,12 @@ Method | HTTP request | Description
 
 <a name="adjustInventory"></a>
 # **adjustInventory**
+**Note: This endpoint is deprecated.**
 > V1InventoryEntry adjustInventory(locationId, variationId, body)
 
 AdjustInventory
 
-Adjusts an item variation&#39;s current available inventory.
+Adjusts the current available inventory of an item variation.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -105,11 +106,12 @@ Name | Type | Description  | Notes
 
 <a name="applyFee"></a>
 # **applyFee**
+**Note: This endpoint is deprecated.**
 > V1Item applyFee(locationId, itemId, feeId)
 
 ApplyFee
 
-Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+Associates a fee with an item so the fee is automatically applied to the item in Square Point of Sale.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -162,11 +164,12 @@ Name | Type | Description  | Notes
 
 <a name="applyModifierList"></a>
 # **applyModifierList**
+**Note: This endpoint is deprecated.**
 > V1Item applyModifierList(locationId, modifierListId, itemId)
 
 ApplyModifierList
 
-Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+Associates a modifier list with an item so the associated modifier options can be applied to the item.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -219,11 +222,12 @@ Name | Type | Description  | Notes
 
 <a name="createCategory"></a>
 # **createCategory**
+**Note: This endpoint is deprecated.**
 > V1Category createCategory(locationId, body)
 
 CreateCategory
 
-Creates an item category.
+Creates an item category.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -274,11 +278,12 @@ Name | Type | Description  | Notes
 
 <a name="createDiscount"></a>
 # **createDiscount**
+**Note: This endpoint is deprecated.**
 > V1Discount createDiscount(locationId, body)
 
 CreateDiscount
 
-Creates a discount.
+Creates a discount.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -329,11 +334,12 @@ Name | Type | Description  | Notes
 
 <a name="createFee"></a>
 # **createFee**
+**Note: This endpoint is deprecated.**
 > V1Fee createFee(locationId, body)
 
 CreateFee
 
-Creates a fee (tax).
+Creates a fee (tax).  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -384,11 +390,12 @@ Name | Type | Description  | Notes
 
 <a name="createItem"></a>
 # **createItem**
+**Note: This endpoint is deprecated.**
 > V1Item createItem(locationId, body)
 
 CreateItem
 
-Creates an item and at least one variation for it. Item-related entities include fields you can use to associate them with entities in a non-Square system.  When you create an item-related entity, you can optionally specify its &#x60;id&#x60;. This value must be unique among all IDs ever specified for the account, including those specified by other applications. You can never reuse an entity ID. If you do not specify an ID, Square generates one for the entity.  Item variations have a &#x60;user_data&#x60; string that lets you associate arbitrary metadata with the variation. The string cannot exceed 255 characters.
+Creates an item and at least one variation for it.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---   Item-related entities include fields you can use to associate them with entities in a non-Square system.  When you create an item-related entity, you can optionally specify &#x60;id&#x60;. This value must be unique among all IDs ever specified for the account, including those specified by other applications. You can never reuse an entity ID. If you do not specify an ID, Square generates one for the entity.  Item variations have a &#x60;user_data&#x60; string that lets you associate arbitrary metadata with the variation. The string cannot exceed 255 characters.
 
 ### Example
 ```java
@@ -439,11 +446,12 @@ Name | Type | Description  | Notes
 
 <a name="createModifierList"></a>
 # **createModifierList**
+**Note: This endpoint is deprecated.**
 > V1ModifierList createModifierList(locationId, body)
 
 CreateModifierList
 
-Creates an item modifier list and at least one modifier option for it.
+Creates an item modifier list and at least 1 modifier option for it.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -494,11 +502,12 @@ Name | Type | Description  | Notes
 
 <a name="createModifierOption"></a>
 # **createModifierOption**
+**Note: This endpoint is deprecated.**
 > V1ModifierOption createModifierOption(locationId, modifierListId, body)
 
 CreateModifierOption
 
-Creates an item modifier option and adds it to a modifier list.
+Creates an item modifier option and adds it to a modifier list.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -551,11 +560,12 @@ Name | Type | Description  | Notes
 
 <a name="createPage"></a>
 # **createPage**
+**Note: This endpoint is deprecated.**
 > V1Page createPage(locationId, body)
 
 CreatePage
 
-Creates a Favorites page in Square Register.
+Creates a Favorites page in Square Point of Sale.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -606,11 +616,12 @@ Name | Type | Description  | Notes
 
 <a name="createVariation"></a>
 # **createVariation**
+**Note: This endpoint is deprecated.**
 > V1Variation createVariation(locationId, itemId, body)
 
 CreateVariation
 
-Creates an item variation for an existing item.
+Creates an item variation for an existing item.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -663,11 +674,12 @@ Name | Type | Description  | Notes
 
 <a name="deleteCategory"></a>
 # **deleteCategory**
+**Note: This endpoint is deprecated.**
 > V1Category deleteCategory(locationId, categoryId)
 
 DeleteCategory
 
-Deletes an existing item category. *Note**: DeleteCategory returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteCategoryRequest&#x60; object as documented below.
+Deletes an existing item category.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeleteCategory__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteCategoryRequest&#x60; object as documented below.
 
 ### Example
 ```java
@@ -718,11 +730,12 @@ Name | Type | Description  | Notes
 
 <a name="deleteDiscount"></a>
 # **deleteDiscount**
+**Note: This endpoint is deprecated.**
 > V1Discount deleteDiscount(locationId, discountId)
 
 DeleteDiscount
 
-Deletes an existing discount. *Note**: DeleteDiscount returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteDiscountRequest&#x60; object as documented below.
+Deletes an existing discount.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeleteDiscount__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteDiscountRequest&#x60; object as documented below.
 
 ### Example
 ```java
@@ -773,11 +786,12 @@ Name | Type | Description  | Notes
 
 <a name="deleteFee"></a>
 # **deleteFee**
+**Note: This endpoint is deprecated.**
 > V1Fee deleteFee(locationId, feeId)
 
 DeleteFee
 
-Deletes an existing fee (tax). *Note**: DeleteFee returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteFeeRequest&#x60; object as documented below.
+Deletes an existing fee (tax).  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeleteFee__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteFeeRequest&#x60; object as documented below.
 
 ### Example
 ```java
@@ -828,11 +842,12 @@ Name | Type | Description  | Notes
 
 <a name="deleteItem"></a>
 # **deleteItem**
+**Note: This endpoint is deprecated.**
 > V1Item deleteItem(locationId, itemId)
 
 DeleteItem
 
-Deletes an existing item and all item variations associated with it. *Note**: DeleteItem returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteItemRequest&#x60; object as documented below.
+Deletes an existing item and all item variations associated with it.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeleteItem__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteItemRequest&#x60; object as documented below.
 
 ### Example
 ```java
@@ -883,11 +898,12 @@ Name | Type | Description  | Notes
 
 <a name="deleteModifierList"></a>
 # **deleteModifierList**
+**Note: This endpoint is deprecated.**
 > V1ModifierList deleteModifierList(locationId, modifierListId)
 
 DeleteModifierList
 
-Deletes an existing item modifier list and all modifier options associated with it. *Note**: DeleteModifierList returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierListRequest&#x60; object as documented below.
+Deletes an existing item modifier list and all modifier options associated with it.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeleteModifierList__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierListRequest&#x60; object as documented below.
 
 ### Example
 ```java
@@ -938,11 +954,12 @@ Name | Type | Description  | Notes
 
 <a name="deleteModifierOption"></a>
 # **deleteModifierOption**
+**Note: This endpoint is deprecated.**
 > V1ModifierOption deleteModifierOption(locationId, modifierListId, modifierOptionId)
 
 DeleteModifierOption
 
-Deletes an existing item modifier option from a modifier list. *Note**: DeleteModifierOption returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierOptionRequest&#x60; object as documented below.
+Deletes an existing item modifier option from a modifier list.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeleteModifierOption__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierOptionRequest&#x60; object.
 
 ### Example
 ```java
@@ -995,11 +1012,12 @@ Name | Type | Description  | Notes
 
 <a name="deletePage"></a>
 # **deletePage**
+**Note: This endpoint is deprecated.**
 > V1Page deletePage(locationId, pageId)
 
 DeletePage
 
-Deletes an existing Favorites page and all of its cells. *Note**: DeletePage returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageRequest&#x60; object as documented below.
+Deletes an existing Favorites page and all of its cells.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeletePage__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageRequest&#x60; object.
 
 ### Example
 ```java
@@ -1050,11 +1068,12 @@ Name | Type | Description  | Notes
 
 <a name="deletePageCell"></a>
 # **deletePageCell**
+**Note: This endpoint is deprecated.**
 > V1Page deletePageCell(locationId, pageId, row, column)
 
 DeletePageCell
 
-Deletes a cell from a Favorites page in Square Register. *Note**: DeletePageCell returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageCellRequest&#x60; object as documented below.
+Deletes a cell from a Favorites page in Square Point of Sale.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeletePageCell__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageCellRequest&#x60; object as documented below.
 
 ### Example
 ```java
@@ -1109,11 +1128,12 @@ Name | Type | Description  | Notes
 
 <a name="deleteVariation"></a>
 # **deleteVariation**
+**Note: This endpoint is deprecated.**
 > V1Variation deleteVariation(locationId, itemId, variationId)
 
 DeleteVariation
 
-Deletes an existing item variation from an item. *Note**: DeleteVariation returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteVariationRequest&#x60; object as documented below.
+Deletes an existing item variation from an item.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---  __DeleteVariation__ returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteVariationRequest&#x60; object as documented below.
 
 ### Example
 ```java
@@ -1166,11 +1186,12 @@ Name | Type | Description  | Notes
 
 <a name="listCategories"></a>
 # **listCategories**
+**Note: This endpoint is deprecated.**
 > List&lt;V1Category&gt; listCategories(locationId)
 
 ListCategories
 
-Lists all of a location&#39;s item categories.
+Lists all the item categories for a given location.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1219,11 +1240,12 @@ Name | Type | Description  | Notes
 
 <a name="listDiscounts"></a>
 # **listDiscounts**
+**Note: This endpoint is deprecated.**
 > List&lt;V1Discount&gt; listDiscounts(locationId)
 
 ListDiscounts
 
-Lists all of a location&#39;s discounts.
+Lists all the discounts for a given location.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1272,11 +1294,12 @@ Name | Type | Description  | Notes
 
 <a name="listFees"></a>
 # **listFees**
+**Note: This endpoint is deprecated.**
 > List&lt;V1Fee&gt; listFees(locationId)
 
 ListFees
 
-Lists all of a location&#39;s fees (taxes).
+Lists all the fees (taxes) for a given location.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1325,11 +1348,12 @@ Name | Type | Description  | Notes
 
 <a name="listInventory"></a>
 # **listInventory**
+**Note: This endpoint is deprecated.**
 > List&lt;V1InventoryEntry&gt; listInventory(locationId, limit, batchToken)
 
 ListInventory
 
-Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+Provides inventory information for all inventory-enabled item variations.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1382,11 +1406,12 @@ Name | Type | Description  | Notes
 
 <a name="listItems"></a>
 # **listItems**
+**Note: This endpoint is deprecated.**
 > List&lt;V1Item&gt; listItems(locationId, batchToken)
 
 ListItems
 
-Provides summary information for all of a location&#39;s items.
+Provides summary information of all items for a given location.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1437,11 +1462,12 @@ Name | Type | Description  | Notes
 
 <a name="listModifierLists"></a>
 # **listModifierLists**
+**Note: This endpoint is deprecated.**
 > List&lt;V1ModifierList&gt; listModifierLists(locationId)
 
 ListModifierLists
 
-Lists all of a location&#39;s modifier lists.
+Lists all the modifier lists for a given location.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1490,11 +1516,12 @@ Name | Type | Description  | Notes
 
 <a name="listPages"></a>
 # **listPages**
+**Note: This endpoint is deprecated.**
 > List&lt;V1Page&gt; listPages(locationId)
 
 ListPages
 
-Lists all of a location&#39;s Favorites pages in Square Register.
+Lists all Favorites pages (in Square Point of Sale) for a given location.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1543,11 +1570,12 @@ Name | Type | Description  | Notes
 
 <a name="removeFee"></a>
 # **removeFee**
+**Note: This endpoint is deprecated.**
 > V1Item removeFee(locationId, itemId, feeId)
 
 RemoveFee
 
-Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+Removes a fee assocation from an item so the fee is no longer automatically applied to the item in Square Point of Sale.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1600,11 +1628,12 @@ Name | Type | Description  | Notes
 
 <a name="removeModifierList"></a>
 # **removeModifierList**
+**Note: This endpoint is deprecated.**
 > V1Item removeModifierList(locationId, modifierListId, itemId)
 
 RemoveModifierList
 
-Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+Removes a modifier list association from an item so the modifier options from the list can no longer be applied to the item.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1657,11 +1686,12 @@ Name | Type | Description  | Notes
 
 <a name="retrieveItem"></a>
 # **retrieveItem**
+**Note: This endpoint is deprecated.**
 > V1Item retrieveItem(locationId, itemId)
 
 RetrieveItem
 
-Provides the details for a single item, including associated modifier lists and fees.
+Provides the details for a single item, including associated modifier lists and fees.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1712,11 +1742,12 @@ Name | Type | Description  | Notes
 
 <a name="retrieveModifierList"></a>
 # **retrieveModifierList**
+**Note: This endpoint is deprecated.**
 > V1ModifierList retrieveModifierList(locationId, modifierListId)
 
 RetrieveModifierList
 
-Provides the details for a single modifier list.
+Provides the details for a single modifier list.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1767,11 +1798,12 @@ Name | Type | Description  | Notes
 
 <a name="updateCategory"></a>
 # **updateCategory**
+**Note: This endpoint is deprecated.**
 > V1Category updateCategory(locationId, categoryId, body)
 
 UpdateCategory
 
-Modifies the details of an existing item category.
+Modifies the details of an existing item category.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1824,11 +1856,12 @@ Name | Type | Description  | Notes
 
 <a name="updateDiscount"></a>
 # **updateDiscount**
+**Note: This endpoint is deprecated.**
 > V1Discount updateDiscount(locationId, discountId, body)
 
 UpdateDiscount
 
-Modifies the details of an existing discount.
+Modifies the details of an existing discount.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1881,11 +1914,12 @@ Name | Type | Description  | Notes
 
 <a name="updateFee"></a>
 # **updateFee**
+**Note: This endpoint is deprecated.**
 > V1Fee updateFee(locationId, feeId, body)
 
 UpdateFee
 
-Modifies the details of an existing fee (tax).
+Modifies the details of an existing fee (tax).  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1938,11 +1972,12 @@ Name | Type | Description  | Notes
 
 <a name="updateItem"></a>
 # **updateItem**
+**Note: This endpoint is deprecated.**
 > V1Item updateItem(locationId, itemId, body)
 
 UpdateItem
 
-Modifies the core details of an existing item.
+Modifies the core details of an existing item.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -1995,11 +2030,12 @@ Name | Type | Description  | Notes
 
 <a name="updateModifierList"></a>
 # **updateModifierList**
+**Note: This endpoint is deprecated.**
 > V1ModifierList updateModifierList(locationId, modifierListId, body)
 
 UpdateModifierList
 
-Modifies the details of an existing item modifier list.
+Modifies the details of an existing item modifier list.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -2052,11 +2088,12 @@ Name | Type | Description  | Notes
 
 <a name="updateModifierOption"></a>
 # **updateModifierOption**
+**Note: This endpoint is deprecated.**
 > V1ModifierOption updateModifierOption(locationId, modifierListId, modifierOptionId, body)
 
 UpdateModifierOption
 
-Modifies the details of an existing item modifier option.
+Modifies the details of an existing item modifier option.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -2111,11 +2148,12 @@ Name | Type | Description  | Notes
 
 <a name="updatePage"></a>
 # **updatePage**
+**Note: This endpoint is deprecated.**
 > V1Page updatePage(locationId, pageId, body)
 
 UpdatePage
 
-Modifies the details of a Favorites page in Square Register.
+Modifies the details of a Favorites page in Square Point of Sale.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -2168,11 +2206,12 @@ Name | Type | Description  | Notes
 
 <a name="updatePageCell"></a>
 # **updatePageCell**
+**Note: This endpoint is deprecated.**
 > V1Page updatePageCell(locationId, pageId, body)
 
 UpdatePageCell
 
-Modifies a cell of a Favorites page in Square Register.
+Modifies a cell of a Favorites page in Square Point of Sale.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java
@@ -2225,11 +2264,12 @@ Name | Type | Description  | Notes
 
 <a name="updateVariation"></a>
 # **updateVariation**
+**Note: This endpoint is deprecated.**
 > V1Variation updateVariation(locationId, itemId, variationId, body)
 
 UpdateVariation
 
-Modifies the details of an existing item variation.
+Modifies the details of an existing item variation.  ---  - __Deprecation date__: 2019-11-20 - [__Retirement date__](/build-basics/api-lifecycle#deprecated): 2020-11-18 - [Migration guide](/migrate-from-v1/guides/v1-items)  ---
 
 ### Example
 ```java

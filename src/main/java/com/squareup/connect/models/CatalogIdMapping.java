@@ -56,10 +56,10 @@ public class CatalogIdMapping {
   }
 
    /**
-   * The permanent ID for the `CatalogObject` created by the server.
+   * The permanent ID for the CatalogObject created by the server.
    * @return objectId
   **/
-  @ApiModelProperty(value = "The permanent ID for the `CatalogObject` created by the server.")
+  @ApiModelProperty(value = "The permanent ID for the CatalogObject created by the server.")
   public String getObjectId() {
     return objectId;
   }

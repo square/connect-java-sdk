@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **id** | **String** | Unique ID for the payment. |  [optional]
 **createdAt** | **String** | Timestamp of when the payment was created, in RFC 3339 format. |  [optional]
 **updatedAt** | **String** | Timestamp of when the payment was last updated, in RFC 3339 format. |  [optional]
-**amountMoney** | [**Money**](Money.md) | The amount of money processed for this payment, not including &#x60;tip_money&#x60;. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts). |  [optional]
+**amountMoney** | [**Money**](Money.md) | The amount of money processed for this payment, not including &#x60;tip_money&#x60;. Specified in the smallest denomination of the applicable currency. For example,  US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts). |  [optional]
 **tipMoney** | [**Money**](Money.md) | The amount designated as a tip. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. |  [optional]
-**totalMoney** | [**Money**](Money.md) | The total money for the payment, including &#x60;amount_money&#x60; and &#x60;tip_money&#x60;. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. |  [optional]
-**appFeeMoney** | [**Money**](Money.md) | The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.  For more information, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the &#x60;total_money&#x60; value. |  [optional]
+**totalMoney** | [**Money**](Money.md) | The total money for the payment, including &#x60;amount_money&#x60; and &#x60;tip_money&#x60;. Specified in the smallest denomination of the applicable currency.  For example, US dollar amounts are specified in cents. |  [optional]
+**appFeeMoney** | [**Money**](Money.md) | The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.   For more information, see   [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the &#x60;total_money&#x60; value. |  [optional]
 **processingFee** | [**List&lt;ProcessingFee&gt;**](ProcessingFee.md) | Processing fees and fee adjustments assessed by Square on this payment. |  [optional]
 **refundedMoney** | [**Money**](Money.md) | Total amount of the payment refunded to-date. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. |  [optional]
 **status** | **String** | Indicates whether the payment is &#x60;APPROVED&#x60;, &#x60;COMPLETED&#x60;, &#x60;CANCELED&#x60;, or &#x60;FAILED&#x60;. |  [optional]
@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **billingAddress** | [**Address**](Address.md) | The buyer&#39;s billing address |  [optional]
 **shippingAddress** | [**Address**](Address.md) | The buyer&#39;s shipping address |  [optional]
 **note** | **String** | An optional note to include when creating a payment |  [optional]
+**statementDescriptionIdentifier** | **String** | Additional payment information that gets added on the customer&#39;s card statement as part of the statement description.  Note that the statement_description_identifier may get truncated on the statement description to fit the required information including the Square identifier (SQ *) and name of the merchant taking the payment. |  [optional] [beta]
 
 
 

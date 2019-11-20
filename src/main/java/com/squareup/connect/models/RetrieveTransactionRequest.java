@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * Defines the request body fields for calls to the RetrieveTransaction endpoint.
+ * 
  */
-@ApiModel(description = "Defines the request body fields for calls to the RetrieveTransaction endpoint.")
+@ApiModel(description = "")
 
 public class RetrieveTransactionRequest {
 

@@ -152,10 +152,10 @@ public class V1Fee {
   }
 
    /**
-   * If true, the fee applies to custom amounts entered into Square Register that are not associated with a particular item.
+   * If true, the fee applies to custom amounts entered into Square Point of Sale that are not associated with a particular item.
    * @return appliesToCustomAmounts
   **/
-  @ApiModelProperty(value = "If true, the fee applies to custom amounts entered into Square Register that are not associated with a particular item.")
+  @ApiModelProperty(value = "If true, the fee applies to custom amounts entered into Square Point of Sale that are not associated with a particular item.")
   public Boolean getAppliesToCustomAmounts() {
     return appliesToCustomAmounts;
   }

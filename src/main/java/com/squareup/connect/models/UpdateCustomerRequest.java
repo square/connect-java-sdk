@@ -63,10 +63,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * The customer's given (i.e., first) name.
+   * The given (i.e., first) name associated with the customer profile.
    * @return givenName
   **/
-  @ApiModelProperty(value = "The customer's given (i.e., first) name.")
+  @ApiModelProperty(value = "The given (i.e., first) name associated with the customer profile.")
   public String getGivenName() {
     return givenName;
   }
@@ -81,10 +81,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * The customer's family (i.e., last) name.
+   * The family (i.e., last) name associated with the customer profile.
    * @return familyName
   **/
-  @ApiModelProperty(value = "The customer's family (i.e., last) name.")
+  @ApiModelProperty(value = "The family (i.e., last) name associated with the customer profile.")
   public String getFamilyName() {
     return familyName;
   }
@@ -99,10 +99,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * The name of the customer's company.
+   * A business name associated with the customer profile.
    * @return companyName
   **/
-  @ApiModelProperty(value = "The name of the customer's company.")
+  @ApiModelProperty(value = "A business name associated with the customer profile.")
   public String getCompanyName() {
     return companyName;
   }
@@ -117,10 +117,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * A nickname for the customer.
+   * A nickname for the customer profile.
    * @return nickname
   **/
-  @ApiModelProperty(value = "A nickname for the customer.")
+  @ApiModelProperty(value = "A nickname for the customer profile.")
   public String getNickname() {
     return nickname;
   }
@@ -135,10 +135,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * The customer's email address.
+   * The email address associated with the customer profile.
    * @return emailAddress
   **/
-  @ApiModelProperty(value = "The customer's email address.")
+  @ApiModelProperty(value = "The email address associated with the customer profile.")
   public String getEmailAddress() {
     return emailAddress;
   }
@@ -153,10 +153,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * The customer's physical address.
+   * The physical address associated with the customer profile.
    * @return address
   **/
-  @ApiModelProperty(value = "The customer's physical address.")
+  @ApiModelProperty(value = "The physical address associated with the customer profile.")
   public Address getAddress() {
     return address;
   }
@@ -171,10 +171,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * The customer's phone number.
+   * The 11-digit phone number associated with the customer profile.
    * @return phoneNumber
   **/
-  @ApiModelProperty(value = "The customer's phone number.")
+  @ApiModelProperty(value = "The 11-digit phone number associated with the customer profile.")
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -189,10 +189,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * An optional second ID you can set to associate the customer with an entity in another system.
+   * An optional, second ID used to associate the customer profile with an entity in another system.
    * @return referenceId
   **/
-  @ApiModelProperty(value = "An optional second ID you can set to associate the customer with an entity in another system.")
+  @ApiModelProperty(value = "An optional, second ID used to associate the customer profile with an entity in another system.")
   public String getReferenceId() {
     return referenceId;
   }
@@ -207,10 +207,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * An optional note to associate with the customer.
+   * A custom note associated with the customer profile.
    * @return note
   **/
-  @ApiModelProperty(value = "An optional note to associate with the customer.")
+  @ApiModelProperty(value = "A custom note associated with the customer profile.")
   public String getNote() {
     return note;
   }
@@ -225,10 +225,10 @@ public class UpdateCustomerRequest {
   }
 
    /**
-   * The customer birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.
+   * The birthday associated with the customer profile, in RFC-3339 format. Year is optional, timezone and times are not allowed. For example: `0000-09-01T00:00:00-00:00` indicates a birthday on September 1st. `1998-09-01T00:00:00-00:00` indications a birthday on September 1st __1998__.
    * @return birthday
   **/
-  @ApiModelProperty(value = "The customer birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.")
+  @ApiModelProperty(value = "The birthday associated with the customer profile, in RFC-3339 format. Year is optional, timezone and times are not allowed. For example: `0000-09-01T00:00:00-00:00` indicates a birthday on September 1st. `1998-09-01T00:00:00-00:00` indications a birthday on September 1st __1998__.")
   public String getBirthday() {
     return birthday;
   }

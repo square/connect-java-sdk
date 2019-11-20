@@ -38,10 +38,10 @@ public class CustomerSort {
   }
 
    /**
-   * Indicates the information used to sort the results. For example, by creation date.  Default value: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values
+   * Indicates the information used to sort the results. For example, by creation date.  Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values
    * @return field
   **/
-  @ApiModelProperty(value = "Indicates the information used to sort the results. For example, by creation date.  Default value: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values")
+  @ApiModelProperty(value = "Indicates the information used to sort the results. For example, by creation date.  Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values")
   public String getField() {
     return field;
   }
@@ -56,10 +56,10 @@ public class CustomerSort {
   }
 
    /**
-   * Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings.  Default value: `ASC`. See [SortOrder](#type-sortorder) for possible values
+   * Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings.  Default: `ASC`. See [SortOrder](#type-sortorder) for possible values
    * @return order
   **/
-  @ApiModelProperty(value = "Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings.  Default value: `ASC`. See [SortOrder](#type-sortorder) for possible values")
+  @ApiModelProperty(value = "Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings.  Default: `ASC`. See [SortOrder](#type-sortorder) for possible values")
   public String getOrder() {
     return order;
   }

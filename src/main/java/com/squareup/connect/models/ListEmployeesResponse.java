@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that are included in the response body of a request to the ListEmployees endpoint.  One of &#x60;errors&#x60; or &#x60;employees&#x60; is present in a given response (never both).
+ * 
  */
-@ApiModel(description = "Defines the fields that are included in the response body of a request to the ListEmployees endpoint.  One of `errors` or `employees` is present in a given response (never both).")
+@ApiModel(description = "")
 
 public class ListEmployeesResponse {
   @JsonProperty("employees")

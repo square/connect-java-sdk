@@ -213,10 +213,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * Per-`location` price and inventory overrides.
+   * Per-location price and inventory overrides.
    * @return locationOverrides
   **/
-  @ApiModelProperty(value = "Per-`location` price and inventory overrides.")
+  @ApiModelProperty(value = "Per-location price and inventory overrides.")
   public List<ItemVariationLocationOverrides> getLocationOverrides() {
     return locationOverrides;
   }
@@ -285,10 +285,10 @@ public class CatalogItemVariation {
   }
 
    /**
-   * Arbitrary user metadata to associate with the item variation. Cannot exceed 255 characters. Searchable.
+   * Arbitrary user metadata to associate with the item variation. Searchable. This field has max length of 255 Unicode code points.
    * @return userData
   **/
-  @ApiModelProperty(value = "Arbitrary user metadata to associate with the item variation. Cannot exceed 255 characters. Searchable.")
+  @ApiModelProperty(value = "Arbitrary user metadata to associate with the item variation. Searchable. This field has max length of 255 Unicode code points.")
   public String getUserData() {
     return userData;
   }

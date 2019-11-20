@@ -51,10 +51,10 @@ public class UpsertCatalogObjectResponse {
   }
 
    /**
-   * The set of `Error`s encountered.
+   * Information on any errors encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of `Error`s encountered.")
+  @ApiModelProperty(value = "Information on any errors encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -69,10 +69,10 @@ public class UpsertCatalogObjectResponse {
   }
 
    /**
-   * The created `CatalogObject`.
+   * The successfully created or updated CatalogObject.
    * @return catalogObject
   **/
-  @ApiModelProperty(value = "The created `CatalogObject`.")
+  @ApiModelProperty(value = "The successfully created or updated CatalogObject.")
   public CatalogObject getCatalogObject() {
     return catalogObject;
   }
@@ -92,10 +92,10 @@ public class UpsertCatalogObjectResponse {
   }
 
    /**
-   * The mapping between client and server IDs for this Upsert.
+   * The mapping between client and server IDs for this upsert.
    * @return idMappings
   **/
-  @ApiModelProperty(value = "The mapping between client and server IDs for this Upsert.")
+  @ApiModelProperty(value = "The mapping between client and server IDs for this upsert.")
   public List<CatalogIdMapping> getIdMappings() {
     return idMappings;
   }

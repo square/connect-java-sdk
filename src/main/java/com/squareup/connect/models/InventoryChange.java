@@ -24,9 +24,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a single physical count, inventory, adjustment, or transfer that is part of the history of inventory changes for a particular [CatalogObject](#type-catalogobject).
+ * Represents a single physical count, inventory, adjustment, or transfer that is part of the history of inventory changes for a particular &#x60;CatalogObject&#x60;.
  */
-@ApiModel(description = "Represents a single physical count, inventory, adjustment, or transfer that is part of the history of inventory changes for a particular [CatalogObject](#type-catalogobject).")
+@ApiModel(description = "Represents a single physical count, inventory, adjustment, or transfer that is part of the history of inventory changes for a particular `CatalogObject`.")
 
 public class InventoryChange {
   @JsonProperty("type")
@@ -47,10 +47,10 @@ public class InventoryChange {
   }
 
    /**
-   * Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for possible values
+   * Indicates how the inventory change was applied. See `InventoryChangeType` for all possible values. See [InventoryChangeType](#type-inventorychangetype) for possible values
    * @return type
   **/
-  @ApiModelProperty(value = "Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for possible values")
+  @ApiModelProperty(value = "Indicates how the inventory change was applied. See `InventoryChangeType` for all possible values. See [InventoryChangeType](#type-inventorychangetype) for possible values")
   public String getType() {
     return type;
   }

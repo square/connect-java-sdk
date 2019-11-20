@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A group of variations for a [CatalogItem](#type-catalogitem)&#39;s.
+ * A group of variations for a &#x60;CatalogItem&#x60;.
  */
-@ApiModel(description = "A group of variations for a [CatalogItem](#type-catalogitem)'s.")
+@ApiModel(description = "A group of variations for a `CatalogItem`.")
 
 public class CatalogItemOption {
   @JsonProperty("name")
@@ -89,10 +89,10 @@ public class CatalogItemOption {
   }
 
    /**
-   * The item option's human-readable description. Displays for in the Square Point of Sale app for the seller and in the Online Store or on receipts for the buyer.
+   * The item option's human-readable description. Displayed in the Square Point of Sale app for the seller and in the Online Store or on receipts for the buyer.
    * @return description
   **/
-  @ApiModelProperty(value = "The item option's human-readable description. Displays for in the Square Point of Sale app for the seller and in the Online Store or on receipts for the buyer.")
+  @ApiModelProperty(value = "The item option's human-readable description. Displayed in the Square Point of Sale app for the seller and in the Online Store or on receipts for the buyer.")
   public String getDescription() {
     return description;
   }
@@ -130,10 +130,10 @@ public class CatalogItemOption {
   }
 
    /**
-   * A list of `CatalogObject`s containing the `CatalogItemOptionValue`s for this item.
+   * A list of CatalogObjects containing the `CatalogItemOptionValue`s for this item.
    * @return values
   **/
-  @ApiModelProperty(value = "A list of `CatalogObject`s containing the `CatalogItemOptionValue`s for this item.")
+  @ApiModelProperty(value = "A list of CatalogObjects containing the `CatalogItemOptionValue`s for this item.")
   public List<CatalogObject> getValues() {
     return values;
   }

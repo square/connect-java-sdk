@@ -4,10 +4,65 @@ All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createLocation**](LocationsApi.md#createLocation) | **POST** /v2/locations | CreateLocation
 [**listLocations**](LocationsApi.md#listLocations) | **GET** /v2/locations | ListLocations
 [**retrieveLocation**](LocationsApi.md#retrieveLocation) | **GET** /v2/locations/{location_id} | RetrieveLocation
 [**updateLocation**](LocationsApi.md#updateLocation) | **PUT** /v2/locations/{location_id} | UpdateLocation
 
+
+<a name="createLocation"></a>
+# **createLocation**
+**Note: This endpoint is in beta.**
+> CreateLocationResponse createLocation(body)
+
+CreateLocation
+
+Creates a location. For more information about locations, see [Locations API Overview](/locations-api).
+
+### Example
+```java
+// Import classes:
+//import com.squareup.connect.ApiClient;
+//import com.squareup.connect.ApiException;
+//import com.squareup.connect.Configuration;
+//import com.squareup.connect.auth.*;
+//import com.squareup.connect.api.LocationsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+LocationsApi apiInstance = new LocationsApi();
+CreateLocationRequest body = new CreateLocationRequest(); // CreateLocationRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+try {
+    CreateLocationResponse result = apiInstance.createLocation(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LocationsApi#createLocation");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CreateLocationRequest**](CreateLocationRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
+
+### Return type
+
+[**CreateLocationResponse**](CreateLocationResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="listLocations"></a>
 # **listLocations**
@@ -15,7 +70,7 @@ Method | HTTP request | Description
 
 ListLocations
 
-Provides the details for all of a business&#39;s locations.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
+Provides information of all locations of a business.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
 
 ### Example
 ```java
@@ -60,7 +115,6 @@ This endpoint does not need any parameter.
 
 <a name="retrieveLocation"></a>
 # **retrieveLocation**
-**Note: This endpoint is in beta.**
 > RetrieveLocationResponse retrieveLocation(locationId)
 
 RetrieveLocation
@@ -119,7 +173,7 @@ Name | Type | Description  | Notes
 
 UpdateLocation
 
-Updates the &#x60;Location&#x60; specified by the given ID.
+Updates a location.
 
 ### Example
 ```java

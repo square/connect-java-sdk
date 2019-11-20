@@ -39,10 +39,10 @@ public class CatalogModifier {
   }
 
    /**
-   * The modifier's name. Searchable. This field has max length of 255 Unicode code points.
+   * The modifier name. Searchable. This field has max length of 255 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The modifier's name. Searchable. This field has max length of 255 Unicode code points.")
+  @ApiModelProperty(value = "The modifier name. Searchable. This field has max length of 255 Unicode code points.")
   public String getName() {
     return name;
   }
@@ -57,10 +57,10 @@ public class CatalogModifier {
   }
 
    /**
-   * The modifier's price.
+   * The modifier price.
    * @return priceMoney
   **/
-  @ApiModelProperty(value = "The modifier's price.")
+  @ApiModelProperty(value = "The modifier price.")
   public Money getPriceMoney() {
     return priceMoney;
   }

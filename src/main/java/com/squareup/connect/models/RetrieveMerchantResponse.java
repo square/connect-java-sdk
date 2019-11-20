@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The response obeject returned by the [RetrieveMerchant](#endpoint-retrieveMerchant) endpoint.
+ * The response object returned by the [RetrieveMerchant](#endpoint-retrieveMerchant) endpoint.
  */
-@ApiModel(description = "The response obeject returned by the [RetrieveMerchant](#endpoint-retrieveMerchant) endpoint.")
+@ApiModel(description = "The response object returned by the [RetrieveMerchant](#endpoint-retrieveMerchant) endpoint.")
 
 public class RetrieveMerchantResponse {
   @JsonProperty("errors")

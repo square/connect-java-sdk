@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Defines the query parameters that can be included in a request to the ListAdditionalRecipientReceivableRefunds endpoint.
+ * Defines the query parameters that can be included in a request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.
  */
-@ApiModel(description = "Defines the query parameters that can be included in a request to the ListAdditionalRecipientReceivableRefunds endpoint.")
+@ApiModel(description = "Defines the query parameters that can be included in a request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.")
 
 public class ListAdditionalRecipientReceivableRefundsRequest {
   @JsonProperty("begin_time")
@@ -98,10 +98,10 @@ public class ListAdditionalRecipientReceivableRefundsRequest {
   }
 
    /**
-   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
+   * A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.")
   public String getCursor() {
     return cursor;
   }

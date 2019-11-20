@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Retrieve a paged-list of employees for a Square account
+ * 
  */
-@ApiModel(description = "Retrieve a paged-list of employees for a Square account")
+@ApiModel(description = "")
 
 public class ListEmployeesRequest {
   @JsonProperty("location_id")

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ListEmployees
 
-Gets a list of &#x60;Employee&#x60; objects for a business.
+
 
 ### Example
 ```java
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 RetrieveEmployee
 
-Gets an &#x60;Employee&#x60; by Square-assigned employee &#x60;ID&#x60; (UUID)
+
 
 ### Example
 ```java

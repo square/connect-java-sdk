@@ -77,10 +77,10 @@ public class CatalogQuerySortedAttribute {
   }
 
    /**
-   * The desired `SortOrder`. See [SortOrder](#type-sortorder) for possible values
+   * The desired sort order, `\"ASC\"` (ascending) or `\"DESC\"` (descending). See [SortOrder](#type-sortorder) for possible values
    * @return sortOrder
   **/
-  @ApiModelProperty(value = "The desired `SortOrder`. See [SortOrder](#type-sortorder) for possible values")
+  @ApiModelProperty(value = "The desired sort order, `\"ASC\"` (ascending) or `\"DESC\"` (descending). See [SortOrder](#type-sortorder) for possible values")
   public String getSortOrder() {
     return sortOrder;
   }

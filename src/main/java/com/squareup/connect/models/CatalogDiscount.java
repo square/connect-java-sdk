@@ -45,16 +45,19 @@ public class CatalogDiscount {
   @JsonProperty("label_color")
   private String labelColor = null;
 
+  @JsonProperty("modify_tax_basis")
+  private String modifyTaxBasis = null;
+
   public CatalogDiscount name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * The discount's name. Searchable. This field has max length of 255 Unicode code points.
+   * The discount name. Searchable. This field has max length of 255 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The discount's name. Searchable. This field has max length of 255 Unicode code points.")
+  @ApiModelProperty(value = "The discount name. Searchable. This field has max length of 255 Unicode code points.")
   public String getName() {
     return name;
   }
@@ -141,16 +144,34 @@ public class CatalogDiscount {
   }
 
    /**
-   * The color of the discount's display label in the Square Point of Sale app. This must be a valid hex color code.
+   * The color of the discount display label in the Square Point of Sale app. This must be a valid hex color code.
    * @return labelColor
   **/
-  @ApiModelProperty(value = "The color of the discount's display label in the Square Point of Sale app. This must be a valid hex color code.")
+  @ApiModelProperty(value = "The color of the discount display label in the Square Point of Sale app. This must be a valid hex color code.")
   public String getLabelColor() {
     return labelColor;
   }
 
   public void setLabelColor(String labelColor) {
     this.labelColor = labelColor;
+  }
+
+  public CatalogDiscount modifyTaxBasis(String modifyTaxBasis) {
+    this.modifyTaxBasis = modifyTaxBasis;
+    return this;
+  }
+
+   /**
+   * Indicates whether this discount should reduce the price used to calculate tax.  Most discounts should use `MODIFY_TAX_BASIS`. However, in some circumstances taxes must be calculated based on an item's price, ignoring a particular discount. For example, in many US jurisdictions, a manufacturer coupon or instant rebate reduces the price a customer pays but does not reduce the sale price used to calculate how much sales tax is due. In this case, the discount representing that manufacturer coupon should have `DO_NOT_MODIFY_TAX_BASIS` for this field.  If you are unsure whether you need to use this field, consult your tax professional. See [CatalogDiscountModifyTaxBasis](#type-catalogdiscountmodifytaxbasis) for possible values
+   * @return modifyTaxBasis
+  **/
+  @ApiModelProperty(value = "Indicates whether this discount should reduce the price used to calculate tax.  Most discounts should use `MODIFY_TAX_BASIS`. However, in some circumstances taxes must be calculated based on an item's price, ignoring a particular discount. For example, in many US jurisdictions, a manufacturer coupon or instant rebate reduces the price a customer pays but does not reduce the sale price used to calculate how much sales tax is due. In this case, the discount representing that manufacturer coupon should have `DO_NOT_MODIFY_TAX_BASIS` for this field.  If you are unsure whether you need to use this field, consult your tax professional. See [CatalogDiscountModifyTaxBasis](#type-catalogdiscountmodifytaxbasis) for possible values")
+  public String getModifyTaxBasis() {
+    return modifyTaxBasis;
+  }
+
+  public void setModifyTaxBasis(String modifyTaxBasis) {
+    this.modifyTaxBasis = modifyTaxBasis;
   }
 
 
@@ -168,12 +189,13 @@ public class CatalogDiscount {
         Objects.equals(this.percentage, catalogDiscount.percentage) &&
         Objects.equals(this.amountMoney, catalogDiscount.amountMoney) &&
         Objects.equals(this.pinRequired, catalogDiscount.pinRequired) &&
-        Objects.equals(this.labelColor, catalogDiscount.labelColor);
+        Objects.equals(this.labelColor, catalogDiscount.labelColor) &&
+        Objects.equals(this.modifyTaxBasis, catalogDiscount.modifyTaxBasis);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, discountType, percentage, amountMoney, pinRequired, labelColor);
+    return Objects.hash(name, discountType, percentage, amountMoney, pinRequired, labelColor, modifyTaxBasis);
   }
 
 
@@ -188,6 +210,7 @@ public class CatalogDiscount {
     sb.append("    amountMoney: ").append(toIndentedString(amountMoney)).append("\n");
     sb.append("    pinRequired: ").append(toIndentedString(pinRequired)).append("\n");
     sb.append("    labelColor: ").append(toIndentedString(labelColor)).append("\n");
+    sb.append("    modifyTaxBasis: ").append(toIndentedString(modifyTaxBasis)).append("\n");
     sb.append("}");
     return sb.toString();
   }
