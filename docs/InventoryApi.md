@@ -251,7 +251,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 InventoryApi apiInstance = new InventoryApi();
 String catalogObjectId = "catalogObjectId_example"; // String | ID of the `CatalogObject` to retrieve.
 String locationIds = "locationIds_example"; // String | The `Location` IDs to look up as a comma-separated list. An empty list queries all locations.
-String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
+String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information.
 try {
     RetrieveInventoryChangesResponse result = apiInstance.retrieveInventoryChanges(catalogObjectId, locationIds, cursor);
     System.out.println(result);
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalogObjectId** | **String**| ID of the &#x60;CatalogObject&#x60; to retrieve. |
  **locationIds** | **String**| The &#x60;Location&#x60; IDs to look up as a comma-separated list. An empty list queries all locations. | [optional]
- **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. | [optional]
+ **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information. | [optional]
 
 ### Return type
 
@@ -308,7 +308,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 InventoryApi apiInstance = new InventoryApi();
 String catalogObjectId = "catalogObjectId_example"; // String | ID of the `CatalogObject` to retrieve.
 String locationIds = "locationIds_example"; // String | The `Location` IDs to look up as a comma-separated list. An empty list queries all locations.
-String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
+String cursor = "cursor_example"; // String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information.
 try {
     RetrieveInventoryCountResponse result = apiInstance.retrieveInventoryCount(catalogObjectId, locationIds, cursor);
     System.out.println(result);
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalogObjectId** | **String**| ID of the &#x60;CatalogObject&#x60; to retrieve. |
  **locationIds** | **String**| The &#x60;Location&#x60; IDs to look up as a comma-separated list. An empty list queries all locations. | [optional]
- **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. | [optional]
+ **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information. | [optional]
 
 ### Return type
 

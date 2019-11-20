@@ -98,6 +98,9 @@ public class Payment {
   @JsonProperty("note")
   private String note = null;
 
+  @JsonProperty("statement_description_identifier")
+  private String statementDescriptionIdentifier = null;
+
   public Payment id(String id) {
     this.id = id;
     return this;
@@ -158,10 +161,10 @@ public class Payment {
   }
 
    /**
-   * The amount of money processed for this payment, not including `tip_money`. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).
+   * The amount of money processed for this payment, not including `tip_money`. Specified in the smallest denomination of the applicable currency. For example,  US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).
    * @return amountMoney
   **/
-  @ApiModelProperty(value = "The amount of money processed for this payment, not including `tip_money`. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).")
+  @ApiModelProperty(value = "The amount of money processed for this payment, not including `tip_money`. Specified in the smallest denomination of the applicable currency. For example,  US dollar amounts are specified in cents. For more information, see [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).")
   public Money getAmountMoney() {
     return amountMoney;
   }
@@ -194,10 +197,10 @@ public class Payment {
   }
 
    /**
-   * The total money for the payment, including `amount_money` and `tip_money`. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.
+   * The total money for the payment, including `amount_money` and `tip_money`. Specified in the smallest denomination of the applicable currency.  For example, US dollar amounts are specified in cents.
    * @return totalMoney
   **/
-  @ApiModelProperty(value = "The total money for the payment, including `amount_money` and `tip_money`. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.")
+  @ApiModelProperty(value = "The total money for the payment, including `amount_money` and `tip_money`. Specified in the smallest denomination of the applicable currency.  For example, US dollar amounts are specified in cents.")
   public Money getTotalMoney() {
     return totalMoney;
   }
@@ -212,10 +215,10 @@ public class Payment {
   }
 
    /**
-   * The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.  For more information, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the `total_money` value.
+   * The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.   For more information, see   [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the `total_money` value.
    * @return appFeeMoney
   **/
-  @ApiModelProperty(value = "The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.  For more information, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the `total_money` value.")
+  @ApiModelProperty(value = "The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller. Specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents.   For more information, see   [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).  Cannot be more than 90% of the `total_money` value.")
   public Money getAppFeeMoney() {
     return appFeeMoney;
   }
@@ -504,6 +507,25 @@ public class Payment {
     this.note = note;
   }
 
+  public Payment statementDescriptionIdentifier(String statementDescriptionIdentifier) {
+    this.statementDescriptionIdentifier = statementDescriptionIdentifier;
+    return this;
+  }
+
+   /**
+   * Additional payment information that gets added on the customer's card statement as part of the statement description.  Note that the statement_description_identifier may get truncated on the statement description to fit the required information including the Square identifier (SQ *) and name of the merchant taking the payment.
+   * Note: This model is in beta.
+   * @return statementDescriptionIdentifier
+  **/
+  @ApiModelProperty(value = "Additional payment information that gets added on the customer's card statement as part of the statement description.  Note that the statement_description_identifier may get truncated on the statement description to fit the required information including the Square identifier (SQ *) and name of the merchant taking the payment.")
+  public String getStatementDescriptionIdentifier() {
+    return statementDescriptionIdentifier;
+  }
+
+  public void setStatementDescriptionIdentifier(String statementDescriptionIdentifier) {
+    this.statementDescriptionIdentifier = statementDescriptionIdentifier;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -535,12 +557,13 @@ public class Payment {
         Objects.equals(this.buyerEmailAddress, payment.buyerEmailAddress) &&
         Objects.equals(this.billingAddress, payment.billingAddress) &&
         Objects.equals(this.shippingAddress, payment.shippingAddress) &&
-        Objects.equals(this.note, payment.note);
+        Objects.equals(this.note, payment.note) &&
+        Objects.equals(this.statementDescriptionIdentifier, payment.statementDescriptionIdentifier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, amountMoney, tipMoney, totalMoney, appFeeMoney, processingFee, refundedMoney, status, sourceType, cardDetails, locationId, orderId, referenceId, customerId, employeeId, refundIds, buyerEmailAddress, billingAddress, shippingAddress, note);
+    return Objects.hash(id, createdAt, updatedAt, amountMoney, tipMoney, totalMoney, appFeeMoney, processingFee, refundedMoney, status, sourceType, cardDetails, locationId, orderId, referenceId, customerId, employeeId, refundIds, buyerEmailAddress, billingAddress, shippingAddress, note, statementDescriptionIdentifier);
   }
 
 
@@ -571,6 +594,7 @@ public class Payment {
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    statementDescriptionIdentifier: ").append(toIndentedString(statementDescriptionIdentifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }

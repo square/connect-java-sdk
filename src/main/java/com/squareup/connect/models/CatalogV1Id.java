@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * An Items Connect V1 object ID along with its associated [location](#type-location) ID.
+ * An Items Connect V1 object ID along with its associated location ID.
  */
-@ApiModel(description = "An Items Connect V1 object ID along with its associated [location](#type-location) ID.")
+@ApiModel(description = "An Items Connect V1 object ID along with its associated location ID.")
 
 public class CatalogV1Id {
   @JsonProperty("catalog_v1_id")
@@ -56,10 +56,10 @@ public class CatalogV1Id {
   }
 
    /**
-   * The ID of the `location` this Connect V1 ID is associated with.
+   * The ID of the `Location` this Connect V1 ID is associated with.
    * @return locationId
   **/
-  @ApiModelProperty(value = "The ID of the `location` this Connect V1 ID is associated with.")
+  @ApiModelProperty(value = "The ID of the `Location` this Connect V1 ID is associated with.")
   public String getLocationId() {
     return locationId;
   }

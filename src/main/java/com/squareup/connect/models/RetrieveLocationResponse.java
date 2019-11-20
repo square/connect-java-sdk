@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines the fields that the  [RetrieveLocation](#endpoint-retrievelocation) endpoint returns  in a response.
+ * Defines the fields that the [RetrieveLocation](#endpoint-retrievelocation) endpoint returns in a response.
  */
-@ApiModel(description = "Defines the fields that the  [RetrieveLocation](#endpoint-retrievelocation) endpoint returns  in a response.")
+@ApiModel(description = "Defines the fields that the [RetrieveLocation](#endpoint-retrievelocation) endpoint returns in a response.")
 
 public class RetrieveLocationResponse {
   @JsonProperty("errors")

@@ -42,10 +42,10 @@ public class CatalogQueryItemsForTax {
   }
 
    /**
-   * A set of `CatalogTax](#type-catalogtax) IDs to be used to find associated [CatalogItem`s.
+   * A set of `CatalogTax` IDs to be used to find associated `CatalogItem`s.
    * @return taxIds
   **/
-  @ApiModelProperty(required = true, value = "A set of `CatalogTax](#type-catalogtax) IDs to be used to find associated [CatalogItem`s.")
+  @ApiModelProperty(required = true, value = "A set of `CatalogTax` IDs to be used to find associated `CatalogItem`s.")
   public List<String> getTaxIds() {
     return taxIds;
   }

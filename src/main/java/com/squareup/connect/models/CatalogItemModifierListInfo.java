@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Controls the properties of a [CatalogModifierList](#type-catalogmodifierlist) as it applies to this [CatalogItem](#type-catalogitem).
+ * Controls the properties of a &#x60;CatalogModifierList&#x60; as it applies to this &#x60;CatalogItem&#x60;.
  */
-@ApiModel(description = "Controls the properties of a [CatalogModifierList](#type-catalogmodifierlist) as it applies to this [CatalogItem](#type-catalogitem).")
+@ApiModel(description = "Controls the properties of a `CatalogModifierList` as it applies to this `CatalogItem`.")
 
 public class CatalogItemModifierListInfo {
   @JsonProperty("modifier_list_id")
@@ -50,10 +50,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * The ID of the `CatalogModifierList](#type-catalogmodifierlist) controlled by this [CatalogModifierListInfo`.
+   * The ID of the `CatalogModifierList` controlled by this `CatalogModifierListInfo`.
    * @return modifierListId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the `CatalogModifierList](#type-catalogmodifierlist) controlled by this [CatalogModifierListInfo`.")
+  @ApiModelProperty(required = true, value = "The ID of the `CatalogModifierList` controlled by this `CatalogModifierListInfo`.")
   public String getModifierListId() {
     return modifierListId;
   }
@@ -73,10 +73,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * A set of `CatalogModifierOverride](#type-catalogmodifieroverride) objects that override whether a given [CatalogModifier` is enabled by default.
+   * A set of `CatalogModifierOverride` objects that override whether a given `CatalogModifier` is enabled by default.
    * @return modifierOverrides
   **/
-  @ApiModelProperty(value = "A set of `CatalogModifierOverride](#type-catalogmodifieroverride) objects that override whether a given [CatalogModifier` is enabled by default.")
+  @ApiModelProperty(value = "A set of `CatalogModifierOverride` objects that override whether a given `CatalogModifier` is enabled by default.")
   public List<CatalogModifierOverride> getModifierOverrides() {
     return modifierOverrides;
   }
@@ -91,10 +91,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * If zero or larger, the smallest number of `CatalogModifier](#type-catalogmodifier)s that must be selected from this [CatalogModifierList`.
+   * If 0 or larger, the smallest number of `CatalogModifier`s that must be selected from this `CatalogModifierList`.
    * @return minSelectedModifiers
   **/
-  @ApiModelProperty(value = "If zero or larger, the smallest number of `CatalogModifier](#type-catalogmodifier)s that must be selected from this [CatalogModifierList`.")
+  @ApiModelProperty(value = "If 0 or larger, the smallest number of `CatalogModifier`s that must be selected from this `CatalogModifierList`.")
   public Integer getMinSelectedModifiers() {
     return minSelectedModifiers;
   }
@@ -109,10 +109,10 @@ public class CatalogItemModifierListInfo {
   }
 
    /**
-   * If zero or larger, the largest number of `CatalogModifier](#type-catalogmodifier)s that can be selected from this [CatalogModifierList`.
+   * If 0 or larger, the largest number of `CatalogModifier`s that can be selected from this `CatalogModifierList`.
    * @return maxSelectedModifiers
   **/
-  @ApiModelProperty(value = "If zero or larger, the largest number of `CatalogModifier](#type-catalogmodifier)s that can be selected from this [CatalogModifierList`.")
+  @ApiModelProperty(value = "If 0 or larger, the largest number of `CatalogModifier`s that can be selected from this `CatalogModifierList`.")
   public Integer getMaxSelectedModifiers() {
     return maxSelectedModifiers;
   }

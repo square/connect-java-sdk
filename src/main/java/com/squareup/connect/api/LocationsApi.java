@@ -8,6 +8,8 @@ import com.squareup.connect.CompleteResponse;
 
 import javax.ws.rs.core.GenericType;
 
+import com.squareup.connect.models.CreateLocationRequest;
+import com.squareup.connect.models.CreateLocationResponse;
 import com.squareup.connect.models.ListLocationsResponse;
 import com.squareup.connect.models.RetrieveLocationResponse;
 import com.squareup.connect.models.UpdateLocationRequest;
@@ -39,8 +41,93 @@ public class LocationsApi {
   }
 
   /**
+   * CreateLocation
+   * Creates a location. For more information about locations, see [Locations API Overview](/locations-api).
+   * Note: This endpoint is in beta.
+   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @return CreateLocationResponse
+   * @throws ApiException if fails to make API call
+   */
+  public CreateLocationResponse createLocation(CreateLocationRequest body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling createLocation");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/locations";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<CreateLocationResponse> localVarReturnType = new GenericType<CreateLocationResponse>() {};
+    CompleteResponse<CreateLocationResponse> completeResponse = (CompleteResponse<CreateLocationResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    return completeResponse.getData();
+      }
+
+  /**
+   * CreateLocation
+   * Creates a location. For more information about locations, see [Locations API Overview](/locations-api).
+   * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
+   * @return CompleteResponse<CreateLocationResponse>
+   * @throws ApiException if fails to make API call
+   */
+  public CompleteResponse<CreateLocationResponse>createLocationWithHttpInfo(CreateLocationRequest body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling createLocation");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/locations";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<CreateLocationResponse> localVarReturnType = new GenericType<CreateLocationResponse>() {};
+    return (CompleteResponse<CreateLocationResponse>)apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+  }
+  /**
    * ListLocations
-   * Provides the details for all of a business&#39;s locations.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
+   * Provides information of all locations of a business.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
    * @return ListLocationsResponse
    * @throws ApiException if fails to make API call
    */
@@ -54,7 +141,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -77,7 +164,7 @@ public class LocationsApi {
 
   /**
    * ListLocations
-   * Provides the details for all of a business&#39;s locations.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
+   * Provides information of all locations of a business.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
    * @return CompleteResponse<ListLocationsResponse>
    * @throws ApiException if fails to make API call
    */
@@ -91,7 +178,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -113,7 +200,6 @@ public class LocationsApi {
   /**
    * RetrieveLocation
    * Retrieves details of a location.
-   * Note: This endpoint is in beta.
    * @param locationId The ID of the location to retrieve. (required)
    * @return RetrieveLocationResponse
    * @throws ApiException if fails to make API call
@@ -134,7 +220,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -178,7 +264,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -199,7 +285,7 @@ public class LocationsApi {
   }
   /**
    * UpdateLocation
-   * Updates the &#x60;Location&#x60; specified by the given ID.
+   * Updates a location.
    * Note: This endpoint is in beta.
    * @param locationId The ID of the location to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
@@ -227,7 +313,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -250,7 +336,7 @@ public class LocationsApi {
 
   /**
    * UpdateLocation
-   * Updates the &#x60;Location&#x60; specified by the given ID.
+   * Updates a location.
    * @param locationId The ID of the location to update. (required)
    * @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
    * @return CompleteResponse<UpdateLocationResponse>
@@ -277,7 +363,7 @@ public class LocationsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     

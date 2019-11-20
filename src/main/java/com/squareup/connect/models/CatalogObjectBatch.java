@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A batch of [CatalogObject](#type-catalogobject)s.
+ * A batch of catalog objects.
  */
-@ApiModel(description = "A batch of [CatalogObject](#type-catalogobject)s.")
+@ApiModel(description = "A batch of catalog objects.")
 
 public class CatalogObjectBatch {
   @JsonProperty("objects")
@@ -43,10 +43,10 @@ public class CatalogObjectBatch {
   }
 
    /**
-   * A list of `CatalogObject`s belonging to this batch.
+   * A list of CatalogObjects belonging to this batch.
    * @return objects
   **/
-  @ApiModelProperty(value = "A list of `CatalogObject`s belonging to this batch.")
+  @ApiModelProperty(value = "A list of CatalogObjects belonging to this batch.")
   public List<CatalogObject> getObjects() {
     return objects;
   }

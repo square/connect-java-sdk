@@ -146,10 +146,10 @@ public class ObtainTokenResponse {
   }
 
    /**
-   * __LEGACY FIELD__. The ID of the subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
+   * T__LEGACY FIELD__. The ID of the subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
    * @return planId
   **/
-  @ApiModelProperty(value = "__LEGACY FIELD__. The ID of the subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.")
+  @ApiModelProperty(value = "T__LEGACY FIELD__. The ID of the subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.")
   public String getPlanId() {
     return planId;
   }

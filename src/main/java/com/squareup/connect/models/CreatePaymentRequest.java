@@ -23,9 +23,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Creates a payment from the source (nonce, card on file, etc.)  The &#x60;PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS&#x60; OAuth permission is required to enable application fees.  For more information, see [Payments and Refunds Overview](/payments-api/overview).  For information about application fees in a payment, see [Collect Fees](/payments-api/take-payments-and-collect-fees).
+ * Creates a payment from the source (nonce, card on file, etc.)  The &#x60;PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS&#x60; OAuth permission is required to enable application fees.  For more information, see [Payments and Refunds Overview](/payments-api/overview).  For information about application fees in a payment, see  [Collect Fees](/payments-api/take-payments-and-collect-fees).
  */
-@ApiModel(description = "Creates a payment from the source (nonce, card on file, etc.)  The `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission is required to enable application fees.  For more information, see [Payments and Refunds Overview](/payments-api/overview).  For information about application fees in a payment, see [Collect Fees](/payments-api/take-payments-and-collect-fees).")
+@ApiModel(description = "Creates a payment from the source (nonce, card on file, etc.)  The `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission is required to enable application fees.  For more information, see [Payments and Refunds Overview](/payments-api/overview).  For information about application fees in a payment, see  [Collect Fees](/payments-api/take-payments-and-collect-fees).")
 
 public class CreatePaymentRequest {
   @JsonProperty("source_id")
@@ -76,6 +76,9 @@ public class CreatePaymentRequest {
   @JsonProperty("note")
   private String note = null;
 
+  @JsonProperty("statement_description_identifier")
+  private String statementDescriptionIdentifier = null;
+
   public CreatePaymentRequest sourceId(String sourceId) {
     this.sourceId = sourceId;
     return this;
@@ -100,10 +103,10 @@ public class CreatePaymentRequest {
   }
 
    /**
-   * A unique string that identifies this CreatePayment request. Keys can be any valid string but must be unique for every CreatePayment request.  Max: 45 characters  See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
+   * A unique string that identifies this CreatePayment request. Keys can be any valid string but must be unique for every CreatePayment request.   Max: 45 characters  See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
    * @return idempotencyKey
   **/
-  @ApiModelProperty(required = true, value = "A unique string that identifies this CreatePayment request. Keys can be any valid string but must be unique for every CreatePayment request.  Max: 45 characters  See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.")
+  @ApiModelProperty(required = true, value = "A unique string that identifies this CreatePayment request. Keys can be any valid string but must be unique for every CreatePayment request.   Max: 45 characters  See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.")
   public String getIdempotencyKey() {
     return idempotencyKey;
   }
@@ -154,10 +157,10 @@ public class CreatePaymentRequest {
   }
 
    /**
-   * The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller.  Cannot be more than 90% of the total amount of the Payment.  Must be specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. See [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts) for details.  The currency code must match the currency associated with the business that is accepting the payment.  For more information about the application fee scenario, see [Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).
+   * The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller.  Cannot be more than 90% of the total amount of the Payment.  Must be specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. See [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts) for details.  The currency code must match the currency associated with the business that is accepting the payment.  For more information about the application fee scenario, see   [Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).
    * @return appFeeMoney
   **/
-  @ApiModelProperty(value = "The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller.  Cannot be more than 90% of the total amount of the Payment.  Must be specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. See [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts) for details.  The currency code must match the currency associated with the business that is accepting the payment.  For more information about the application fee scenario, see [Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).")
+  @ApiModelProperty(value = "The amount of money the developer is taking as a fee for facilitating the payment on behalf of the seller.  Cannot be more than 90% of the total amount of the Payment.  Must be specified in the smallest denomination of the applicable currency. For example, US dollar amounts are specified in cents. See [Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts) for details.  The currency code must match the currency associated with the business that is accepting the payment.  For more information about the application fee scenario, see   [Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).")
   public Money getAppFeeMoney() {
     return appFeeMoney;
   }
@@ -262,10 +265,10 @@ public class CreatePaymentRequest {
   }
 
    /**
-   * An identifying token generated by `SqPaymentForm.verifyBuyer()`. Verification tokens encapsulate customer device information and 3-D Secure challenge results to indicate that Square has verified the buyer identity.  See the [SCA Overview](https://developer.squareup.com/docs/sca-overview) for more.
+   * An identifying token generated by `SqPaymentForm.verifyBuyer()`. Verification tokens encapsulate customer device information and 3-D Secure challenge results to indicate that Square has verified the buyer identity.  See the [SCA Overview](https://developer.squareup.com/sca-overview) for more.
    * @return verificationToken
   **/
-  @ApiModelProperty(value = "An identifying token generated by `SqPaymentForm.verifyBuyer()`. Verification tokens encapsulate customer device information and 3-D Secure challenge results to indicate that Square has verified the buyer identity.  See the [SCA Overview](https://developer.squareup.com/docs/sca-overview) for more.")
+  @ApiModelProperty(value = "An identifying token generated by `SqPaymentForm.verifyBuyer()`. Verification tokens encapsulate customer device information and 3-D Secure challenge results to indicate that Square has verified the buyer identity.  See the [SCA Overview](https://developer.squareup.com/sca-overview) for more.")
   public String getVerificationToken() {
     return verificationToken;
   }
@@ -280,11 +283,11 @@ public class CreatePaymentRequest {
   }
 
    /**
-   * If set to true and charging a Square Gift Card, a payment may be returned with amount_money equal to less than what was requested.  Example, a request for $20 when charging a Square Gift Card with balance of $5 wil result in an APPROVED payment of $5.  You may choose to prompt the buyer for an additional payment to cover the remainder, or cancel the gift card payment.  Cannot be `true` when `autocomplete = true  For more information, see [Partial amount with Square gift cards](https://developer.squareup.com/docs/payments-api/take-payments#partial-payment-gift-card).  Default: false
+   * If set to true and charging a Square Gift Card, a payment may be returned with amount_money equal to less than what was requested.  Example, a request for $20 when charging a Square Gift Card with balance of $5 wil result in an APPROVED payment of $5.  You may choose to prompt the buyer for an additional payment to cover the remainder, or cancel the gift card payment.  Cannot be `true` when `autocomplete = true`.  For more information, see  [Partial amount with Square gift cards](https://developer.squareup.com/docs/payments-api/take-payments#partial-payment-gift-card).  Default: false
    * Note: This model is in beta.
    * @return acceptPartialAuthorization
   **/
-  @ApiModelProperty(value = "If set to true and charging a Square Gift Card, a payment may be returned with amount_money equal to less than what was requested.  Example, a request for $20 when charging a Square Gift Card with balance of $5 wil result in an APPROVED payment of $5.  You may choose to prompt the buyer for an additional payment to cover the remainder, or cancel the gift card payment.  Cannot be `true` when `autocomplete = true  For more information, see [Partial amount with Square gift cards](https://developer.squareup.com/docs/payments-api/take-payments#partial-payment-gift-card).  Default: false")
+  @ApiModelProperty(value = "If set to true and charging a Square Gift Card, a payment may be returned with amount_money equal to less than what was requested.  Example, a request for $20 when charging a Square Gift Card with balance of $5 wil result in an APPROVED payment of $5.  You may choose to prompt the buyer for an additional payment to cover the remainder, or cancel the gift card payment.  Cannot be `true` when `autocomplete = true`.  For more information, see  [Partial amount with Square gift cards](https://developer.squareup.com/docs/payments-api/take-payments#partial-payment-gift-card).  Default: false")
   public Boolean getAcceptPartialAuthorization() {
     return acceptPartialAuthorization;
   }
@@ -365,6 +368,25 @@ public class CreatePaymentRequest {
     this.note = note;
   }
 
+  public CreatePaymentRequest statementDescriptionIdentifier(String statementDescriptionIdentifier) {
+    this.statementDescriptionIdentifier = statementDescriptionIdentifier;
+    return this;
+  }
+
+   /**
+   * Optional additional payment information to include on the customer's card statement as part of statement description. This can be, for example, an invoice number, ticket number, or short description that uniquely identifies the purchase.  Limit 20 characters.  Note that the statement_description_identifier may get truncated on the statement description to fit the required information including the Square identifier (SQ *) and name of the merchant taking the payment.
+   * Note: This model is in beta.
+   * @return statementDescriptionIdentifier
+  **/
+  @ApiModelProperty(value = "Optional additional payment information to include on the customer's card statement as part of statement description. This can be, for example, an invoice number, ticket number, or short description that uniquely identifies the purchase.  Limit 20 characters.  Note that the statement_description_identifier may get truncated on the statement description to fit the required information including the Square identifier (SQ *) and name of the merchant taking the payment.")
+  public String getStatementDescriptionIdentifier() {
+    return statementDescriptionIdentifier;
+  }
+
+  public void setStatementDescriptionIdentifier(String statementDescriptionIdentifier) {
+    this.statementDescriptionIdentifier = statementDescriptionIdentifier;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -390,12 +412,13 @@ public class CreatePaymentRequest {
         Objects.equals(this.buyerEmailAddress, createPaymentRequest.buyerEmailAddress) &&
         Objects.equals(this.billingAddress, createPaymentRequest.billingAddress) &&
         Objects.equals(this.shippingAddress, createPaymentRequest.shippingAddress) &&
-        Objects.equals(this.note, createPaymentRequest.note);
+        Objects.equals(this.note, createPaymentRequest.note) &&
+        Objects.equals(this.statementDescriptionIdentifier, createPaymentRequest.statementDescriptionIdentifier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceId, idempotencyKey, amountMoney, tipMoney, appFeeMoney, autocomplete, orderId, customerId, locationId, referenceId, verificationToken, acceptPartialAuthorization, buyerEmailAddress, billingAddress, shippingAddress, note);
+    return Objects.hash(sourceId, idempotencyKey, amountMoney, tipMoney, appFeeMoney, autocomplete, orderId, customerId, locationId, referenceId, verificationToken, acceptPartialAuthorization, buyerEmailAddress, billingAddress, shippingAddress, note, statementDescriptionIdentifier);
   }
 
 
@@ -420,6 +443,7 @@ public class CreatePaymentRequest {
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    statementDescriptionIdentifier: ").append(toIndentedString(statementDescriptionIdentifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }

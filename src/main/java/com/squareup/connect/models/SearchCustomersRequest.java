@@ -42,10 +42,10 @@ public class SearchCustomersRequest {
   }
 
    /**
-   * Include the pagination cursor in subsequent calls to this endpoint to retrieve the next set of results associated with the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
+   * Include the pagination cursor in subsequent calls to this endpoint to retrieve the next set of results associated with the original query.  See the [Pagination guide](https://developer.squareup.com/docs/working-with-apis/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "Include the pagination cursor in subsequent calls to this endpoint to retrieve the next set of results associated with the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "Include the pagination cursor in subsequent calls to this endpoint to retrieve the next set of results associated with the original query.  See the [Pagination guide](https://developer.squareup.com/docs/working-with-apis/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }

@@ -42,10 +42,10 @@ public class BatchDeleteCatalogObjectsRequest {
   }
 
    /**
-   * The IDs of the `CatalogObject`s to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a `CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation`.
+   * The IDs of the CatalogObjects to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a CatalogItem will delete its CatalogItemVariation.
    * @return objectIds
   **/
-  @ApiModelProperty(value = "The IDs of the `CatalogObject`s to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a `CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation`.")
+  @ApiModelProperty(value = "The IDs of the CatalogObjects to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a CatalogItem will delete its CatalogItemVariation.")
   public List<String> getObjectIds() {
     return objectIds;
   }

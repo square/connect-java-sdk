@@ -48,10 +48,10 @@ public class UpdateItemTaxesRequest {
   }
 
    /**
-   * The `CatalogItem](#type-catalogitem)s whose enabled/disabled [CatalogTax`es are being updated.
+   * IDs for the CatalogItems associated with the CatalogTax objects being updated.
    * @return itemIds
   **/
-  @ApiModelProperty(required = true, value = "The `CatalogItem](#type-catalogitem)s whose enabled/disabled [CatalogTax`es are being updated.")
+  @ApiModelProperty(required = true, value = "IDs for the CatalogItems associated with the CatalogTax objects being updated.")
   public List<String> getItemIds() {
     return itemIds;
   }
@@ -71,10 +71,10 @@ public class UpdateItemTaxesRequest {
   }
 
    /**
-   * The set of `CatalogTax](#type-catalogtax)es (referenced by ID) to enable for the [CatalogItem`.
+   * IDs of the CatalogTax objects to enable.
    * @return taxesToEnable
   **/
-  @ApiModelProperty(value = "The set of `CatalogTax](#type-catalogtax)es (referenced by ID) to enable for the [CatalogItem`.")
+  @ApiModelProperty(value = "IDs of the CatalogTax objects to enable.")
   public List<String> getTaxesToEnable() {
     return taxesToEnable;
   }
@@ -94,10 +94,10 @@ public class UpdateItemTaxesRequest {
   }
 
    /**
-   * The set of `CatalogTax](#type-catalogtax)es (referenced by ID) to disable for the [CatalogItem`.
+   * IDs of the CatalogTax objects to disable.
    * @return taxesToDisable
   **/
-  @ApiModelProperty(value = "The set of `CatalogTax](#type-catalogtax)es (referenced by ID) to disable for the [CatalogItem`.")
+  @ApiModelProperty(value = "IDs of the CatalogTax objects to disable.")
   public List<String> getTaxesToDisable() {
     return taxesToDisable;
   }

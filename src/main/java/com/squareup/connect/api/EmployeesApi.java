@@ -38,7 +38,7 @@ public class EmployeesApi {
 
   /**
    * ListEmployees
-   * Gets a list of &#x60;Employee&#x60; objects for a business.
+   * 
    * @param locationId Filter employees returned to only those that are associated with the specified location. (optional)
    * @param status Specifies the EmployeeStatus to filter the employee by. (optional)
    * @param limit The number of employees to be returned on each page. (optional)
@@ -56,7 +56,7 @@ public class EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_id", locationId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
@@ -83,7 +83,7 @@ public class EmployeesApi {
 
   /**
    * ListEmployees
-   * Gets a list of &#x60;Employee&#x60; objects for a business.
+   * 
    * @param locationId Filter employees returned to only those that are associated with the specified location. (optional)
    * @param status Specifies the EmployeeStatus to filter the employee by. (optional)
    * @param limit The number of employees to be returned on each page. (optional)
@@ -101,7 +101,7 @@ public class EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_id", locationId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
@@ -126,7 +126,7 @@ public class EmployeesApi {
   }
   /**
    * RetrieveEmployee
-   * Gets an &#x60;Employee&#x60; by Square-assigned employee &#x60;ID&#x60; (UUID)
+   * 
    * @param id UUID for the employee that was requested. (required)
    * @return RetrieveEmployeeResponse
    * @throws ApiException if fails to make API call
@@ -147,7 +147,7 @@ public class EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     
@@ -170,7 +170,7 @@ public class EmployeesApi {
 
   /**
    * RetrieveEmployee
-   * Gets an &#x60;Employee&#x60; by Square-assigned employee &#x60;ID&#x60; (UUID)
+   * 
    * @param id UUID for the employee that was requested. (required)
    * @return CompleteResponse<RetrieveEmployeeResponse>
    * @throws ApiException if fails to make API call
@@ -191,7 +191,7 @@ public class EmployeesApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-    localVarHeaderParams.put("Square-Version", "2019-10-23");
+    localVarHeaderParams.put("Square-Version", "2019-11-20");
 
     
     

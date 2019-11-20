@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- *  Represents a period of time during which a business location is open.
+ * Represents a period of time during which a business location is open.
  */
-@ApiModel(description = " Represents a period of time during which a business location is open.")
+@ApiModel(description = "Represents a period of time during which a business location is open.")
 
 public class BusinessHoursPeriod {
   @JsonProperty("day_of_week")

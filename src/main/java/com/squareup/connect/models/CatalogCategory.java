@@ -21,9 +21,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * A category to which an [CatalogItem](#type-catalogitem) belongs in the Catalog object model.
+ * A category to which a &#x60;CatalogItem&#x60; belongs in the &#x60;Catalog&#x60; object model.
  */
-@ApiModel(description = "A category to which an [CatalogItem](#type-catalogitem) belongs in the Catalog object model.")
+@ApiModel(description = "A category to which a `CatalogItem` belongs in the `Catalog` object model.")
 
 public class CatalogCategory {
   @JsonProperty("name")
@@ -35,10 +35,10 @@ public class CatalogCategory {
   }
 
    /**
-   * The category's name. Searchable. This field has max length of 255 Unicode code points.
+   * The category name. Searchable. This field has max length of 255 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The category's name. Searchable. This field has max length of 255 Unicode code points.")
+  @ApiModelProperty(value = "The category name. Searchable. This field has max length of 255 Unicode code points.")
   public String getName() {
     return name;
   }

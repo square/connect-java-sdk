@@ -78,10 +78,10 @@ public class Card {
   }
 
    /**
-   * The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for possible values
+   * The card's brand (such as `VISA`). See `CardBrand` for all possible values. See [CardBrand](#type-cardbrand) for possible values
    * @return cardBrand
   **/
-  @ApiModelProperty(value = "The card's brand (such as `VISA`). See [CardBrand](#type-cardbrand) for possible values")
+  @ApiModelProperty(value = "The card's brand (such as `VISA`). See `CardBrand` for all possible values. See [CardBrand](#type-cardbrand) for possible values")
   public String getCardBrand() {
     return cardBrand;
   }
@@ -186,10 +186,10 @@ public class Card {
   }
 
    /**
-   * A unique, Square-assigned ID that identifies the card across multiple locations and applications for a single Square account.
+   * __Not currently set.__ Intended as a Square-assigned identifier, based  on the card number, to identify the card across multiple locations within a single application.
    * @return fingerprint
   **/
-  @ApiModelProperty(value = "A unique, Square-assigned ID that identifies the card across multiple locations and applications for a single Square account.")
+  @ApiModelProperty(value = "__Not currently set.__ Intended as a Square-assigned identifier, based  on the card number, to identify the card across multiple locations within a single application.")
   public String getFingerprint() {
     return fingerprint;
   }

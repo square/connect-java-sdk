@@ -50,10 +50,10 @@ public class RetrieveCatalogObjectResponse {
   }
 
    /**
-   * The set of `Error`s encountered.
+   * Information on any errors encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of `Error`s encountered.")
+  @ApiModelProperty(value = "Information on any errors encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -68,10 +68,10 @@ public class RetrieveCatalogObjectResponse {
   }
 
    /**
-   * The `CatalogObject`s returned.
+   * The CatalogObjects returned.
    * @return object
   **/
-  @ApiModelProperty(value = "The `CatalogObject`s returned.")
+  @ApiModelProperty(value = "The CatalogObjects returned.")
   public CatalogObject getObject() {
     return object;
   }
@@ -91,10 +91,10 @@ public class RetrieveCatalogObjectResponse {
   }
 
    /**
-   * A list of `CatalogObject`s referenced by the object in the `object` field.
+   * A list of CatalogObjects referenced by the object in the `object` field.
    * @return relatedObjects
   **/
-  @ApiModelProperty(value = "A list of `CatalogObject`s referenced by the object in the `object` field.")
+  @ApiModelProperty(value = "A list of CatalogObjects referenced by the object in the `object` field.")
   public List<CatalogObject> getRelatedObjects() {
     return relatedObjects;
   }

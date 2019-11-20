@@ -123,10 +123,10 @@ public class V1Variation {
   }
 
    /**
-   * Indicates the variation's list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order
+   * Indicates the variation's list position when displayed in Square Point of Sale and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order
    * @return ordinal
   **/
-  @ApiModelProperty(value = "Indicates the variation's list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order")
+  @ApiModelProperty(value = "Indicates the variation's list position when displayed in Square Point of Sale and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order")
   public Integer getOrdinal() {
     return ordinal;
   }

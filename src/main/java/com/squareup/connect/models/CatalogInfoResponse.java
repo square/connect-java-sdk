@@ -51,10 +51,10 @@ public class CatalogInfoResponse {
   }
 
    /**
-   * The set of `Error`s encountered.
+   * The set of errors encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of `Error`s encountered.")
+  @ApiModelProperty(value = "The set of errors encountered.")
   public List<Error> getErrors() {
     return errors;
   }

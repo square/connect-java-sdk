@@ -143,10 +143,10 @@ public class ListPaymentRefundsRequest {
   }
 
    /**
-   * If provided, only refunds with the given status are returned.  For a list of refund status values, see `PaymentRefund`.  Default: If omitted refunds are returned regardless of status.
+   * If provided, only refunds with the given status are returned. For a list of refund status values, see `PaymentRefund`.  Default: If omitted refunds are returned regardless of status.
    * @return status
   **/
-  @ApiModelProperty(value = "If provided, only refunds with the given status are returned.  For a list of refund status values, see `PaymentRefund`.  Default: If omitted refunds are returned regardless of status.")
+  @ApiModelProperty(value = "If provided, only refunds with the given status are returned. For a list of refund status values, see `PaymentRefund`.  Default: If omitted refunds are returned regardless of status.")
   public String getStatus() {
     return status;
   }
@@ -161,10 +161,10 @@ public class ListPaymentRefundsRequest {
   }
 
    /**
-   * If provided, only refunds with the given source type are returned.  - `CARD` - List refunds only for payments where card was specified as payment  source.  Default: If omitted refunds are returned regardless of source type.
+   * If provided, only refunds with the given source type are returned. - `CARD` - List refunds only for payments where card was specified as payment source.  Default: If omitted refunds are returned regardless of source type.
    * @return sourceType
   **/
-  @ApiModelProperty(value = "If provided, only refunds with the given source type are returned.  - `CARD` - List refunds only for payments where card was specified as payment  source.  Default: If omitted refunds are returned regardless of source type.")
+  @ApiModelProperty(value = "If provided, only refunds with the given source type are returned. - `CARD` - List refunds only for payments where card was specified as payment source.  Default: If omitted refunds are returned regardless of source type.")
   public String getSourceType() {
     return sourceType;
   }

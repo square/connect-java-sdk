@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * Retrieve an employee by &#x60;Employee.id&#x60;
+ * 
  */
-@ApiModel(description = "Retrieve an employee by `Employee.id`")
+@ApiModel(description = "")
 
 public class RetrieveEmployeeRequest {
 

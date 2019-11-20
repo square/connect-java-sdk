@@ -70,7 +70,7 @@ public class ListMerchantsRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListMerchantsRequest {\n");
-
+    
     sb.append("    cursor: ").append(toIndentedString(cursor)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -86,6 +86,6 @@ public class ListMerchantsRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
+  
 }
 

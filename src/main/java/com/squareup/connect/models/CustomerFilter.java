@@ -23,9 +23,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Represents a set of &#x60;CustomerQuery&#x60; filters used to limit the set of Customers returned by SearchCustomers.
+ * Represents a set of &#x60;CustomerQuery&#x60; filters used to limit the set of &#x60;Customers&#x60; returned by SearchCustomers.
  */
-@ApiModel(description = "Represents a set of `CustomerQuery` filters used to limit the set of Customers returned by SearchCustomers.")
+@ApiModel(description = "Represents a set of `CustomerQuery` filters used to limit the set of `Customers` returned by SearchCustomers.")
 
 public class CustomerFilter {
   @JsonProperty("creation_source")

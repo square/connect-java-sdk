@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A modifier list in the Catalog object model. A [CatalogModifierList](#type-catalogmodifierlist) contains [Modifier](#type-catalogmodifier)s that can be applied to a [CatalogItem](#type-catalogitem) at the time of sale.  For example, a modifier list \&quot;Condiments\&quot; that would apply to a \&quot;Hot Dog\&quot; [CatalogItem](#type-catalogitem) might contain [CatalogModifier](#type-catalogmodifier)s \&quot;Ketchup\&quot;, \&quot;Mustard\&quot;, and \&quot;Relish\&quot;. The &#x60;selection_type&#x60; field specifies whether or not multiple selections from the modifier list are allowed.
+ * A modifier list in the Catalog object model. A &#x60;CatalogModifierList&#x60; contains &#x60;CatalogModifier&#x60; objects that can be applied to a &#x60;CatalogItem&#x60; at the time of sale.  For example, a modifier list \&quot;Condiments\&quot; that would apply to a \&quot;Hot Dog\&quot; &#x60;CatalogItem&#x60; might contain &#x60;CatalogModifier&#x60;s \&quot;Ketchup\&quot;, \&quot;Mustard\&quot;, and \&quot;Relish\&quot;. The &#x60;selection_type&#x60; field specifies whether or not multiple selections from the modifier list are allowed.
  */
-@ApiModel(description = "A modifier list in the Catalog object model. A [CatalogModifierList](#type-catalogmodifierlist) contains [Modifier](#type-catalogmodifier)s that can be applied to a [CatalogItem](#type-catalogitem) at the time of sale.  For example, a modifier list \"Condiments\" that would apply to a \"Hot Dog\" [CatalogItem](#type-catalogitem) might contain [CatalogModifier](#type-catalogmodifier)s \"Ketchup\", \"Mustard\", and \"Relish\". The `selection_type` field specifies whether or not multiple selections from the modifier list are allowed.")
+@ApiModel(description = "A modifier list in the Catalog object model. A `CatalogModifierList` contains `CatalogModifier` objects that can be applied to a `CatalogItem` at the time of sale.  For example, a modifier list \"Condiments\" that would apply to a \"Hot Dog\" `CatalogItem` might contain `CatalogModifier`s \"Ketchup\", \"Mustard\", and \"Relish\". The `selection_type` field specifies whether or not multiple selections from the modifier list are allowed.")
 
 public class CatalogModifierList {
   @JsonProperty("name")
@@ -44,10 +44,10 @@ public class CatalogModifierList {
   }
 
    /**
-   * The `CatalogModifierList`'s name. Searchable. This field has max length of 255 Unicode code points.
+   * A searchable name for the `CatalogModifierList`. This field has max length of 255 Unicode code points.
    * @return name
   **/
-  @ApiModelProperty(value = "The `CatalogModifierList`'s name. Searchable. This field has max length of 255 Unicode code points.")
+  @ApiModelProperty(value = "A searchable name for the `CatalogModifierList`. This field has max length of 255 Unicode code points.")
   public String getName() {
     return name;
   }
@@ -85,10 +85,10 @@ public class CatalogModifierList {
   }
 
    /**
-   * The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each `CatalogObject` must have type `MODIFIER` and contain `CatalogModifier` data.
+   * The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each CatalogObject must have type `MODIFIER` and contain `CatalogModifier` data.
    * @return modifiers
   **/
-  @ApiModelProperty(value = "The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each `CatalogObject` must have type `MODIFIER` and contain `CatalogModifier` data.")
+  @ApiModelProperty(value = "The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each CatalogObject must have type `MODIFIER` and contain `CatalogModifier` data.")
   public List<CatalogObject> getModifiers() {
     return modifiers;
   }

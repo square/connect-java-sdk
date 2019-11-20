@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * Defines the fields that are included in requests to the ListLocations endpoint.
+ * Defines the fields that are included in requests to the __ListLocations__ endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in requests to the ListLocations endpoint.")
+@ApiModel(description = "Defines the fields that are included in requests to the __ListLocations__ endpoint.")
 
 public class ListLocationsRequest {
 

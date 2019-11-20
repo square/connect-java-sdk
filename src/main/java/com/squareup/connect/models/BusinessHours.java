@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Represents the hours of operation for a business location.
+ * Represents the hours of operation for a business location.
  */
-@ApiModel(description = " Represents the hours of operation for a business location.")
+@ApiModel(description = "Represents the hours of operation for a business location.")
 
 public class BusinessHours {
   @JsonProperty("periods")

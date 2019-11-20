@@ -17,9 +17,9 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 /**
- * Defines the fields that are included in the request body for  the [RetrieveLocation](#endpoint-locations-retrievelocation) endpoint.
+ * Defines the fields that are included in the request body for the __RetrieveLocation__ endpoint.
  */
-@ApiModel(description = "Defines the fields that are included in the request body for  the [RetrieveLocation](#endpoint-locations-retrievelocation) endpoint.")
+@ApiModel(description = "Defines the fields that are included in the request body for the __RetrieveLocation__ endpoint.")
 
 public class RetrieveLocationRequest {
 

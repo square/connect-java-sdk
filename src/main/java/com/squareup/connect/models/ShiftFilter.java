@@ -30,11 +30,11 @@ import java.util.List;
 @ApiModel(description = "Defines a filter used in a search for `Shift` records. `AND` logic is used by Square's servers to apply each filter property specified.")
 
 public class ShiftFilter {
-  @JsonProperty("location_id")
-  private List<String> locationId = new ArrayList<String>();
+  @JsonProperty("location_ids")
+  private List<String> locationIds = new ArrayList<String>();
 
-  @JsonProperty("employee_id")
-  private List<String> employeeId = new ArrayList<String>();
+  @JsonProperty("employee_ids")
+  private List<String> employeeIds = new ArrayList<String>();
 
   @JsonProperty("status")
   private String status = null;
@@ -48,50 +48,50 @@ public class ShiftFilter {
   @JsonProperty("workday")
   private ShiftWorkday workday = null;
 
-  public ShiftFilter locationId(List<String> locationId) {
-    this.locationId = locationId;
+  public ShiftFilter locationIds(List<String> locationIds) {
+    this.locationIds = locationIds;
     return this;
   }
 
-  public ShiftFilter addLocationIdItem(String locationIdItem) {
-    this.locationId.add(locationIdItem);
+  public ShiftFilter addLocationIdsItem(String locationIdsItem) {
+    this.locationIds.add(locationIdsItem);
     return this;
   }
 
    /**
    * Fetch shifts for the specified location.
-   * @return locationId
+   * @return locationIds
   **/
   @ApiModelProperty(value = "Fetch shifts for the specified location.")
-  public List<String> getLocationId() {
-    return locationId;
+  public List<String> getLocationIds() {
+    return locationIds;
   }
 
-  public void setLocationId(List<String> locationId) {
-    this.locationId = locationId;
+  public void setLocationIds(List<String> locationIds) {
+    this.locationIds = locationIds;
   }
 
-  public ShiftFilter employeeId(List<String> employeeId) {
-    this.employeeId = employeeId;
+  public ShiftFilter employeeIds(List<String> employeeIds) {
+    this.employeeIds = employeeIds;
     return this;
   }
 
-  public ShiftFilter addEmployeeIdItem(String employeeIdItem) {
-    this.employeeId.add(employeeIdItem);
+  public ShiftFilter addEmployeeIdsItem(String employeeIdsItem) {
+    this.employeeIds.add(employeeIdsItem);
     return this;
   }
 
    /**
    * Fetch shifts for the specified employee.
-   * @return employeeId
+   * @return employeeIds
   **/
   @ApiModelProperty(value = "Fetch shifts for the specified employee.")
-  public List<String> getEmployeeId() {
-    return employeeId;
+  public List<String> getEmployeeIds() {
+    return employeeIds;
   }
 
-  public void setEmployeeId(List<String> employeeId) {
-    this.employeeId = employeeId;
+  public void setEmployeeIds(List<String> employeeIds) {
+    this.employeeIds = employeeIds;
   }
 
   public ShiftFilter status(String status) {
@@ -176,8 +176,8 @@ public class ShiftFilter {
       return false;
     }
     ShiftFilter shiftFilter = (ShiftFilter) o;
-    return Objects.equals(this.locationId, shiftFilter.locationId) &&
-        Objects.equals(this.employeeId, shiftFilter.employeeId) &&
+    return Objects.equals(this.locationIds, shiftFilter.locationIds) &&
+        Objects.equals(this.employeeIds, shiftFilter.employeeIds) &&
         Objects.equals(this.status, shiftFilter.status) &&
         Objects.equals(this.start, shiftFilter.start) &&
         Objects.equals(this.end, shiftFilter.end) &&
@@ -186,7 +186,7 @@ public class ShiftFilter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(locationId, employeeId, status, start, end, workday);
+    return Objects.hash(locationIds, employeeIds, status, start, end, workday);
   }
 
 
@@ -195,8 +195,8 @@ public class ShiftFilter {
     StringBuilder sb = new StringBuilder();
     sb.append("class ShiftFilter {\n");
     
-    sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-    sb.append("    employeeId: ").append(toIndentedString(employeeId)).append("\n");
+    sb.append("    locationIds: ").append(toIndentedString(locationIds)).append("\n");
+    sb.append("    employeeIds: ").append(toIndentedString(employeeIds)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");

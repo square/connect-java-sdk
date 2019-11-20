@@ -50,10 +50,10 @@ public class ListCatalogResponse {
   }
 
    /**
-   * The set of `Error`s encountered.
+   * Information on any errors encountered.
    * @return errors
   **/
-  @ApiModelProperty(value = "The set of `Error`s encountered.")
+  @ApiModelProperty(value = "Information on any errors encountered.")
   public List<Error> getErrors() {
     return errors;
   }
@@ -91,10 +91,10 @@ public class ListCatalogResponse {
   }
 
    /**
-   * The `CatalogObject`s returned.
+   * The CatalogObjects returned.
    * @return objects
   **/
-  @ApiModelProperty(value = "The `CatalogObject`s returned.")
+  @ApiModelProperty(value = "The CatalogObjects returned.")
   public List<CatalogObject> getObjects() {
     return objects;
   }

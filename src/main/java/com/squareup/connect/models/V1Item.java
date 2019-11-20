@@ -162,10 +162,10 @@ public class V1Item {
   }
 
    /**
-   * The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values
+   * The color of the discount's display label in Square Point of Sale, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values
    * @return color
   **/
-  @ApiModelProperty(value = "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values")
+  @ApiModelProperty(value = "The color of the discount's display label in Square Point of Sale, if not the default color. The default color is 9da2a6. See [V1ItemColor](#type-v1itemcolor) for possible values")
   public String getColor() {
     return color;
   }
@@ -180,10 +180,10 @@ public class V1Item {
   }
 
    /**
-   * The text of the item's display label in Square Register. Only up to the first five characters of the string are used.
+   * The text of the item's display label in Square Point of Sale. Only up to the first five characters of the string are used.
    * @return abbreviation
   **/
-  @ApiModelProperty(value = "The text of the item's display label in Square Register. Only up to the first five characters of the string are used.")
+  @ApiModelProperty(value = "The text of the item's display label in Square Point of Sale. Only up to the first five characters of the string are used.")
   public String getAbbreviation() {
     return abbreviation;
   }

@@ -128,7 +128,7 @@ public class ListMerchantsResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ListMerchantsResponse {\n");
-
+    
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    merchant: ").append(toIndentedString(merchant)).append("\n");
     sb.append("    cursor: ").append(toIndentedString(cursor)).append("\n");
@@ -146,6 +146,6 @@ public class ListMerchantsResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
+  
 }
 

@@ -39,7 +39,7 @@ public class UpdateWorkweekConfigRequest {
    * The updated `WorkweekConfig` object.
    * @return workweekConfig
   **/
-  @ApiModelProperty(value = "The updated `WorkweekConfig` object.")
+  @ApiModelProperty(required = true, value = "The updated `WorkweekConfig` object.")
   public WorkweekConfig getWorkweekConfig() {
     return workweekConfig;
   }

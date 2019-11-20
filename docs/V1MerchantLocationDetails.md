@@ -4,6 +4,7 @@
 ### Description
 
 Additional information for a single-location account specified by its associated business account, if it has one.
+**Note: This model is deprecated.**
 
 ## Properties
 Name | Type | Description | Notes

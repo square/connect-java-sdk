@@ -73,10 +73,10 @@ public class ListCustomersResponse {
   }
 
    /**
-   * An array of `Customer` objects that match your query.
+   * An array of `Customer` objects that match the provided query.
    * @return customers
   **/
-  @ApiModelProperty(value = "An array of `Customer` objects that match your query.")
+  @ApiModelProperty(value = "An array of `Customer` objects that match the provided query.")
   public List<Customer> getCustomers() {
     return customers;
   }
@@ -91,10 +91,10 @@ public class ListCustomersResponse {
   }
 
    /**
-   * A pagination cursor to retrieve the next set of results for your original query to the endpoint. This value is present only if the request succeeded and additional results are available.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
+   * A pagination cursor to retrieve the next set of results for the original query. Only present if the request succeeded and additional results are available.  See the [Pagination guide](https://developer.squareup.com/docs/working-with-apis/pagination) for more information.
    * @return cursor
   **/
-  @ApiModelProperty(value = "A pagination cursor to retrieve the next set of results for your original query to the endpoint. This value is present only if the request succeeded and additional results are available.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.")
+  @ApiModelProperty(value = "A pagination cursor to retrieve the next set of results for the original query. Only present if the request succeeded and additional results are available.  See the [Pagination guide](https://developer.squareup.com/docs/working-with-apis/pagination) for more information.")
   public String getCursor() {
     return cursor;
   }
